@@ -25,9 +25,11 @@
  */
 
 :host {
-    --og-radio-button-Width: 1.1rem;
+    --og-radio-button-Width: 1.5rem;
     --og-radio-button-Height: var(--og-radio-button-Width);
-    --og-radio-button-BorderRadius: calc(var(--og-radio-button-Width) / 2);
+    --og-radio-button-BorderRadius: 50%;
+    --og-radio-button-Top: -0.125rem;
+    --og-radio-button-Left: 0;
 
     --og-radio-button-Background: var(--OG-COLOR-PRIMARY--0--50, #{$og-color-primary--0--50});
     --og-radio-button-Background--hover: var(--OG-COLOR-PRIMARY--100--20, #{$og-color-primary--100--20});
@@ -39,11 +41,11 @@
     --og-radio-button-BorderColor--hover: var(--OG-COLOR-SHADE--50, #{$og-color-shade--50});
     --og-radio-button-BorderColor--checked: var(--OG-COLOR-SHADE--50, #{$og-color-shade--50});
 
-    --og-radio-button__icon-Width: .7rem;
-    --og-radio-button__icon-Height: .7rem;
-    --og-radio-button__icon-Left: calc((var(--og-radio-button-Width) - var(--og-radio-button__icon-Width)) / 2 + var(--og-radio-button-BorderWidth));
-    --og-radio-button__icon-Top: calc((var(--og-radio-button-Height) - var(--og-radio-button__icon-Height)) / 2 + var(--og-radio-button-BorderWidth) );
-    --og-radio-button__icon-BorderRadius: calc(var(--og-radio-button__icon-Width) / 2 + var(--og-radio-button-BorderWidth));
+    --og-radio-button__icon-Width: .75rem;
+    --og-radio-button__icon-Height: .75rem;
+    --og-radio-button__icon-Top: calc((var(--og-radio-button-Height) - var(--og-radio-button__icon-Height)) / 2 + var(--og-radio-button-Top) );
+    --og-radio-button__icon-Left: calc((var(--og-radio-button-Width) - var(--og-radio-button__icon-Width)) / 2);
+    --og-radio-button__icon-BorderRadius: 1.25rem;
     --og-radio-button__icon-BorderWidth: 0;
     --og-radio-button__icon-BorderColor: transparent;
     --og-radio-button__icon-BorderColor--hover: transparent;
@@ -58,6 +60,7 @@
 }
 
 ::slotted(og-radio-button) {
+    box-sizing: border-box;
     display: inline-block;
     position: relative;
 }

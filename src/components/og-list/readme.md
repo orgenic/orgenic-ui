@@ -32,6 +32,7 @@
 | Name                                    | Description                                           |
 | --------------------------------------- | ----------------------------------------------------- |
 | `--og-list-Opacity`                     | Overall opacity of the list                           |
+| `--og-list-Opacity--disabled`           | Overall opacity of the list when disabled.            |
 | `--og-list__item-Background`            | Background of the list item (shorthand)               |
 | `--og-list__item-Background--active`    | Background of the list item when selected (shorthand) |
 | `--og-list__item-Background--highlight` | Background of the list item when hovered (shorthand)  |
@@ -40,9 +41,10 @@
 | `--og-list__item-BorderStyle`           | Border style of the list item                         |
 | `--og-list__item-BorderWidth`           | Border width of the list item                         |
 | `--og-list__item-Color`                 | Text color of the list item                           |
-| `--og-list__item-Color--disabled`       | Text color of the list item when disabled             |
 | `--og-list__item-Margin`                | Margin of the list item                               |
 | `--og-list__item-MinHeight`             | Minimum height of the list item                       |
+| `--og-list__item-Opacity`               | Opacity of the list item;                             |
+| `--og-list__item-Opacity--disabled`     | Opacity of the list item;                             |
 
 
 ----------------------------------------------
