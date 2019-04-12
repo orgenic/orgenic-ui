@@ -1,0 +1,8 @@
+:host(.og-theme--light),
+.og-theme--light {
+
+    background:
+        radial-gradient(circle at 75% 85%, hsla(65, 73%, 97%, 0.35), hsla(195, 100%, 65%, 0.65) 30%, hsla(195, 61%, 56%, 0.05) 50%) fixed,
+        radial-gradient(circle at 15% 25%, hsla(187, 93%, 72%, 0.95), hsla(195, 63%, 50%, 0.65) 30%) fixed;
+    color: var(--OG-FONT-COLOR);
+}

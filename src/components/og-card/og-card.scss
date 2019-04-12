@@ -1,0 +1,94 @@
+/**
+ * @prop --og-card-BackgroundColor: Overall background color of the card
+ * @prop --og-card-BorderColor: Border color of the cards border
+ * @prop --og-card-BorderRadius: Border radius of the cards border
+ * @prop --og-card-BorderWidth: Border width of the cards border
+ * @prop --og-card-Margin: Margin around the card
+ * @prop --og-card__header-BorderColor: Boder color of the cards header border
+ * @prop --og-card__header-BorderStyle: Boder style of the cards header border
+ * @prop --og-card__header-BorderWidth: Boder width of the cards header border
+ * @prop --og-card__header-FontSize: Font size of the cards header
+ * @prop --og-card__header-FontWeight: Font weight of the cards header
+ * @prop --og-card__header-TextTransform: Text transformation of the cards header
+ * @prop --og-card__header-Margin: Margin of the cards header
+ * @prop --og-card__header-Padding: Padding of the cards header
+ * @prop --og-card__content-Padding: Padding of the cards content
+ * @prop --og-card__footer-Padding: Padding of the cards footer
+ */
+
+:host {
+    // Card
+    --og-card-BackgroundColor:          var(--OG-COLOR-SHADE--0--80,        #{$og-color-shade--0--80});
+    --og-card-BorderColor:              var(--OG-COLOR-SHADE--0,            #{$og-color-shade--0});
+    --og-card-BorderRadius:             var(--OG-BORDER-RADIUS,             #{$og-border-radius});
+    --og-card-BorderWidth:              var(--OG-BORDER-WIDTH,              #{$og-border-width});
+    --og-card-Margin:                   8px;
+
+    // Header
+    --og-card__header-BorderColor:      transparent;
+    --og-card__header-BorderStyle:      solid;
+    --og-card__header-BorderWidth:      0;
+
+    --og-card__header-FontSize:         0.875rem;
+    --og-card__header-FontWeight:       bold;
+    --og-card__header-TextTransform:    uppercase;
+
+    --og-card__header-Margin:           0 32px;
+    --og-card__header-Padding:          0;
+
+    // Content
+    --og-card__content-Padding:         8px 32px;
+
+    // Footer
+    --og-card__footer-Padding:          8px 32px;
+    --og-card__footer-TextAlign:        right;
+
+    box-sizing: border-box;
+    *, *::before, *::after { box-sizing: inherit; }
+}
+
+.og-card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    background-color: var(--og-card-BackgroundColor);
+    border-color: var(--og-card-BorderColor);
+    border-style: solid;
+    border-width: var(--og-card-BorderWidth);
+    border-radius: var(--og-card-BorderRadius);
+
+    box-shadow: 0 0 8px rgba(0, 0, 0, .3);
+
+    margin: var(--og-card-Margin);
+}
+
+.og-card__header {
+    display: flex;
+    flex-direction: row;
+    min-height: 56px;
+    align-items: center;
+    border-color: var(--og-card__header-BorderColor);
+    border-style: var(--og-card__header-BorderStyle);
+    border-width: var(--og-card__header-BorderWidth);
+
+    font-size: var(--og-card__header-FontSize);
+    font-weight: var(--og-card__header-FontWeight);
+    margin: var(--og-card__header-Margin);
+    padding: var(--og-card__header-Padding);
+    text-transform: var(--og-card__header-TextTransform);
+
+}
+
+.og-card__title {
+    @include ellipsis();
+}
+.og-card__content {
+    flex-grow: 1;
+    padding: var(--og-card__content-Padding);
+}
+
+.og-card__footer {
+    text-align: var(--og-card__footer-TextAlign);
+    padding: var(--og-card__footer-Padding);
+}

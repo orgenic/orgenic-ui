@@ -1,0 +1,25 @@
+language: node_js
+node_js:
+  - "v10.15.3"
+
+install:
+  - "npm install"
+
+cache:
+  directories:
+    - node_modules
+
+jobs:
+  include:
+    - stage: "Test"
+      script:
+        - npm run test -- --watch=false --progress=false --browsers=ChromeHeadlessCI
+    - stage: "Deploy"
+      script: "npm run build"
+      deploy:
+        provider: npm
+        email: $NPM_EMAIL
+        api_key: $NPM_TOKEN
+        on:
+          tags: true
+        #   branch: master

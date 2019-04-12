@@ -1,0 +1,70 @@
+// =============================================================================
+// Form Item
+// A wrapper for Input Elements
+// =============================================================================
+
+/**
+ * @prop --og-form-item__body-Background: Background of the form item container (shorthand values)
+ * @prop --og-form-item__body-Padding: Padding of the form item container (shorthand values)
+ * @prop --og-form-item__label-FontSize: Font size of the label
+ * @prop --og-form-item__label-Top: Top position of the label
+ * @prop --og-form-item__label-Left: Left position of the label
+ * @prop --og-form-item__label-Color: Text color of the label
+ * @prop --og-form-item__label-Color--active: Text color of the label when selected
+ * @prop --og-form-item__label-Color--hover: Text color of the label when hovered
+ */
+
+:host {
+    --og-form-item-Margin: 4px;
+
+    --og-form-item__body-Background: transparent;
+    --og-form-item__body-Padding: 0;
+
+    --og-form-item__label-FontSize: inherit;
+    --og-form-item__label-Top: 28px;
+    --og-form-item__label-Left: 4px;
+    --og-form-item__label-Color: var(--OG-COLOR-SHADE--100--50, #{$og-color-shade--100--50});
+    --og-form-item__label-Color--hover: var(--OG-COLOR-SHADE--100--50, #{$og-color-shade--100--50});
+    --og-form-item__label-Color--active: var(--OG-COLOR-PRIMARY--100, #{$og-color-primary--100});
+
+    display: block;
+    margin-bottom: 8px;
+    box-sizing: border-box;
+    *, *::before, *::after { box-sizing: inherit; }
+}
+
+
+:host(.og-form-item--focused) {
+    --og-form-item__label-FontSize: var(--og-input__label--focus-FontSize, 12px);
+    --og-form-item__label-Top: 4px;
+    --og-form-item__label-Color: var(--og-form-item__label-Color--active);
+    --og-input__indicator-Width: 100%;
+}
+
+:host(:not(.og-form-item--empty)) {
+    --og-form-item__label-FontSize: var(--og-input__label--focus-FontSize, 12px);
+    --og-form-item__label-Top: 4px;
+}
+
+
+
+.og-form-item__body {
+    display: block;
+    position: relative;
+    background: var(--og-form-item__body-Background);
+    padding: var(--og-form-item__body-Padding);
+    min-height: 40px;
+}
+
+// Visual Label inside the component wrapper
+.og-form-item__label {
+    position: absolute;
+    pointer-events: none;
+    top: var(--og-form-item__label-Top);
+    left: var(--og-form-item__label-Left);
+    z-index: 1;
+    font-size: var(--og-form-item__label-FontSize);
+    color: var(--og-form-item__label-Color);
+    transition: all 0.2s cubic-bezier(0.19, 1, 0.22, 1);
+}
+

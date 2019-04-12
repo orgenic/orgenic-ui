@@ -1,0 +1,149 @@
+// =============================================================================
+// CSS CUSTOM PROPERTIES
+// =============================================================================
+
+/**
+ * @prop --og-button-Background: Main background color of the button
+ * @prop --og-button-Background--active: Background color when the button is clicked
+ * @prop --og-button-Background--disabled: Background color when the button is disabled
+ * @prop --og-button-Background--hover: Background color when the button is hovered
+ * @prop --og-button-BorderRadius: Border radius of the button
+ * @prop --og-button-Color: Text color of the button label
+ * @prop --og-button-Color--active: Text color when the button is clicked
+ * @prop --og-button-Color--disabled: Text color when the button is disabled
+ * @prop --og-button-Color--hover: Text color when the button is hovered
+ */
+
+// -----------------------------------------------------------------------------
+// Base
+// -----------------------------------------------------------------------------
+
+:host {
+  // All Component Variables
+  // Map Variables to Properties
+  --Display: inline-block;
+  --Width: auto;
+  --MaxWidth: inherit;
+  --Height: auto;
+  --MaxHeight: inherit;
+  --Padding: var(--PADDING, 0.75rem 1.5rem);    // TODO: use --OG-PADDING
+
+  --BorderWidth: 1px;
+  --BorderStyle: solid;
+  --BorderColor: transparent;
+
+
+  --og-button-BorderRadius: var( --OG-BORDER-RADIUS, 0px );
+
+  --og-button-Background: var(--OG-COLOR-SECONDARY--100--20, #{$og-color-secondary--100--20});
+  --og-button-Background--hover: var( --OG-COLOR-SECONDARY--100--10, #{$og-color-secondary--100--10});
+  --og-button-Background--active: var( --OG-COLOR-SECONDARY--100--30, #{$og-color-secondary--100--30 });
+  --og-button-Background--disabled: var( --OG-COLOR-SECONDARY--100--07, #{$og-color-secondary--100--07});
+
+  --og-button-Color: var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
+  --og-button-Color--hover: var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
+  --og-button-Color--active: var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
+  --og-button-Color--disabled: var(--OG-COLOR-SHADE--100--30, #{$og-color-shade--100--30});
+
+  --BoxShadow: var(--og-button-BoxShadow);
+  --FontFamily: var(--og-button-FontFamily, inherit);
+  --FontSize: var(--og-button-FontSize, inherit);
+  --Outline: none;
+  --TextTransform: uppercase;
+
+  display: var(--Display);
+  width: var(--Width);
+  min-width: var(--MinWidth);
+  max-width: var(--MaxWidth);
+  height: var(--Height);
+  max-height: var(--maxHeight);
+
+  font-family: var(--FontFamily);
+  font-size: var(--FontSize);
+  font-weight: var(--FontWeight);
+
+  user-select: none;
+
+  box-sizing: border-box;
+  *, *::before, *::after { box-sizing: inherit; }
+}
+
+
+:host([data-context~='workflow']) {
+    --og-button-Background: var(--OG-COLOR-PRIMARY--100, #{$og-color-primary--100});
+    --og-button-Background--hover: var( --OG-COLOR-PRIMARY--80, #{$og-color-primary--80});
+    --og-button-Background--active: var( --OG-COLOR-PRIMARY--120, #{$og-color-primary--120} );
+    --og-button-Background--disabled: var( --OG-COLOR-PRIMARY--100--30, #{$og-color-primary--100--30});
+
+    --og-button-Color: var(--OG-COLOR-SHADE--0, #{$og-color-shade--0});
+    --og-button-Color--hover: var(--OG-COLOR-SHADE--0, #{$og-color-shade--0});
+    --og-button-Color--active: var(--OG-COLOR-SHADE--0, #{$og-color-shade--0});
+    --og-button-Color--disabled: var(--OG-COLOR-SHADE--0--30, #{$og-color-shade--0--30});
+}
+
+// 'Link' version
+:host([data-context~="link"]) {
+    --og-button-Background: transparent;
+    --og-button-Background--hover: var( --OG-COLOR-SHADE--100--10, #{$og-color-shade--100--10});
+    --og-button-Background--active: var( --OG-COLOR-SHADE--100--20, #{$og-color-shade--100--20} );
+    --og-button-Background--disabled: transparent;
+
+    --og-button-Color: var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
+    --og-button-Color--hover: var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
+    --og-button-Color--active: var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
+    --og-button-Color--disabled: var(--OG-COLOR-SHADE--100--30, #{$og-color-shade--100--30});
+}
+
+// Native <button> element
+.og-button {
+  display: block;
+  width: 100%;
+  max-width: inherit;
+  height: 100%;
+  max-height: inherit;
+  padding: var(--Padding);
+
+  font-family: inherit;
+  font-size: inherit;
+
+  background: var(--og-button-Background);
+  border: var(--BorderWidth) var(--BorderStyle) var(--BorderColor);
+
+
+  border-radius: var(--og-button-BorderRadius);
+  color: var(--og-button-Color);
+
+  text-transform: var(--TextTransform);
+
+  // Transitions
+  transition-duration: 150ms;
+  transition-property: background-color;
+  transition-timing-function: ease-in-out;
+
+  // 'Focus' state
+  &:focus {
+    outline: none;
+  }
+
+  // 'Hover' state
+  &:hover {
+    --og-button-Background: var(--og-button-Background--hover);
+    --og-button-Color: var(--og-button-Color--hover);
+    cursor: pointer;
+    transition-duration: 300ms;
+  }
+
+  // 'Active' state
+  &:active {
+    --og-button-Background: var(--og-button-Background--active);
+    --og-button-Color: var(--og-button-Color--active);
+    transition-duration: 300ms;
+  }
+
+  // 'Disabled' state
+  &:disabled {
+    --og-button-Background: var(--og-button-Background--disabled);
+    --og-button-Color: var(--og-button-Color--disabled);
+    cursor: default;
+  }
+}

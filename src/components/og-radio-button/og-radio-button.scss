@@ -1,0 +1,64 @@
+.og-radio-button__input {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 0;
+    clip: rect(0,0,0,0);
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    outline: 0;
+}
+
+.og-radio-button__input:disabled + .og-radio-button__label {
+    cursor: default;
+    opacity: .5
+}
+
+.og-radio-button__label {
+    display: block;
+    position: relative;
+    user-select: none;
+    min-width: var(--og-radio-button-Width);
+    min-height: var(--og-radio-button-Height);
+    cursor: pointer;
+
+    &::after,
+    &::before {
+        position: absolute;
+        content: "";
+        display: block;
+        top: 0;
+        left: 0;
+        transition: all 150ms ease-in-out;
+    }
+
+    &::before {
+        width: var(--og-radio-button-Width);
+        height: var(--og-radio-button-Height);
+        background: var(--og-radio-button-Background);
+        border: var(--og-radio-button-BorderWidth) solid var(--og-radio-button-BorderColor);
+        border-radius: var(--og-radio-button-BorderRadius);
+        z-index: 1;
+    }
+
+    &::after {
+        background: var(--og-radio-button__icon-Background);
+        width: var(--og-radio-button__icon-Width);
+        height: var(--og-radio-button__icon-Height);
+        border: solid var(--og-radio-button__icon-BorderColor);
+        border-width: var(--og-radio-button__icon-BorderWidth);
+        border-radius: var(--og-radio-button__icon-BorderRadius);
+        left: var(--og-radio-button__icon-Left);
+        top: var(--og-radio-button__icon-Top);
+        z-index: 2;
+    }
+}
+
+
+.og-radio-button__label__content {
+    display: block;
+    margin-left: 1.875rem;
+    margin-right: .5rem;
+}
+

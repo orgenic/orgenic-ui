@@ -1,0 +1,49 @@
+// =============================================================================
+// BASIC VARIABLES : COLOR
+// =============================================================================
+
+// ---------------------------------------------------------------------------
+// PRIMARY Colors
+// ---------------------------------------------------------------------------
+$og-color-primary--0: hsla(196, 76%, 100%, 1);
+$og-color-primary--0--30: hsla(196, 76%, 100%, 0.3);
+$og-color-primary--0--50: hsla(196, 76%, 100%, 0.5);
+$og-color-primary--80: hsla(196, 76%, 56%, 1);
+$og-color-primary--100: hsla(196, 76%, 47%, 1);
+$og-color-primary--100--15: hsla(196, 76%, 47%, 0.15);
+$og-color-primary--100--20: hsla(196, 76%, 47%, 0.2);
+$og-color-primary--100--25: hsla(196, 76%, 47%, 0.25);
+$og-color-primary--100--30: hsla(196, 76%, 47%, 0.3);
+$og-color-primary--100--50: hsla(196, 76%, 47%, 0.5);
+$og-color-primary--120: hsla(196, 76%, 38%, 1);
+
+// ---------------------------------------------------------------------------
+// SECONDARY Colors
+// ---------------------------------------------------------------------------
+$og-color-secondary--0: hsla(0, 0%, 100%, 1);
+$og-color-secondary--0--50: hsla(0, 0%, 100%, 0.5);
+$og-color-secondary--100: hsla(0, 0%, 20%, 1);
+$og-color-secondary--100--07: hsla(0, 0%, 20%, 0.07);
+$og-color-secondary--100--10: hsla(0, 0%, 20%, 0.1);
+$og-color-secondary--100--20: hsla(0, 0%, 20%, 0.2);
+$og-color-secondary--100--30: hsla(0, 0%, 20%, 0.3);
+
+// -------------------------------------------------------------------------
+// SHADE : From light to dark.
+// -------------------------------------------------------------------------
+// Here we define a neutral color. From light to dark.
+// --0 means least "contrast" to the main theme color. light theme -> white;
+// --100 means most "contrast" to the main theme color. light theme -> dark;
+// --100--50 means, this tone has a 50% transparency
+
+$og-color-shade--0: hsla(200, 25%, 100%, 1);
+$og-color-shade--0--30: hsla(200, 25%, 100%, 0.3);
+$og-color-shade--0--80: hsla(200, 25%, 100%, 0.8);
+$og-color-shade--50: hsla(200, 25%, 65%, 1);
+$og-color-shade--70--50: hsla(200, 25%, 51%, 0.5);
+$og-color-shade--80--05: hsla(200, 45%, 44%, 0.05);
+$og-color-shade--100: hsla(200, 25%, 30%, 1);
+$og-color-shade--100--10: hsla(200, 25%, 30%, 0.1);
+$og-color-shade--100--20: hsla(200, 25%, 30%, 0.2);
+$og-color-shade--100--30: hsla(200, 25%, 30%, 0.3);
+$og-color-shade--100--50: hsla(200, 25%, 30%, 0.5);

@@ -1,0 +1,12 @@
+@import '../og-input.scss';
+
+// Hide the tiny arrows for counting up or down
+[type='number'] {
+    -moz-appearance: var(--og-input__input-Appearance);
+
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+        -webkit-appearance: var(--og-input__input-Appearance);
+        margin: 0;
+    }
+}

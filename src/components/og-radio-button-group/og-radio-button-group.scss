@@ -1,0 +1,84 @@
+/**
+ * @prop --og-radio-button-Background: Background of the radio button (shorthand)
+ * @prop --og-radio-button-Background--checked: Background of the radio button when checked (shorthand)
+ * @prop --og-radio-button-Background--disabled: Background of the radio button when disabled (shorthand)
+ * @prop --og-radio-button-Background--hover: Background of the radio button when hovered (shorthand)
+ * @prop --og-radio-button-BorderColor: Border color of the radio button
+ * @prop --og-radio-button-BorderColor--checked: Border color of the radio button when checked
+ * @prop --og-radio-button-BorderColor--hover: Border color of the radio button when hovered
+ * @prop --og-radio-button-BorderRadius: Border radius of the radio button
+ * @prop --og-radio-button-BorderWidth: Border width of the radio button
+ * @prop --og-radio-button-Height: Height of the radio button (box model: border-box)
+ * @prop --og-radio-button-Width: Width of the radio button (box model: border-box)
+ * @prop --og-radio-button__icon-Background: Background of the radio button icon (shorthand)
+ * @prop --og-radio-button__icon-Background--checked: Background of the radio button icon when checked (shorthand)
+ * @prop --og-radio-button__icon-Background--hover: Background of the radio button icon when hovered (shorthand)
+ * @prop --og-radio-button__icon-BorderColor: Border color of the radio button icon
+ * @prop --og-radio-button__icon-BorderColor--checked: Border color of the radio button icon when checked
+ * @prop --og-radio-button__icon-BorderColor--hover: Border color of the radio button icon when hovered
+ * @prop --og-radio-button__icon-BorderRadius: Border radisu of the radio button icon
+ * @prop --og-radio-button__icon-BorderWidth: Border width of the radio button icon
+ * @prop --og-radio-button__icon-Height: Height of the radio button icon
+ * @prop --og-radio-button__icon-Left: Left position of the radio button icon
+ * @prop --og-radio-button__icon-Top: Top position of the radio button icon
+ * @prop --og-radio-button__icon-Width: Width of the radio button icon
+ */
+
+:host {
+    --og-radio-button-Width: 1.1rem;
+    --og-radio-button-Height: var(--og-radio-button-Width);
+    --og-radio-button-BorderRadius: calc(var(--og-radio-button-Width) / 2);
+
+    --og-radio-button-Background: var(--OG-COLOR-PRIMARY--0--50, #{$og-color-primary--0--50});
+    --og-radio-button-Background--hover: var(--OG-COLOR-PRIMARY--100--20, #{$og-color-primary--100--20});
+    --og-radio-button-Background--checked: var(--OG-COLOR-PRIMARY--0--50, #{$og-color-primary--0--50});
+    --og-radio-button-Background--disabled: var(--OG-COLOR-PRIMARY--0--30, #{$og-color-primary--0--30});
+
+    --og-radio-button-BorderWidth: .0625rem;
+    --og-radio-button-BorderColor: var(--OG-COLOR-SHADE--50, #{$og-color-shade--50});
+    --og-radio-button-BorderColor--hover: var(--OG-COLOR-SHADE--50, #{$og-color-shade--50});
+    --og-radio-button-BorderColor--checked: var(--OG-COLOR-SHADE--50, #{$og-color-shade--50});
+
+    --og-radio-button__icon-Width: .7rem;
+    --og-radio-button__icon-Height: .7rem;
+    --og-radio-button__icon-Left: calc((var(--og-radio-button-Width) - var(--og-radio-button__icon-Width)) / 2 + var(--og-radio-button-BorderWidth));
+    --og-radio-button__icon-Top: calc((var(--og-radio-button-Height) - var(--og-radio-button__icon-Height)) / 2 + var(--og-radio-button-BorderWidth) );
+    --og-radio-button__icon-BorderRadius: calc(var(--og-radio-button__icon-Width) / 2 + var(--og-radio-button-BorderWidth));
+    --og-radio-button__icon-BorderWidth: 0;
+    --og-radio-button__icon-BorderColor: transparent;
+    --og-radio-button__icon-BorderColor--hover: transparent;
+    --og-radio-button__icon-BorderColor--checked: transparent;
+    --og-radio-button__icon-Background: transparent;
+    --og-radio-button__icon-Background--hover: transparent;
+    --og-radio-button__icon-Background--checked: var(--OG-COLOR-PRIMARY--100, #{$og-color-primary--100});
+
+    box-sizing: border-box;
+    *, *::before, *::after { box-sizing: inherit; }
+
+}
+
+::slotted(og-radio-button) {
+    display: inline-block;
+    position: relative;
+}
+
+::slotted(:not(.og-radio-button--disabled):hover) {
+    --og-radio-button-Background: var(--og-radio-button-Background--hover);
+    --og-radio-button-BorderColor: var(--og-radio-button-BorderColor--hover);
+    --og-radio-button__icon-Background: var(--og-radio-button__icon-Background--hover);
+    --og-radio-button__icon-BorderColor: var(--og-radio-button__icon-BorderColor--hover);
+}
+
+::slotted(.og-radio-button--checked) {
+    --og-radio-button-Background: var(--og-radio-button-Background--checked);
+    --og-radio-button-BorderColor: var(--og-radio-button-BorderColor--checked);
+    --og-radio-button__icon-Background: var(--og-radio-button__icon-Background--checked);
+    --og-radio-button__icon-BorderColor: var(--og-radio-button__icon-BorderColor--checked);
+}
+
+::slotted(.og-radio-button--checked:not(.og-radio-button--disabled):hover) {
+    --og-radio-button-Background: var(--og-radio-button-Background--hover);
+    --og-radio-button-BorderColor: var(--og-radio-button-BorderColor--hover);
+    --og-radio-button__icon-Background: var(--og-radio-button__icon-Background--checked);
+    --og-radio-button__icon-BorderColor: var(--og-radio-button__icon-BorderColor--checked);
+}

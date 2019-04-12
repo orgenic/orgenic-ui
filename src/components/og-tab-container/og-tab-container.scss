@@ -1,0 +1,108 @@
+/**
+ * @prop --og-tabs__indicator-Background: Background of the focus indicator (not selected)
+ * @prop --og-tabs__indicator-Background--active: Background of the focus indicator when selected
+ * @prop --og-tabs__indicator-Background--hover: Background of the focus indicator when hovered
+ * @prop --og-tabs__indicator-Height: Height of the focus indicator
+ * @prop --og-tabs__indicator-Width: Width of the focus indicator
+ * @prop --og-tabs__list-Border: Bottom border of the tab list (shorthand)
+ * @prop --og-tabs__tab-Background: Background of the tab item (shorthand)
+ * @prop --og-tabs__tab-Background--active: Background of the tab item when selected (shorthand)
+ * @prop --og-tabs__tab-Background--hover: Background of the tab item when hovered (shorthand)
+ * @prop --og-tabs__tab-Padding: Padding of the tab item
+ * @prop --og-tabs__tab-Opacity: Opcaticty of the tab item
+ */
+
+:host {
+    --og-tabs__list-Border: 1px solid var(--OG-COLOR-SHADE--100--20, #{$og-color-shade--100--20});
+
+    --og-tabs__tab-Background: transparent;
+    --og-tabs__tab-Background--hover: transparent;
+    --og-tabs__tab-Background--active: transparent;
+    --og-tabs__tab-Padding: var(--PADDING, 0.75rem .75rem);
+    --og-tabs__tab-Opacity: 1;
+
+    --og-tabs__indicator-Width: 1%;
+    --og-tabs__indicator-Height: 3px;
+    --og-tabs__indicator-Background: transparent;
+    --og-tabs__indicator-Background--active: var(--OG-COLOR-PRIMARY--100, #{$og-color-primary--100});
+    --og-tabs__indicator-Background--hover: var(--OG-COLOR-PRIMARY--100--50, #{$og-color-primary--100--50});
+
+    display: block;
+}
+
+:host([disabled]) {
+    --og-tabs__tab-Opacity: .5;
+}
+
+.og-tabs__list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: var(--og-tabs__list-Border);
+}
+
+.og-tabs__list-item {
+    flex: 1;
+    white-space: nowrap;
+    position: relative;
+    text-align: center;
+    opacity: var(--og-tabs__tab-Opacity);
+
+    :host(:not([disabled])) &:not(.og-tabs__list-item--disabled):not(.og-tabs__list-item--selected):hover {
+        --og-tabs__indicator-Width: 100%;
+        --og-tabs__indicator-Background: var(--og-tabs__indicator-Background--hover);
+        --og-tabs__tab-Background: var(--og-tabs__tab-Background--hover);
+    }
+
+    &.og-tabs__list-item--selected {
+        --og-tabs__indicator-Width: 100%;
+        --og-tabs__indicator-Background: var(--og-tabs__indicator-Background--active);
+        --og-tabs__tab-Background: var(--og-tabs__tab-Background--active);
+    }
+
+    &.og-tabs__list-item--disabled {
+        --og-tabs__tab-Opacity: 0.5;
+    }
+}
+
+.og-tabs__tab {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    color: inherit;
+    background: var(--og-tabs__tab-Background);
+    padding: var(--og-tabs__tab-Padding);
+    font-family: inherit;
+    font-size: inherit;
+    user-select: none;
+
+    &:not([disabled]) {
+        cursor: pointer;
+    }
+
+}
+
+.og-tabs__tab__indicator {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    width: var(--og-tabs__indicator-Width);
+    height: var(--og-tabs__indicator-Height);
+    background: var(--og-tabs__indicator-Background);
+    transition: all 300ms ease-in-out;
+}
+
+
+.og-tabs {
+    width: 100%;
+}
+
+.og-tabs__content {
+    padding: 1.5rem 0 1rem;
+}
+
+

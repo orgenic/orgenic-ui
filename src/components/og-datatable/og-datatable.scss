@@ -1,0 +1,239 @@
+:host {
+    --og-datatable__tabulator-FontSize: inherit;
+    --og-datatable__tabulator-Background: transparent;
+
+    --og-datatable__tabulator-BorderWidth: 1px 0;
+    --og-datatable__tabulator-BorderStyle: solid;
+    --og-datatable__tabulator-BorderColor: var(--OG-COLOR-SHADE--100--20, #{$og-color-shade--100--20});
+
+    --og-datatable__tabulator-table-Color: var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
+
+    --og-datatable__tabulator-header-Background: var(--OG-COLOR-PRIMARY--0--30, #{$og-color-primary--0--30});
+    --og-datatable__tabulator-header-BorderWidth: 0 0 1px 0;
+    --og-datatable__tabulator-header-BorderStyle: solid;
+    --og-datatable__tabulator-header-BorderColor: var(--OG-COLOR-SHADE--100--20, #{$og-color-shade--100--20});
+    --og-datatable__tabulator-header-FontWeight: 500;
+
+    --og-datatable__tabulator-header__tabulator-col-Background: transparent;
+    --og-datatable__tabulator-header__tabulator-col-Background--hover: var(--og-datatable__tabulator-header__tabulator-col-Background);
+    --og-datatable__tabulator-header__tabulator-col-BorderWidth: 0;
+    --og-datatable__tabulator-header__tabulator-col-BorderStyle: solid;
+    --og-datatable__tabulator-header__tabulator-col-BorderColor: transparent;
+
+    --og-datatable__scrollbar-track-Background: var(--OG-COLOR-SECONDARY--100--10, #{$og-color-secondary--100--10});
+    --og-datatable__scrollbar-thumb-Background: var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
+
+    --og-datatable__tabulator-header__tabulator-arrow-Background: var(--og-datatable__tabulator-table-Color);
+    --og-datatable__tabulator-header__tabulator-arrow-Mask: url("data:image/svg+xml,%3Csvg class='tabulator-chevron' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlnsXlink='http://www.w3.org/1999/xlink' viewBox='0 0 24 12' preserveAspectRatio='none' %0A%3E%3Cpolyline class='tabulator-chevron__line' points='2,2 12,10 22,2' fill='none' stroke='var(--kani, red)' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' /%3E%3C/svg%3E");
+
+    --og-datatable__tabulator-row-Background: transparent;
+    --og-datatable__tabulator-row-Background--even: var(--og-datatable__tabulator-row-Background);
+    --og-datatable__tabulator-row-Background--hover: transparent;
+    --og-datatable__tabulator-row-BorderWidth: 0 0 1px 0;
+    --og-datatable__tabulator-row-BorderStyle: solid;
+    --og-datatable__tabulator-row-BorderColor: var(--OG-COLOR-SHADE--100--20, #{$og-color-shade--100--20});
+
+    --og-datatable__tabulator-footer-Background: var(--OG-COLOR-PRIMARY--0--30, #{$og-color-primary--0--30});
+    --og-datatable__tabulator-footer-BorderWidth: 1px 0 0 0;
+    --og-datatable__tabulator-footer-BorderStyle: solid;
+    --og-datatable__tabulator-footer-BorderColor: var(--OG-COLOR-SHADE--100--20, #{$og-color-shade--100--20});
+
+    --og-datatable__tabulator-page-Background: transparent;
+    --og-datatable__tabulator-page-Background--hover: var( --OG-COLOR-SHADE--100--10, #{$og-color-shade--100--10});
+    --og-datatable__tabulator-page-Background--active: var( --OG-COLOR-SHADE--100--20, #{$og-color-shade--100--20} );
+    --og-datatable__tabulator-page-Background--disabled: transparent;
+
+    --og-datatable__tabulator-page-Color: var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
+    --og-datatable__tabulator-page-Color--hover: var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
+    --og-datatable__tabulator-page-Color--active: var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
+    --og-datatable__tabulator-page-Color--disabled: var(--OG-COLOR-SHADE--100--30, #{$og-color-shade--100--30});
+
+}
+
+// @import '../../../node_modules/tabulator-tables/dist/css/tabulator.css';
+@import '../../../node_modules/tabulator-tables/src/scss/tabulator.scss';
+
+.tabulator {
+    font-size: var(--og-datatable__tabulator-FontSize);
+    background: var(--og-datatable__tabulator-Background);
+    border-width: var(--og-datatable__tabulator-BorderWidth);
+    border-style: var(--og-datatable__tabulator-BorderStyle);
+    border-color: var(--og-datatable__tabulator-BorderColor);
+
+    .tabulator-header {
+        background: var(--og-datatable__tabulator-header-Background);
+        border-width: var(--og-datatable__tabulator-header-BorderWidth);
+        border-style: var(--og-datatable__tabulator-header-BorderStyle);
+        border-color: var(--og-datatable__tabulator-header-BorderColor);
+        color: inherit;
+        font-weight: var(--og-datatable__tabulator-header-FontWeight);
+
+        .tabulator-col {
+            background: var(
+                --og-datatable__tabulator-header__tabulator-col-Background
+            );
+            border-width: var(
+                --og-datatable__tabulator-header__tabulator-col-BorderWidth
+            );
+            border-style: var(
+                --og-datatable__tabulator-header__tabulator-col-BorderStyle
+            );
+            border-color: var(
+                --og-datatable__tabulator-header__tabulator-col-BorderColor
+            );
+
+            &.tabulator-sortable {
+                &:hover {
+                    background: var(--og-datatable__tabulator-header__tabulator-col-Background--hover);
+                }
+
+                &[aria-sort="none"],
+                &[aria-sort="asc"],
+                &[aria-sort="desc"] {
+					.tabulator-col-content .tabulator-arrow{
+                        border: none;
+                    }
+                }
+
+                &[aria-sort="desc"] {
+					.tabulator-col-content .tabulator-arrow{
+                        transform: rotate(180deg);
+                    }
+                }
+            }
+
+            .tabulator-col-content {
+                padding: 16px 8px;
+
+                .tabulator-col-title {
+                    text-transform: uppercase;
+                    font-size: 14px;
+                }
+
+                .tabulator-arrow {
+                    transition: all 200ms ease;
+                    width: 14px;
+                    height: 8px;
+                    background: var(--og-datatable__tabulator-header__tabulator-arrow-Background);
+                    mask: var(--og-datatable__tabulator-header__tabulator-arrow-Mask);
+                    mask-size: cover;
+                    border: none;
+                    top: 20px;
+                }
+            }
+        }
+    }
+
+    .tabulator-tableHolder {
+        &::-webkit-scrollbar-track {
+            border-radius: 4px;
+            background: var(--og-datatable__scrollbar-track-Background);
+        }
+
+        &::-webkit-scrollbar {
+            width: 8px;
+            background: transparent;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            border-radius: 4px;
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            background: var(--og-datatable__scrollbar-thumb-Background);
+        }
+
+        .tabulator-table {
+            background: transparent;
+            color: var(--og-datatable__tabulator-table-Color);
+        }
+    }
+
+    .tabulator-footer {
+        border-top: none;
+        background: var(--og-datatable__tabulator-footer-Background);
+        border-width: var( --og-datatable__tabulator-footer-BorderWidth );
+        border-style: var( --og-datatable__tabulator-footer-BorderStyle );
+        border-color: var( --og-datatable__tabulator-footer-BorderColor );
+        padding: 10px;
+
+
+        .tabulator-page {
+            font-size: .8rem;
+            line-height: 1.5;
+            text-transform: uppercase;
+            border: none;
+            padding: 8px 12px;
+            background: var(--og-datatable__tabulator-page-Background);
+            color: var(--og-datatable__tabulator-page-Color);
+
+            &[disabled] {
+                background: var(--og-datatable__tabulator-page-Background--disabled);
+                color: var(--og-datatable__tabulator-page-Color--disabled);
+                opacity: 1;
+            }
+
+            // a bit hacky work around a bug in original tabulator.css.
+            // :not(.disabled):hover ist set, but there's never a
+            // 'disabled' class, therefor :hover is always true
+            &[disabled]:not(.disabled):hover {
+                background: var(--og-datatable__tabulator-page-Background--disabled);
+                color: var(--og-datatable__tabulator-page-Color--disabled);
+            }
+
+            &:not([disabled]):hover {
+                background: var(--og-datatable__tabulator-page-Background--hover);
+                color: var(--og-datatable__tabulator-page-Color--hover);
+            }
+
+            &.active,
+            &.active:hover {
+                background: var(--og-datatable__tabulator-page-Background--active);
+                color: var(--og-datatable__tabulator-page-Color--active);
+            }
+        }
+    }
+}
+
+.tabulator-row {
+    background: var(--og-datatable__tabulator-row-Background);
+    border-bottom: none;
+    color: inherit;
+
+    &.tabulator-row-even {
+        background-color: var(--og-datatable__tabulator-row-Background--even);
+    }
+
+    &.tabulator-selectable:hover {
+        background: var(--og-datatable__tabulator-row-Background--hover);
+    }
+
+    .tabulator-cell {
+        padding: 16px 8px;
+        border-width: var(--og-datatable__tabulator-row-BorderWidth);
+        border-style: var(--og-datatable__tabulator-row-BorderStyle);
+        border-color: var(--og-datatable__tabulator-row-BorderColor);
+    }
+}
+
+/**
+ * limit table height in scrollable mode without any height limitations of the container.
+ * If we remove this, table height will fit to display all available rows. In combination
+ * with lazy loading there will be a loading loop when initiating the table.
+ *
+ */
+.scrolled-table--limited-height {
+    .tabulator-tableHolder {
+        max-height: 2500px !important;
+    }
+}
+
+
+
+// .tabulator-row.tabulator-selected:hover {
+//   background-color: rgb(221, 236, 255);
+//   cursor: pointer;
+// }
+
+// .tabulator-row.tabulator-selected {
+//   background-color: rgb(200, 224, 255);
+// }
