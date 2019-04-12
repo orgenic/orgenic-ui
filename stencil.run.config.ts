@@ -18,8 +18,8 @@ export const config: Config = {
             injectGlobalPaths: [
                 'src/styles/_mixins.scss',
                 'src/styles/variables/_index.scss',
-            ],
+            ]
         }),
-        orgenicUiPostProcessing({ target: 'build' }),
-    ],
+        orgenicUiPostProcessing({ target: 'start' }),
+    ]
 };

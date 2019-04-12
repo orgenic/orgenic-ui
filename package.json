@@ -19,10 +19,11 @@
     "dist/"
   ],
   "scripts": {
-    "build": "stencil build --docs --config stencil.build.config.ts",
-    "build.watch": "stencil build --docs --watch --config stencil.build.config.ts",
-    "start": "stencil build --dev --watch --serve",
+    "build": "stencil build --docs",
+    "build.watch": "stencil build --docs --watch",
+    "start": "stencil build --dev --watch --serve --config stencil.run.config.ts",
     "test": "stencil test --spec --e2e",
+    "test.ci": "stencil test --spec --e2e --ci",
     "test.watch": "stencil test --spec --e2e --watchAll"
   },
   "dependencies": {},

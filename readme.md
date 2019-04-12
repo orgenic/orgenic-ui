@@ -1,7 +1,6 @@
+[![travis status](https://travis-ci.com/orgenic/orgenic-ui.svg?branch=master)](https://travis-ci.com/orgenic/orgenic-ui)
 
 # ORGENIC UI
-
-[![travis status](https://travis-ci.com/orgenic/orgenic-ui.svg?branch=master)](https://travis-ci.com/orgenic/orgenic-ui)
 
 <div style="text-align: center">
   <a href="https://orgenic.org/">
