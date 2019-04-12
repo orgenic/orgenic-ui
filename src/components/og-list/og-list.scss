@@ -4,11 +4,13 @@
 
 /**
  * @prop --og-list-Opacity: Overall opacity of the list
+ * @prop --og-list-Opacity--disabled: Overall opacity of the list when disabled.
  * @prop --og-list__item-Color: Text color of the list item
- * @prop --og-list__item-Color--disabled:  Text color of the list item when disabled
  * @prop --og-list__item-Background: Background of the list item (shorthand)
  * @prop --og-list__item-Background--active: Background of the list item when selected (shorthand)
  * @prop --og-list__item-Background--highlight: Background of the list item when hovered (shorthand)
+ * @prop --og-list__item-Opacity: Opacity of the list item;
+ * @prop --og-list__item-Opacity--disabled: Opacity of the list item;
  * @prop --og-list__item-BorderColor: Border color of the list item
  * @prop --og-list__item-BorderRadius: Border radius of the list item
  * @prop --og-list__item-BorderStyle: Border style of the list item
@@ -19,12 +21,14 @@
 
 :host {
     --og-list-Opacity:                      1;
+    --og-list-Opacity--disabled:            .5;
     --og-list__item-Color:                  var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
-    --og-list__item-Color--disabled:        var(--OG-COLOR-SHADE--100--30, #{$og-color-shade--100});
 
     --og-list__item-Background:             var(--OG-COLOR-PRIMARY--0--30, #{$og-color-primary--0--30});
     --og-list__item-Background--highlight:  var(--OG-COLOR-PRIMARY--100--15, #{$og-color-primary--100--15});
     --og-list__item-Background--active:     var(--OG-COLOR-PRIMARY--100--30, #{$og-color-primary--100--30});
+    --og-list__item-Opacity:                1;
+    --og-list__item-Opacity--disabled:      .5;
 
     --og-list__item-BorderWidth:    2px;
     --og-list__item-BorderStyle:    solid;
@@ -38,7 +42,7 @@
 }
 
 :host([disabled]) {
-    --og-list-Opacity: 0.5;
+    --og-list-Opacity: --og-list-Opacity--disabled;
     .og-list__item__content {
         cursor: default;
     }
@@ -71,6 +75,7 @@
     line-height: var(--og-list__item-MinHeight);
     padding-left: 1em;
     padding-right: 1em;
+    opacity: var(--og-list__item-Opacity);
 
     :host(:not([disabled])) .og-list__item:not(.og-list__item--disabled) &:not(.og-list__item__content--selected):hover {
         --og-list__item-Background: var(--og-list__item-Background--highlight);
@@ -79,7 +84,7 @@
 }
 
 .og-list__item--disabled {
-    --og-list__item-Color:  var(--og-list__item-Color--disabled);
+    --og-list__item-Opacity: var(--og-list__item-Opacity--disabled);
 }
 
 .og-list__item__content--selected {

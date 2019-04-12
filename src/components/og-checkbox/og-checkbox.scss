@@ -9,6 +9,8 @@
  * @prop --og-checkbox-BorderWidth: Main border width of the checkbox
  * @prop --og-checkbox-Height: Height of the checkbox (box model: border-box)
  * @prop --og-checkbox-Width: Width of the checkbox (box model: border-box)
+ * @prop --og-checkbox-Left: Left position of the checkbox
+ * @prop --og-checkbox-Top: Top position of the checkbox
  * @prop --og-checkbox__icon-Height: Height of the checkbox icon
  * @prop --og-checkbox__icon-Left: Left position of the checkbox icon
  * @prop --og-checkbox__icon-Top: Top position of the checkbox icon
@@ -21,12 +23,14 @@
  */
 
 :host {
-    --og-checkbox-Width: 1.35rem;
+    --og-checkbox-Width: 1.5rem;
     --og-checkbox-Height: var(--og-checkbox-Width);
     --og-checkbox-Background: var(--OG-COLOR-PRIMARY--0--50, #{$og-color-primary--0--50});
     --og-checkbox-Background--hover: var(--OG-COLOR-PRIMARY--100--20, #{$og-color-primary--100--20});
     --og-checkbox-Background--checked: var(--OG-COLOR-PRIMARY--100, #{$og-color-primary--100});
     --og-checkbox-Background--disabled: var(--OG-COLOR-PRIMARY--100--30, #{$og-color-primary--100--30});
+    --og-checkbox-Top: -0.125rem;
+    --og-checkbox-Left: 0;
 
     --og-checkbox-BorderColor: var(--OG-COLOR-SHADE--50, #{$og-color-shade--50});
     --og-checkbox-BorderColor--hover: var(--OG-COLOR-SHADE--50, #{$og-color-shade--50});
@@ -34,8 +38,8 @@
     --og-checkbox__label__content-Margin: .125rem .5rem 0 1.875rem;
     --og-checkbox__icon-Width: calc(var(--og-checkbox-Width) * .22);
     --og-checkbox__icon-Height: calc(var(--og-checkbox-Height) * .45);
-    --og-checkbox__icon-Left: calc((var(--og-checkbox-Width) - var(--og-checkbox__icon-Width)) / 2 - var(--og-checkbox-BorderWidth));
-    --og-checkbox__icon-Top: calc((var(--og-checkbox-Height) - var(--og-checkbox__icon-Height)) / 2 - var(--og-checkbox-BorderWidth) );
+    --og-checkbox__icon-Left: .65rem;
+    --og-checkbox__icon-Top: .15rem;
     --og-checkbox__icon-BorderWidth: 0 .125rem .125rem 0;
     --og-checkbox__icon-BorderColor: transparent;
     --og-checkbox__icon-BorderColor--hover: transparent;
@@ -103,8 +107,6 @@
         position: absolute;
         content: "";
         display: block;
-        top: 0;
-        left: 0;
         transition: all 150ms ease-in-out;
     }
 
@@ -114,6 +116,8 @@
         background: var(--og-checkbox-Background);
         border: var(--og-checkbox-BorderWidth) solid var(--og-checkbox-BorderColor);
         border-radius: .1875rem;
+        left: var(--og-checkbox-Left);
+        top: var(--og-checkbox-Top);
         z-index: 1;
     }
 
@@ -125,7 +129,6 @@
         transform: rotate(45deg);
         left: var(--og-checkbox__icon-Left);
         top: var(--og-checkbox__icon-Top);
-        margin-left: 1px;
         z-index: 2;
     }
 }

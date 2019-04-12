@@ -34,6 +34,8 @@
 | `--og-checkbox-BorderColor--hover`         | Border color when the checkbox is hovered      |
 | `--og-checkbox-BorderWidth`                | Main border width of the checkbox              |
 | `--og-checkbox-Height`                     | Height of the checkbox (box model: border-box) |
+| `--og-checkbox-Left`                       | Left position of the checkbox                  |
+| `--og-checkbox-Top`                        | Top position of the checkbox                   |
 | `--og-checkbox-Width`                      | Width of the checkbox (box model: border-box)  |
 | `--og-checkbox__icon-BorderColor`          | Border color of the checkbox icon              |
 | `--og-checkbox__icon-BorderColor--checked` | Border color when the checkbox icon is checked |

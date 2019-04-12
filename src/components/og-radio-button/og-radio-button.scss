@@ -22,9 +22,12 @@
     min-width: var(--og-radio-button-Width);
     min-height: var(--og-radio-button-Height);
     cursor: pointer;
+    box-sizing: inherit;
+
 
     &::after,
     &::before {
+        box-sizing: inherit;
         position: absolute;
         content: "";
         display: block;
@@ -39,6 +42,8 @@
         background: var(--og-radio-button-Background);
         border: var(--og-radio-button-BorderWidth) solid var(--og-radio-button-BorderColor);
         border-radius: var(--og-radio-button-BorderRadius);
+        left: var(--og-radio-button-Left);
+        top: var(--og-radio-button-Top);
         z-index: 1;
     }
 
