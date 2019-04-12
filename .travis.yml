@@ -13,7 +13,7 @@ jobs:
   include:
     - stage: "Test"
       script:
-        - npm run test -- --watch=false --progress=false --browsers=ChromeHeadlessCI
+        - npm run test
     - stage: "Deploy"
       script: "npm run build"
       deploy:
