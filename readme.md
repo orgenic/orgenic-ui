@@ -10,11 +10,11 @@
 
 ## Getting Started
 
-With these instructions you will get ORGENIC UI up and running.
+With these instructions you will get ORGENIC UI integrated in your project.
 
 ### Installing
 
-```javascript
+```bash
 npm i @orgenic/orgenic-ui
 ```
 
@@ -46,7 +46,7 @@ export class AppModule { }
 
 ## Documentation
 
-Find the full documentation of ORGENIC UI at [https://doc.orgenic.org](https://doc.orgenic.org).
+Find the full documentation of ORGENIC UI at [https://docs.orgenic.org](https://docs.orgenic.org).
 
 ## Versioning
 
