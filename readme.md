@@ -10,23 +10,15 @@
 
 ## Getting Started
 
-todo: These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
-### Prerequisites
-
-todo: What things you need to install the software and how to install them
-
-```
-Give examples
-```
+With these instructions you will get ORGENIC UI integrated in your project.
 
 ### Installing
 
-```javascript
+```bash
 npm i @orgenic/orgenic-ui
 ```
 
-Integration ORGENIC UI in your Application
+Integrate ORGENIC UI in your application
 
 **main.ts**
 
@@ -54,16 +46,12 @@ export class AppModule { }
 
 ## Documentation
 
-todo: Please read the [full documentation](https://doc.orgenic.org)
-
-## Contributing
-
-todo: Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+Find the full documentation of ORGENIC UI at [https://docs.orgenic.org](https://docs.orgenic.org).
 
 ## Versioning
 
-todo: We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
+We use [Semantic Versioning](http://semver.org/).
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
