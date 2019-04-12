@@ -6,7 +6,12 @@
     "name": "MAXIMAGO GmbH",
     "email": "info@maximago.de"
   },
+  "homepage": "https://orgenic.org/",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/orgenic/orgenic-ui.git"
+  },
   "publishConfig": {
     "access": "public"
   },
