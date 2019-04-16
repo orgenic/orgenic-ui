@@ -557,6 +557,39 @@ export namespace Components {
     'selected'?: boolean;
   }
 
+  interface OgTextarea {
+    /**
+    * Determines, whether the control is disabled or not.
+    */
+    'disabled': boolean;
+    /**
+    * The initial value. Can be updated at runtime.
+    */
+    'value': string;
+  }
+  interface OgTextareaAttributes extends StencilHTMLAttributes {
+    /**
+    * Determines, whether the control is disabled or not.
+    */
+    'disabled'?: boolean;
+    /**
+    * Event is being emitted when input gets focus..
+    */
+    'onFocusGained'?: (event: CustomEvent<FocusEvent>) => void;
+    /**
+    * Event is being emitted when focus gets lost.
+    */
+    'onFocusLost'?: (event: CustomEvent<FocusEvent>) => void;
+    /**
+    * Event is being emitted when value changes.
+    */
+    'onValueChanged'?: (event: CustomEvent<string>) => void;
+    /**
+    * The initial value. Can be updated at runtime.
+    */
+    'value'?: string;
+  }
+
   interface OgToggleSwitch {
     /**
     * Determines, whether the control is disabled or not
@@ -599,6 +632,7 @@ declare global {
     'OgRadioButton': Components.OgRadioButton;
     'OgTabContainer': Components.OgTabContainer;
     'OgTab': Components.OgTab;
+    'OgTextarea': Components.OgTextarea;
     'OgToggleSwitch': Components.OgToggleSwitch;
   }
 
@@ -617,6 +651,7 @@ declare global {
     'og-radio-button': Components.OgRadioButtonAttributes;
     'og-tab-container': Components.OgTabContainerAttributes;
     'og-tab': Components.OgTabAttributes;
+    'og-textarea': Components.OgTextareaAttributes;
     'og-toggle-switch': Components.OgToggleSwitchAttributes;
   }
 
@@ -705,6 +740,12 @@ declare global {
     new (): HTMLOgTabElement;
   };
 
+  interface HTMLOgTextareaElement extends Components.OgTextarea, HTMLStencilElement {}
+  var HTMLOgTextareaElement: {
+    prototype: HTMLOgTextareaElement;
+    new (): HTMLOgTextareaElement;
+  };
+
   interface HTMLOgToggleSwitchElement extends Components.OgToggleSwitch, HTMLStencilElement {}
   var HTMLOgToggleSwitchElement: {
     prototype: HTMLOgToggleSwitchElement;
@@ -726,6 +767,7 @@ declare global {
     'og-radio-button': HTMLOgRadioButtonElement
     'og-tab-container': HTMLOgTabContainerElement
     'og-tab': HTMLOgTabElement
+    'og-textarea': HTMLOgTextareaElement
     'og-toggle-switch': HTMLOgToggleSwitchElement
   }
 
@@ -744,6 +786,7 @@ declare global {
     'og-radio-button': HTMLOgRadioButtonElement;
     'og-tab-container': HTMLOgTabContainerElement;
     'og-tab': HTMLOgTabElement;
+    'og-textarea': HTMLOgTextareaElement;
     'og-toggle-switch': HTMLOgToggleSwitchElement;
   }
 
