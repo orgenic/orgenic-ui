@@ -18,30 +18,127 @@ With these instructions you will get ORGENIC UI integrated in your project.
 npm i @orgenic/orgenic-ui
 ```
 
-Integrate ORGENIC UI in your application
+### Angular
+Integrate ORGENIC UI in your angular application
 
 **main.ts**
 
 ```typescript
-// ...
-import { defineCustomElements } from '@orgenic/orgenic-ui/dist/loader';
+import { enableProdMode } from '@angular/core';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-// ...
+import { AppModule } from './app/app.module';
+import { environment } from './environments/environment';
 
-defineCustomElements(window);
++ import { defineCustomElements } from '@orgenic/orgenic-ui/dist/loader';
+
+if (environment.production) {
+  enableProdMode();
+}
+
+platformBrowserDynamic().bootstrapModule(AppModule)
+  .catch(err => console.error(err));
+
++ defineCustomElements(window);
 ```
 
 **app/app.module.ts**
 
 ```typescript
 // ...
-import { /*...*/ CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
++ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 @NgModule({
-    // ...
-    schemas: [CUSTOM_ELEMENTS_SCHEMA]
+    declarations: [
+        // ...
+    imports: [
+        // ...
+    ],
+    providers: [
+        // ...
+    ],
+    bootstrap: [AppComponent],
++     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }
+```
+
+### React
+
+Integrate ORGENIC UI in your react application
+
+**src/index.js**
+```javascript
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import * as serviceWorker from './serviceWorker';
++ import { defineCustomElements } from '@orgenic/orgenic-ui/dist/loader';
+
+ReactDOM.render(<App />, document.getElementById('root'));
+
++ defineCustomElements(window);
+
+serviceWorker.unregister();
+```
+
+### Vue
+
+Integrate ORGENIC UI in your vue application
+
+**src/main.js**
+```javascript
+import Vue from 'vue';
+
+// ...
+
++ import { defineCustomElements } from '@orgenic/orgenic-ui/dist/loader';
+
++ defineCustomElements(window);
+
+Vue.config.productionTip = false;
++ Vue.config.ignoredElements = [/og-\w*/];
+
+const router = new VueRouter({
+    // ...
+})
+
+Vue.use(VueRouter);
+
+new Vue({
+    el: '#app',
+    router,
+    render: (h) => h(App)
+});
+```
+
+### Vanilla JS
+
+Integrating ORGENIC-UI in a plain JS application.
+
+**index.html**
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="orgenic-ui/dist/themes/dark.theme.css" />
+        <script src="orgenic-ui/dist/orgenic-ui.js"></script>
+        <style>
+            body {
+                font-family: Roboto;
+            }
+        </style>
+    </head>
+    <body class="og-theme--dark">
+        <og-card name="Hello ORGENIC-UI">
+            <div slot="content">
+                <og-button label="Default Button"></og-button>
+            </div>
+        </og-card>
+    </body>
+</html>
+
 ```
 
 ## Documentation
