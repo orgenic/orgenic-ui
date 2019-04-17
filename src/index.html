@@ -26,6 +26,7 @@
             font-family: Roboto;
             display: flex;
             justify-content: center;
+            user-select: none;
         }
 
         h1 {
@@ -85,6 +86,29 @@
                 document.querySelector('body').setAttribute('class', 'og-theme--dark');
             });
         </script>
+
+        <!--
+        -- Expander
+        -->
+        <og-card name="Expander">
+            <div slot="content" slot="content">
+                <og-expander name="ORGENIC Expander 1.1" group="a">
+                    <p>Some very interesting information about ORGENIC UI is [...]. And that's why we [...] all the things!</p>
+                </og-expander>
+                <og-expander name="ORGENIC Expander 1.2" group="a">
+                    <p>Some very interesting information about ORGENIC UI is [...]. And that's why we [...] all the things!</p>
+                </og-expander>
+                <og-expander name="ORGENIC Expander 2.1" group="b">
+                    <p>Some very interesting information about ORGENIC UI is [...]. And that's why we [...] all the things!</p>
+                </og-expander>
+                <og-expander name="ORGENIC Expander 2.2" group="b">
+                    <p>Some very interesting information about ORGENIC UI is [...]. And that's why we [...] all the things!</p>
+                </og-expander>
+                <og-expander name="ORGENIC Expander 2.3" group="b">
+                    <p>Some very interesting information about ORGENIC UI is [...]. And that's why we [...] all the things!</p>
+                </og-expander>
+            </div>
+        </og-card>
 
         <!--
         -- og-datatable

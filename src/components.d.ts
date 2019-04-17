@@ -180,6 +180,39 @@ export namespace Components {
     'selected'?: any;
   }
 
+  interface OgExpander {
+    /**
+    * Sets or unsets the expanded state.
+    */
+    'expanded': boolean;
+    /**
+    * Optional group identifier for this expander. Expanders with same group will behave like an accordion, opening one expander will close other expanders.
+    */
+    'group': string;
+    /**
+    * The name for this expander
+    */
+    'name': string;
+    /**
+    * Use this method to toggle expanded state. Group property is respected when calling this method.
+    */
+    'toggleExpandedState': () => void;
+  }
+  interface OgExpanderAttributes extends StencilHTMLAttributes {
+    /**
+    * Sets or unsets the expanded state.
+    */
+    'expanded'?: boolean;
+    /**
+    * Optional group identifier for this expander. Expanders with same group will behave like an accordion, opening one expander will close other expanders.
+    */
+    'group'?: string;
+    /**
+    * The name for this expander
+    */
+    'name'?: string;
+  }
+
   interface OgFormItem {
     'disabled': boolean;
     /**
@@ -590,6 +623,7 @@ declare global {
     'OgCheckbox': Components.OgCheckbox;
     'OgCombobox': Components.OgCombobox;
     'OgDatatable': Components.OgDatatable;
+    'OgExpander': Components.OgExpander;
     'OgFormItem': Components.OgFormItem;
     'OgNumberInput': Components.OgNumberInput;
     'OgPasswordInput': Components.OgPasswordInput;
@@ -608,6 +642,7 @@ declare global {
     'og-checkbox': Components.OgCheckboxAttributes;
     'og-combobox': Components.OgComboboxAttributes;
     'og-datatable': Components.OgDatatableAttributes;
+    'og-expander': Components.OgExpanderAttributes;
     'og-form-item': Components.OgFormItemAttributes;
     'og-number-input': Components.OgNumberInputAttributes;
     'og-password-input': Components.OgPasswordInputAttributes;
@@ -649,6 +684,12 @@ declare global {
   var HTMLOgDatatableElement: {
     prototype: HTMLOgDatatableElement;
     new (): HTMLOgDatatableElement;
+  };
+
+  interface HTMLOgExpanderElement extends Components.OgExpander, HTMLStencilElement {}
+  var HTMLOgExpanderElement: {
+    prototype: HTMLOgExpanderElement;
+    new (): HTMLOgExpanderElement;
   };
 
   interface HTMLOgFormItemElement extends Components.OgFormItem, HTMLStencilElement {}
@@ -717,6 +758,7 @@ declare global {
     'og-checkbox': HTMLOgCheckboxElement
     'og-combobox': HTMLOgComboboxElement
     'og-datatable': HTMLOgDatatableElement
+    'og-expander': HTMLOgExpanderElement
     'og-form-item': HTMLOgFormItemElement
     'og-number-input': HTMLOgNumberInputElement
     'og-password-input': HTMLOgPasswordInputElement
@@ -735,6 +777,7 @@ declare global {
     'og-checkbox': HTMLOgCheckboxElement;
     'og-combobox': HTMLOgComboboxElement;
     'og-datatable': HTMLOgDatatableElement;
+    'og-expander': HTMLOgExpanderElement;
     'og-form-item': HTMLOgFormItemElement;
     'og-number-input': HTMLOgNumberInputElement;
     'og-password-input': HTMLOgPasswordInputElement;
