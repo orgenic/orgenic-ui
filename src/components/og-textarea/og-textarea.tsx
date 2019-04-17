@@ -47,13 +47,14 @@ export class OgTextarea {
     render() {
         return [
             <textarea
-                class="og-textarea"
+                class="og-textarea__textarea"
                 value={ this.value }
                 disabled={ this.disabled }
                 onInput={ (event) => this.handleChange(event) }
                 onFocus={ (event) => this.focusGained.emit(event) }
                 onBlur={ (event) => this.focusLost.emit(event) }
-            ></textarea>
+            ></textarea>,
+            <div class="og-textarea__indicator"></div>
         ];
     }
 }
