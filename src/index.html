@@ -21,8 +21,8 @@
     <style>
         body {
             background: rgba(29, 161, 211, 0.1);
-            color:      #333;
-            font-size:  16px;
+            color: #333;
+            font-size: 16px;
             font-family: Roboto;
             display: flex;
             justify-content: center;
@@ -58,7 +58,6 @@
         .example--column {
             flex-direction: column;
         }
-
     </style>
 </head>
 
@@ -116,17 +115,18 @@
         <og-card name="Datatable">
             <div slot="content" class="example example--column">
                 <p>
-                    ORGENIC UI Datagrid supports scrolling and paging presentation as well as a lazy loading data provider.
+                    ORGENIC UI Datagrid supports scrolling and paging presentation as well as a lazy loading data
+                    provider.
                 </p>
                 <div style="height: 400px">
-                <!-- <div> -->
+                    <!-- <div> -->
                     <og-datatable id="datatable"></og-datatable>
                 </div>
             </div>
         </og-card>
         <script>
             const dtData = [];
-            for (; dtData.length < 1000; ) {
+            for (; dtData.length < 1000;) {
                 dtData.push({ id: dtData.length, label: 'ORGENIC UI', license: 'MIT', author: 'MAXIMAGO', focus: 'UX + Design + Web Components', value: 5 });
                 dtData.push({ id: dtData.length, label: 'Bootstrap', license: 'MIT', author: 'Twitter', focus: 'CSS', value: 2 });
                 dtData.push({ id: dtData.length, label: 'Material', license: 'MIT', author: 'Google', focus: 'Components', value: 3 });
@@ -281,8 +281,8 @@
         </script>
 
         <!--
-        -- og-text-input
-        -->
+-- og-text-input
+-->
         <og-card name="Text Input">
             <div slot="content" class="example example--column">
                 <div>
@@ -309,6 +309,28 @@
             textInputs[0].addEventListener('valueChanged', e => console.log('Text Input value changed', e));
             textInputs[0].addEventListener('focusGained', e => console.log('Text Input got focus', e));
             textInputs[0].addEventListener('focusLost', e => console.log('Text Input lost focus', e));
+        </script>
+
+        <!--
+        -- og-textarea
+        -->
+        <og-card name="Textarea">
+            <div slot="content" class="example example--column">
+                <div>
+                    <label for="textarea1">Default Textarea</label>
+                    <og-textarea id="textarea1"></og-textarea>
+                </div>
+                <br>
+                <og-form-item label="Textarea with a label">
+                    <og-textarea id="textarea2"></og-textarea>
+                </og-form-item>
+            </div>
+        </og-card>
+        <script>
+            const textarea = document.querySelector('og-textarea');
+            textarea.addEventListener('valueChanged', e => console.log('Textarea value changed', e));
+            textarea.addEventListener('focusGained', e => console.log('Textarea got focus', e));
+            textarea.addEventListener('focusLost', e => console.log('Textarea lost focus', e));
         </script>
 
         <!--
