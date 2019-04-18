@@ -30,7 +30,8 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 
-+ import { defineCustomElements } from '@orgenic/orgenic-ui/dist/loader';
+// add line: import orgenic ui loader
+import { defineCustomElements } from '@orgenic/orgenic-ui/dist/loader';
 
 if (environment.production) {
   enableProdMode();
@@ -39,7 +40,8 @@ if (environment.production) {
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));
 
-+ defineCustomElements(window);
+// add line: register custom elements
+defineCustomElements(window);
 ```
 
 **app/app.module.ts**
@@ -145,7 +147,6 @@ Integrating ORGENIC-UI in a plain JS application.
         </og-card>
     </body>
 </html>
-
 ```
 
 ## Documentation
