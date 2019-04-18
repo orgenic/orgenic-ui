@@ -17,12 +17,12 @@ function orgenicUiPostProcessing(config) {
             }
 
             return new Promise(resolve => {
+                const delay = config.target === 'build' ? 4000 : 2000;
+
+                resolve();
                 // wait for stenciljs build chain completely finished
                 setTimeout(async () => {
                     if (config.target === 'build') {
-                        // generate themes
-                        await execute('node-sass src/styles/themes -o dist/themes');
-
                         // copy generated component readmes to dist/docs
                         await execute('copyfiles -u 1 "src/components/**/readme.md" dist/docs/');
 
@@ -31,12 +31,13 @@ function orgenicUiPostProcessing(config) {
 
                         // trim readme footer
                         trimReadmeFooter();
-                        resolve();
+
+                        // generate themes
+                        await execute('node-sass src/styles/themes -o dist/themes');
                     } else {
                         await execute('node-sass src/styles/themes -o www/themes');
-                        resolve();
                     }
-                }, 2000);
+                }, delay);
             });
         }
     };

@@ -180,6 +180,39 @@ export namespace Components {
     'selected'?: any;
   }
 
+  interface OgExpander {
+    /**
+    * Sets or unsets the expanded state.
+    */
+    'expanded': boolean;
+    /**
+    * Optional group identifier for this expander. Expanders with same group will behave like an accordion, opening one expander will close other expanders.
+    */
+    'group': string;
+    /**
+    * The name for this expander
+    */
+    'name': string;
+    /**
+    * Use this method to toggle expanded state. Group property is respected when calling this method.
+    */
+    'toggleExpandedState': () => void;
+  }
+  interface OgExpanderAttributes extends StencilHTMLAttributes {
+    /**
+    * Sets or unsets the expanded state.
+    */
+    'expanded'?: boolean;
+    /**
+    * Optional group identifier for this expander. Expanders with same group will behave like an accordion, opening one expander will close other expanders.
+    */
+    'group'?: string;
+    /**
+    * The name for this expander
+    */
+    'name'?: string;
+  }
+
   interface OgFormItem {
     'disabled': boolean;
     /**
@@ -557,6 +590,39 @@ export namespace Components {
     'selected'?: boolean;
   }
 
+  interface OgTextarea {
+    /**
+    * Determines, whether the control is disabled or not.
+    */
+    'disabled': boolean;
+    /**
+    * The initial value. Can be updated at runtime.
+    */
+    'value': string;
+  }
+  interface OgTextareaAttributes extends StencilHTMLAttributes {
+    /**
+    * Determines, whether the control is disabled or not.
+    */
+    'disabled'?: boolean;
+    /**
+    * Event is being emitted when input gets focus.
+    */
+    'onFocusGained'?: (event: CustomEvent<FocusEvent>) => void;
+    /**
+    * Event is being emitted when focus gets lost.
+    */
+    'onFocusLost'?: (event: CustomEvent<FocusEvent>) => void;
+    /**
+    * Event is being emitted when value changes.
+    */
+    'onValueChanged'?: (event: CustomEvent<string>) => void;
+    /**
+    * The initial value. Can be updated at runtime.
+    */
+    'value'?: string;
+  }
+
   interface OgToggleSwitch {
     /**
     * Determines, whether the control is disabled or not
@@ -590,6 +656,7 @@ declare global {
     'OgCheckbox': Components.OgCheckbox;
     'OgCombobox': Components.OgCombobox;
     'OgDatatable': Components.OgDatatable;
+    'OgExpander': Components.OgExpander;
     'OgFormItem': Components.OgFormItem;
     'OgNumberInput': Components.OgNumberInput;
     'OgPasswordInput': Components.OgPasswordInput;
@@ -599,6 +666,7 @@ declare global {
     'OgRadioButton': Components.OgRadioButton;
     'OgTabContainer': Components.OgTabContainer;
     'OgTab': Components.OgTab;
+    'OgTextarea': Components.OgTextarea;
     'OgToggleSwitch': Components.OgToggleSwitch;
   }
 
@@ -608,6 +676,7 @@ declare global {
     'og-checkbox': Components.OgCheckboxAttributes;
     'og-combobox': Components.OgComboboxAttributes;
     'og-datatable': Components.OgDatatableAttributes;
+    'og-expander': Components.OgExpanderAttributes;
     'og-form-item': Components.OgFormItemAttributes;
     'og-number-input': Components.OgNumberInputAttributes;
     'og-password-input': Components.OgPasswordInputAttributes;
@@ -617,6 +686,7 @@ declare global {
     'og-radio-button': Components.OgRadioButtonAttributes;
     'og-tab-container': Components.OgTabContainerAttributes;
     'og-tab': Components.OgTabAttributes;
+    'og-textarea': Components.OgTextareaAttributes;
     'og-toggle-switch': Components.OgToggleSwitchAttributes;
   }
 
@@ -649,6 +719,12 @@ declare global {
   var HTMLOgDatatableElement: {
     prototype: HTMLOgDatatableElement;
     new (): HTMLOgDatatableElement;
+  };
+
+  interface HTMLOgExpanderElement extends Components.OgExpander, HTMLStencilElement {}
+  var HTMLOgExpanderElement: {
+    prototype: HTMLOgExpanderElement;
+    new (): HTMLOgExpanderElement;
   };
 
   interface HTMLOgFormItemElement extends Components.OgFormItem, HTMLStencilElement {}
@@ -705,6 +781,12 @@ declare global {
     new (): HTMLOgTabElement;
   };
 
+  interface HTMLOgTextareaElement extends Components.OgTextarea, HTMLStencilElement {}
+  var HTMLOgTextareaElement: {
+    prototype: HTMLOgTextareaElement;
+    new (): HTMLOgTextareaElement;
+  };
+
   interface HTMLOgToggleSwitchElement extends Components.OgToggleSwitch, HTMLStencilElement {}
   var HTMLOgToggleSwitchElement: {
     prototype: HTMLOgToggleSwitchElement;
@@ -717,6 +799,7 @@ declare global {
     'og-checkbox': HTMLOgCheckboxElement
     'og-combobox': HTMLOgComboboxElement
     'og-datatable': HTMLOgDatatableElement
+    'og-expander': HTMLOgExpanderElement
     'og-form-item': HTMLOgFormItemElement
     'og-number-input': HTMLOgNumberInputElement
     'og-password-input': HTMLOgPasswordInputElement
@@ -726,6 +809,7 @@ declare global {
     'og-radio-button': HTMLOgRadioButtonElement
     'og-tab-container': HTMLOgTabContainerElement
     'og-tab': HTMLOgTabElement
+    'og-textarea': HTMLOgTextareaElement
     'og-toggle-switch': HTMLOgToggleSwitchElement
   }
 
@@ -735,6 +819,7 @@ declare global {
     'og-checkbox': HTMLOgCheckboxElement;
     'og-combobox': HTMLOgComboboxElement;
     'og-datatable': HTMLOgDatatableElement;
+    'og-expander': HTMLOgExpanderElement;
     'og-form-item': HTMLOgFormItemElement;
     'og-number-input': HTMLOgNumberInputElement;
     'og-password-input': HTMLOgPasswordInputElement;
@@ -744,6 +829,7 @@ declare global {
     'og-radio-button': HTMLOgRadioButtonElement;
     'og-tab-container': HTMLOgTabContainerElement;
     'og-tab': HTMLOgTabElement;
+    'og-textarea': HTMLOgTextareaElement;
     'og-toggle-switch': HTMLOgToggleSwitchElement;
   }
 
