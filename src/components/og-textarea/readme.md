@@ -15,11 +15,11 @@
 
 ## Events
 
-| Event          | Description                                    | Type                      |
-| -------------- | ---------------------------------------------- | ------------------------- |
-| `focusGained`  | Event is being emitted when input gets focus.. | `CustomEvent<FocusEvent>` |
-| `focusLost`    | Event is being emitted when focus gets lost.   | `CustomEvent<FocusEvent>` |
-| `valueChanged` | Event is being emitted when value changes.     | `CustomEvent<string>`     |
+| Event          | Description                                   | Type                      |
+| -------------- | --------------------------------------------- | ------------------------- |
+| `focusGained`  | Event is being emitted when input gets focus. | `CustomEvent<FocusEvent>` |
+| `focusLost`    | Event is being emitted when focus gets lost.  | `CustomEvent<FocusEvent>` |
+| `valueChanged` | Event is being emitted when value changes.    | `CustomEvent<string>`     |
 
 
 ## CSS Custom Properties

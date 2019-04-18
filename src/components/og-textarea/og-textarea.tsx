@@ -22,7 +22,7 @@ export class OgTextarea {
     @Event() valueChanged: EventEmitter<string>;
 
     /**
-     * Event is being emitted when input gets focus..
+     * Event is being emitted when input gets focus.
      */
     @Event() focusGained: EventEmitter<FocusEvent>;
 

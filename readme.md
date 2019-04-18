@@ -46,7 +46,8 @@ platformBrowserDynamic().bootstrapModule(AppModule)
 
 ```typescript
 // ...
-+ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+// add line: import custom elements schema
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 @NgModule({
     declarations: [
@@ -58,7 +59,8 @@ platformBrowserDynamic().bootstrapModule(AppModule)
         // ...
     ],
     bootstrap: [AppComponent],
-+     schemas: [CUSTOM_ELEMENTS_SCHEMA]
+// add line: add custom elements schema to NgModule
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }
 ```
@@ -74,11 +76,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-+ import { defineCustomElements } from '@orgenic/orgenic-ui/dist/loader';
+// add line: import orgenic ui loader
+import { defineCustomElements } from '@orgenic/orgenic-ui/dist/loader';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
-+ defineCustomElements(window);
+// add line: register custom elements
+defineCustomElements(window);
 
 serviceWorker.unregister();
 ```
@@ -93,12 +97,15 @@ import Vue from 'vue';
 
 // ...
 
-+ import { defineCustomElements } from '@orgenic/orgenic-ui/dist/loader';
+// add line: import orgenic ui loader
+import { defineCustomElements } from '@orgenic/orgenic-ui/dist/loader';
 
-+ defineCustomElements(window);
+// add line: register custom elements
+defineCustomElements(window);
 
 Vue.config.productionTip = false;
-+ Vue.config.ignoredElements = [/og-\w*/];
+// add line: configure vue to ignore orgenic-ui components
+Vue.config.ignoredElements = [/og-\w*/];
 
 const router = new VueRouter({
     // ...
