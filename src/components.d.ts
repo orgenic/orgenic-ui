@@ -606,7 +606,7 @@ export namespace Components {
     */
     'disabled'?: boolean;
     /**
-    * Event is being emitted when input gets focus..
+    * Event is being emitted when input gets focus.
     */
     'onFocusGained'?: (event: CustomEvent<FocusEvent>) => void;
     /**
