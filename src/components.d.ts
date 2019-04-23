@@ -181,6 +181,7 @@ export namespace Components {
   }
 
   interface OgConfirmDialog {
+    'imageUrl': string;
     /**
     * The title for this modal dialog
     */
@@ -188,14 +189,24 @@ export namespace Components {
     'visible': boolean;
   }
   interface OgConfirmDialogAttributes extends StencilHTMLAttributes {
+    'imageUrl'?: string;
     /**
     * The title for this modal dialog
     */
     'name'?: string;
+    /**
+    * Event is being emitted when value changes.
+    */
+    'onCancelled'?: (event: CustomEvent<Event>) => void;
+    /**
+    * Event is being emitted when value changes.
+    */
+    'onConfirmed'?: (event: CustomEvent<Event>) => void;
     'visible'?: boolean;
   }
 
   interface OgDialog {
+    'imageUrl': string;
     /**
     * The title for this modal dialog
     */
@@ -203,6 +214,7 @@ export namespace Components {
     'visible': boolean;
   }
   interface OgDialogAttributes extends StencilHTMLAttributes {
+    'imageUrl'?: string;
     /**
     * The title for this modal dialog
     */
@@ -211,6 +223,7 @@ export namespace Components {
   }
 
   interface OgSuccessDialog {
+    'imageUrl': string;
     /**
     * The title for this modal dialog
     */
@@ -218,10 +231,15 @@ export namespace Components {
     'visible': boolean;
   }
   interface OgSuccessDialogAttributes extends StencilHTMLAttributes {
+    'imageUrl'?: string;
     /**
     * The title for this modal dialog
     */
     'name'?: string;
+    /**
+    * Event is being emitted when value changes.
+    */
+    'onConfirmed'?: (event: CustomEvent<Event>) => void;
     'visible'?: boolean;
   }
 

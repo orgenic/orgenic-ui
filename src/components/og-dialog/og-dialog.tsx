@@ -11,6 +11,8 @@ export class OgDialog {
      */
     @Prop() name: string;
 
+    @Prop() imageUrl: string;
+
     @Prop({ mutable: true, reflectToAttr: true }) visible: boolean = false;
 
     closeDialog(): void {
@@ -25,8 +27,11 @@ export class OgDialog {
                         <span class="og-card__title">{ this.name }</span>
                     </div>
                     <div class="og-card__content">
+                        {
+                            this.imageUrl && <img src={ this.imageUrl }></img>
+                        }
                         <slot name="content"></slot>
-                    </div>,
+                    </div>
                     <div class="og-card__footer">
                         <slot name="footer"></slot>
                     </div>

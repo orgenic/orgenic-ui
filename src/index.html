@@ -127,6 +127,12 @@
             successDialogButton.addEventListener('clicked', (e) => {
                 document.querySelector('#successDialog').setAttribute('visible', 'true');
             });
+            const successDialog = document.querySelector('#successDialog');
+            successDialog.addEventListener('confirmed', (e) => console.log('success dialog confirmed'));
+
+            const confirmDialog = document.querySelector('#confirmDialog');
+            confirmDialog.addEventListener('confirmed', (e) => console.log('confirm dialog confirmed'));
+            confirmDialog.addEventListener('cancelled', (e) => console.log('confirm dialog cancelled'));
         </script>
 
         <!--
