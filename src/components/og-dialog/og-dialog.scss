@@ -1,0 +1,35 @@
+.og-dialog__background {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    background: #00000055;
+}
+
+.og-dialog__hidden {
+    display: none;
+}
+
+.og-dialog {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 300px;
+    height: 200px;
+    margin-left: -150px;
+    margin-top: -100px;
+    background: #fff;
+}
+
+.og-dialog__header {
+
+}
+
+.og-card__content {
+
+}
+
+.og-card__footer {
+
+}

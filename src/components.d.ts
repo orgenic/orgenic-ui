@@ -180,6 +180,51 @@ export namespace Components {
     'selected'?: any;
   }
 
+  interface OgConfirmDialog {
+    /**
+    * The title for this modal dialog
+    */
+    'name': string;
+    'visible': boolean;
+  }
+  interface OgConfirmDialogAttributes extends StencilHTMLAttributes {
+    /**
+    * The title for this modal dialog
+    */
+    'name'?: string;
+    'visible'?: boolean;
+  }
+
+  interface OgDialog {
+    /**
+    * The title for this modal dialog
+    */
+    'name': string;
+    'visible': boolean;
+  }
+  interface OgDialogAttributes extends StencilHTMLAttributes {
+    /**
+    * The title for this modal dialog
+    */
+    'name'?: string;
+    'visible'?: boolean;
+  }
+
+  interface OgSuccessDialog {
+    /**
+    * The title for this modal dialog
+    */
+    'name': string;
+    'visible': boolean;
+  }
+  interface OgSuccessDialogAttributes extends StencilHTMLAttributes {
+    /**
+    * The title for this modal dialog
+    */
+    'name'?: string;
+    'visible'?: boolean;
+  }
+
   interface OgExpander {
     /**
     * Sets or unsets the expanded state.
@@ -656,6 +701,9 @@ declare global {
     'OgCheckbox': Components.OgCheckbox;
     'OgCombobox': Components.OgCombobox;
     'OgDatatable': Components.OgDatatable;
+    'OgConfirmDialog': Components.OgConfirmDialog;
+    'OgDialog': Components.OgDialog;
+    'OgSuccessDialog': Components.OgSuccessDialog;
     'OgExpander': Components.OgExpander;
     'OgFormItem': Components.OgFormItem;
     'OgNumberInput': Components.OgNumberInput;
@@ -676,6 +724,9 @@ declare global {
     'og-checkbox': Components.OgCheckboxAttributes;
     'og-combobox': Components.OgComboboxAttributes;
     'og-datatable': Components.OgDatatableAttributes;
+    'og-confirm-dialog': Components.OgConfirmDialogAttributes;
+    'og-dialog': Components.OgDialogAttributes;
+    'og-success-dialog': Components.OgSuccessDialogAttributes;
     'og-expander': Components.OgExpanderAttributes;
     'og-form-item': Components.OgFormItemAttributes;
     'og-number-input': Components.OgNumberInputAttributes;
@@ -719,6 +770,24 @@ declare global {
   var HTMLOgDatatableElement: {
     prototype: HTMLOgDatatableElement;
     new (): HTMLOgDatatableElement;
+  };
+
+  interface HTMLOgConfirmDialogElement extends Components.OgConfirmDialog, HTMLStencilElement {}
+  var HTMLOgConfirmDialogElement: {
+    prototype: HTMLOgConfirmDialogElement;
+    new (): HTMLOgConfirmDialogElement;
+  };
+
+  interface HTMLOgDialogElement extends Components.OgDialog, HTMLStencilElement {}
+  var HTMLOgDialogElement: {
+    prototype: HTMLOgDialogElement;
+    new (): HTMLOgDialogElement;
+  };
+
+  interface HTMLOgSuccessDialogElement extends Components.OgSuccessDialog, HTMLStencilElement {}
+  var HTMLOgSuccessDialogElement: {
+    prototype: HTMLOgSuccessDialogElement;
+    new (): HTMLOgSuccessDialogElement;
   };
 
   interface HTMLOgExpanderElement extends Components.OgExpander, HTMLStencilElement {}
@@ -799,6 +868,9 @@ declare global {
     'og-checkbox': HTMLOgCheckboxElement
     'og-combobox': HTMLOgComboboxElement
     'og-datatable': HTMLOgDatatableElement
+    'og-confirm-dialog': HTMLOgConfirmDialogElement
+    'og-dialog': HTMLOgDialogElement
+    'og-success-dialog': HTMLOgSuccessDialogElement
     'og-expander': HTMLOgExpanderElement
     'og-form-item': HTMLOgFormItemElement
     'og-number-input': HTMLOgNumberInputElement
@@ -819,6 +891,9 @@ declare global {
     'og-checkbox': HTMLOgCheckboxElement;
     'og-combobox': HTMLOgComboboxElement;
     'og-datatable': HTMLOgDatatableElement;
+    'og-confirm-dialog': HTMLOgConfirmDialogElement;
+    'og-dialog': HTMLOgDialogElement;
+    'og-success-dialog': HTMLOgSuccessDialogElement;
     'og-expander': HTMLOgExpanderElement;
     'og-form-item': HTMLOgFormItemElement;
     'og-number-input': HTMLOgNumberInputElement;
