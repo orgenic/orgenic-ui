@@ -13,7 +13,7 @@ export class OgConfirmDialog {
 
     @Prop({ mutable: true, reflectToAttr: true }) visible: boolean = false;
 
-    @Prop() imageUrl: string;
+    @Prop() svgContent: string;
 
     /**
      * Event is being emitted when value changes.
@@ -37,7 +37,7 @@ export class OgConfirmDialog {
 
     render() {
         return (
-            <og-dialog name={ this.name } image-url={ this.imageUrl } visible={ this.visible }>
+            <og-dialog name={ this.name } svg-content={ this.svgContent } visible={ this.visible }>
                 <div slot="content">
                     <slot></slot>
                 </div>

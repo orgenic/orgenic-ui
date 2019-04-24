@@ -4,7 +4,8 @@
     left: 0px;
     width: 100vw;
     height: 100vh;
-    background: #00000055;
+    background: #000000dd;
+    user-select: none;
 }
 
 .og-dialog__hidden {
@@ -12,7 +13,7 @@
 }
 
 .og-dialog {
-    position: absolute;
+    position: fixed;
     left: 50%;
     top: 50%;
     width: 300px;
@@ -20,18 +21,18 @@
     margin-left: -150px;
     margin-top: -100px;
     background: #fff;
+    user-select: text;
 }
 
 .og-dialog__header {
-
 }
 
-.og-card__content {
-    img {
-        width: 30%;
-    }
+.og-dialog__content {
 }
 
-.og-card__footer {
+.og-dialog__svg-container {
+    width: 30%;
+}
 
+.og-dialog__footer {
 }
