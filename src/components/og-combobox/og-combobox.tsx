@@ -52,7 +52,7 @@ export class OgCombobox {
     @Event() itemSelected: EventEmitter<any>;
 
     @State() dropdownActive: boolean = false;
-  
+
     @Listen('window:scroll')
     handleScroll(_ev: Event) {
         // close flyout on scroll events
@@ -181,9 +181,7 @@ export class OgCombobox {
                     <svg
                         class={
                             'og-combobox__button__arrow' +
-                            (this.isDropdownActive()
-                                ? ' og-combobox__button__arrow--collapsed'
-                                : '')
+                            (this.isDropdownActive() ? ' og-combobox__button__arrow--collapsed' : '')
                         }
                         version="1.1"
                         xmlns="http://www.w3.org/2000/svg"
@@ -202,15 +200,13 @@ export class OgCombobox {
                         />
                     </svg>
                 </div>
-                <div class="og-combobox__indicator" />
+                <div class="og-combobox__indicator" ref={(el) => this.indicatorElement = el} />
             </div>,
             <div class="og-combobox__flyout">
                 <ul
                     class={
                         'og-combobox__flyout__list' +
-                        (this.isDropdownActive()
-                            ? ' og-combobox__flyout__list--visible'
-                            : '')
+                        (this.isDropdownActive() ? ' og-combobox__flyout__list--visible' : '')
                     }
                     style={ this.getFlyoutCss() }
                     ref={(el) => this.flyoutList = el}
