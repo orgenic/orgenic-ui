@@ -583,11 +583,10 @@
             </div>
         </og-card>
         <script>
-            const values = [
-                { label: 'Value 1', value: 1 },
-                { label: 'Value 2', value: 2 },
-                { label: 'Value 3', value: 3 },
-            ];
+            const values = [];
+            for (let i = 1; i < 11; i++) {
+                values.push({ label:'Value ' + i, value: i});
+            }
 
             const combobox1 = document.querySelector('#combobox1');
             combobox1.items = values;
