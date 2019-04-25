@@ -28,7 +28,7 @@ export class OgSuccessDialog {
 
     render() {
         return (
-            <og-dialog name={ this.name } svg-content={ this.svgContent } visible={ this.visible }>
+            <og-dialog class="og-dialog--success" name={ this.name } svg-content={ this.svgContent } visible={ this.visible }>
                 <div slot="content">
                     <slot></slot>
                 </div>

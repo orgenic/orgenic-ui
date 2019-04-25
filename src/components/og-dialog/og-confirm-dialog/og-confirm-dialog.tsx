@@ -37,7 +37,7 @@ export class OgConfirmDialog {
 
     render() {
         return (
-            <og-dialog name={ this.name } svg-content={ this.svgContent } visible={ this.visible }>
+            <og-dialog class="og-dialog--warning" name={ this.name } svg-content={ this.svgContent } visible={ this.visible }>
                 <div slot="content">
                     <slot></slot>
                 </div>

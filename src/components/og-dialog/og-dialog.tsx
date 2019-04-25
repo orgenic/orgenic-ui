@@ -48,15 +48,17 @@ export class OgDialog {
 
     render() {
         return (
-            <div class={ this.visible ? '' : ' og-dialog__hidden' }>
-                <div class="og-dialog__background">
+            <div class={ 'og-dialog__container ' + (this.visible ? ' og-dialog__container--visible' : '') }>
+                <div class="og-dialog__overlay">
                 </div>
-                <div class="og-dialog">
+                <div class="og-dialog__box">
                     <div class="og-dialog__header">
                         <span class="og-dialog__title">{ this.name }</span>
                     </div>
                     <div class="og-dialog__content">
-                        <div class="og-dialog__svg-container" innerHTML={this.svgContent}></div>
+                    {
+                        this.svgContent && <div class="og-dialog__svg-container" innerHTML={this.svgContent}></div>
+                    }
                         <slot name="content"></slot>
                     </div>
                     <div class="og-dialog__footer">
