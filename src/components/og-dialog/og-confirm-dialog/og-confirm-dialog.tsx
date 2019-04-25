@@ -42,7 +42,7 @@ export class OgConfirmDialog {
                     <slot></slot>
                 </div>
                 <div slot="footer">
-                    <og-button label="Cancel" onClicked={ _e => this.handleCancel() }></og-button>
+                    <og-button label="Cancel" onClicked={ _e => this.handleCancel() }></og-button>{' '}
                     <og-button label="OK" onClicked={ _e => this.handleConfirm() }></og-button>
                 </div>
             </og-dialog>
