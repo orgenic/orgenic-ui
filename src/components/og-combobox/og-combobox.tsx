@@ -7,6 +7,7 @@ import {
     Element,
     Listen
 } from '@stencil/core';
+import { ScrollHandler } from '../../utils/scroll-handler';
 
 @Component({
     tag: 'og-combobox',
@@ -53,6 +54,26 @@ export class OgCombobox {
 
     @State() dropdownActive: boolean = false;
 
+    @Listen('window:wheel', { passive: false }) // standard
+    handleWheel(ev: Event) {
+        this.dropdownActive && ScrollHandler.cancelScrolling(ev);
+    }
+
+    @Listen('window:mousewheel', { passive: false }) // non-standard + deprecated
+    handleMouseWheel(ev: Event) {
+        this.dropdownActive && ScrollHandler.cancelScrolling(ev);
+    }
+
+    @Listen('window:touchmove', { passive: false }) // touch events
+    handleTouchMove(ev: Event) {
+        this.dropdownActive && ScrollHandler.cancelScrolling(ev);
+    }
+
+    @Listen('window:keydown', { passive: false }) // keyboard scrolling (arrows, page up / down, pos1 / end)
+    handleKeyDown(ev: KeyboardEvent) {
+        this.dropdownActive && ScrollHandler.cancelScrollingKeyFilter(ev);
+    }
+
     @Listen('body:click')
     handleBodyClick(ev: Event) {
         if (!this.dropdownActive || this.el === ev.target) {
@@ -63,6 +84,8 @@ export class OgCombobox {
             ev.cancelBubble = true;
         }
     }
+
+    indicatorElement: HTMLElement;
 
     buttonClicked() {
         if (!this.disabled) {
@@ -108,6 +131,16 @@ export class OgCombobox {
         };
     }
 
+    getFlyoutCss() {
+        if (!this.indicatorElement) {
+            return {};
+        }
+        return {
+            top: (this.indicatorElement.getBoundingClientRect().top + this.indicatorElement.offsetHeight) + 'px',
+            width: window.getComputedStyle(this.indicatorElement.parentElement).width
+        }
+    }
+
     render() {
         return [
             <div
@@ -126,9 +159,7 @@ export class OgCombobox {
                     <svg
                         class={
                             'og-combobox__button__arrow' +
-                            (this.isDropdownActive()
-                                ? ' og-combobox__button__arrow--collapsed'
-                                : '')
+                            (this.isDropdownActive() ? ' og-combobox__button__arrow--collapsed' : '')
                         }
                         version="1.1"
                         xmlns="http://www.w3.org/2000/svg"
@@ -147,16 +178,15 @@ export class OgCombobox {
                         />
                     </svg>
                 </div>
-                <div class="og-combobox__indicator" />
+                <div class="og-combobox__indicator" ref={(el) => this.indicatorElement = el} />
             </div>,
             <div class="og-combobox__flyout">
                 <ul
                     class={
                         'og-combobox__flyout__list' +
-                        (this.isDropdownActive()
-                            ? ' og-combobox__flyout__list--visible'
-                            : '')
+                        (this.isDropdownActive() ? ' og-combobox__flyout__list--visible' : '')
                     }
+                    style={ this.getFlyoutCss() }
                 >
                     {!this.hasValidItems() ? (
                         <li>No options available</li>
