@@ -53,6 +53,12 @@ export class OgCombobox {
 
     @State() dropdownActive: boolean = false;
 
+    @Listen('window:scroll')
+    handleScroll(_ev: Event) {
+        // close flyout on scroll events
+        this.dropdownActive = false;
+    }
+
     @Listen('body:click')
     handleBodyClick(ev: Event) {
         if (!this.dropdownActive || this.el === ev.target) {
@@ -63,6 +69,9 @@ export class OgCombobox {
             ev.cancelBubble = true;
         }
     }
+
+    indicatorElement: HTMLElement;
+    flyoutList: HTMLElement;
 
     buttonClicked() {
         if (!this.disabled) {
@@ -108,6 +117,52 @@ export class OgCombobox {
         };
     }
 
+    /**
+     * behaviour:
+     *   * combobox flyout shows 7 items
+     *   * if it does not fit on screen, scale down flyout
+     *   * if flyout would be smaller than 4 items, show flyout above combobox
+     */
+    getFlyoutCss() {
+        if (!this.indicatorElement) {
+            return {};
+        }
+        let flyoutTop = (this.indicatorElement.getBoundingClientRect().top + this.indicatorElement.offsetHeight);
+
+        let flyoutHeight = 0;
+        let itemHeight = 0;
+        // get item height
+        const item = this.flyoutList.querySelector('li');
+        if (!item) {
+            // no items available => return
+            return {};
+        }
+
+        const itemStyle = window.getComputedStyle(item);
+        itemHeight = parseInt(itemStyle.paddingTop) + parseInt(itemStyle.paddingBottom) + parseInt(itemStyle.lineHeight);
+        flyoutHeight = itemHeight * this.items.length;
+
+        // get space on screen below combobox
+        const spaceBelow = window.innerHeight - flyoutTop - parseInt(itemStyle.paddingBottom);
+        // calculate maximum and minimum flyout sizes (for 4 - 7 items)
+        const maxHeight = itemHeight * Math.min(7, this.items.length);
+        const minHeight = itemHeight * Math.min(4, this.items.length);
+        // calculate real flyout size to fit below combobox
+        flyoutHeight = Math.min(spaceBelow, Math.min(maxHeight, flyoutHeight));
+        // if flyout size is below min size, then show flyout above combobox
+        if (flyoutHeight < minHeight) {
+            flyoutHeight = maxHeight;
+            flyoutTop = this.el.getBoundingClientRect().top - flyoutHeight;
+        }
+
+        return {
+            top: flyoutTop + 'px',
+            width: window.getComputedStyle(this.indicatorElement.parentElement).width,
+            height: flyoutHeight + 'px',
+            overflowY: 'scroll'
+        }
+    }
+
     render() {
         return [
             <div
@@ -126,9 +181,7 @@ export class OgCombobox {
                     <svg
                         class={
                             'og-combobox__button__arrow' +
-                            (this.isDropdownActive()
-                                ? ' og-combobox__button__arrow--collapsed'
-                                : '')
+                            (this.isDropdownActive() ? ' og-combobox__button__arrow--collapsed' : '')
                         }
                         version="1.1"
                         xmlns="http://www.w3.org/2000/svg"
@@ -147,16 +200,16 @@ export class OgCombobox {
                         />
                     </svg>
                 </div>
-                <div class="og-combobox__indicator" />
+                <div class="og-combobox__indicator" ref={(el) => this.indicatorElement = el} />
             </div>,
             <div class="og-combobox__flyout">
                 <ul
                     class={
                         'og-combobox__flyout__list' +
-                        (this.isDropdownActive()
-                            ? ' og-combobox__flyout__list--visible'
-                            : '')
+                        (this.isDropdownActive() ? ' og-combobox__flyout__list--visible' : '')
                     }
+                    style={ this.getFlyoutCss() }
+                    ref={(el) => this.flyoutList = el}
                 >
                     {!this.hasValidItems() ? (
                         <li>No options available</li>
