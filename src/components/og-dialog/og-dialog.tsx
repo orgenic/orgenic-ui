@@ -1,5 +1,5 @@
 import { Component, Prop, Listen } from '@stencil/core';
-import { ScrollHandler } from './utils/scroll-handler';
+import { ScrollHandler } from '../../utils/scroll-handler';
 
 @Component({
   tag: 'og-dialog',
