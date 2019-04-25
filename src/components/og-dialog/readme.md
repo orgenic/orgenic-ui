@@ -18,12 +18,16 @@
 
 | Name                                | Description                                      |
 | ----------------------------------- | ------------------------------------------------ |
-| `--og-dialog__Background`           | Background of the Dialog                         |
-| `--og-dialog__BorderRadius`         | Corner Radius of the Dialog                      |
+| `--og-dialog-Background`            | Background of the Dialog                         |
+| `--og-dialog-BorderRadius`          | Corner Radius of the Dialog                      |
+| `--og-dialog-BoxSHadow`             | Box Shadow of the Dialog Header                  |
+| `--og-dialog-Height`                | Height of the Dialog                             |
+| `--og-dialog-MaxHeight`             | Max Height of the Dialog                         |
+| `--og-dialog-MaxWidth`              | Max Width of the Dialog                          |
+| `--og-dialog-Width`                 | Width of the Dialog                              |
 | `--og-dialog__content-Padding`      | Padding for the Dialog Content                   |
 | `--og-dialog__footer-background`    | Background of the Dialog Footer                  |
 | `--og-dialog__footer-Padding`       | Inner Space of the Dialog Footer                 |
-| `--og-dialog__header`               | Box Shadow of the Dialog Header                  |
 | `--og-dialog__header-BorderColor`   | Border Color of the Dialog Header (all 4 sides)  |
 | `--og-dialog__header-BorderStyle`   | Border Style of the Dialog Header (all 4 sides)  |
 | `--og-dialog__header-BorderWidth`   | Border Width of the Dialog Header (all 4 sides)  |
@@ -33,9 +37,6 @@
 | `--og-dialog__header-Padding`       | Padding of the Dialog Header                     |
 | `--og-dialog__header-TextOverflow`  | Text Overflow Behaviour of the Dialog Header     |
 | `--og-dialog__header-TextTransform` | Text Transformation of the Dialog Header         |
-| `--og-dialog__Height`               | Height of the Dialog                             |
-| `--og-dialog__MaxHeight`            | Max Height of the Dialog                         |
-| `--og-dialog__MaxWidth`             | Max Width of the Dialog                          |
 | `--og-dialog__overlay-Background`   | Background of the Dialog Overlay.                |
 | `--og-dialog__svg-Background`       | Background of the Dialog Content Img             |
 | `--og-dialog__svg-BorderRadius`     | Corner Radius of the Dialog Content Img          |
@@ -46,7 +47,6 @@
 | `--og-dialog__svg-Margin`           | Outer Space of the Dialog Content Img            |
 | `--og-dialog__svg-Padding`          | Inner Space of the Dialog Content Img            |
 | `--og-dialog__svg-Width`            | Width of the Dialog Content Img                  |
-| `--og-dialog__Width`                | Width of the Dialog                              |
 
 
 ----------------------------------------------
