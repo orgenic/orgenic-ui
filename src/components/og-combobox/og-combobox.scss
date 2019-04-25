@@ -165,7 +165,7 @@
     padding: 0;
     list-style-type: none;
     display: none;
-    position: fixed;
+    position: absolute;
     width: 100%;
     box-shadow: var(--og-combobox__flyout-BoxShadow);
     background:  var(--og-combobox__flyout-Background);
