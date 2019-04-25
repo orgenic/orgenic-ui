@@ -17,9 +17,6 @@ export class OgCard {
         }
 
         let slot = el.firstChild as HTMLSlotElement;
-        if (!slot.assignedNodes) {
-            return;
-        }
         el.style.display = slot.assignedNodes().length > 0 ? 'block' : 'none';
 
         slot.addEventListener('slotchange', () => {
