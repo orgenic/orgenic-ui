@@ -466,12 +466,43 @@ export namespace Components {
   }
 
   interface OgMenuGroup {
+    'collapsed': boolean;
     'collapsible': boolean;
     'name': string;
+    /**
+    * Use this method to toggle expanded state. Group property is respected when calling this method.
+    */
+    'toggleCollapsedState': () => void;
   }
   interface OgMenuGroupAttributes extends StencilHTMLAttributes {
+    'collapsed'?: boolean;
     'collapsible'?: boolean;
     'name'?: string;
+  }
+
+  interface OgMenuItem {
+    /**
+    * Determines, whether the control is disabled or not
+    */
+    'disabled': boolean;
+    /**
+    * The label of the button
+    */
+    'label': string;
+  }
+  interface OgMenuItemAttributes extends StencilHTMLAttributes {
+    /**
+    * Determines, whether the control is disabled or not
+    */
+    'disabled'?: boolean;
+    /**
+    * The label of the button
+    */
+    'label'?: string;
+    /**
+    * Event is being emitted when value changes.
+    */
+    'onClicked'?: (event: CustomEvent<Event>) => void;
   }
 
   interface OgMenuTrigger {
@@ -709,6 +740,7 @@ declare global {
     'OgTextInput': Components.OgTextInput;
     'OgList': Components.OgList;
     'OgMenuGroup': Components.OgMenuGroup;
+    'OgMenuItem': Components.OgMenuItem;
     'OgMenuTrigger': Components.OgMenuTrigger;
     'OgMenu': Components.OgMenu;
     'OgRadioButtonGroup': Components.OgRadioButtonGroup;
@@ -732,6 +764,7 @@ declare global {
     'og-text-input': Components.OgTextInputAttributes;
     'og-list': Components.OgListAttributes;
     'og-menu-group': Components.OgMenuGroupAttributes;
+    'og-menu-item': Components.OgMenuItemAttributes;
     'og-menu-trigger': Components.OgMenuTriggerAttributes;
     'og-menu': Components.OgMenuAttributes;
     'og-radio-button-group': Components.OgRadioButtonGroupAttributes;
@@ -815,6 +848,12 @@ declare global {
     new (): HTMLOgMenuGroupElement;
   };
 
+  interface HTMLOgMenuItemElement extends Components.OgMenuItem, HTMLStencilElement {}
+  var HTMLOgMenuItemElement: {
+    prototype: HTMLOgMenuItemElement;
+    new (): HTMLOgMenuItemElement;
+  };
+
   interface HTMLOgMenuTriggerElement extends Components.OgMenuTrigger, HTMLStencilElement {}
   var HTMLOgMenuTriggerElement: {
     prototype: HTMLOgMenuTriggerElement;
@@ -876,6 +915,7 @@ declare global {
     'og-text-input': HTMLOgTextInputElement
     'og-list': HTMLOgListElement
     'og-menu-group': HTMLOgMenuGroupElement
+    'og-menu-item': HTMLOgMenuItemElement
     'og-menu-trigger': HTMLOgMenuTriggerElement
     'og-menu': HTMLOgMenuElement
     'og-radio-button-group': HTMLOgRadioButtonGroupElement
@@ -899,6 +939,7 @@ declare global {
     'og-text-input': HTMLOgTextInputElement;
     'og-list': HTMLOgListElement;
     'og-menu-group': HTMLOgMenuGroupElement;
+    'og-menu-item': HTMLOgMenuItemElement;
     'og-menu-trigger': HTMLOgMenuTriggerElement;
     'og-menu': HTMLOgMenuElement;
     'og-radio-button-group': HTMLOgRadioButtonGroupElement;

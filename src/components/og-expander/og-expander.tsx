@@ -51,7 +51,6 @@ export class OgExpander {
 
     render() {
         return [
-
             <div class="og-expander__header" onClick={() => { this.toggleExpandedState(); }}>
                 <span class="og-expander__title">{this.name}</span>
 
