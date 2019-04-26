@@ -465,6 +465,52 @@ export namespace Components {
     'valueProperty'?: string;
   }
 
+  interface OgMenuGroup {
+    'collapsible': boolean;
+    'name': string;
+  }
+  interface OgMenuGroupAttributes extends StencilHTMLAttributes {
+    'collapsible'?: boolean;
+    'name'?: string;
+  }
+
+  interface OgMenuTrigger {
+    /**
+    * Determines, whether the control is disabled or not
+    */
+    'disabled': boolean;
+    /**
+    * Determines, which menu is assigned to this trigger
+    */
+    'menu': string;
+  }
+  interface OgMenuTriggerAttributes extends StencilHTMLAttributes {
+    /**
+    * Determines, whether the control is disabled or not
+    */
+    'disabled'?: boolean;
+    /**
+    * Determines, which menu is assigned to this trigger
+    */
+    'menu'?: string;
+  }
+
+  interface OgMenu {
+    /**
+    * Determines, which menu is assigned to this trigger
+    */
+    'name': string;
+    'toggleVisibility': () => void;
+    'visible': boolean;
+  }
+  interface OgMenuAttributes extends StencilHTMLAttributes {
+    /**
+    * Determines, which menu is assigned to this trigger
+    */
+    'name'?: string;
+    'visible'?: boolean;
+  }
+
   interface OgRadioButtonGroup {
     /**
     * Determines, whether the control is disabled or not
@@ -662,6 +708,9 @@ declare global {
     'OgPasswordInput': Components.OgPasswordInput;
     'OgTextInput': Components.OgTextInput;
     'OgList': Components.OgList;
+    'OgMenuGroup': Components.OgMenuGroup;
+    'OgMenuTrigger': Components.OgMenuTrigger;
+    'OgMenu': Components.OgMenu;
     'OgRadioButtonGroup': Components.OgRadioButtonGroup;
     'OgRadioButton': Components.OgRadioButton;
     'OgTabContainer': Components.OgTabContainer;
@@ -682,6 +731,9 @@ declare global {
     'og-password-input': Components.OgPasswordInputAttributes;
     'og-text-input': Components.OgTextInputAttributes;
     'og-list': Components.OgListAttributes;
+    'og-menu-group': Components.OgMenuGroupAttributes;
+    'og-menu-trigger': Components.OgMenuTriggerAttributes;
+    'og-menu': Components.OgMenuAttributes;
     'og-radio-button-group': Components.OgRadioButtonGroupAttributes;
     'og-radio-button': Components.OgRadioButtonAttributes;
     'og-tab-container': Components.OgTabContainerAttributes;
@@ -757,6 +809,24 @@ declare global {
     new (): HTMLOgListElement;
   };
 
+  interface HTMLOgMenuGroupElement extends Components.OgMenuGroup, HTMLStencilElement {}
+  var HTMLOgMenuGroupElement: {
+    prototype: HTMLOgMenuGroupElement;
+    new (): HTMLOgMenuGroupElement;
+  };
+
+  interface HTMLOgMenuTriggerElement extends Components.OgMenuTrigger, HTMLStencilElement {}
+  var HTMLOgMenuTriggerElement: {
+    prototype: HTMLOgMenuTriggerElement;
+    new (): HTMLOgMenuTriggerElement;
+  };
+
+  interface HTMLOgMenuElement extends Components.OgMenu, HTMLStencilElement {}
+  var HTMLOgMenuElement: {
+    prototype: HTMLOgMenuElement;
+    new (): HTMLOgMenuElement;
+  };
+
   interface HTMLOgRadioButtonGroupElement extends Components.OgRadioButtonGroup, HTMLStencilElement {}
   var HTMLOgRadioButtonGroupElement: {
     prototype: HTMLOgRadioButtonGroupElement;
@@ -805,6 +875,9 @@ declare global {
     'og-password-input': HTMLOgPasswordInputElement
     'og-text-input': HTMLOgTextInputElement
     'og-list': HTMLOgListElement
+    'og-menu-group': HTMLOgMenuGroupElement
+    'og-menu-trigger': HTMLOgMenuTriggerElement
+    'og-menu': HTMLOgMenuElement
     'og-radio-button-group': HTMLOgRadioButtonGroupElement
     'og-radio-button': HTMLOgRadioButtonElement
     'og-tab-container': HTMLOgTabContainerElement
@@ -825,6 +898,9 @@ declare global {
     'og-password-input': HTMLOgPasswordInputElement;
     'og-text-input': HTMLOgTextInputElement;
     'og-list': HTMLOgListElement;
+    'og-menu-group': HTMLOgMenuGroupElement;
+    'og-menu-trigger': HTMLOgMenuTriggerElement;
+    'og-menu': HTMLOgMenuElement;
     'og-radio-button-group': HTMLOgRadioButtonGroupElement;
     'og-radio-button': HTMLOgRadioButtonElement;
     'og-tab-container': HTMLOgTabContainerElement;

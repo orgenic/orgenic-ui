@@ -1,0 +1,19 @@
+
+.og-menu__container {
+    position: fixed;
+    top: 0px;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    transition: 0.3s;
+    background: #fff8;
+}
+
+.og-menu__container--visible {
+    left: 0px;
+}
+
+.og-menu__footer {
+    position: absolute;
+    bottom: 0px;
+}
