@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
-    <title>ORGENIC UI Vanilla JS Examples</title>
+    <title>ORGENIC UI</title>
     <script src="/build/orgenic-ui.js"></script>
 
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
@@ -17,7 +17,7 @@
 
     <link rel="stylesheet" href="/themes/dark.theme.css">
     <link rel="stylesheet" href="/themes/light.theme.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,600" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <style>
         body {
             background: rgba(29, 161, 211, 0.1);
@@ -92,31 +92,47 @@
         <og-card name="Menu">
             <div slot="content" slot="content">
                 <og-menu name="sidebar">
-
-
-                    <og-menu-group slot="content" name="General">
-                        <og-menu-item label="A.A" icon="" value="14" clicked=""></og-menu-item>
-                        <og-menu-item clicked="">A.B</og-menu-item>
+                    <!-- default menu group -->
+                    <og-menu-group name="General">
+                        <og-menu-item label="A.A" icon="" value="14" data-command="aa"></og-menu-item>
+                        <og-menu-item label="A.B" icon="" value="14" data-command="ab"></og-menu-item>
+                        <og-menu-item label="A.C" icon="" value="14" data-command="ac"></og-menu-item>
+                        <og-menu-item><button onclick="alert('clicked')">A.B</button></og-menu-item>
                     </og-menu-group>
 
-
-
-
-                    <og-menu-group slot="content" name="Components" collapsible>
-                        <og-menu-item label="B.A" icon="" value="14" clicked=""></og-menu-item>
-                        <og-menu-item clicked="">B.B</og-menu-item>
+                    <!-- collapsible menu group -->
+                    <og-menu-group name="Components" collapsible>
+                        <og-menu-item label="B.A" icon="" value="14" data-command="ba"></og-menu-item>
+                        <og-menu-item label="B.B" icon="" value="16" data-command="bb"></og-menu-item>
+                        <og-menu-item label="B.C" icon="" value="13" data-command="bc"></og-menu-item>
                     </og-menu-group>
 
-
+                    <!-- group without header -->
+                    <og-menu-group>
+                        <og-menu-item label="C.A" icon="" value="14" data-command="ca"></og-menu-item>
+                        <og-menu-item label="C.B" icon="" value="16" data-command="cb"></og-menu-item>
+                        <og-menu-item label="C.C" icon="" value="13" data-command="cc"></og-menu-item>
+                    </og-menu-group>
 
                     <div slot="footer">
-                        <og-menu-trigger menu="sidebar"></og-menu-trigger>
+                        <og-menu-trigger menu="sidebar" label="&lt;&lt;" icon=""></og-menu-trigger>
                     </div>
-
                 </og-menu>
                 <og-menu-trigger menu="sidebar"></og-menu-trigger>
             </div>
         </og-card>
+        <script>
+            document.querySelectorAll('og-menu-item').forEach(item => {
+                item.addEventListener('clicked', () => {
+                    let cmd = item.getAttribute('data-command');
+
+                    // update selected item
+                    document.querySelectorAll('og-menu-item').forEach(item => {
+                        item.selected = item.getAttribute('data-command') === cmd;
+                    });
+                });
+            })
+        </script>
 
         <!--
         Expander

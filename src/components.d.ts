@@ -25,6 +25,10 @@ export namespace Components {
     */
     'disabled': boolean;
     /**
+    * The optional icon of the button
+    */
+    'icon': string;
+    /**
     * The label of the button
     */
     'label': string;
@@ -34,6 +38,10 @@ export namespace Components {
     * Determines, whether the control is disabled or not
     */
     'disabled'?: boolean;
+    /**
+    * The optional icon of the button
+    */
+    'icon'?: string;
     /**
     * The label of the button
     */
@@ -489,6 +497,7 @@ export namespace Components {
     * The label of the button
     */
     'label': string;
+    'selected': boolean;
   }
   interface OgMenuItemAttributes extends StencilHTMLAttributes {
     /**
@@ -503,6 +512,7 @@ export namespace Components {
     * Event is being emitted when value changes.
     */
     'onClicked'?: (event: CustomEvent<Event>) => void;
+    'selected'?: boolean;
   }
 
   interface OgMenuTrigger {
@@ -510,6 +520,8 @@ export namespace Components {
     * Determines, whether the control is disabled or not
     */
     'disabled': boolean;
+    'icon': string;
+    'label': string;
     /**
     * Determines, which menu is assigned to this trigger
     */
@@ -520,6 +532,8 @@ export namespace Components {
     * Determines, whether the control is disabled or not
     */
     'disabled'?: boolean;
+    'icon'?: string;
+    'label'?: string;
     /**
     * Determines, which menu is assigned to this trigger
     */

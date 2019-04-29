@@ -96,7 +96,9 @@
 
 // Native <button> element
 .og-button {
-  display: block;
+  display: flex;
+  align-items: center;
+
   width: 100%;
   max-width: inherit;
   height: 100%;
@@ -146,4 +148,13 @@
     --og-button-Color: var(--og-button-Color--disabled);
     cursor: default;
   }
+}
+
+.og-button--icon {
+    height: 24px;
+    width: 24px;
+}
+
+.og-button--icon + .og-button--label {
+    margin-left: 10px;
 }

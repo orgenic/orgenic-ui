@@ -10,6 +10,7 @@
 | Property   | Attribute  | Description                                        | Type      | Default     |
 | ---------- | ---------- | -------------------------------------------------- | --------- | ----------- |
 | `disabled` | `disabled` | Determines, whether the control is disabled or not | `boolean` | `undefined` |
+| `icon`     | `icon`     | The optional icon of the button                    | `string`  | `undefined` |
 | `label`    | `label`    | The label of the button                            | `string`  | `undefined` |
 
 

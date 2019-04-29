@@ -1,0 +1,15 @@
+.og-menu-item {
+    padding: 0.7rem;
+    background: #fffd;
+    cursor: pointer;
+}
+
+.og-menu-item:hover {
+    padding: 0.7rem;
+    background: #eef;
+    cursor: pointer;
+}
+
+.og-menu-item[data-selected] {
+    background: #ddf;
+}

@@ -19,26 +19,10 @@
 
  :host {
     // Expander
-    --og-expander-BackgroundColor: var( --OG-COLOR-SHADE--0--30, #{$og-color-shade--0--30} );
-    --og-expander-BorderColor: transparent;
-    --og-expander-BorderRadius: var(--OG-BORDER-RADIUS, #{$og-border-radius});
-    --og-expander-BorderWidth: var(--OG-BORDER-WIDTH, #{$og-border-width});
-    --og-expander-Margin: 8px;
-
-    // Header
-    --og-expander__header-BorderColor: transparent;
-    --og-expander__header-BorderStyle: solid;
-    --og-expander__header-BorderWidth: 0;
-
     --og-expander__header-FontSize: 0.875rem;
-    --og-expander__header-FontWeight: bold;
     --og-expander__header-TextTransform: uppercase;
 
     --og-expander__header-Margin: 0;
-    --og-expander__header-Padding: 16px;
-
-    // Content
-    --og-expander__content-Padding: 0 16px 16px;
 
     --og-expander__button__arrow-Width: 20px;
     --og-expander__button__arrow-Padding: 0px 4px 4px 4px;
@@ -46,21 +30,10 @@
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    margin: var(--og-expander-Margin);
 
     background-color: var(--og-expander-BackgroundColor);
-    border-color: var(--og-expander-BorderColor);
-    border-style: solid;
-    border-width: var(--og-expander-BorderWidth);
-    border-radius: var(--og-expander-BorderRadius);
 
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-    box-sizing: border-box;
-    *,
-    *::before,
-    *::after {
-        box-sizing: inherit;
-    }
+    margin-bottom: 10px;
 }
 
 .og-expander__header {
@@ -68,14 +41,9 @@
     flex-direction: row;
     min-height: 56px;
     align-items: center;
-    border-color: var(--og-expander__header-BorderColor);
-    border-style: var(--og-expander__header-BorderStyle);
-    border-width: var(--og-expander__header-BorderWidth);
 
     font-size: var(--og-expander__header-FontSize);
-    font-weight: var(--og-expander__header-FontWeight);
     margin: var(--og-expander__header-Margin);
-    padding: var(--og-expander__header-Padding);
     text-transform: var(--og-expander__header-TextTransform);
 
     cursor: pointer;
@@ -91,7 +59,6 @@
 .og-expander__content {
     display: flex;
     flex-direction: column;
-    padding: var(--og-expander__content-Padding);
 }
 
 .og-expander__content:not([data-expanded]) {

@@ -16,4 +16,10 @@
 .og-menu__footer {
     position: absolute;
     bottom: 0px;
+    width: 100%;
+}
+
+.og-menu__footer * {
+    width: 100%;
+    text-align: right;
 }

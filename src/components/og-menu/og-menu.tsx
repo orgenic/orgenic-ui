@@ -21,7 +21,7 @@ export class OgMenu {
     render() {
         return (
             <div class={ `og-menu__container${this.visible ? ' og-menu__container--visible' : ''}` }>
-                <slot name="content"></slot>
+                <slot></slot>
                 <div class="og-menu__footer">
                     <slot name="footer"></slot>
                 </div>

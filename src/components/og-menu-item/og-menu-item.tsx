@@ -18,16 +18,26 @@ export class OgMenuItem {
      */
     @Prop() disabled: boolean;
 
+    @Prop() selected: boolean;
+
     /**
      * Event is being emitted when value changes.
      */
     @Event() clicked: EventEmitter<Event>;
 
     componentDidLoad() {
-        setTimeout(() => {
-            const slot = this.el.querySelector('slot') as HTMLSlotElement;
-            console.log('slot children', slot.assignedElements);
-        });
+        const slot = this.el.shadowRoot.querySelector('slot') as HTMLSlotElement;
+        if (!slot || !slot.assignedNodes) {
+            return;
+        }
+
+        if (slot.assignedNodes().length === 0 && !this.label) {
+            console.warn('Menu items should use either the slot element or the label property.');
+        }
+
+        if (slot.assignedNodes().length > 0 && this.label) {
+            console.warn('Menu items should not use the slot element and the label properties together.');
+        }
     }
 
     handleClick(e: Event) {
@@ -40,7 +50,9 @@ export class OgMenuItem {
     render() {
         return [
             this.label &&
-            <button class="og-menu-item" onClick={ (e) => this.handleClick(e) } disabled={ this.disabled }>{this.label}</button>,
+            <div class="og-menu-item" onClick={ (e) => this.handleClick(e) } data-disabled={ this.disabled } data-selected={ this.selected }>
+                {this.label}
+            </div>,
             <slot></slot>
         ];
     }

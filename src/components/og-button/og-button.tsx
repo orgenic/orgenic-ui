@@ -12,6 +12,11 @@ export class OgButton {
     @Prop() label: string;
 
     /**
+     * The optional icon of the button
+     */
+    @Prop() icon: string;
+
+    /**
      * Determines, whether the control is disabled or not
      */
     @Prop() disabled: boolean;
@@ -29,6 +34,9 @@ export class OgButton {
     }
 
     render() {
-        return <button class="og-button" onClick={ (e) => this.handleClick(e) } disabled={ this.disabled }>{this.label}</button>;
+        return <button class="og-button" onClick={ (e) => this.handleClick(e) } disabled={ this.disabled }>
+            { this.icon && <span class="og-button--icon" innerHTML={this.icon}></span> }
+            { this.label && <span class="og-button--label">{ this.label }</span> }
+        </button>;
     }
 }

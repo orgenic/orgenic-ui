@@ -17,6 +17,7 @@ export class OgMenuGroup {
      */
     @Method()
     toggleCollapsedState() {
+        console.log('toggle', this.collapsible, this.collapsed);
         if (!this.collapsible) {
             return;
         }
@@ -25,6 +26,7 @@ export class OgMenuGroup {
 
     render() {
         return [
+            this.name &&
             <div class="og-expander__header" onClick={() => { this.toggleCollapsedState(); }}>
                 <span class="og-expander__title">{this.name}</span>
                 {
