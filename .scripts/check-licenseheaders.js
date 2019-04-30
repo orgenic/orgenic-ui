@@ -24,7 +24,7 @@
                     }
                 });
                 // stop commit
-                return 0;
+                return process.exit(1);
             }
         });
     });
