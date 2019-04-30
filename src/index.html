@@ -100,9 +100,9 @@
                 <og-confirm-dialog name="Cancel Task" id="confirmDialog">
                     <div>Confirm Dialog Content</div>
                 </og-confirm-dialog>
-                <og-success-dialog name="Task Finished" id="successDialog">
-                    <div>Success Dialog Content</div>
-                </og-success-dialog>
+                <og-message-dialog name="Task Finished" id="messageDialog" type="success">
+                    <div>Message Dialog Content</div>
+                </og-message-dialog>
                 <og-button label="Open Custom Dialog" id="openCustomDialog"></og-button>
                 <og-button label="Open Confirm Dialog" id="openConfirmDialog"></og-button>
                 <og-button label="Open Success Dialog" id="openSuccessDialog"></og-button>
@@ -125,9 +125,9 @@
 
             const successDialogButton = document.querySelector('#openSuccessDialog');
             successDialogButton.addEventListener('clicked', (e) => {
-                document.querySelector('#successDialog').setAttribute('visible', 'true');
+                document.querySelector('#messageDialog').setAttribute('visible', 'true');
             });
-            const successDialog = document.querySelector('#successDialog');
+            const successDialog = document.querySelector('#messageDialog');
             successDialog.addEventListener('confirmed', (e) => console.log('success dialog confirmed'));
 
             const confirmDialog = document.querySelector('#confirmDialog');

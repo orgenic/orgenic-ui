@@ -15,7 +15,7 @@ export class OgDialog {
     /**
      * SVG markup that can be styled by orgenic themes.
      */
-    @Prop() svgContent: string;
+    @Prop() svgIcon: string;
 
     /**
      * Visibility state of this dialog.
@@ -54,7 +54,7 @@ export class OgDialog {
                 <div class="og-dialog__box">
                     <div class="og-dialog__header">
                         {
-                            this.svgContent && <div class="og-dialog__svg-container" innerHTML={this.svgContent}></div>
+                            this.svgIcon && <div class="og-dialog__svg-container" innerHTML={this.svgIcon}></div>
                         }
                         <span class="og-dialog__title">{ this.name }</span>
                     </div>

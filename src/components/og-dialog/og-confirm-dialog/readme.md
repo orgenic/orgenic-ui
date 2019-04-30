@@ -7,11 +7,13 @@
 
 ## Properties
 
-| Property     | Attribute     | Description                     | Type      | Default     |
-| ------------ | ------------- | ------------------------------- | --------- | ----------- |
-| `name`       | `name`        | The title for this modal dialog | `string`  | `undefined` |
-| `svgContent` | `svg-content` |                                 | `string`  | `undefined` |
-| `visible`    | `visible`     |                                 | `boolean` | `false`     |
+| Property      | Attribute      | Description                     | Type      | Default     |
+| ------------- | -------------- | ------------------------------- | --------- | ----------- |
+| `cancelText`  | `cancel-text`  |                                 | `string`  | `'Cancel'`  |
+| `confirmText` | `confirm-text` |                                 | `string`  | `'OK'`      |
+| `name`        | `name`         | The title for this modal dialog | `string`  | `undefined` |
+| `svgIcon`     | `svg-icon`     |                                 | `string`  | `undefined` |
+| `visible`     | `visible`      |                                 | `boolean` | `false`     |
 
 
 ## Events

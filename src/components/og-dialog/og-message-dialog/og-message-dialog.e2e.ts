@@ -1,18 +1,18 @@
 import { newE2EPage, E2EElement, E2EPage } from '@stencil/core/testing';
 
-describe('og-success-dialog', () => {
+describe('og-message-dialog', () => {
     let page: E2EPage;
     let component: E2EElement;
     let button: E2EElement;
 
     beforeEach(async () => {
         page = await newE2EPage();
-        await page.setContent(`<og-success-dialog name="Testing Success Dialog!">
-            <h1>card</h1>
-        </og-success-dialog>`)
+        await page.setContent(`<og-message-dialog name="Testing Success Dialog!" type="success">
+            <h1>Success Dialog</h1>
+        </og-message-dialog>`)
 
-        component = await page.find('og-success-dialog');
-        button = await page.find('og-success-dialog >>> og-button');
+        component = await page.find('og-message-dialog');
+        button = await page.find('og-message-dialog >>> og-button');
     });
 
     it('renders', async () => {

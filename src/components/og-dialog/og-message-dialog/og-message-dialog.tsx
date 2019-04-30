@@ -2,11 +2,11 @@ import { Component, Prop, Event, EventEmitter } from '@stencil/core';
 import { SVGContent } from '../utils/svg-content';
 
 @Component({
-  tag: 'og-success-dialog',
-  styleUrl: 'og-success-dialog.scss',
+  tag: 'og-message-dialog',
+  styleUrl: 'og-message-dialog.scss',
   shadow: true
 })
-export class OgSuccessDialog {
+export class OgMessageDialog {
     /**
      * The title for this modal dialog
      */
@@ -14,7 +14,11 @@ export class OgSuccessDialog {
 
     @Prop({ mutable: true, reflectToAttr: true }) visible: boolean = false;
 
-    @Prop() svgContent: string = SVGContent.success;
+    @Prop() type: 'success' | 'warning' | 'error' | 'info' = 'success';
+
+    @Prop() svgIcon: string;
+
+    @Prop() approveText: string = 'OK';
 
     /**
      * Event is being emitted when value changes.
@@ -26,14 +30,21 @@ export class OgSuccessDialog {
         this.visible = false
     }
 
+    private getIcon() {
+        if (this.svgIcon) {
+            return this.svgIcon;
+        }
+        return SVGContent[this.type];
+    }
+
     render() {
         return (
-            <og-dialog class="og-dialog--success" name={ this.name } svg-content={ this.svgContent } visible={ this.visible }>
+            <og-dialog class={ 'og-dialog--' + this.type } name={ this.name } svg-icon={ this.getIcon() } visible={ this.visible }>
                 <div slot="content">
                     <slot></slot>
                 </div>
                 <div slot="footer">
-                    <og-button label="OK" onClicked={ _e => this.handleConfirm() }></og-button>
+                    <og-button label={ this.approveText } onClicked={ _e => this.handleConfirm() }></og-button>
                 </div>
             </og-dialog>
         );

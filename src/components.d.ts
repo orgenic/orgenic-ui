@@ -181,14 +181,18 @@ export namespace Components {
   }
 
   interface OgConfirmDialog {
+    'cancelText': string;
+    'confirmText': string;
     /**
     * The title for this modal dialog
     */
     'name': string;
-    'svgContent': string;
+    'svgIcon': string;
     'visible': boolean;
   }
   interface OgConfirmDialogAttributes extends StencilHTMLAttributes {
+    'cancelText'?: string;
+    'confirmText'?: string;
     /**
     * The title for this modal dialog
     */
@@ -201,7 +205,7 @@ export namespace Components {
     * Event is being emitted when value changes.
     */
     'onConfirmed'?: (event: CustomEvent<Event>) => void;
-    'svgContent'?: string;
+    'svgIcon'?: string;
     'visible'?: boolean;
   }
 
@@ -213,7 +217,7 @@ export namespace Components {
     /**
     * SVG markup that can be styled by orgenic themes.
     */
-    'svgContent': string;
+    'svgIcon': string;
     /**
     * Visibility state of this dialog.
     */
@@ -227,22 +231,25 @@ export namespace Components {
     /**
     * SVG markup that can be styled by orgenic themes.
     */
-    'svgContent'?: string;
+    'svgIcon'?: string;
     /**
     * Visibility state of this dialog.
     */
     'visible'?: boolean;
   }
 
-  interface OgSuccessDialog {
+  interface OgMessageDialog {
+    'approveText': string;
     /**
     * The title for this modal dialog
     */
     'name': string;
-    'svgContent': string;
+    'svgIcon': string;
+    'type': 'success' | 'warning' | 'error' | 'info';
     'visible': boolean;
   }
-  interface OgSuccessDialogAttributes extends StencilHTMLAttributes {
+  interface OgMessageDialogAttributes extends StencilHTMLAttributes {
+    'approveText'?: string;
     /**
     * The title for this modal dialog
     */
@@ -251,7 +258,8 @@ export namespace Components {
     * Event is being emitted when value changes.
     */
     'onConfirmed'?: (event: CustomEvent<Event>) => void;
-    'svgContent'?: string;
+    'svgIcon'?: string;
+    'type'?: 'success' | 'warning' | 'error' | 'info';
     'visible'?: boolean;
   }
 
@@ -733,7 +741,7 @@ declare global {
     'OgDatatable': Components.OgDatatable;
     'OgConfirmDialog': Components.OgConfirmDialog;
     'OgDialog': Components.OgDialog;
-    'OgSuccessDialog': Components.OgSuccessDialog;
+    'OgMessageDialog': Components.OgMessageDialog;
     'OgExpander': Components.OgExpander;
     'OgFormItem': Components.OgFormItem;
     'OgNumberInput': Components.OgNumberInput;
@@ -756,7 +764,7 @@ declare global {
     'og-datatable': Components.OgDatatableAttributes;
     'og-confirm-dialog': Components.OgConfirmDialogAttributes;
     'og-dialog': Components.OgDialogAttributes;
-    'og-success-dialog': Components.OgSuccessDialogAttributes;
+    'og-message-dialog': Components.OgMessageDialogAttributes;
     'og-expander': Components.OgExpanderAttributes;
     'og-form-item': Components.OgFormItemAttributes;
     'og-number-input': Components.OgNumberInputAttributes;
@@ -814,10 +822,10 @@ declare global {
     new (): HTMLOgDialogElement;
   };
 
-  interface HTMLOgSuccessDialogElement extends Components.OgSuccessDialog, HTMLStencilElement {}
-  var HTMLOgSuccessDialogElement: {
-    prototype: HTMLOgSuccessDialogElement;
-    new (): HTMLOgSuccessDialogElement;
+  interface HTMLOgMessageDialogElement extends Components.OgMessageDialog, HTMLStencilElement {}
+  var HTMLOgMessageDialogElement: {
+    prototype: HTMLOgMessageDialogElement;
+    new (): HTMLOgMessageDialogElement;
   };
 
   interface HTMLOgExpanderElement extends Components.OgExpander, HTMLStencilElement {}
@@ -900,7 +908,7 @@ declare global {
     'og-datatable': HTMLOgDatatableElement
     'og-confirm-dialog': HTMLOgConfirmDialogElement
     'og-dialog': HTMLOgDialogElement
-    'og-success-dialog': HTMLOgSuccessDialogElement
+    'og-message-dialog': HTMLOgMessageDialogElement
     'og-expander': HTMLOgExpanderElement
     'og-form-item': HTMLOgFormItemElement
     'og-number-input': HTMLOgNumberInputElement
@@ -923,7 +931,7 @@ declare global {
     'og-datatable': HTMLOgDatatableElement;
     'og-confirm-dialog': HTMLOgConfirmDialogElement;
     'og-dialog': HTMLOgDialogElement;
-    'og-success-dialog': HTMLOgSuccessDialogElement;
+    'og-message-dialog': HTMLOgMessageDialogElement;
     'og-expander': HTMLOgExpanderElement;
     'og-form-item': HTMLOgFormItemElement;
     'og-number-input': HTMLOgNumberInputElement;
