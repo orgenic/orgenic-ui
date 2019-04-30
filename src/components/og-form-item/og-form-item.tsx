@@ -1,3 +1,9 @@
+/**
+ * ORGENIC-UI
+ * @license MIT
+ * See LICENSE file for more information
+ **/
+
 import { Component, Prop, Watch, Element, State } from '@stencil/core';
 
 @Component({

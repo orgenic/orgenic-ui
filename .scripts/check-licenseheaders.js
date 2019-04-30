@@ -14,21 +14,15 @@
 
     // Match all ".ts(x)" files in "./srtc/components/*"
     glob.sync('./src/components/*/!(*.e2e|*.spec)*.ts*').forEach((filePath) => {
-        fs.readFile(filePath, 'utf8', (err, data) => {
-            // Matches a block-comment w/ at least the words
-            // "ORGENIC-UI", "@license", "MIT" and "LICENSE"
-            // - in that order
-            if (!data.match(/[\s\S]?\/\*\*[\s\S]*ORGENIC-UI[\s\S]*@license.*MIT[\s\S]*LICENSE[\s\S]*\*\*\//gm)) {
-                console.log(`${filePath}: Add missing licenseheader.`);
-                fs.writeFile(filePath, `${licenseheader}\n\n${data}`, (err) => {
-                    if (err) {
-                        console.error(err);
-                    }
-                });
-                // stop commit
-                fail = true;
-            }
-        });
+        let data = fs.readFileSync(filePath, 'utf8');
+
+        if (!data.match(/[\s\S]?\/\*\*[\s\S]*ORGENIC-UI[\s\S]*@license.*MIT[\s\S]*LICENSE[\s\S]*\*\*\//gm)) {
+            console.log(`${filePath}: Add missing licenseheader.`);
+            fs.writeFileSync(filePath, `${licenseheader}\n\n${data}`, 'utf8');
+
+            // stop commit
+            fail = true;
+        }
     });
 
     if (fail) {

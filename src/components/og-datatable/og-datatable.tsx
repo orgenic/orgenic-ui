@@ -1,3 +1,9 @@
+/**
+ * ORGENIC-UI
+ * @license MIT
+ * See LICENSE file for more information
+ **/
+
 import { Component, Prop, EventEmitter, Event, Method, Watch } from '@stencil/core';
 import { OgDatatableConfig, OgLazyDataProvider, OgDefaultDataProvider,
     OgDataProvider} from './interfaces/og-datatable-column-def';
