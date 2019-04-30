@@ -21,4 +21,25 @@ describe('og-dialog', () => {
     it('renders', async () => {
         expect(component).toHaveClass('hydrated');
     });
+
+    it('is hidden by default', async () => {
+        expect(component).not.toHaveAttribute('visible');
+    });
+
+    it('is visible when called', async () => {
+        component.setProperty('visible', true);
+        await page.waitForChanges();
+
+        expect(component).toHaveAttribute('visible');
+    });
+
+    it('is hidden after closing', async () => {
+        component.setProperty('visible', true);
+        await page.waitForChanges();
+
+        component.setProperty('visible', false);
+        await page.waitForChanges();
+
+        expect(component).not.toHaveAttribute('visible');
+    });
 });
