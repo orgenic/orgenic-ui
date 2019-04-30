@@ -97,7 +97,7 @@
 
 .og-list__item__icon {
     padding-right: 1em;
-    width:var(--og-list__item-MinHeight);
+    width: var(--og-list__item-MinHeight);
 
     img {
         object-fit: contain;
@@ -112,4 +112,5 @@
 
 .og-list__item__value {
     line-height: inherit;
+    font-weight: bold;
 }
