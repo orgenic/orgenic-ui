@@ -29,24 +29,11 @@
     }
 
 
-    og-button {
-        --og-button-Background--hover: var( --OG-COLOR-SECONDARY--100--30);
-        --og-button-Background--active: var( --OG-COLOR-SECONDARY--100--10);
-
-        &[data-context~='workflow'] {
-            --og-button-Background--hover: var( --OG-COLOR-PRIMARY--120);
-            --og-button-Background--active: var( --OG-COLOR-PRIMARY--80);
-
-            --og-button-Color: var(--OG-COLOR-SHADE--100);
-            --og-button-Color--hover: var(--OG-COLOR-SHADE--100);
-            --og-button-Color--active: var(--OG-COLOR-SHADE--100);
-            --og-button-Color--disabled: var(--OG-COLOR-SHADE--100--30);
-        };
-
-        &[data-context~="link"] {
-            --og-button-Background--hover: var( --OG-COLOR-SHADE--100--10);
-            --og-button-Background--active: var( --OG-COLOR-SHADE--100--20);
-        }
+    og-button[data-context~='workflow'] {
+        --og-button-Color: var(--OG-COLOR-SHADE--100);
+        --og-button-Color--hover: var(--OG-COLOR-SHADE--100);
+        --og-button-Color--active: var(--OG-COLOR-SHADE--100);
+        --og-button-Color--disabled: var(--OG-COLOR-SHADE--100--30);
     }
 
     og-card {
