@@ -10,16 +10,21 @@
  * See LICENSE file for more information
  **/`;
 
+    // Match all ".ts(x)" files in "./srtc/components/*"
     glob.sync('./src/components/*/!(*.e2e|*.spec)*.ts*').forEach((filePath) => {
-        console.log(filePath);
         fs.readFile(filePath, 'utf8', (err, data) => {
-            if (!data.match(/[\n\r]?\/\*\*.*ORGENIC-UI.*@license.*MIT.*LICENSE.*\*\*\//)) {
+            // Matches a block-comment w/ at least the words
+            // "ORGENIC-UI", "@license", "MIT" and "LICENSE"
+            // - in that order
+            if (!data.match(/[\s\S]?\/\*\*[\s\S]*ORGENIC-UI[\s\S]*@license.*MIT[\s\S]*LICENSE[\s\S]*\*\*\//gm)) {
                 console.log(`${filePath}: Add missing licenseheader.`);
                 fs.writeFile(filePath, `${licenseheader}\n\n${data}`, (err) => {
                     if (err) {
                         console.error(err);
                     }
                 });
+                // stop commit
+                return 0;
             }
         });
     });
