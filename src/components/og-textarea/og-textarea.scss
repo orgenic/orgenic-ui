@@ -38,7 +38,7 @@
     --og-textarea__textarea-Color--disabled: var(--OG-COLOR-SHADE--100--50, #{$og-color-shade--100--50});
     --og-textarea__textarea-FontFamily: inherit;
     --og-textarea__textarea-FontSize: inherit;
-    --og-textarea__textarea-Padding: 0 0 4px;
+    --og-textarea__textarea-Padding: 0 0 4px 0;
 
     --og-textarea__indicator-Display: block;
     --og-textarea__indicator-Width: 0;
@@ -59,7 +59,7 @@
     display: block;
     background: var(--og-textarea__textarea-Background);
     height: 0;
-    min-height: 48px;
+    min-height: 6.6em;
     width: 100%;
     color: var(--og-textarea__textarea-Color);
     font-family: var(--og-textarea__textarea-FontFamily);
@@ -92,7 +92,7 @@
 .og-textarea__textarea:focus {
 
     overflow: auto;
-    min-height: 122px;
+    min-height: 8em;
 
     & + .og-textarea__indicator {
         --og-textarea__indicator-Width: calc(100% - (var(--og-textarea-Padding) * 2));
