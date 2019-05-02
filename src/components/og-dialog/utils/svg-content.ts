@@ -5,39 +5,22 @@
 export const SVGContent = {
     success:
     `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-        <g data-name="Circle Check" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-            <circle cx="12" cy="12" r="11"/>
-            <path d="M17.155 8.345l-7.31 7.31-3-3"/>
-        </g>
+        <path data-name="Success Circle" fill="currentColor" d="M12 0a12 12 0 1 0 12 12A12.013 12.013 0 0 0 12 0zm5.862 9.052l-7.31 7.31a1 1 0 0 1-1.414 0l-3-3a1 1 0 0 1 1.414-1.414l2.293 2.293 6.603-6.603a1 1 0 1 1 1.414 1.414z" />
     </svg>`,
     warning:
     `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-        <g data-name="Ebene 30">
-            <circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v8"/>
-            <circle cx="12" cy="17" r="1" stroke="currentColor" />
-        </g>
+        <path data-name="Warning Circle" fill="currentColor" d="M12 0a12 12 0 1 0 12 12A12.013 12.013 0 0 0 12 0zm0 18a1 1 0 1 1 1-1 1 1 0 0 1-1 1zm1-4a1 1 0 0 1-2 0V6a1 1 0 0 1 2 0z" />
     </svg>`,
     error:
     `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" data-name="Ebene 28">
-            <circle cx="12" cy="12" r="11"/>
-            <path d="M7.7574 7.7574l8.4852 8.4852M7.7574 16.2426l8.4852-8.4852"/>
-        </g>
+        <path data-name="Error Circle" fill="currentColor" d="M12 0a12 12 0 1 0 12 12A12.013 12.013 0 0 0 12 0zm4.95 15.535a1 1 0 1 1-1.415 1.414L12 13.414l-3.536 3.535a1 1 0 1 1-1.414-1.414L10.586 12 7.05 8.465A1 1 0 0 1 8.464 7.05L12 10.586l3.535-3.535a1 1 0 1 1 1.414 1.414L13.414 12z" />
     </svg>`,
     info: // MISSING ICON!
     `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-        <g data-name="Circle Check" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-            <circle cx="12" cy="12" r="11"/>
-            <path d="M17.155 8.345l-7.31 7.31-3-3"/>
-        </g>
+        <path data-name="Info Circle" fill="currentColor" d="M13 11a1 1 0 0 0-2 0v7a1 1 0 0 0 2 0zm-1-5a1 1 0 1 0 1 1 1 1 0 0 0-1-1zm0 18a12 12 0 1 1 12-12 12 12 0 0 1-12 12z"/>
     </svg>`,
     question:
     `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-        <g data-name="Ebene 31">
-            <circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-            <circle cx="12" cy="17" r="1" stroke="currentColor"/>
-            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 9a3 3 0 1 1 3 3v2"/>
-        </g>
+        <path data-name="Question Circle" fill="currentColor" d="M12 0a12 12 0 1 0 12 12A12.013 12.013 0 0 0 12 0zm0 18a1 1 0 1 1 1-1 1 1 0 0 1-1 1zm1-5.127V14a1 1 0 0 1-2 0v-2a1 1 0 0 1 1-1 2 2 0 1 0-2-2 1 1 0 0 1-2 0 4 4 0 1 1 5 3.873z" />
     </svg>`,
 }
