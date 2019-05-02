@@ -54,7 +54,13 @@ export class OgCombobox {
     @State() dropdownActive: boolean = false;
 
     @Listen('window:scroll')
-    handleScroll(_ev: Event) {
+    handleWindowScroll(_ev: Event) {
+        // close flyout on scroll events
+        this.dropdownActive = false;
+    }
+
+    @Listen('body:scroll')
+    handleBodyScroll(_ev: Event) {
         // close flyout on scroll events
         this.dropdownActive = false;
     }
