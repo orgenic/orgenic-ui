@@ -7,7 +7,7 @@
     const licenseheader = `/**
  * ORGENIC-UI
  * @license MIT
- * See LICENSE file for more information
+ * See LICENSE file at https://github.com/orgenic/orgenic-ui/blob/master/LICENSE
  **/`;
 
     let fail = false;
