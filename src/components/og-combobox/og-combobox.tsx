@@ -1,3 +1,9 @@
+/**
+ * ORGENIC-UI
+ * @license MIT
+ * See LICENSE file at https://github.com/orgenic/orgenic-ui/blob/master/LICENSE
+ **/
+
 import {
     Component,
     Prop,
@@ -54,7 +60,13 @@ export class OgCombobox {
     @State() dropdownActive: boolean = false;
 
     @Listen('window:scroll')
-    handleScroll(_ev: Event) {
+    handleWindowScroll(_ev: Event) {
+        // close flyout on scroll events
+        this.dropdownActive = false;
+    }
+
+    @Listen('body:scroll')
+    handleBodyScroll(_ev: Event) {
         // close flyout on scroll events
         this.dropdownActive = false;
     }
