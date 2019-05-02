@@ -32,18 +32,17 @@
   --BorderStyle: solid;
   --BorderColor: transparent;
 
+  --og-button-BorderRadius:         var( --OG-BORDER-RADIUS, #{$og-border-radius});
 
-  --og-button-BorderRadius: var( --OG-BORDER-RADIUS, #{$og-border-radius});
+  --og-button-Background:           var(--OG-COLOR-SECONDARY--100--20, #{$og-color-secondary--100--20});
+  --og-button-Background--hover:    var(--OG-COLOR-SECONDARY--100--30, #{$og-color-secondary--100--30});
+  --og-button-Background--active:   var(--OG-COLOR-SECONDARY--100--10, #{$og-color-secondary--100--10});
+  --og-button-Background--disabled: var(--OG-COLOR-SECONDARY--100--07, #{$og-color-secondary--100--07});
 
-  --og-button-Background: var(--OG-COLOR-SECONDARY--100--20, #{$og-color-secondary--100--20});
-  --og-button-Background--hover: var( --OG-COLOR-SECONDARY--100--30, #{$og-color-secondary--100--10});
-  --og-button-Background--active: var( --OG-COLOR-SECONDARY--100--10, #{$og-color-secondary--100--30 });
-  --og-button-Background--disabled: var( --OG-COLOR-SECONDARY--100--07, #{$og-color-secondary--100--07});
-
-  --og-button-Color: var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
-  --og-button-Color--hover: var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
-  --og-button-Color--active: var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
-  --og-button-Color--disabled: var(--OG-COLOR-SHADE--100--30, #{$og-color-shade--100--30});
+  --og-button-Color:                var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
+  --og-button-Color--hover:         var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
+  --og-button-Color--active:        var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
+  --og-button-Color--disabled:      var(--OG-COLOR-SHADE--100--30, #{$og-color-shade--100--30});
 
   --og-button-FontWeight: 500;
 
@@ -73,9 +72,9 @@
 
 :host([data-context~='workflow']) {
     --og-button-Background: var(--OG-COLOR-PRIMARY--100, #{$og-color-primary--100});
-    --og-button-Background--hover: var( --OG-COLOR-PRIMARY--120, #{$og-color-primary--80});
-    --og-button-Background--active: var( --OG-COLOR-PRIMARY--80, #{$og-color-primary--120} );
-    --og-button-Background--disabled: var( --OG-COLOR-PRIMARY--100--30, #{$og-color-primary--100--30});
+    --og-button-Background--hover: var(--OG-COLOR-PRIMARY--120, #{$og-color-primary--120});
+    --og-button-Background--active: var(--OG-COLOR-PRIMARY--80, #{$og-color-primary--80});
+    --og-button-Background--disabled: var(--OG-COLOR-PRIMARY--100--30, #{$og-color-primary--100--30});
 
     --og-button-Color: var(--OG-COLOR-SHADE--0, #{$og-color-shade--0});
     --og-button-Color--hover: var(--OG-COLOR-SHADE--0, #{$og-color-shade--0});
@@ -86,8 +85,8 @@
 // 'Link' version
 :host([data-context~="link"]) {
     --og-button-Background: transparent;
-    --og-button-Background--hover: var( --OG-COLOR-SHADE--100--30, #{$og-color-shade--100--10});
-    --og-button-Background--active: var( --OG-COLOR-SHADE--100--10, #{$og-color-shade--100--20} );
+    --og-button-Background--hover: var(--OG-COLOR-SHADE--100--30, #{$og-color-shade--100--30});
+    --og-button-Background--active: var(--OG-COLOR-SHADE--100--10, #{$og-color-shade--100--10});
     --og-button-Background--disabled: transparent;
 
     --og-button-Color: var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
