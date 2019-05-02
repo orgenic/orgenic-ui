@@ -1,6 +1,7 @@
 # [0.2.0](https://github.com/orgenic/orgenic-ui/compare/v0.1.5...v0.2.0) (2019-xx-xx)
 
 ### Bug Fixes
+* list item values are only added to the DOM if values are really available
 
 ### Features
 * dialogs
