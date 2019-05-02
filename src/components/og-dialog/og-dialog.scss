@@ -1,0 +1,365 @@
+:host {
+    // Overlay
+    // -------------------------------------------------------------------------
+    /**
+     * @prop --og-dialog__overlay-Background:
+     * Background of the Dialog Overlay.
+     */
+    --og-dialog__overlay-Background: var(
+        --OG-COLOR-SECONDARY--100--30,
+        #{$og-color-secondary--100--30}
+    );
+
+    /**
+     * @prop --og-dialog__overlay-Background:
+     * Z-Index of the Dialog Overlay.
+     */
+    --og-dialog__overlay-ZIndex: 10000;
+
+    // Dialog
+    // -------------------------------------------------------------------------
+    /**
+     * @prop --og-dialog-Width:
+     * Width of the Dialog
+     */
+    --og-dialog-Width: calc(100% - 2rem);
+
+    /**
+     * @prop --og-dialog-MaxWidth:
+     * Max Width of the Dialog
+     */
+    --og-dialog-MaxWidth: 640px;
+
+    /**
+     * @prop --og-dialog-Height:
+     * Height of the Dialog
+     */
+    --og-dialog-Height: auto;
+
+    /**
+     * @prop --og-dialog-MaxHeight:
+     * Max Height of the Dialog
+     */
+    --og-dialog-MaxHeight: calc(100% - 2rem);
+
+    /**
+     * @prop --og-dialog-Background:
+     * Background of the Dialog
+     */
+    --og-dialog-Background: var(--OG-COLOR-SHADE--0, #{$og-color-shade--0});
+
+    /**
+     * @prop --og-dialog-BorderRadius:
+     * Corner Radius of the Dialog
+     */
+    --og-dialog-BorderRadius: var(--OG-BORDER-RADIUS, 3px);
+
+
+    /**
+     * @prop --og-dialog-BoxSHadow:
+     * Box Shadow of the Dialog Header
+     */
+    --og-dialog-BoxShadow: 0 2px 8px hsla(0, 0%, 0%, 0.2);
+
+
+    // Dialog Header
+    // -------------------------------------------------------------------------
+    /**
+     * @prop --og-dialog__header-Display:
+     * Box Model of the Dialog Header
+     */
+    --og-dialog__header-Display: block;
+
+    /**
+     * @prop --og-dialog__header-TextOverflow:
+     * Text Overflow Behaviour of the Dialog Header
+     */
+    --og-dialog__header-TextOverflow: ellipsis;
+
+    /**
+     * @prop --og-dialog__header-FontSize:
+     * Font Size of the Dialog Header
+     */
+    --og-dialog__header-FontSize: inherit;
+
+    /**
+     * @prop --og-dialog__header-FontWeight:
+     * Font Weight of the Dialog Header
+     */
+    --og-dialog__header-FontWeight: bolder;
+
+    /**
+     * @prop --og-dialog__header-TextTransform:
+     * Text Transformation of the Dialog Header
+     */
+    --og-dialog__header-TextTransform: uppercase;
+
+    /**
+     * @prop --og-dialog__header-Padding:
+     * Padding of the Dialog Header
+     */
+    --og-dialog__header-Padding: 16px 32px;
+
+    /**
+     * @prop --og-dialog__header-BorderWidth:
+     * Border Width of the Dialog Header (all 4 sides)
+     */
+    --og-dialog__header-BorderWidth: 0 0 1px 0;
+
+    /**
+     * @prop --og-dialog__header-BorderStyle:
+     * Border Style of the Dialog Header (all 4 sides)
+     */
+    --og-dialog__header-BorderStyle: solid;
+
+    /**
+     * @prop --og-dialog__header-BorderColor:
+     * Border Color of the Dialog Header (all 4 sides)
+     */
+    --og-dialog__header-BorderColor: var(
+        --OG-COLOR-SECONDARY--100--20,
+        #{$og-color-secondary--100--20}
+
+    );
+
+    // Dialog Content
+    // -------------------------------------------------------------------------
+    /**
+     * @prop --og-dialog__content-Padding:
+     * Padding for the Dialog Content
+     */
+    --og-dialog__content-Padding: 16px 32px;
+
+    // Dialog Image
+    // -------------------------------------------------------------------------
+    /**
+     * @prop --og-dialog__svg-container-Width:
+     * Width of the Container around Dialog Content Img
+     */
+    --og-dialog__svg-container-Width: 40px;
+
+    /**
+     * @prop --og-dialog__svg-Background:
+     * Background of the Dialog Content Img
+     */
+    --og-dialog__svg-Background: none;
+
+    /**
+     * @prop --og-dialog__svg-Color:
+     * Color of the Dialog Content Img
+     */
+    --og-dialog__svg-Color: var(
+        --OG-COLOR-INFO--100,
+        #{$og-color-info--100}
+    );;
+
+    /**
+     * @prop --og-dialog--info__svg-Color:
+     * Color of the Dialog Content Img when inside 'Dialog Info'
+     */
+    --og-dialog--info__svg-Color: var(
+        --OG-COLOR-INFO--100,
+        #{$og-color-info--100}
+    );
+
+    /**
+     * @prop --og-dialog--success__svg-Color:
+     * Color of the Dialog Content Img when inside 'Dialog Success'
+     */
+    --og-dialog--success__svg-Color: var(
+        --OG-COLOR-SUCCESS--100,
+        #{$og-color-success--100}
+    );
+
+    /**
+     * @prop --og-dialog--warning__svg-Color:
+     * Color of the Dialog Content Img when inside 'Dialog Warning'
+     */
+    --og-dialog--warning__svg-Color: var(
+        --OG-COLOR-WARNING--100,
+        #{$og-color-warning--100}
+    );
+
+    /**
+     * @prop --og-dialog--error__svg-Color:
+     * Color of the Dialog Content Img when inside 'Dialog Error'
+     */
+    --og-dialog--error__svg-Color: var(
+        --OG-COLOR-error--100,
+        #{$og-color-error--100}
+    );
+
+    /**
+     * @prop --og-dialog__svg-Padding:
+     * Inner Space of the Dialog Content Img
+     */
+    --og-dialog__svg-Padding: 4px;
+
+    /**
+     * @prop --og-dialog__svg-Margin:
+     * Outer Space of the Dialog Content Img
+     */
+    --og-dialog__svg-Margin: 0;
+
+    /**
+     * @prop --og-dialog__svg-Width:
+     * Width of the Dialog Content Img
+     */
+    --og-dialog__svg-Width: 28px;
+
+    /**
+     * @prop --og-dialog__svg-Height:
+     * Height of the Dialog Content Img
+     */
+    --og-dialog__svg-Height: var(--og-dialog__svg-Width);
+
+    /**
+     * @prop --og-dialog__svg-Display:
+     * Box Model of the Dialog Content Img
+     */
+    --og-dialog__svg-Display: block;
+
+    /**
+     * @prop --og-dialog__svg-BorderRadius:
+     * Corner Radius of the Dialog Content Img
+     */
+    --og-dialog__svg-BorderRadius: 50%;
+
+    // Dialog Footer
+    // -------------------------------------------------------------------------
+    /**
+     * @prop --og-dialog__footer-Padding:
+     * Inner Space of the Dialog Footer
+     */
+    --og-dialog__footer-Padding: 16px 32px 32px;
+
+    /**
+     * @prop --og-dialog__footer-background:
+     * Background of the Dialog Footer
+     */
+    --og-dialog__footer-Background: none;
+
+    // :host Styling
+    // -------------------------------------------------------------------------
+    box-sizing: border-box;
+    *,
+    *::before,
+    *::after {
+        box-sizing: inherit;
+    }
+}
+
+// Variant for a 'success' Dialog
+:host(.og-dialog--success) {
+   --og-dialog__svg-Color: var(--og-dialog--success__svg-Color)
+}
+
+// Variant for a 'warning' Dialog
+:host(.og-dialog--warning) {
+   --og-dialog__svg-Color: var(--og-dialog--warning__svg-Color)
+}
+
+// Variant for a 'error' Dialog
+:host(.og-dialog--error) {
+   --og-dialog__svg-Color: var(--og-dialog--error__svg-Color)
+}
+
+// Variant for a 'info' Dialog
+:host(.og-dialog--info) {
+   --og-dialog__svg-Color: var(--og-dialog--info__svg-Color)
+}
+
+// Background for the Dialog
+.og-dialog__container {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    z-index: var(--og-dialog__overlay-ZIndex);
+}
+
+// Extends 'og-dialog__overlay' and makes it visible
+.og-dialog__container--visible {
+    display: flex;
+}
+
+// Background for the Dialog
+.og-dialog__overlay {
+    background: var(--og-dialog__overlay-Background);
+    user-select: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+
+// Dialog
+.og-dialog__box {
+    height: var(--og-dialog-Height);
+    max-height: var(--og-dialog-MaxHeight);
+    width: var(--og-dialog-Width);
+    max-width: var(--og-dialog-MaxWidth);
+    margin: auto;
+    background: var(--og-dialog-Background);
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--og-dialog-BoxShadow);
+    border-radius: var(--og-dialog-BorderRadius);
+    user-select: text;
+    z-index: 1;
+}
+// Dialog Header (top Part)
+.og-dialog__header {
+    display: flex;
+    align-items: center;
+    padding: var(--og-dialog__header-Padding);
+    border-width: var(--og-dialog__header-BorderWidth);
+    border-style: var(--og-dialog__header-BorderStyle);
+    border-color: var(--og-dialog__header-BorderColor);
+}
+
+// Dialog Title
+.og-dialog__title {
+    display: var(--og-dialog__header-Display);
+    font-size: var(--og-dialog__header-FontSize);
+    font-weight: var(--og-dialog__header-FontWeight);
+    text-transform: var(--og-dialog__header-TextTransform);
+    text-overflow: var(--og-dialog__header-TextOverflow);
+    overflow: hidden;
+    white-space: nowrap;
+    flex: 1
+}
+
+// Dialog Content (middle Part)
+.og-dialog__content {
+    padding: var(--og-dialog__content-Padding);
+    overflow: auto;
+    flex: 1;
+}
+
+// Dialog Content Image
+.og-dialog__svg-container {
+    width: var(--og-dialog__svg-container-Width);
+
+    svg {
+        display: var(--og-dialog__svg-Display);
+        background: var(--og-dialog__svg-Background);
+        color: var(--og-dialog__svg-Color);
+        width: var(--og-dialog__svg-Width);
+        height: var(--og-dialog__svg-Height);
+        padding: var(--og-dialog__svg-Padding);
+        margin: var(--og-dialog__svg-Margin);
+        border-radius: var(--og-dialog__svg-BorderRadius);
+    }
+}
+
+// Dialog Footer (bottom Part)
+.og-dialog__footer {
+    text-align: right;
+    background: var(--og-dialog__footer-Background);
+    padding: var(--og-dialog__footer-Padding);
+}

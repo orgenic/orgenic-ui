@@ -1,6 +1,6 @@
 import { newE2EPage, E2EElement, E2EPage } from '@stencil/core/testing';
 
-describe('og-tab-container', () => {
+describe('og-card', () => {
     let page: E2EPage;
     let component: E2EElement;
 
