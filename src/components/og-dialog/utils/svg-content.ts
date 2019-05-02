@@ -1,6 +1,6 @@
 /**
- * Temporary helper class to separate SVG source from dialogs.
- * Will be deprecated when we have a SVG component and maybe a SVG registry.
+ * @deprecated: Temporary container to separate SVG source from dialogs.
+ * Will be replaced when we have a SVG component and a SVG registry.
  */
 export const SVGContent = {
     success:

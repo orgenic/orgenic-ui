@@ -1,4 +1,5 @@
 import { Component, Prop, Event, EventEmitter } from '@stencil/core';
+import { SVGContent } from '../utils/svg-content';
 
 @Component({
   tag: 'og-confirm-dialog',
@@ -19,7 +20,7 @@ export class OgConfirmDialog {
     /**
      * Optional SVG Icon as markup.
      */
-    @Prop() svgIcon: string;
+    @Prop() svgIcon: string = SVGContent['question'];
 
     /**
      * Label for confirmation button.
