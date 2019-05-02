@@ -149,8 +149,44 @@
      * Color of the Dialog Content Img
      */
     --og-dialog__svg-Color: var(
+        --OG-COLOR-INFO--100,
+        #{$og-color-info--100}
+    );;
+
+    /**
+     * @prop --og-dialog--info__svg-Color:
+     * Color of the Dialog Content Img when inside 'Dialog Info'
+     */
+    --og-dialog--info__svg-Color: var(
+        --OG-COLOR-INFO--100,
+        #{$og-color-info--100}
+    );
+
+    /**
+     * @prop --og-dialog--success__svg-Color:
+     * Color of the Dialog Content Img when inside 'Dialog Success'
+     */
+    --og-dialog--success__svg-Color: var(
         --OG-COLOR-SUCCESS--100,
         #{$og-color-success--100}
+    );
+
+    /**
+     * @prop --og-dialog--warning__svg-Color:
+     * Color of the Dialog Content Img when inside 'Dialog Warning'
+     */
+    --og-dialog--warning__svg-Color: var(
+        --OG-COLOR-WARNING--100,
+        #{$og-color-warning--100}
+    );
+
+    /**
+     * @prop --og-dialog--error__svg-Color:
+     * Color of the Dialog Content Img when inside 'Dialog Error'
+     */
+    --og-dialog--error__svg-Color: var(
+        --OG-COLOR-error--100,
+        #{$og-color-error--100}
     );
 
     /**
@@ -215,10 +251,22 @@
 
 // Variant for a 'success' Dialog
 :host(.og-dialog--success) {
+   --og-dialog__svg-Color: var(--og-dialog--success__svg-Color)
 }
 
 // Variant for a 'warning' Dialog
 :host(.og-dialog--warning) {
+   --og-dialog__svg-Color: var(--og-dialog--warning__svg-Color)
+}
+
+// Variant for a 'error' Dialog
+:host(.og-dialog--error) {
+   --og-dialog__svg-Color: var(--og-dialog--error__svg-Color)
+}
+
+// Variant for a 'info' Dialog
+:host(.og-dialog--info) {
+   --og-dialog__svg-Color: var(--og-dialog--info__svg-Color)
 }
 
 // Background for the Dialog
