@@ -18,29 +18,29 @@
 
 :host {
     // Card
-    --og-card-BackgroundColor:          var(--OG-COLOR-SHADE--0--80,        #{$og-color-shade--0--80});
-    --og-card-BorderColor:              var(--OG-COLOR-SHADE--0,            #{$og-color-shade--0});
-    --og-card-BorderRadius:             var(--OG-BORDER-RADIUS,             #{$og-border-radius});
-    --og-card-BorderWidth:              var(--OG-BORDER-WIDTH,              #{$og-border-width});
+    --og-card-BackgroundColor:          var(--OG-COLOR-SHADE--0--80,    #{$og-color-shade--0--80});
+    --og-card-BorderColor:              transparent;
+    --og-card-BorderRadius:             var(--OG-BORDER-RADIUS,         #{$og-border-radius});
+    --og-card-BorderWidth:              var(--OG-BORDER-WIDTH,          #{$og-border-width});
     --og-card-Margin:                   8px;
 
     // Header
-    --og-card__header-BorderColor:      transparent;
+    --og-card__header-BorderColor:      var(--OG-COLOR-SECONDARY--100--20,  #{$og-color-secondary--100--20});
     --og-card__header-BorderStyle:      solid;
-    --og-card__header-BorderWidth:      0;
+    --og-card__header-BorderWidth:      0 0 1px 0;
 
-    --og-card__header-FontSize:         0.875rem;
-    --og-card__header-FontWeight:       bold;
+    --og-card__header-FontSize:         1.125rem;
+    --og-card__header-FontWeight:       500;
     --og-card__header-TextTransform:    uppercase;
 
     --og-card__header-Margin:           0 32px;
     --og-card__header-Padding:          0;
 
     // Content
-    --og-card__content-Padding:         8px 32px;
+    --og-card__content-Padding:         16px 32px;
 
     // Footer
-    --og-card__footer-Padding:          8px 32px;
+    --og-card__footer-Padding:          16px 32px;
     --og-card__footer-TextAlign:        right;
 
     box-sizing: border-box;
