@@ -23,15 +23,15 @@
     --og-expander-BorderColor: transparent;
     --og-expander-BorderRadius: var(--OG-BORDER-RADIUS, #{$og-border-radius});
     --og-expander-BorderWidth: var(--OG-BORDER-WIDTH, #{$og-border-width});
-    --og-expander-Margin: 8px;
+    --og-expander-Margin: 0 0 8px 0;
 
     // Header
     --og-expander__header-BorderColor: transparent;
     --og-expander__header-BorderStyle: solid;
     --og-expander__header-BorderWidth: 0;
 
-    --og-expander__header-FontSize: 0.875rem;
-    --og-expander__header-FontWeight: bold;
+    --og-expander__header-FontSize: inherit;
+    --og-expander__header-FontWeight: 500;
     --og-expander__header-TextTransform: uppercase;
 
     --og-expander__header-Margin: 0;
@@ -54,7 +54,7 @@
     border-width: var(--og-expander-BorderWidth);
     border-radius: var(--og-expander-BorderRadius);
 
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 4px rgba(0, 0, 0, .2);
     box-sizing: border-box;
     *,
     *::before,
