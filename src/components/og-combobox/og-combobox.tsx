@@ -157,9 +157,8 @@ export class OgCombobox {
 
         return {
             top: flyoutTop + 'px',
-            width: window.getComputedStyle(this.indicatorElement.parentElement).width,
-            height: flyoutHeight + 'px',
-            overflowY: 'scroll'
+            width: window.getComputedStyle(this.flyoutList.parentElement).width,
+            height: flyoutHeight + 'px'
         }
     }
 
