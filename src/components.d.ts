@@ -181,18 +181,36 @@ export namespace Components {
   }
 
   interface OgConfirmDialog {
-    'cancelText': string;
-    'confirmText': string;
+    /**
+    * Label for cancel button.
+    */
+    'cancelLabel': string;
+    /**
+    * Label for confirmation button.
+    */
+    'confirmLabel': string;
     /**
     * The title for this modal dialog
     */
     'name': string;
+    /**
+    * Optional SVG Icon as markup.
+    */
     'svgIcon': string;
+    /**
+    * Visibility state of this dialog.
+    */
     'visible': boolean;
   }
   interface OgConfirmDialogAttributes extends StencilHTMLAttributes {
-    'cancelText'?: string;
-    'confirmText'?: string;
+    /**
+    * Label for cancel button.
+    */
+    'cancelLabel'?: string;
+    /**
+    * Label for confirmation button.
+    */
+    'confirmLabel'?: string;
     /**
     * The title for this modal dialog
     */
@@ -205,7 +223,13 @@ export namespace Components {
     * Event is being emitted when value changes.
     */
     'onConfirmed'?: (event: CustomEvent<Event>) => void;
+    /**
+    * Optional SVG Icon as markup.
+    */
     'svgIcon'?: string;
+    /**
+    * Visibility state of this dialog.
+    */
     'visible'?: boolean;
   }
 
@@ -239,17 +263,32 @@ export namespace Components {
   }
 
   interface OgMessageDialog {
-    'approveText': string;
+    /**
+    * Label for approve button.
+    */
+    'approveLabel': string;
     /**
     * The title for this modal dialog
     */
     'name': string;
+    /**
+    * Optional SVG Icon as markup.
+    */
     'svgIcon': string;
+    /**
+    * Dialog type can be: success / warning / error / info with. An icon as well as the icon color will be automatically assigned.
+    */
     'type': 'success' | 'warning' | 'error' | 'info';
+    /**
+    * Visibility state of this dialog.
+    */
     'visible': boolean;
   }
   interface OgMessageDialogAttributes extends StencilHTMLAttributes {
-    'approveText'?: string;
+    /**
+    * Label for approve button.
+    */
+    'approveLabel'?: string;
     /**
     * The title for this modal dialog
     */
@@ -258,8 +297,17 @@ export namespace Components {
     * Event is being emitted when value changes.
     */
     'onConfirmed'?: (event: CustomEvent<Event>) => void;
+    /**
+    * Optional SVG Icon as markup.
+    */
     'svgIcon'?: string;
+    /**
+    * Dialog type can be: success / warning / error / info with. An icon as well as the icon color will be automatically assigned.
+    */
     'type'?: 'success' | 'warning' | 'error' | 'info';
+    /**
+    * Visibility state of this dialog.
+    */
     'visible'?: boolean;
   }
 

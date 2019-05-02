@@ -11,12 +11,25 @@ export class OgConfirmDialog {
      */
     @Prop() name: string;
 
+    /**
+     * Visibility state of this dialog.
+     */
     @Prop({ mutable: true, reflectToAttr: true }) visible: boolean = false;
 
+    /**
+     * Optional SVG Icon as markup.
+     */
     @Prop() svgIcon: string;
 
-    @Prop() confirmText: string = 'OK';
-    @Prop() cancelText: string = 'Cancel';
+    /**
+     * Label for confirmation button.
+     */
+    @Prop() confirmLabel: string = 'OK';
+
+    /**
+     * Label for cancel button.
+     */
+    @Prop() cancelLabel: string = 'Cancel';
 
     /**
      * Event is being emitted when value changes.
@@ -45,8 +58,8 @@ export class OgConfirmDialog {
                     <slot></slot>
                 </div>
                 <div slot="footer">
-                    <og-button label={ this.cancelText } onClicked={ _e => this.handleCancel() }></og-button>{' '}
-                    <og-button label={ this.confirmText } onClicked={ _e => this.handleConfirm() }></og-button>
+                    <og-button label={ this.cancelLabel } onClicked={ _e => this.handleCancel() }></og-button>{' '}
+                    <og-button label={ this.confirmLabel } onClicked={ _e => this.handleConfirm() }></og-button>
                 </div>
             </og-dialog>
         );

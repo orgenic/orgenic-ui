@@ -12,13 +12,26 @@ export class OgMessageDialog {
      */
     @Prop() name: string;
 
+    /**
+     * Visibility state of this dialog.
+     */
     @Prop({ mutable: true, reflectToAttr: true }) visible: boolean = false;
 
+    /**
+     * Dialog type can be: success / warning / error / info with.
+     * An icon as well as the icon color will be automatically assigned.
+     */
     @Prop() type: 'success' | 'warning' | 'error' | 'info' = 'success';
 
+    /**
+     * Optional SVG Icon as markup.
+     */
     @Prop() svgIcon: string;
 
-    @Prop() approveText: string = 'OK';
+    /**
+     * Label for approve button.
+     */
+    @Prop() approveLabel: string = 'OK';
 
     /**
      * Event is being emitted when value changes.
@@ -44,7 +57,7 @@ export class OgMessageDialog {
                     <slot></slot>
                 </div>
                 <div slot="footer">
-                    <og-button label={ this.approveText } onClicked={ _e => this.handleConfirm() }></og-button>
+                    <og-button label={ this.approveLabel } onClicked={ _e => this.handleConfirm() }></og-button>
                 </div>
             </og-dialog>
         );
