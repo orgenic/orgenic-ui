@@ -33,9 +33,9 @@
     --og-toggle-switch__toggle-BorderColor: none;
     --og-toggle-switch__toggle-Padding: calc((var(--og-toggle-switch__toggle-Height) - var(--og-toggle-switch__indicator-Height)) / 2 - var(--og-toggle-switch__toggle-BorderWidth));
 
-    --og-toggle-switch__indicator-Background: var(--OG-COLOR-SECONDARY--0, #{$og-color-secondary--100});
-    --og-toggle-switch__indicator-Background--hover: var(--OG-COLOR-SECONDARY--0, #{$og-color-secondary--100});
-    --og-toggle-switch__indicator-Background--active: var(--OG-COLOR-SECONDARY--0, #{$og-color-secondary--100});
+    --og-toggle-switch__indicator-Background: var(--OG-COLOR-SECONDARY--0, #{$og-color-secondary--0});
+    --og-toggle-switch__indicator-Background--hover: var(--OG-COLOR-SECONDARY--0, #{$og-color-secondary--0});
+    --og-toggle-switch__indicator-Background--active: var(--OG-COLOR-SECONDARY--0, #{$og-color-secondary--0});
     --og-toggle-switch__indicator-BorderRadius: 2px;
     --og-toggle-switch__indicator-Width: 1.375rem;
     --og-toggle-switch__indicator-Height: 1.375rem;
