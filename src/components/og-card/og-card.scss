@@ -23,6 +23,7 @@
     --og-card-BorderColor:              transparent;
     --og-card-BorderRadius:             var(--OG-BORDER-RADIUS,         #{$og-border-radius});
     --og-card-BorderWidth:              var(--OG-BORDER-WIDTH,          #{$og-border-width});
+
     --og-card-BoxShadow:                0 0 8px rgba(0, 0, 0, .3);
     --og-card-Margin:                   8px;
 
@@ -32,6 +33,7 @@
     --og-card__header-BorderWidth:      0 0 1px 0;
 
     --og-card__header-FontSize:         1.125rem;
+
     --og-card__header-FontWeight:       var(--OG-FONT-WEIGHT--MEDIUM, 500);
     --og-card__header-TextTransform:    uppercase;
 
