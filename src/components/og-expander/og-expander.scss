@@ -30,8 +30,8 @@
     --og-expander__header-BorderStyle: solid;
     --og-expander__header-BorderWidth: 0;
 
-    --og-expander__header-FontSize: 0.875rem;
-    --og-expander__header-FontWeight: bold;
+    --og-expander__header-FontSize: 1rem;
+    --og-expander__header-FontWeight: var(--OG-FONT-WEIGHT--MEDIUM, 500);
     --og-expander__header-TextTransform: uppercase;
 
     --og-expander__header-Margin: 0;

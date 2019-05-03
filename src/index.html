@@ -17,13 +17,14 @@
 
     <link rel="stylesheet" href="/themes/dark.theme.css">
     <link rel="stylesheet" href="/themes/light.theme.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,600" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <style>
         body {
             background: rgba(29, 161, 211, 0.1);
             color: #333;
             font-size: 16px;
             font-family: Roboto;
+            font-weight: var(--OG-FONT-WEIGHT, 400);
             display: flex;
             justify-content: center;
             user-select: none;
@@ -31,6 +32,7 @@
 
         h1 {
             padding-left: 8px;
+            font-weight: normal;
         }
 
         header {
@@ -58,6 +60,10 @@
         .example--column {
             flex-direction: column;
         }
+
+        b {
+            font-weight: var(--OG-FONT-WEIGHT--MEDIUM, 500);
+        }
     </style>
 </head>
 
@@ -70,7 +76,8 @@
         <og-card name="Switch Theme">
             <div slot="content" slot="content">
                 It's possible to change ORGENIC UI themes at application runtime without reloading.
-                <p><b>Choose your favourite theme!</b></p>
+                <br /><br />
+                <b>Choose your favourite theme!</b>
             </div>
             <div slot="footer">
                 <og-button id="theme_light" label="Light"></og-button>
@@ -87,7 +94,56 @@
         </script>
 
         <!--
-        Expander
+        og-dialog
+        -->
+        <og-card name="Dialog">
+            <div slot="content" slot="content">
+                <og-dialog name="Custom Dialog" id="customDialog">
+                    <div slot="content">Custom Dialog Content</div>
+                    <div slot="footer">
+                        <og-button label="Close Dialog" id="closeCustomDialog"></og-button>
+                    </div>
+                </og-dialog>
+                <og-confirm-dialog name="Cancel Task" id="confirmDialog">
+                    <div>Confirm Dialog Content</div>
+                </og-confirm-dialog>
+                <og-message-dialog name="Task Finished" id="messageDialog" type="success">
+                    <div>Message Dialog Content</div>
+                </og-message-dialog>
+                <og-button label="Open Custom Dialog" id="openCustomDialog"></og-button>
+                <og-button label="Open Confirm Dialog" id="openConfirmDialog"></og-button>
+                <og-button label="Open Success Dialog" id="openSuccessDialog"></og-button>
+            </div>
+        </og-card>
+        <script>
+            const customDialogButton = document.querySelector('#openCustomDialog');
+            const customDialogButtonClose = document.querySelector('#closeCustomDialog');
+            customDialogButton.addEventListener('clicked', (e) => {
+                document.querySelector('#customDialog').setAttribute('visible', 'true');
+            });
+            customDialogButtonClose.addEventListener('clicked', e => {
+                document.querySelector('#customDialog').setAttribute('visible', 'false');
+            });
+
+            const confirmDialogButton = document.querySelector('#openConfirmDialog');
+            confirmDialogButton.addEventListener('clicked', (e) => {
+                document.querySelector('#confirmDialog').setAttribute('visible', 'true');
+            });
+
+            const successDialogButton = document.querySelector('#openSuccessDialog');
+            successDialogButton.addEventListener('clicked', (e) => {
+                document.querySelector('#messageDialog').setAttribute('visible', 'true');
+            });
+            const successDialog = document.querySelector('#messageDialog');
+            successDialog.addEventListener('confirmed', (e) => console.log('success dialog confirmed'));
+
+            const confirmDialog = document.querySelector('#confirmDialog');
+            confirmDialog.addEventListener('confirmed', (e) => console.log('confirm dialog confirmed'));
+            confirmDialog.addEventListener('cancelled', (e) => console.log('confirm dialog cancelled'));
+        </script>
+
+        <!--
+        og-expander
         -->
         <og-card name="Expander">
             <div slot="content" slot="content">
@@ -511,14 +567,14 @@
         -->
         <og-card name="Buttons">
             <div slot="content" class="example">
-                <og-button label="Default"></og-button>
-                <og-button label="Link" data-context="link"></og-button>
-                <og-button label="Workflow" data-context="workflow"></og-button>
-                <og-button label="Disabled" disabled></og-button>
+                <og-button class="demo-button" label="Default"></og-button>
+                <og-button class="demo-button" label="Link" data-context="link"></og-button>
+                <og-button class="demo-button" label="Workflow" data-context="workflow"></og-button>
+                <og-button class="demo-button" label="Disabled" disabled></og-button>
             </div>
         </og-card>
         <script>
-            const buttons = document.querySelectorAll('og-button');
+            const buttons = document.querySelectorAll('.demo-button');
             buttons.forEach(button => {
                 button.addEventListener('clicked', (e) => {
                     console.log('clicked', e);

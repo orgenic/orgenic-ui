@@ -1,3 +1,9 @@
+/**
+ * ORGENIC-UI
+ * @license MIT
+ * See LICENSE file at https://github.com/orgenic/orgenic-ui/blob/master/LICENSE
+ **/
+
 import { Component, Prop, Event, EventEmitter } from '@stencil/core';
 
 @Component({
