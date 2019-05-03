@@ -80,13 +80,13 @@
      * @prop --og-dialog__header-FontSize:
      * Font Size of the Dialog Header
      */
-    --og-dialog__header-FontSize: inherit;
+    --og-dialog__header-FontSize: 18px;
 
     /**
      * @prop --og-dialog__header-FontWeight:
      * Font Weight of the Dialog Header
      */
-    --og-dialog__header-FontWeight: bolder;
+    --og-dialog__header-FontWeight: 500;
 
     /**
      * @prop --og-dialog__header-TextTransform:
@@ -193,7 +193,7 @@
      * @prop --og-dialog__svg-Padding:
      * Inner Space of the Dialog Content Img
      */
-    --og-dialog__svg-Padding: 4px;
+    --og-dialog__svg-Padding: 2px;
 
     /**
      * @prop --og-dialog__svg-Margin:
