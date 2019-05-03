@@ -82,6 +82,19 @@ export class OgCombobox {
         }
     }
 
+    componentDidLoad() {
+        this.flyoutList.addEventListener('wheel', (_ev) => {
+            if (this.flyoutList.scrollTop === 0 && _ev.deltaY < 0) {
+                _ev.cancelBubble = true;
+                _ev.preventDefault();
+            }
+            if (this.flyoutList.scrollTop + this.flyoutList.offsetHeight === this.flyoutList.scrollHeight && _ev.deltaY > 0) {
+                _ev.cancelBubble = true;
+                _ev.preventDefault();
+            }
+        });
+    }
+
     indicatorElement: HTMLElement;
     flyoutList: HTMLElement;
 
@@ -169,9 +182,8 @@ export class OgCombobox {
 
         return {
             top: flyoutTop + 'px',
-            width: window.getComputedStyle(this.indicatorElement.parentElement).width,
-            height: flyoutHeight + 'px',
-            overflowY: 'scroll'
+            width: window.getComputedStyle(this.flyoutList.parentElement).width,
+            height: flyoutHeight + 'px'
         }
     }
 

@@ -44,7 +44,7 @@
   --og-button-Color--active:        var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
   --og-button-Color--disabled:      var(--OG-COLOR-SHADE--100--30, #{$og-color-shade--100--30});
 
-  --og-button-FontWeight: 500;
+  --og-button-FontWeight: var(--OG-FONT-WEIGHT--MEDIUM, 500);
 
   --BoxShadow: var(--og-button-BoxShadow);
   --FontFamily: var(--og-button-FontFamily, inherit);
