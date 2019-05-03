@@ -60,7 +60,7 @@ export class OgConfirmDialog {
                 </div>
                 <div slot="footer">
                     <og-button label={ this.cancelLabel } onClicked={ _e => this.handleCancel() }></og-button>{' '}
-                    <og-button label={ this.confirmLabel } onClicked={ _e => this.handleConfirm() }></og-button>
+                    <og-button data-context="workflow" label={ this.confirmLabel } onClicked={ _e => this.handleConfirm() }></og-button>
                 </div>
             </og-dialog>
         );
