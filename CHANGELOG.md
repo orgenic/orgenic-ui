@@ -3,7 +3,7 @@
 ### Features
 * new component: modal dialog
 
-## Enhancements
+### Enhancements
 * handling of scrolling within combobox flyouts
 * updated card style
 * added license headers in .tsx files
