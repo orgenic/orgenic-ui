@@ -36,6 +36,7 @@
 | `--og-combobox-FontSize`                         | Font size of the combobox label            |
 | `--og-combobox-Opacity`                          | Overall opacity of the combobox            |
 | `--og-combobox-Outline`                          | Outline of the combobox                    |
+| `--og-combobox__button__arrow-Height`            | Height of the toggle icon                  |
 | `--og-combobox__button__arrow-Padding`           | Padding of the toggle icon                 |
 | `--og-combobox__button__arrow-Width`             | Width of the toggle icon                   |
 | `--og-combobox__flyout-Background`               | Background color of the combobox list      |
