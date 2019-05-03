@@ -1,3 +1,17 @@
+# [0.2.0](https://github.com/orgenic/orgenic-ui/compare/v0.1.5...v0.2.0) (2019-05-03)
+
+### Features
+* new component: modal dialog
+
+### Enhancements
+* handling of scrolling within combobox flyouts
+* updated card style
+* added license headers in .tsx files
+
+### Bug Fixes
+* list item values are only added to the DOM if values are really available
+* optimized size of multiline textarea
+
 # [0.1.5](https://github.com/orgenic/orgenic-ui/compare/v0.1.4...v0.1.5) (2019-04-25)
 
 ### Bug Fixes

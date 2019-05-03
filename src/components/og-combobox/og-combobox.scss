@@ -12,6 +12,7 @@
  * @prop --og-combobox-Opacity: Overall opacity of the combobox
  * @prop --og-combobox-Outline: Outline of the combobox
  * @prop --og-combobox__button__arrow-Width: Width of the toggle icon
+ * @prop --og-combobox__button__arrow-Height: Height of the toggle icon
  * @prop --og-combobox__button__arrow-Padding: Padding of the toggle icon
  * @prop --og-combobox__flyout-Background: Background color of the combobox list
  * @prop --og-combobox__flyout-BoxShadow: Shadow of the combobox list
@@ -26,34 +27,33 @@
  */
 
 :host {
-    --og-combobox-Background: var(--OG-COLOR-SHADE--80--05, #{$og-color-shade--80--05});
-    --og-combobox-BorderColor: var(--OG-COLOR-SHADE--50,#{$og-color-shade--50});
-    --og-combobox-BorderWidth: 1px;
-    --og-combobox-BorderStyle: solid;
+    --og-combobox-Background:   var(--OG-COLOR-SHADE--80--05, #{$og-color-shade--80--05});
+    --og-combobox-BorderColor:  var(--OG-COLOR-SHADE--100--20, #{$og-color-shade--100--20}); // --OG-COLOR-SHADE--50
+    --og-combobox-BorderWidth:  1px;
+    --og-combobox-BorderStyle:  solid;
 
-    --og-combobox-Color: var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
-    --og-combobox-FontSize: inherit;
-    --og-combobox-Outline: none;
-    --og-combobox-Opacity: 1;
+    --og-combobox-Color:        var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
+    --og-combobox-FontSize:     inherit;
+    --og-combobox-Outline:      none;
+    --og-combobox-Opacity:      1;
 
-    --og-combobox__flyout-BoxShadow: 0 0.125em 0.25em 0 rgba(0, 0, 0, 0.5);
-    --og-combobox__flyout-Background: var(--OG-COLOR-PRIMARY--0, #{$og-color-primary--0});
+    --og-combobox__flyout-BoxShadow:    none;
+    --og-combobox__flyout-Background:   var(--OG-COLOR-PRIMARY--0, #{$og-color-primary--0});
 
-    --og-combobox__flyout__item-Background: transparent;
-    --og-combobox__flyout__item-Background--hover: var(--OG-COLOR-PRIMARY--100--15, #{$og-color-primary--100--15});
+    --og-combobox__flyout__item-Background:         transparent;
+    --og-combobox__flyout__item-Background--hover:  var(--OG-COLOR-PRIMARY--100--15, #{$og-color-primary--100--15});
     --og-combobox__flyout__item-Background--active: var(--OG-COLOR-PRIMARY--100--30, #{$og-color-primary--100--30});
+    --og-combobox__flyout__item-Color:              var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
 
-    --og-combobox__flyout__item-Color: var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
+    --og-combobox__placeholder-Color:               var(--OG-COLOR-SHADE--50, #{$og-color-shade--50});
 
-    --og-combobox__placeholder-Color: var(--OG-COLOR-SHADE--50, #{$og-color-shade--50});
+    --og-combobox__indicator-Width:         0;
+    --og-combobox__indicator-Height:        2px;
+    --og-combobox__indicator-Background:    var(--OG-COLOR-PRIMARY--100, #{$og-color-primary--100});
 
-    --og-combobox__indicator-Width: 0;
-    --og-combobox__indicator-Height: 2px;
-    --og-combobox__indicator-Background: var(--OG-COLOR-PRIMARY--100, #{$og-color-primary--100});
-
-    --og-combobox__button__arrow-Width: 20px;
-    --og-combobox__button__arrow-Padding: 20px 4px 4px 4px;
-
+    --og-combobox__button__arrow-Width:     16px;
+    --og-combobox__button__arrow-Height:    16px;
+    --og-combobox__button__arrow-Padding:   22px 2px 0 2px;
 
     user-select: none;
     display: flex;
@@ -64,7 +64,6 @@
     cursor: pointer;
     background: var(--og-combobox-Background);
     opacity: var(--og-combobox-Opacity);
-    padding: 4px;
 
     box-sizing: border-box;
     *, *::before, *::after { box-sizing: inherit; }
@@ -88,6 +87,7 @@
 .og-combobox__header {
     display: flex;
     position: relative;
+    margin: 4px;
     outline: var(--og-combobox-Outline);
     border-bottom: var(--og-combobox-BorderWidth) var(--og-combobox-BorderStyle) var(--og-combobox-BorderColor);
 }
@@ -103,7 +103,7 @@
     font-size: var(--og-combobox-FontSize);
     user-select: none;
     margin: 0;
-    padding-top: 24px;
+    padding-top: 25px;
     padding-bottom: 4px;
 
     &::placeholder {
@@ -120,6 +120,7 @@
 .og-combobox__button {
     flex: none;
     width: var(--og-combobox__button__arrow-Width);
+    height: var(--og-combobox__button__arrow-Width);
     padding: var(--og-combobox__button__arrow-Padding);
 }
 
@@ -144,7 +145,6 @@
     transform: rotate(180deg);
 }
 
-
 .og-combobox__button__arrow__line {
     stroke-linecap: round;
     stroke-linejoin: round;
@@ -162,14 +162,16 @@
 // Flyout List
 .og-combobox__flyout__list {
     margin: 0;
+    margin-top: 4px;
     padding: 0;
     list-style-type: none;
     display: none;
     position: fixed;
     width: 100%;
     box-shadow: var(--og-combobox__flyout-BoxShadow);
-    background:  var(--og-combobox__flyout-Background);
+    background: var(--og-combobox__flyout-Background);
     z-index: 9999;
+    overflow-y: auto;
 }
 
 .og-combobox__flyout__list--visible {
@@ -177,11 +179,10 @@
 }
 
 .og-combobox__flyout__list__item {
-    line-height: 1.5;
-    font-weight: 300;
+    line-height: 1.5em;
     display: block;
     cursor: pointer;
-    padding: .5em 1em;
+    padding: 1em 2em;
     transition: background .2s ease;
     color: var(--og-combobox__flyout__item-Color);
     background: var(--og-combobox__flyout__item-Background);

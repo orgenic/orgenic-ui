@@ -1,3 +1,9 @@
+/**
+ * ORGENIC-UI
+ * @license MIT
+ * See LICENSE file at https://github.com/orgenic/orgenic-ui/blob/master/LICENSE
+ **/
+
 import {
     Component,
     Prop,
@@ -54,7 +60,13 @@ export class OgCombobox {
     @State() dropdownActive: boolean = false;
 
     @Listen('window:scroll')
-    handleScroll(_ev: Event) {
+    handleWindowScroll(_ev: Event) {
+        // close flyout on scroll events
+        this.dropdownActive = false;
+    }
+
+    @Listen('body:scroll')
+    handleBodyScroll(_ev: Event) {
         // close flyout on scroll events
         this.dropdownActive = false;
     }
@@ -68,6 +80,19 @@ export class OgCombobox {
             this.dropdownActive = false;
             ev.cancelBubble = true;
         }
+    }
+
+    componentDidLoad() {
+        this.flyoutList.addEventListener('wheel', (_ev) => {
+            if (this.flyoutList.scrollTop === 0 && _ev.deltaY < 0) {
+                _ev.cancelBubble = true;
+                _ev.preventDefault();
+            }
+            if (this.flyoutList.scrollTop + this.flyoutList.offsetHeight === this.flyoutList.scrollHeight && _ev.deltaY > 0) {
+                _ev.cancelBubble = true;
+                _ev.preventDefault();
+            }
+        });
     }
 
     indicatorElement: HTMLElement;
@@ -157,9 +182,8 @@ export class OgCombobox {
 
         return {
             top: flyoutTop + 'px',
-            width: window.getComputedStyle(this.indicatorElement.parentElement).width,
-            height: flyoutHeight + 'px',
-            overflowY: 'scroll'
+            width: window.getComputedStyle(this.flyoutList.parentElement).width,
+            height: flyoutHeight + 'px'
         }
     }
 

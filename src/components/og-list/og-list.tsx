@@ -1,3 +1,9 @@
+/**
+ * ORGENIC-UI
+ * @license MIT
+ * See LICENSE file at https://github.com/orgenic/orgenic-ui/blob/master/LICENSE
+ **/
+
 import { Component, Prop, EventEmitter, Event } from '@stencil/core';
 
 @Component({
@@ -91,7 +97,7 @@ export class OgList {
                                 <div class="og-list__item__label">
                                     { item[this.labelProperty] }
                                 </div>
-                                { this.valueProperty && <div class="og-list__item__value">{ item[this.valueProperty] }</div> }
+                                { this.valueProperty && item[this.valueProperty] && <div class="og-list__item__value">{ item[this.valueProperty] }</div> }
                             </div>
                         </li>
                     )

@@ -6,9 +6,6 @@
     color: var(--OG-FONT-COLOR);
 
     og-toggle-switch {
-        --og-toggle-switch__toggle-Background: transparent;
-        --og-toggle-switch__toggle-Background--active: var(--OG-COLOR-PRIMARY--100);
-        --og-toggle-switch__toggle-BorderColor: var(--OG-COLOR-SHADE--100);
         --og-toggle-switch__indicator-Background: var(--OG-COLOR-SHADE--100);
         --og-toggle-switch__indicator-Background--hover: var(--OG-COLOR-SHADE--100);
         --og-toggle-switch__indicator-Background--active: var(--OG-COLOR-SHADE--100);
@@ -29,27 +26,20 @@
     }
 
 
-    og-button {
-        --og-button-Background--hover: var( --OG-COLOR-SECONDARY--100--30);
-        --og-button-Background--active: var( --OG-COLOR-SECONDARY--100--10);
-
-        &[data-context~='workflow'] {
-            --og-button-Background--hover: var( --OG-COLOR-PRIMARY--120);
-            --og-button-Background--active: var( --OG-COLOR-PRIMARY--80);
-
-            --og-button-Color: var(--OG-COLOR-SHADE--100);
-            --og-button-Color--hover: var(--OG-COLOR-SHADE--100);
-            --og-button-Color--active: var(--OG-COLOR-SHADE--100);
-            --og-button-Color--disabled: var(--OG-COLOR-SHADE--100--30);
-        };
-
-        &[data-context~="link"] {
-            --og-button-Background--hover: var( --OG-COLOR-SHADE--100--10);
-            --og-button-Background--active: var( --OG-COLOR-SHADE--100--20);
-        }
+    og-button[data-context~='workflow'] {
+        --og-button-Color: var(--OG-COLOR-SHADE--100);
+        --og-button-Color--hover: var(--OG-COLOR-SHADE--100);
+        --og-button-Color--active: var(--OG-COLOR-SHADE--100);
+        --og-button-Color--disabled: var(--OG-COLOR-SHADE--100--30);
     }
 
     og-card {
         --og-card-BackgroundColor:  var(--OG-COLOR-SHADE--0--20);
+        --og-card__header-BorderColor:  var(--OG-COLOR-SHADE--100--40);
+        --og-card-BoxShadow: none;
+    }
+
+    og-expander {
+        box-shadow: none;
     }
 }

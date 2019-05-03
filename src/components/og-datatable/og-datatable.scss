@@ -12,7 +12,7 @@
     --og-datatable__tabulator-header-BorderWidth: 0 0 1px 0;
     --og-datatable__tabulator-header-BorderStyle: solid;
     --og-datatable__tabulator-header-BorderColor: var(--OG-COLOR-SHADE--100--20, #{$og-color-shade--100--20});
-    --og-datatable__tabulator-header-FontWeight: 500;
+    --og-datatable__tabulator-header-FontWeight: var(--OG-FONT-WEIGHT--MEDIUM, 500);
 
     --og-datatable__tabulator-header__tabulator-col-Background: transparent;
     --og-datatable__tabulator-header__tabulator-col-Background--hover: var(--og-datatable__tabulator-header__tabulator-col-Background);

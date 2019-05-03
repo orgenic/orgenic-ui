@@ -24,20 +24,21 @@
 :host {
     --og-toggle-switch__toggle-Width: 4rem;
     --og-toggle-switch__toggle-Height: 2rem;
-    --og-toggle-switch__toggle-BorderWidth: .0625rem;
+    --og-toggle-switch__toggle-BorderWidth: 0px;
 
-    --og-toggle-switch__toggle-Background: var(--OG-COLOR-PRIMARY--0--50, #{$og-color-primary--0--50});
-    --og-toggle-switch__toggle-Background--hover: var(--OG-COLOR-PRIMARY--100--20, #{$og-color-primary--100--20});
-    --og-toggle-switch__toggle-Background--active: var(--OG-COLOR-PRIMARY--0--50, #{$og-color-primary--0--50});
+    --og-toggle-switch__toggle-Background: var(--OG-COLOR-SECONDARY--100--20, #{$og-color-secondary--100--20});
+    --og-toggle-switch__toggle-Background--hover: var(--OG-COLOR-SECONDARY--100--30, #{$og-color-secondary--100--30});
+    --og-toggle-switch__toggle-Background--active: var(--OG-COLOR-PRIMARY--100, #{$og-color-primary--100});
 
-    --og-toggle-switch__toggle-BorderColor: var(--OG-COLOR-SHADE--50, #{$og-color-shade--50});
+    --og-toggle-switch__toggle-BorderColor: none;
     --og-toggle-switch__toggle-Padding: calc((var(--og-toggle-switch__toggle-Height) - var(--og-toggle-switch__indicator-Height)) / 2 - var(--og-toggle-switch__toggle-BorderWidth));
 
-    --og-toggle-switch__indicator-Background: var(--OG-COLOR-SHADE--50, #{$og-color-shade--50});
-    --og-toggle-switch__indicator-Background--hover: var(--OG-COLOR-SHADE--50, #{$og-color-shade--50});
-    --og-toggle-switch__indicator-Background--active: var(--OG-COLOR-PRIMARY--100, #{$og-color-primary--100});
-    --og-toggle-switch__indicator-Width: 1.2rem;
-    --og-toggle-switch__indicator-Height: 1.2rem;
+    --og-toggle-switch__indicator-Background: var(--OG-COLOR-SECONDARY--0, #{$og-color-secondary--0});
+    --og-toggle-switch__indicator-Background--hover: var(--OG-COLOR-SECONDARY--0, #{$og-color-secondary--0});
+    --og-toggle-switch__indicator-Background--active: var(--OG-COLOR-SECONDARY--0, #{$og-color-secondary--0});
+    --og-toggle-switch__indicator-BorderRadius: 2px;
+    --og-toggle-switch__indicator-Width: 1.375rem;
+    --og-toggle-switch__indicator-Height: 1.375rem;
     --og-toggle-switch__indicator-Top: var(--og-toggle-switch__toggle-Padding);
     --og-toggle-switch__indicator-Left: var(--og-toggle-switch__toggle-Padding);
     --og-toggle-switch__indicator-TranslateX: calc(var(--og-toggle-switch__toggle-Width) - var(--og-toggle-switch__indicator-Width) - ((var(--og-toggle-switch__toggle-Padding) + var(--og-toggle-switch__toggle-BorderWidth)) * 2));
@@ -91,6 +92,7 @@
     &::after {
         position: absolute;
         content: "";
+        border-radius: var(--og-toggle-switch__indicator-BorderRadius);
         left: var(--og-toggle-switch__indicator-Left);
         top: var(--og-toggle-switch__indicator-Top);
         width: var(--og-toggle-switch__indicator-Width);

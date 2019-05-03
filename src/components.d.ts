@@ -180,6 +180,137 @@ export namespace Components {
     'selected'?: any;
   }
 
+  interface OgConfirmDialog {
+    /**
+    * Label for cancel button.
+    */
+    'cancelLabel': string;
+    /**
+    * Label for confirmation button.
+    */
+    'confirmLabel': string;
+    /**
+    * The title for this modal dialog
+    */
+    'name': string;
+    /**
+    * Optional SVG Icon as markup.
+    */
+    'svgIcon': string;
+    /**
+    * Visibility state of this dialog.
+    */
+    'visible': boolean;
+  }
+  interface OgConfirmDialogAttributes extends StencilHTMLAttributes {
+    /**
+    * Label for cancel button.
+    */
+    'cancelLabel'?: string;
+    /**
+    * Label for confirmation button.
+    */
+    'confirmLabel'?: string;
+    /**
+    * The title for this modal dialog
+    */
+    'name'?: string;
+    /**
+    * Event is being emitted when value changes.
+    */
+    'onCancelled'?: (event: CustomEvent<Event>) => void;
+    /**
+    * Event is being emitted when value changes.
+    */
+    'onConfirmed'?: (event: CustomEvent<Event>) => void;
+    /**
+    * Optional SVG Icon as markup.
+    */
+    'svgIcon'?: string;
+    /**
+    * Visibility state of this dialog.
+    */
+    'visible'?: boolean;
+  }
+
+  interface OgDialog {
+    /**
+    * The title for this modal dialog.
+    */
+    'name': string;
+    /**
+    * SVG markup that can be styled by orgenic themes.
+    */
+    'svgIcon': string;
+    /**
+    * Visibility state of this dialog.
+    */
+    'visible': boolean;
+  }
+  interface OgDialogAttributes extends StencilHTMLAttributes {
+    /**
+    * The title for this modal dialog.
+    */
+    'name'?: string;
+    /**
+    * SVG markup that can be styled by orgenic themes.
+    */
+    'svgIcon'?: string;
+    /**
+    * Visibility state of this dialog.
+    */
+    'visible'?: boolean;
+  }
+
+  interface OgMessageDialog {
+    /**
+    * Label for approve button.
+    */
+    'approveLabel': string;
+    /**
+    * The title for this modal dialog
+    */
+    'name': string;
+    /**
+    * Optional SVG Icon as markup.
+    */
+    'svgIcon': string;
+    /**
+    * Dialog type can be: success / warning / error / info with. An icon as well as the icon color will be automatically assigned.
+    */
+    'type': 'success' | 'warning' | 'error' | 'info';
+    /**
+    * Visibility state of this dialog.
+    */
+    'visible': boolean;
+  }
+  interface OgMessageDialogAttributes extends StencilHTMLAttributes {
+    /**
+    * Label for approve button.
+    */
+    'approveLabel'?: string;
+    /**
+    * The title for this modal dialog
+    */
+    'name'?: string;
+    /**
+    * Event is being emitted when value changes.
+    */
+    'onConfirmed'?: (event: CustomEvent<Event>) => void;
+    /**
+    * Optional SVG Icon as markup.
+    */
+    'svgIcon'?: string;
+    /**
+    * Dialog type can be: success / warning / error / info with. An icon as well as the icon color will be automatically assigned.
+    */
+    'type'?: 'success' | 'warning' | 'error' | 'info';
+    /**
+    * Visibility state of this dialog.
+    */
+    'visible'?: boolean;
+  }
+
   interface OgExpander {
     /**
     * Sets or unsets the expanded state.
@@ -656,6 +787,9 @@ declare global {
     'OgCheckbox': Components.OgCheckbox;
     'OgCombobox': Components.OgCombobox;
     'OgDatatable': Components.OgDatatable;
+    'OgConfirmDialog': Components.OgConfirmDialog;
+    'OgDialog': Components.OgDialog;
+    'OgMessageDialog': Components.OgMessageDialog;
     'OgExpander': Components.OgExpander;
     'OgFormItem': Components.OgFormItem;
     'OgNumberInput': Components.OgNumberInput;
@@ -676,6 +810,9 @@ declare global {
     'og-checkbox': Components.OgCheckboxAttributes;
     'og-combobox': Components.OgComboboxAttributes;
     'og-datatable': Components.OgDatatableAttributes;
+    'og-confirm-dialog': Components.OgConfirmDialogAttributes;
+    'og-dialog': Components.OgDialogAttributes;
+    'og-message-dialog': Components.OgMessageDialogAttributes;
     'og-expander': Components.OgExpanderAttributes;
     'og-form-item': Components.OgFormItemAttributes;
     'og-number-input': Components.OgNumberInputAttributes;
@@ -719,6 +856,24 @@ declare global {
   var HTMLOgDatatableElement: {
     prototype: HTMLOgDatatableElement;
     new (): HTMLOgDatatableElement;
+  };
+
+  interface HTMLOgConfirmDialogElement extends Components.OgConfirmDialog, HTMLStencilElement {}
+  var HTMLOgConfirmDialogElement: {
+    prototype: HTMLOgConfirmDialogElement;
+    new (): HTMLOgConfirmDialogElement;
+  };
+
+  interface HTMLOgDialogElement extends Components.OgDialog, HTMLStencilElement {}
+  var HTMLOgDialogElement: {
+    prototype: HTMLOgDialogElement;
+    new (): HTMLOgDialogElement;
+  };
+
+  interface HTMLOgMessageDialogElement extends Components.OgMessageDialog, HTMLStencilElement {}
+  var HTMLOgMessageDialogElement: {
+    prototype: HTMLOgMessageDialogElement;
+    new (): HTMLOgMessageDialogElement;
   };
 
   interface HTMLOgExpanderElement extends Components.OgExpander, HTMLStencilElement {}
@@ -799,6 +954,9 @@ declare global {
     'og-checkbox': HTMLOgCheckboxElement
     'og-combobox': HTMLOgComboboxElement
     'og-datatable': HTMLOgDatatableElement
+    'og-confirm-dialog': HTMLOgConfirmDialogElement
+    'og-dialog': HTMLOgDialogElement
+    'og-message-dialog': HTMLOgMessageDialogElement
     'og-expander': HTMLOgExpanderElement
     'og-form-item': HTMLOgFormItemElement
     'og-number-input': HTMLOgNumberInputElement
@@ -819,6 +977,9 @@ declare global {
     'og-checkbox': HTMLOgCheckboxElement;
     'og-combobox': HTMLOgComboboxElement;
     'og-datatable': HTMLOgDatatableElement;
+    'og-confirm-dialog': HTMLOgConfirmDialogElement;
+    'og-dialog': HTMLOgDialogElement;
+    'og-message-dialog': HTMLOgMessageDialogElement;
     'og-expander': HTMLOgExpanderElement;
     'og-form-item': HTMLOgFormItemElement;
     'og-number-input': HTMLOgNumberInputElement;
