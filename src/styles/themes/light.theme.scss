@@ -26,10 +26,14 @@
     --OG-COLOR-SECONDARY--100--20:    hsla(201, 41%, 40%, .2);
     --OG-COLOR-SECONDARY--100--30:    hsla(201, 41%, 40%, .3);
 
+    // -------------------------------------------------------------------------
+    // SHADE : From dark to light.
+    // -------------------------------------------------------------------------
     // Here we define a neutral color. From light to dark.
     // --0 means least "contrast" to the main theme color. light theme -> white;
     // --100 means most "contrast" to the main theme color. light theme -> dark;
     // --100--50 means, this tone has a 50% transparency
+
     --OG-COLOR-SHADE--0:        hsla(200, 25%, 100%, 1);
     --OG-COLOR-SHADE--0--30:    hsla(200, 25%, 100%, .3);
     --OG-COLOR-SHADE--0--80:    hsla(200, 25%, 100%, .8);
