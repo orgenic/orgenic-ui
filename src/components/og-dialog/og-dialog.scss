@@ -98,7 +98,13 @@
      * @prop --og-dialog__header-Padding:
      * Padding of the Dialog Header
      */
-    --og-dialog__header-Padding: 16px 32px;
+    --og-dialog__header-Padding: 16px 0;
+
+    /**
+     * @prop --og-dialog__header-Margin:
+     * Margin of the Dialog Header
+     */
+    --og-dialog__header-Margin: 0 32px;
 
     /**
      * @prop --og-dialog__header-BorderWidth:
@@ -317,6 +323,7 @@
     display: flex;
     align-items: center;
     padding: var(--og-dialog__header-Padding);
+    margin: var(--og-dialog__header-Margin);
     border-width: var(--og-dialog__header-BorderWidth);
     border-style: var(--og-dialog__header-BorderStyle);
     border-color: var(--og-dialog__header-BorderColor);
