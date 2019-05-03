@@ -80,13 +80,13 @@
      * @prop --og-dialog__header-FontSize:
      * Font Size of the Dialog Header
      */
-    --og-dialog__header-FontSize: inherit;
+    --og-dialog__header-FontSize: 18px;
 
     /**
      * @prop --og-dialog__header-FontWeight:
      * Font Weight of the Dialog Header
      */
-    --og-dialog__header-FontWeight: bolder;
+    --og-dialog__header-FontWeight: var(--OG-FONT-WEIGHT--MEDIUM, 500);
 
     /**
      * @prop --og-dialog__header-TextTransform:
@@ -193,7 +193,7 @@
      * @prop --og-dialog__svg-Padding:
      * Inner Space of the Dialog Content Img
      */
-    --og-dialog__svg-Padding: 4px;
+    --og-dialog__svg-Padding: 2px;
 
     /**
      * @prop --og-dialog__svg-Margin:
@@ -331,7 +331,7 @@
     text-overflow: var(--og-dialog__header-TextOverflow);
     overflow: hidden;
     white-space: nowrap;
-    flex: 1
+    flex: 1;
 }
 
 // Dialog Content (middle Part)
