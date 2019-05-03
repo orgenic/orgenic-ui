@@ -31,7 +31,7 @@
     --og-expander__header-BorderWidth: 0;
 
     --og-expander__header-FontSize: 1rem;
-    --og-expander__header-FontWeight: 500;
+    --og-expander__header-FontWeight: var(--OG-FONT-WEIGHT--MEDIUM, 500);
     --og-expander__header-TextTransform: uppercase;
 
     --og-expander__header-Margin: 0;

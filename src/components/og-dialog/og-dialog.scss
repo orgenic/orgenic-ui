@@ -86,7 +86,7 @@
      * @prop --og-dialog__header-FontWeight:
      * Font Weight of the Dialog Header
      */
-    --og-dialog__header-FontWeight: 500;
+    --og-dialog__header-FontWeight: var(--OG-FONT-WEIGHT--MEDIUM, 500);
 
     /**
      * @prop --og-dialog__header-TextTransform:
@@ -331,7 +331,7 @@
     text-overflow: var(--og-dialog__header-TextOverflow);
     overflow: hidden;
     white-space: nowrap;
-    flex: 1
+    flex: 1;
 }
 
 // Dialog Content (middle Part)

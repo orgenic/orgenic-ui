@@ -81,7 +81,12 @@
     // -------------------------------------------------------------------------
     --OG-FONT-COLOR:                hsl(0, 0%, 90%);   // #e6e6e6
     --OG-FONT-SIZE:                 16px;
-    --OG-FONT-WEIGHT:               normal;
+
+    --OG-FONT-WEIGHT--LIGHT:  100;
+    --OG-FONT-WEIGHT--BOOK:   200;
+    --OG-FONT-WEIGHT:         300; // DEFAULT
+    --OG-FONT-WEIGHT--MEDIUM: 400;
+    --OG-FONT-WEIGHT--BOLD:   500;
 
     // -------------------------------------------------------------------------
     // SIZING
