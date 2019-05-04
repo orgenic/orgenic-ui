@@ -5,37 +5,11 @@
 /**
  * @prop --og-list-Opacity: Overall opacity of the list
  * @prop --og-list-Opacity--disabled: Overall opacity of the list when disabled.
- * @prop --og-list__item-Color: Text color of the list item
- * @prop --og-list__item-Background: Background of the list item (shorthand)
- * @prop --og-list__item-Background--active: Background of the list item when selected (shorthand)
- * @prop --og-list__item-Background--highlight: Background of the list item when hovered (shorthand)
- * @prop --og-list__item-Opacity: Opacity of the list item;
- * @prop --og-list__item-Opacity--disabled: Opacity of the list item;
- * @prop --og-list__item-BorderColor: Border color of the list item
- * @prop --og-list__item-BorderRadius: Border radius of the list item
- * @prop --og-list__item-BorderStyle: Border style of the list item
- * @prop --og-list__item-BorderWidth: Border width of the list item
- * @prop --og-list__item-Margin: Margin of the list item
- * @prop --og-list__item-MinHeight: Minimum height of the list item
- */
+  */
 
 :host {
     --og-list-Opacity:                      1;
     --og-list-Opacity--disabled:            .5;
-    --og-list__item-Color:                  var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
-
-    --og-list__item-Background:             var(--OG-COLOR-PRIMARY--0--30, #{$og-color-primary--0--30});
-    --og-list__item-Background--highlight:  var(--OG-COLOR-PRIMARY--100--15, #{$og-color-primary--100--15});
-    --og-list__item-Background--active:     var(--OG-COLOR-PRIMARY--100--30, #{$og-color-primary--100--30});
-    --og-list__item-Opacity:                1;
-    --og-list__item-Opacity--disabled:      .5;
-
-    --og-list__item-BorderWidth:    2px;
-    --og-list__item-BorderStyle:    solid;
-    --og-list__item-BorderColor:    transparent;
-    --og-list__item-Margin:         0;
-    --og-list__item-MinHeight:      3em;
-    --og-list__item-BorderRadius:   0;
 
     box-sizing: border-box;
     *, *::before, *::after { box-sizing: inherit; }
@@ -43,7 +17,7 @@
 
 :host([disabled]) {
     --og-list-Opacity: --og-list-Opacity--disabled;
-    .og-list__item__content {
+    .og-list-item__content {
         cursor: default;
     }
 }
@@ -59,58 +33,4 @@
     opacity: var(--og-list-Opacity);
 }
 
-.og-list__item {
-    display: block;
-    outline: 0;
-}
 
-.og-list__item__content {
-    display: flex;
-    background: var(--og-list__item-Background);
-    color: var(--og-list__item-Color);
-    border: var(--og-list__item-BorderWidth) var(--og-list__item-BorderStyle) var(--og-list__item-BorderColor);
-    border-radius: var(--og-list__item-BorderRadius);
-    margin: var(--og-list__item-Margin);
-    height: var(--og-list__item-MinHeight);
-    line-height: var(--og-list__item-MinHeight);
-    padding-left: 1em;
-    padding-right: 1em;
-    opacity: var(--og-list__item-Opacity);
-
-    :host(:not([disabled])) .og-list__item:not(.og-list__item--disabled) &:not(.og-list__item__content--selected):hover {
-        --og-list__item-Background: var(--og-list__item-Background--highlight);
-        cursor: pointer;
-    }
-}
-
-.og-list__item--disabled {
-    --og-list__item-Opacity: var(--og-list__item-Opacity--disabled);
-}
-
-.og-list__item__content--selected {
-    --og-list__item-Background: var(--og-list__item-Background--active);
-
-    :host(:not([disabled])) &:hover {
-        --og-list__item-Background: var(--og-list__item-Background--active);
-    }
-}
-
-.og-list__item__icon {
-    padding-right: 1em;
-    width: var(--og-list__item-MinHeight);
-
-    img {
-        object-fit: contain;
-        width: 100%;
-        height: 100%;
-    }
-}
-
-.og-list__item__label {
-    flex-grow: 1;
-}
-
-.og-list__item__value {
-    line-height: inherit;
-    font-weight: bold;
-}
