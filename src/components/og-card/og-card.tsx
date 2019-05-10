@@ -37,6 +37,8 @@ export class OgCard {
                     <span class="og-card__title">{ this.name }</span>
                 </div>
                 <div class="og-card__content">
+                    {/* allow the user to use an unnamed slot instead of always having to assign as "content" */}
+                    <slot></slot>
                     <slot name="content"></slot>
                 </div>
                 <div class="og-card__footer" ref={ el => this.handleDivRef(el) }>
