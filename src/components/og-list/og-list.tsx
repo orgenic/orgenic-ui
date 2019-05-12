@@ -90,9 +90,9 @@ export class OgList {
                         <og-list-item
                             key={item[this.keyProperty]}
                             label={item[this.labelProperty]}
-                            show-image={this.imageUrlProperty}
+                            show-image={!!this.imageUrlProperty}
                             image={item[this.imageUrlProperty]}
-                            show-value={this.valueProperty}
+                            show-value={!!this.valueProperty}
                             value={item[this.valueProperty]}
                             is-selected={this.isItemSelected(item)}
                             is-disabled={this.isItemDisabled(item)}
