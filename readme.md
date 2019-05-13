@@ -1,4 +1,5 @@
 [![travis status](https://travis-ci.com/orgenic/orgenic-ui.svg?branch=master)](https://travis-ci.com/orgenic/orgenic-ui)
+[![npm version](https://badge.fury.io/js/%40orgenic%2Forgenic-ui.svg)](https://badge.fury.io/js/%40orgenic%2Forgenic-ui)
 
 # ORGENIC UI
 
