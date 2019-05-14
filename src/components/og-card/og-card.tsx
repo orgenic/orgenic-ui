@@ -13,7 +13,7 @@ import { Component, Prop } from '@stencil/core';
 })
 export class OgCard {
     /**
-     * The name for this card
+     * The title for this card (optional)
      */
     @Prop() name: string;
 
