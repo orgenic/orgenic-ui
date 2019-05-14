@@ -55,11 +55,7 @@ export class OgFormItem {
         });
 
         this.editor.addEventListener('valueChanged', (event: CustomEvent) => {
-            this.editorIsEmpty = true;
-            
-            if (event.detail) {
-                this.editorIsEmpty = event.detail.length === 0;
-            }            
+            this.editorIsEmpty = !event.detail || event.detail.length === 0;
         });
 
         this.editorIsEmpty = !this.editor['value'] || this.editor['value'].length === 0;
