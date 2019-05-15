@@ -1,0 +1,64 @@
+h1 {
+    font-size:      var(--OG-FONT-SIZE--H1);
+    font-weight:    var(--OG-FONT-WEIGHT--H1);
+}
+
+h2 {
+    font-size:      var(--OG-FONT-SIZE--H2);
+    font-weight:    var(--OG-FONT-WEIGHT--H2);
+}
+
+h3 {
+    font-size:      var(--OG-FONT-SIZE--H3);
+    font-weight:    var(--OG-FONT-WEIGHT--H3);
+}
+
+h4 {
+    font-size:      var(--OG-FONT-SIZE--H4);
+    font-weight:    var(--OG-FONT-WEIGHT--H4);
+}
+
+h5, 
+h6 {
+    font-size:      var(--OG-FONT-SIZE);
+    font-weight:    var(--OG-FONT-WEIGHT);
+}
+
+p {
+    font-size:      var(--OG-FONT-SIZE);
+    font-weight:    var(--OG-FONT-WEIGHT);
+}
+
+small,
+sub,
+sup {
+    font-size:      var(--OG-FONT-SIZE--S);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    padding: 0;
+    margin: 32px 0 0 0;
+}
+
+h1:first-child,
+h2:first-child,
+h3:first-child,
+h4:first-child,
+h5:first-child,
+h6:first-child {
+    margin-top: 0;
+}
+
+p {
+    margin-top: 16px;
+}
+
+dl,
+ol,
+ul {}

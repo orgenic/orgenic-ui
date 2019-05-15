@@ -41,7 +41,7 @@
     --og-card__header-Padding:          0;
 
     // Content
-    --og-card__content-Padding:         16px 32px;
+    --og-card__content-Margin:         16px 32px;
 
     // Footer
     --og-card__footer-Padding:          16px 32px;
@@ -93,7 +93,7 @@
 }
 .og-card__content {
     flex-grow: 1;
-    padding: var(--og-card__content-Padding);
+    margin: var(--og-card__content-Margin);
 }
 
 .og-card__footer {
