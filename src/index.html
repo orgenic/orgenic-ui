@@ -169,7 +169,7 @@
             og-datatable
             -->
             <og-card name="Datatable">
-                <div slot="content" class="example example--column">
+                <div slot="content">
                     <p>
                         ORGENIC UI Datagrid supports scrolling and paging presentation as well as a lazy loading data
                         provider.
@@ -590,13 +590,13 @@
             -->
             <og-card name="List">
                 <div slot="content">
-                    <h3>Listitems with pre-selection</h3>
+                    <h4>Listitems with pre-selection</h4>
                     <og-list id="list1" selected="v2"></og-list>
 
-                    <h3>Listitems with icon and value</h3>
+                    <h4>Listitems with icon and value</h4>
                     <og-list id="list2" image-url-property="iconUrl" value-property="value"></og-list>
 
-                    <h3>Disabled list</h3>
+                    <h4>Disabled list</h4>
                     <og-list id="list3" selected-key="v2" value-property="value" disabled></og-list>
                 </div>
                 <div slot="footer">
@@ -626,19 +626,16 @@
             og-combobox
             -->
             <og-card name="Combobox">
-                <div slot="content" class="example example--column">
-                    <div>
-                        <h3>Preselected value</h3>
-                        <og-combobox id="combobox1" value="3"></og-combobox><br>
-                    </div>
-                    <div>
-                        <h3>Empty value with placeholder text</h3>
+                <div slot="content">
+                    <h4>Preselected value</h4>
+                    <og-combobox id="combobox1" value="3"></og-combobox>
+                    
+                        <h4>Empty value with placeholder text</h4>
                         <og-combobox id="combobox2" placeholder="Please select a value"></og-combobox>
-                    </div>
-                    <div>
-                        <h3>Disabled combobox</h3>
+                    
+                        <h4>Disabled combobox</h4>
                         <og-combobox id="combobox3" value="2" disabled></og-combobox>
-                    </div>
+                    
                 </div>
             </og-card>
             <script>
@@ -665,7 +662,7 @@
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
                     <h2>Heading 2</h2>
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-                    <h3>Heading 3</h3>
+                    <h4>Heading 3</h4>
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
                     <h4>Heading 4</h4>
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repudiandae dolor <sup>cumque</sup> laudantium dolorum totam iure <sub>assumenda</sub> voluptas dolorem temporibus facere. Odio voluptatem earum sequi nisi natus quo sed nesciunt cum.</p>
