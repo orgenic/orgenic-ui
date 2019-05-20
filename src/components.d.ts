@@ -13,6 +13,9 @@ import {
   EventEmitter,
 } from '@stencil/core';
 import {
+  OgDateDecorator,
+} from './components/og-calendar/interfaces/og-calendar-date-decorator';
+import {
   OgDatatableConfig,
 } from './components/og-datatable/interfaces/og-datatable-column-def';
 
@@ -42,6 +45,34 @@ export namespace Components {
     * Event is being emitted when value changes.
     */
     'onClicked'?: (event: CustomEvent<Event>) => void;
+  }
+
+  interface OgCalendarGroup {
+    'dateDecorator': OgDateDecorator;
+    'displayedMonths': number;
+    'month': number;
+    'showCalendarWeek': boolean;
+    'year': number;
+  }
+  interface OgCalendarGroupAttributes extends StencilHTMLAttributes {
+    'dateDecorator'?: OgDateDecorator;
+    'displayedMonths'?: number;
+    'month'?: number;
+    'showCalendarWeek'?: boolean;
+    'year'?: number;
+  }
+
+  interface OgCalendar {
+    'dateDecorator': OgDateDecorator;
+    'month': number;
+    'showCalendarWeek': boolean;
+    'year': number;
+  }
+  interface OgCalendarAttributes extends StencilHTMLAttributes {
+    'dateDecorator'?: OgDateDecorator;
+    'month'?: number;
+    'showCalendarWeek'?: boolean;
+    'year'?: number;
   }
 
   interface OgCard {
@@ -783,6 +814,8 @@ export namespace Components {
 declare global {
   interface StencilElementInterfaces {
     'OgButton': Components.OgButton;
+    'OgCalendarGroup': Components.OgCalendarGroup;
+    'OgCalendar': Components.OgCalendar;
     'OgCard': Components.OgCard;
     'OgCheckbox': Components.OgCheckbox;
     'OgCombobox': Components.OgCombobox;
@@ -806,6 +839,8 @@ declare global {
 
   interface StencilIntrinsicElements {
     'og-button': Components.OgButtonAttributes;
+    'og-calendar-group': Components.OgCalendarGroupAttributes;
+    'og-calendar': Components.OgCalendarAttributes;
     'og-card': Components.OgCardAttributes;
     'og-checkbox': Components.OgCheckboxAttributes;
     'og-combobox': Components.OgComboboxAttributes;
@@ -832,6 +867,18 @@ declare global {
   var HTMLOgButtonElement: {
     prototype: HTMLOgButtonElement;
     new (): HTMLOgButtonElement;
+  };
+
+  interface HTMLOgCalendarGroupElement extends Components.OgCalendarGroup, HTMLStencilElement {}
+  var HTMLOgCalendarGroupElement: {
+    prototype: HTMLOgCalendarGroupElement;
+    new (): HTMLOgCalendarGroupElement;
+  };
+
+  interface HTMLOgCalendarElement extends Components.OgCalendar, HTMLStencilElement {}
+  var HTMLOgCalendarElement: {
+    prototype: HTMLOgCalendarElement;
+    new (): HTMLOgCalendarElement;
   };
 
   interface HTMLOgCardElement extends Components.OgCard, HTMLStencilElement {}
@@ -950,6 +997,8 @@ declare global {
 
   interface HTMLElementTagNameMap {
     'og-button': HTMLOgButtonElement
+    'og-calendar-group': HTMLOgCalendarGroupElement
+    'og-calendar': HTMLOgCalendarElement
     'og-card': HTMLOgCardElement
     'og-checkbox': HTMLOgCheckboxElement
     'og-combobox': HTMLOgComboboxElement
@@ -973,6 +1022,8 @@ declare global {
 
   interface ElementTagNameMap {
     'og-button': HTMLOgButtonElement;
+    'og-calendar-group': HTMLOgCalendarGroupElement;
+    'og-calendar': HTMLOgCalendarElement;
     'og-card': HTMLOgCardElement;
     'og-checkbox': HTMLOgCheckboxElement;
     'og-combobox': HTMLOgComboboxElement;

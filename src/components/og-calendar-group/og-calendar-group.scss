@@ -1,0 +1,24 @@
+:host {
+    display: block;
+    width: fit-content;
+}
+
+.calendar-container {
+    display: inline-block;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.change-month {
+    cursor: pointer;
+}
+
+.hidden {
+    visibility: hidden;
+}

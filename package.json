@@ -44,7 +44,9 @@
   "pre-commit": [
     "check-licenseheader"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "moment": "^2.24.0"
+  },
   "devDependencies": {
     "@stencil/core": "^0.18.1",
     "@stencil/sass": "^0.1.1",

@@ -98,6 +98,41 @@
         -->
         <og-card name="Dialog">
             <div slot="content" slot="content">
+                <h3>May</h3>
+                <og-calendar month="4" year="2019"></og-calendar>
+                <h3>Calendar Group (3 months)</h3>
+                <og-calendar-group month="4" year="2019" show-calendar-week="false" id="groupCalendar1"></og-calendar-group>
+                <h3>Calendar Group (1 months)</h3>
+                <og-calendar-group month="4" year="2019" displayed-months="1"></og-calendar-group>
+            </div>
+        </og-card>
+        <script>
+            const calendar = document.querySelector('#groupCalendar1');
+            calendar.dateDecorator = {
+                getDateDecoration: function (moment) {
+                    if (moment.day() === 0 || moment.day() === 6) {
+                        return {
+                            class: 'disabled'
+                        };
+                    } else {
+                        if (moment.date() === 1) {
+                            return {
+                                class: 'highlight'
+                            };
+                        }
+                    }
+                    return {
+                        class: ''
+                    };
+                }
+            }
+        </script>
+
+        <!--
+        og-dialog
+        -->
+        <og-card name="Dialog">
+            <div slot="content" slot="content">
                 <og-dialog name="Custom Dialog" id="customDialog">
                     <div slot="content">Custom Dialog Content</div>
                     <div slot="footer">
