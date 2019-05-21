@@ -54,9 +54,13 @@ export class OgNumberInput {
 
     handleChange(e) {
         const value = parseFloat(e.target.value);
+        
         if (!isNaN(value)) {
             this.value = value;
+        } else {
+            this.value = null;
         }
+        
         this.valueChanged.emit(this.value);
     }
 

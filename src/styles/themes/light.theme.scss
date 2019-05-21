@@ -35,17 +35,21 @@
     // --100--50 means, this tone has a 50% transparency
 
     --OG-COLOR-SHADE--0:        hsla(200, 25%, 100%, 1);
+    --OG-COLOR-SHADE--0--20:    hsla(200, 25%, 100%, .2);
     --OG-COLOR-SHADE--0--30:    hsla(200, 25%, 100%, .3);
     --OG-COLOR-SHADE--0--80:    hsla(200, 25%, 100%, .8);
     --OG-COLOR-SHADE--50:       hsla(200, 25%, 65%, 1);
     --OG-COLOR-SHADE--70--50:   hsla(200, 25%, 51%, .5);
     --OG-COLOR-SHADE--80--05:   hsla(200, 45%, 44%, .05);
     --OG-COLOR-SHADE--100:      hsla(200, 25%, 30%, 1);
+    --OG-COLOR-SHADE--100--04:  hsla(200, 25%, 30%, .04);
     --OG-COLOR-SHADE--100--10:  hsla(200, 25%, 30%, .1);
     --OG-COLOR-SHADE--100--20:  hsla(200, 25%, 30%, .2);
     --OG-COLOR-SHADE--100--30:  hsla(200, 25%, 30%, .3);
+    --OG-COLOR-SHADE--100--40:  hsla(200, 25%, 30%, .4);
     --OG-COLOR-SHADE--100--50:  hsla(200, 25%, 30%, .5);
     --OG-COLOR-SHADE--100--60:  hsla(200, 25%, 30%, .6);
+    --OG-COLOR-SHADE--100--80:  hsla(200, 25%, 30%, .8);
 
     // -------------------------------------------------------------------------
     // STATE Color : Success
