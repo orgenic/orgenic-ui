@@ -1,38 +1,38 @@
 h1 {
-    font-size:      var(--OG-FONT-SIZE--H1);
-    font-weight:    var(--OG-FONT-WEIGHT--H1);
+    font-size:      var(--OG-FONT-SIZE--H1, 48px);
+    font-weight:    var(--OG-FONT-WEIGHT--H1, normal);
 }
 
 h2 {
-    font-size:      var(--OG-FONT-SIZE--H2);
-    font-weight:    var(--OG-FONT-WEIGHT--H2);
+    font-size:      var(--OG-FONT-SIZE--H2, 32px);
+    font-weight:    var(--OG-FONT-WEIGHT--H2, normal);
 }
 
 h3 {
-    font-size:      var(--OG-FONT-SIZE--H3);
-    font-weight:    var(--OG-FONT-WEIGHT--H3);
+    font-size:      var(--OG-FONT-SIZE--H3, 24px);
+    font-weight:    var(--OG-FONT-WEIGHT--H3, normal);
 }
 
 h4 {
-    font-size:      var(--OG-FONT-SIZE--H4);
-    font-weight:    var(--OG-FONT-WEIGHT--H4);
+    font-size:      var(--OG-FONT-SIZE--H4, 20px);
+    font-weight:    var(--OG-FONT-WEIGHT--H4, normal);
 }
 
-h5, 
+h5,
 h6 {
-    font-size:      var(--OG-FONT-SIZE);
-    font-weight:    var(--OG-FONT-WEIGHT);
+    font-size:      var(--OG-FONT-SIZE, 16px);
+    font-weight:    var(--OG-FONT-WEIGHT, bolder);
 }
 
 p {
-    font-size:      var(--OG-FONT-SIZE);
-    font-weight:    var(--OG-FONT-WEIGHT);
+    font-size:      var(--OG-FONT-SIZE, 16px);
+    font-weight:    var(--OG-FONT-WEIGHT, normal);
 }
 
 small,
 sub,
 sup {
-    font-size:      var(--OG-FONT-SIZE--S);
+    font-size:      var(--OG-FONT-SIZE--S, 12px);
 }
 
 h1,
@@ -62,4 +62,6 @@ p {
 
 dl,
 ol,
-ul {}
+ul {
+    margin: 16px 0;
+}
