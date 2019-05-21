@@ -38,6 +38,7 @@
 | `--og-dialog__header-Display`       | Box Model of the Dialog Header                               |
 | `--og-dialog__header-FontSize`      | Font Size of the Dialog Header                               |
 | `--og-dialog__header-FontWeight`    | Font Weight of the Dialog Header                             |
+| `--og-dialog__header-Margin`        | Margin of the Dialog Header                                  |
 | `--og-dialog__header-Padding`       | Padding of the Dialog Header                                 |
 | `--og-dialog__header-TextOverflow`  | Text Overflow Behaviour of the Dialog Header                 |
 | `--og-dialog__header-TextTransform` | Text Transformation of the Dialog Header                     |
