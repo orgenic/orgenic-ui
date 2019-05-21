@@ -79,26 +79,14 @@
     // -------------------------------------------------------------------------
     // FONT
     // -------------------------------------------------------------------------
-    --OG-FONT-COLOR:            hsl(0, 0%, 90%);   // #e6e6e6
+    --OG-FONT-COLOR:                hsl(0, 0%, 90%);   // #e6e6e6
+    --OG-FONT-SIZE:                 16px;
 
-    --OG-FONT-SIZE--H1:         48px;
-    --OG-FONT-SIZE--H2:         32px;
-    --OG-FONT-SIZE--H3:         24px;
-    --OG-FONT-SIZE--H4:         20px;
-    --OG-FONT-SIZE:             16px; // DEFAULT
-    --OG-FONT-SIZE--S:          12px;
-    --OG-FONT-SIZE--XS:         10px;
-
-    --OG-FONT-WEIGHT--LIGHT:    100;
-    --OG-FONT-WEIGHT--BOOK:     200;
-    --OG-FONT-WEIGHT:           300; // DEFAULT
-    --OG-FONT-WEIGHT--MEDIUM:   400;
-    --OG-FONT-WEIGHT--BOLD:     500;
-
-    --OG-FONT-WEIGHT--H1:       var(--OG-FONT-WEIGHT--BOLD);
-    --OG-FONT-WEIGHT--H2:       var(--OG-FONT-WEIGHT--BOLD);
-    --OG-FONT-WEIGHT--H3:       var(--OG-FONT-WEIGHT--BOLD);
-    --OG-FONT-WEIGHT--H4:       var(--OG-FONT-WEIGHT--BOLD);
+    --OG-FONT-WEIGHT--LIGHT:  100;
+    --OG-FONT-WEIGHT--BOOK:   200;
+    --OG-FONT-WEIGHT:         300; // DEFAULT
+    --OG-FONT-WEIGHT--MEDIUM: 400;
+    --OG-FONT-WEIGHT--BOLD:   500;
 
     // -------------------------------------------------------------------------
     // SIZING
@@ -107,5 +95,4 @@
     --OG-PADDING:    8px;
 }
 
-@import 'font.scss';
 @import 'dark-addons.theme.scss';
