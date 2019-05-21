@@ -13,8 +13,13 @@ import {
   EventEmitter,
 } from '@stencil/core';
 import {
+  OgCalendarDate,
+  OgCalendarSelectionType,
   OgDateDecorator,
 } from './components/og-calendar/interfaces/og-calendar-date-decorator';
+import {
+  Moment,
+} from 'moment';
 import {
   OgDatatableConfig,
 } from './components/og-datatable/interfaces/og-datatable-column-def';
@@ -50,27 +55,40 @@ export namespace Components {
   interface OgCalendarGroup {
     'dateDecorator': OgDateDecorator;
     'displayedMonths': number;
+    'firstDayOfWeek': number;
     'month': number;
+    'selection': OgCalendarDate[];
+    'selectionType': OgCalendarSelectionType;
     'showCalendarWeek': boolean;
     'year': number;
   }
   interface OgCalendarGroupAttributes extends StencilHTMLAttributes {
     'dateDecorator'?: OgDateDecorator;
     'displayedMonths'?: number;
+    'firstDayOfWeek'?: number;
     'month'?: number;
+    'onDateClicked'?: (event: CustomEvent<OgCalendarDate>) => void;
+    'onSelectionChanged'?: (event: CustomEvent<OgCalendarDate[]>) => void;
+    'selection'?: OgCalendarDate[];
+    'selectionType'?: OgCalendarSelectionType;
     'showCalendarWeek'?: boolean;
     'year'?: number;
   }
 
   interface OgCalendar {
     'dateDecorator': OgDateDecorator;
+    'firstDayOfWeek': number;
     'month': number;
+    'selection': OgCalendarDate[];
     'showCalendarWeek': boolean;
     'year': number;
   }
   interface OgCalendarAttributes extends StencilHTMLAttributes {
     'dateDecorator'?: OgDateDecorator;
+    'firstDayOfWeek'?: number;
     'month'?: number;
+    'onDateClicked'?: (event: CustomEvent<Moment>) => void;
+    'selection'?: OgCalendarDate[];
     'showCalendarWeek'?: boolean;
     'year'?: number;
   }
@@ -209,6 +227,45 @@ export namespace Components {
     * Selected row identified by id-property
     */
     'selected'?: any;
+  }
+
+  interface OgDatepicker {
+    'dateDecorator': OgDateDecorator;
+    /**
+    * Determines, whether the control is disabled or not
+    */
+    'disabled': boolean;
+    'firstDayOfWeek': number;
+    'format': string;
+    /**
+    * Optional placeholder if no value is selected.
+    */
+    'placeholder'?: string;
+    /**
+    * The selected value of the combobox
+    */
+    'value': string;
+  }
+  interface OgDatepickerAttributes extends StencilHTMLAttributes {
+    'dateDecorator'?: OgDateDecorator;
+    /**
+    * Determines, whether the control is disabled or not
+    */
+    'disabled'?: boolean;
+    'firstDayOfWeek'?: number;
+    'format'?: string;
+    /**
+    * Event is being emitted when value changes.
+    */
+    'onDateSelected'?: (event: CustomEvent<any>) => void;
+    /**
+    * Optional placeholder if no value is selected.
+    */
+    'placeholder'?: string;
+    /**
+    * The selected value of the combobox
+    */
+    'value'?: string;
   }
 
   interface OgConfirmDialog {
@@ -820,6 +877,7 @@ declare global {
     'OgCheckbox': Components.OgCheckbox;
     'OgCombobox': Components.OgCombobox;
     'OgDatatable': Components.OgDatatable;
+    'OgDatepicker': Components.OgDatepicker;
     'OgConfirmDialog': Components.OgConfirmDialog;
     'OgDialog': Components.OgDialog;
     'OgMessageDialog': Components.OgMessageDialog;
@@ -845,6 +903,7 @@ declare global {
     'og-checkbox': Components.OgCheckboxAttributes;
     'og-combobox': Components.OgComboboxAttributes;
     'og-datatable': Components.OgDatatableAttributes;
+    'og-datepicker': Components.OgDatepickerAttributes;
     'og-confirm-dialog': Components.OgConfirmDialogAttributes;
     'og-dialog': Components.OgDialogAttributes;
     'og-message-dialog': Components.OgMessageDialogAttributes;
@@ -903,6 +962,12 @@ declare global {
   var HTMLOgDatatableElement: {
     prototype: HTMLOgDatatableElement;
     new (): HTMLOgDatatableElement;
+  };
+
+  interface HTMLOgDatepickerElement extends Components.OgDatepicker, HTMLStencilElement {}
+  var HTMLOgDatepickerElement: {
+    prototype: HTMLOgDatepickerElement;
+    new (): HTMLOgDatepickerElement;
   };
 
   interface HTMLOgConfirmDialogElement extends Components.OgConfirmDialog, HTMLStencilElement {}
@@ -1003,6 +1068,7 @@ declare global {
     'og-checkbox': HTMLOgCheckboxElement
     'og-combobox': HTMLOgComboboxElement
     'og-datatable': HTMLOgDatatableElement
+    'og-datepicker': HTMLOgDatepickerElement
     'og-confirm-dialog': HTMLOgConfirmDialogElement
     'og-dialog': HTMLOgDialogElement
     'og-message-dialog': HTMLOgMessageDialogElement
@@ -1028,6 +1094,7 @@ declare global {
     'og-checkbox': HTMLOgCheckboxElement;
     'og-combobox': HTMLOgComboboxElement;
     'og-datatable': HTMLOgDatatableElement;
+    'og-datepicker': HTMLOgDatepickerElement;
     'og-confirm-dialog': HTMLOgConfirmDialogElement;
     'og-dialog': HTMLOgDialogElement;
     'og-message-dialog': HTMLOgMessageDialogElement;

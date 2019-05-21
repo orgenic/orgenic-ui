@@ -1,5 +1,44 @@
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+td {
+    height: 2em;
+    padding-top: 0.2em;
+    padding-bottom: calc(0.2em - 2px);
+    padding-left: 0.8em;
+    padding-right: 0.8em;
+}
+
+thead td {
+    text-align: right;
+}
+
+.day {
+    text-align: right;
+}
+
+.day::after {
+    display: block;
+    content: '';
+    width: 100%;
+    height: 2px;
+}
+
+.day:not(.disabled):hover {
+    background: rgb(120, 228, 255);
+    cursor: pointer;
+}
+
+.day.selected {
+    background: rgb(117, 255, 140);
+}
+
 .week {
+    text-align: right;
     color: #000;
+    background: #eee;
 }
 
 .sameMonth {
@@ -14,6 +53,10 @@
     font-weight: bold;
 }
 
-.highlight {
-    color: red;
+.highlight::after {
+    display: block;
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: red;
 }

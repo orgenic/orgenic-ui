@@ -94,16 +94,54 @@
         </script>
 
         <!--
-        og-dialog
+        og-datepicker
         -->
-        <og-card name="Dialog">
-            <div slot="content" slot="content">
-                <h3>May</h3>
-                <og-calendar month="4" year="2019"></og-calendar>
-                <h3>Calendar Group (3 months)</h3>
-                <og-calendar-group month="4" year="2019" show-calendar-week="false" id="groupCalendar1"></og-calendar-group>
+        <og-card name="Datepicker">
+            <div slot="content">
+                <og-form-item label="Bitte wählen Sie ein Datum">
+                    <og-datepicker value="25.05.2019" first-day-of-week="1"></og-datepicker>
+                </og-form-item>
+
+                <og-form-item label="Please select a date">
+                    <og-datepicker value="05/25/2019" format="MM/DD/YYYY" first-day-of-week="0"></og-datepicker>
+                </og-form-item>
+            </div>
+        </og-card>
+        <script>
+            const datepicker = document.querySelector('og-datepicker');
+            datepicker.dateDecorator = {
+                getDateDecoration: function (moment) {
+                    if (moment.day() === 0 || moment.day() === 6) {
+                        return {
+                            class: 'disabled'
+                        };
+                    } else {
+                        if (moment.date() === 1 || moment.date() === 20) {
+                            return {
+                                class: 'highlight'
+                            };
+                        }
+                    }
+                    return {
+                        class: ''
+                    };
+                }
+            };
+            datepicker.addEventListener('dateSelected', event => {
+                console.log('date selected', event.detail.getDate(), event.detail.getMonth(), event.detail.getFullYear());
+            });
+        </script>
+
+        <!--
+        og-calendar-group
+        -->
+        <og-card name="Calendar">
+            <div slot="content">
+                <h1>WIP: incomplete (and maybe buggy) featureset!</h1>
+                <h3>Calendar Group (2 months)</h3>
+                <og-calendar-group month="4" year="2019" displayed-months="2" show-calendar-week="false" id="groupCalendar1"></og-calendar-group>
                 <h3>Calendar Group (1 months)</h3>
-                <og-calendar-group month="4" year="2019" displayed-months="1"></og-calendar-group>
+                <og-calendar-group month="4" year="2019"></og-calendar-group>
             </div>
         </og-card>
         <script>
@@ -115,7 +153,7 @@
                             class: 'disabled'
                         };
                     } else {
-                        if (moment.date() === 1) {
+                        if (moment.date() === 1 || moment.date() === 20) {
                             return {
                                 class: 'highlight'
                             };
@@ -125,7 +163,10 @@
                         class: ''
                     };
                 }
-            }
+            };
+            calendar.addEventListener('selectionChanged', e => {
+                console.log('selection changed event', e.detail);
+            });
         </script>
 
         <!--

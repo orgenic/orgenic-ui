@@ -4,9 +4,10 @@
  * See LICENSE file at https://github.com/orgenic/orgenic-ui/blob/master/LICENSE
  **/
 
-import { Component, Prop } from '@stencil/core';
+import { Component, Prop, EventEmitter, Event } from '@stencil/core';
 import moment from 'moment';
-import { OgDateDecorator } from '../og-calendar/interfaces/og-calendar-date-decorator';
+import { OgDateDecorator, OgCalendarSelectionType, OgCalendarDate } from '../og-calendar/interfaces/og-calendar-date-decorator';
+import { CalendarUtils } from '../og-calendar/utils/utils';
 
 @Component({
   tag: 'og-calendar-group',
@@ -18,23 +19,47 @@ export class OgCalendarGroup {
     @Prop({ reflectToAttr: true, mutable: true }) month: number = new Date().getMonth();
 
     @Prop() showCalendarWeek: boolean = true;
-    @Prop() displayedMonths: number = 3;
+    @Prop() firstDayOfWeek: number = 0;
+    @Prop() displayedMonths: number = 1;
     @Prop() dateDecorator: OgDateDecorator;
 
+    @Prop() selectionType: OgCalendarSelectionType = 'single';
+    @Prop({ reflectToAttr: true, mutable: true }) selection: OgCalendarDate[];
+
+    @Event() dateClicked: EventEmitter<OgCalendarDate>;
+    @Event() selectionChanged: EventEmitter<OgCalendarDate[]>;
+
     private m = moment();
+
+    handleDateClick(event) {
+        event.cancelBubble = true;
+
+        const date = CalendarUtils.moment2CalendarDate(event.detail);
+        if (!this.selection) {
+            this.selection = [date];
+        } else{
+            const index = this.selection.findIndex(s => CalendarUtils.compareCalendarDate(s, date));
+            if (index >= 0) {
+                this.selection.splice(index, 1);
+            } else {
+                this.selection.push(date);
+            }
+            this.selection = [...this.selection];
+        }
+        this.dateClicked.emit(date);
+        this.selectionChanged.emit(this.selection);
+    }
 
     increseMonth() {
         this.m.add(1, 'M');
         this.month = this.m.month();
         this.year = this.m.year();
-        console.log(this.month, this.year);
     }
 
     decreaseMonth() {
         this.m.subtract(1, 'M');
         this.month = this.m.month();
         this.year = this.m.year();
-        console.log(this.month, this.year);
     }
 
     render() {
@@ -55,7 +80,10 @@ export class OgCalendarGroup {
                         month={ localM.month() }
                         year={ localM.year() }
                         showCalendarWeek={ this.showCalendarWeek }
-                        dateDecorator={ this.dateDecorator }>
+                        dateDecorator={ this.dateDecorator }
+                        firstDayOfWeek={ this.firstDayOfWeek }
+                        selection={ this.selection }
+                        onDateClicked={ (e) => this.handleDateClick(e) }>
                     </og-calendar>
                 </div>
             );

@@ -1,0 +1,176 @@
+// =============================================================================
+// CSS CUSTOM PROPERTIES
+// =============================================================================
+
+/**
+ * @prop --og-datepicker-Background: Main background color of the datepicker
+ * @prop --og-datepicker-BorderColor: Main border color of the datepicker
+ * @prop --og-datepicker-BorderWidth: Main border width of the datepicker
+ * @prop --og-datepicker-BorderStyle: Main border style of the datepicker
+ * @prop --og-datepicker-Color: Text color of the datepicker
+ * @prop --og-datepicker-FontSize: Font size of the datepicker label
+ * @prop --og-datepicker-Opacity: Overall opacity of the datepicker
+ * @prop --og-datepicker-Outline: Outline of the datepicker
+ * @prop --og-datepicker__button__arrow-Width: Width of the toggle icon
+ * @prop --og-datepicker__button__arrow-Height: Height of the toggle icon
+ * @prop --og-datepicker__button__arrow-Padding: Padding of the toggle icon
+ * @prop --og-datepicker__flyout-Background: Background color of the datepicker list
+ * @prop --og-datepicker__flyout-BoxShadow: Shadow of the datepicker list
+ * @prop --og-datepicker__flyout__item-Background: Background color of list item
+ * @prop --og-datepicker__flyout__item-Background--active: Background color of list item when clicked
+ * @prop --og-datepicker__flyout__item-Background--hover: Background color of list item when hovered
+ * @prop --og-datepicker__flyout__item-Color: Text color of the list item
+ * @prop --og-datepicker__indicator-Width: Width of the focus indicator
+ * @prop --og-datepicker__indicator-Height: Height of the focus indicator
+ * @prop --og-datepicker__indicator-Background: Color of the focus indicator
+ * @prop --og-datepicker__placeholder-Color: Text color of the placeholder
+ */
+
+:host {
+    --og-datepicker-Background:   var(--OG-COLOR-SHADE--80--05, #{$og-color-shade--80--05});
+    --og-datepicker-BorderColor:  var(--OG-COLOR-SHADE--100--20, #{$og-color-shade--100--20}); // --OG-COLOR-SHADE--50
+    --og-datepicker-BorderWidth:  1px;
+    --og-datepicker-BorderStyle:  solid;
+
+    --og-datepicker-Color:        var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
+    --og-datepicker-FontSize:     inherit;
+    --og-datepicker-Outline:      none;
+    --og-datepicker-Opacity:      1;
+
+    --og-datepicker__flyout-BoxShadow:    none;
+    --og-datepicker__flyout-Background:   var(--OG-COLOR-PRIMARY--0, #{$og-color-primary--0});
+
+    --og-datepicker__flyout__item-Background:         transparent;
+    --og-datepicker__flyout__item-Background--hover:  var(--OG-COLOR-PRIMARY--100--15, #{$og-color-primary--100--15});
+    --og-datepicker__flyout__item-Background--active: var(--OG-COLOR-PRIMARY--100--30, #{$og-color-primary--100--30});
+    --og-datepicker__flyout__item-Color:              var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
+
+    --og-datepicker__placeholder-Color:               var(--OG-COLOR-SHADE--50, #{$og-color-shade--50});
+
+    --og-datepicker__indicator-Width:         0;
+    --og-datepicker__indicator-Height:        2px;
+    --og-datepicker__indicator-Background:    var(--OG-COLOR-PRIMARY--100, #{$og-color-primary--100});
+
+    --og-datepicker__button__arrow-Width:     16px;
+    --og-datepicker__button__arrow-Height:    16px;
+    --og-datepicker__button__arrow-Padding:   22px 2px 0 2px;
+
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    max-width: inherit;
+    max-height: inherit;
+    cursor: pointer;
+    background: var(--og-datepicker-Background);
+    opacity: var(--og-datepicker-Opacity);
+
+    box-sizing: border-box;
+    *, *::before, *::after { box-sizing: inherit; }
+}
+
+// <og-datepicker> "on focus"
+:host(.is-focused) {
+    --og-datepicker__button__indicator-Width: 100%;
+    --og-datepicker__indicator-Width: 100%;
+}
+
+// <og-datepicker> disabled properties
+:host([disabled]) {
+    cursor: default;
+    --og-datepicker-Opacity: .3;
+}
+
+
+
+// Wrapper for the 'allways visible' part of the 'datepicker'
+.og-datepicker__header {
+    display: flex;
+    position: relative;
+    margin: 4px;
+    outline: var(--og-datepicker-Outline);
+    border-bottom: var(--og-datepicker-BorderWidth) var(--og-datepicker-BorderStyle) var(--og-datepicker-BorderColor);
+}
+
+// Native input element inside 'datepicker' header.
+.og-datepicker__input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    cursor: inherit;
+    outline: none;
+    color: var(--og-datepicker-Color);
+    font-size: var(--og-datepicker-FontSize);
+    user-select: none;
+    margin: 0;
+    padding-top: 25px;
+    padding-bottom: 4px;
+
+    &::placeholder {
+        color: var(--og-datepicker__placeholder-Color);
+    }
+
+    // Prevent Text Selection on :focus
+    &::selection {
+        background: transparent;
+    }
+}
+
+
+.og-datepicker__button {
+    flex: none;
+    width: var(--og-datepicker__button__arrow-Width);
+    height: var(--og-datepicker__button__arrow-Width);
+    padding: var(--og-datepicker__button__arrow-Padding);
+}
+
+.og-datepicker__indicator {
+    display: var(--og-datepicker__indicator-Display);
+    position: absolute;
+    bottom: calc(var(--og-datepicker-BorderWidth) * -1);
+    left: 0;
+    height: var(--og-datepicker__indicator-Height);
+    background: var(--og-datepicker__indicator-Background);
+    width: var(--og-datepicker__indicator-Width);
+    transition: width .2s ease;
+}
+
+
+.og-datepicker__button__arrow {
+    transition: transform 0.1s;
+    overflow: visible;
+}
+
+.og-datepicker__button__arrow--collapsed {
+    transform: rotate(180deg);
+}
+
+.og-datepicker__button__arrow__line {
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+
+// datepicker FLYOUT
+// -----------------------------------------------------------------------------
+
+// Flyout Wrapper
+.og-datepicker__flyout {
+    position: relative;
+}
+.og-datepicker__flyout__calendar {
+    margin: 0;
+    margin-top: 4px;
+    padding: 0;
+    display: none;
+    position: fixed;
+    width: 100%;
+    box-shadow: var(--og-datepicker__flyout-BoxShadow);
+    background: var(--og-datepicker__flyout-Background);
+    z-index: 9999;
+    overflow-y: auto;
+}
+
+.og-datepicker__flyout__calendar--visible {
+    display: block;
+}

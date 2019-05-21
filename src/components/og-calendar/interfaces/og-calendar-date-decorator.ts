@@ -9,3 +9,10 @@ export interface OgDateDecoration {
 }
 
 export type OgDateDecorationClass = 'disabled' | 'highlight' | '';
+export type OgCalendarSelectionType = 'none' | 'single' | 'multi'/* | 'range' | 'multi-range'*/;
+
+export interface OgCalendarDate {
+    year: number;
+    month: number;
+    date: number;
+}
