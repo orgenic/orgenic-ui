@@ -5,9 +5,9 @@
 
 ## Properties
 
-| Property | Attribute | Description            | Type     | Default     |
-| -------- | --------- | ---------------------- | -------- | ----------- |
-| `name`   | `name`    | The name for this card | `string` | `undefined` |
+| Property | Attribute | Description                        | Type     | Default     |
+| -------- | --------- | ---------------------------------- | -------- | ----------- |
+| `name`   | `name`    | The title for this card (optional) | `string` | `undefined` |
 
 
 ## CSS Custom Properties

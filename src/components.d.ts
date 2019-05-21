@@ -95,13 +95,13 @@ export namespace Components {
 
   interface OgCard {
     /**
-    * The name for this card
+    * The title for this card (optional)
     */
     'name': string;
   }
   interface OgCardAttributes extends StencilHTMLAttributes {
     /**
-    * The name for this card
+    * The title for this card (optional)
     */
     'name'?: string;
   }
