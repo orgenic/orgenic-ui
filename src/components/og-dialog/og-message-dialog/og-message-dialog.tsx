@@ -53,9 +53,7 @@ export class OgMessageDialog {
     render() {
         return (
             <og-dialog class={ 'og-dialog--' + this.type } name={ this.name } svg-icon={ this.getIcon() } visible={ this.visible }>
-                <div slot="content">
-                    <slot></slot>
-                </div>
+                <slot></slot>
                 <div slot="footer">
                     <og-button label={ this.approveLabel } onClicked={ _e => this.handleConfirm() }></og-button>
                 </div>
