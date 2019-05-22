@@ -37,13 +37,13 @@ export class OgCalendar {
     getClasses(m: Moment) {
         let result = 'day';
         if (m.isSame(new Date(), "day")) {
-            result += ' today';
+            result += ' day--today';
         }
 
         if (m.year() === this.year && m.month() === this.month) {
-            result += ' sameMonth';
+            result += ' day--same-month';
             if (this.selection && this.selection.find(s => CalendarUtils.compareCalendarDate2Moment(s, m))) {
-                result += ' selected';
+                result += ' day--selected';
             }
             if (this.dateDecorator) {
                 const dd = this.dateDecorator.getDateDecoration(m.clone());
@@ -52,7 +52,7 @@ export class OgCalendar {
                 }
             }
         } else {
-            result += ' disabled';
+            result += ' day--disabled';
         }
         return result;
     }
@@ -76,10 +76,10 @@ export class OgCalendar {
             <table>
                 <thead>
                     <tr>
-                        { this.showCalendarWeek && <td>KW</td> }
+                        { this.showCalendarWeek && <th>KW</th> }
                         {
                             this.getDayArray().map(d => {
-                                return <td>{ moment().day(d).format('dd') }</td>;
+                                return <th>{ moment().day(d).format('dd') }</th>;
                             })
                         }
                     </tr>

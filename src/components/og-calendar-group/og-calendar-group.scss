@@ -1,24 +1,53 @@
 :host {
+    --og-calendar__header-Border: 1px solid var(--OG-COLOR-SHADE--100--20, #{$og-color-shade--100--20});
+
     display: block;
     width: fit-content;
 }
 
-.calendar-container {
+.calendar__container {
     display: inline-block;
-    margin-left: 20px;
-    margin-right: 20px;
+
+    & + & {
+        margin-left: 32px;
+    }
 }
 
-.calendar-header {
+.calendar__header {
     display: flex;
-    justify-content: space-between;
     text-align: center;
+    border-bottom: var(--og-calendar__header-Border);
+    padding-bottom: 8px;
 }
 
-.change-month {
+.calender__header__main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calender__header__prefix,
+.calender__header__suffix {
+    padding: 4px;
+}
+
+.calendar__main {
+    display: block;
+    padding-top: 8px;
+}
+
+.calendar__nav {
     cursor: pointer;
 }
 
-.hidden {
-    visibility: hidden !important;
+.calendar__nav--hidden {
+    display: none;
+}
+
+
+.calender__header__month,
+.calender__header__year {
+    display: inline-block;
+    padding: 4px;
 }

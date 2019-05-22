@@ -113,12 +113,12 @@
                 getDateDecoration: function (moment) {
                     if (moment.day() === 0 || moment.day() === 6) {
                         return {
-                            class: 'disabled'
+                            class: 'day--disabled'
                         };
                     } else {
                         if (moment.date() === 1 || moment.date() === 20) {
                             return {
-                                class: 'highlight'
+                                class: 'day--highlight'
                             };
                         }
                     }
@@ -150,12 +150,12 @@
                 getDateDecoration: function (moment) {
                     if (moment.day() === 0 || moment.day() === 6) {
                         return {
-                            class: 'disabled'
+                            class: 'day--disabled'
                         };
                     } else {
                         if (moment.date() === 1 || moment.date() === 20) {
                             return {
-                                class: 'highlight'
+                                class: 'day--highlight'
                             };
                         }
                     }

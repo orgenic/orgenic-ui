@@ -70,13 +70,20 @@ export class OgCalendarGroup {
         const result = [];
         for (let i = 0; i < this.displayedMonths; i++) {
             result.push(
-                <div class="calendar-container">
-                    <div class="calendar-header">
-                        <span class={ 'change-month' + (i > 0 ? ' hidden' : '') } onClick={ () => this.decreaseMonth() }>&lt;</span>
-                        <span>{ localM.format('MMM') } { localM.year() }</span>
-                        <span class={ 'change-month' + (i < this.displayedMonths - 1 ? ' hidden' : '') } onClick={ () => this.increseMonth() }>&gt;</span>
+                <div class="calendar__container">
+                    <div class="calendar__header">
+                        <div class="calender__header__prefix">
+                            <span class={ 'calendar__nav' + (i > 0 ? ' calendar__nav--hidden' : '') } onClick={ () => this.decreaseMonth() }>&lt;</span>
+                        </div>
+                        <div class="calender__header__main">
+                            <span class="calender__header__month">{ localM.format('MMM') }</span><span class="calender__header__year">{ localM.year() }</span>
+                        </div>
+                        <div class="calender__header__suffix">
+                            <span class={ 'calendar__nav' + (i < this.displayedMonths - 1 ? ' calendar__nav--hidden' : '') } onClick={ () => this.increseMonth() }>&gt;</span>
+                        </div>
                     </div>
                     <og-calendar
+                        class="calendar__main"
                         month={ localM.month() }
                         year={ localM.year() }
                         showCalendarWeek={ this.showCalendarWeek }

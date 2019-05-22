@@ -1,62 +1,82 @@
+:host {
+    --og-calendar__day-Background: none;
+    --og-calendar__day-Background--hover: var(--OG-COLOR-PRIMARY--100--15, #{$og-color-primary--100--15});
+    --og-calendar__day-Background--active: var(--OG-COLOR-PRIMARY--100, #{$og-color-primary--100});
+    --og-calendar__day-Background--disabled: none;
+
+    --og-calendar__day-Color: inherit;
+    --og-calendar__day-Color--hover: var(--OG-COLOR-PRIMARY--100--15, #{$og-color-primary--100--15});
+    --og-calendar__day-Color--active: var(--OG-COLOR-SHADE--0, #{$og-color-shade--0});
+    --og-calendar__day-Color--disabled: var(--OG-COLOR-SHADE--100--50, #{$og-color-shade--100--50});
+
+}
+
 table {
-    border-spacing: 0;
-    border-collapse: collapse;
+    border-spacing: 2px;
 }
 
 td {
-    height: 2em;
-    padding-top: 0.2em;
-    padding-bottom: calc(0.2em - 2px);
-    padding-left: 0.8em;
-    padding-right: 0.8em;
+    line-height: 1;
 }
 
-thead td {
-    text-align: right;
+th {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 12px;
+
 }
 
 .day {
-    text-align: right;
-}
-
-.day::after {
-    display: block;
-    content: '';
-    width: 100%;
-    height: 2px;
-}
-
-.day:not(.disabled):hover {
-    background: rgb(120, 228, 255);
+    background: var(--og-calendar__day-Background);
+    color: var(--og-calendar__day-Color);
+    text-align: center;
+    font-size: 12px;
+    border-radius: 3px;
+    position: relative;
     cursor: pointer;
+
+    padding: 6px;
+
+    &::after {
+        position: absolute;
+        display: block;
+        content: '';
+        height: 2px;
+        top: auto;
+        right: 4px;
+        bottom: 0;
+        left: 4px;
+    }
+
+    &:not(.day--disabled):not(.day--selected):hover {
+        --og-calendar__day-Background: var(--og-calendar__day-Background--hover, none);
+    }
 }
 
-.day.selected {
-    background: rgb(117, 255, 140);
+.day--selected {
+    --og-calendar__day-Background: var(--og-calendar__day-Background--active, none);
+    --og-calendar__day-Color: var(--og-calendar__day-Color--active);
 }
+
+
 
 .week {
+    padding-right: 8px;
     text-align: right;
-    color: #000;
-    background: #eee;
+    font-size: 12px;
+    border-right: 1px solid var(--OG-COLOR-SHADE--100--20);
 }
 
-.sameMonth {
-    color: #000;
+.day--disabled {
+    --og-calendar__day-Color: var(--og-calendar__day-Color--disabled);
+    --og-calendar__day-Background: var(--og-calendar__day-Background--disabled);
+    cursor: default;
 }
 
-.disabled {
-    color: #aaa;
-}
-
-.today {
+.day--today {
     font-weight: bold;
 }
 
-.highlight::after {
-    display: block;
-    content: '';
-    width: 100%;
-    height: 2px;
-    background: red;
+.day--highlight::after {
+    background: deeppink;
 }
