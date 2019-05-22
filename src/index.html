@@ -74,7 +74,7 @@
             Theme Switch
             -->
             <og-card name="Switch Theme">
-                <div slot="content" slot="content">
+                <div>
                     It's possible to change ORGENIC UI themes at application runtime without reloading.
                     <br /><br />
                     <b>Choose your favourite theme!</b>
@@ -97,9 +97,9 @@
             og-dialog
             -->
             <og-card name="Dialog">
-                <div slot="content" slot="content">
+                <div>
                     <og-dialog name="Custom Dialog" id="customDialog">
-                        <div slot="content">Custom Dialog Content</div>
+                        <div>Custom Dialog Content</div>
                         <div slot="footer">
                             <og-button label="Close Dialog" id="closeCustomDialog"></og-button>
                         </div>
@@ -146,7 +146,7 @@
             og-expander
             -->
             <og-card name="Expander">
-                <div slot="content" slot="content">
+                <div>
                     <og-expander name="ORGENIC Expander 1.1" group="a">
                         Some very interesting information about ORGENIC UI is [...]. And that's why we [...] all the things!
                     </og-expander>
@@ -169,7 +169,7 @@
             og-datatable
             -->
             <og-card name="Datatable">
-                <div slot="content">
+                <div>
                     <p>
                         ORGENIC UI Datagrid supports scrolling and paging presentation as well as a lazy loading data
                         provider.
@@ -315,7 +315,7 @@
             og-form-item
             -->
             <og-card name="Form Item">
-                <div slot="content" class="example example--column">
+                <div class="example example--column">
                     <div>
                         <og-form-item label="Default Text Input">
                             <og-text-input id="input#1"></og-text-input>
@@ -344,7 +344,7 @@
             og-text-input
             -->
             <og-card name="Text Input">
-                <div slot="content" class="example example--column">
+                <div class="example example--column">
                     <div>
                         <label for="input#1">Default Text Input</label>
                         <og-text-input id="input#1"></og-text-input>
@@ -375,7 +375,7 @@
             og-textarea
             -->
             <og-card name="Textarea">
-                <div slot="content" class="example example--column">
+                <div class="example example--column">
                     <div>
                         <label for="textarea1">Default Textarea</label>
                         <og-textarea id="textarea1"></og-textarea>
@@ -397,7 +397,7 @@
             og-number-input
             -->
             <og-card name="Number Input">
-                <div slot="content" class="example example--column">
+                <div class="example example--column">
                     <div>
                         <label for="numberInput#1">Default Number Input</label>
                         <og-number-input id="numberInput#1"></og-number-input>
@@ -429,7 +429,7 @@
             og-password-input
             -->
             <og-card name="Password Input">
-                <div slot="content" class="example example--column">
+                <div class="example example--column">
                     <div>
                         <label for="password#1">Default Password Input</label>
                         <og-password-input id="password#1"></og-password-input>
@@ -462,7 +462,7 @@
             og-radio-button-group
             -->
             <og-card name="Radio Button Group">
-                <form slot="content">
+                <form>
                     <div class="example">
                         <og-radio-button-group name="bg1" selected-value="r">
                             <og-radio-button label="Angular" value="ng"></og-radio-button>
@@ -506,7 +506,7 @@
             og-tab-container
             -->
             <og-card name="Tabs">
-                <div slot="content" class="example">
+                <div class="example">
                     <og-tab-container>
                         <og-tab label="Angular Example" selected>Show here how to use component in Angular</og-tab>
                         <og-tab label="React Example">Show here how to use component in React</og-tab>
@@ -533,7 +533,7 @@
             og-checkbox
             -->
             <og-card name="Checkbox">
-                <div slot="content" class="example">
+                <div class="example">
                     <og-checkbox label="Default Checkbox"></og-checkbox>
                     <og-checkbox label="Disabled Checkbox" checked disabled></og-checkbox>
                     <og-checkbox label="Disabled Checkbox" disabled></og-checkbox>
@@ -552,7 +552,7 @@
             og-toggle-switch
             -->
             <og-card name="Toggle Switch">
-                <div slot="content" class="example">
+                <div class="example">
                     <og-toggle-switch value="false"></og-toggle-switch>
                     <og-toggle-switch value="true" disabled></og-toggle-switch>
                 </div>
@@ -570,7 +570,7 @@
             og-button
             -->
             <og-card name="Buttons">
-                <div slot="content" class="example">
+                <div class="example">
                     <og-button class="demo-button" label="Default"></og-button>
                     <og-button class="demo-button" label="Link" data-context="link"></og-button>
                     <og-button class="demo-button" label="Workflow" data-context="workflow"></og-button>
@@ -590,7 +590,7 @@
             og-list
             -->
             <og-card name="List">
-                <div slot="content">
+                <div>
                     <h4>Listitems with pre-selection</h4>
                     <og-list id="list1" selected="v2"></og-list>
 
@@ -627,16 +627,16 @@
             og-combobox
             -->
             <og-card name="Combobox">
-                <div slot="content">
+                <div>
                     <h4>Preselected value</h4>
                     <og-combobox id="combobox1" value="3"></og-combobox>
-                    
+
                         <h4>Empty value with placeholder text</h4>
                         <og-combobox id="combobox2" placeholder="Please select a value"></og-combobox>
-                    
+
                         <h4>Disabled combobox</h4>
                         <og-combobox id="combobox3" value="2" disabled></og-combobox>
-                    
+
                 </div>
             </og-card>
             <script>
@@ -658,7 +658,7 @@
             </script>
 
             <og-card name="Typography">
-                <div slot="content">
+                <div>
                     <h1>Heading 1</h1>
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
                     <h2>Heading 2</h2>
