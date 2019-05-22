@@ -137,14 +137,20 @@ export class OgDatepicker {
         if (!this.indicatorElement) {
             return {};
         }
+
         let flyoutTop = (this.indicatorElement.getBoundingClientRect().top + this.indicatorElement.offsetHeight);
 
-        let flyoutHeight = 271;
+        this.flyoutCalendar.style.display = 'block';
+        let flyoutHeight = this.flyoutCalendar.getBoundingClientRect().height;
+        this.flyoutCalendar.style.display = '';
+
+        if (flyoutTop + flyoutHeight > window.innerHeight) {
+            flyoutTop = this.el.getBoundingClientRect().top - flyoutHeight;
+        }
 
         return {
             top: flyoutTop + 'px',
             width: window.getComputedStyle(this.flyoutCalendar.parentElement).width,
-            height: flyoutHeight + 'px'
         }
     }
 
