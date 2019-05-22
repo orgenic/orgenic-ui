@@ -1,0 +1,67 @@
+h1 {
+    font-size:      var(--OG-FONT-SIZE--H1, 48px);
+    font-weight:    var(--OG-FONT-WEIGHT--H1, normal);
+}
+
+h2 {
+    font-size:      var(--OG-FONT-SIZE--H2, 32px);
+    font-weight:    var(--OG-FONT-WEIGHT--H2, normal);
+}
+
+h3 {
+    font-size:      var(--OG-FONT-SIZE--H3, 24px);
+    font-weight:    var(--OG-FONT-WEIGHT--H3, normal);
+}
+
+h4 {
+    font-size:      var(--OG-FONT-SIZE--H4, 20px);
+    font-weight:    var(--OG-FONT-WEIGHT--H4, normal);
+}
+
+h5,
+h6 {
+    font-size:      var(--OG-FONT-SIZE, 16px);
+    font-weight:    var(--OG-FONT-WEIGHT, bolder);
+}
+
+p {
+    font-size:      var(--OG-FONT-SIZE, 16px);
+    font-weight:    var(--OG-FONT-WEIGHT, normal);
+}
+
+small,
+sub,
+sup {
+    font-size:      var(--OG-FONT-SIZE--S, 12px);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    padding: 0;
+    margin: 32px 0 16px 0;
+}
+
+h1:first-child,
+h2:first-child,
+h3:first-child,
+h4:first-child,
+h5:first-child,
+h6:first-child,
+p:first-child {
+    margin-top: 0;
+}
+
+p {
+    margin: 16px 0;
+}
+
+dl,
+ol,
+ul {
+    margin: 16px 0;
+}

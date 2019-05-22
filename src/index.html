@@ -1,665 +1,698 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+        <title>ORGENIC UI Vanilla JS Examples</title>
+        <script src="/build/orgenic-ui.js"></script>
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
-    <title>ORGENIC UI Vanilla JS Examples</title>
-    <script src="/build/orgenic-ui.js"></script>
+        <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+        <link rel="manifest" href="/assets/favicon/site.webmanifest">
+        <link rel="mask-icon" href="/assets/favicon/safari-pinned-tab.svg" color="#5bbad5">
+        <meta name="msapplication-TileColor" content="#b8d8fb">
+        <meta name="theme-color" content="#ffffff">
 
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
-    <link rel="manifest" href="/assets/favicon/site.webmanifest">
-    <link rel="mask-icon" href="/assets/favicon/safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#b8d8fb">
-    <meta name="theme-color" content="#ffffff">
+        <link rel="stylesheet" href="/themes/dark.theme.css">
+        <link rel="stylesheet" href="/themes/light.theme.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+        <style>
+            body {
+                background: rgba(29, 161, 211, 0.1);
+                color: #333;
+                font-size: 16px;
+                font-family: Roboto;
+                font-weight: var(--OG-FONT-WEIGHT, 400);
+                display: flex;
+                justify-content: center;
+                user-select: none;
+                padding: 32px 0 32px 0;
+                margin: 0;
+            }
 
-    <link rel="stylesheet" href="/themes/dark.theme.css">
-    <link rel="stylesheet" href="/themes/light.theme.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
-    <style>
-        body {
-            background: rgba(29, 161, 211, 0.1);
-            color: #333;
-            font-size: 16px;
-            font-family: Roboto;
-            font-weight: var(--OG-FONT-WEIGHT, 400);
-            display: flex;
-            justify-content: center;
-            user-select: none;
-        }
+            header {
+                width: calc(100% - 10px);
+                background: rgb(183, 216, 224);
+                line-height: 2.5em;
+                font-weight: 500;
+                color: #333;
+                padding-left: 10px;
+            }
 
-        h1 {
-            padding-left: 8px;
-            font-weight: normal;
-        }
+            og-card {
+                display: block;
+                margin: 16px 0 32px 0;
+            }
 
-        header {
-            width: calc(100% - 10px);
-            background: rgb(183, 216, 224);
-            line-height: 2.5em;
-            font-weight: 500;
-            color: #333;
-            padding-left: 10px;
-        }
+            .example {
+                width: 100%;
+                box-sizing: border-box;
+                display: flex;
+                justify-content: space-between;
+                padding: 8px 0;
+            }
 
-        og-card {
-            display: block;
-            margin-top: 40px;
-        }
+            .example--column {
+                flex-direction: column;
+            }
 
-        .example {
-            width: 100%;
-            box-sizing: border-box;
-            display: flex;
-            justify-content: space-between;
-            padding: 8px 0;
-        }
+            b {
+                font-weight: var(--OG-FONT-WEIGHT--MEDIUM, 500);
+            }
 
-        .example--column {
-            flex-direction: column;
-        }
+            .smaller {
+                font-size: var(--OG-FONT-SIZE--XS, 10px);
+            }
+        </style>
+    </head>
 
-        b {
-            font-weight: var(--OG-FONT-WEIGHT--MEDIUM, 500);
-        }
-    </style>
-</head>
+    <body>
+        <div style="width: 100%; max-width: 800px;">
+            <h1>ORGENIC UI</h1>
+            <!--
+            Theme Switch
+            -->
+            <og-card name="Switch Theme">
+                <div>
+                    It's possible to change ORGENIC UI themes at application runtime without reloading.
+                    <br /><br />
+                    <b>Choose your favourite theme!</b>
+                </div>
+                <div slot="footer">
+                    <og-button id="theme_light" label="Light"></og-button>
+                    <og-button id="theme_dark" label="Dark"></og-button>
+                </div>
+            </og-card>
+            <script>
+                document.querySelector('#theme_light').addEventListener('clicked', () => {
+                    document.querySelector('body').setAttribute('class', 'og-theme--light');
+                });
+                document.querySelector('#theme_dark').addEventListener('clicked', () => {
+                    document.querySelector('body').setAttribute('class', 'og-theme--dark');
+                });
+            </script>
 
-<body>
-    <div style="width: 100%; max-width: 800px;">
-        <h1>ORGENIC UI</h1>
-        <!--
-        Theme Switch
-        -->
-        <og-card name="Switch Theme">
-            <div>
-                It's possible to change ORGENIC UI themes at application runtime without reloading.
-                <br /><br />
-                <b>Choose your favourite theme!</b>
-            </div>
-            <div slot="footer">
-                <og-button id="theme_light" label="Light"></og-button>
-                <og-button id="theme_dark" label="Dark"></og-button>
-            </div>
-        </og-card>
-        <script>
-            document.querySelector('#theme_light').addEventListener('clicked', () => {
-                document.querySelector('body').setAttribute('class', 'og-theme--light');
-            });
-            document.querySelector('#theme_dark').addEventListener('clicked', () => {
-                document.querySelector('body').setAttribute('class', 'og-theme--dark');
-            });
-        </script>
+            <!--
+            og-dialog
+            -->
+            <og-card name="Dialog">
+                <div>
+                    <og-dialog name="Custom Dialog" id="customDialog">
+                        <div>Custom Dialog Content</div>
+                        <div slot="footer">
+                            <og-button label="Close Dialog" id="closeCustomDialog"></og-button>
+                        </div>
+                    </og-dialog>
+                    <og-confirm-dialog name="Cancel Task" id="confirmDialog">
+                        <div>Confirm Dialog Content</div>
+                    </og-confirm-dialog>
+                    <og-message-dialog name="Task Finished" id="messageDialog" type="success">
+                        <div>Message Dialog Content</div>
+                    </og-message-dialog>
+                    <og-button label="Open Custom Dialog" id="openCustomDialog"></og-button>
+                    <og-button label="Open Confirm Dialog" id="openConfirmDialog"></og-button>
+                    <og-button label="Open Success Dialog" id="openSuccessDialog"></og-button>
+                </div>
+            </og-card>
+            <script>
+                const customDialogButton = document.querySelector('#openCustomDialog');
+                const customDialogButtonClose = document.querySelector('#closeCustomDialog');
+                customDialogButton.addEventListener('clicked', (e) => {
+                    document.querySelector('#customDialog').setAttribute('visible', 'true');
+                });
+                customDialogButtonClose.addEventListener('clicked', e => {
+                    document.querySelector('#customDialog').setAttribute('visible', 'false');
+                });
 
-        <!--
-        og-dialog
-        -->
-        <og-card name="Dialog">
-            <div>
-                <og-dialog name="Custom Dialog" id="customDialog">
-                    <div>Custom Dialog Content</div>
-                    <div slot="footer">
-                        <og-button label="Close Dialog" id="closeCustomDialog"></og-button>
+                const confirmDialogButton = document.querySelector('#openConfirmDialog');
+                confirmDialogButton.addEventListener('clicked', (e) => {
+                    document.querySelector('#confirmDialog').setAttribute('visible', 'true');
+                });
+
+                const successDialogButton = document.querySelector('#openSuccessDialog');
+                successDialogButton.addEventListener('clicked', (e) => {
+                    document.querySelector('#messageDialog').setAttribute('visible', 'true');
+                });
+                const successDialog = document.querySelector('#messageDialog');
+                successDialog.addEventListener('confirmed', (e) => console.log('success dialog confirmed'));
+
+                const confirmDialog = document.querySelector('#confirmDialog');
+                confirmDialog.addEventListener('confirmed', (e) => console.log('confirm dialog confirmed'));
+                confirmDialog.addEventListener('cancelled', (e) => console.log('confirm dialog cancelled'));
+            </script>
+
+            <!--
+            og-expander
+            -->
+            <og-card name="Expander">
+                <div>
+                    <og-expander name="ORGENIC Expander 1.1" group="a">
+                        Some very interesting information about ORGENIC UI is [...]. And that's why we [...] all the things!
+                    </og-expander>
+                    <og-expander name="ORGENIC Expander 1.2" group="a">
+                        Some very interesting information about ORGENIC UI is [...]. And that's why we [...] all the things!
+                    </og-expander>
+                    <og-expander name="ORGENIC Expander 2.1" group="b">
+                        Some very interesting information about ORGENIC UI is [...]. And that's why we [...] all the things!
+                    </og-expander>
+                    <og-expander name="ORGENIC Expander 2.2" group="b">
+                        Some very interesting information about ORGENIC UI is [...]. And that's why we [...] all the things!
+                    </og-expander>
+                    <og-expander name="ORGENIC Expander 2.3" group="b">
+                        Some very interesting information about ORGENIC UI is [...]. And that's why we [...] all the things!
+                    </og-expander>
+                </div>
+            </og-card>
+
+            <!--
+            og-datatable
+            -->
+            <og-card name="Datatable">
+                <div>
+                    <p>
+                        ORGENIC UI Datagrid supports scrolling and paging presentation as well as a lazy loading data
+                        provider.
+                    </p>
+                    <div style="height: 400px">
+                        <!-- <div> -->
+                        <og-datatable id="datatable"></og-datatable>
                     </div>
-                </og-dialog>
-                <og-confirm-dialog name="Cancel Task" id="confirmDialog">
-                    <div>Confirm Dialog Content</div>
-                </og-confirm-dialog>
-                <og-message-dialog name="Task Finished" id="messageDialog" type="success">
-                    <div>Message Dialog Content</div>
-                </og-message-dialog>
-                <og-button label="Open Custom Dialog" id="openCustomDialog"></og-button>
-                <og-button label="Open Confirm Dialog" id="openConfirmDialog"></og-button>
-                <og-button label="Open Success Dialog" id="openSuccessDialog"></og-button>
-            </div>
-        </og-card>
-        <script>
-            const customDialogButton = document.querySelector('#openCustomDialog');
-            const customDialogButtonClose = document.querySelector('#closeCustomDialog');
-            customDialogButton.addEventListener('clicked', (e) => {
-                document.querySelector('#customDialog').setAttribute('visible', 'true');
-            });
-            customDialogButtonClose.addEventListener('clicked', e => {
-                document.querySelector('#customDialog').setAttribute('visible', 'false');
-            });
-
-            const confirmDialogButton = document.querySelector('#openConfirmDialog');
-            confirmDialogButton.addEventListener('clicked', (e) => {
-                document.querySelector('#confirmDialog').setAttribute('visible', 'true');
-            });
-
-            const successDialogButton = document.querySelector('#openSuccessDialog');
-            successDialogButton.addEventListener('clicked', (e) => {
-                document.querySelector('#messageDialog').setAttribute('visible', 'true');
-            });
-            const successDialog = document.querySelector('#messageDialog');
-            successDialog.addEventListener('confirmed', (e) => console.log('success dialog confirmed'));
-
-            const confirmDialog = document.querySelector('#confirmDialog');
-            confirmDialog.addEventListener('confirmed', (e) => console.log('confirm dialog confirmed'));
-            confirmDialog.addEventListener('cancelled', (e) => console.log('confirm dialog cancelled'));
-        </script>
-
-        <!--
-        og-expander
-        -->
-        <og-card name="Expander">
-            <div>
-                <og-expander name="ORGENIC Expander 1.1" group="a">
-                    Some very interesting information about ORGENIC UI is [...]. And that's why we [...] all the things!
-                </og-expander>
-                <og-expander name="ORGENIC Expander 1.2" group="a">
-                    Some very interesting information about ORGENIC UI is [...]. And that's why we [...] all the things!
-                </og-expander>
-                <og-expander name="ORGENIC Expander 2.1" group="b">
-                    Some very interesting information about ORGENIC UI is [...]. And that's why we [...] all the things!
-                </og-expander>
-                <og-expander name="ORGENIC Expander 2.2" group="b">
-                    Some very interesting information about ORGENIC UI is [...]. And that's why we [...] all the things!
-                </og-expander>
-                <og-expander name="ORGENIC Expander 2.3" group="b">
-                    Some very interesting information about ORGENIC UI is [...]. And that's why we [...] all the things!
-                </og-expander>
-            </div>
-        </og-card>
-
-        <!--
-        og-datatable
-        -->
-        <og-card name="Datatable">
-            <div class="example example--column">
-                <p>
-                    ORGENIC UI Datagrid supports scrolling and paging presentation as well as a lazy loading data
-                    provider.
-                </p>
-                <div style="height: 400px">
-                    <!-- <div> -->
-                    <og-datatable id="datatable"></og-datatable>
                 </div>
-            </div>
-        </og-card>
-        <script>
-            const dtData = [];
-            for (; dtData.length < 1000;) {
-                dtData.push({ id: dtData.length, label: 'ORGENIC UI', license: 'MIT', author: 'MAXIMAGO', focus: 'UX + Design + Web Components', value: 5 });
-                dtData.push({ id: dtData.length, label: 'Bootstrap', license: 'MIT', author: 'Twitter', focus: 'CSS', value: 2 });
-                dtData.push({ id: dtData.length, label: 'Material', license: 'MIT', author: 'Google', focus: 'Components', value: 3 });
-            }
-            const dtColumns = [
-                {
-                    property: 'label',
-                    title: 'Label'
-                },
-                {
-                    property: 'author',
-                    title: 'Author'
-                },
-                {
-                    property: 'focus',
-                    title: 'Focus'
-                },
-                {
-                    property: 'value',
-                    title: 'Added Value',
-                    formatter: 'star',
-                },
-                {
-                    property: 'value',
-                    title: 'Custom Formatter',
-                    formatter: (cell, formatterParams, onRendered) => {
-                        let colored = '';
-                        for (let i = 0; i < cell.getValue(); i++) {
-                            const hue = 150 - (37.5 * i);
-                            colored += '<span style="color: hsl(' + hue + ',100%,40%)">&#10687;</span>';
-                        }
-                        return '<strong>' + colored + '</strong>';
-                    }
-                },
-            ];
-
-            const scrollData = {
-                type: 'scrolled',
-                provider: {
-                    type: 'default',
-                    getData: async () => dtData
+            </og-card>
+            <script>
+                const dtData = [];
+                for (; dtData.length < 1000;) {
+                    dtData.push({ id: dtData.length, label: 'ORGENIC UI', license: 'MIT', author: 'MAXIMAGO', focus: 'UX + Design + Web Components', value: 5 });
+                    dtData.push({ id: dtData.length, label: 'Bootstrap', license: 'MIT', author: 'Twitter', focus: 'CSS', value: 2 });
+                    dtData.push({ id: dtData.length, label: 'Material', license: 'MIT', author: 'Google', focus: 'Components', value: 3 });
                 }
-            };
+                const dtColumns = [
+                    {
+                        property: 'label',
+                        title: 'Label'
+                    },
+                    {
+                        property: 'author',
+                        title: 'Author'
+                    },
+                    {
+                        property: 'focus',
+                        title: 'Focus'
+                    },
+                    {
+                        property: 'value',
+                        title: 'Added Value',
+                        formatter: 'star',
+                    },
+                    {
+                        property: 'value',
+                        title: 'Custom Formatter',
+                        formatter: (cell, formatterParams, onRendered) => {
+                            let colored = '';
+                            for (let i = 0; i < cell.getValue(); i++) {
+                                const hue = 150 - (37.5 * i);
+                                colored += '<span style="color: hsl(' + hue + ',100%,40%)">&#10687;</span>';
+                            }
+                            return '<strong>' + colored + '</strong>';
+                        }
+                    },
+                ];
 
-            const scrollLazyData = {
-                type: 'scrolled',
-                options: {
-                    requestLimit: 50
-                },
-                provider: {
-                    type: 'lazy',
-                    getData: async (page, size, sorters) => {
-                        let data = dtData;
-                        if (Array.isArray(sorters) && sorters.length > 0) {
-                            data = [...data];
-                            sorters.forEach(sorter => {
-                                data.sort((a, b) => {
-                                    const fa = a[sorter.field];
-                                    const fb = b[sorter.field];
-                                    const result = fa < fb ? -1 : (fa > fb ? 1 : 0);
-                                    return result * (sorter.dir === 'desc' ? -1 : 1);
+                const scrollData = {
+                    type: 'scrolled',
+                    provider: {
+                        type: 'default',
+                        getData: async () => dtData
+                    }
+                };
+
+                const scrollLazyData = {
+                    type: 'scrolled',
+                    options: {
+                        requestLimit: 50
+                    },
+                    provider: {
+                        type: 'lazy',
+                        getData: async (page, size, sorters) => {
+                            let data = dtData;
+                            if (Array.isArray(sorters) && sorters.length > 0) {
+                                data = [...data];
+                                sorters.forEach(sorter => {
+                                    data.sort((a, b) => {
+                                        const fa = a[sorter.field];
+                                        const fb = b[sorter.field];
+                                        const result = fa < fb ? -1 : (fa > fb ? 1 : 0);
+                                        return result * (sorter.dir === 'desc' ? -1 : 1);
+                                    });
                                 });
-                            });
+                            }
+                            return {
+                                totalRows: data.length,
+                                data: data.length < size ? data.length : data.slice((page - 1) * size, page * size)
+                            };
                         }
-                        return {
-                            totalRows: data.length,
-                            data: data.length < size ? data.length : data.slice((page - 1) * size, page * size)
-                        };
                     }
-                }
-            };
+                };
 
-            const paginatedData = {
-                type: 'paginated',
-                options: {
-                    pageSize: 8
-                },
-                provider: {
-                    type: 'default',
-                    getData: async () => dtData
-                }
-            };
+                const paginatedData = {
+                    type: 'paginated',
+                    options: {
+                        pageSize: 8
+                    },
+                    provider: {
+                        type: 'default',
+                        getData: async () => dtData
+                    }
+                };
 
-            const paginatedLazyData = {
-                type: 'paginated',
-                options: {
-                    pageSize: 11
-                },
-                provider: {
-                    type: 'lazy',
-                    getData: async (page, size, sorters) => {
-                        let data = dtData;
-                        if (Array.isArray(sorters) && sorters.length > 0) {
-                            data = [...data];
-                            sorters.forEach(sorter => {
-                                data.sort((a, b) => {
-                                    const fa = a[sorter.field];
-                                    const fb = b[sorter.field];
-                                    const result = fa < fb ? -1 : (fa > fb ? 1 : 0);
-                                    return result * (sorter.dir === 'desc' ? -1 : 1);
+                const paginatedLazyData = {
+                    type: 'paginated',
+                    options: {
+                        pageSize: 11
+                    },
+                    provider: {
+                        type: 'lazy',
+                        getData: async (page, size, sorters) => {
+                            let data = dtData;
+                            if (Array.isArray(sorters) && sorters.length > 0) {
+                                data = [...data];
+                                sorters.forEach(sorter => {
+                                    data.sort((a, b) => {
+                                        const fa = a[sorter.field];
+                                        const fb = b[sorter.field];
+                                        const result = fa < fb ? -1 : (fa > fb ? 1 : 0);
+                                        return result * (sorter.dir === 'desc' ? -1 : 1);
+                                    });
                                 });
-                            });
+                            }
+                            return {
+                                totalRows: data.length,
+                                data: data.length < size ? data.length : data.slice((page - 1) * size, page * size)
+                            };
                         }
-                        return {
-                            totalRows: data.length,
-                            data: data.length < size ? data.length : data.slice((page - 1) * size, page * size)
-                        };
                     }
+                };
+
+                const dtConfig = {
+                    noDataMessage: 'No items available',
+                    selectable: true,
+                    // dataService: scrollData,
+                    dataService: scrollLazyData,
+                    // dataService: paginatedData,
+                    // dataService: paginatedLazyData,
+                    columns: dtColumns
                 }
-            };
 
-            const dtConfig = {
-                noDataMessage: 'No items available',
-                selectable: true,
-                // dataService: scrollData,
-                dataService: scrollLazyData,
-                // dataService: paginatedData,
-                // dataService: paginatedLazyData,
-                columns: dtColumns
-            }
+                const datatable = document.querySelector('#datatable');
+                datatable.config = dtConfig;
+                datatable.addEventListener('itemSelected', event => {
+                    console.log('selected', event.detail);
+                });
+            </script>
 
-            const datatable = document.querySelector('#datatable');
-            datatable.config = dtConfig;
-            datatable.addEventListener('itemSelected', event => {
-                console.log('selected', event.detail);
-            });
-        </script>
+            <!--
+            og-form-item
+            -->
+            <og-card name="Form Item">
+                <div class="example example--column">
+                    <div>
+                        <og-form-item label="Default Text Input">
+                            <og-text-input id="input#1"></og-text-input>
+                        </og-form-item>
+                        <og-form-item label="Default Number Input">
+                            <og-number-input></og-number-input>
+                        </og-form-item>
+                        <og-form-item label="Default Combobox" id="formItemCombobox">
+                            <og-combobox value="3"></og-combobox>
+                        </og-form-item>
+                    </div>
+                </div>
+            </og-card>
+            <script>
+                const fiComboboxValues = [
+                    { label: 'Value 1', value: 1 },
+                    { label: 'Value 2', value: 2 },
+                    { label: 'Value 3', value: 3 },
+                ];
 
-        <!--
-        og-form-item
-        -->
-        <og-card name="Form Item">
-            <div class="example example--column">
-                <div>
-                    <og-form-item label="Default Text Input">
+                const fiCombobox = document.querySelector('#formItemCombobox').querySelector('og-combobox');
+                fiCombobox.items = fiComboboxValues;
+            </script>
+
+            <!--
+            og-text-input
+            -->
+            <og-card name="Text Input">
+                <div class="example example--column">
+                    <div>
+                        <label for="input#1">Default Text Input</label>
                         <og-text-input id="input#1"></og-text-input>
+                    </div>
+                    <div>
+                        <label for="input#2">Text Input with placeholder</label>
+                        <og-text-input id="input#2" placeholder="Insert name here"></og-text-input>
+                    </div>
+                    <div>
+                        <label for="input#3">Text Input with value</label>
+                        <og-text-input id="input#3" placeholder="Insert name here" value="ORGENIC UI"></og-text-input>
+                    </div>
+                    <div>
+                        <label for="input#4">Disabled Text Input</label>
+                        <og-text-input id="input#4" placeholder="Insert name here" value="by MAXIMAGO" disabled>
+                        </og-text-input>
+                    </div>
+                </div>
+            </og-card>
+            <script>
+                const textInputs = document.querySelectorAll('og-text-input');
+                textInputs[0].addEventListener('valueChanged', e => console.log('Text Input value changed', e));
+                textInputs[0].addEventListener('focusGained', e => console.log('Text Input got focus', e));
+                textInputs[0].addEventListener('focusLost', e => console.log('Text Input lost focus', e));
+            </script>
+
+            <!--
+            og-textarea
+            -->
+            <og-card name="Textarea">
+                <div class="example example--column">
+                    <div>
+                        <label for="textarea1">Default Textarea</label>
+                        <og-textarea id="textarea1"></og-textarea>
+                    </div>
+                    <br>
+                    <og-form-item label="Textarea with a label">
+                        <og-textarea id="textarea2"></og-textarea>
                     </og-form-item>
-                    <og-form-item label="Default Number Input">
-                        <og-number-input></og-number-input>
-                    </og-form-item>
-                    <og-form-item label="Default Combobox" id="formItemCombobox">
-                        <og-combobox value="3"></og-combobox>
-                    </og-form-item>
                 </div>
-            </div>
-        </og-card>
-        <script>
-            const fiComboboxValues = [
-                { label: 'Value 1', value: 1 },
-                { label: 'Value 2', value: 2 },
-                { label: 'Value 3', value: 3 },
-            ];
+            </og-card>
+            <script>
+                const textarea = document.querySelector('og-textarea');
+                textarea.addEventListener('valueChanged', e => console.log('Textarea value changed', e));
+                textarea.addEventListener('focusGained', e => console.log('Textarea got focus', e));
+                textarea.addEventListener('focusLost', e => console.log('Textarea lost focus', e));
+            </script>
 
-            const fiCombobox = document.querySelector('#formItemCombobox').querySelector('og-combobox');
-            fiCombobox.items = fiComboboxValues;
-        </script>
+            <!--
+            og-number-input
+            -->
+            <og-card name="Number Input">
+                <div class="example example--column">
+                    <div>
+                        <label for="numberInput#1">Default Number Input</label>
+                        <og-number-input id="numberInput#1"></og-number-input>
+                    </div>
+                    <div>
+                        <label for="numberInput#2">Number Input with placeholder</label>
+                        <og-number-input id="numberInput#2" placeholder="Insert value here"></og-number-input>
+                    </div>
+                    <div>
+                        <label for="numberInput#3">Number Input (min/max/step: 200/226/0.5)</label>
+                        <og-number-input id="numberInput#3" placeholder="Insert name here" value="218" min="200" max="226"
+                            step="0.5"></og-number-input>
+                    </div>
+                    <div>
+                        <label for="numberInput#4">Disabled Number Input</label>
+                        <og-number-input id="numberInput#4" placeholder="Insert name here" value="2020" disabled>
+                        </og-number-input>
+                    </div>
+                </div>
+            </og-card>
+            <script>
+                const numberInputs = document.querySelectorAll('og-number-input');
+                numberInputs[0].addEventListener('valueChanged', e => console.log('Number Input value changed', e));
+                numberInputs[0].addEventListener('focusGained', e => console.log('Number Input got focus', e));
+                numberInputs[0].addEventListener('focusLost', e => console.log('Number Input lost focus', e));
+            </script>
 
-        <!--
-        og-text-input
-        -->
-        <og-card name="Text Input">
-            <div class="example example--column">
-                <div>
-                    <label for="input#1">Default Text Input</label>
-                    <og-text-input id="input#1"></og-text-input>
+            <!--
+            og-password-input
+            -->
+            <og-card name="Password Input">
+                <div class="example example--column">
+                    <div>
+                        <label for="password#1">Default Password Input</label>
+                        <og-password-input id="password#1"></og-password-input>
+                    </div>
+                    <div>
+                        <label for="password#2">Password Input with placeholder</label>
+                        <og-password-input id="password#2" placeholder="Insert password here"></og-password-input>
+                    </div>
+                    <div>
+                        <label for="password#3">Password Input with value</label>
+                        <og-password-input id="password#3" placeholder="Insert password here" value="ORGENIC UI"
+                            show-toggle-password-visibility="true"></og-password-input>
+                    </div>
+                    <div>
+                        <label for="password#4">Disabled Password Input</label>
+                        <og-password-input id="password#4" placeholder="Insert password here" value="by MAXIMAGO" disabled>
+                        </og-password-input>
+                    </div>
                 </div>
-                <div>
-                    <label for="input#2">Text Input with placeholder</label>
-                    <og-text-input id="input#2" placeholder="Insert name here"></og-text-input>
-                </div>
-                <div>
-                    <label for="input#3">Text Input with value</label>
-                    <og-text-input id="input#3" placeholder="Insert name here" value="ORGENIC UI"></og-text-input>
-                </div>
-                <div>
-                    <label for="input#4">Disabled Text Input</label>
-                    <og-text-input id="input#4" placeholder="Insert name here" value="by MAXIMAGO" disabled>
-                    </og-text-input>
-                </div>
-            </div>
-        </og-card>
-        <script>
-            const textInputs = document.querySelectorAll('og-text-input');
-            textInputs[0].addEventListener('valueChanged', e => console.log('Text Input value changed', e));
-            textInputs[0].addEventListener('focusGained', e => console.log('Text Input got focus', e));
-            textInputs[0].addEventListener('focusLost', e => console.log('Text Input lost focus', e));
-        </script>
-
-        <!--
-        og-textarea
-        -->
-        <og-card name="Textarea">
-            <div class="example example--column">
-                <div>
-                    <label for="textarea1">Default Textarea</label>
-                    <og-textarea id="textarea1"></og-textarea>
-                </div>
-                <br>
-                <og-form-item label="Textarea with a label">
-                    <og-textarea id="textarea2"></og-textarea>
-                </og-form-item>
-            </div>
-        </og-card>
-        <script>
-            const textarea = document.querySelector('og-textarea');
-            textarea.addEventListener('valueChanged', e => console.log('Textarea value changed', e));
-            textarea.addEventListener('focusGained', e => console.log('Textarea got focus', e));
-            textarea.addEventListener('focusLost', e => console.log('Textarea lost focus', e));
-        </script>
-
-        <!--
-        og-number-input
-        -->
-        <og-card name="Number Input">
-            <div class="example example--column">
-                <div>
-                    <label for="numberInput#1">Default Number Input</label>
-                    <og-number-input id="numberInput#1"></og-number-input>
-                </div>
-                <div>
-                    <label for="numberInput#2">Number Input with placeholder</label>
-                    <og-number-input id="numberInput#2" placeholder="Insert value here"></og-number-input>
-                </div>
-                <div>
-                    <label for="numberInput#3">Number Input (min/max/step: 200/226/0.5)</label>
-                    <og-number-input id="numberInput#3" placeholder="Insert name here" value="218" min="200" max="226"
-                        step="0.5"></og-number-input>
-                </div>
-                <div>
-                    <label for="numberInput#4">Disabled Number Input</label>
-                    <og-number-input id="numberInput#4" placeholder="Insert name here" value="2020" disabled>
-                    </og-number-input>
-                </div>
-            </div>
-        </og-card>
-        <script>
-            const numberInputs = document.querySelectorAll('og-number-input');
-            numberInputs[0].addEventListener('valueChanged', e => console.log('Number Input value changed', e));
-            numberInputs[0].addEventListener('focusGained', e => console.log('Number Input got focus', e));
-            numberInputs[0].addEventListener('focusLost', e => console.log('Number Input lost focus', e));
-        </script>
-
-        <!--
-        og-password-input
-        -->
-        <og-card name="Password Input">
-            <div class="example example--column">
-                <div>
-                    <label for="password#1">Default Password Input</label>
-                    <og-password-input id="password#1"></og-password-input>
-                </div>
-                <div>
-                    <label for="password#2">Password Input with placeholder</label>
-                    <og-password-input id="password#2" placeholder="Insert password here"></og-password-input>
-                </div>
-                <div>
-                    <label for="password#3">Password Input with value</label>
-                    <og-password-input id="password#3" placeholder="Insert password here" value="ORGENIC UI"
-                        show-toggle-password-visibility="true"></og-password-input>
-                </div>
-                <div>
-                    <label for="password#4">Disabled Password Input</label>
-                    <og-password-input id="password#4" placeholder="Insert password here" value="by MAXIMAGO" disabled>
-                    </og-password-input>
-                </div>
-            </div>
-        </og-card>
-        <script>
-            const passwordInputs = document.querySelectorAll('og-password-input');
-            passwordInputs[0].addEventListener('valueChanged', e => console.log('Password Input value changed', e));
-            passwordInputs[0].addEventListener('focusGained', e => console.log('Password Input got focus', e));
-            passwordInputs[0].addEventListener('focusLost', e => console.log('Password Input lost focus', e));
-        </script>
+            </og-card>
+            <script>
+                const passwordInputs = document.querySelectorAll('og-password-input');
+                passwordInputs[0].addEventListener('valueChanged', e => console.log('Password Input value changed', e));
+                passwordInputs[0].addEventListener('focusGained', e => console.log('Password Input got focus', e));
+                passwordInputs[0].addEventListener('focusLost', e => console.log('Password Input lost focus', e));
+            </script>
 
 
-        <!--
-        og-radio-button-group
-        -->
-        <og-card name="Radio Button Group">
-            <form>
+            <!--
+            og-radio-button-group
+            -->
+            <og-card name="Radio Button Group">
+                <form>
+                    <div class="example">
+                        <og-radio-button-group name="bg1" selected-value="r">
+                            <og-radio-button label="Angular" value="ng"></og-radio-button>
+                            <og-radio-button label="React" value="r"></og-radio-button>
+                            <og-radio-button label="Vue" value="v"></og-radio-button>
+                        </og-radio-button-group>
+                    </div>
+                    <div class="example">
+
+                        <og-radio-button-group name="bg2" selected-value="ng">
+                            <og-radio-button label="Angular" value="ng"></og-radio-button>
+                            <og-radio-button label="React Disabled" value="r" disabled></og-radio-button>
+                            <og-radio-button label="Vue" value="v"></og-radio-button>
+                        </og-radio-button-group>
+
+                    </div>
+                    <div class="example">
+                        <og-radio-button-group name="bg3" selected-value="v" disabled>
+                            <og-radio-button label="Angular" value="ng" checked></og-radio-button>
+                            <og-radio-button label="React" value="r"></og-radio-button>
+                            <og-radio-button label="Vue" value="v"></og-radio-button>
+                        </og-radio-button-group>
+                    </div>
+                </form>
+            </og-card>
+            <script>
+                const groups = document.querySelectorAll('og-radio-button-group');
+                groups[0].addEventListener('changed', event => {
+                    console.log('group option selected', event.target.value);
+                });
+
+                const radioButtons = groups[0].querySelectorAll('og-radio-button');
+                radioButtons.forEach(radioButton => {
+                    radioButton.addEventListener('changed', event => {
+                        console.log('radio button changed', event.target.value, event.detail);
+                    });
+                });
+            </script>
+
+            <!--
+            og-tab-container
+            -->
+            <og-card name="Tabs">
                 <div class="example">
-                    <og-radio-button-group name="bg1" selected-value="r">
-                        <og-radio-button label="Angular" value="ng"></og-radio-button>
-                        <og-radio-button label="React" value="r"></og-radio-button>
-                        <og-radio-button label="Vue" value="v"></og-radio-button>
-                    </og-radio-button-group>
+                    <og-tab-container>
+                        <og-tab label="Angular Example" selected>Show here how to use component in Angular</og-tab>
+                        <og-tab label="React Example">Show here how to use component in React</og-tab>
+                        <og-tab label="Vue Example">Show here how to use component in Vue</og-tab>
+                    </og-tab-container>
                 </div>
                 <div class="example">
-
-                    <og-radio-button-group name="bg2" selected-value="ng">
-                        <og-radio-button label="Angular" value="ng"></og-radio-button>
-                        <og-radio-button label="React Disabled" value="r" disabled></og-radio-button>
-                        <og-radio-button label="Vue" value="v"></og-radio-button>
-                    </og-radio-button-group>
-
+                    <og-tab-container>
+                        <og-tab label="Angular Example">Show here how to use component in Angular</og-tab>
+                        <og-tab label="React Disabled" disabled>Show here how to use component in React</og-tab>
+                        <og-tab label="Vue Example" selected>Show here how to use component in Vue</og-tab>
+                    </og-tab-container>
                 </div>
                 <div class="example">
-                    <og-radio-button-group name="bg3" selected-value="v" disabled>
-                        <og-radio-button label="Angular" value="ng" checked></og-radio-button>
-                        <og-radio-button label="React" value="r"></og-radio-button>
-                        <og-radio-button label="Vue" value="v"></og-radio-button>
-                    </og-radio-button-group>
+                    <og-tab-container disabled>
+                        <og-tab label="Angular Example" selected>Show here how to use component in Angular</og-tab>
+                        <og-tab label="React Example">Show here how to use component in React</og-tab>
+                        <og-tab label="Vue Example">Show here how to use component in Vue</og-tab>
+                    </og-tab-container>
                 </div>
-            </form>
-        </og-card>
-        <script>
-            const groups = document.querySelectorAll('og-radio-button-group');
-            groups[0].addEventListener('changed', event => {
-                console.log('group option selected', event.target.value);
-            });
+            </og-card>
 
-            const radioButtons = groups[0].querySelectorAll('og-radio-button');
-            radioButtons.forEach(radioButton => {
-                radioButton.addEventListener('changed', event => {
-                    console.log('radio button changed', event.target.value, event.detail);
+            <!--
+            og-checkbox
+            -->
+            <og-card name="Checkbox">
+                <div class="example">
+                    <og-checkbox label="Default Checkbox"></og-checkbox>
+                    <og-checkbox label="Disabled Checkbox" checked disabled></og-checkbox>
+                    <og-checkbox label="Disabled Checkbox" disabled></og-checkbox>
+                </div>
+            </og-card>
+            <script>
+                const checkboxes = document.querySelectorAll('og-checkbox');
+                checkboxes.forEach(checkbox => {
+                    checkbox.addEventListener('changed', (e) => {
+                        console.log('Checkbox Active', e.detail);
+                    });
                 });
-            });
-        </script>
+            </script>
 
-        <!--
-        og-tab-container
-        -->
-        <og-card name="Tabs">
-            <div class="example">
-                <og-tab-container>
-                    <og-tab label="Angular Example" selected>Show here how to use component in Angular</og-tab>
-                    <og-tab label="React Example">Show here how to use component in React</og-tab>
-                    <og-tab label="Vue Example">Show here how to use component in Vue</og-tab>
-                </og-tab-container>
-            </div>
-            <div class="example">
-                <og-tab-container>
-                    <og-tab label="Angular Example">Show here how to use component in Angular</og-tab>
-                    <og-tab label="React Disabled" disabled>Show here how to use component in React</og-tab>
-                    <og-tab label="Vue Example" selected>Show here how to use component in Vue</og-tab>
-                </og-tab-container>
-            </div>
-            <div class="example">
-                <og-tab-container disabled>
-                    <og-tab label="Angular Example" selected>Show here how to use component in Angular</og-tab>
-                    <og-tab label="React Example">Show here how to use component in React</og-tab>
-                    <og-tab label="Vue Example">Show here how to use component in Vue</og-tab>
-                </og-tab-container>
-            </div>
-        </og-card>
-
-        <!--
-        og-checkbox
-        -->
-        <og-card name="Checkbox">
-            <div class="example">
-                <og-checkbox label="Default Checkbox"></og-checkbox>
-                <og-checkbox label="Disabled Checkbox" checked disabled></og-checkbox>
-                <og-checkbox label="Disabled Checkbox" disabled></og-checkbox>
-            </div>
-        </og-card>
-        <script>
-            const checkboxes = document.querySelectorAll('og-checkbox');
-            checkboxes.forEach(checkbox => {
-                checkbox.addEventListener('changed', (e) => {
-                    console.log('Checkbox Active', e.detail);
+            <!--
+            og-toggle-switch
+            -->
+            <og-card name="Toggle Switch">
+                <div class="example">
+                    <og-toggle-switch value="false"></og-toggle-switch>
+                    <og-toggle-switch value="true" disabled></og-toggle-switch>
+                </div>
+            </og-card>
+            <script>
+                const toggleswitches = document.querySelectorAll('og-toggle-switch');
+                toggleswitches.forEach(toggleswitch => {
+                    toggleswitch.addEventListener('changed', (e) => {
+                        console.log('Toggle Switch Active', e.detail);
+                    });
                 });
-            });
-        </script>
+            </script>
 
-        <!--
-        og-toggle-switch
-        -->
-        <og-card name="Toggle Switch">
-            <div class="example">
-                <og-toggle-switch value="false"></og-toggle-switch>
-                <og-toggle-switch value="true" disabled></og-toggle-switch>
-            </div>
-        </og-card>
-        <script>
-            const toggleswitches = document.querySelectorAll('og-toggle-switch');
-            toggleswitches.forEach(toggleswitch => {
-                toggleswitch.addEventListener('changed', (e) => {
-                    console.log('Toggle Switch Active', e.detail);
+            <!--
+            og-button
+            -->
+            <og-card name="Buttons">
+                <div class="example">
+                    <og-button class="demo-button" label="Default"></og-button>
+                    <og-button class="demo-button" label="Link" data-context="link"></og-button>
+                    <og-button class="demo-button" label="Workflow" data-context="workflow"></og-button>
+                    <og-button class="demo-button" label="Disabled" disabled></og-button>
+                </div>
+            </og-card>
+            <script>
+                const buttons = document.querySelectorAll('.demo-button');
+                buttons.forEach(button => {
+                    button.addEventListener('clicked', (e) => {
+                        console.log('clicked', e);
+                    });
                 });
-            });
-        </script>
+            </script>
 
-        <!--
-        og-button
-        -->
-        <og-card name="Buttons">
-            <div class="example">
-                <og-button class="demo-button" label="Default"></og-button>
-                <og-button class="demo-button" label="Link" data-context="link"></og-button>
-                <og-button class="demo-button" label="Workflow" data-context="workflow"></og-button>
-                <og-button class="demo-button" label="Disabled" disabled></og-button>
-            </div>
-        </og-card>
-        <script>
-            const buttons = document.querySelectorAll('.demo-button');
-            buttons.forEach(button => {
-                button.addEventListener('clicked', (e) => {
-                    console.log('clicked', e);
-                });
-            });
-        </script>
-
-        <!--
-        og-list
-        -->
-        <og-card name="List">
-            <div>
-                <h3>Listitems with pre-selection</h3>
-                <og-list id="list1" selected="v2"></og-list>
-
-                <h3>Listitems with icon and value</h3>
-                <og-list id="list2" image-url-property="iconUrl" value-property="value"></og-list>
-
-                <h3>Disabled list</h3>
-                <og-list id="list3" selected-key="v2" value-property="value" disabled></og-list>
-            </div>
-            <div slot="footer">
-            </div>
-        </og-card>
-        <script type="module">
-            const listItems = [
-                { key: 'v1', label: 'Value 1', iconUrl: 'http://orgtest.maximago.de/assets/images/Car/Rally/Default_small.png', value: 22 },
-                { key: 'v2', label: 'Value 2', value: 2 },
-                { key: 'v3', label: 'Value 3', iconUrl: 'http://orgtest.maximago.de/assets/images/Car/Rally/Default_small.png', value: 35, disabled: true },
-            ];
-
-            const list1 = document.querySelector('#list1');
-            list1.items = listItems;
-            list1.addEventListener('itemSelected', e => console.log('item selected', e));
-
-            const list2 = document.querySelector('#list2');
-            list2.items = listItems;
-            list2.addEventListener('itemSelected', e => console.log('item selected', e));
-
-            const list3 = document.querySelector('#list3');
-            list3.items = listItems;
-            list3.addEventListener('itemSelected', e => console.log('item selected', e));
-        </script>
-
-        <!--
-        og-combobox
-        -->
-        <og-card name="Combobox">
-            <div class="example example--column">
+            <!--
+            og-list
+            -->
+            <og-card name="List">
                 <div>
-                    <h3>Preselected value</h3>
-                    <og-combobox id="combobox1" value="3"></og-combobox><br>
+                    <h4>Listitems with pre-selection</h4>
+                    <og-list id="list1" selected="v2"></og-list>
+
+                    <h4>Listitems with icon and value</h4>
+                    <og-list id="list2" image-url-property="iconUrl" value-property="value"></og-list>
+
+                    <h4>Disabled list</h4>
+                    <og-list id="list3" selected-key="v2" value-property="value" disabled></og-list>
                 </div>
+                <div slot="footer">
+                </div>
+            </og-card>
+            <script type="module">
+                const listItems = [
+                    { key: 'v1', label: 'Value 1', iconUrl: 'http://orgtest.maximago.de/assets/images/Car/Rally/Default_small.png', value: 22 },
+                    { key: 'v2', label: 'Value 2', value: 2 },
+                    { key: 'v3', label: 'Value 3', iconUrl: 'http://orgtest.maximago.de/assets/images/Car/Rally/Default_small.png', value: 35, disabled: true },
+                ];
+
+                const list1 = document.querySelector('#list1');
+                list1.items = listItems;
+                list1.addEventListener('itemSelected', e => console.log('item selected', e));
+
+                const list2 = document.querySelector('#list2');
+                list2.items = listItems;
+                list2.addEventListener('itemSelected', e => console.log('item selected', e));
+
+                const list3 = document.querySelector('#list3');
+                list3.items = listItems;
+                list3.addEventListener('itemSelected', e => console.log('item selected', e));
+            </script>
+
+            <!--
+            og-combobox
+            -->
+            <og-card name="Combobox">
                 <div>
-                    <h3>Empty value with placeholder text</h3>
-                    <og-combobox id="combobox2" placeholder="Please select a value"></og-combobox>
+                    <h4>Preselected value</h4>
+                    <og-combobox id="combobox1" value="3"></og-combobox>
+
+                        <h4>Empty value with placeholder text</h4>
+                        <og-combobox id="combobox2" placeholder="Please select a value"></og-combobox>
+
+                        <h4>Disabled combobox</h4>
+                        <og-combobox id="combobox3" value="2" disabled></og-combobox>
+
                 </div>
+            </og-card>
+            <script>
+                const values = [];
+                for (let i = 1; i < 11; i++) {
+                    values.push({ label:'Value ' + i, value: i});
+                }
+
+                const combobox1 = document.querySelector('#combobox1');
+                combobox1.items = values;
+                combobox1.addEventListener('itemSelected', e => console.log('item selected', e));
+
+                const combobox2 = document.querySelector('#combobox2');
+                combobox2.items = values;
+                combobox2.addEventListener('itemSelected', e => console.log('item selected', e));
+
+                const combobox3 = document.querySelector('#combobox3');
+                combobox3.items = values;
+            </script>
+
+            <og-card name="Typography">
                 <div>
-                    <h3>Disabled combobox</h3>
-                    <og-combobox id="combobox3" value="2" disabled></og-combobox>
+                    <h1>Heading 1</h1>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+                    <h2>Heading 2</h2>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+                    <h4>Heading 3</h4>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+                    <h4>Heading 4</h4>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repudiandae dolor <sup>cumque</sup> laudantium dolorum totam iure <sub>assumenda</sub> voluptas dolorem temporibus facere. Odio voluptatem earum sequi nisi natus quo sed nesciunt cum.</p>
+                    <p><small>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repudiandae dolor cumque laudantium dolorum totam iure assumenda voluptas dolorem temporibus facere. Odio voluptatem earum sequi nisi natus quo sed nesciunt cum.</small></p>
+                    <p class="smaller">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repudiandae dolor cumque laudantium dolorum totam iure assumenda voluptas dolorem temporibus facere. Odio voluptatem earum sequi nisi natus quo sed nesciunt cum.</p>
+
+                    <h4>Definition List</h4>
+                    <dl>
+                        <dt>§1 First</dt>
+                        <dd>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa delectus omnis ratione voluptates magnam. Excepturi, odio, voluptas nihil dolorum obcaecati suscipit ipsum blanditiis totam natus nemo commodi, hic vero sit.</dd>
+                        <dt>§2 Second</dt>
+                        <dd>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa delectus omnis ratione voluptates magnam. Excepturi, odio, voluptas nihil dolorum obcaecati suscipit ipsum blanditiis totam natus nemo commodi, hic vero sit.</dd>
+                    </dl>
+
+                    <h4>Ordered List</h4>
+                    <ol>
+                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, quam nostrum nisi distinctio quisquam aut dolores dolorum nesciunt laboriosam provident rerum magni mollitia incidunt iure suscipit? Soluta iste eligendi sed.</li>
+                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, quam nostrum nisi distinctio quisquam aut dolores dolorum nesciunt laboriosam provident rerum magni mollitia incidunt iure suscipit? Soluta iste eligendi sed.</li>
+                    </ol>
+
+                    <h4>Unordered List</h4>
+                    <ul>
+                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, quam nostrum nisi distinctio quisquam aut dolores dolorum nesciunt laboriosam provident rerum magni mollitia incidunt iure suscipit? Soluta iste eligendi sed.</li>
+                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, quam nostrum nisi distinctio quisquam aut dolores dolorum nesciunt laboriosam provident rerum magni mollitia incidunt iure suscipit? Soluta iste eligendi sed.</li>
+                    </ul>
+
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
                 </div>
-            </div>
-        </og-card>
-        <script>
-            const values = [];
-            for (let i = 1; i < 11; i++) {
-                values.push({ label:'Value ' + i, value: i});
-            }
-
-            const combobox1 = document.querySelector('#combobox1');
-            combobox1.items = values;
-            combobox1.addEventListener('itemSelected', e => console.log('item selected', e));
-
-            const combobox2 = document.querySelector('#combobox2');
-            combobox2.items = values;
-            combobox2.addEventListener('itemSelected', e => console.log('item selected', e));
-
-            const combobox3 = document.querySelector('#combobox3');
-            combobox3.items = values;
-        </script>
-    </div>
-</body>
-
+            </og-card>
+        </div>
+    </body>
 </html>
