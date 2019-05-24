@@ -1,5 +1,8 @@
 :host {
-    --og-calendar__header-Border: 1px solid var(--OG-COLOR-SHADE--100--20, #{$og-color-shade--100--20});
+    --og-calendar__header-BorderWidth: 1px;
+    --og-calendar__header-BorderStyle: solid;
+    --og-calendar__header-BorderColor: var(--OG-COLOR-SHADE--100--20, #{$og-color-shade--100--20});
+    --og-calendar__header-Border: var(--og-calendar__header-BorderWidth) var(--og-calendar__header-BorderStyle) var(--og-calendar__header-BorderColor);
 
     display: block;
     width: fit-content;
@@ -17,7 +20,6 @@
     display: flex;
     text-align: center;
     border-bottom: var(--og-calendar__header-Border);
-    padding-bottom: 8px;
 }
 
 .calender__header__main {
@@ -29,7 +31,7 @@
 
 .calender__header__prefix,
 .calender__header__suffix {
-    padding: 4px;
+    padding: 4px 8px;
 }
 
 .calendar__main {
@@ -38,6 +40,11 @@
 }
 
 .calendar__nav {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
 }
 
@@ -45,9 +52,20 @@
     display: none;
 }
 
+.calendar__nav__icon {
+    width: 8px;
+}
 
-.calender__header__month,
+.calender__header__month {
+    display: inline-block;
+    font-size: 14px;
+    padding: 4px;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
 .calender__header__year {
     display: inline-block;
+    font-size: 12px;
     padding: 4px;
 }

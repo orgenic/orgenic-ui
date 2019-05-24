@@ -9,6 +9,7 @@
     --og-calendar__day-Color--active: var(--OG-COLOR-SHADE--0, #{$og-color-shade--0});
     --og-calendar__day-Color--disabled: var(--OG-COLOR-SHADE--100--50, #{$og-color-shade--100--50});
 
+    --og-calendar__day__indicator-Background: var(--OG-COLOR-PRIMARY--40, #{$og-color-primary--40});
 }
 
 table {
@@ -34,8 +35,8 @@ th {
     border-radius: 3px;
     position: relative;
     cursor: pointer;
-
     padding: 6px;
+
 
     &::after {
         position: absolute;
@@ -44,7 +45,7 @@ th {
         height: 2px;
         top: auto;
         right: 4px;
-        bottom: 0;
+        bottom: 2px;
         left: 4px;
     }
 
@@ -78,5 +79,5 @@ th {
 }
 
 .day--highlight::after {
-    background: deeppink;
+    background: var(--og-calendar__day__indicator-Background);
 }

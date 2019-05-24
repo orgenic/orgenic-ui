@@ -157,6 +157,8 @@
 // Flyout Wrapper
 .og-datepicker__flyout {
     position: relative;
+    display: flex;
+    justify-content: center;
 }
 
 .og-datepicker__flyout__calendar {
@@ -165,7 +167,6 @@
     padding: 16px;
     display: none;
     position: fixed;
-    width: 100%;
     box-shadow: var(--og-datepicker__flyout-BoxShadow);
     background: var(--og-datepicker__flyout-Background);
     z-index: 9999;

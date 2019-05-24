@@ -150,7 +150,6 @@ export class OgDatepicker {
 
         return {
             top: flyoutTop + 'px',
-            width: window.getComputedStyle(this.flyoutCalendar.parentElement).width,
         }
     }
 

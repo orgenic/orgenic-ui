@@ -73,13 +73,51 @@ export class OgCalendarGroup {
                 <div class="calendar__container">
                     <div class="calendar__header">
                         <div class="calender__header__prefix">
-                            <span class={ 'calendar__nav' + (i > 0 ? ' calendar__nav--hidden' : '') } onClick={ () => this.decreaseMonth() }>&lt;</span>
+                            <span class={ 'calendar__nav' + (i > 0 ? ' calendar__nav--hidden' : '') } onClick={ () => this.decreaseMonth() }>
+                                <svg
+                                    class={ 'calendar__nav__icon' }
+                                    version="1.1"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    xmlnsXlink="http://www.w3.org/1999/xlink"
+                                    viewBox="0 0 14 24"
+                                    preserveAspectRatio="none"
+                                >
+                                    <polyline
+                                        class="og-"
+                                        points="12,2 2,12 12,24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecaps="round"
+                                        stroke-linejoin="round"
+                                    />
+                                </svg>
+                            </span>
                         </div>
                         <div class="calender__header__main">
                             <span class="calender__header__month">{ localM.format('MMM') }</span><span class="calender__header__year">{ localM.year() }</span>
                         </div>
                         <div class="calender__header__suffix">
-                            <span class={ 'calendar__nav' + (i < this.displayedMonths - 1 ? ' calendar__nav--hidden' : '') } onClick={ () => this.increseMonth() }>&gt;</span>
+                            <div class={ 'calendar__nav' + (i < this.displayedMonths - 1 ? ' calendar__nav--hidden' : '') } onClick={ () => this.increseMonth() }>
+                                <svg
+                                    class={ 'calendar__nav__icon' }
+                                    version="1.1"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    xmlnsXlink="http://www.w3.org/1999/xlink"
+                                    viewBox="0 0 14 24"
+                                    preserveAspectRatio="none"
+                                >
+                                    <polyline
+                                        class="og-"
+                                        points="2,2 12,12 2,24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecaps="round"
+                                        stroke-linejoin="round"
+                                    />
+                                </svg>
+                            </div>
                         </div>
                     </div>
                     <og-calendar
