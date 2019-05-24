@@ -38,7 +38,7 @@
 }
 
 :host([disabled]) {
-    --og-list-Opacity: --og-list-Opacity--disabled;
+    --og-list-Opacity: var(--og-list-Opacity--disabled);
     .og-list-item__content {
         cursor: default;
     }
@@ -65,6 +65,10 @@
     :host(:not([disabled])) .og-list-item:not(.og-list-item--disabled) &:not(.og-list-item__content--selected):hover {
         --og-list-item-Background: var(--og-list-item-Background--highlight);
         cursor: pointer;
+    }
+
+    :host-context(og-list[disabled]) & {
+        pointer-events: none;
     }
 }
 

@@ -16,7 +16,7 @@
 }
 
 :host([disabled]) {
-    --og-list-Opacity: --og-list-Opacity--disabled;
+    --og-list-Opacity: var(--og-list-Opacity--disabled);
     .og-list-item__content {
         cursor: default;
     }
