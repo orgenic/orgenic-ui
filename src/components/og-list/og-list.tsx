@@ -4,12 +4,12 @@
  * See LICENSE file at https://github.com/orgenic/orgenic-ui/blob/master/LICENSE
  **/
 
-import { Component, Prop, EventEmitter, Event } from '@stencil/core';
+import { Component, Prop, EventEmitter, Event } from "@stencil/core";
 
 @Component({
-  tag: 'og-list',
-  styleUrl: 'og-list.scss',
-  shadow: true
+    tag: "og-list",
+    styleUrl: "og-list.scss",
+    shadow: true
 })
 export class OgList {
     /**
@@ -25,7 +25,7 @@ export class OgList {
     /**
      * Set the property for the items to define as value. Default: "key"
      */
-    @Prop() keyProperty: string = 'key';
+    @Prop() keyProperty: string = "key";
 
     /**
      * Set the property for the items to define as image url. *Optional* Default: no image
@@ -35,7 +35,7 @@ export class OgList {
     /**
      * Set the property for the items to define as label. Default: "label"
      */
-    @Prop() labelProperty: string = 'label';
+    @Prop() labelProperty: string = "label";
 
     /**
      * Set the property for the items to define as value. *Optional* Default: no value
@@ -45,12 +45,12 @@ export class OgList {
     /**
      * Set the property for the items to define as disabled. Default: "disabled"
      */
-    @Prop() disabledProperty: string = 'disabled';
+    @Prop() disabledProperty: string = "disabled";
 
     /**
      * Set the that will be displayed if the items array is empty.
      */
-    @Prop() emptyListMessage: string = 'No items available';
+    @Prop() emptyListMessage: string = "No items available";
 
     /**
      * Determines, whether the control is disabled or not
@@ -62,9 +62,9 @@ export class OgList {
      */
     @Event() itemSelected: EventEmitter<any>;
 
-    listItemSelected(item) {
+    listItemSelected(item: any): void {
         if (!this.disabled && !this.isItemDisabled(item)) {
-            this.selected = item[this.keyProperty] + '';
+            this.selected = item[this.keyProperty] + "";
             this.itemSelected.emit(item);
         }
     }
@@ -73,35 +73,33 @@ export class OgList {
         return Array.isArray(this.items);
     }
 
-    private isItemSelected(item: any): boolean {
-        return !(this.isItemDisabled(item)) && (item[this.keyProperty] + '' === this.selected);
+    public isItemSelected(item: any): boolean {
+        return !(this.isItemDisabled(item)) && (item[this.keyProperty] + "" === this.selected);
     }
 
     private isItemDisabled(item: any): boolean {
         return item[this.disabledProperty] || false;
     }
 
-    render() {
+    render(): any {
         return <ul class="og-list">
             {
                 !this.hasValidItems()
-                    ? <li>{ this.emptyListMessage }</li>
+                    ? <li>{this.emptyListMessage}</li>
                     : this.items.map((item) =>
-                        <li onClick={ () => this.listItemSelected(item) }
-                            class={ 'og-list__item' + (this.isItemDisabled(item) ? ' og-list__item--disabled' : '') }>
-
-                            <div class={ 'og-list__item__content' + (this.isItemSelected(item) ? ' og-list__item__content--selected' : '') }>
-                                { this.imageUrlProperty && <div class="og-list__item__icon">
-                                    { item[this.imageUrlProperty] && <img src={ item[this.imageUrlProperty] }/> }
-                                </div> }
-                                <div class="og-list__item__label">
-                                    { item[this.labelProperty] }
-                                </div>
-                                { this.valueProperty && item[this.valueProperty] && <div class="og-list__item__value">{ item[this.valueProperty] }</div> }
-                            </div>
-                        </li>
+                        <og-list-item
+                            key={item[this.keyProperty]}
+                            label={item[this.labelProperty]}
+                            show-image={!!this.imageUrlProperty}
+                            image={item[this.imageUrlProperty]}
+                            show-value={!!this.valueProperty}
+                            value={item[this.valueProperty]}
+                            is-selected={this.isItemSelected(item)}
+                            is-disabled={this.isItemDisabled(item)}
+                            onClick={() => this.listItemSelected(item)}>
+                        </og-list-item>
                     )
             }
-            </ul>
+        </ul>;
     }
 }
