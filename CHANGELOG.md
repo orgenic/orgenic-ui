@@ -1,3 +1,16 @@
+# [0.2.1](https://github.com/orgenic/orgenic-ui/compare/v0.2.0...v0.2.1) (2019-05-27)
+
+### Enhancements
+* the content of og-card and og-dialog can be defined without using the named slot 'content'
+* documentation of css costom properties now have an additional column with default value
+* added basic typography for headings, paragraphs and lists
+* og-card: can now be used without headline
+
+### Bug Fixes
+* og-number-input: title does not restore when deleting value
+* og-datatable: fixed selection highlighting
+* theming: fixed missing colors in light and dark theme
+
 # [0.2.0](https://github.com/orgenic/orgenic-ui/compare/v0.1.5...v0.2.0) (2019-05-03)
 
 ### Features
