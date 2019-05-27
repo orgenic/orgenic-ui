@@ -2,18 +2,10 @@
 
 .og-theme--dark {
 
-    @include generate-theme(hsl(0, 0%, 90%), hsla(170, 99%, 35%, 1));
-
-    // ---------------------------------------------------------------------------
-    // SECONDARY Colors
-    // ---------------------------------------------------------------------------
-    --OG-COLOR-SECONDARY--0:          hsla(0, 0%, 0%, 1);
-    --OG-COLOR-SECONDARY--0--50:      hsla(0, 0%, 0%, .5);
-    --OG-COLOR-SECONDARY--100:        hsla(0, 0%, 100%, 1);
-    --OG-COLOR-SECONDARY--100--07:    hsla(0, 0%, 100%, .07);
-    --OG-COLOR-SECONDARY--100--10:    hsla(0, 0%, 100%, .1);
-    --OG-COLOR-SECONDARY--100--20:    hsla(0, 0%, 100%, .2);
-    --OG-COLOR-SECONDARY--100--30:    hsla(0, 0%, 100%, .3);
+    $font-color: hsl(0, 0%, 90%);
+    $primary-color: hsla(170, 99%, 35%, 1);
+    $secondary-color: hsla(0, 0%, 100%, 1);
+    @include generate-theme($font-color, $primary-color, $secondary-color);
 
     // -------------------------------------------------------------------------
     // SHADE : From dark to light.
