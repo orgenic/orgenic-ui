@@ -28,6 +28,29 @@ export class OgCalendar {
 
     private internalMoment = moment();
 
+    // private lang = 'de';
+
+    // constructor() {
+    //     // this.loadLang('de');
+
+    //     moment.locale(`build/moment-locales/${this.lang}.js`);
+
+    //     setTimeout(() => {
+    //         import(`build/moment-locales/${this.lang}.js`);
+    //         console.log(moment.locales());
+    //     }, 500);
+    // }
+
+    // async loadLang(lang) {
+    //     const response = await fetch(`build/moment-locales/${lang}.js`);
+    //     console.log(await response.text());
+    //     // const module = await import(`build/moment-locales/${lang}.js`);
+    //     // moment.locale('de');
+    //     // console.log('module', module);
+    //     moment.locale(await response.text());
+    //     console.log(moment.locales());
+    // }
+
     getDayArray() {
         return [0,1,2,3,4,5,6].map(d => {
             return (d + this.firstDayOfWeek) % 7;
@@ -74,6 +97,7 @@ export class OgCalendar {
 
         return (
             <table>
+                {/* ( this.lang && <script src={ `build/moment-locales/${this.lang}.js` }></script>) */}
                 <thead>
                     <tr>
                         { this.showCalendarWeek && <th>KW</th> }

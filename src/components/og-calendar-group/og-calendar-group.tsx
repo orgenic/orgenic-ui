@@ -24,7 +24,7 @@ export class OgCalendarGroup {
     @Prop() dateDecorator: OgDateDecorator;
 
     @Prop() selectionType: OgCalendarSelectionType = 'single';
-    @Prop({ reflectToAttr: true, mutable: true }) selection: OgCalendarDate[];
+    @Prop({ reflectToAttr: true, mutable: true }) selection: OgCalendarDate[] = [];
 
     @Event() dateClicked: EventEmitter<OgCalendarDate>;
     @Event() selectionChanged: EventEmitter<OgCalendarDate[]>;
@@ -35,16 +35,20 @@ export class OgCalendarGroup {
         event.cancelBubble = true;
 
         const date = CalendarUtils.moment2CalendarDate(event.detail);
-        if (!this.selection) {
-            this.selection = [date];
-        } else{
-            const index = this.selection.findIndex(s => CalendarUtils.compareCalendarDate(s, date));
-            if (index >= 0) {
-                this.selection.splice(index, 1);
+        if (this.selectionType !== 'none') {
+            if (this.selectionType === 'single' || !this.selection) {
+                this.selection = [date];
             } else {
-                this.selection.push(date);
+                // multi
+                // todo: implement selection types: range + multi-range
+                const index = this.selection.findIndex(s => CalendarUtils.compareCalendarDate(s, date));
+                if (index >= 0) {
+                    this.selection.splice(index, 1);
+                } else {
+                    this.selection.push(date);
+                }
+                this.selection = [...this.selection];
             }
-            this.selection = [...this.selection];
         }
         this.dateClicked.emit(date);
         this.selectionChanged.emit(this.selection);
