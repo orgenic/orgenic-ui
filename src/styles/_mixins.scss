@@ -1,3 +1,5 @@
+@import 'functions';
+
 // =============================================================================
 // SASS MIXINS
 // =============================================================================
@@ -7,4 +9,22 @@
     overflow:       hidden;
     text-overflow:  ellipsis;
     white-space:    nowrap;
+}
+
+@mixin generate-theme($font-color, $primary-color) {
+    $is-dark-theme: is-light-color($font-color);
+
+    // init a theme map
+    $theme-map: ();
+
+    // generate primary colors (map)
+    /* Primary color and its variants */
+    $primary-colors: generate-primary-colors($primary-color, $is-dark-theme);
+    $theme-map: map-merge($theme-map, $primary-colors);
+
+    // output the map entries as CSS custom properties
+    @each $property, $value in $theme-map {
+        $prop: to-upper-case($property);
+        --#{$prop}: #{$value};
+    }
 }

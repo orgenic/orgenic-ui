@@ -1,0 +1,135 @@
+// Strip unit
+// -----------------------------------------------------------------------------
+// Strips a possible unit from a numeric value.
+// @param {Number} $number - Number to remove unit from
+// @return {Number} - Unitless number
+@function strip-unit($number) {
+    @return $number / ($number * 0 + 1);
+}
+
+// Add percent unit
+// -----------------------------------------------------------------------------
+// Adds a percent unit to a number using an arithmetic operation.
+// @param {Number} $number - Number to add percent unit to
+// @return {Number} - Percent number
+@function add-percent-unit($number) {
+    @return $number * 1%;
+}
+
+// To HSLA
+// -----------------------------------------------------------------------------
+// Converts a color into its HSLA version.
+// @param {Color} $color - Color to convert to HSLA
+// @param {Number} $hue - Optional hue (H) value to apply to the HSLA color.
+// @param {Number} $saturation - Optional saturation (S) value to apply to the
+// HSLA color.
+// @param {Number} $lightness - Optional lightness (L) value to apply to the
+// HSLA color.
+// @return {Color} - HSLA color
+@function to-hsla($color, $hue: null, $saturation: null, $lightness: null, $alpha: null) {
+    $hueValue: null;
+    $saturationValue: null;
+    $lightnessValue: null;
+    $alphaValue: null;
+
+    @if $hue {
+        $hueValue: strip-unit($hue);
+    } @else {
+        $hueValue: strip-unit(round(hue($color)));
+    }
+
+    @if $saturation {
+        $saturationValue: $saturation;
+    } @else {
+        $saturationValue: round(saturation($color));
+    }
+
+    @if $lightness {
+        $lightnessValue: $lightness;
+    } @else {
+        $lightnessValue: round(lightness($color));
+    }
+
+    @if $alpha {
+        $alphaValue: $alpha;
+    } @else {
+        $alphaValue: round(alpha($color));
+    }
+
+    @return unquote('hsla(#{$hueValue}, #{$saturationValue}, #{$lightnessValue}, #{$alphaValue})');
+}
+
+// New HSLA
+// -----------------------------------------------------------------------------
+// Generates a HSLA color string.
+// @param {Number} $hue - Hue value
+// @param {Number} $saturation - Saturation value
+// @param {Number} $lightness - Lightness value
+// @param {Number} $alpha - Alpha value
+// @return {Color} - HSLA color
+@function new-hsla($hue, $saturation, $lightness, $alpha) {
+    @return unquote('hsla(#{$hue}, #{$saturation}, #{$lightness}, #{$alpha})');
+}
+
+// Is light color
+// -----------------------------------------------------------------------------
+// Programmatically determines the perceived lightness of a color. It uses a
+// weighted measure named sRGB luma as a good approximation for most use cases.
+// Inspired by https://lnikki.la/articles/sass-better-colour-based-on-brightness/
+// and adopted from https://gist.github.com/kaishin/9412838.
+// @param {Color} $color - The color to check for whether it is considered being
+// dark or light.
+// @return {Boolean} - Returns true for a light color.
+@function is-light-color($color) {
+    $red: red(rgba($color, 1.0));
+    $green: green(rgba($color, 1.0));
+    $blue: blue(rgba($color, 1.0));
+
+    $lightness: ($red * 0.2126 + $green * 0.7152 + $blue * 0.0722) / 255;
+
+    @return $lightness > .6;
+  }
+
+// Generate primary colors
+// -----------------------------------------------------------------------------
+@function generate-primary-colors($primary-color, $is-dark-theme: false) {
+    $primary-color-hue:                     round(hue($primary-color));
+    $primary-color-hue--unitless:           strip-unit($primary-color-hue);
+    $primary-color-saturation:              round(saturation($primary-color));
+    $primary-color-lightness:               round(lightness($primary-color));
+    $primary-color-lightness--unitless:     strip-unit($primary-color-lightness);
+    $primary-color-alpha:                   round(alpha($primary-color));
+
+    // theme dependent vars, init with an assumed light theme
+    $primary-color-0-lightness:             100%;
+    $primary-color-80-lightness:            add-percent-unit($primary-color-lightness--unitless * 1.2); // + 20%
+    $primary-color-120-lightness:           add-percent-unit($primary-color-lightness--unitless * 0.8); // - 20%
+
+    @if $is-dark-theme == true {
+        $primary-color-0-lightness:         0%;
+        $primary-color-80-lightness:        add-percent-unit($primary-color-lightness--unitless * 0.8); // - 20%
+        $primary-color-120-lightness:       add-percent-unit($primary-color-lightness--unitless * 1.2); // + 20%
+    }
+
+    $og-color-primary--0:                   new-hsla($primary-color-hue--unitless, $primary-color-saturation, $primary-color-0-lightness, $primary-color-alpha);
+    $og-color-primary--0--30:               new-hsla($primary-color-hue--unitless, $primary-color-saturation, $primary-color-0-lightness, .3);
+    $og-color-primary--0--50:               new-hsla($primary-color-hue--unitless, $primary-color-saturation, $primary-color-0-lightness, .5);
+
+    // init a new primary color map
+    $primary-color-map: (
+        'og-color-primary--0':              $og-color-primary--0,
+        'og-color-primary--0--30':          $og-color-primary--0--30,
+        'og-color-primary--0--50':          $og-color-primary--0--50,
+        'og-color-primary--80':             to-hsla($primary-color, $lightness: $primary-color-80-lightness),
+        'og-color-primary--100':            to-hsla($primary-color),
+        'og-color-primary--100--15':        to-hsla($primary-color, $alpha: .15),
+        'og-color-primary--100--20':        to-hsla($primary-color, $alpha: .2),
+        'og-color-primary--100--25':        to-hsla($primary-color, $alpha: .25),
+        'og-color-primary--100--30':        to-hsla($primary-color, $alpha: .3),
+        'og-color-primary--100--50':        to-hsla($primary-color, $alpha: .5),
+        'og-color-primary--120':            to-hsla($primary-color, $lightness: $primary-color-120-lightness)
+    );
+
+    // return the primary color map
+    @return $primary-color-map;
+}

@@ -16,6 +16,7 @@ export const config: Config = {
     plugins: [
         sass({
             injectGlobalPaths: [
+                'src/styles/_functions.scss',
                 'src/styles/_mixins.scss',
                 'src/styles/variables/_index.scss',
             ]

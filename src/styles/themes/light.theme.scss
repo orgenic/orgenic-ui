@@ -1,19 +1,9 @@
+@import '../mixins';
+// $primary-map: generate-primary-colors(rgb(29, 162, 211), false);
+
 .og-theme--light {
 
-    // ---------------------------------------------------------------------------
-    // PRIMARY Colors
-    // ---------------------------------------------------------------------------
-    --OG-COLOR-PRIMARY--0:          hsla(196, 76%, 100%, 1);
-    --OG-COLOR-PRIMARY--0--30:      hsla(196, 76%, 100%, .3);
-    --OG-COLOR-PRIMARY--0--50:      hsla(196, 76%, 100%, .5);
-    --OG-COLOR-PRIMARY--80:         hsla(196, 76%, 56%, 1);
-    --OG-COLOR-PRIMARY--100:        hsla(196, 76%, 47%, 1);
-    --OG-COLOR-PRIMARY--100--15:    hsla(196, 76%, 47%, .15);
-    --OG-COLOR-PRIMARY--100--20:    hsla(196, 76%, 47%, .2);
-    --OG-COLOR-PRIMARY--100--25:    hsla(196, 76%, 47%, .25);
-    --OG-COLOR-PRIMARY--100--30:    hsla(196, 76%, 47%, .3);
-    --OG-COLOR-PRIMARY--100--50:    hsla(196, 76%, 47%, .5);
-    --OG-COLOR-PRIMARY--120:        hsla(196, 76%, 38%, 1);
+    @include generate-theme(hsl(0, 0%, 20%), hsla(196, 76%, 47%, 1));
 
     // ---------------------------------------------------------------------------
     // SECONDARY Colors
