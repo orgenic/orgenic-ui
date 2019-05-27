@@ -13,7 +13,7 @@ import { Component, Prop } from '@stencil/core';
 })
 export class OgCard {
     /**
-     * The name for this card
+     * The title for this card (optional)
      */
     @Prop() name: string;
 
@@ -33,10 +33,15 @@ export class OgCard {
     render() {
         return (
             <div class="og-card">
-                <div class="og-card__header">
-                    <span class="og-card__title">{ this.name }</span>
-                </div>
+                { this.name
+                    ?   <div class="og-card__header">
+                            <span class="og-card__title">{ this.name }</span>
+                        </div>
+                    :   ""
+                }
                 <div class="og-card__content">
+                    {/* allow the user to use an unnamed slot instead of always having to assign as "content" */}
+                    <slot></slot>
                     <slot name="content"></slot>
                 </div>
                 <div class="og-card__footer" ref={ el => this.handleDivRef(el) }>

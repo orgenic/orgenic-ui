@@ -1,5 +1,6 @@
 const execute = require('./helpers/execute');
 const trimReadmeFooter = require('./helpers/trim-readme-footer');
+const addCssVarsDefaultValue = require('./helpers/add-css-vars-default-value');
 
 function orgenicUiPostProcessing(config) {
     if (config.target === 'start') {
@@ -31,6 +32,8 @@ function orgenicUiPostProcessing(config) {
 
                         // trim readme footer
                         trimReadmeFooter();
+                        // extend readme css variable table with column for default value
+                        addCssVarsDefaultValue();
 
                         // generate themes
                         await execute('node-sass src/styles/themes -o dist/themes');

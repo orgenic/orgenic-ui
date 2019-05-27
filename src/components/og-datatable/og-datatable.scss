@@ -28,7 +28,9 @@
 
     --og-datatable__tabulator-row-Background: transparent;
     --og-datatable__tabulator-row-Background--even: var(--og-datatable__tabulator-row-Background);
-    --og-datatable__tabulator-row-Background--hover: transparent;
+    --og-datatable__tabulator-row-Background--hover: var( --OG-COLOR-PRIMARY--100--15, #{$og-color-primary--100--15});
+    --og-datatable__tabulator-row-Background--selected: var( --OG-COLOR-PRIMARY--100--30, #{$og-color-primary--100--30});
+    --og-datatable__tabulator-row-Background--selected-hover: var( --OG-COLOR-PRIMARY--100--30, #{$og-color-primary--100--30});
     --og-datatable__tabulator-row-BorderWidth: 0 0 1px 0;
     --og-datatable__tabulator-row-BorderStyle: solid;
     --og-datatable__tabulator-row-BorderColor: var(--OG-COLOR-SHADE--100--20, #{$og-color-shade--100--20});
@@ -47,7 +49,6 @@
     --og-datatable__tabulator-page-Color--hover: var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
     --og-datatable__tabulator-page-Color--active: var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
     --og-datatable__tabulator-page-Color--disabled: var(--OG-COLOR-SHADE--100--30, #{$og-color-shade--100--30});
-
 }
 
 // @import '../../../node_modules/tabulator-tables/dist/css/tabulator.css';
@@ -198,13 +199,22 @@
     background: var(--og-datatable__tabulator-row-Background);
     border-bottom: none;
     color: inherit;
+    transition: all .3s ease;
 
     &.tabulator-row-even {
         background-color: var(--og-datatable__tabulator-row-Background--even);
     }
 
-    &.tabulator-selectable:hover {
-        background: var(--og-datatable__tabulator-row-Background--hover);
+    &.tabulator-selectable {
+        &.tabulator-selected {
+            background: var(--og-datatable__tabulator-row-Background--selected);
+            &:hover {
+                background: var(--og-datatable__tabulator-row-Background--selected-hover);
+            }
+        }
+        &:hover {
+            background: var(--og-datatable__tabulator-row-Background--hover);
+        }
     }
 
     .tabulator-cell {

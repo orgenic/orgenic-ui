@@ -5,9 +5,9 @@
 
 ## Properties
 
-| Property | Attribute | Description            | Type     | Default     |
-| -------- | --------- | ---------------------- | -------- | ----------- |
-| `name`   | `name`    | The name for this card | `string` | `undefined` |
+| Property | Attribute | Description                        | Type     | Default     |
+| -------- | --------- | ---------------------------------- | -------- | ----------- |
+| `name`   | `name`    | The title for this card (optional) | `string` | `undefined` |
 
 
 ## CSS Custom Properties
@@ -18,6 +18,7 @@
 | `--og-card-BorderColor`           | Border color of the cards border        |
 | `--og-card-BorderRadius`          | Border radius of the cards border       |
 | `--og-card-BorderWidth`           | Border width of the cards border        |
+| `--og-card-BoxShadow`             | Box shadow of the card                  |
 | `--og-card-Margin`                | Margin around the card                  |
 | `--og-card__content-Padding`      | Padding of the cards content            |
 | `--og-card__footer-Padding`       | Padding of the cards footer             |
