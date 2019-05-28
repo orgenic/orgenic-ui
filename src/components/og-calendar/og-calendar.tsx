@@ -100,7 +100,7 @@ export class OgCalendar {
                 {/* ( this.lang && <script src={ `build/moment-locales/${this.lang}.js` }></script>) */}
                 <thead>
                     <tr>
-                        { this.showCalendarWeek && <th>KW</th> }
+                        { this.showCalendarWeek && <th class="week">KW</th> }
                         {
                             this.getDayArray().map(d => {
                                 return <th>{ moment().day(d).format('dd') }</th>;

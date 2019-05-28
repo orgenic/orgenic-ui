@@ -4,8 +4,8 @@
     --og-calendar__header-BorderColor: var(--OG-COLOR-SHADE--100--20, #{$og-color-shade--100--20});
     --og-calendar__header-Border: var(--og-calendar__header-BorderWidth) var(--og-calendar__header-BorderStyle) var(--og-calendar__header-BorderColor);
 
-    display: block;
-    width: fit-content;
+    display: inline-block;
+    width: auto;
 }
 
 .calendar__container {
@@ -32,6 +32,7 @@
 .calender__header__prefix,
 .calender__header__suffix {
     padding: 4px 8px;
+    min-width: 24px;
 }
 
 .calendar__main {
