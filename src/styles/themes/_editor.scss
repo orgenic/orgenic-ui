@@ -5,19 +5,42 @@
     flex-wrap: wrap;
 }
 
+.editor__row {
+    display: flex;
+    align-items: center;
+}
+
+.editor__row og-form-item {
+    margin-left: 16px;
+}
+
 .tile {
-    width: 100%;
-    height: 144px;
+    height: 40px;
+    width: 40px;
 }
 
 .tile--half {
-    height: 72px;
     width: 50%;
 }
 
 .tile--quarter {
-    height: 72px;
     width: 25%;
+}
+
+.editor__preview .tile {
+    height: 144px;
+    line-height: 144px;
+    text-align: center;
+}
+
+.editor__preview .tile--half,
+.editor__preview .tile--quarter {
+    height: 72px;
+    line-height: 72px;
+}
+
+.editor__preview .preview__surface {
+    width: 100%;
 }
 
 .preview__primary {
@@ -42,8 +65,8 @@
 }
 
 .preview__surface {
+    background-color: var(--OG-COLOR-SHADE--0--80);
     border-color: var(--OG-COLOR-SHADE--100--20);
     border-style: solid;
     border-width: 1px;
-    text-align: center;
 }

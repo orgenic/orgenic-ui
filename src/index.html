@@ -126,6 +126,39 @@
                                     <div class="tile tile--quarter preview__secondary--active"></div>
                                     <div class="tile preview__surface">Surface</div>
                                 </div>
+
+                                <h4>Primary Color</h4>
+                                <div class="editor__row">
+                                    <div class="tile preview__primary"></div>
+                                    <og-form-item label="HEX">
+                                        <og-text-input></og-text-input>
+                                    </og-form-item>
+                                    <og-form-item label="Opacity">
+                                        <og-number-input id="primaryOpacity" min="0" max="100" value="100"></og-number-input>
+                                    </og-form-item>
+                                </div>
+
+                                <h4>Secondary Color</h4>
+                                <div class="editor__row">
+                                    <div class="tile preview__secondary"></div>
+                                    <og-form-item label="HEX">
+                                        <og-text-input></og-text-input>
+                                    </og-form-item>
+                                    <og-form-item label="Opacity">
+                                        <og-number-input id="secondaryOpacity" min="0" max="100" value="100"></og-number-input>
+                                    </og-form-item>
+                                </div>
+
+                                <h4>Surface Color</h4>
+                                <div class="editor__row">
+                                    <div class="tile preview__surface"></div>
+                                    <og-form-item label="HEX">
+                                        <og-text-input></og-text-input>
+                                    </og-form-item>
+                                    <og-form-item label="Opacity">
+                                        <og-number-input id="surfaceOpacity" min="0" max="100" value="100"></og-number-input>
+                                    </og-form-item>
+                                </div>
                             </div>
                         </og-tab>
                         <og-tab label="Typography" disabled></og-tab>
