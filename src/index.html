@@ -188,7 +188,7 @@
                     let inputs = document.querySelectorAll(".editor-input");
 
                     inputs.forEach((element) => {
-                        element.addEventListener("valueChanged", updateColors);
+                        element.addEventListener("valueChanged", (e) => updateColors());
                     });
 
                     // OPEN THEME EDITOR
@@ -207,18 +207,14 @@
                     document.getElementById("surfaceOpacity").setAttribute("value", colors.surface.opacity);
 
                     function createHexValue(hex, opacity) {
-                        let opacityDecimal = Math.round(2.55 * document.getElementById(opacity).getAttribute("value"));
-                        let hexValue = document.getElementById(hex).getAttribute("value") + opacityDecimal.toString(16);
-
-                        console.log(hexValue);
-
+                        let opacityDecimal = Math.round(2.55 * document.getElementById(opacity).value);
+                        let hexValue = document.getElementById(hex).value + opacityDecimal.toString(16);
                         return hexValue;
                     }
 
                     function updateColors() {
                         // PRIMARY
-                        document.body.style.setProperty("--OG-COLOR-PRIMARY-100", createHexValue("primaryHex", "primaryOpacity"));
-                        document.body.style.setProperty("--OG-COLOR-PRIMARY-100", "#FF0000");
+                        document.body.style.setProperty("--OG-COLOR-PRIMARY--100", createHexValue("primaryHex", "primaryOpacity"));
 
                         // SECONDARY
                         document.body.style.setProperty("--OG-COLOR-SECONDARY--100--20", createHexValue("secondaryHex", "secondaryOpacity"));
