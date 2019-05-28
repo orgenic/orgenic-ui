@@ -603,6 +603,75 @@ export namespace Components {
     'value'?: string;
   }
 
+  interface OgListItem {
+    /**
+    * Set the url of the image to be shown in the placeholder
+    */
+    'image': string;
+    /**
+    * Set the flag, it this list item is in disabled state.
+    */
+    'isDisabled': boolean;
+    /**
+    * Set the flag, if this list item is in selected state.
+    */
+    'isSelected': boolean;
+    /**
+    * The value is needed for the using @see OgList instance to correctly handle selection.
+    */
+    'key': any;
+    /**
+    * Sets the value of the label.
+    */
+    'label': string;
+    /**
+    * Set flag, if place for an image is reserved, wheather used or not.
+    */
+    'showImage': boolean;
+    /**
+    * Set flag, if place for a value bage is reserved wheather used or not
+    */
+    'showValue': boolean;
+    /**
+    * Set the value to be shown in the badge placeholder
+    */
+    'value': string;
+  }
+  interface OgListItemAttributes extends StencilHTMLAttributes {
+    /**
+    * Set the url of the image to be shown in the placeholder
+    */
+    'image'?: string;
+    /**
+    * Set the flag, it this list item is in disabled state.
+    */
+    'isDisabled'?: boolean;
+    /**
+    * Set the flag, if this list item is in selected state.
+    */
+    'isSelected'?: boolean;
+    /**
+    * The value is needed for the using @see OgList instance to correctly handle selection.
+    */
+    'key'?: any;
+    /**
+    * Sets the value of the label.
+    */
+    'label'?: string;
+    /**
+    * Set flag, if place for an image is reserved, wheather used or not.
+    */
+    'showImage'?: boolean;
+    /**
+    * Set flag, if place for a value bage is reserved wheather used or not
+    */
+    'showValue'?: boolean;
+    /**
+    * Set the value to be shown in the badge placeholder
+    */
+    'value'?: string;
+  }
+
   interface OgList {
     /**
     * Determines, whether the control is disabled or not
@@ -886,6 +955,7 @@ declare global {
     'OgNumberInput': Components.OgNumberInput;
     'OgPasswordInput': Components.OgPasswordInput;
     'OgTextInput': Components.OgTextInput;
+    'OgListItem': Components.OgListItem;
     'OgList': Components.OgList;
     'OgRadioButtonGroup': Components.OgRadioButtonGroup;
     'OgRadioButton': Components.OgRadioButton;
@@ -912,6 +982,7 @@ declare global {
     'og-number-input': Components.OgNumberInputAttributes;
     'og-password-input': Components.OgPasswordInputAttributes;
     'og-text-input': Components.OgTextInputAttributes;
+    'og-list-item': Components.OgListItemAttributes;
     'og-list': Components.OgListAttributes;
     'og-radio-button-group': Components.OgRadioButtonGroupAttributes;
     'og-radio-button': Components.OgRadioButtonAttributes;
@@ -1018,6 +1089,12 @@ declare global {
     new (): HTMLOgTextInputElement;
   };
 
+  interface HTMLOgListItemElement extends Components.OgListItem, HTMLStencilElement {}
+  var HTMLOgListItemElement: {
+    prototype: HTMLOgListItemElement;
+    new (): HTMLOgListItemElement;
+  };
+
   interface HTMLOgListElement extends Components.OgList, HTMLStencilElement {}
   var HTMLOgListElement: {
     prototype: HTMLOgListElement;
@@ -1077,6 +1154,7 @@ declare global {
     'og-number-input': HTMLOgNumberInputElement
     'og-password-input': HTMLOgPasswordInputElement
     'og-text-input': HTMLOgTextInputElement
+    'og-list-item': HTMLOgListItemElement
     'og-list': HTMLOgListElement
     'og-radio-button-group': HTMLOgRadioButtonGroupElement
     'og-radio-button': HTMLOgRadioButtonElement
@@ -1103,6 +1181,7 @@ declare global {
     'og-number-input': HTMLOgNumberInputElement;
     'og-password-input': HTMLOgPasswordInputElement;
     'og-text-input': HTMLOgTextInputElement;
+    'og-list-item': HTMLOgListItemElement;
     'og-list': HTMLOgListElement;
     'og-radio-button-group': HTMLOgRadioButtonGroupElement;
     'og-radio-button': HTMLOgRadioButtonElement;
