@@ -111,6 +111,37 @@
                 });
             </script>
 
+            <!-- Theme Generator -->
+            <og-card name="Theme Editor">
+                <og-confirm-dialog name="Theme Editor" id="themeDialog">
+                    <og-tab-container>
+                        <og-tab label="Color Set" selected>
+                            <div class="editor">
+                                <div class="editor__preview">
+                                    <div class="tile tile--half preview__primary">Primary</div>
+                                    <div class="tile tile--half preview__secondary">Secondary</div>
+                                    <div class="tile tile--quarter preview__primary--hover"></div>
+                                    <div class="tile tile--quarter preview__primary--active"></div>
+                                    <div class="tile tile--quarter preview__secondary--hover"></div>
+                                    <div class="tile tile--quarter preview__secondary--active"></div>
+                                    <div class="tile preview__surface">Surface</div>
+                                </div>
+                            </div>
+                        </og-tab>
+                        <og-tab label="Typography" disabled></og-tab>
+                        <og-tab label="Iconography" disabled></og-tab>
+                    </og-tab-container>
+                </og-confirm-dialog>
+
+                <og-button label="Open Editor" id="openThemeDialog"></og-button>
+
+                <script>
+                    document.getElementById("openThemeDialog").addEventListener("clicked", () => {
+                        document.getElementById("themeDialog").setAttribute("visible", "true");
+                    });
+                </script>
+            </og-card>
+
             <!--
             og-dialog
             -->
