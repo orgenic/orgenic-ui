@@ -11,7 +11,7 @@
 | ------------------ | -------------------- | ----------- | -------------------- | -------------------------- |
 | `dateDecorator`    | --                   |             | `OgDateDecorator`    | `undefined`                |
 | `displayedMonths`  | `displayed-months`   |             | `number`             | `1`                        |
-| `firstDayOfWeek`   | `first-day-of-week`  |             | `number`             | `0`                        |
+| `locale`           | `locale`             |             | `string`             | `'ru'`                     |
 | `month`            | `month`              |             | `number`             | `new Date().getMonth()`    |
 | `selection`        | --                   |             | `OgCalendarDate[]`   | `[]`                       |
 | `selectionType`    | `selection-type`     |             | `"none" \| "single"` | `'single'`                 |

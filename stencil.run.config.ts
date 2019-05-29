@@ -12,9 +12,6 @@ export const config: Config = {
             serviceWorker: null // disable service workers
         }
     ],
-    copy: [
-        { src: '../node_modules/moment/locale/*.js', dest: 'build/moment-locales' }
-    ],
     plugins: [
         sass({
             injectGlobalPaths: [
