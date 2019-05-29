@@ -131,10 +131,10 @@
                                 <div class="editor__row">
                                     <div class="tile preview__primary"></div>
                                     <og-form-item label="HEX">
-                                        <og-text-input id="primaryHex" class="editor-input" data-var="--OG-COLOR-PRIMARY-100"></og-text-input>
+                                        <og-text-input id="primaryHex" class="editor-input" data-prop="primary.hex"></og-text-input>
                                     </og-form-item>
                                     <og-form-item label="Opacity">
-                                        <og-number-input id="primaryOpacity" class="editor-input" min="0" max="100"></og-number-input>
+                                        <og-number-input id="primaryOpacity" class="editor-input" data-prop="primary.opacity" min="0" max="100"></og-number-input>
                                     </og-form-item>
                                 </div>
 
@@ -142,10 +142,10 @@
                                 <div class="editor__row">
                                     <div class="tile preview__secondary"></div>
                                     <og-form-item label="HEX">
-                                        <og-text-input id="secondaryHex" class="editor-input" data-var="--OG-COLOR-SECONDARY--100--20"></og-text-input>
+                                        <og-text-input id="secondaryHex" class="editor-input"data-prop="secondary.hex"></og-text-input>
                                     </og-form-item>
                                     <og-form-item label="Opacity">
-                                        <og-number-input id="secondaryOpacity" class="editor-input" min="0" max="100"></og-number-input>
+                                        <og-number-input id="secondaryOpacity" class="editor-input" data-prop="secondary.opacity" min="0" max="100"></og-number-input>
                                     </og-form-item>
                                 </div>
 
@@ -153,10 +153,10 @@
                                 <div class="editor__row">
                                     <div class="tile preview__surface"></div>
                                     <og-form-item label="HEX">
-                                        <og-text-input id="surfaceHex" class="editor-input" data-var="--OG-COLOR-SHADE--0--80"></og-text-input>
+                                        <og-text-input id="surfaceHex" class="editor-input" data-prop="surface.hex"></og-text-input>
                                     </og-form-item>
                                     <og-form-item label="Opacity">
-                                        <og-number-input id="surfaceOpacity" class="editor-input" min="0" max="100"></og-number-input>
+                                        <og-number-input id="surfaceOpacity" class="editor-input" data-prop="surface.opacity" min="0" max="100"></og-number-input>
                                     </og-form-item>
                                 </div>
                             </div>
@@ -169,16 +169,19 @@
                 <og-button label="Open Editor" id="openThemeDialog"></og-button>
 
                 <script>
-                    let colors = {
+                    let colorset = {
                             primary: {
+                                cssvar: "--OG-COLOR-PRIMARY--100",
                                 hex: "#1DA1D3",
                                 opacity: 100
                             },
                             secondary: {
+                                cssvar: "--OG-COLOR-SECONDARY--100--20",
                                 hex: "#3C7390",
                                 opacity: 20
                             },
                             surface: {
+                                cssvar: "--OG-COLOR-SHADE--0--80",
                                 hex: "#FFFFFF",
                                 opacity: 100
                             }
@@ -188,7 +191,15 @@
                     let inputs = document.querySelectorAll(".editor-input");
 
                     inputs.forEach((element) => {
-                        element.addEventListener("valueChanged", (e) => updateColors());
+                        element.addEventListener("valueChanged", (e) => {
+                            let prop = document.getElementById(e.target.id).getAttribute("data-prop").split(".");
+
+                            colorset[prop[0]][prop[1]] = e.detail;
+
+                            for(color in colorset) {
+                                document.body.style.setProperty(colorset[color]["cssvar"], createHexValue(colorset[color]["hex"], colorset[color]["opacity"]));    
+                            }
+                        });
                     });
 
                     // OPEN THEME EDITOR
@@ -197,30 +208,19 @@
                     });
 
                     // SET INPUT VALUES
-                    document.getElementById("primaryHex").setAttribute("value", colors.primary.hex);
-                    document.getElementById("primaryOpacity").setAttribute("value", colors.primary.opacity);
+                    document.getElementById("primaryHex").setAttribute("value", colorset.primary.hex);
+                    document.getElementById("primaryOpacity").setAttribute("value", colorset.primary.opacity);
                     
-                    document.getElementById("secondaryHex").setAttribute("value", colors.secondary.hex);
-                    document.getElementById("secondaryOpacity").setAttribute("value", colors.secondary.opacity);
+                    document.getElementById("secondaryHex").setAttribute("value", colorset.secondary.hex);
+                    document.getElementById("secondaryOpacity").setAttribute("value", colorset.secondary.opacity);
 
-                    document.getElementById("surfaceHex").setAttribute("value", colors.surface.hex);
-                    document.getElementById("surfaceOpacity").setAttribute("value", colors.surface.opacity);
+                    document.getElementById("surfaceHex").setAttribute("value", colorset.surface.hex);
+                    document.getElementById("surfaceOpacity").setAttribute("value", colorset.surface.opacity);
 
                     function createHexValue(hex, opacity) {
-                        let opacityDecimal = Math.round(2.55 * document.getElementById(opacity).value);
-                        let hexValue = document.getElementById(hex).value + opacityDecimal.toString(16);
+                        let hexValue = hex + Math.round(2.55 * opacity).toString(16);
+
                         return hexValue;
-                    }
-
-                    function updateColors() {
-                        // PRIMARY
-                        document.body.style.setProperty("--OG-COLOR-PRIMARY--100", createHexValue("primaryHex", "primaryOpacity"));
-
-                        // SECONDARY
-                        document.body.style.setProperty("--OG-COLOR-SECONDARY--100--20", createHexValue("secondaryHex", "secondaryOpacity"));
-
-                        // SURFACE
-                        document.body.style.setProperty("--OG-COLOR-SHADE--0--80", createHexValue("surfaceHex", "surfaceOpacity"));
                     }
                 </script>
             </og-card>
