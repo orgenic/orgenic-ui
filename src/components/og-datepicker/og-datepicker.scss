@@ -37,7 +37,7 @@
     --og-datepicker-Outline:      none;
     --og-datepicker-Opacity:      1;
 
-    --og-datepicker__flyout-BoxShadow:    none;
+    --og-datepicker__flyout-BoxShadow:    0 0 8px rgba(0, 0, 0, .05), 0 2px 4px rgba(0, 0, 0, .2);
     --og-datepicker__flyout-Background:   var(--OG-COLOR-PRIMARY--0, #{$og-color-primary--0});
 
     --og-datepicker__flyout__item-Background:         transparent;
@@ -158,7 +158,8 @@
 .og-datepicker__flyout {
     position: relative;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
+    cursor: default;
 }
 
 .og-datepicker__flyout__calendar {

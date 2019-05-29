@@ -55,7 +55,7 @@ export namespace Components {
   interface OgCalendarGroup {
     'dateDecorator': OgDateDecorator;
     'displayedMonths': number;
-    'firstDayOfWeek': number;
+    'loc': any;
     'month': number;
     'selection': OgCalendarDate[];
     'selectionType': OgCalendarSelectionType;
@@ -65,7 +65,7 @@ export namespace Components {
   interface OgCalendarGroupAttributes extends StencilHTMLAttributes {
     'dateDecorator'?: OgDateDecorator;
     'displayedMonths'?: number;
-    'firstDayOfWeek'?: number;
+    'loc'?: any;
     'month'?: number;
     'onDateClicked'?: (event: CustomEvent<OgCalendarDate>) => void;
     'onSelectionChanged'?: (event: CustomEvent<OgCalendarDate[]>) => void;
@@ -77,7 +77,7 @@ export namespace Components {
 
   interface OgCalendar {
     'dateDecorator': OgDateDecorator;
-    'firstDayOfWeek': number;
+    'loc': any;
     'month': number;
     'selection': OgCalendarDate[];
     'showCalendarWeek': boolean;
@@ -85,7 +85,7 @@ export namespace Components {
   }
   interface OgCalendarAttributes extends StencilHTMLAttributes {
     'dateDecorator'?: OgDateDecorator;
-    'firstDayOfWeek'?: number;
+    'loc'?: any;
     'month'?: number;
     'onDateClicked'?: (event: CustomEvent<Moment>) => void;
     'selection'?: OgCalendarDate[];
@@ -235,8 +235,8 @@ export namespace Components {
     * Determines, whether the control is disabled or not
     */
     'disabled': boolean;
-    'firstDayOfWeek': number;
     'format': string;
+    'loc': any;
     /**
     * Optional placeholder if no value is selected.
     */
@@ -252,8 +252,8 @@ export namespace Components {
     * Determines, whether the control is disabled or not
     */
     'disabled'?: boolean;
-    'firstDayOfWeek'?: number;
     'format'?: string;
+    'loc'?: any;
     /**
     * Event is being emitted when value changes.
     */

@@ -122,11 +122,15 @@
             <og-card name="Datepicker">
                 <div>
                     <og-form-item label="Bitte wählen Sie ein Datum">
-                        <og-datepicker value="25.05.2019" first-day-of-week="1"></og-datepicker>
+                        <og-datepicker value="25.05.2019" loc="ru"></og-datepicker>
+                    </og-form-item>
+
+                    <og-form-item label="Bitte wählen Sie ein Datum">
+                        <og-datepicker value="25. Mai 2019" format="DD. MMM YYYY"></og-datepicker>
                     </og-form-item>
 
                     <og-form-item label="Please select a date">
-                        <og-datepicker value="05/25/2019" format="MM/DD/YYYY" first-day-of-week="0"></og-datepicker>
+                        <og-datepicker value="05/25/2019" format="MM/DD/YYYY"></og-datepicker>
                     </og-form-item>
                 </div>
             </og-card>
@@ -160,11 +164,11 @@
             -->
             <og-card name="Calendar">
                 <div>
-                    <h1>WIP: incomplete (and maybe buggy) featureset!</h1>
-                    <h3>Calendar Group (2 months)</h3>
-                    <og-calendar-group month="4" year="2019" displayed-months="2" show-calendar-week="false" id="groupCalendar1"></og-calendar-group>
-                    <h3>Calendar Group (1 months)</h3>
-                    <og-calendar-group month="4" year="2019"></og-calendar-group>
+                    <p style="background: hsla(45deg, 100%, 85%); padding: 16px">WIP: incomplete (and maybe buggy) featureset!</p>
+                    <h4>Calendar Group (2 months)</h4>
+                    <og-calendar-group month="4" year="2019" loc="de" displayed-months="2" show-calendar-week="false" id="groupCalendar1"></og-calendar-group>
+                    <h4>Calendar Group (1 months)</h4>
+                    <og-calendar-group month="4" year="2019" loc="en"></og-calendar-group>
                 </div>
             </og-card>
             <script>

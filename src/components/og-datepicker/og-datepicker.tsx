@@ -17,6 +17,7 @@ import {
 import { OgCalendarDate, OgDateDecorator } from '../og-calendar/interfaces/og-calendar-date-decorator';
 import { CalendarUtils } from '../og-calendar/utils/utils';
 import moment from 'moment';
+import { loadMomentLocale, getDefaultLocale } from '../../utils/moment-locale-loader';
 
 @Component({
     tag: 'og-datepicker',
@@ -31,6 +32,7 @@ export class OgDatepicker {
      */
     @Prop() placeholder?: string;
 
+    @Prop() loc = getDefaultLocale();
     /**
      * The selected value of the combobox
      */
@@ -45,8 +47,6 @@ export class OgDatepicker {
     @Watch('format') setFormat() {
         this.setValue(this.value);
     }
-
-    @Prop() firstDayOfWeek: number = 0;
 
     @Prop() dateDecorator: OgDateDecorator;
 
@@ -90,6 +90,10 @@ export class OgDatepicker {
 
     indicatorElement: HTMLElement;
     flyoutCalendar: HTMLElement;
+
+    async componentWillLoad() {
+        await loadMomentLocale(this.loc, moment);
+    }
 
     componentDidLoad() {
         this.setValue(this.value);
@@ -202,8 +206,8 @@ export class OgDatepicker {
                     ref={(el) => this.flyoutCalendar = el}
                     year={ this.internalValue.year }
                     month={ this.internalValue.month }
+                    loc={ this.loc }
                     dateDecorator={ this.dateDecorator }
-                    firstDayOfWeek={ this.firstDayOfWeek }
                     selection={ [ this.internalValue ] }
                     selectionType="single"
                     onDateClicked={ (e) => this.handleDateClicked(e) }>

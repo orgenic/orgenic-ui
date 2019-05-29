@@ -8,6 +8,7 @@ import { Component, Prop, EventEmitter, Event } from '@stencil/core';
 import moment from 'moment';
 import { OgDateDecorator, OgCalendarSelectionType, OgCalendarDate } from '../og-calendar/interfaces/og-calendar-date-decorator';
 import { CalendarUtils } from '../og-calendar/utils/utils';
+import { loadMomentLocale, getDefaultLocale } from '../../utils/moment-locale-loader';
 
 @Component({
   tag: 'og-calendar-group',
@@ -18,8 +19,9 @@ export class OgCalendarGroup {
     @Prop({ reflectToAttr: true, mutable: true }) year: number = new Date().getFullYear();
     @Prop({ reflectToAttr: true, mutable: true }) month: number = new Date().getMonth();
 
+    @Prop() loc = getDefaultLocale();
+
     @Prop() showCalendarWeek: boolean = true;
-    @Prop() firstDayOfWeek: number = 0;
     @Prop() displayedMonths: number = 1;
     @Prop() dateDecorator: OgDateDecorator;
 
@@ -29,7 +31,12 @@ export class OgCalendarGroup {
     @Event() dateClicked: EventEmitter<OgCalendarDate>;
     @Event() selectionChanged: EventEmitter<OgCalendarDate[]>;
 
-    private m = moment();
+    private internalMoment;
+
+    async componentWillLoad() {
+        await loadMomentLocale(this.loc, moment);
+        this.internalMoment = moment();
+    }
 
     handleDateClick(event) {
         event.cancelBubble = true;
@@ -54,23 +61,25 @@ export class OgCalendarGroup {
         this.selectionChanged.emit(this.selection);
     }
 
-    increseMonth() {
-        this.m.add(1, 'M');
-        this.month = this.m.month();
-        this.year = this.m.year();
+    increaseMonth() {
+        this.internalMoment.add(1, 'M');
+        this.month = this.internalMoment.month();
+        this.year = this.internalMoment.year();
     }
 
     decreaseMonth() {
-        this.m.subtract(1, 'M');
-        this.month = this.m.month();
-        this.year = this.m.year();
+        this.internalMoment.subtract(1, 'M');
+        this.month = this.internalMoment.month();
+        this.year = this.internalMoment.year();
     }
 
     render() {
-        this.m.year(this.year);
-        this.m.month(this.month);
+        console.log('rendering calendar group with locale', this.loc);
+        this.internalMoment.locale(this.loc);
+        this.internalMoment.year(this.year);
+        this.internalMoment.month(this.month);
 
-        const localM = this.m.clone();
+        const localM = this.internalMoment.clone();
         const result = [];
         for (let i = 0; i < this.displayedMonths; i++) {
             result.push(
@@ -102,7 +111,7 @@ export class OgCalendarGroup {
                             <span class="calender__header__month">{ localM.format('MMM') }</span><span class="calender__header__year">{ localM.year() }</span>
                         </div>
                         <div class="calender__header__suffix">
-                            <div class={ 'calendar__nav' + (i < this.displayedMonths - 1 ? ' calendar__nav--hidden' : '') } onClick={ () => this.increseMonth() }>
+                            <div class={ 'calendar__nav' + (i < this.displayedMonths - 1 ? ' calendar__nav--hidden' : '') } onClick={ () => this.increaseMonth() }>
                                 <svg
                                     class={ 'calendar__nav__icon' }
                                     version="1.1"
@@ -128,9 +137,9 @@ export class OgCalendarGroup {
                         class="calendar__main"
                         month={ localM.month() }
                         year={ localM.year() }
+                        loc={ this.loc }
                         showCalendarWeek={ this.showCalendarWeek }
                         dateDecorator={ this.dateDecorator }
-                        firstDayOfWeek={ this.firstDayOfWeek }
                         selection={ this.selection }
                         onDateClicked={ (e) => this.handleDateClick(e) }>
                     </og-calendar>

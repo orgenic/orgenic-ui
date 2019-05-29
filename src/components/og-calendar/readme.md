@@ -10,7 +10,7 @@
 | Property           | Attribute            | Description | Type               | Default                    |
 | ------------------ | -------------------- | ----------- | ------------------ | -------------------------- |
 | `dateDecorator`    | --                   |             | `OgDateDecorator`  | `undefined`                |
-| `firstDayOfWeek`   | `first-day-of-week`  |             | `number`           | `0`                        |
+| `locale`           | `locale`             |             | `string`           | `'ru'`                     |
 | `month`            | `month`              |             | `number`           | `new Date().getMonth()`    |
 | `selection`        | --                   |             | `OgCalendarDate[]` | `undefined`                |
 | `showCalendarWeek` | `show-calendar-week` |             | `boolean`          | `true`                     |
