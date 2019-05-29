@@ -4,7 +4,7 @@
  * See LICENSE file at https://github.com/orgenic/orgenic-ui/blob/master/LICENSE
  **/
 
-import { Component, Prop, Event, EventEmitter } from '@stencil/core';
+import { Component, Prop, Event, EventEmitter, State } from '@stencil/core';
 import moment, { Moment } from 'moment';
 import { OgDateDecorator, OgCalendarDate } from './interfaces/og-calendar-date-decorator';
 import { CalendarUtils } from './utils/utils';
@@ -28,28 +28,60 @@ export class OgCalendar {
 
     private internalMoment = moment();
 
-    // private lang = 'de';
+    private lang = 'de';
 
-    // constructor() {
-    //     // this.loadLang('de');
+    @State()
+    private locale: string;
 
-    //     moment.locale(`build/moment-locales/${this.lang}.js`);
+    constructor() {
 
-    //     setTimeout(() => {
-    //         import(`build/moment-locales/${this.lang}.js`);
-    //         console.log(moment.locales());
-    //     }, 500);
-    // }
+        setTimeout(() => {
+            this.loadLang(this.lang);
+        }, 500);
 
-    // async loadLang(lang) {
-    //     const response = await fetch(`build/moment-locales/${lang}.js`);
-    //     console.log(await response.text());
-    //     // const module = await import(`build/moment-locales/${lang}.js`);
-    //     // moment.locale('de');
-    //     // console.log('module', module);
-    //     moment.locale(await response.text());
-    //     console.log(moment.locales());
-    // }
+        // moment.locale(`build/moment-locales/${this.lang}.js`);
+
+        // setTimeout(() => {
+        //     import(`build/moment-locales/${this.lang}.js`);
+        //     console.log(moment.locales());
+        // }, 500);
+    }
+
+    async loadLang(lang) {
+        const url = `/build/moment-locales/${lang}.js`;
+        // moment.enableLazyLoading(null);
+        // moment.addLocale(url);
+        // import url;
+        // const module = await import(url);
+
+        // const response = await fetch(url);
+        // this.locale = await response.text();
+        // moment.updateLocale(lang, eval(this.locale)(moment));
+
+        // moment.updateLocale(lang, {
+        //     months : 'Januar_Februar_März_April_Mai_Juni_Juli_August_September_Oktober_November_Dezember'.split('_'),
+        //     monthsShort : 'Jan._Feb._März_Apr._Mai_Juni_Juli_Aug._Sep._Okt._Nov._Dez.'.split('_'),
+        //     monthsParseExact : true,
+        //     weekdays : 'Sonntag_Montag_Dienstag_Mittwoch_Donnerstag_Freitag_Samstag'.split('_'),
+        //     weekdaysShort : 'So._Mo._Di._Mi._Do._Fr._Sa.'.split('_'),
+        //     weekdaysMin : 'So_Mo_Di_Mi_Do_Fr_Sa'.split('_'),
+        //     weekdaysParseExact : true,
+        // } as any);
+
+        // import(url).then(() =>
+        //     moment.locale(lang)
+        // );
+
+
+        // import * from url;
+        // moment.locale(await response.text());
+        console.log(url, moment.locales());
+
+        // const scriptContainer = document.getElementById('addHere');
+        // const s = document.createElement('script');
+        // s.textContent = this.locale;
+        // scriptContainer.appendChild(s);
+    }
 
     getDayArray() {
         return [0,1,2,3,4,5,6].map(d => {
@@ -95,12 +127,14 @@ export class OgCalendar {
     render() {
         this.setUpInternalMoment();
 
-        return (
+
+        return [
+            <div id="addHere"></div>,
+            <script innerHTML={this.locale}></script>,
             <table>
-                {/* ( this.lang && <script src={ `build/moment-locales/${this.lang}.js` }></script>) */}
                 <thead>
                     <tr>
-                        { this.showCalendarWeek && <th class="week">KW</th> }
+                        { this.showCalendarWeek && <th></th> }
                         {
                             this.getDayArray().map(d => {
                                 return <th>{ moment().day(d).format('dd') }</th>;
@@ -129,6 +163,6 @@ export class OgCalendar {
                     }
                 </tbody>
             </table>
-        );
+        ];
     }
 }
