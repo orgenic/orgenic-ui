@@ -22,15 +22,15 @@
     border-bottom: var(--og-calendar__header-Border);
 }
 
-.calender__header__main {
+.calendar__header__main {
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.calender__header__prefix,
-.calender__header__suffix {
+.calendar__header__prefix,
+.calendar__header__suffix {
     padding: 4px 8px;
     min-width: 24px;
 }
@@ -57,7 +57,7 @@
     width: 8px;
 }
 
-.calender__header__month {
+.calendar__header__month {
     display: inline-block;
     font-size: 14px;
     padding: 4px;
@@ -65,7 +65,7 @@
     font-weight: 500;
 }
 
-.calender__header__year {
+.calendar__header__year {
     display: inline-block;
     // font-size: 12px;
     padding: 4px;

@@ -84,7 +84,7 @@ export class OgCalendarGroup {
             result.push(
                 <div class="calendar__container">
                     <div class="calendar__header">
-                        <div class="calender__header__prefix">
+                        <div class="calendar__header__prefix">
                             <span class={ 'calendar__nav' + (i > 0 ? ' calendar__nav--hidden' : '') } onClick={ () => this.decreaseMonth() }>
                                 <svg
                                     class={ 'calendar__nav__icon' }
@@ -106,10 +106,10 @@ export class OgCalendarGroup {
                                 </svg>
                             </span>
                         </div>
-                        <div class="calender__header__main">
-                            <span class="calender__header__month">{ localM.format('MMM') }</span><span class="calender__header__year">{ localM.year() }</span>
+                        <div class="calendar__header__main">
+                            <span class="calendar__header__month">{ localM.format('MMM') }</span><span class="calendar__header__year">{ localM.year() }</span>
                         </div>
-                        <div class="calender__header__suffix">
+                        <div class="calendar__header__suffix">
                             <div class={ 'calendar__nav' + (i < this.displayedMonths - 1 ? ' calendar__nav--hidden' : '') } onClick={ () => this.increaseMonth() }>
                                 <svg
                                     class={ 'calendar__nav__icon' }
