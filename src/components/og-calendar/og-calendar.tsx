@@ -70,6 +70,7 @@ export class OgCalendar {
 
     private setUpInternalMoment() {
         this.internalMoment.locale(this.loc);
+
         this.internalMoment.year(this.year);
         this.internalMoment.month(this.month);
         this.internalMoment.date(1);
@@ -93,7 +94,7 @@ export class OgCalendar {
                         { this.showCalendarWeek && <th></th> }
                         {
                             this.getDayArray().map(d => {
-                                return <th>{ moment().day(d).format('dd') }</th>;
+                                return <th>{ this.internalMoment.day(d).format('dd') }</th>;
                             })
                         }
                     </tr>

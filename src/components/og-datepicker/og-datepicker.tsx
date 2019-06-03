@@ -113,8 +113,8 @@ export class OgDatepicker {
 
             this.dropdownActive = false;
             this.internalValue = date;
-            this.value = CalendarUtils.calendarDate2Moment(date).format(this.format);
-            this.dateSelected.emit(CalendarUtils.calendarDate2Moment(date).toDate());
+            this.value = CalendarUtils.calendarDate2Moment(date, this.loc).format(this.format);
+            this.dateSelected.emit(CalendarUtils.calendarDate2Moment(date, this.loc).toDate());
         }
     }
 
@@ -167,7 +167,7 @@ export class OgDatepicker {
                     type="text"
                     class="og-datepicker__input"
                     readonly="true"
-                    value={ CalendarUtils.calendarDate2Moment(this.internalValue).format(this.format) }
+                    value={ CalendarUtils.calendarDate2Moment(this.internalValue, this.loc).format(this.format) }
                     placeholder={this.placeholder}
                     disabled={this.disabled}
                 />

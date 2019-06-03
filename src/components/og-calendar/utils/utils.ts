@@ -14,7 +14,11 @@ export class CalendarUtils {
         return { year: moment.get('y'), month: moment.get('M'), date: moment.get('D') };
     }
 
-    static calendarDate2Moment(date: OgCalendarDate): Moment {
-        return moment().year(date.year).month(date.month).date(date.date);
+    static calendarDate2Moment(date: OgCalendarDate, locale?: string): Moment {
+        const result = moment();
+        if (locale) {
+            result.locale(locale);
+        }
+        return result.year(date.year).month(date.month).date(date.date);
     }
 }

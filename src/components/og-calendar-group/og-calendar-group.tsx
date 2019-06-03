@@ -74,7 +74,6 @@ export class OgCalendarGroup {
     }
 
     render() {
-        console.log('rendering calendar group with locale', this.loc);
         this.internalMoment.locale(this.loc);
         this.internalMoment.year(this.year);
         this.internalMoment.month(this.month);
