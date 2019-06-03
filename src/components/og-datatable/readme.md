@@ -22,29 +22,23 @@
 
 ## Methods
 
-### `reloadData() => void`
+### `reloadData() => Promise<void>`
 
 Triggers a reload of the table data.
 
 #### Returns
 
-Type: `void`
+Type: `Promise<void>`
 
 
 
-### `setSelection(id: any) => void`
+### `setSelection(id: any) => Promise<void>`
 
 Programatically update selected row by idProperty.
 
-#### Parameters
-
-| Name | Type  | Description |
-| ---- | ----- | ----------- |
-| `id` | `any` |             |
-
 #### Returns
 
-Type: `void`
+Type: `Promise<void>`
 
 
 

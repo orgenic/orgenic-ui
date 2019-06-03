@@ -24,6 +24,21 @@
 | `confirmed` | Event is being emitted when value changes. | `CustomEvent<Event>` |
 
 
+## Dependencies
+
+### Depends on
+
+- [og-dialog](..)
+- [og-button](..\..\og-button)
+
+### Graph
+```mermaid
+graph TD;
+  og-confirm-dialog --> og-dialog
+  og-confirm-dialog --> og-button
+  style og-confirm-dialog fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

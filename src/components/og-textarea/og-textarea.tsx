@@ -4,7 +4,7 @@
  * See LICENSE file at https://github.com/orgenic/orgenic-ui/blob/master/LICENSE
  **/
 
-import { Component, Prop, Event, EventEmitter } from '@stencil/core';
+import { h, Component, Prop, Event, EventEmitter, Host } from '@stencil/core';
 
 @Component({
     tag: 'og-textarea',
@@ -42,25 +42,19 @@ export class OgTextarea {
         this.valueChanged.emit(this.value);
     }
 
-    hostData() {
-        return {
-            class: {
-                'og-form-item__editor': true
-            }
-        };
-    }
-
     render() {
-        return [
-            <textarea
-                class="og-textarea__textarea"
-                value={ this.value }
-                disabled={ this.disabled }
-                onInput={ (event) => this.handleChange(event) }
-                onFocus={ (event) => this.focusGained.emit(event) }
-                onBlur={ (event) => this.focusLost.emit(event) }
-            ></textarea>,
-            <div class="og-textarea__indicator"></div>
-        ];
+        return (
+            <Host class={{ 'og-form-item__editor': true }}>
+                <textarea
+                    class="og-textarea__textarea"
+                    value={ this.value }
+                    disabled={ this.disabled }
+                    onInput={ (event) => this.handleChange(event) }
+                    onFocus={ (event) => this.focusGained.emit(event) }
+                    onBlur={ (event) => this.focusLost.emit(event) }
+                ></textarea>
+                <div class="og-textarea__indicator"></div>
+            </Host>
+        );
     }
 }

@@ -4,7 +4,7 @@
  * See LICENSE file at https://github.com/orgenic/orgenic-ui/blob/master/LICENSE
  **/
 
-import { Component, Prop, EventEmitter, Event } from '@stencil/core';
+import { h, Component, Prop, EventEmitter, Event, Host } from '@stencil/core';
 
 @Component({
   tag: 'og-checkbox',
@@ -41,31 +41,27 @@ export class OgCheckbox {
         }
     }
 
-    hostData() {
-        return {
-          class : {
-            'og-checkbox--checked' : this.checked,
-            'og-checkbox--disabled' : this.disabled,
-          }
-        }
-      }
-
     render() {
-        return [
-            <input
-                class="og-checkbox__input"
-                type="checkbox"
-                id={ this.internalId }
-                checked={ this.checked }
-                disabled={ this.disabled }
-                onChange={(event) => this.handleChange(event)}
-            />,
-            <label
-                class="og-checkbox__label"
-                htmlFor={ this.internalId }
-            >
-                { this.label && <span class="og-checkbox__label__content">{ this.label }</span> }
-            </label>
-        ]
+        return (
+            <Host class={{
+                    'og-checkbox--checked' : this.checked,
+                    'og-checkbox--disabled' : this.disabled
+                }}>
+                <input
+                    class="og-checkbox__input"
+                    type="checkbox"
+                    id={ this.internalId }
+                    checked={ this.checked }
+                    disabled={ this.disabled }
+                    onChange={(event) => this.handleChange(event)}
+                />
+                <label
+                    class="og-checkbox__label"
+                    htmlFor={ this.internalId }
+                >
+                    { this.label && <span class="og-checkbox__label__content">{ this.label }</span> }
+                </label>
+            </Host>
+        )
     }
 }

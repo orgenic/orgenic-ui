@@ -13,7 +13,7 @@ function orgenicUiPostProcessing(config) {
         name: 'orgenic-up-post-processing',
 
         generateBundle: function (options, bundle) {
-            if (config.target !== 'start' && !options.amd.id) {
+            if (config.target !== 'start' && options.entryFileNames.indexOf('.esm.js') < 0) {
                 return;
             }
 

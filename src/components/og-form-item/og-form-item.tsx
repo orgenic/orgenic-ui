@@ -4,7 +4,7 @@
  * See LICENSE file at https://github.com/orgenic/orgenic-ui/blob/master/LICENSE
  **/
 
-import { Component, Prop, Watch, Element, State } from '@stencil/core';
+import { h, Component, Prop, Watch, Element, State, Host } from '@stencil/core';
 
 @Component({
     tag: 'og-form-item',
@@ -29,15 +29,6 @@ export class OgFormItem {
     editor: HTMLElement;
 
     constructor() {
-    }
-
-    hostData() {
-        return {
-            class: {
-                'og-form-item--focused': this.editorHasFocus,
-                'og-form-item--empty': this.editorIsEmpty
-            }
-        };
     }
 
     componentDidLoad() {
@@ -69,11 +60,16 @@ export class OgFormItem {
     }
 
     render() {
-        return <label class="og-form-item" htmlFor="input#1">
-            <div class="og-form-item__body">
-                <div class="og-form-item__label">{ this.label }</div>
-                <slot></slot>
-            </div>
-        </label>;
+        return <Host class={{
+            'og-form-item--focused': this.editorHasFocus,
+            'og-form-item--empty': this.editorIsEmpty
+        }}>
+            <label class="og-form-item" htmlFor="input#1">
+                <div class="og-form-item__body">
+                    <div class="og-form-item__label">{ this.label }</div>
+                    <slot></slot>
+                </div>
+            </label>
+        </Host>;
     }
 }

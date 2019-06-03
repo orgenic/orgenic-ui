@@ -1,4 +1,4 @@
-import { Component, Prop, Event, EventEmitter } from '@stencil/core';
+import { h, Component, Prop, Event, EventEmitter, Host } from '@stencil/core';
 
 @Component({
     tag: 'og-text-input',
@@ -42,26 +42,20 @@ export class OgTextInput {
         this.valueChanged.emit(this.value);
     }
 
-    hostData() {
-        return {
-            class: {
-                'og-form-item__editor': true
-            }
-        };
-    }
-
     render() {
-        return [
-            <input type="text"
-                class="og-input__input"
-                value={ this.value }
-                disabled={ this.disabled }
-                onInput={ (event) => this.handleChange(event) }
-                onFocus={ (event) => this.focusGained.emit(event) }
-                onBlur={ (event) => this.focusLost.emit(event) }
-                placeholder={ this.placeholder }
-            />,
-            <div class="og-input__indicator"></div>
-        ];
+        return (
+            <Host class={{ 'og-form-item__editor': true }}>
+                <input type="text"
+                    class="og-input__input"
+                    value={ this.value }
+                    disabled={ this.disabled }
+                    onInput={ (event) => this.handleChange(event) }
+                    onFocus={ (event) => this.focusGained.emit(event) }
+                    onBlur={ (event) => this.focusLost.emit(event) }
+                    placeholder={ this.placeholder }
+                />
+                <div class="og-input__indicator"></div>
+            </Host>
+        );
     }
 }

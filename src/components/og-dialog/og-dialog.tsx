@@ -4,7 +4,7 @@
  * See LICENSE file at https://github.com/orgenic/orgenic-ui/blob/master/LICENSE
  **/
 
-import { Component, Prop, Listen } from '@stencil/core';
+import { h, Component, Prop, Listen } from '@stencil/core';
 import { ScrollHandler } from '../../utils/scroll-handler';
 
 @Component({
@@ -28,22 +28,22 @@ export class OgDialog {
      */
     @Prop({ mutable: true, reflectToAttr: true }) visible: boolean = false;
 
-    @Listen('window:wheel', { passive: false }) // standard
+    @Listen('wheel', { passive: false, target: 'window' }) // standard
     handleWheel(ev: Event) {
         this.visible && ScrollHandler.cancelScrolling(ev);
     }
 
-    @Listen('window:mousewheel', { passive: false }) // non-standard + deprecated
+    @Listen('mousewheel', { passive: false, target: 'window' }) // non-standard + deprecated
     handleMouseWheel(ev: Event) {
         this.visible && ScrollHandler.cancelScrolling(ev);
     }
 
-    @Listen('window:touchmove', { passive: false }) // touch events
+    @Listen('touchmove', { passive: false, target: 'window' }) // touch events
     handleTouchMove(ev: Event) {
         this.visible && ScrollHandler.cancelScrolling(ev);
     }
 
-    @Listen('window:keydown', { passive: false }) // keyboard scrolling (arrows, page up / down, pos1 / end)
+    @Listen('keydown', { passive: false, target: 'window' }) // keyboard scrolling (arrows, page up / down, pos1 / end)
     handleKeyDown(ev: KeyboardEvent) {
         this.visible && ScrollHandler.cancelScrollingKeyFilter(ev);
     }

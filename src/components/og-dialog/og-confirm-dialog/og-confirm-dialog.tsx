@@ -1,4 +1,4 @@
-import { Component, Prop, Event, EventEmitter } from '@stencil/core';
+import { h, Component, Prop, Event, EventEmitter } from '@stencil/core';
 import { SVGContent } from '../utils/svg-content';
 
 @Component({
