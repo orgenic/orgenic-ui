@@ -7,8 +7,6 @@ describe('og-datepicker', () => {
     let header: E2EElement;
     let input: E2EElement;
 
-    // enum Month
-
     beforeEach(async () => {
         page = await newE2EPage();
         // note: the testdate need to have a clickable tomorrow
@@ -54,13 +52,17 @@ describe('og-datepicker', () => {
         expect(await input.getProperty('value')).toEqualText('30-05-2019');
     });
 
-    // todo: check this
+    // todo: fix this
     xit('displays the right date after selection', async () => {
         await header.click();
         await page.waitForChanges();
 
         // get the field for the next date
-        const dateButton: E2EElement = await page.find('og-datepicker >>> og-calendar-group >>> og-calendar >>> td.--selected + td');
+        // todo: multiple piercing selectors do not work...
+        const dateButton: E2EElement = await page.find('og-datepicker >>> og-calendar-group >>> og-calendar >>> td.--selected + td.day');
+        expect(dateButton).toBeDefined();
+        expect(dateButton).toEqualText('31');
+
         await dateButton.click();
         await page.waitForChanges();
 
