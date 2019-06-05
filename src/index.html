@@ -45,6 +45,23 @@
                 margin: 16px 0 32px 0;
             }
 
+            og-layout-container {
+                display: block;
+                box-shadow: inset 0 0 0 1px white,
+                            0 0 0 1px black;
+            }
+            og-layout-container > * {
+                margin: 10px;
+                padding: 5px;
+                background: rgba(0, 100, 200, .3);
+                background: var(--OG-COLOR-PRIMARY--0--50, rgba(100, 100, 100, .3));
+            }
+
+            og-layout-container *:hover {
+                background: rgba(200, 100, 0, .5);
+                background: var(--OG-COLOR-PRIMARY--100--50, rgba(0, 0, 0, .3));
+            }
+
             og-tab-container {
                 width: 100%;
             }
@@ -110,6 +127,27 @@
                     document.querySelector('body').setAttribute('class', 'og-theme--dark');
                 });
             </script>
+
+            <!--
+            og-layout-container
+            -->
+            <og-card name="Layout Container">
+                <div>
+                    <og-layout-container>
+                        <div>1.1</div>
+                        <div>1.2</div>
+                        <og-layout-container direction="column" justify="flex-start">
+                            <div>2.1</div>
+                            <og-layout-container>
+                                <div>3.1</div>
+                                <div>3.2</div>
+                                <div>3.3</div>
+                            </og-layout-container>
+                            <div>2.3</div>
+                        </og-layout-container>
+                    </og-layout-container>
+                </div>
+            </og-card>
 
             <!--
             og-dialog
