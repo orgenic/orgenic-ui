@@ -25,9 +25,9 @@ export class OgButton {
     /**
      * Event is being emitted when value changes.
      */
-    @Event() clicked: EventEmitter<Event>;
+    @Event() clicked: EventEmitter;
 
-    handleClick(e: Event) {
+    handleClick(e: MouseEvent) {
         if (!this.disabled) {
             this.clicked.emit(e);
         }

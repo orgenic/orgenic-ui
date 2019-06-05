@@ -15,9 +15,9 @@
 
 ## Events
 
-| Event     | Description                                | Type                 |
-| --------- | ------------------------------------------ | -------------------- |
-| `clicked` | Event is being emitted when value changes. | `CustomEvent<Event>` |
+| Event     | Description                                | Type               |
+| --------- | ------------------------------------------ | ------------------ |
+| `clicked` | Event is being emitted when value changes. | `CustomEvent<any>` |
 
 
 ## Dependencies

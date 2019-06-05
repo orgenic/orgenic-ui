@@ -29,17 +29,17 @@ export class OgDialog {
     @Prop({ mutable: true, reflectToAttr: true }) visible: boolean = false;
 
     @Listen('wheel', { passive: false, target: 'window' }) // standard
-    handleWheel(ev: Event) {
+    handleWheel(ev) {
         this.visible && ScrollHandler.cancelScrolling(ev);
     }
 
     @Listen('mousewheel', { passive: false, target: 'window' }) // non-standard + deprecated
-    handleMouseWheel(ev: Event) {
+    handleMouseWheel(ev) {
         this.visible && ScrollHandler.cancelScrolling(ev);
     }
 
     @Listen('touchmove', { passive: false, target: 'window' }) // touch events
-    handleTouchMove(ev: Event) {
+    handleTouchMove(ev) {
         this.visible && ScrollHandler.cancelScrolling(ev);
     }
 

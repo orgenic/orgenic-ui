@@ -18,9 +18,9 @@
 
 ## Events
 
-| Event       | Description                                | Type                 |
-| ----------- | ------------------------------------------ | -------------------- |
-| `confirmed` | Event is being emitted when value changes. | `CustomEvent<Event>` |
+| Event       | Description                                | Type               |
+| ----------- | ------------------------------------------ | ------------------ |
+| `confirmed` | Event is being emitted when value changes. | `CustomEvent<any>` |
 
 
 ## Dependencies

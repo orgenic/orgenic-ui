@@ -6,7 +6,7 @@ export class ScrollHandler {
         }
     }
 
-    public static cancelScrolling = (ev: Event) => {
+    public static cancelScrolling = (ev) => {
         if (ev.preventDefault) {
             ev.preventDefault();
         }

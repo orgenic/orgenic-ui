@@ -18,10 +18,10 @@
 
 ## Events
 
-| Event       | Description                                | Type                 |
-| ----------- | ------------------------------------------ | -------------------- |
-| `cancelled` | Event is being emitted when value changes. | `CustomEvent<Event>` |
-| `confirmed` | Event is being emitted when value changes. | `CustomEvent<Event>` |
+| Event       | Description                                | Type               |
+| ----------- | ------------------------------------------ | ------------------ |
+| `cancelled` | Event is being emitted when value changes. | `CustomEvent<any>` |
+| `confirmed` | Event is being emitted when value changes. | `CustomEvent<any>` |
 
 
 ## Dependencies

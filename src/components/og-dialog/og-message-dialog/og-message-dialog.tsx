@@ -36,7 +36,7 @@ export class OgMessageDialog {
     /**
      * Event is being emitted when value changes.
      */
-    @Event() confirmed: EventEmitter<Event>;
+    @Event() confirmed: EventEmitter;
 
     handleConfirm() {
         this.confirmed.emit();

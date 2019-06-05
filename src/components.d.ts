@@ -7,9 +7,6 @@
 
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import {
-  Event,
-} from '@stencil/core';
-import {
   OgDatatableConfig,
 } from './components/og-datatable/interfaces/og-datatable-column-def';
 
@@ -549,7 +546,7 @@ declare namespace LocalJSX {
     /**
     * Event is being emitted when value changes.
     */
-    'onClicked'?: (event: CustomEvent<Event>) => void;
+    'onClicked'?: (event: CustomEvent<any>) => void;
   }
   interface OgCard extends JSXBase.HTMLAttributes<HTMLOgCardElement> {
     /**
@@ -621,11 +618,11 @@ declare namespace LocalJSX {
     /**
     * Event is being emitted when value changes.
     */
-    'onCancelled'?: (event: CustomEvent<Event>) => void;
+    'onCancelled'?: (event: CustomEvent<any>) => void;
     /**
     * Event is being emitted when value changes.
     */
-    'onConfirmed'?: (event: CustomEvent<Event>) => void;
+    'onConfirmed'?: (event: CustomEvent<any>) => void;
     /**
     * Optional SVG Icon as markup.
     */
@@ -772,7 +769,7 @@ declare namespace LocalJSX {
     /**
     * Event is being emitted when value changes.
     */
-    'onConfirmed'?: (event: CustomEvent<Event>) => void;
+    'onConfirmed'?: (event: CustomEvent<any>) => void;
     /**
     * Optional SVG Icon as markup.
     */

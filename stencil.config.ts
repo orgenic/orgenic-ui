@@ -5,12 +5,17 @@ import orgenicUiPostProcessing from './rollup-plugins/orgenic-ui-post-processing
 export const config: Config = {
     namespace: 'orgenic-ui',
     outputTargets: [
-        { type: 'dist' },
+        {
+            type: 'dist'
+        },
         { type: 'docs-readme' },
         {
             type: 'www',
             serviceWorker: null // disable service workers
         }
+    ],
+    bundles: [
+        { components: [ ] }
     ],
     plugins: [
         sass({

@@ -35,12 +35,12 @@ export class OgConfirmDialog {
     /**
      * Event is being emitted when value changes.
      */
-    @Event() confirmed: EventEmitter<Event>;
+    @Event() confirmed: EventEmitter;
 
     /**
      * Event is being emitted when value changes.
      */
-    @Event() cancelled: EventEmitter<Event>;
+    @Event() cancelled: EventEmitter;
 
     handleConfirm() {
         this.confirmed.emit();
