@@ -13,10 +13,10 @@ import { Component, Element, Prop } from '@stencil/core';
 })
 export class OgLayoutContainer {
     @Prop() direction: string = 'row';
-    @Prop() justify: string = 'space-evenly';
+    @Prop() justify: string = 'space-between';
     @Prop() align: string = 'stretch';
-    @Prop() wrap: string = 'wrap';
-    @Prop() overflow: string = 'auto';
+    @Prop() wrap: string = 'nowrap';
+    @Prop() overflow: string = 'visible';
 
     @Element() private element: HTMLElement;
 
@@ -25,7 +25,7 @@ export class OgLayoutContainer {
     }
 
     applyValues() {
-        const div = this.element.shadowRoot.querySelector('.og-layout-container') as HTMLElement;
+        const div = this.element as HTMLElement;
         div.style.setProperty('--og-layout-container--direction', this.direction);
         div.style.setProperty('--og-layout-container--justify', this.justify);
         div.style.setProperty('--og-layout-container--align', this.align);
@@ -35,9 +35,7 @@ export class OgLayoutContainer {
 
     render() {
         return (
-            <div class="og-layout-container">
-                <slot></slot>
-            </div>
+            <slot></slot>
         );
     }
 }

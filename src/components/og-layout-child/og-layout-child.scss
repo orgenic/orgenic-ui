@@ -1,0 +1,8 @@
+:host {
+    flex:
+        var(--og-layout-child--grow, 1)
+        var(--og-layout-child--shrink, 1)
+        var(--og-layout-child--basis, 0);
+    order: var(--og-layout-child--order, 1);
+    align-self: var(--og-layout-child--align, auto);
+}
