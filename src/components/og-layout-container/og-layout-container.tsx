@@ -12,10 +12,29 @@ import { Component, Element, Prop } from '@stencil/core';
   shadow: true
 })
 export class OgLayoutContainer {
+    /*
+    * Direction of the layout container. Default: "row"
+    */
     @Prop() direction: string = 'row';
+
+    /*
+    * Alignment of the main axis. Default: "space-between"
+    */
     @Prop() justify: string = 'space-between';
+
+    /*
+    * Alignment of the cross axis. Default: "stretch"
+    */
     @Prop() align: string = 'stretch';
+
+    /*
+    * Determines, whether the layout items wrap or not. Default: "nowrap"
+    */
     @Prop() wrap: string = 'nowrap';
+
+    /*
+    * Overflow behaviour of the layout container. Default: "visible"
+    */
     @Prop() overflow: string = 'visible';
 
     @Element() private element: HTMLElement;
