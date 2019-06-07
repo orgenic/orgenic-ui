@@ -55,10 +55,12 @@
     "glob": "^7.1.4",
     "jest": "23.6.0",
     "jest-cli": "23.6.0",
+    "moment": "^2.24.0",
+    "node-sass": "^4.12.0",
     "pre-commit": "^1.2.2",
     "puppeteer": "1.14.0",
+    "systemjs": "^3.1.6",
     "tabulator-tables": "^4.2.7",
-    "node-sass": "^4.12.0",
     "tslib": "^1.9.3"
   }
 }

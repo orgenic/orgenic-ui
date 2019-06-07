@@ -7,6 +7,14 @@
 
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import {
+  OgCalendarDate,
+  OgCalendarSelectionType,
+  OgDateDecorator,
+} from './components/og-calendar/interfaces/og-calendar-date-decorator';
+import {
+  Moment,
+} from 'moment';
+import {
   OgDatatableConfig,
 } from './components/og-datatable/interfaces/og-datatable-column-def';
 
@@ -21,6 +29,24 @@ export namespace Components {
     * The label of the button
     */
     'label': string;
+  }
+  interface OgCalendar {
+    'dateDecorator': OgDateDecorator;
+    'loc': string;
+    'month': number;
+    'selection': OgCalendarDate[];
+    'showCalendarWeek': boolean;
+    'year': number;
+  }
+  interface OgCalendarGroup {
+    'dateDecorator': OgDateDecorator;
+    'displayedMonths': number;
+    'loc': string;
+    'month': number;
+    'selection': OgCalendarDate[];
+    'selectionType': OgCalendarSelectionType;
+    'showCalendarWeek': boolean;
+    'year': number;
   }
   interface OgCard {
     /**
@@ -107,6 +133,23 @@ export namespace Components {
     * Programatically update selected row by idProperty.
     */
     'setSelection': (id: any) => Promise<void>;
+  }
+  interface OgDatepicker {
+    'dateDecorator': OgDateDecorator;
+    /**
+    * Determines, whether the control is disabled or not
+    */
+    'disabled': boolean;
+    'format': string;
+    'loc': string;
+    /**
+    * Optional placeholder if no value is selected.
+    */
+    'placeholder'?: string;
+    /**
+    * The selected value of the combobox
+    */
+    'value': string;
   }
   interface OgDialog {
     /**
@@ -389,6 +432,18 @@ declare global {
     new (): HTMLOgButtonElement;
   };
 
+  interface HTMLOgCalendarElement extends Components.OgCalendar, HTMLStencilElement {}
+  var HTMLOgCalendarElement: {
+    prototype: HTMLOgCalendarElement;
+    new (): HTMLOgCalendarElement;
+  };
+
+  interface HTMLOgCalendarGroupElement extends Components.OgCalendarGroup, HTMLStencilElement {}
+  var HTMLOgCalendarGroupElement: {
+    prototype: HTMLOgCalendarGroupElement;
+    new (): HTMLOgCalendarGroupElement;
+  };
+
   interface HTMLOgCardElement extends Components.OgCard, HTMLStencilElement {}
   var HTMLOgCardElement: {
     prototype: HTMLOgCardElement;
@@ -417,6 +472,12 @@ declare global {
   var HTMLOgDatatableElement: {
     prototype: HTMLOgDatatableElement;
     new (): HTMLOgDatatableElement;
+  };
+
+  interface HTMLOgDatepickerElement extends Components.OgDatepicker, HTMLStencilElement {}
+  var HTMLOgDatepickerElement: {
+    prototype: HTMLOgDatepickerElement;
+    new (): HTMLOgDatepickerElement;
   };
 
   interface HTMLOgDialogElement extends Components.OgDialog, HTMLStencilElement {}
@@ -510,11 +571,14 @@ declare global {
   };
   interface HTMLElementTagNameMap {
     'og-button': HTMLOgButtonElement;
+    'og-calendar': HTMLOgCalendarElement;
+    'og-calendar-group': HTMLOgCalendarGroupElement;
     'og-card': HTMLOgCardElement;
     'og-checkbox': HTMLOgCheckboxElement;
     'og-combobox': HTMLOgComboboxElement;
     'og-confirm-dialog': HTMLOgConfirmDialogElement;
     'og-datatable': HTMLOgDatatableElement;
+    'og-datepicker': HTMLOgDatepickerElement;
     'og-dialog': HTMLOgDialogElement;
     'og-expander': HTMLOgExpanderElement;
     'og-form-item': HTMLOgFormItemElement;
@@ -547,6 +611,27 @@ declare namespace LocalJSX {
     * Event is being emitted when value changes.
     */
     'onClicked'?: (event: CustomEvent<any>) => void;
+  }
+  interface OgCalendar extends JSXBase.HTMLAttributes<HTMLOgCalendarElement> {
+    'dateDecorator'?: OgDateDecorator;
+    'loc'?: string;
+    'month'?: number;
+    'onDateClicked'?: (event: CustomEvent<Moment>) => void;
+    'selection'?: OgCalendarDate[];
+    'showCalendarWeek'?: boolean;
+    'year'?: number;
+  }
+  interface OgCalendarGroup extends JSXBase.HTMLAttributes<HTMLOgCalendarGroupElement> {
+    'dateDecorator'?: OgDateDecorator;
+    'displayedMonths'?: number;
+    'loc'?: string;
+    'month'?: number;
+    'onDateClicked'?: (event: CustomEvent<OgCalendarDate>) => void;
+    'onSelectionChanged'?: (event: CustomEvent<OgCalendarDate[]>) => void;
+    'selection'?: OgCalendarDate[];
+    'selectionType'?: OgCalendarSelectionType;
+    'showCalendarWeek'?: boolean;
+    'year'?: number;
   }
   interface OgCard extends JSXBase.HTMLAttributes<HTMLOgCardElement> {
     /**
@@ -645,6 +730,35 @@ declare namespace LocalJSX {
     * Selected row identified by id-property
     */
     'selected'?: any;
+  }
+  interface OgDatepicker extends JSXBase.HTMLAttributes<HTMLOgDatepickerElement> {
+    'dateDecorator'?: OgDateDecorator;
+    /**
+    * Determines, whether the control is disabled or not
+    */
+    'disabled'?: boolean;
+    'format'?: string;
+    'loc'?: string;
+    /**
+    * Event is being emitted when value changes.
+    */
+    'onDateSelected'?: (event: CustomEvent<any>) => void;
+    /**
+    * Event is being emitted when input gets focus..
+    */
+    'onFocusGained'?: (event: CustomEvent<FocusEvent>) => void;
+    /**
+    * Event is being emitted when focus gets lost.
+    */
+    'onFocusLost'?: (event: CustomEvent<FocusEvent>) => void;
+    /**
+    * Optional placeholder if no value is selected.
+    */
+    'placeholder'?: string;
+    /**
+    * The selected value of the combobox
+    */
+    'value'?: string;
   }
   interface OgDialog extends JSXBase.HTMLAttributes<HTMLOgDialogElement> {
     /**
@@ -979,11 +1093,14 @@ declare namespace LocalJSX {
 
   interface IntrinsicElements {
     'og-button': OgButton;
+    'og-calendar': OgCalendar;
+    'og-calendar-group': OgCalendarGroup;
     'og-card': OgCard;
     'og-checkbox': OgCheckbox;
     'og-combobox': OgCombobox;
     'og-confirm-dialog': OgConfirmDialog;
     'og-datatable': OgDatatable;
+    'og-datepicker': OgDatepicker;
     'og-dialog': OgDialog;
     'og-expander': OgExpander;
     'og-form-item': OgFormItem;

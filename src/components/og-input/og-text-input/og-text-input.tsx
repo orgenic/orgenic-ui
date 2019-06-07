@@ -26,7 +26,6 @@ export class OgTextInput {
      */
     @Event() valueChanged: EventEmitter<string>;
 
-
     /**
      * Event is being emitted when input gets focus..
      */

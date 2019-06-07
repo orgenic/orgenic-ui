@@ -1,6 +1,7 @@
 const execute = require('./helpers/execute');
 const trimReadmeFooter = require('./helpers/trim-readme-footer');
 const addCssVarsDefaultValue = require('./helpers/add-css-vars-default-value');
+const momentLocales2Modules = require('./helpers/moment-locales-to-modules');
 
 function orgenicUiPostProcessing(config) {
     if (config.target === 'start') {
@@ -19,6 +20,7 @@ function orgenicUiPostProcessing(config) {
 
             return new Promise(resolve => {
                 const delay = config.target === 'build' ? 4000 : 2000;
+                // momentLocales2Modules({ outDir: 'www/og-calendar-locales' });
 
                 resolve();
                 // wait for stenciljs build chain completely finished
@@ -37,7 +39,9 @@ function orgenicUiPostProcessing(config) {
 
                         // generate themes
                         await execute('node-sass src/styles/themes -o dist/themes');
+                        momentLocales2Modules({ outDir: 'dist/og-calendar-locales' });
                     } else {
+                        momentLocales2Modules({ outDir: 'www/build/og-calendar-locales' });
                         await execute('node-sass src/styles/themes -o www/themes');
                     }
                 }, delay);
