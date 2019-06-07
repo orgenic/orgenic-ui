@@ -46,10 +46,11 @@ export class OgFormItem {
         });
 
         this.editor.addEventListener('valueChanged', (event: CustomEvent) => {
-            this.editorIsEmpty = !event.detail || event.detail.length === 0;
+            this.checkEditorEmpty(event.detail);
         });
 
-        this.editorIsEmpty = !this.editor['value'] || this.editor['value'].length === 0;
+        this.checkEditorEmpty(this.editor['value']);
+
 
         // update disabled state of child editor
         if (this.disabled) {
@@ -57,6 +58,10 @@ export class OgFormItem {
         } else {
             this.editor.removeAttribute('disabled');
         }
+    }
+
+    checkEditorEmpty(value) {
+        this.editorIsEmpty = (typeof value === 'object' && value === null) || value === undefined || value.length === 0;
     }
 
     render() {
