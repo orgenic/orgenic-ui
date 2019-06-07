@@ -137,17 +137,15 @@
             <og-card name="Layout Container">
                 <div>
                     <og-layout-container>
-                        <og-layout-child grow="2" shrink="0">CHILD 1</og-layout-child>
-                        <og-layout-child grow="1" shrink="1">
+                        <og-layout-child>CHILD 1</og-layout-child>
+                        <og-layout-child>
                             <og-layout-container direction="column">
                                 <og-layout-child>CHILD 2</og-layout-child>
                                 <og-layout-child>
-                                    <og-layout-container overflow="auto">
-                                        <og-layout-child shrink="0" basis="auto">CHILD 3</og-layout-child>
-                                        <og-layout-child shrink="0" basis="auto">CHILD 4</og-layout-child>
-                                        <og-layout-child shrink="0" basis="auto">CHILD 5</og-layout-child>
-                                        <og-layout-child shrink="0" basis="auto">CHILD 4</og-layout-child>
-                                        <og-layout-child shrink="0" basis="auto">CHILD 5</og-layout-child>
+                                    <og-layout-container>
+                                        <og-layout-child grow="0" basis="auto">CHILD 3</og-layout-child>
+                                        <og-layout-child grow="0" basis="auto">CHILD 4</og-layout-child>
+                                        <og-layout-child grow="0" basis="auto">CHILD 5</og-layout-child>
                                     </og-layout-container>
                                 </og-layout-child>
                                 <div>DIV 2</div>
