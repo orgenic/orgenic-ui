@@ -44,12 +44,11 @@ export class OgLayoutChild {
     }
 
     applyValues() {
-        const div = this.element as HTMLElement;
-        div.style.setProperty('--og-layout-child--grow', this.grow);
-        div.style.setProperty('--og-layout-child--shrink', this.shrink);
-        div.style.setProperty('--og-layout-child--basis', this.basis);
-        div.style.setProperty('--og-layout-child--order', this.order);
-        div.style.setProperty('--og-layout-child--align', this.align);
+        this.element.style.setProperty('--og-layout-child--grow', this.grow);
+        this.element.style.setProperty('--og-layout-child--shrink', this.shrink);
+        this.element.style.setProperty('--og-layout-child--basis', this.basis);
+        this.element.style.setProperty('--og-layout-child--order', this.order);
+        this.element.style.setProperty('--og-layout-child--align', this.align);
     }
 
     render() {

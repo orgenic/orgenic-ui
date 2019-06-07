@@ -20,7 +20,7 @@ export class OgLayoutContainer {
     /*
     * Alignment of the main axis. Default: "space-between"
     */
-    @Prop() justify: string = 'space-between';
+    @Prop() justify: string = 'flex-start';
 
     /*
     * Alignment of the cross axis. Default: "stretch"
@@ -44,12 +44,11 @@ export class OgLayoutContainer {
     }
 
     applyValues() {
-        const div = this.element as HTMLElement;
-        div.style.setProperty('--og-layout-container--direction', this.direction);
-        div.style.setProperty('--og-layout-container--justify', this.justify);
-        div.style.setProperty('--og-layout-container--align', this.align);
-        div.style.setProperty('--og-layout-container--wrap', this.wrap);
-        div.style.setProperty('--og-layout-container--overflow', this.overflow);
+        this.element.style.setProperty('--og-layout-container--direction', this.direction);
+        this.element.style.setProperty('--og-layout-container--justify', this.justify);
+        this.element.style.setProperty('--og-layout-container--align', this.align);
+        this.element.style.setProperty('--og-layout-container--wrap', this.wrap);
+        this.element.style.setProperty('--og-layout-container--overflow', this.overflow);
     }
 
     render() {
