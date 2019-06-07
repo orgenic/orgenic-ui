@@ -46,19 +46,23 @@
             }
 
             og-layout-container {
-                box-shadow: inset 0 0 0 1px white,
-                            0 0 0 1px black;
-            }
-            og-layout-container > * {
-                margin: 10px;
-                padding: 5px;
-                background: rgba(0, 100, 200, .3);
-                background: var(--OG-COLOR-PRIMARY--0--50, rgba(100, 100, 100, .3));
+                border-color: var(--OG-COLOR-SHADE--100--60, hsla(200, 25%, 30%, 0.6));
+                border-style: solid;
+                border-width: 1px;
+                padding: 4px;
             }
 
-            og-layout-container *:hover {
-                background: rgba(200, 100, 0, .5);
-                background: var(--OG-COLOR-PRIMARY--100--50, rgba(0, 0, 0, .3));
+            og-layout-container > * {
+                margin: 4px;
+            }
+
+            og-layout-container > *:not(og-layout-container) {
+                background: var(--OG-COLOR-SECONDARY--100--20, hsla(0, 0%, 20%, 0.2));
+                padding: 8px;
+            }
+
+            og-layout-container *:hover:not(og-layout-container) {
+                background: var(--OG-COLOR-PRIMARY--100, hsla(196, 76%, 47%, 1));
             }
 
             og-tab-container {
@@ -135,7 +139,7 @@
                     <og-layout-container>
                         <div>1.1</div>
                         <div>1.2</div>
-                        <og-layout-container direction="column" justify="flex-start">
+                        <og-layout-container direction="column">
                             <div>2.1</div>
                             <og-layout-container>
                                 <og-layout-child>3.1</og-layout-child>
