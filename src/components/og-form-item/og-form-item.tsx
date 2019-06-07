@@ -61,7 +61,11 @@ export class OgFormItem {
     }
 
     checkEditorEmpty(value) {
-        this.editorIsEmpty = (typeof value === 'object' && value === null) || value === undefined || value.length === 0;
+        if (this.editor.tagName.toLocaleLowerCase() === 'og-datepicker') {
+            this.editorIsEmpty = false;
+        } else {
+            this.editorIsEmpty = (typeof value === 'object' && value === null) || value === undefined || value.length === 0;
+        }
     }
 
     render() {
