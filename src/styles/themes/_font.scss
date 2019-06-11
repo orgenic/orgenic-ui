@@ -1,21 +1,25 @@
 h1 {
     font-size:      var(--OG-FONT-SIZE--H1, 48px);
     font-weight:    var(--OG-FONT-WEIGHT--H1, normal);
+    line-height:    var(--OG-FONT-SIZE--H1, 48px);
 }
 
 h2 {
     font-size:      var(--OG-FONT-SIZE--H2, 32px);
     font-weight:    var(--OG-FONT-WEIGHT--H2, normal);
+    line-height:      var(--OG-FONT-SIZE--H2, 32px);
 }
 
 h3 {
     font-size:      var(--OG-FONT-SIZE--H3, 24px);
     font-weight:    var(--OG-FONT-WEIGHT--H3, normal);
+    line-height:      var(--OG-FONT-SIZE--H3, 24px);
 }
 
 h4 {
     font-size:      var(--OG-FONT-SIZE--H4, 20px);
     font-weight:    var(--OG-FONT-WEIGHT--H4, normal);
+    line-height:      var(--OG-FONT-SIZE--H4, 20px);
 }
 
 h5,

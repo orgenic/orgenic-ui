@@ -7,23 +7,23 @@
 
 ## Properties
 
-| Property        | Attribute     | Description                                        | Type              | Default              |
-| --------------- | ------------- | -------------------------------------------------- | ----------------- | -------------------- |
-| `dateDecorator` | --            |                                                    | `OgDateDecorator` | `undefined`          |
-| `disabled`      | `disabled`    | Determines, whether the control is disabled or not | `boolean`         | `undefined`          |
-| `format`        | `format`      |                                                    | `string`          | `'DD.MM.YYYY'`       |
-| `loc`           | `loc`         |                                                    | `string`          | `getDefaultLocale()` |
-| `placeholder`   | `placeholder` | Optional placeholder if no value is selected.      | `string`          | `undefined`          |
-| `value`         | `value`       | The selected value of the combobox                 | `string`          | `undefined`          |
+| Property        | Attribute     | Description                                                                                 | Type              | Default              |
+| --------------- | ------------- | ------------------------------------------------------------------------------------------- | ----------------- | -------------------- |
+| `dateDecorator` | --            | The date decorator can be used to highlight special dates like public holidays or meetings. | `OgDateDecorator` | `undefined`          |
+| `disabled`      | `disabled`    | Determines, whether the control is disabled or not                                          | `boolean`         | `undefined`          |
+| `format`        | `format`      | Defines the date string format. The value will be parsed and emitted using this format.     | `string`          | `'DD.MM.YYYY'`       |
+| `loc`           | `loc`         | Locale for this datepicker (country code in ISO 3166 format)                                | `string`          | `getDefaultLocale()` |
+| `placeholder`   | `placeholder` | Optional placeholder if no value is selected.                                               | `string`          | `undefined`          |
+| `value`         | `value`       | The selected value of the combobox                                                          | `string`          | `undefined`          |
 
 
 ## Events
 
-| Event          | Description                                    | Type                      |
-| -------------- | ---------------------------------------------- | ------------------------- |
-| `dateSelected` | Event is being emitted when value changes.     | `CustomEvent<any>`        |
-| `focusGained`  | Event is being emitted when input gets focus.. | `CustomEvent<FocusEvent>` |
-| `focusLost`    | Event is being emitted when focus gets lost.   | `CustomEvent<FocusEvent>` |
+| Event          | Description                                        | Type                      |
+| -------------- | -------------------------------------------------- | ------------------------- |
+| `dateSelected` | Event is being emitted when selected date changes. | `CustomEvent<any>`        |
+| `focusGained`  | Event is being emitted when input gets focus..     | `CustomEvent<FocusEvent>` |
+| `focusLost`    | Event is being emitted when focus gets lost.       | `CustomEvent<FocusEvent>` |
 
 
 ## CSS Custom Properties

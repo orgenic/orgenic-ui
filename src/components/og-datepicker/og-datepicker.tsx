@@ -51,11 +51,17 @@ export class OgDatepicker {
         }
     }
 
+    /**
+     * Defines the date string format. The value will be parsed and emitted using this format.
+     */
     @Prop() format: string = 'DD.MM.YYYY';
     @Watch('format') setFormat() {
         this.setValue(this.value);
     }
 
+    /**
+     * The date decorator can be used to highlight special dates like public holidays or meetings.
+     */
     @Prop() dateDecorator: OgDateDecorator;
 
     /**

@@ -1,6 +1,6 @@
 # og-calendar
 
-
+This component is used by og-datepicker and is currently not intended for stand-alone use.
 
 <!-- Auto Generated Below -->
 

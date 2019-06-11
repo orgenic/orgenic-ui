@@ -134,12 +134,21 @@ export namespace Components {
     'setSelection': (id: any) => Promise<void>;
   }
   interface OgDatepicker {
+    /**
+    * The date decorator can be used to highlight special dates like public holidays or meetings.
+    */
     'dateDecorator': OgDateDecorator;
     /**
     * Determines, whether the control is disabled or not
     */
     'disabled': boolean;
+    /**
+    * Defines the date string format. The value will be parsed and emitted using this format.
+    */
     'format': string;
+    /**
+    * Locale for this datepicker (country code in ISO 3166 format)
+    */
     'loc': string;
     /**
     * Optional placeholder if no value is selected.
@@ -731,15 +740,24 @@ declare namespace LocalJSX {
     'selected'?: any;
   }
   interface OgDatepicker extends JSXBase.HTMLAttributes<HTMLOgDatepickerElement> {
+    /**
+    * The date decorator can be used to highlight special dates like public holidays or meetings.
+    */
     'dateDecorator'?: OgDateDecorator;
     /**
     * Determines, whether the control is disabled or not
     */
     'disabled'?: boolean;
+    /**
+    * Defines the date string format. The value will be parsed and emitted using this format.
+    */
     'format'?: string;
+    /**
+    * Locale for this datepicker (country code in ISO 3166 format)
+    */
     'loc'?: string;
     /**
-    * Event is being emitted when value changes.
+    * Event is being emitted when selected date changes.
     */
     'onDateSelected'?: (event: CustomEvent<any>) => void;
     /**
