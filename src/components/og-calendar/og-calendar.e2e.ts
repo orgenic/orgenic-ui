@@ -1,8 +1,8 @@
 import { newE2EPage, E2EElement, E2EPage } from '@stencil/core/testing';
-import moment from 'moment';
+import moment from '../og-internal-calendar/interfaces/node_modules/moment';
 import { isNull } from 'util';
 
-describe('og-datepicker', () => {
+describe('og-calendar', () => {
     let page: E2EPage;
     let component: E2EElement;
     let flyout: E2EElement;
@@ -12,10 +12,10 @@ describe('og-datepicker', () => {
     beforeEach(async () => {
         page = await newE2EPage();
         await page.setContent(`
-            <og-calendar-group year="2019" month="4">
-            </og-calendar-group>`);
+            <og-calendar year="2019" month="4">
+            </og-calendar>`);
 
-        component = await page.find('og-calendar-group');
+        component = await page.find('og-calendar');
     });
 
     it('renders', async () => {
@@ -24,7 +24,7 @@ describe('og-datepicker', () => {
 
     it('shows the current month', async () => {
         const calendarMonth: E2EElement = await page.find(
-            'og-calendar-group >>> .calender__header__month'
+            'og-calendar >>> .calender__header__month'
         );
         expect(calendarMonth).toBeDefined();
         expect(calendarMonth).toEqualText('May');

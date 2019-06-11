@@ -10,7 +10,7 @@ import {
   OgCalendarDate,
   OgCalendarSelectionType,
   OgDateDecorator,
-} from './components/og-calendar/interfaces/og-calendar-date-decorator';
+} from './components/og-internal-calendar/interfaces/og-calendar-date-decorator';
 import {
   Moment,
 } from 'moment';

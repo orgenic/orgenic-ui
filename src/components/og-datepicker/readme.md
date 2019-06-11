@@ -57,13 +57,13 @@
 
 ### Depends on
 
-- [og-calendar-group](..\og-calendar-group)
+- [og-calendar](..\og-calendar)
 
 ### Graph
 ```mermaid
 graph TD;
-  og-datepicker --> og-calendar-group
-  og-calendar-group --> og-calendar
+  og-datepicker --> og-calendar
+  og-calendar --> og-internal-calendar
   style og-datepicker fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

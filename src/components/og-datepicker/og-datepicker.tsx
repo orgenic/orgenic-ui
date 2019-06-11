@@ -16,8 +16,8 @@ import {
     Watch,
     Host
 } from '@stencil/core';
-import { OgCalendarDate, OgDateDecorator } from '../og-calendar/interfaces/og-calendar-date-decorator';
-import { CalendarUtils } from '../og-calendar/utils/utils';
+import { OgCalendarDate, OgDateDecorator } from '../og-internal-calendar/interfaces/og-calendar-date-decorator';
+import { CalendarUtils } from '../og-internal-calendar/utils/utils';
 import moment from 'moment';
 import { loadMomentLocale, getDefaultLocale } from '../../utils/moment-locale-loader';
 
@@ -218,7 +218,7 @@ export class OgDatepicker {
                     <div class="og-datepicker__indicator" ref={(el) => this.indicatorElement = el} />
                 </div>
                 <div class="og-datepicker__flyout">
-                    <og-calendar-group
+                    <og-calendar
                         class={
                             'og-datepicker__flyout__calendar' +
                             (this.isDropdownActive() ? ' og-datepicker__flyout__calendar--visible' : '')
@@ -232,7 +232,7 @@ export class OgDatepicker {
                         selection={ [ this.internalValue ] }
                         selectionType="single"
                         onDateClicked={ (e) => this.handleDateClicked(e) }>
-                    </og-calendar-group>
+                    </og-calendar>
                 </div>
             </Host>
         );

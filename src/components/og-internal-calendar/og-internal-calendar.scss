@@ -1,0 +1,83 @@
+:host {
+    --og-calendar__day-Background: none;
+    --og-calendar__day-Background--hover: var(--OG-COLOR-PRIMARY--100--15, #{$og-color-primary--100--15});
+    --og-calendar__day-Background--active: var(--OG-COLOR-PRIMARY--100, #{$og-color-primary--100});
+    --og-calendar__day-Background--disabled: none;
+
+    --og-calendar__day-Color: inherit;
+    --og-calendar__day-Color--hover: var(--OG-COLOR-PRIMARY--100--15, #{$og-color-primary--100--15});
+    --og-calendar__day-Color--active: var(--OG-COLOR-SHADE--0, #{$og-color-shade--0});
+    --og-calendar__day-Color--disabled: var(--OG-COLOR-SHADE--100--50, #{$og-color-shade--100--50});
+
+    --og-calendar__day__indicator-Background: var(--OG-COLOR-PRIMARY--40, #{$og-color-primary--40});
+}
+
+table {
+    border-spacing: 2px;
+}
+
+td {
+    line-height: 1;
+}
+
+th {
+    text-align: center;
+    text-transform: uppercase;
+    // font-size: 12px;
+
+}
+
+.day {
+    background: var(--og-calendar__day-Background);
+    color: var(--og-calendar__day-Color);
+    text-align: center;
+    // font-size: 12px;
+    border-radius: 3px;
+    position: relative;
+    cursor: pointer;
+    padding: 6px;
+
+
+    &::after {
+        position: absolute;
+        display: block;
+        content: '';
+        height: 2px;
+        top: auto;
+        right: 4px;
+        bottom: 2px;
+        left: 4px;
+    }
+
+    &:not(.day--disabled):not(.day--selected):hover {
+        --og-calendar__day-Background: var(--og-calendar__day-Background--hover, none);
+    }
+}
+
+.day--selected {
+    --og-calendar__day-Background: var(--og-calendar__day-Background--active, none);
+    --og-calendar__day-Color: var(--og-calendar__day-Color--active);
+}
+
+
+
+.week {
+    padding-right: 8px;
+    text-align: right;
+    // font-size: 12px;
+    border-right: 1px solid var(--OG-COLOR-SHADE--100--20);
+}
+
+.day--disabled {
+    --og-calendar__day-Color: var(--og-calendar__day-Color--disabled);
+    --og-calendar__day-Background: var(--og-calendar__day-Background--disabled);
+    cursor: default;
+}
+
+.day--today {
+    font-weight: bold;
+}
+
+.day--highlight::after {
+    background: var(--og-calendar__day__indicator-Background);
+}
