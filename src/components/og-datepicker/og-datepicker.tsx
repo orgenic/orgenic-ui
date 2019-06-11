@@ -36,6 +36,9 @@ export class OgDatepicker {
      */
     @Prop() placeholder?: string;
 
+    /**
+     * Locale for this datepicker (country code in ISO 3166 format)
+     */
     @Prop() loc = getDefaultLocale();
 
     /**
@@ -61,7 +64,7 @@ export class OgDatepicker {
     @Prop() disabled: boolean;
 
     /**
-     * Event is being emitted when value changes.
+     * Event is being emitted when selected date changes.
      */
     @Event() dateSelected: EventEmitter<any>;
 

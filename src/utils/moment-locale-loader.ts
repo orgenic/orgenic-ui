@@ -1,9 +1,7 @@
-// import * as System from 'systemjs/dist/system';
-
 export {
     loadMomentLocale,
     getDefaultLocale
-} ;
+};
 
 
 async function loadMomentLocale(locale: string, moment, resourceUrl: string) {

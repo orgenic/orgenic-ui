@@ -18,7 +18,6 @@ import {
   OgDatatableConfig,
 } from './components/og-datatable/interfaces/og-datatable-column-def';
 
-
 export namespace Components {
   interface OgButton {
     /**
