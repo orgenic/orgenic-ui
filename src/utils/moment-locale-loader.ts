@@ -12,6 +12,9 @@ async function loadMomentLocale(locale: string, moment, resourceUrl: string) {
     const url = `${resourceUrl}orgenic-ui-assets/og-calendar-locales/${locale}.mjs`;
     try {
         const module = await import(/* webpackIgnore: true */ url);
+        if (moment.locales().indexOf(locale) >= 0) {
+            return;
+        }
         module.addToMoment(moment);
     } catch (e) {
         console.log('unable to retreive og-calendar-locale', e);

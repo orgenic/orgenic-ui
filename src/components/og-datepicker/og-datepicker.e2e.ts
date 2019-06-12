@@ -12,15 +12,13 @@ describe('og-datepicker', () => {
     beforeEach(async () => {
         page = await newE2EPage();
         // note: the testdate need to have a clickable tomorrow
-        await page.setContent(`
-            <og-form-item label="Bitte wählen Sie ein Datum">
-                <og-datepicker value="30-05-2019" format="DD-MM-YYYY" first-day-of-week="1"></og-datepicker>
-                </og-form-item>`);
+        await page.setContent(`<og-datepicker value="30-05-2019" format="DD-MM-YYYY" first-day-of-week="1"></og-datepicker>`);
 
         component = await page.find('og-datepicker');
-        flyout = await page.find('og-datepicker >>> og-calendar-group');
+        flyout = await page.find('og-datepicker >>> og-calendar');
         header = await page.find('og-datepicker >>> .og-datepicker__header');
         input = await page.find('og-datepicker >>> .og-datepicker__input');
+        await page.waitForChanges();
     });
 
     it('renders', async () => {

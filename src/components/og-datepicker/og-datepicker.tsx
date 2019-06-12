@@ -110,7 +110,7 @@ export class OgDatepicker {
     }
 
     @State()
-    private internalValue: OgCalendarDate = CalendarUtils.moment2CalendarDate(moment(this.value));
+    private internalValue: OgCalendarDate = CalendarUtils.moment2CalendarDate(moment(this.value, this.format));
 
     indicatorElement: HTMLElement;
     flyoutCalendar: HTMLElement;
