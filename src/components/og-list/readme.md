@@ -27,6 +27,14 @@
 | `itemSelected` | Event is being emitted when value changes. | `CustomEvent<any>` |
 
 
+## CSS Custom Properties
+
+| Name                          | Description                                |
+| ----------------------------- | ------------------------------------------ |
+| `--og-list-Opacity`           | Overall opacity of the list                |
+| `--og-list-Opacity--disabled` | Overall opacity of the list when disabled. |
+
+
 ## Dependencies
 
 ### Depends on

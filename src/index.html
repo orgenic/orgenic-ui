@@ -32,6 +32,11 @@
                 margin: 0;
             }
 
+            h1 {
+                padding-left: 8px;
+                font-weight: normal;
+            }
+
             header {
                 width: calc(100% - 10px);
                 background: rgb(183, 216, 224);
@@ -109,6 +114,85 @@
                 });
                 document.querySelector('#theme_dark').addEventListener('clicked', () => {
                     document.querySelector('body').setAttribute('class', 'og-theme--dark');
+                });
+            </script>
+
+            <!--
+            og-datepicker
+            -->
+            <og-card name="Datepicker">
+                <div>
+                    <og-form-item label="Bitte wählen Sie ein Datum (de)">
+                        <og-datepicker value="25. Juni 2019" loc="de" format="DD. MMM YYYY"></og-datepicker>
+                    </og-form-item>
+
+                    <og-form-item label="Please select a date (en)">
+                        <og-datepicker value="06/25/2019" loc="en" format="MM/DD/YYYY"></og-datepicker>
+                    </og-form-item>
+
+                    <og-form-item label="Пожалуйста, выберите дату (ru)">
+                        <og-datepicker value="25.06.2019" loc="ru" format="DD.MM.YYYY"></og-datepicker>
+                    </og-form-item>
+                </div>
+            </og-card>
+            <script>
+                const datepicker = document.querySelector('og-datepicker');
+                datepicker.dateDecorator = {
+                    getDateDecoration: function (moment) {
+                        if (moment.day() === 0 || moment.day() === 6) {
+                            return {
+                                class: 'day--disabled'
+                            };
+                        } else {
+                            if (moment.date() === 1 || moment.date() === 20) {
+                                return {
+                                    class: 'day--highlight'
+                                };
+                            }
+                        }
+                        return {
+                            class: ''
+                        };
+                    }
+                };
+                datepicker.addEventListener('dateSelected', event => {
+                    console.log('date selected', event.detail.getDate(), event.detail.getMonth(), event.detail.getFullYear());
+                });
+            </script>
+
+            <!--
+            og-calendar-group
+            -->
+            <og-card name="Calendar">
+                <div>
+                    <h4>Calendar Group (2 months): de</h4>
+                    <og-calendar month="4" year="2019" loc="de" displayed-months="2" show-calendar-week="false" id="groupCalendar1"></og-calendar>
+                    <h4>Calendar Group (1 months): en</h4>
+                    <og-calendar month="4" year="2019" loc="en"></og-calendar>
+                </div>
+            </og-card>
+            <script>
+                const calendar = document.querySelector('#groupCalendar1');
+                calendar.dateDecorator = {
+                    getDateDecoration: function (moment) {
+                        if (moment.day() === 0 || moment.day() === 6) {
+                            return {
+                                class: 'day--disabled'
+                            };
+                        } else {
+                            if (moment.date() === 1 || moment.date() === 20) {
+                                return {
+                                    class: 'day--highlight'
+                                };
+                            }
+                        }
+                        return {
+                            class: ''
+                        };
+                    }
+                };
+                calendar.addEventListener('selectionChanged', e => {
+                    console.log('selection changed event', e.detail);
                 });
             </script>
 
