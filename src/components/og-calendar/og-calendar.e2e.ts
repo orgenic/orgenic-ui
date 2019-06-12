@@ -7,7 +7,6 @@ describe('og-calendar', () => {
     let component: E2EElement;
     let flyout: E2EElement;
 
-    // enum Month
 
     beforeEach(async () => {
         page = await newE2EPage();

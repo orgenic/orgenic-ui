@@ -23,7 +23,6 @@ td {
 th {
     text-align: center;
     text-transform: uppercase;
-    // font-size: 12px;
 
 }
 
@@ -31,7 +30,6 @@ th {
     background: var(--og-calendar__day-Background);
     color: var(--og-calendar__day-Color);
     text-align: center;
-    // font-size: 12px;
     border-radius: 3px;
     position: relative;
     cursor: pointer;
@@ -64,7 +62,6 @@ th {
 .week {
     padding-right: 8px;
     text-align: right;
-    // font-size: 12px;
     border-right: 1px solid var(--OG-COLOR-SHADE--100--20);
 }
 

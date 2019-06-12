@@ -20,7 +20,6 @@ function orgenicUiPostProcessing(config) {
 
             return new Promise(resolve => {
                 const delay = config.target === 'build' ? 4000 : 2000;
-                // momentLocales2Modules({ outDir: 'www/orgenic-ui-assets/og-calendar-locales' });
 
                 resolve();
                 // wait for stenciljs build chain completely finished

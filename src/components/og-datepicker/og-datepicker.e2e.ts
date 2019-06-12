@@ -7,7 +7,6 @@ describe('og-datepicker', () => {
     let header: E2EElement;
     let input: E2EElement;
 
-    // enum Month
 
     beforeEach(async () => {
         page = await newE2EPage();

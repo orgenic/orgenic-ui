@@ -3,7 +3,6 @@ const fs = require('fs');
 const moment = require('moment');
 
 const regex = 'function\\s\\(moment\\)\\s{([.\\S\\s]*)}';
-// const regex = '(week\\s:\\s{[.\\S\\s]*?})|(((weekdays|months|week)\\w*\\s):.*)';
 const languages = ['de', 'fr', 'it', 'es', 'se', 'nl', 'pl', 'ru'];
 
 function momentLocales2Modules(options) {
@@ -20,10 +19,6 @@ function momentLocales2Modules(options) {
 
     files.forEach(file => {
         const locale = file.match('.*/(.*).js')[1];
-        // if (languages.indexOf(locale) < 0) {
-        //     return;
-        // }
-        // console.log(locale);
 
         const fileContent = fs.readFileSync(file).toString();
 
