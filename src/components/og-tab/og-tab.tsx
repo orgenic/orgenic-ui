@@ -4,7 +4,7 @@
  * See LICENSE file at https://github.com/orgenic/orgenic-ui/blob/master/LICENSE
  **/
 
-import { Component, Prop } from '@stencil/core';
+import { h, Component, Prop } from '@stencil/core';
 
 @Component({
   tag: 'og-tab',

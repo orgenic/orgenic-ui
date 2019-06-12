@@ -4,7 +4,7 @@
  * See LICENSE file at https://github.com/orgenic/orgenic-ui/blob/master/LICENSE
  **/
 
-import { Component, Prop, EventEmitter, Event, Method, Watch } from '@stencil/core';
+import { h, Component, Prop, EventEmitter, Event, Method, Watch } from '@stencil/core';
 import { OgDatatableConfig, OgLazyDataProvider, OgDefaultDataProvider,
     OgDataProvider} from './interfaces/og-datatable-column-def';
 
@@ -39,7 +39,7 @@ export class OgDatatable {
     /**
      * Programatically update selected row by idProperty.
      */
-    @Method() setSelection(id) {
+    @Method() async setSelection(id) {
         this.selected = id;
         this.updateRowSelection();
     }
@@ -47,7 +47,7 @@ export class OgDatatable {
     /**
      * Triggers a reload of the table data.
      */
-    @Method() reloadData() {
+    @Method() async reloadData() {
         if (this.table) {
             this.table.replaceData();
         }

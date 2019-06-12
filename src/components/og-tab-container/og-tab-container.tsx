@@ -4,7 +4,7 @@
  * See LICENSE file at https://github.com/orgenic/orgenic-ui/blob/master/LICENSE
  **/
 
-import { Component, Prop, EventEmitter, Event, Element, State, Method } from '@stencil/core';
+import { h, Component, Prop, EventEmitter, Event, Element, State, Method } from '@stencil/core';
 
 @Component({
   tag: 'og-tab-container',
@@ -27,7 +27,7 @@ export class OgTabContainer {
     @Event() tabSelected: EventEmitter<number>;
 
     @Method()
-    openTab(index: number) {
+    async openTab(index: number) {
         if (this.disabled) {
             return;
         }

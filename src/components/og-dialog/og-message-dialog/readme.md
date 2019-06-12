@@ -18,10 +18,25 @@
 
 ## Events
 
-| Event       | Description                                | Type                 |
-| ----------- | ------------------------------------------ | -------------------- |
-| `confirmed` | Event is being emitted when value changes. | `CustomEvent<Event>` |
+| Event       | Description                                | Type               |
+| ----------- | ------------------------------------------ | ------------------ |
+| `confirmed` | Event is being emitted when value changes. | `CustomEvent<any>` |
 
+
+## Dependencies
+
+### Depends on
+
+- [og-dialog](..)
+- [og-button](..\..\og-button)
+
+### Graph
+```mermaid
+graph TD;
+  og-message-dialog --> og-dialog
+  og-message-dialog --> og-button
+  style og-message-dialog fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 

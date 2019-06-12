@@ -54,6 +54,21 @@
 | `--og-dialog__svg-Width`            | Width of the Dialog Content Img                              |
 
 
+## Dependencies
+
+### Used by
+
+ - [og-confirm-dialog](og-confirm-dialog)
+ - [og-message-dialog](og-message-dialog)
+
+### Graph
+```mermaid
+graph TD;
+  og-confirm-dialog --> og-dialog
+  og-message-dialog --> og-dialog
+  style og-dialog fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

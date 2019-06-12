@@ -4,7 +4,7 @@
  * See LICENSE file at https://github.com/orgenic/orgenic-ui/blob/master/LICENSE
  **/
 
-import { Component, Prop, Event, EventEmitter } from '@stencil/core';
+import { h, Component, Prop, Event, EventEmitter, Host } from '@stencil/core';
 
 @Component({
   tag: 'og-radio-button',
@@ -51,30 +51,26 @@ export class OgRadioButton {
         this.changed.emit(event.target.value);
     }
 
-    hostData() {
-        return {
-            class : {
+    render() {
+        return (
+            <Host class={{
                 'og-radio-button--checked' : this.checked,
                 'og-radio-button--disabled' : this.disabled || this.groupDisabled,
-            }
-        }
-    }
-
-    render() {
-        return [
-            <input
-                type="radio"
-                id={ this.internalId }
-                name={ this.name }
-                checked={ this.checked }
-                disabled={ this.disabled || this.groupDisabled }
-                class="og-radio-button__input"
-                onChange={ (e) => this.eventInputChanged(e) }/>,
-            <label
-                class="og-radio-button__label"
-                htmlFor={ this.internalId }>
-                { this.label && <span class="og-radio-button__label__content">{ this.label }</span> }
-            </label>
-        ];
+            }}>
+                <input
+                    type="radio"
+                    id={ this.internalId }
+                    name={ this.name }
+                    checked={ this.checked }
+                    disabled={ this.disabled || this.groupDisabled }
+                    class="og-radio-button__input"
+                    onChange={ (e) => this.eventInputChanged(e) }/>
+                <label
+                    class="og-radio-button__label"
+                    htmlFor={ this.internalId }>
+                    { this.label && <span class="og-radio-button__label__content">{ this.label }</span> }
+                </label>
+            </Host>
+        );
     }
 }

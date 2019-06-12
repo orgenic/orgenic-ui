@@ -1,4 +1,4 @@
-import { Component, Prop, Event, EventEmitter } from '@stencil/core';
+import { h, Component, Prop, Event, EventEmitter } from '@stencil/core';
 import { SVGContent } from '../utils/svg-content';
 
 @Component({
@@ -36,7 +36,7 @@ export class OgMessageDialog {
     /**
      * Event is being emitted when value changes.
      */
-    @Event() confirmed: EventEmitter<Event>;
+    @Event() confirmed: EventEmitter;
 
     handleConfirm() {
         this.confirmed.emit();

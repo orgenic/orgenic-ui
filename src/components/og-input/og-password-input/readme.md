@@ -26,13 +26,13 @@
 
 ## Methods
 
-### `togglePasswordVisibility() => void`
+### `togglePasswordVisibility() => Promise<void>`
 
 
 
 #### Returns
 
-Type: `void`
+Type: `Promise<void>`
 
 
 
