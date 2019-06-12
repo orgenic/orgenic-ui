@@ -19,23 +19,18 @@
 | `value`      | `value`       | Set the value to be shown in the badge placeholder                                    | `string`  | `undefined` |
 
 
-## CSS Custom Properties
+## Dependencies
 
-| Name                                   | Description                                           |
-| -------------------------------------- | ----------------------------------------------------- |
-| `--og-list-item-Background`            | Background of the list item (shorthand)               |
-| `--og-list-item-Background--active`    | Background of the list item when selected (shorthand) |
-| `--og-list-item-Background--highlight` | Background of the list item when hovered (shorthand)  |
-| `--og-list-item-BorderColor`           | Border color of the list item                         |
-| `--og-list-item-BorderRadius`          | Border radius of the list item                        |
-| `--og-list-item-BorderStyle`           | Border style of the list item                         |
-| `--og-list-item-BorderWidth`           | Border width of the list item                         |
-| `--og-list-item-Color`                 | Text color of the list item                           |
-| `--og-list-item-Margin`                | Margin of the list item                               |
-| `--og-list-item-MinHeight`             | Minimum height of the list item                       |
-| `--og-list-item-Opacity`               | Opacity of the list item;                             |
-| `--og-list-item-Opacity--disabled`     | Opacity of the list item;                             |
+### Used by
 
+ - [og-list](..\og-list)
+
+### Graph
+```mermaid
+graph TD;
+  og-list --> og-list-item
+  style og-list-item fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 

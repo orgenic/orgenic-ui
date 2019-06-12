@@ -26,36 +26,15 @@
 
 ## Methods
 
-### `togglePasswordVisibility() => void`
+### `togglePasswordVisibility() => Promise<void>`
 
 
 
 #### Returns
 
-Type: `void`
+Type: `Promise<void>`
 
 
-
-
-## CSS Custom Properties
-
-| Name                                      | Description                                        |
-| ----------------------------------------- | -------------------------------------------------- |
-| `--og-input-Background`                   | Main background of the input container (shorthand) |
-| `--og-input-BorderColor`                  | Main border color of the input container           |
-| `--og-input-Padding`                      | Main padding of the input field                    |
-| `--og-input__indicator-Background`        | Background of the focus indicator (shorthand)      |
-| `--og-input__indicator-Height`            | Height of the focus indicator                      |
-| `--og-input__indicator-Width`             | Width of the focus indicator                       |
-| `--og-input__input-Background`            | Background of the input field (shorthand)          |
-| `--og-input__input-BorderColor`           | Border color of the input field                    |
-| `--og-input__input-BorderColor--disabled` | Border color of the input field when disabled      |
-| `--og-input__input-Color`                 | Text color of the input field                      |
-| `--og-input__input-Color--disabled`       | Text color of the input field when disabled        |
-| `--og-input__input-FontFamily`            | Font of the input field                            |
-| `--og-input__input-FontSize`              | Font size of the input field                       |
-| `--og-input__input-LineHeight`            | Line height of the input field                     |
-| `--og-input__input-Padding`               | Padding of the input field                         |
 
 
 ----------------------------------------------

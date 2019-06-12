@@ -4,11 +4,11 @@
  * See LICENSE file at https://github.com/orgenic/orgenic-ui/blob/master/LICENSE
  **/
 
-import { Component, Prop, EventEmitter, Event } from "@stencil/core";
+import { h, Component, Prop, EventEmitter, Event } from '@stencil/core';
 
 @Component({
-    tag: "og-list",
-    styleUrl: "og-list.scss",
+    tag: 'og-list',
+    styleUrl: 'og-list.scss',
     shadow: true
 })
 export class OgList {
@@ -23,9 +23,9 @@ export class OgList {
     @Prop() items: any[];
 
     /**
-     * Set the property for the items to define as value. Default: "key"
+     * Set the property for the items to define as value. Default: 'key'
      */
-    @Prop() keyProperty: string = "key";
+    @Prop() keyProperty: string = 'key';
 
     /**
      * Set the property for the items to define as image url. *Optional* Default: no image
@@ -33,9 +33,9 @@ export class OgList {
     @Prop() imageUrlProperty?: string;
 
     /**
-     * Set the property for the items to define as label. Default: "label"
+     * Set the property for the items to define as label. Default: 'label'
      */
-    @Prop() labelProperty: string = "label";
+    @Prop() labelProperty: string = 'label';
 
     /**
      * Set the property for the items to define as value. *Optional* Default: no value
@@ -43,14 +43,14 @@ export class OgList {
     @Prop() valueProperty: string;
 
     /**
-     * Set the property for the items to define as disabled. Default: "disabled"
+     * Set the property for the items to define as disabled. Default: 'disabled'
      */
-    @Prop() disabledProperty: string = "disabled";
+    @Prop() disabledProperty: string = 'disabled';
 
     /**
      * Set the that will be displayed if the items array is empty.
      */
-    @Prop() emptyListMessage: string = "No items available";
+    @Prop() emptyListMessage: string = 'No items available';
 
     /**
      * Determines, whether the control is disabled or not
@@ -64,7 +64,7 @@ export class OgList {
 
     listItemSelected(item: any): void {
         if (!this.disabled && !this.isItemDisabled(item)) {
-            this.selected = item[this.keyProperty] + "";
+            this.selected = item[this.keyProperty] + '';
             this.itemSelected.emit(item);
         }
     }
@@ -74,7 +74,7 @@ export class OgList {
     }
 
     public isItemSelected(item: any): boolean {
-        return !(this.isItemDisabled(item)) && (item[this.keyProperty] + "" === this.selected);
+        return !(this.isItemDisabled(item)) && (item[this.keyProperty] + '' === this.selected);
     }
 
     private isItemDisabled(item: any): boolean {

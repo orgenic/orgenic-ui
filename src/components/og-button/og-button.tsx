@@ -4,7 +4,7 @@
  * See LICENSE file at https://github.com/orgenic/orgenic-ui/blob/master/LICENSE
  **/
 
-import { Component, Prop, EventEmitter, Event } from '@stencil/core';
+import { h,  Component, Prop, EventEmitter, Event } from '@stencil/core';
 
 @Component({
   tag: 'og-button',
@@ -25,9 +25,9 @@ export class OgButton {
     /**
      * Event is being emitted when value changes.
      */
-    @Event() clicked: EventEmitter<Event>;
+    @Event() clicked: EventEmitter;
 
-    handleClick(e: Event) {
+    handleClick(e: MouseEvent) {
         if (!this.disabled) {
             this.clicked.emit(e);
         }

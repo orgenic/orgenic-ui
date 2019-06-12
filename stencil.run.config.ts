@@ -6,13 +6,12 @@ export const config: Config = {
     namespace: 'orgenic-ui',
     outputTargets: [
         { type: 'dist' },
-        { type: 'docs' },
+        { type: 'docs-readme' },
         {
             type: 'www',
             serviceWorker: null // disable service workers
         }
     ],
-    copy: [],
     plugins: [
         sass({
             injectGlobalPaths: [
