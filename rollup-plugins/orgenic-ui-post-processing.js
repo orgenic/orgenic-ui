@@ -20,7 +20,7 @@ function orgenicUiPostProcessing(config) {
 
             return new Promise(resolve => {
                 const delay = config.target === 'build' ? 4000 : 2000;
-                // momentLocales2Modules({ outDir: 'www/og-calendar-locales' });
+                // momentLocales2Modules({ outDir: 'www/orgenic-ui-assets/og-calendar-locales' });
 
                 resolve();
                 // wait for stenciljs build chain completely finished
@@ -39,9 +39,9 @@ function orgenicUiPostProcessing(config) {
 
                         // generate themes
                         await execute('node-sass src/styles/themes -o dist/themes');
-                        momentLocales2Modules({ outDir: 'dist/og-calendar-locales' });
+                        momentLocales2Modules({ outDir: 'dist/orgenic-ui-assets/og-calendar-locales' });
                     } else {
-                        momentLocales2Modules({ outDir: 'www/build/og-calendar-locales' });
+                        momentLocales2Modules({ outDir: 'www/build/orgenic-ui-assets/og-calendar-locales' });
                         await execute('node-sass src/styles/themes -o www/themes');
                     }
                 }, delay);

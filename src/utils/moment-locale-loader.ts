@@ -9,7 +9,7 @@ async function loadMomentLocale(locale: string, moment, resourceUrl: string) {
         return;
     }
 
-    const url = `${resourceUrl}og-calendar-locales/${locale}.mjs`;
+    const url = `${resourceUrl}orgenic-ui-assets/og-calendar-locales/${locale}.mjs`;
     try {
         const module = await import(/* webpackIgnore: true */ url);
         module.addToMoment(moment);

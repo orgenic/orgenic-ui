@@ -12,11 +12,11 @@ import {
   OgDateDecorator,
 } from './components/og-internal-calendar/interfaces/og-calendar-date-decorator';
 import {
-  Moment,
-} from 'moment';
-import {
   OgDatatableConfig,
 } from './components/og-datatable/interfaces/og-datatable-column-def';
+import {
+  Moment,
+} from 'moment';
 
 export namespace Components {
   interface OgButton {
@@ -30,14 +30,6 @@ export namespace Components {
     'label': string;
   }
   interface OgCalendar {
-    'dateDecorator': OgDateDecorator;
-    'loc': string;
-    'month': number;
-    'selection': OgCalendarDate[];
-    'showCalendarWeek': boolean;
-    'year': number;
-  }
-  interface OgCalendarGroup {
     'dateDecorator': OgDateDecorator;
     'displayedMonths': number;
     'loc': string;
@@ -197,6 +189,14 @@ export namespace Components {
     * The label for the form item
     */
     'label': string;
+  }
+  interface OgInternalCalendar {
+    'dateDecorator': OgDateDecorator;
+    'loc': string;
+    'month': number;
+    'selection': OgCalendarDate[];
+    'showCalendarWeek': boolean;
+    'year': number;
   }
   interface OgList {
     /**
@@ -446,12 +446,6 @@ declare global {
     new (): HTMLOgCalendarElement;
   };
 
-  interface HTMLOgCalendarGroupElement extends Components.OgCalendarGroup, HTMLStencilElement {}
-  var HTMLOgCalendarGroupElement: {
-    prototype: HTMLOgCalendarGroupElement;
-    new (): HTMLOgCalendarGroupElement;
-  };
-
   interface HTMLOgCardElement extends Components.OgCard, HTMLStencilElement {}
   var HTMLOgCardElement: {
     prototype: HTMLOgCardElement;
@@ -504,6 +498,12 @@ declare global {
   var HTMLOgFormItemElement: {
     prototype: HTMLOgFormItemElement;
     new (): HTMLOgFormItemElement;
+  };
+
+  interface HTMLOgInternalCalendarElement extends Components.OgInternalCalendar, HTMLStencilElement {}
+  var HTMLOgInternalCalendarElement: {
+    prototype: HTMLOgInternalCalendarElement;
+    new (): HTMLOgInternalCalendarElement;
   };
 
   interface HTMLOgListElement extends Components.OgList, HTMLStencilElement {}
@@ -580,7 +580,6 @@ declare global {
   interface HTMLElementTagNameMap {
     'og-button': HTMLOgButtonElement;
     'og-calendar': HTMLOgCalendarElement;
-    'og-calendar-group': HTMLOgCalendarGroupElement;
     'og-card': HTMLOgCardElement;
     'og-checkbox': HTMLOgCheckboxElement;
     'og-combobox': HTMLOgComboboxElement;
@@ -590,6 +589,7 @@ declare global {
     'og-dialog': HTMLOgDialogElement;
     'og-expander': HTMLOgExpanderElement;
     'og-form-item': HTMLOgFormItemElement;
+    'og-internal-calendar': HTMLOgInternalCalendarElement;
     'og-list': HTMLOgListElement;
     'og-list-item': HTMLOgListItemElement;
     'og-message-dialog': HTMLOgMessageDialogElement;
@@ -621,15 +621,6 @@ declare namespace LocalJSX {
     'onClicked'?: (event: CustomEvent<any>) => void;
   }
   interface OgCalendar extends JSXBase.HTMLAttributes<HTMLOgCalendarElement> {
-    'dateDecorator'?: OgDateDecorator;
-    'loc'?: string;
-    'month'?: number;
-    'onDateClicked'?: (event: CustomEvent<Moment>) => void;
-    'selection'?: OgCalendarDate[];
-    'showCalendarWeek'?: boolean;
-    'year'?: number;
-  }
-  interface OgCalendarGroup extends JSXBase.HTMLAttributes<HTMLOgCalendarGroupElement> {
     'dateDecorator'?: OgDateDecorator;
     'displayedMonths'?: number;
     'loc'?: string;
@@ -811,6 +802,15 @@ declare namespace LocalJSX {
     * The label for the form item
     */
     'label'?: string;
+  }
+  interface OgInternalCalendar extends JSXBase.HTMLAttributes<HTMLOgInternalCalendarElement> {
+    'dateDecorator'?: OgDateDecorator;
+    'loc'?: string;
+    'month'?: number;
+    'onDateClicked'?: (event: CustomEvent<Moment>) => void;
+    'selection'?: OgCalendarDate[];
+    'showCalendarWeek'?: boolean;
+    'year'?: number;
   }
   interface OgList extends JSXBase.HTMLAttributes<HTMLOgListElement> {
     /**
@@ -1111,7 +1111,6 @@ declare namespace LocalJSX {
   interface IntrinsicElements {
     'og-button': OgButton;
     'og-calendar': OgCalendar;
-    'og-calendar-group': OgCalendarGroup;
     'og-card': OgCard;
     'og-checkbox': OgCheckbox;
     'og-combobox': OgCombobox;
@@ -1121,6 +1120,7 @@ declare namespace LocalJSX {
     'og-dialog': OgDialog;
     'og-expander': OgExpander;
     'og-form-item': OgFormItem;
+    'og-internal-calendar': OgInternalCalendar;
     'og-list': OgList;
     'og-list-item': OgListItem;
     'og-message-dialog': OgMessageDialog;
