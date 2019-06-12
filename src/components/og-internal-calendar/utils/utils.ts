@@ -15,6 +15,9 @@ export class CalendarUtils {
     }
 
     static calendarDate2Moment(date: OgCalendarDate, locale?: string): Moment {
+        if (!date) {
+            return;
+        }
         const result = moment();
         if (locale) {
             result.locale(locale);

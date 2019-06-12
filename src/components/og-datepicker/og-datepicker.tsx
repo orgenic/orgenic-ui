@@ -110,13 +110,14 @@ export class OgDatepicker {
     }
 
     @State()
-    private internalValue: OgCalendarDate = CalendarUtils.moment2CalendarDate(moment(this.value, this.format));
+    private internalValue: OgCalendarDate;
 
     indicatorElement: HTMLElement;
     flyoutCalendar: HTMLElement;
 
     async componentWillLoad() {
         await loadMomentLocale(this.loc, moment, this.resourcesUrl);
+        this.setValue(this.value);
     }
 
     componentDidLoad() {
@@ -188,7 +189,7 @@ export class OgDatepicker {
                         type="text"
                         class="og-datepicker__input"
                         readonly="true"
-                        value={ CalendarUtils.calendarDate2Moment(this.internalValue, this.loc).format(this.format) }
+                        value={ !this.internalValue ? '' : CalendarUtils.calendarDate2Moment(this.internalValue, this.loc).format(this.format) }
                         placeholder={this.placeholder}
                         disabled={this.disabled}
                     />
@@ -225,11 +226,11 @@ export class OgDatepicker {
                         }
                         style={ this.getFlyoutCss() }
                         ref={(el) => this.flyoutCalendar = el}
-                        year={ this.internalValue.year }
-                        month={ this.internalValue.month }
+                        year={ !this.internalValue ? undefined : this.internalValue.year }
+                        month={ !this.internalValue ? undefined : this.internalValue.month }
                         loc={ this.loc }
                         dateDecorator={ this.dateDecorator }
-                        selection={ [ this.internalValue ] }
+                        selection={ !this.internalValue ? [] : [ this.internalValue ] }
                         selectionType="single"
                         onDateClicked={ (e) => this.handleDateClicked(e) }>
                     </og-calendar>
