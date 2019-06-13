@@ -199,18 +199,14 @@ export namespace Components {
     'year': number;
   }
   interface OgLayoutChild {
-    'align': string;
-    'basis': string;
-    'grow': string;
-    'order': string;
-    'shrink': string;
+    'maxSize': string;
+    'minSize': string;
+    'weight': number;
   }
   interface OgLayoutContainer {
-    'align': string;
-    'direction': string;
-    'justify': string;
-    'overflow': string;
-    'wrap': string;
+    'autoResponsive': boolean;
+    'fill': boolean;
+    'orientation': 'vertical' | 'horizontal';
   }
   interface OgList {
     /**
@@ -841,18 +837,14 @@ declare namespace LocalJSX {
     'year'?: number;
   }
   interface OgLayoutChild extends JSXBase.HTMLAttributes<HTMLOgLayoutChildElement> {
-    'align'?: string;
-    'basis'?: string;
-    'grow'?: string;
-    'order'?: string;
-    'shrink'?: string;
+    'maxSize'?: string;
+    'minSize'?: string;
+    'weight'?: number;
   }
   interface OgLayoutContainer extends JSXBase.HTMLAttributes<HTMLOgLayoutContainerElement> {
-    'align'?: string;
-    'direction'?: string;
-    'justify'?: string;
-    'overflow'?: string;
-    'wrap'?: string;
+    'autoResponsive'?: boolean;
+    'fill'?: boolean;
+    'orientation'?: 'vertical' | 'horizontal';
   }
   interface OgList extends JSXBase.HTMLAttributes<HTMLOgListElement> {
     /**

@@ -15,27 +15,17 @@ export class OgLayoutChild {
     /*
     * flex-grow behaviour. Default: "1"
     */
-    @Prop() grow: string = '1';
+    @Prop() weight: number = 1;
 
     /*
-    * flex-shrink behaviour. Default: "1"
+    * flex-grow behaviour. Default: "1"
     */
-    @Prop() shrink: string = '1';
+    @Prop() minSize: string = 'initial';
 
     /*
-    * flex-basis behaviour. Default: "0"
+    * flex-grow behaviour. Default: "1"
     */
-    @Prop() basis: string = '0';
-
-    /*
-    * Order of the layout children. Default: "0"
-    */
-    @Prop() order: string = '0';
-
-    /*
-    * align-self behaviour. Default: "auto"
-    */
-    @Prop() align: string = 'auto';
+    @Prop() maxSize: string = 'initial';
 
     @Element() private element: HTMLElement;
 
@@ -44,11 +34,30 @@ export class OgLayoutChild {
     }
 
     applyValues() {
-        this.element.style.setProperty('--og-layout-child--grow', this.grow);
-        this.element.style.setProperty('--og-layout-child--shrink', this.shrink);
-        this.element.style.setProperty('--og-layout-child--basis', this.basis);
-        this.element.style.setProperty('--og-layout-child--order', this.order);
-        this.element.style.setProperty('--og-layout-child--align', this.align);
+        const grow = this.weight.toString();
+        const shrink = this.minSize !== 'initial' ? '0' : 'initial';
+        const basis: string = '0'; //'0';
+        const order: string = '0';
+        const align: string = 'auto';
+        this.element.style.setProperty('--og-layout-child--grow', grow);
+        this.element.style.setProperty('--og-layout-child--shrink', shrink);
+        this.element.style.setProperty('--og-layout-child--basis', basis);
+        this.element.style.setProperty('--og-layout-child--order', order);
+        this.element.style.setProperty('--og-layout-child--align', align);
+
+        if (this.element.parentElement.getAttribute('orientation') === 'vertical') {
+            // height
+            this.element.style.setProperty('--og-layout-child--min-width', 'initial');
+            this.element.style.setProperty('--og-layout-child--max-width', 'initial');
+            this.element.style.setProperty('--og-layout-child--min-height', this.minSize);
+            this.element.style.setProperty('--og-layout-child--max-height', this.maxSize);
+        } else {
+            // width
+            this.element.style.setProperty('--og-layout-child--min-width', this.minSize);
+            this.element.style.setProperty('--og-layout-child--max-width', this.maxSize);
+            this.element.style.setProperty('--og-layout-child--min-height', 'initial');
+            this.element.style.setProperty('--og-layout-child--max-height', 'initial');
+        }
     }
 
     render() {

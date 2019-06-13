@@ -15,27 +15,20 @@ export class OgLayoutContainer {
     /*
     * Direction of the layout container. Default: "row"
     */
-    @Prop() direction: string = 'row';
+    @Prop()
+    orientation: 'vertical' | 'horizontal' = 'horizontal';
 
     /*
-    * Alignment of the main axis. Default: "space-between"
+    * Direction of the layout container. Default: "row"
     */
-    @Prop() justify: string = 'flex-start';
+    @Prop()
+    fill: boolean = true;
 
     /*
-    * Alignment of the cross axis. Default: "stretch"
+    * Direction of the layout container. Default: "row"
     */
-    @Prop() align: string = 'stretch';
-
-    /*
-    * Determines, whether the layout items wrap or not. Default: "nowrap"
-    */
-    @Prop() wrap: string = 'nowrap';
-
-    /*
-    * Overflow behaviour of the layout container. Default: "visible"
-    */
-    @Prop() overflow: string = 'visible';
+    @Prop()
+    autoResponsive: boolean = false;
 
     @Element() private element: HTMLElement;
 
@@ -44,11 +37,16 @@ export class OgLayoutContainer {
     }
 
     applyValues() {
-        this.element.style.setProperty('--og-layout-container--direction', this.direction);
-        this.element.style.setProperty('--og-layout-container--justify', this.justify);
-        this.element.style.setProperty('--og-layout-container--align', this.align);
-        this.element.style.setProperty('--og-layout-container--wrap', this.wrap);
-        this.element.style.setProperty('--og-layout-container--overflow', this.overflow);
+        const direction = this.orientation === 'horizontal' ? 'row' : 'column';
+        const justify = 'space-evenly'; // flex-start / center / space-evenly / space-between
+        const align = this.fill ? 'stretch' : 'flex-start';
+        const wrap = this.autoResponsive ? 'wrap' : 'nowrap';
+        const overflow: string = 'visible';
+        this.element.style.setProperty('--og-layout-container--direction', direction);
+        this.element.style.setProperty('--og-layout-container--justify', justify);
+        this.element.style.setProperty('--og-layout-container--align', align);
+        this.element.style.setProperty('--og-layout-container--wrap', wrap);
+        this.element.style.setProperty('--og-layout-container--overflow', overflow);
     }
 
     render() {
