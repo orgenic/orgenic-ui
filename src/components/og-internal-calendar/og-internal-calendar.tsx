@@ -33,7 +33,7 @@ export class OgInternalCalendar {
     private internalMoment: Moment;
 
     async componentWillLoad() {
-        await loadMomentLocale(this.loc, moment, this.resourcesUrl);
+        await loadMomentLocale(this.loc, moment);
         this.internalMoment = moment();
     }
 
