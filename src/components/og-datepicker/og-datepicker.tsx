@@ -174,7 +174,7 @@ export class OgDatepicker {
         }
 
         return {
-            top: flyoutTop + 'px',
+            top: Math.max(0, flyoutTop) + 'px',
         }
     }
 
