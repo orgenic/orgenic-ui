@@ -1,4 +1,4 @@
-import { Component, Prop, Event, EventEmitter } from '@stencil/core';
+import { h, Component, Prop, Event, EventEmitter, Host } from '@stencil/core';
 
 @Component({
     tag: 'og-number-input',
@@ -54,39 +54,33 @@ export class OgNumberInput {
 
     handleChange(e) {
         const value = parseFloat(e.target.value);
-        
+
         if (!isNaN(value)) {
             this.value = value;
         } else {
             this.value = null;
         }
-        
+
         this.valueChanged.emit(this.value);
     }
 
-    hostData() {
-        return {
-            class: {
-                'og-form-item__editor': true
-            }
-        };
-    }
-
     render() {
-        return [
-            <input type="number"
-                class="og-input__input"
-                value={ this.value }
-                step={ this.step }
-                min={ this.min }
-                max={ this.max }
-                disabled={ this.disabled }
-                onInput={ (event) => this.handleChange(event) }
-                onFocus={ (event) => this.focusGained.emit(event) }
-                onBlur={ (event) => this.focusLost.emit(event) }
-                placeholder={ this.placeholder }
-            />,
-            <div class="og-input__indicator"></div>
-        ];
+        return (
+            <Host class={{ 'og-form-item__editor': true }}>
+                <input type="number"
+                    class="og-input__input"
+                    value={ this.value }
+                    step={ this.step }
+                    min={ this.min }
+                    max={ this.max }
+                    disabled={ this.disabled }
+                    onInput={ (event) => this.handleChange(event) }
+                    onFocus={ (event) => this.focusGained.emit(event) }
+                    onBlur={ (event) => this.focusLost.emit(event) }
+                    placeholder={ this.placeholder }
+                />
+                <div class="og-input__indicator"></div>
+            </Host>
+        );
     }
 }

@@ -4,7 +4,7 @@
  * See LICENSE file at https://github.com/orgenic/orgenic-ui/blob/master/LICENSE
  **/
 
-import { Component, Prop, Watch, Element, State } from '@stencil/core';
+import { h, Component, Prop, Watch, Element, State, Host } from '@stencil/core';
 
 @Component({
     tag: 'og-form-item',
@@ -31,15 +31,6 @@ export class OgFormItem {
     constructor() {
     }
 
-    hostData() {
-        return {
-            class: {
-                'og-form-item--focused': this.editorHasFocus,
-                'og-form-item--empty': this.editorIsEmpty
-            }
-        };
-    }
-
     componentDidLoad() {
         this.editor = this.el.querySelector('.og-form-item__editor');
         if (!this.editor) {
@@ -55,10 +46,11 @@ export class OgFormItem {
         });
 
         this.editor.addEventListener('valueChanged', (event: CustomEvent) => {
-            this.editorIsEmpty = !event.detail || event.detail.length === 0;
+            this.checkEditorEmpty(event.detail);
         });
 
-        this.editorIsEmpty = !this.editor['value'] || this.editor['value'].length === 0;
+        this.checkEditorEmpty(this.editor['value']);
+
 
         // update disabled state of child editor
         if (this.disabled) {
@@ -68,12 +60,21 @@ export class OgFormItem {
         }
     }
 
+    checkEditorEmpty(value) {
+        this.editorIsEmpty = (typeof value === 'object' && value === null) || value === undefined || value.length === 0;
+    }
+
     render() {
-        return <label class="og-form-item" htmlFor="input#1">
-            <div class="og-form-item__body">
-                <div class="og-form-item__label">{ this.label }</div>
-                <slot></slot>
-            </div>
-        </label>;
+        return <Host class={{
+            'og-form-item--focused': this.editorHasFocus,
+            'og-form-item--empty': this.editorIsEmpty
+        }}>
+            <label class="og-form-item" htmlFor="input#1">
+                <div class="og-form-item__body">
+                    <div class="og-form-item__label">{ this.label }</div>
+                    <slot></slot>
+                </div>
+            </label>
+        </Host>;
     }
 }

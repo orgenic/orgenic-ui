@@ -1,6 +1,7 @@
 const execute = require('./helpers/execute');
 const trimReadmeFooter = require('./helpers/trim-readme-footer');
 const addCssVarsDefaultValue = require('./helpers/add-css-vars-default-value');
+const momentLocales2Modules = require('./helpers/moment-locales-to-modules');
 
 function orgenicUiPostProcessing(config) {
     if (config.target === 'start') {
@@ -13,7 +14,7 @@ function orgenicUiPostProcessing(config) {
         name: 'orgenic-up-post-processing',
 
         generateBundle: function (options, bundle) {
-            if (config.target !== 'start' && !options.amd.id) {
+            if (config.target !== 'start' && options.entryFileNames.indexOf('.esm.js') < 0) {
                 return;
             }
 
@@ -37,7 +38,9 @@ function orgenicUiPostProcessing(config) {
 
                         // generate themes
                         await execute('node-sass src/styles/themes -o dist/themes');
+                        momentLocales2Modules({ outDir: 'dist/orgenic-ui-assets/og-calendar-locales' });
                     } else {
+                        momentLocales2Modules({ outDir: 'www/build/orgenic-ui-assets/og-calendar-locales' });
                         await execute('node-sass src/styles/themes -o www/themes');
                     }
                 }, delay);

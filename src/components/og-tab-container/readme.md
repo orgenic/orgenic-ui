@@ -21,19 +21,13 @@
 
 ## Methods
 
-### `openTab(index: number) => void`
+### `openTab(index: number) => Promise<void>`
 
 
-
-#### Parameters
-
-| Name    | Type     | Description |
-| ------- | -------- | ----------- |
-| `index` | `number` |             |
 
 #### Returns
 
-Type: `void`
+Type: `Promise<void>`
 
 
 

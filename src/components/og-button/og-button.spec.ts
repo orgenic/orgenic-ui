@@ -8,6 +8,6 @@ it('emits clicked event', async () => {
     };
     const spy = jest.spyOn(emitter, 'emit');
     button.clicked = emitter;
-    button.handleClick({});
+    button.handleClick(<any>{ });
     expect(spy).toHaveBeenCalled();
 });

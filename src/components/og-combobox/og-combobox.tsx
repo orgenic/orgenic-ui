@@ -5,13 +5,15 @@
  **/
 
 import {
+    h,
     Component,
     Prop,
     EventEmitter,
     Event,
     State,
     Element,
-    Listen
+    Listen,
+    Host
 } from '@stencil/core';
 
 @Component({
@@ -59,20 +61,20 @@ export class OgCombobox {
 
     @State() dropdownActive: boolean = false;
 
-    @Listen('window:scroll')
-    handleWindowScroll(_ev: Event) {
+    @Listen('scroll', { target: 'window' })
+    handleWindowScroll(_ev) {
         // close flyout on scroll events
         this.dropdownActive = false;
     }
 
-    @Listen('body:scroll')
-    handleBodyScroll(_ev: Event) {
+    @Listen('scroll', { target: 'body' })
+    handleBodyScroll(_ev) {
         // close flyout on scroll events
         this.dropdownActive = false;
     }
 
-    @Listen('body:click')
-    handleBodyClick(ev: Event) {
+    @Listen('click', { target: 'body' })
+    handleBodyClick(ev) {
         if (!this.dropdownActive || this.el === ev.target) {
             return;
         }
@@ -133,15 +135,6 @@ export class OgCombobox {
         return this.dropdownActive && !this.disabled;
     }
 
-    hostData() {
-        return {
-            class: {
-                'is-focused': this.dropdownActive,
-                'og-form-item__editor': true
-            }
-        };
-    }
-
     /**
      * behaviour:
      *   * combobox flyout shows 7 items
@@ -188,70 +181,75 @@ export class OgCombobox {
     }
 
     render() {
-        return [
-            <div
-                class="og-combobox__header"
-                onClick={() => this.buttonClicked()}
-            >
-                <input
-                    type="text"
-                    class="og-combobox__input"
-                    readonly="true"
-                    value={this.getSelectedItemLabel()}
-                    placeholder={this.placeholder}
-                    disabled={this.disabled}
-                />
-                <div class="og-combobox__button">
-                    <svg
-                        class={
-                            'og-combobox__button__arrow' +
-                            (this.isDropdownActive() ? ' og-combobox__button__arrow--collapsed' : '')
-                        }
-                        version="1.1"
-                        xmlns="http://www.w3.org/2000/svg"
-                        xmlnsXlink="http://www.w3.org/1999/xlink"
-                        viewBox="0 0 24 12"
-                        preserveAspectRatio="none"
-                    >
-                        <polyline
-                            class="og-combobox__button__arrow__line"
-                            points="0,0 12,12 24,0"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecaps="round"
-                            stroke-linejoin="round"
-                        />
-                    </svg>
-                </div>
-                <div class="og-combobox__indicator" ref={(el) => this.indicatorElement = el} />
-            </div>,
-            <div class="og-combobox__flyout">
-                <ul
-                    class={
-                        'og-combobox__flyout__list' +
-                        (this.isDropdownActive() ? ' og-combobox__flyout__list--visible' : '')
-                    }
-                    style={ this.getFlyoutCss() }
-                    ref={(el) => this.flyoutList = el}
+        return (
+            <Host class={{
+                'is-focused': this.dropdownActive,
+                'og-form-item__editor': true
+            }}>
+                <div
+                    class="og-combobox__header"
+                    onClick={() => this.buttonClicked()}
                 >
-                    {!this.hasValidItems() ? (
-                        <li>No options available</li>
-                    ) : (
-                        this.items.map(item => (
-                            <li
-                                class={
-                                    'og-combobox__flyout__list__item' +
-                                    (item[this.itemValueProperty] == this.value ? ' og-combobox__flyout__list__item--active' : '' )
-                                }
-                                onClick={() => this.listItemSelected(item)}
-                            >
-                                {item[this.itemLabelProperty]}
-                            </li>
-                        ))
-                    )}
-                </ul>
-            </div>
-        ];
+                    <input
+                        type="text"
+                        class="og-combobox__input"
+                        readonly="true"
+                        value={this.getSelectedItemLabel()}
+                        placeholder={this.placeholder}
+                        disabled={this.disabled}
+                    />
+                    <div class="og-combobox__button">
+                        <svg
+                            class={
+                                'og-combobox__button__arrow' +
+                                (this.isDropdownActive() ? ' og-combobox__button__arrow--collapsed' : '')
+                            }
+                            version="1.1"
+                            xmlns="http://www.w3.org/2000/svg"
+                            xmlnsXlink="http://www.w3.org/1999/xlink"
+                            viewBox="0 0 24 12"
+                            preserveAspectRatio="none"
+                        >
+                            <polyline
+                                class="og-combobox__button__arrow__line"
+                                points="0,0 12,12 24,0"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecaps="round"
+                                stroke-linejoin="round"
+                            />
+                        </svg>
+                    </div>
+                    <div class="og-combobox__indicator" ref={(el) => this.indicatorElement = el} />
+                </div>
+                <div class="og-combobox__flyout">
+                    <ul
+                        class={
+                            'og-combobox__flyout__list' +
+                            (this.isDropdownActive() ? ' og-combobox__flyout__list--visible' : '')
+                        }
+                        style={ this.getFlyoutCss() }
+                        ref={(el) => this.flyoutList = el}
+                    >
+                        {!this.hasValidItems() ? (
+                            <li>No options available</li>
+                        ) : (
+                            this.items.map(item => (
+                                <li
+                                    class={
+                                        'og-combobox__flyout__list__item' +
+                                        (item[this.itemValueProperty] == this.value ? ' og-combobox__flyout__list__item--active' : '' )
+                                    }
+                                    onClick={() => this.listItemSelected(item)}
+                                >
+                                    {item[this.itemLabelProperty]}
+                                </li>
+                            ))
+                        )}
+                    </ul>
+                </div>
+            </Host>
+        );
     }
 }

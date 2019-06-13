@@ -4,11 +4,11 @@
  * See LICENSE file at https://github.com/orgenic/orgenic-ui/blob/master/LICENSE
  **/
 
-import { Component, Prop/*, EventEmitter, Event */ } from "@stencil/core";
+import { h, Component, Prop } from '@stencil/core';
 
 @Component({
-    tag: "og-list-item",
-    styleUrl: "og-list-item.scss",
+    tag: 'og-list-item',
+    styleUrl: 'og-list-item.scss',
     shadow: true
 })
 export class OgListItem {

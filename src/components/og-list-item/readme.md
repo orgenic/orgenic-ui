@@ -37,6 +37,19 @@
 | `--og-list-item-Opacity--disabled`     | Opacity of the list item;                             |
 
 
+## Dependencies
+
+### Used by
+
+ - [og-list](..\og-list)
+
+### Graph
+```mermaid
+graph TD;
+  og-list --> og-list-item
+  style og-list-item fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

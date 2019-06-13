@@ -16,13 +16,13 @@
 
 ## Methods
 
-### `toggleExpandedState() => void`
+### `toggleExpandedState() => Promise<void>`
 
 Use this method to toggle expanded state. Group property is respected when calling this method.
 
 #### Returns
 
-Type: `void`
+Type: `Promise<void>`
 
 
 
