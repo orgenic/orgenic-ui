@@ -47,7 +47,9 @@ export class OgDatepicker {
     @Prop({ mutable: true, reflectToAttr: true }) value: string;
     @Watch('value') setValue(newValue: string) {
         if (typeof newValue === 'string') {
-            this.internalValue = CalendarUtils.moment2CalendarDate(moment(newValue, this.format));
+            moment.locale(this.loc);
+            const lmoment = moment(newValue, this.format);
+            this.internalValue = CalendarUtils.moment2CalendarDate(lmoment);
         }
     }
 
