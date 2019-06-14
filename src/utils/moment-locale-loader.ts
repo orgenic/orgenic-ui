@@ -4,12 +4,12 @@ export {
 };
 
 
-async function loadMomentLocale(locale: string, moment, resourceUrl: string) {
+async function loadMomentLocale(locale: string, moment) {
     if (moment.locales().indexOf(locale) >= 0) {
         return;
     }
 
-    const url = `${resourceUrl}orgenic-ui-assets/og-calendar-locales/${locale}.mjs`;
+    const url = `/orgenic-ui-assets/og-calendar-locales/${locale}.mjs`;
     try {
         const module = await import(/* webpackIgnore: true */ url);
         if (moment.locales().indexOf(locale) >= 0) {

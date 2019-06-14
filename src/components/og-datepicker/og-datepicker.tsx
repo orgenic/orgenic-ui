@@ -116,7 +116,7 @@ export class OgDatepicker {
     flyoutCalendar: HTMLElement;
 
     async componentWillLoad() {
-        await loadMomentLocale(this.loc, moment, this.resourcesUrl);
+        await loadMomentLocale(this.loc, moment);
         this.setValue(this.value);
     }
 
