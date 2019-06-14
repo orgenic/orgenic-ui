@@ -90,12 +90,14 @@ export class OgDatepicker {
     handleWindowScroll(_ev: Event) {
         // close flyout on scroll events
         this.dropdownActive = false;
+        this.focusLost.emit();
     }
 
     @Listen('scroll', { target: 'body' })
     handleBodyScroll(_ev: Event) {
         // close flyout on scroll events
         this.dropdownActive = false;
+        this.focusLost.emit();
     }
 
     @Listen('click', { target: 'body' })
@@ -106,6 +108,7 @@ export class OgDatepicker {
         if (this.dropdownActive) {
             this.dropdownActive = false;
             ev.cancelBubble = true;
+            this.focusLost.emit();
         }
     }
 
@@ -145,6 +148,7 @@ export class OgDatepicker {
             this.internalValue = date;
             this.value = CalendarUtils.calendarDate2Moment(date, this.loc).format(this.format);
             this.dateSelected.emit(CalendarUtils.calendarDate2Moment(date, this.loc).toDate());
+            this.focusLost.emit();
         }
     }
 

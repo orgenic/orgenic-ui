@@ -59,18 +59,31 @@ export class OgCombobox {
      */
     @Event() itemSelected: EventEmitter<any>;
 
+    /**
+     * Event is being emitted when input gets focus..
+     */
+    @Event() focusGained: EventEmitter<FocusEvent>;
+
+    /**
+     * Event is being emitted when focus gets lost.
+     */
+    @Event() focusLost: EventEmitter<FocusEvent>;
+
     @State() dropdownActive: boolean = false;
 
     @Listen('scroll', { target: 'window' })
     handleWindowScroll(_ev) {
         // close flyout on scroll events
         this.dropdownActive = false;
+        this.focusLost.emit();
+
     }
 
     @Listen('scroll', { target: 'body' })
     handleBodyScroll(_ev) {
         // close flyout on scroll events
         this.dropdownActive = false;
+        this.focusLost.emit();
     }
 
     @Listen('click', { target: 'body' })
@@ -81,6 +94,7 @@ export class OgCombobox {
         if (this.dropdownActive) {
             this.dropdownActive = false;
             ev.cancelBubble = true;
+            this.focusLost.emit();
         }
     }
 
@@ -103,6 +117,11 @@ export class OgCombobox {
     buttonClicked() {
         if (!this.disabled) {
             this.dropdownActive = !this.dropdownActive;
+            if (this.dropdownActive) {
+                this.focusGained.emit();
+            } else {
+                this.focusLost.emit();
+            }
         }
     }
 
@@ -111,6 +130,7 @@ export class OgCombobox {
             this.dropdownActive = false;
             this.value = item[this.itemValueProperty] + '';
             this.itemSelected.emit(item);
+            this.focusLost.emit();
         }
     }
 

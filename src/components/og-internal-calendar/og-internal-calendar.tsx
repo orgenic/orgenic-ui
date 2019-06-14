@@ -28,7 +28,7 @@ export class OgInternalCalendar {
 
     @Prop() selection: OgCalendarDate[];
 
-    @Event() dateClicked: EventEmitter<Moment>;
+    @Event() dateClicked: EventEmitter; // emits moment object
 
     private internalMoment: Moment;
 

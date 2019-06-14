@@ -19,9 +19,9 @@ This component is used by og-datepicker and is currently not intended for stand-
 
 ## Events
 
-| Event         | Description | Type                  |
-| ------------- | ----------- | --------------------- |
-| `dateClicked` |             | `CustomEvent<Moment>` |
+| Event         | Description | Type               |
+| ------------- | ----------- | ------------------ |
+| `dateClicked` |             | `CustomEvent<any>` |
 
 
 ## Dependencies
