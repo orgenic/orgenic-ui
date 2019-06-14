@@ -19,9 +19,11 @@
 
 ## Events
 
-| Event          | Description                                | Type               |
-| -------------- | ------------------------------------------ | ------------------ |
-| `itemSelected` | Event is being emitted when value changes. | `CustomEvent<any>` |
+| Event          | Description                                    | Type                      |
+| -------------- | ---------------------------------------------- | ------------------------- |
+| `focusGained`  | Event is being emitted when input gets focus.. | `CustomEvent<FocusEvent>` |
+| `focusLost`    | Event is being emitted when focus gets lost.   | `CustomEvent<FocusEvent>` |
+| `itemSelected` | Event is being emitted when value changes.     | `CustomEvent<any>`        |
 
 
 ## CSS Custom Properties
