@@ -47,7 +47,9 @@ export class OgDatepicker {
     @Prop({ mutable: true, reflectToAttr: true }) value: string;
     @Watch('value') setValue(newValue: string) {
         if (typeof newValue === 'string') {
-            this.internalValue = CalendarUtils.moment2CalendarDate(moment(newValue, this.format));
+            moment.locale(this.loc);
+            const lmoment = moment(newValue, this.format);
+            this.internalValue = CalendarUtils.moment2CalendarDate(lmoment);
         }
     }
 
@@ -90,12 +92,14 @@ export class OgDatepicker {
     handleWindowScroll(_ev: Event) {
         // close flyout on scroll events
         this.dropdownActive = false;
+        this.focusLost.emit();
     }
 
     @Listen('scroll', { target: 'body' })
     handleBodyScroll(_ev: Event) {
         // close flyout on scroll events
         this.dropdownActive = false;
+        this.focusLost.emit();
     }
 
     @Listen('click', { target: 'body' })
@@ -106,6 +110,7 @@ export class OgDatepicker {
         if (this.dropdownActive) {
             this.dropdownActive = false;
             ev.cancelBubble = true;
+            this.focusLost.emit();
         }
     }
 
@@ -116,7 +121,7 @@ export class OgDatepicker {
     flyoutCalendar: HTMLElement;
 
     async componentWillLoad() {
-        await loadMomentLocale(this.loc, moment, this.resourcesUrl);
+        await loadMomentLocale(this.loc, moment);
         this.setValue(this.value);
     }
 
@@ -145,6 +150,7 @@ export class OgDatepicker {
             this.internalValue = date;
             this.value = CalendarUtils.calendarDate2Moment(date, this.loc).format(this.format);
             this.dateSelected.emit(CalendarUtils.calendarDate2Moment(date, this.loc).toDate());
+            this.focusLost.emit();
         }
     }
 
@@ -174,7 +180,7 @@ export class OgDatepicker {
         }
 
         return {
-            top: flyoutTop + 'px',
+            top: Math.max(0, flyoutTop) + 'px',
         }
     }
 

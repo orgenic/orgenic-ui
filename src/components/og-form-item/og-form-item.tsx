@@ -5,6 +5,7 @@
  **/
 
 import { h, Component, Prop, Watch, Element, State, Host } from '@stencil/core';
+import { getElement } from '../../utils/dom-utils';
 
 @Component({
     tag: 'og-form-item',
@@ -26,15 +27,13 @@ export class OgFormItem {
 
     @State() editorHasFocus: boolean = false;
     @State() editorIsEmpty: boolean = false;
-    editor: HTMLElement;
+    editor: Element;
 
-    constructor() {
-    }
+    async componentDidLoad() {
+        this.editor = await getElement(this.el, '.og-form-item__editor', 1000);
 
-    componentDidLoad() {
-        this.editor = this.el.querySelector('.og-form-item__editor');
         if (!this.editor) {
-            return;
+            return console.error('OgFormItem is unable to resolve editor');
         }
 
         this.editor.addEventListener('focusGained', () => {
@@ -45,12 +44,22 @@ export class OgFormItem {
             this.editorHasFocus = false;
         });
 
-        this.editor.addEventListener('valueChanged', (event: CustomEvent) => {
+        // TODO: for 1.0.0 unify value change event names
+        let valueChangeEvent = 'valueChanged';
+        switch (this.editor.tagName.toLowerCase()) {
+            case 'og-combobox':
+                valueChangeEvent = 'itemSelected';
+                break;
+            case 'og-datepicker':
+                valueChangeEvent = 'dateSelected';
+                break;
+            default:
+        }
+        this.editor.addEventListener(valueChangeEvent, (event: CustomEvent) => {
             this.checkEditorEmpty(event.detail);
         });
 
         this.checkEditorEmpty(this.editor['value']);
-
 
         // update disabled state of child editor
         if (this.disabled) {

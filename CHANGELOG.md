@@ -1,3 +1,11 @@
+# [0.3.1](https://github.com/orgenic/orgenic-ui/compare/v0.3.0...v0.3.1) (2019-06-14)
+
+### Bug Fixes
+* datepicker: fix parsing dates according to locale
+* datepicker: fix empty state handling in og-formitem
+* datepicker: fix flyout position in small windows
+* datepicker: fix resolving locales
+
 # [0.3.0](https://github.com/orgenic/orgenic-ui/compare/v0.2.1...v0.3.0) (2019-06-12)
 
 ### Features

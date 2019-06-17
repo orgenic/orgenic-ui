@@ -14,9 +14,6 @@ import {
 import {
   OgDatatableConfig,
 } from './components/og-datatable/interfaces/og-datatable-column-def';
-import {
-  Moment,
-} from 'moment';
 
 export namespace Components {
   interface OgButton {
@@ -698,6 +695,14 @@ declare namespace LocalJSX {
     */
     'items'?: any[];
     /**
+    * Event is being emitted when input gets focus..
+    */
+    'onFocusGained'?: (event: CustomEvent<FocusEvent>) => void;
+    /**
+    * Event is being emitted when focus gets lost.
+    */
+    'onFocusLost'?: (event: CustomEvent<FocusEvent>) => void;
+    /**
     * Event is being emitted when value changes.
     */
     'onItemSelected'?: (event: CustomEvent<any>) => void;
@@ -831,7 +836,7 @@ declare namespace LocalJSX {
     'dateDecorator'?: OgDateDecorator;
     'loc'?: string;
     'month'?: number;
-    'onDateClicked'?: (event: CustomEvent<Moment>) => void;
+    'onDateClicked'?: (event: CustomEvent<any>) => void;
     'selection'?: OgCalendarDate[];
     'showCalendarWeek'?: boolean;
     'year'?: number;

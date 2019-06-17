@@ -28,12 +28,12 @@ export class OgInternalCalendar {
 
     @Prop() selection: OgCalendarDate[];
 
-    @Event() dateClicked: EventEmitter<Moment>;
+    @Event() dateClicked: EventEmitter; // emits moment object
 
     private internalMoment: Moment;
 
     async componentWillLoad() {
-        await loadMomentLocale(this.loc, moment, this.resourcesUrl);
+        await loadMomentLocale(this.loc, moment);
         this.internalMoment = moment();
     }
 

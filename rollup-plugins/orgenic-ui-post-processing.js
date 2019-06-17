@@ -40,7 +40,7 @@ function orgenicUiPostProcessing(config) {
                         await execute('node-sass src/styles/themes -o dist/themes');
                         momentLocales2Modules({ outDir: 'dist/orgenic-ui-assets/og-calendar-locales' });
                     } else {
-                        momentLocales2Modules({ outDir: 'www/build/orgenic-ui-assets/og-calendar-locales' });
+                        momentLocales2Modules({ outDir: 'www/orgenic-ui-assets/og-calendar-locales' });
                         await execute('node-sass src/styles/themes -o www/themes');
                     }
                 }, delay);
