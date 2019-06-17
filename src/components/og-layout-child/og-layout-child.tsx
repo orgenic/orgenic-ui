@@ -12,19 +12,19 @@ import { h, Component, Element, Prop } from '@stencil/core';
   shadow: true
 })
 export class OgLayoutChild {
-    /*
-    * flex-grow behaviour. Default: "1"
-    */
+    /**
+     * The weight defines the resize behavour. A component with weight 2 will be twice as large as a component with weight 1.. Default: "1"
+     */
     @Prop() weight: number = 1;
 
-    /*
-    * flex-grow behaviour. Default: "1"
-    */
+    /**
+     * The minimum size of the layout child. Can be pixel (e.g. 150px) or percent (e.g. 30%).
+     */
     @Prop() minSize: string = 'initial';
 
-    /*
-    * flex-grow behaviour. Default: "1"
-    */
+    /**
+     * The maximumg size of the layout child. Can be pixel (e.g. 250px) or percent (e.g. 50%).
+     */
     @Prop() maxSize: string = 'initial';
 
     @Element() private element: HTMLElement;
@@ -36,7 +36,7 @@ export class OgLayoutChild {
     applyValues() {
         const grow = this.weight.toString();
         const shrink = this.minSize !== 'initial' ? '0' : 'initial';
-        const basis: string = '0'; //'0';
+        const basis: string = '0';
         const order: string = '0';
         const align: string = 'auto';
         this.element.style.setProperty('--og-layout-child--grow', grow);

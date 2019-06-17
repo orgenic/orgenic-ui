@@ -5,11 +5,11 @@
 
 ## Properties
 
-| Property         | Attribute         | Description | Type                         | Default        |
-| ---------------- | ----------------- | ----------- | ---------------------------- | -------------- |
-| `autoResponsive` | `auto-responsive` |             | `boolean`                    | `false`        |
-| `fill`           | `fill`            |             | `boolean`                    | `true`         |
-| `orientation`    | `orientation`     |             | `"horizontal" \| "vertical"` | `'horizontal'` |
+| Property         | Attribute         | Description                                                                                                                                                | Type                         | Default        |
+| ---------------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- | -------------- |
+| `autoResponsive` | `auto-responsive` | If auto responsive is set to true, the horizontal aligned components within this layout will wrap if the available space is insufficient. Default: "false" | `boolean`                    | `false`        |
+| `fill`           | `fill`            | Scale all layout children to fill available space (fill: "true") or just keep them left aligned (fill: "false"). Default: "true"                           | `boolean`                    | `true`         |
+| `orientation`    | `orientation`     | Direction of the layout container ("horizontal" / "vertical"). Default: "horizontal"                                                                       | `"horizontal" \| "vertical"` | `'horizontal'` |
 
 
 ## CSS Custom Properties

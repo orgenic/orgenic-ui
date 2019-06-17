@@ -196,13 +196,31 @@ export namespace Components {
     'year': number;
   }
   interface OgLayoutChild {
+    /**
+    * The maximumg size of the layout child. Can be pixel (e.g. 250px) or percent (e.g. 50%).
+    */
     'maxSize': string;
+    /**
+    * The minimum size of the layout child. Can be pixel (e.g. 150px) or percent (e.g. 30%).
+    */
     'minSize': string;
+    /**
+    * The weight defines the resize behavour. A component with weight 2 will be twice as large as a component with weight 1.. Default: "1"
+    */
     'weight': number;
   }
   interface OgLayoutContainer {
+    /**
+    * If auto responsive is set to true, the horizontal aligned components within this layout will wrap if the available space is insufficient. Default: "false"
+    */
     'autoResponsive': boolean;
+    /**
+    * Scale all layout children to fill available space (fill: "true") or just keep them left aligned (fill: "false"). Default: "true"
+    */
     'fill': boolean;
+    /**
+    * Direction of the layout container ("horizontal" / "vertical"). Default: "horizontal"
+    */
     'orientation': 'vertical' | 'horizontal';
   }
   interface OgList {
@@ -842,13 +860,31 @@ declare namespace LocalJSX {
     'year'?: number;
   }
   interface OgLayoutChild extends JSXBase.HTMLAttributes<HTMLOgLayoutChildElement> {
+    /**
+    * The maximumg size of the layout child. Can be pixel (e.g. 250px) or percent (e.g. 50%).
+    */
     'maxSize'?: string;
+    /**
+    * The minimum size of the layout child. Can be pixel (e.g. 150px) or percent (e.g. 30%).
+    */
     'minSize'?: string;
+    /**
+    * The weight defines the resize behavour. A component with weight 2 will be twice as large as a component with weight 1.. Default: "1"
+    */
     'weight'?: number;
   }
   interface OgLayoutContainer extends JSXBase.HTMLAttributes<HTMLOgLayoutContainerElement> {
+    /**
+    * If auto responsive is set to true, the horizontal aligned components within this layout will wrap if the available space is insufficient. Default: "false"
+    */
     'autoResponsive'?: boolean;
+    /**
+    * Scale all layout children to fill available space (fill: "true") or just keep them left aligned (fill: "false"). Default: "true"
+    */
     'fill'?: boolean;
+    /**
+    * Direction of the layout container ("horizontal" / "vertical"). Default: "horizontal"
+    */
     'orientation'?: 'vertical' | 'horizontal';
   }
   interface OgList extends JSXBase.HTMLAttributes<HTMLOgListElement> {

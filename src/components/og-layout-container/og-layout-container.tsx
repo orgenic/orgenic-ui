@@ -12,21 +12,21 @@ import { h, Component, Element, Prop } from '@stencil/core';
   shadow: true
 })
 export class OgLayoutContainer {
-    /*
-    * Direction of the layout container. Default: "row"
-    */
+    /**
+     * Direction of the layout container ("horizontal" / "vertical"). Default: "horizontal"
+     */
     @Prop()
     orientation: 'vertical' | 'horizontal' = 'horizontal';
 
-    /*
-    * Direction of the layout container. Default: "row"
-    */
+    /**
+     * Scale all layout children to fill available space (fill: "true") or just keep them left aligned (fill: "false"). Default: "true"
+     */
     @Prop()
     fill: boolean = true;
 
-    /*
-    * Direction of the layout container. Default: "row"
-    */
+    /**
+     * If auto responsive is set to true, the horizontal aligned components within this layout will wrap if the available space is insufficient. Default: "false"
+     */
     @Prop()
     autoResponsive: boolean = false;
 
