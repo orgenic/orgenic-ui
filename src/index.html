@@ -181,6 +181,7 @@
                 </script>
 
                 <h4>Layout Container Schematic Representation</h4>
+                <h5>Example 1</h5>
                 <og-layout-container>
                     <og-layout-child max-size="150px" min-size="80px" class="box-1">og-layout-child 1</og-layout-child>
                     <og-layout-child class="box-1">
@@ -195,6 +196,118 @@
                             </og-layout-child>
                             <div class="box-2">v-child-3 (div)</div>
                         </og-layout-container>
+                    </og-layout-child>
+                </og-layout-container>
+
+                <h5>Example "Holiday Approval"</h5>
+                <og-layout-container orientation="vertical">
+                    <og-layout-child class="box-1">
+                        <og-layout-container auto-responsive>
+                            <og-layout-child min-size="150px" max-size="150px" class="box-2">Avatar</og-layout-child>
+                            <og-layout-child min-size="150px" class="box-2">
+                                <og-layout-container orientation="vertical" auto-responsive>
+                                    <og-layout-child class="box-3">Remaining Leave</og-layout-child>
+                                    <og-layout-child class="box-3">Duration</og-layout-child>
+                                    <og-layout-child class="box-3">Period</og-layout-child>
+                                    <og-layout-child class="box-3">Status</og-layout-child>
+                                </og-layout-container>
+                            </og-layout-child>
+                        </og-layout-container>
+                    </og-layout-child>
+                    <og-layout-child class="box-1" min-size="80px">Comment</og-layout-child>
+                </og-layout-container>
+
+                <h5>Example "Purchase Request"</h5>
+                <og-layout-container orientation="vertical">
+                    <og-layout-child class="box-1">Product</og-layout-child>
+                    <og-layout-child class="box-1">
+                        <og-layout-container auto-responsive>
+                            <og-layout-child min-size="150px" max-size="150px" class="box-3">Image</og-layout-child>
+                            <og-layout-child class="box-3">Choose Image</og-layout-child>
+                        </og-layout-container>
+                    </og-layout-child>
+                    <og-layout-child class="box-1" min-size="20px">Link</og-layout-child>
+                    <og-layout-child class="box-1">
+                        <og-layout-container auto-responsive>
+                            <og-layout-child min-size="120px" class="box-3">Quantity</og-layout-child>
+                            <og-layout-child min-size="120px" class="box-3">Tax %</og-layout-child>
+                            <og-layout-child min-size="120px" class="box-3">Amount Brutto</og-layout-child>
+                            <og-layout-child min-size="120px" class="box-3">Amount Sum Net</og-layout-child>
+                        </og-layout-container>
+                    </og-layout-child>
+                    <og-layout-child class="box-1" min-size="80px">Reason</og-layout-child>
+                </og-layout-container>
+
+                <h5>Example "Profile"</h5>
+                <og-layout-container orientation="vertical">
+                    <og-layout-child class="box-1">
+                        <og-layout-container auto-responsive>
+                            <og-layout-child min-size="150px" max-size="150px" class="box-2">
+                                <og-layout-container orientation="vertical" auto-responsive>
+                                    <og-layout-child min-size="150px" max-size="150px" class="box-3">Avatar</og-layout-child>
+                                    <og-layout-child class="box-3">Choose Image</og-layout-child>
+                                </og-layout-container>
+                            </og-layout-child>
+                            <og-layout-child min-size="150px" class="box-2">
+                                <og-layout-container orientation="vertical" auto-responsive>
+                                    <og-layout-child class="box-3">Name</og-layout-child>
+                                    <og-layout-child class="box-3">Username</og-layout-child>
+                                    <og-layout-child class="box-3">Teams</og-layout-child>
+                                </og-layout-container>
+                            </og-layout-child>
+                        </og-layout-container>
+                    </og-layout-child>
+                    <og-layout-child class="box-1" min-size="20px">Mail</og-layout-child>
+                    <og-layout-child class="box-1" min-size="80px">Phone</og-layout-child>
+                </og-layout-container>
+
+                <h5>Example "Playground"</h5>
+                <og-layout-container orientation="vertical">
+                    <og-layout-child class="box-1">
+                        A button usually triggers an action by pressing or clicking it. Use short and distinct labels to make clear
+                        what action the button triggers. The button's label can be extended by an icon, supporting the label
+                        visually. Icons can also be used instead of labels or replace a part of the label, e. g. by using '+ new
+                        file' instead of 'add new file'. Make sure the icons that are used are universally understood/recognised.
+                    </og-layout-child>
+                    <og-layout-child class="box-1">
+                        <og-layout-container auto-responsive>
+                            <og-layout-child min-size="150px" max-size="150px"class="box-2">
+                                <h6>Preview</h6>
+                                <div style="text-align: center;">
+                                    <og-button label="Button"></og-button>
+                                </div>
+                            </og-layout-child>
+                            <og-layout-child min-size="150px" class="box-2">
+                                <table style="width: 100%;">
+                                    <thead>
+                                        <th>Parameter</th>
+                                        <th>Type</th>
+                                        <th>Description</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>disabled</td>
+                                            <td>boolean</td>
+                                            <td>Disabled state of the control</td>
+                                        </tr>
+                                        <tr>
+                                            <td>label</td>
+                                            <td>string</td>
+                                            <td>The label of the button</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </og-layout-child>
+                        </og-layout-container>
+                    </og-layout-child>
+                    <og-layout-child class="box-1" min-size="100px">
+                        <code>
+                            &lt;og-button #button<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;[label]="buttonLabel"<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;data-context="workflow"<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;(clicked)="buttonClicked()"&gt;<br>
+                            &lt;/og-button&gt;
+                        </code>
                     </og-layout-child>
                 </og-layout-container>
             </og-card>
