@@ -6,6 +6,7 @@
         <title>ORGENIC UI Vanilla JS Examples</title>
         <script type="module" src="/build/orgenic-ui.esm.js"></script>
         <script nomodule src="/build/orgenic-ui.js"></script>
+        <script src="examples/_navigo.min.js"></script>
 
         <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
@@ -110,6 +111,47 @@
             .smaller {
                 font-size: var(--OG-FONT-SIZE--XS, 10px);
             }
+
+            a {
+                display: inline-block;
+                position: relative;
+                color: rgba(0,0,0,.5);
+                font-weight: normal;
+                text-decoration: none;
+                box-shadow: inset 0 -1px 0 0 var(--OG-COLOR-SHADE--50);
+                transition: all 0.3s ease;
+            }
+            .og-theme--dark a {
+                color: rgba(255, 255, 255, .7);
+            }
+            a:hover {
+                color: var(--OG-COLOR-PRIMARY--100);
+                box-shadow: inset 0 -2px 0 0 var(--OG-COLOR-SHADE--50);
+            }
+            a:after {
+                content: '';
+                display: var(--og-input__indicator-Display);
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 0;
+                height: 1px;
+                background-color: var(--OG-COLOR-PRIMARY--100);
+                transition: all 0.3s ease;
+            }
+            a:hover:after {
+                width: 100%;
+                height: 2px;
+            }
+            a:visited {
+                color: var(--OG-FONT-COLOR,#333);
+            }
+
+            a[data-navigo] {
+                line-height: 2em;
+                margin-left: 0.3em;
+                margin-right: 0.3em;
+            }
         </style>
     </head>
 
@@ -139,862 +181,80 @@
                 });
             </script>
 
-            <!--
-            og-layout-container
-            -->
-            <og-card name="Layout Container">
-                <h4>Layout Container Example</h4>
-                <og-layout-container fill auto-responsive>
-                    <og-layout-child weight="0">
-                        <og-calendar></og-calendar>
-                    </og-layout-child>
-                    <og-layout-child>
-                        <og-layout-container orientation="vertical">
-                            <og-form-item label="Product">
-                                <og-text-input value="ORGENIC UI Glass Theme"></og-text-input>
-                            </og-form-item>
-                            <og-form-item label="Amount">
-                                <og-number-input value="3"></og-number-input>
-                            </og-form-item>
-                            <og-form-item label="Usage">
-                                <og-combobox value="1" id="cb-usage"></og-combobox>
-                            </og-form-item>
-                            <og-form-item label="License">
-                                <og-combobox value="1" id="cb-license"></og-combobox>
-                            </og-form-item>
-                            <og-layout-container auto-responsive>
-                                <og-checkbox label="Terms & Conditions"></og-checkbox>
-                                <og-checkbox label="Get Newsletter"></og-checkbox>
-                            </og-layout-container>
-                        </og-layout-container>
-                    </og-layout-child>
-                </og-layout-container>
-                <script>
-                    document.querySelector('#cb-usage').items = [
-                        { label: 'Evaluation', value: 3 },
-                        { label: 'Private Use', value: 2 },
-                        { label: 'Commercial Use', value: 1 }
-                    ];
-                    document.querySelector('#cb-license').items = [
-                        { label: 'OEM', value: 1 }
-                    ];
-                </script>
-
-                <h4>Layout Container Schematic Representation</h4>
-                <h5>Example 1</h5>
-                <og-layout-container>
-                    <og-layout-child max-size="150px" min-size="80px" class="box-1">og-layout-child 1</og-layout-child>
-                    <og-layout-child class="box-1">
-                        <og-layout-container orientation="vertical" auto-responsive>
-                            <div class="box-2">v-child-1 (div)</div>
-                            <og-layout-child min-size="150px" max-size="350px" class="box-2">
-                                <og-layout-container auto-responsive>
-                                    <og-layout-child class="box-3">layout-child 3</og-layout-child>
-                                    <og-layout-child weight="2" class="box-3">layout-child 4</og-layout-child>
-                                    <og-layout-child class="box-3">layout-child 5</og-layout-child>
-                                </og-layout-container>
-                            </og-layout-child>
-                            <div class="box-2">v-child-3 (div)</div>
-                        </og-layout-container>
-                    </og-layout-child>
-                </og-layout-container>
-
-                <h5>Example "Holiday Approval"</h5>
-                <og-layout-container orientation="vertical">
-                    <og-layout-child class="box-1">
-                        <og-layout-container auto-responsive>
-                            <og-layout-child min-size="150px" max-size="150px" class="box-2">Avatar</og-layout-child>
-                            <og-layout-child min-size="150px" class="box-2">
-                                <og-layout-container orientation="vertical" auto-responsive>
-                                    <og-layout-child class="box-3">Remaining Leave</og-layout-child>
-                                    <og-layout-child class="box-3">Duration</og-layout-child>
-                                    <og-layout-child class="box-3">Period</og-layout-child>
-                                    <og-layout-child class="box-3">Status</og-layout-child>
-                                </og-layout-container>
-                            </og-layout-child>
-                        </og-layout-container>
-                    </og-layout-child>
-                    <og-layout-child class="box-1" min-size="80px">Comment</og-layout-child>
-                </og-layout-container>
-
-                <h5>Example "Purchase Request"</h5>
-                <og-layout-container orientation="vertical">
-                    <og-layout-child class="box-1">Product</og-layout-child>
-                    <og-layout-child class="box-1">
-                        <og-layout-container auto-responsive>
-                            <og-layout-child min-size="150px" max-size="150px" class="box-3">Image</og-layout-child>
-                            <og-layout-child class="box-3">Choose Image</og-layout-child>
-                        </og-layout-container>
-                    </og-layout-child>
-                    <og-layout-child class="box-1" min-size="20px">Link</og-layout-child>
-                    <og-layout-child class="box-1">
-                        <og-layout-container auto-responsive>
-                            <og-layout-child min-size="120px" class="box-3">Quantity</og-layout-child>
-                            <og-layout-child min-size="120px" class="box-3">Tax %</og-layout-child>
-                            <og-layout-child min-size="120px" class="box-3">Amount Brutto</og-layout-child>
-                            <og-layout-child min-size="120px" class="box-3">Amount Sum Net</og-layout-child>
-                        </og-layout-container>
-                    </og-layout-child>
-                    <og-layout-child class="box-1" min-size="80px">Reason</og-layout-child>
-                </og-layout-container>
-
-                <h5>Example "Profile"</h5>
-                <og-layout-container orientation="vertical">
-                    <og-layout-child class="box-1">
-                        <og-layout-container auto-responsive>
-                            <og-layout-child min-size="150px" max-size="150px" class="box-2">
-                                <og-layout-container orientation="vertical" auto-responsive>
-                                    <og-layout-child min-size="150px" max-size="150px" class="box-3">Avatar</og-layout-child>
-                                    <og-layout-child class="box-3">Choose Image</og-layout-child>
-                                </og-layout-container>
-                            </og-layout-child>
-                            <og-layout-child min-size="150px" class="box-2">
-                                <og-layout-container orientation="vertical" auto-responsive>
-                                    <og-layout-child class="box-3">Name</og-layout-child>
-                                    <og-layout-child class="box-3">Username</og-layout-child>
-                                    <og-layout-child class="box-3">Teams</og-layout-child>
-                                </og-layout-container>
-                            </og-layout-child>
-                        </og-layout-container>
-                    </og-layout-child>
-                    <og-layout-child class="box-1" min-size="20px">Mail</og-layout-child>
-                    <og-layout-child class="box-1" min-size="80px">Phone</og-layout-child>
-                </og-layout-container>
-
-                <h5>Example "Playground"</h5>
-                <og-layout-container orientation="vertical">
-                    <og-layout-child class="box-1">
-                        A button usually triggers an action by pressing or clicking it. Use short and distinct labels to make clear
-                        what action the button triggers. The button's label can be extended by an icon, supporting the label
-                        visually. Icons can also be used instead of labels or replace a part of the label, e. g. by using '+ new
-                        file' instead of 'add new file'. Make sure the icons that are used are universally understood/recognised.
-                    </og-layout-child>
-                    <og-layout-child class="box-1">
-                        <og-layout-container auto-responsive>
-                            <og-layout-child min-size="150px" max-size="150px"class="box-2">
-                                <h6>Preview</h6>
-                                <div style="text-align: center;">
-                                    <og-button label="Button"></og-button>
-                                </div>
-                            </og-layout-child>
-                            <og-layout-child min-size="150px" class="box-2">
-                                <table style="width: 100%;">
-                                    <thead>
-                                        <th>Parameter</th>
-                                        <th>Type</th>
-                                        <th>Description</th>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>disabled</td>
-                                            <td>boolean</td>
-                                            <td>Disabled state of the control</td>
-                                        </tr>
-                                        <tr>
-                                            <td>label</td>
-                                            <td>string</td>
-                                            <td>The label of the button</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </og-layout-child>
-                        </og-layout-container>
-                    </og-layout-child>
-                    <og-layout-child class="box-1" min-size="100px">
-                        <code>
-                            &lt;og-button #button<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;[label]="buttonLabel"<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;data-context="workflow"<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;(clicked)="buttonClicked()"&gt;<br>
-                            &lt;/og-button&gt;
-                        </code>
-                    </og-layout-child>
-                </og-layout-container>
+            <og-card name="Components">
+                <a href="layout-container" data-navigo>Layout Container</a>
+                <a href="datepicker" data-navigo>Datepicker</a>
+                <a href="calendar" data-navigo>Calendar</a>
+                <a href="dialog" data-navigo>Dialog</a>
+                <a href="typography" data-navigo>Typography</a>
+                <a href="expander" data-navigo>Expander</a>
+                <a href="datatable" data-navigo>Datatable</a>
+                <a href="form-item" data-navigo>Form Item</a>
+                <a href="input/text" data-navigo>Text Input</a>
+                <a href="input/textarea" data-navigo>Textarea</a>
+                <a href="input/number" data-navigo>Number Input</a>
+                <a href="input/password" data-navigo>Password Input</a>
+                <a href="radio-button" data-navigo>Radio Buttons</a>
+                <a href="tabs" data-navigo>Tabs</a>
+                <a href="checkbox" data-navigo>Checkbox</a>
+                <a href="toggle-switch" data-navigo>Toggle Switch</a>
+                <a href="button" data-navigo>Button</a>
+                <a href="list" data-navigo>List</a>
+                <a href="combobox" data-navigo>Combobox</a>
             </og-card>
 
-            <!--
-            og-datepicker
-            -->
-            <og-card name="Datepicker">
-                <div>
-                    <og-form-item label="Bitte wählen Sie ein Datum (de)">
-                        <og-datepicker loc="de" format="DD. MMM YYYY"></og-datepicker>
-                    </og-form-item>
+            <div id="router-outlet"></div>
 
-                    <og-form-item label="Bitte wählen Sie ein Datum (de)">
-                        <og-datepicker value="25. Juni 2019" loc="de" format="DD. MMM YYYY"></og-datepicker>
-                    </og-form-item>
-
-                    <og-form-item label="Please select a date (en)">
-                        <og-datepicker value="06/25/2019" loc="en" format="MM/DD/YYYY"></og-datepicker>
-                    </og-form-item>
-
-                    <og-form-item label="Пожалуйста, выберите дату (ru)">
-                        <og-datepicker value="25.06.2019" loc="ru" format="DD.MM.YYYY"></og-datepicker>
-                    </og-form-item>
-                </div>
-            </og-card>
             <script>
-                const datepicker = document.querySelector('og-datepicker');
-                datepicker.dateDecorator = {
-                    getDateDecoration: function (moment) {
-                        if (moment.day() === 0 || moment.day() === 6) {
-                            return {
-                                class: 'day--disabled'
-                            };
-                        } else {
-                            if (moment.date() === 1 || moment.date() === 20) {
-                                return {
-                                    class: 'day--highlight'
-                                };
-                            }
-                        }
-                        return {
-                            class: ''
-                        };
-                    }
-                };
-                datepicker.addEventListener('dateSelected', event => {
-                    console.log('date selected', event.detail.getDate(), event.detail.getMonth(), event.detail.getFullYear());
-                });
-            </script>
+                const view = document.getElementById('router-outlet');
+                // asyncrhonously fetch the html template partial from the file directory,
+                // then set its contents to the html of the parent element
+                function loadHTML(url, outlet) {
+                    req = new XMLHttpRequest();
+                    req.open('GET', url);
+                    req.send();
+                    req.onload = () => {
+                        outlet.innerHTML = req.responseText;
 
-            <!--
-            og-calendar-group
-            -->
-            <og-card name="Calendar">
-                <div>
-                    <h4>Calendar Group (2 months): de</h4>
-                    <og-calendar month="4" year="2019" loc="de" displayed-months="2" show-calendar-week="false" id="groupCalendar1"></og-calendar>
-                    <h4>Calendar Group (1 months): en</h4>
-                    <og-calendar month="4" year="2019" loc="en"></og-calendar>
-                </div>
-            </og-card>
-            <script>
-                const calendar = document.querySelector('#groupCalendar1');
-                calendar.dateDecorator = {
-                    getDateDecoration: function (moment) {
-                        if (moment.day() === 0 || moment.day() === 6) {
-                            return {
-                                class: 'day--disabled'
-                            };
-                        } else {
-                            if (moment.date() === 1 || moment.date() === 20) {
-                                return {
-                                    class: 'day--highlight'
-                                };
-                            }
-                        }
-                        return {
-                            class: ''
-                        };
-                    }
-                };
-                calendar.addEventListener('selectionChanged', e => {
-                    console.log('selection changed event', e.detail);
-                });
-            </script>
-
-            <!--
-            og-dialog
-            -->
-            <og-card name="Dialog">
-                <div>
-                    <og-dialog name="Custom Dialog" id="customDialog">
-                        <div>Custom Dialog Content</div>
-                        <div slot="footer">
-                            <og-button label="Close Dialog" id="closeCustomDialog"></og-button>
-                        </div>
-                    </og-dialog>
-                    <og-confirm-dialog name="Cancel Task" id="confirmDialog">
-                        <div>Confirm Dialog Content</div>
-                    </og-confirm-dialog>
-                    <og-message-dialog name="Task Finished" id="messageDialog" type="success">
-                        <div>Message Dialog Content</div>
-                    </og-message-dialog>
-                    <og-button label="Open Custom Dialog" id="openCustomDialog"></og-button>
-                    <og-button label="Open Confirm Dialog" id="openConfirmDialog"></og-button>
-                    <og-button label="Open Success Dialog" id="openSuccessDialog"></og-button>
-                </div>
-            </og-card>
-            <script>
-                const customDialogButton = document.querySelector('#openCustomDialog');
-                const customDialogButtonClose = document.querySelector('#closeCustomDialog');
-                customDialogButton.addEventListener('clicked', (e) => {
-                    document.querySelector('#customDialog').setAttribute('visible', 'true');
-                });
-                customDialogButtonClose.addEventListener('clicked', e => {
-                    document.querySelector('#customDialog').setAttribute('visible', 'false');
-                });
-
-                const confirmDialogButton = document.querySelector('#openConfirmDialog');
-                confirmDialogButton.addEventListener('clicked', (e) => {
-                    document.querySelector('#confirmDialog').setAttribute('visible', 'true');
-                });
-
-                const successDialogButton = document.querySelector('#openSuccessDialog');
-                successDialogButton.addEventListener('clicked', (e) => {
-                    document.querySelector('#messageDialog').setAttribute('visible', 'true');
-                });
-                const successDialog = document.querySelector('#messageDialog');
-                successDialog.addEventListener('confirmed', (e) => console.log('success dialog confirmed'));
-
-                const confirmDialog = document.querySelector('#confirmDialog');
-                confirmDialog.addEventListener('confirmed', (e) => console.log('confirm dialog confirmed'));
-                confirmDialog.addEventListener('cancelled', (e) => console.log('confirm dialog cancelled'));
-            </script>
-
-            <!--
-            og-expander
-            -->
-            <og-card name="Expander">
-                <div>
-                    <og-expander name="ORGENIC Expander 1.1" group="a">
-                        Some very interesting information about ORGENIC UI is [...]. And that's why we [...] all the things!
-                    </og-expander>
-                    <og-expander name="ORGENIC Expander 1.2" group="a">
-                        Some very interesting information about ORGENIC UI is [...]. And that's why we [...] all the things!
-                    </og-expander>
-                    <og-expander name="ORGENIC Expander 2.1" group="b">
-                        Some very interesting information about ORGENIC UI is [...]. And that's why we [...] all the things!
-                    </og-expander>
-                    <og-expander name="ORGENIC Expander 2.2" group="b">
-                        Some very interesting information about ORGENIC UI is [...]. And that's why we [...] all the things!
-                    </og-expander>
-                    <og-expander name="ORGENIC Expander 2.3" group="b">
-                        Some very interesting information about ORGENIC UI is [...]. And that's why we [...] all the things!
-                    </og-expander>
-                </div>
-            </og-card>
-
-            <!--
-            og-datatable
-            -->
-            <og-card name="Datatable">
-                <div>
-                    <p>
-                        ORGENIC UI Datagrid supports scrolling and paging presentation as well as a lazy loading data
-                        provider.
-                    </p>
-                    <div style="height: 400px">
-                        <!-- <div> -->
-                        <og-datatable id="datatable"></og-datatable>
-                    </div>
-                </div>
-            </og-card>
-            <script>
-                const dtData = [];
-                for (; dtData.length < 1000;) {
-                    dtData.push({ id: dtData.length, label: 'ORGENIC UI', license: 'MIT', author: 'MAXIMAGO', focus: 'UX + Design + Web Components', value: 5 });
-                    dtData.push({ id: dtData.length, label: 'Bootstrap', license: 'MIT', author: 'Twitter', focus: 'CSS', value: 2 });
-                    dtData.push({ id: dtData.length, label: 'Material', license: 'MIT', author: 'Google', focus: 'Components', value: 3 });
-                }
-                const dtColumns = [
-                    {
-                        property: 'label',
-                        title: 'Label'
-                    },
-                    {
-                        property: 'author',
-                        title: 'Author'
-                    },
-                    {
-                        property: 'focus',
-                        title: 'Focus'
-                    },
-                    {
-                        property: 'value',
-                        title: 'Added Value',
-                        formatter: 'star',
-                    },
-                    {
-                        property: 'value',
-                        title: 'Custom Formatter',
-                        formatter: (cell, formatterParams, onRendered) => {
-                            let colored = '';
-                            for (let i = 0; i < cell.getValue(); i++) {
-                                const hue = 150 - (37.5 * i);
-                                colored += '<span style="color: hsl(' + hue + ',100%,40%)">&#10687;</span>';
-                            }
-                            return '<strong>' + colored + '</strong>';
-                        }
-                    },
-                ];
-
-                const scrollData = {
-                    type: 'scrolled',
-                    provider: {
-                        type: 'default',
-                        getData: async () => dtData
-                    }
-                };
-
-                const scrollLazyData = {
-                    type: 'scrolled',
-                    options: {
-                        requestLimit: 50
-                    },
-                    provider: {
-                        type: 'lazy',
-                        getData: async (page, size, sorters) => {
-                            let data = dtData;
-                            if (Array.isArray(sorters) && sorters.length > 0) {
-                                data = [...data];
-                                sorters.forEach(sorter => {
-                                    data.sort((a, b) => {
-                                        const fa = a[sorter.field];
-                                        const fb = b[sorter.field];
-                                        const result = fa < fb ? -1 : (fa > fb ? 1 : 0);
-                                        return result * (sorter.dir === 'desc' ? -1 : 1);
-                                    });
-                                });
-                            }
-                            return {
-                                totalRows: data.length,
-                                data: data.length < size ? data.length : data.slice((page - 1) * size, page * size)
-                            };
-                        }
-                    }
-                };
-
-                const paginatedData = {
-                    type: 'paginated',
-                    options: {
-                        pageSize: 8
-                    },
-                    provider: {
-                        type: 'default',
-                        getData: async () => dtData
-                    }
-                };
-
-                const paginatedLazyData = {
-                    type: 'paginated',
-                    options: {
-                        pageSize: 11
-                    },
-                    provider: {
-                        type: 'lazy',
-                        getData: async (page, size, sorters) => {
-                            let data = dtData;
-                            if (Array.isArray(sorters) && sorters.length > 0) {
-                                data = [...data];
-                                sorters.forEach(sorter => {
-                                    data.sort((a, b) => {
-                                        const fa = a[sorter.field];
-                                        const fb = b[sorter.field];
-                                        const result = fa < fb ? -1 : (fa > fb ? 1 : 0);
-                                        return result * (sorter.dir === 'desc' ? -1 : 1);
-                                    });
-                                });
-                            }
-                            return {
-                                totalRows: data.length,
-                                data: data.length < size ? data.length : data.slice((page - 1) * size, page * size)
-                            };
-                        }
-                    }
-                };
-
-                const dtConfig = {
-                    noDataMessage: 'No items available',
-                    selectable: 1,
-                    // dataService: scrollData,
-                    dataService: scrollLazyData,
-                    // dataService: paginatedData,
-                    // dataService: paginatedLazyData,
-                    columns: dtColumns
+                        // initialize scripts
+                        var arr = outlet.getElementsByTagName('script')
+                        for (var n = 0; n < arr.length; n++)
+                            eval(arr[n].innerHTML)
+                    };
                 }
 
-                const datatable = document.querySelector('#datatable');
-                datatable.config = dtConfig;
-                datatable.addEventListener('itemSelected', event => {
-                    console.log('selected', event.detail);
-                });
-            </script>
-
-            <!--
-            og-form-item
-            -->
-            <og-card name="Form Item">
-                <div class="example example--column">
-                    <div>
-                        <og-form-item label="Default Text Input">
-                            <og-text-input id="input#1"></og-text-input>
-                        </og-form-item>
-                        <og-form-item label="Default Number Input">
-                            <og-number-input></og-number-input>
-                        </og-form-item>
-                        <og-form-item label="Default Combobox" id="formItemCombobox">
-                            <og-combobox value="3"></og-combobox>
-                        </og-form-item>
-                    </div>
-                </div>
-            </og-card>
-            <script>
-                const fiComboboxValues = [
-                    { label: 'Value 1', value: 1 },
-                    { label: 'Value 2', value: 2 },
-                    { label: 'Value 3', value: 3 },
-                ];
-
-                const fiCombobox = document.querySelector('#formItemCombobox').querySelector('og-combobox');
-                fiCombobox.items = fiComboboxValues;
-            </script>
-
-            <!--
-            og-text-input
-            -->
-            <og-card name="Text Input">
-                <div class="example example--column">
-                    <div>
-                        <label for="input#1">Default Text Input</label>
-                        <og-text-input id="input#1"></og-text-input>
-                    </div>
-                    <div>
-                        <label for="input#2">Text Input with placeholder</label>
-                        <og-text-input id="input#2" placeholder="Insert name here"></og-text-input>
-                    </div>
-                    <div>
-                        <label for="input#3">Text Input with value</label>
-                        <og-text-input id="input#3" placeholder="Insert name here" value="ORGENIC UI"></og-text-input>
-                    </div>
-                    <div>
-                        <label for="input#4">Disabled Text Input</label>
-                        <og-text-input id="input#4" placeholder="Insert name here" value="by MAXIMAGO" disabled>
-                        </og-text-input>
-                    </div>
-                </div>
-            </og-card>
-            <script>
-                const textInputs = document.querySelectorAll('og-text-input');
-                textInputs[0].addEventListener('valueChanged', e => console.log('Text Input value changed', e));
-                textInputs[0].addEventListener('focusGained', e => console.log('Text Input got focus', e));
-                textInputs[0].addEventListener('focusLost', e => console.log('Text Input lost focus', e));
-            </script>
-
-            <!--
-            og-textarea
-            -->
-            <og-card name="Textarea">
-                <div class="example example--column">
-                    <div>
-                        <label for="textarea1">Default Textarea</label>
-                        <og-textarea id="textarea1"></og-textarea>
-                    </div>
-                    <br>
-                    <og-form-item label="Textarea with a label">
-                        <og-textarea id="textarea2"></og-textarea>
-                    </og-form-item>
-                </div>
-            </og-card>
-            <script>
-                const textarea = document.querySelector('og-textarea');
-                textarea.addEventListener('valueChanged', e => console.log('Textarea value changed', e));
-                textarea.addEventListener('focusGained', e => console.log('Textarea got focus', e));
-                textarea.addEventListener('focusLost', e => console.log('Textarea lost focus', e));
-            </script>
-
-            <!--
-            og-number-input
-            -->
-            <og-card name="Number Input">
-                <div class="example example--column">
-                    <div>
-                        <label for="numberInput#1">Default Number Input</label>
-                        <og-number-input id="numberInput#1"></og-number-input>
-                    </div>
-                    <div>
-                        <label for="numberInput#2">Number Input with placeholder</label>
-                        <og-number-input id="numberInput#2" placeholder="Insert value here"></og-number-input>
-                    </div>
-                    <div>
-                        <label for="numberInput#3">Number Input (min/max/step: 200/226/0.5)</label>
-                        <og-number-input id="numberInput#3" placeholder="Insert name here" value="218" min="200" max="226"
-                            step="0.5"></og-number-input>
-                    </div>
-                    <div>
-                        <label for="numberInput#4">Disabled Number Input</label>
-                        <og-number-input id="numberInput#4" placeholder="Insert name here" value="2020" disabled>
-                        </og-number-input>
-                    </div>
-                </div>
-            </og-card>
-            <script>
-                const numberInputs = document.querySelectorAll('og-number-input');
-                numberInputs[0].addEventListener('valueChanged', e => console.log('Number Input value changed', e));
-                numberInputs[0].addEventListener('focusGained', e => console.log('Number Input got focus', e));
-                numberInputs[0].addEventListener('focusLost', e => console.log('Number Input lost focus', e));
-            </script>
-
-            <!--
-            og-password-input
-            -->
-            <og-card name="Password Input">
-                <div class="example example--column">
-                    <div>
-                        <label for="password#1">Default Password Input</label>
-                        <og-password-input id="password#1"></og-password-input>
-                    </div>
-                    <div>
-                        <label for="password#2">Password Input with placeholder</label>
-                        <og-password-input id="password#2" placeholder="Insert password here"></og-password-input>
-                    </div>
-                    <div>
-                        <label for="password#3">Password Input with value</label>
-                        <og-password-input id="password#3" placeholder="Insert password here" value="ORGENIC UI"
-                            show-toggle-password-visibility="true"></og-password-input>
-                    </div>
-                    <div>
-                        <label for="password#4">Disabled Password Input</label>
-                        <og-password-input id="password#4" placeholder="Insert password here" value="by MAXIMAGO" disabled>
-                        </og-password-input>
-                    </div>
-                </div>
-            </og-card>
-            <script>
-                const passwordInputs = document.querySelectorAll('og-password-input');
-                passwordInputs[0].addEventListener('valueChanged', e => console.log('Password Input value changed', e));
-                passwordInputs[0].addEventListener('focusGained', e => console.log('Password Input got focus', e));
-                passwordInputs[0].addEventListener('focusLost', e => console.log('Password Input lost focus', e));
-            </script>
-
-
-            <!--
-            og-radio-button-group
-            -->
-            <og-card name="Radio Button Group">
-                <form>
-                    <div class="example">
-                        <og-radio-button-group name="bg1" selected-value="r">
-                            <og-radio-button label="Angular" value="ng"></og-radio-button>
-                            <og-radio-button label="React" value="r"></og-radio-button>
-                            <og-radio-button label="Vue" value="v"></og-radio-button>
-                        </og-radio-button-group>
-                    </div>
-                    <div class="example">
-
-                        <og-radio-button-group name="bg2" selected-value="ng">
-                            <og-radio-button label="Angular" value="ng"></og-radio-button>
-                            <og-radio-button label="React Disabled" value="r" disabled></og-radio-button>
-                            <og-radio-button label="Vue" value="v"></og-radio-button>
-                        </og-radio-button-group>
-
-                    </div>
-                    <div class="example">
-                        <og-radio-button-group name="bg3" selected-value="v" disabled>
-                            <og-radio-button label="Angular" value="ng" checked></og-radio-button>
-                            <og-radio-button label="React" value="r"></og-radio-button>
-                            <og-radio-button label="Vue" value="v"></og-radio-button>
-                        </og-radio-button-group>
-                    </div>
-                </form>
-            </og-card>
-            <script>
-                const groups = document.querySelectorAll('og-radio-button-group');
-                groups[0].addEventListener('changed', event => {
-                    console.log('group option selected', event.target.value);
+                // use #! to hash
+                const router = new Navigo(null, true, '#!');
+                router.on({
+                    'layout-container': () => { loadHTML('./examples/LayoutContainer.html', view); },
+                    'datepicker': () => { loadHTML('./examples/Datepicker.html', view); },
+                    'calendar': () => { loadHTML('./examples/Calendar.html', view); },
+                    'dialog': () => { loadHTML('./examples/Dialog.html', view); },
+                    'typography': () => { loadHTML('./examples/Typography.html', view); },
+                    'expander': () => { loadHTML('./examples/Expander.html', view); },
+                    'datatable': () => { loadHTML('./examples/Datatable.html', view); },
+                    'form-item': () => { loadHTML('./examples/FormItem.html', view); },
+                    'input/text': () => { loadHTML('./examples/TextInput.html', view); },
+                    'input/textarea': () => { loadHTML('./examples/Textarea.html', view); },
+                    'input/number': () => { loadHTML('./examples/NumberInput.html', view); },
+                    'input/password': () => { loadHTML('./examples/PasswordInput.html', view); },
+                    'radio-button': () => { loadHTML('./examples/RadioButton.html', view); },
+                    'tabs': () => { loadHTML('./examples/Tabs.html', view); },
+                    'checkbox': () => { loadHTML('./examples/Checkbox.html', view); },
+                    'toggle-switch': () => { loadHTML('./examples/ToggleSwitch.html', view); },
+                    'button': () => { loadHTML('./examples/Button.html', view); },
+                    'list': () => { loadHTML('./examples/List.html', view); },
+                    'combobox': () => { loadHTML('./examples/Combobox.html', view); }
                 });
 
-                const radioButtons = groups[0].querySelectorAll('og-radio-button');
-                radioButtons.forEach(radioButton => {
-                    radioButton.addEventListener('changed', event => {
-                        console.log('radio button changed', event.target.value, event.detail);
-                    });
-                });
+                // set the default route
+                router.on(() => { view.innerHTML = '<h3>Please select a component</h3>' });
+
+                // set the 404 route
+                router.notFound((query) => { view.innerHTML = '<h3>Couldn\'t find the page you\'re looking for...</h3>'; });
+
+                router.resolve();
             </script>
-
-            <!--
-            og-tab-container
-            -->
-            <og-card name="Tabs">
-                <div class="example">
-                    <og-tab-container>
-                        <og-tab label="Angular Example" selected>Show here how to use component in Angular</og-tab>
-                        <og-tab label="React Example">Show here how to use component in React</og-tab>
-                        <og-tab label="Vue Example">Show here how to use component in Vue</og-tab>
-                    </og-tab-container>
-                </div>
-                <div class="example">
-                    <og-tab-container>
-                        <og-tab label="Angular Example">Show here how to use component in Angular</og-tab>
-                        <og-tab label="React Disabled" disabled>Show here how to use component in React</og-tab>
-                        <og-tab label="Vue Example" selected>Show here how to use component in Vue</og-tab>
-                    </og-tab-container>
-                </div>
-                <div class="example">
-                    <og-tab-container disabled>
-                        <og-tab label="Angular Example" selected>Show here how to use component in Angular</og-tab>
-                        <og-tab label="React Example">Show here how to use component in React</og-tab>
-                        <og-tab label="Vue Example">Show here how to use component in Vue</og-tab>
-                    </og-tab-container>
-                </div>
-            </og-card>
-
-            <!--
-            og-checkbox
-            -->
-            <og-card name="Checkbox">
-                <div class="example">
-                    <og-checkbox label="Default Checkbox"></og-checkbox>
-                    <og-checkbox label="Disabled Checkbox" checked disabled></og-checkbox>
-                    <og-checkbox label="Disabled Checkbox" disabled></og-checkbox>
-                </div>
-            </og-card>
-            <script>
-                const checkboxes = document.querySelectorAll('og-checkbox');
-                checkboxes.forEach(checkbox => {
-                    checkbox.addEventListener('changed', (e) => {
-                        console.log('Checkbox Active', e.detail);
-                    });
-                });
-            </script>
-
-            <!--
-            og-toggle-switch
-            -->
-            <og-card name="Toggle Switch">
-                <div class="example">
-                    <og-toggle-switch value="false"></og-toggle-switch>
-                    <og-toggle-switch value="true" disabled></og-toggle-switch>
-                </div>
-            </og-card>
-            <script>
-                const toggleswitches = document.querySelectorAll('og-toggle-switch');
-                toggleswitches.forEach(toggleswitch => {
-                    toggleswitch.addEventListener('changed', (e) => {
-                        console.log('Toggle Switch Active', e.detail);
-                    });
-                });
-            </script>
-
-            <!--
-            og-button
-            -->
-            <og-card name="Buttons">
-                <div class="example">
-                    <og-button class="demo-button" label="Default"></og-button>
-                    <og-button class="demo-button" label="Link" data-context="link"></og-button>
-                    <og-button class="demo-button" label="Workflow" data-context="workflow"></og-button>
-                    <og-button class="demo-button" label="Disabled" disabled></og-button>
-                </div>
-            </og-card>
-            <script>
-                const buttons = document.querySelectorAll('.demo-button');
-                buttons.forEach(button => {
-                    button.addEventListener('clicked', (e) => {
-                        console.log('clicked', e);
-                    });
-                });
-            </script>
-
-            <!--
-            og-list
-            -->
-            <og-card name="List">
-                <div>
-                    <h4>Listitems with pre-selection</h4>
-                    <og-list id="list1" selected="v2"></og-list>
-
-                    <h4>Listitems with icon and value</h4>
-                    <og-list id="list2" image-url-property="iconUrl" value-property="value"></og-list>
-
-                    <h4>Disabled list</h4>
-                    <og-list id="list3" selected-key="v2" value-property="value" disabled></og-list>
-                </div>
-                <div slot="footer">
-                </div>
-            </og-card>
-            <script type="module">
-                const listItems = [
-                    { key: 'v1', label: 'Value 1', iconUrl: 'http://orgtest.maximago.de/assets/images/Car/Rally/Default_small.png', value: 22 },
-                    { key: 'v2', label: 'Value 2', value: 2 },
-                    { key: 'v3', label: 'Value 3', iconUrl: 'http://orgtest.maximago.de/assets/images/Car/Rally/Default_small.png', value: 35, disabled: true },
-                ];
-
-                const list1 = document.querySelector('#list1');
-                list1.items = listItems;
-                list1.addEventListener('itemSelected', e => console.log('item selected', e));
-
-                const list2 = document.querySelector('#list2');
-                list2.items = listItems;
-                list2.addEventListener('itemSelected', e => console.log('item selected', e));
-
-                const list3 = document.querySelector('#list3');
-                list3.items = listItems;
-                list3.addEventListener('itemSelected', e => console.log('item selected', e));
-            </script>
-
-            <!--
-            og-combobox
-            -->
-            <og-card name="Combobox">
-                <div>
-                    <h4>Preselected value</h4>
-                    <og-combobox id="combobox1" value="3"></og-combobox>
-
-                        <h4>Empty value with placeholder text</h4>
-                        <og-combobox id="combobox2" placeholder="Please select a value"></og-combobox>
-
-                        <h4>Disabled combobox</h4>
-                        <og-combobox id="combobox3" value="2" disabled></og-combobox>
-
-                </div>
-            </og-card>
-            <script>
-                const values = [];
-                for (let i = 1; i < 11; i++) {
-                    values.push({ label:'Value ' + i, value: i});
-                }
-
-                const combobox1 = document.querySelector('#combobox1');
-                combobox1.items = values;
-                combobox1.addEventListener('itemSelected', e => console.log('item selected', e));
-
-                const combobox2 = document.querySelector('#combobox2');
-                combobox2.items = values;
-                combobox2.addEventListener('itemSelected', e => console.log('item selected', e));
-
-                const combobox3 = document.querySelector('#combobox3');
-                combobox3.items = values;
-            </script>
-
-            <og-card name="Typography">
-                <div>
-                    <h1>Heading 1</h1>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-                    <h2>Heading 2</h2>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-                    <h3>Heading 3</h3>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-                    <h4>Heading 4</h4>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repudiandae dolor <sup>cumque</sup> laudantium dolorum totam iure <sub>assumenda</sub> voluptas dolorem temporibus facere. Odio voluptatem earum sequi nisi natus quo sed nesciunt cum.</p>
-                    <p><small>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repudiandae dolor cumque laudantium dolorum totam iure assumenda voluptas dolorem temporibus facere. Odio voluptatem earum sequi nisi natus quo sed nesciunt cum.</small></p>
-                    <p class="smaller">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repudiandae dolor cumque laudantium dolorum totam iure assumenda voluptas dolorem temporibus facere. Odio voluptatem earum sequi nisi natus quo sed nesciunt cum.</p>
-
-                    <h4>Definition List</h4>
-                    <dl>
-                        <dt>§1 First</dt>
-                        <dd>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa delectus omnis ratione voluptates magnam. Excepturi, odio, voluptas nihil dolorum obcaecati suscipit ipsum blanditiis totam natus nemo commodi, hic vero sit.</dd>
-                        <dt>§2 Second</dt>
-                        <dd>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa delectus omnis ratione voluptates magnam. Excepturi, odio, voluptas nihil dolorum obcaecati suscipit ipsum blanditiis totam natus nemo commodi, hic vero sit.</dd>
-                    </dl>
-
-                    <h4>Ordered List</h4>
-                    <ol>
-                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, quam nostrum nisi distinctio quisquam aut dolores dolorum nesciunt laboriosam provident rerum magni mollitia incidunt iure suscipit? Soluta iste eligendi sed.</li>
-                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, quam nostrum nisi distinctio quisquam aut dolores dolorum nesciunt laboriosam provident rerum magni mollitia incidunt iure suscipit? Soluta iste eligendi sed.</li>
-                    </ol>
-
-                    <h4>Unordered List</h4>
-                    <ul>
-                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, quam nostrum nisi distinctio quisquam aut dolores dolorum nesciunt laboriosam provident rerum magni mollitia incidunt iure suscipit? Soluta iste eligendi sed.</li>
-                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, quam nostrum nisi distinctio quisquam aut dolores dolorum nesciunt laboriosam provident rerum magni mollitia incidunt iure suscipit? Soluta iste eligendi sed.</li>
-                    </ul>
-
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-                </div>
-            </og-card>
         </div>
     </body>
 </html>

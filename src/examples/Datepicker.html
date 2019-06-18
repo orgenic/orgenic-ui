@@ -1,0 +1,46 @@
+<!--
+og-datepicker
+-->
+<og-card name="Datepicker">
+    <div>
+        <og-form-item label="Bitte wählen Sie ein Datum (de)">
+            <og-datepicker loc="de" format="DD. MMM YYYY"></og-datepicker>
+        </og-form-item>
+
+        <og-form-item label="Bitte wählen Sie ein Datum (de)">
+            <og-datepicker value="25. Juni 2019" loc="de" format="DD. MMM YYYY"></og-datepicker>
+        </og-form-item>
+
+        <og-form-item label="Please select a date (en)">
+            <og-datepicker value="06/25/2019" loc="en" format="MM/DD/YYYY"></og-datepicker>
+        </og-form-item>
+
+        <og-form-item label="Пожалуйста, выберите дату (ru)">
+            <og-datepicker value="25.06.2019" loc="ru" format="DD.MM.YYYY"></og-datepicker>
+        </og-form-item>
+    </div>
+</og-card>
+<script>
+    const datepicker = document.querySelector('og-datepicker');
+    datepicker.dateDecorator = {
+        getDateDecoration: function (moment) {
+            if (moment.day() === 0 || moment.day() === 6) {
+                return {
+                    class: 'day--disabled'
+                };
+            } else {
+                if (moment.date() === 1 || moment.date() === 20) {
+                    return {
+                        class: 'day--highlight'
+                    };
+                }
+            }
+            return {
+                class: ''
+            };
+        }
+    };
+    datepicker.addEventListener('dateSelected', event => {
+        console.log('date selected', event.detail.getDate(), event.detail.getMonth(), event.detail.getFullYear());
+    });
+</script>

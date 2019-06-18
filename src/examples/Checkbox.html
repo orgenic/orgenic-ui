@@ -1,0 +1,18 @@
+<!--
+og-checkbox
+-->
+<og-card name="Checkbox">
+    <div class="example">
+        <og-checkbox label="Default Checkbox"></og-checkbox>
+        <og-checkbox label="Disabled Checkbox" checked disabled></og-checkbox>
+        <og-checkbox label="Disabled Checkbox" disabled></og-checkbox>
+    </div>
+</og-card>
+<script>
+    const checkboxes = document.querySelectorAll('og-checkbox');
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('changed', (e) => {
+            console.log('Checkbox Active', e.detail);
+        });
+    });
+</script>

@@ -1,0 +1,30 @@
+<!--
+og-text-input
+-->
+<og-card name="Text Input">
+    <div class="example example--column">
+        <div>
+            <label for="input#1">Default Text Input</label>
+            <og-text-input id="input#1"></og-text-input>
+        </div>
+        <div>
+            <label for="input#2">Text Input with placeholder</label>
+            <og-text-input id="input#2" placeholder="Insert name here"></og-text-input>
+        </div>
+        <div>
+            <label for="input#3">Text Input with value</label>
+            <og-text-input id="input#3" placeholder="Insert name here" value="ORGENIC UI"></og-text-input>
+        </div>
+        <div>
+            <label for="input#4">Disabled Text Input</label>
+            <og-text-input id="input#4" placeholder="Insert name here" value="by MAXIMAGO" disabled>
+            </og-text-input>
+        </div>
+    </div>
+</og-card>
+<script>
+    const textInputs = document.querySelectorAll('og-text-input');
+    textInputs[0].addEventListener('valueChanged', e => console.log('Text Input value changed', e));
+    textInputs[0].addEventListener('focusGained', e => console.log('Text Input got focus', e));
+    textInputs[0].addEventListener('focusLost', e => console.log('Text Input lost focus', e));
+</script>

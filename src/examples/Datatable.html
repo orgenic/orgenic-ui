@@ -1,0 +1,145 @@
+<!--
+og-datatable
+-->
+<og-card name="Datatable">
+    <div>
+        <p>
+            ORGENIC UI Datagrid supports scrolling and paging presentation as well as a lazy loading data
+            provider.
+        </p>
+        <div style="height: 400px">
+            <!-- <div> -->
+            <og-datatable id="datatable"></og-datatable>
+        </div>
+    </div>
+</og-card>
+<script>
+    const dtData = [];
+    for (; dtData.length < 1000;) {
+        dtData.push({ id: dtData.length, label: 'ORGENIC UI', license: 'MIT', author: 'MAXIMAGO', focus: 'UX + Design + Web Components', value: 5 });
+        dtData.push({ id: dtData.length, label: 'Bootstrap', license: 'MIT', author: 'Twitter', focus: 'CSS', value: 2 });
+        dtData.push({ id: dtData.length, label: 'Material', license: 'MIT', author: 'Google', focus: 'Components', value: 3 });
+    }
+    const dtColumns = [
+        {
+            property: 'label',
+            title: 'Label'
+        },
+        {
+            property: 'author',
+            title: 'Author'
+        },
+        {
+            property: 'focus',
+            title: 'Focus'
+        },
+        {
+            property: 'value',
+            title: 'Added Value',
+            formatter: 'star',
+        },
+        {
+            property: 'value',
+            title: 'Custom Formatter',
+            formatter: (cell, formatterParams, onRendered) => {
+                let colored = '';
+                for (let i = 0; i < cell.getValue(); i++) {
+                    const hue = 150 - (37.5 * i);
+                    colored += '<span style="color: hsl(' + hue + ',100%,40%)">&#10687;</span>';
+                }
+                return '<strong>' + colored + '</strong>';
+            }
+        },
+    ];
+
+    const scrollData = {
+        type: 'scrolled',
+        provider: {
+            type: 'default',
+            getData: async () => dtData
+        }
+    };
+
+    const scrollLazyData = {
+        type: 'scrolled',
+        options: {
+            requestLimit: 50
+        },
+        provider: {
+            type: 'lazy',
+            getData: async (page, size, sorters) => {
+                let data = dtData;
+                if (Array.isArray(sorters) && sorters.length > 0) {
+                    data = [...data];
+                    sorters.forEach(sorter => {
+                        data.sort((a, b) => {
+                            const fa = a[sorter.field];
+                            const fb = b[sorter.field];
+                            const result = fa < fb ? -1 : (fa > fb ? 1 : 0);
+                            return result * (sorter.dir === 'desc' ? -1 : 1);
+                        });
+                    });
+                }
+                return {
+                    totalRows: data.length,
+                    data: data.length < size ? data.length : data.slice((page - 1) * size, page * size)
+                };
+            }
+        }
+    };
+
+    const paginatedData = {
+        type: 'paginated',
+        options: {
+            pageSize: 8
+        },
+        provider: {
+            type: 'default',
+            getData: async () => dtData
+        }
+    };
+
+    const paginatedLazyData = {
+        type: 'paginated',
+        options: {
+            pageSize: 11
+        },
+        provider: {
+            type: 'lazy',
+            getData: async (page, size, sorters) => {
+                let data = dtData;
+                if (Array.isArray(sorters) && sorters.length > 0) {
+                    data = [...data];
+                    sorters.forEach(sorter => {
+                        data.sort((a, b) => {
+                            const fa = a[sorter.field];
+                            const fb = b[sorter.field];
+                            const result = fa < fb ? -1 : (fa > fb ? 1 : 0);
+                            return result * (sorter.dir === 'desc' ? -1 : 1);
+                        });
+                    });
+                }
+                return {
+                    totalRows: data.length,
+                    data: data.length < size ? data.length : data.slice((page - 1) * size, page * size)
+                };
+            }
+        }
+    };
+
+    const dtConfig = {
+        noDataMessage: 'No items available',
+        selectable: 1,
+        // dataService: scrollData,
+        dataService: scrollLazyData,
+        // dataService: paginatedData,
+        // dataService: paginatedLazyData,
+        columns: dtColumns
+    }
+
+    const datatable = document.querySelector('#datatable');
+    datatable.config = dtConfig;
+    datatable.addEventListener('itemSelected', event => {
+        console.log('selected', event.detail);
+    });
+</script>
