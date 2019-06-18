@@ -1,3 +1,9 @@
+<style>
+    og-layout-container {
+        border: 1px solid magenta;
+    }
+</style>
+
 <!--
 og-layout-container
 -->
@@ -54,6 +60,65 @@ og-layout-container
                     </og-layout-container>
                 </og-layout-child>
                 <div class="box-2">v-child-3 (div)</div>
+            </og-layout-container>
+        </og-layout-child>
+    </og-layout-container>
+
+    <h5>Example 2</h5>
+    <og-layout-container orientation="vertical">
+        <og-layout-child class="box-1">
+            <h5>Toolbar</h5>
+        </og-layout-child>
+        <og-layout-child class="box-1" min-size="200px" max-size="200px">
+            <h2>Video</h2>
+        </og-layout-child>
+        <og-layout-child class="box-1">
+            <og-layout-container auto-responsive>
+                <og-layout-child min-size="300px" class="box-2">
+                    <og-layout-container orientation="vertical" auto-responsive>
+                        <og-layout-child class="box-3">
+                            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
+                            ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
+                            dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
+                            amet.
+                        </og-layout-child>
+                        <og-layout-child class="box-3">
+                            <og-layout-container auto-responsive>
+                                <og-button label="1"></og-button>
+                                <og-button label="2"></og-button>
+                                <og-button label="3"></og-button>
+                            </og-layout-container>
+                        </og-layout-child>
+                    </og-layout-container>
+                </og-layout-child>
+                <og-layout-child min-size="200px" max-size="200px" class="box-2">
+                    <h5>Image</h5>
+                </og-layout-child>
+            </og-layout-container>
+        </og-layout-child>
+        <og-layout-child class="box-1">
+            <og-layout-container auto-responsive>
+                <og-layout-child min-size="200px" class="box-2">
+                    <h5>Item 1</h5>
+                    <p>
+                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
+                        ut labore et dolore magna aliquyam erat, sed diam voluptua.
+                    </p>
+                </og-layout-child>
+                <og-layout-child min-size="200px" class="box-2">
+                    <h5>Item 1</h5>
+                    <p>
+                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
+                        ut labore et dolore magna aliquyam erat, sed diam voluptua.
+                    </p>
+                </og-layout-child>
+                <og-layout-child min-size="200px" class="box-2">
+                    <h5>Item 1</h5>
+                    <p>
+                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
+                        ut labore et dolore magna aliquyam erat, sed diam voluptua.
+                    </p>
+                </og-layout-child>
             </og-layout-container>
         </og-layout-child>
     </og-layout-container>
@@ -131,7 +196,7 @@ og-layout-container
         <og-layout-child class="box-1">
             <og-layout-container auto-responsive>
                 <og-layout-child min-size="150px" max-size="150px"class="box-2">
-                    <h6>Preview</h6>
+                    <h5>Preview</h5>
                     <div style="text-align: center;">
                         <og-button label="Button"></og-button>
                     </div>
