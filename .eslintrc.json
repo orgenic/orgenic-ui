@@ -55,7 +55,8 @@
                 "method"
             ]}],
         "@typescript-eslint/no-explicit-any": 0,
-        "@typescript-eslint/no-unused-vars": [1, {"varsIgnorePattern": "h"}],
+        "@typescript-eslint/no-parameter-properties": 0,
+        "@typescript-eslint/no-unused-vars": [1, {"varsIgnorePattern": "(h|Host)"}],
         "@typescript-eslint/promise-function-async": 1
     },
     "overrides": [{

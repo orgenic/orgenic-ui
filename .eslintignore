@@ -1,2 +1,6 @@
+# folders
 www/*
 dist/*
+
+# files
+*.d.ts
