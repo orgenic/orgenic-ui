@@ -23,7 +23,7 @@ export function applyCustomTableConfig(config: OgDatatableConfig, tableConfig: T
 }
 
 export function getColumnConfig(columns: OgDatatableColumnDef[]) {
-  return columns.map(async column => {
+  return columns.map(column => {
     const columnDef = {
       title: column.title,
       field: column.property,

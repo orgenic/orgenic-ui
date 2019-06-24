@@ -31,7 +31,7 @@ export class OgTabContainer {
   public tabSelected: EventEmitter<number>;
 
   @Method()
-  public async openTab(index: number) {
+  public openTab(index: number) {
     if (this.disabled) {
       return;
     }
@@ -62,7 +62,7 @@ export class OgTabContainer {
       <div class="og-tabs">
         <nav class="og-tabs__nav">
           <ul class="og-tabs__list">
-            {this.tabs.map(async (tab, index) => {
+            {this.tabs.map((tab, index): HTMLElement => {
               return (
                 <li
                   class={
@@ -86,7 +86,7 @@ export class OgTabContainer {
                     disabled={
                       this.disabled || tab.disabled
                     }
-                    onClick={async () => this.openTab(index)}
+                    onClick={() => this.openTab(index)}
                   >
                     {tab.label}
                   </button>
