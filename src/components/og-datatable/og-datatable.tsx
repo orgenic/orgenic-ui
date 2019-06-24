@@ -71,7 +71,7 @@ export class OgDatatable {
     this.initTable();
   }
 
-  public initTable() {
+  public async initTable() {
     if (this.table || !this.tableContainer || !this.config) {
       return;
     }
@@ -79,7 +79,7 @@ export class OgDatatable {
     const tableConfig = getBasicTableConfig();
     if (this.config) {
       applyCustomTableConfig(this.config, tableConfig);
-      tableConfig.columns = getColumnConfig(this.config.columns)
+      tableConfig.columns = await getColumnConfig(this.config.columns) as any;
       this.dataProvider = applyDataServiceConfig(this.config.dataService, tableConfig);
     }
 
