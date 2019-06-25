@@ -8,12 +8,6 @@
     #000;
     color: var(--OG-FONT-COLOR);
 
-    og-toggle-switch {
-        --og-toggle-switch__indicator-Background: var(--OG-COLOR-SHADE--100);
-        --og-toggle-switch__indicator-Background--hover: var(--OG-COLOR-SHADE--100);
-        --og-toggle-switch__indicator-Background--active: var(--OG-COLOR-SHADE--100);
-    }
-
     og-checkbox {
         --og-checkbox-BorderColor: var(--OG-COLOR-SHADE--100);
         --og-checkbox-BorderColor--hover: var(--OG-COLOR-SHADE--100);
