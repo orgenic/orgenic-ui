@@ -12,56 +12,60 @@ import { h, Component, Prop, EventEmitter, Event, Host } from '@stencil/core';
   shadow: true
 })
 export class OgCheckbox {
-    /**
-     * The value of the checkbox
-     */
-    @Prop({ mutable: true, reflectToAttr: true }) checked: boolean;
+  /**
+   * The value of the checkbox
+   */
+  @Prop({ mutable: true, reflectToAttr: true })
+  public checked: boolean;
 
-    /**
-     * The label of the checkbox
-     */
-    @Prop() label: string;
+  /**
+   * The label of the checkbox
+   */
+  @Prop()
+  public label: string;
 
-    /**
-     * Determines, whether the control is disabled or not
-     */
-    @Prop() disabled: boolean;
+  /**
+   * Determines, whether the control is disabled or not
+   */
+  @Prop()
+  public disabled: boolean;
 
-    /**
-     * Event is being emitted when value changes.
-     */
-    @Event() changed: EventEmitter<MouseEvent>;
+  /**
+   * Event is being emitted when value changes.
+   */
+  @Event()
+  public changed: EventEmitter<MouseEvent>;
 
-    private internalId = Math.random().toString(18).substring(2, 8) + Math.random().toString(18).substring(2, 8);
+  private internalId = Math.random().toString(18).substring(2, 8) + Math.random().toString(18).substring(2, 8);
 
-    handleChange(e) {
-        if (!this.disabled) {
-            this.checked = e.target.checked;
-            this.changed.emit(e.target.checked);
-        }
+  public handleChange(e) {
+    if (!this.disabled) {
+      this.checked = e.target.checked;
+      this.changed.emit(e.target.checked);
     }
+  }
 
-    render() {
-        return (
-            <Host class={{
-                    'og-checkbox--checked' : this.checked,
-                    'og-checkbox--disabled' : this.disabled
-                }}>
-                <input
-                    class="og-checkbox__input"
-                    type="checkbox"
-                    id={ this.internalId }
-                    checked={ this.checked }
-                    disabled={ this.disabled }
-                    onChange={(event) => this.handleChange(event)}
-                />
-                <label
-                    class="og-checkbox__label"
-                    htmlFor={ this.internalId }
-                >
-                    { this.label && <span class="og-checkbox__label__content">{ this.label }</span> }
-                </label>
-            </Host>
-        )
-    }
+  public render(): HTMLElement {
+    return (
+      <Host class={{
+        'og-checkbox--checked' : this.checked,
+        'og-checkbox--disabled' : this.disabled
+      }}>
+        <input
+          class="og-checkbox__input"
+          type="checkbox"
+          id={ this.internalId }
+          checked={ this.checked }
+          disabled={ this.disabled }
+          onChange={(event) => this.handleChange(event)}
+        />
+        <label
+          class="og-checkbox__label"
+          htmlFor={ this.internalId }
+        >
+          { this.label && <span class="og-checkbox__label__content">{ this.label }</span> }
+        </label>
+      </Host>
+    )
+  }
 }

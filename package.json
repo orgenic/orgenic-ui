@@ -51,7 +51,10 @@
     "@types/jest": "24.0.13",
     "@types/puppeteer": "1.12.4",
     "@types/tabulator-tables": "^4.2.4",
+    "@typescript-eslint/eslint-plugin": "^1.10.2",
+    "@typescript-eslint/parser": "^1.10.2",
     "copyfiles": "^2.1.0",
+    "eslint": "^5.16.0",
     "glob": "^7.1.4",
     "jest": "24.8.0",
     "jest-cli": "24.8.0",
@@ -61,6 +64,7 @@
     "puppeteer": "1.17.0",
     "systemjs": "^3.1.6",
     "tabulator-tables": "^4.2.7",
-    "tslib": "^1.10.0"
+    "tslib": "^1.10.0",
+    "typescript": "^3.5.2"
   }
 }

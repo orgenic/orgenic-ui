@@ -12,23 +12,26 @@ import { h, Component, Prop } from '@stencil/core';
   shadow: true
 })
 export class OgTab {
-    /**
-     * The label of the tab
-     */
-    @Prop() label: string;
+  /**
+   * The label of the tab
+   */
+  @Prop()
+  public label: string;
 
-    @Prop({ reflectToAttr: true }) selected: boolean;
+  @Prop({ reflectToAttr: true })
+  public selected: boolean;
 
-    /**
-     * Determines, whether the control is disabled or not
-     */
-    @Prop({ reflectToAttr: true }) disabled: boolean;
+  /**
+   * Determines, whether the control is disabled or not
+   */
+  @Prop({ reflectToAttr: true })
+  public disabled: boolean;
 
-    render() {
-        return (
-            <div class="og-tab" data-selected={ this.selected }>
-                <slot></slot>
-            </div>
-        );
-    }
+  public render(): HTMLElement {
+    return (
+      <div class="og-tab" data-selected={ this.selected }>
+        <slot></slot>
+      </div>
+    );
+  }
 }
