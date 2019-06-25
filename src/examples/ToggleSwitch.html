@@ -1,0 +1,17 @@
+<!--
+og-toggle-switch
+-->
+<og-card name="Toggle Switch">
+    <div class="example">
+        <og-toggle-switch value="false"></og-toggle-switch>
+        <og-toggle-switch value="true" disabled></og-toggle-switch>
+    </div>
+</og-card>
+<script>
+    const toggleswitches = document.querySelectorAll('og-toggle-switch');
+    toggleswitches.forEach(toggleswitch => {
+        toggleswitch.addEventListener('changed', (e) => {
+            console.log('Toggle Switch Active', e.detail);
+        });
+    });
+</script>

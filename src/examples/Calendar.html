@@ -1,0 +1,35 @@
+<!--
+og-calendar-group
+-->
+<og-card name="Calendar">
+    <div>
+        <h4>Calendar Group (2 months): de</h4>
+        <og-calendar month="4" year="2019" loc="de" displayed-months="2" show-calendar-week="false" id="groupCalendar1"></og-calendar>
+        <h4>Calendar Group (1 months): en</h4>
+        <og-calendar month="4" year="2019" loc="en"></og-calendar>
+    </div>
+</og-card>
+<script>
+    const calendar = document.querySelector('#groupCalendar1');
+    calendar.dateDecorator = {
+        getDateDecoration: function (moment) {
+            if (moment.day() === 0 || moment.day() === 6) {
+                return {
+                    class: 'day--disabled'
+                };
+            } else {
+                if (moment.date() === 1 || moment.date() === 20) {
+                    return {
+                        class: 'day--highlight'
+                    };
+                }
+            }
+            return {
+                class: ''
+            };
+        }
+    };
+    calendar.addEventListener('selectionChanged', e => {
+        console.log('selection changed event', e.detail);
+    });
+</script>

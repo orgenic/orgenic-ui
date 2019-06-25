@@ -1,0 +1,33 @@
+<!--
+og-combobox
+-->
+<og-card name="Combobox">
+    <div>
+        <h4>Preselected value</h4>
+        <og-combobox id="combobox1" value="3"></og-combobox>
+
+            <h4>Empty value with placeholder text</h4>
+            <og-combobox id="combobox2" placeholder="Please select a value"></og-combobox>
+
+            <h4>Disabled combobox</h4>
+            <og-combobox id="combobox3" value="2" disabled></og-combobox>
+
+    </div>
+</og-card>
+<script>
+    const values = [];
+    for (let i = 1; i < 11; i++) {
+        values.push({ label:'Value ' + i, value: i});
+    }
+
+    const combobox1 = document.querySelector('#combobox1');
+    combobox1.items = values;
+    combobox1.addEventListener('itemSelected', e => console.log('item selected', e));
+
+    const combobox2 = document.querySelector('#combobox2');
+    combobox2.items = values;
+    combobox2.addEventListener('itemSelected', e => console.log('item selected', e));
+
+    const combobox3 = document.querySelector('#combobox3');
+    combobox3.items = values;
+</script>

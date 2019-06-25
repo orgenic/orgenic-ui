@@ -12,6 +12,12 @@ export const config: Config = {
             serviceWorker: null // disable service workers
         }
     ],
+    copy: [
+        {
+            src: 'examples',
+            dest: 'examples'
+        }
+    ],
     plugins: [
         sass({
             injectGlobalPaths: [

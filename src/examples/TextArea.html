@@ -1,0 +1,21 @@
+<!--
+og-textarea
+-->
+<og-card name="Textarea">
+    <div class="example example--column">
+        <div>
+            <label for="textarea1">Default Textarea</label>
+            <og-textarea id="textarea1"></og-textarea>
+        </div>
+        <br>
+        <og-form-item label="Textarea with a label">
+            <og-textarea id="textarea2"></og-textarea>
+        </og-form-item>
+    </div>
+</og-card>
+<script>
+    const textarea = document.querySelector('og-textarea');
+    textarea.addEventListener('valueChanged', e => console.log('Textarea value changed', e));
+    textarea.addEventListener('focusGained', e => console.log('Textarea got focus', e));
+    textarea.addEventListener('focusLost', e => console.log('Textarea lost focus', e));
+</script>

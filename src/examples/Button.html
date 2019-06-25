@@ -1,0 +1,19 @@
+<!--
+og-button
+-->
+<og-card name="Buttons">
+    <div class="example">
+        <og-button class="demo-button" label="Default"></og-button>
+        <og-button class="demo-button" label="Link" data-context="link"></og-button>
+        <og-button class="demo-button" label="Workflow" data-context="workflow"></og-button>
+        <og-button class="demo-button" label="Disabled" disabled></og-button>
+    </div>
+</og-card>
+<script>
+    const buttons = document.querySelectorAll('.demo-button');
+    buttons.forEach(button => {
+        button.addEventListener('clicked', (e) => {
+            console.log('clicked', e);
+        });
+    });
+</script>

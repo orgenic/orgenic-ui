@@ -101,6 +101,7 @@
     min-width: var(--og-checkbox-Width);
     min-height: var(--og-checkbox-Height);
     cursor: pointer;
+    white-space: nowrap;
 
     &::after,
     &::before {
