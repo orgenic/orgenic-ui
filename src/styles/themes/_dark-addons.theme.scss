@@ -29,13 +29,6 @@
     }
 
 
-    og-button[data-context~='workflow'] {
-        --og-button-Color: var(--OG-COLOR-SHADE--100);
-        --og-button-Color--hover: var(--OG-COLOR-SHADE--100);
-        --og-button-Color--active: var(--OG-COLOR-SHADE--100);
-        --og-button-Color--disabled: var(--OG-COLOR-SHADE--100--30);
-    }
-
     og-card {
         --og-card-BackgroundColor:  var(--OG-COLOR-SHADE--0--20);
         --og-card__header-BorderColor:  var(--OG-COLOR-SHADE--100--40);
