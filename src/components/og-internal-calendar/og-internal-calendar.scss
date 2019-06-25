@@ -6,7 +6,7 @@
 
     --og-calendar__day-Color: inherit;
     --og-calendar__day-Color--hover: var(--OG-COLOR-PRIMARY--100--15, #{$og-color-primary--100--15});
-    --og-calendar__day-Color--active: var(--OG-COLOR-SHADE--0, #{$og-color-shade--0});
+    --og-calendar__day-Color--active: var(--OG-COLOR-PRIMARY--CONTER, #{$og-color-primary--conter});
     --og-calendar__day-Color--disabled: var(--OG-COLOR-SHADE--100--50, #{$og-color-shade--100--50});
 
     --og-calendar__day__indicator-Background: var(--OG-COLOR-PRIMARY--40, #{$og-color-primary--40});
