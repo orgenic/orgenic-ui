@@ -1,15 +1,39 @@
-.og-menu__container {
+// =============================================================================
+// CSS CUSTOM PROPERTIES
+// =============================================================================
+
+/**
+ * @prop --og-menu-BackgroundColor: Main background color of the menu
+ */
+
+:host {
+    --og-menu-BackgroundColor:          #fff8;
+
+    display: block;
+    box-sizing: border-box;
     position: fixed;
     top: 0;
+    bottom: 0;
     left: -250px;
     width: 250px;
-    height: 100%;
-    background: #fff8;
+    background-color: var(--og-menu-BackgroundColor);
     transition: 0.3s;
+
+    *,
+    *::before,
+    *::after {
+        box-sizing: inherit;
+    }
 }
 
-.og-menu__container--visible {
+:host([visible]) {
     left: 0;
+}
+
+.og-menu {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .og-menu__footer {

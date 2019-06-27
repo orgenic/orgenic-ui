@@ -1,0 +1,6 @@
+{
+  "globalDevDependencies": {
+    "moment": "registry:dt/moment#2.11.1+20161010105546",
+    "systemjs": "registry:dt/systemjs#0.20.0+20170310232558"
+  }
+}
