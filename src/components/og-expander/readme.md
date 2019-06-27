@@ -49,6 +49,19 @@ Type: `Promise<void>`
 | `--og-expander__header-TextTransform`  | Text transformation of the expanders header |
 
 
+## Dependencies
+
+### Used by
+
+ - [og-menu-group](..\og-menu-group)
+
+### Graph
+```mermaid
+graph TD;
+  og-menu-group --> og-expander
+  style og-expander fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

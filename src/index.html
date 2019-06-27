@@ -250,6 +250,32 @@
             </script>
 
             <!--
+            Menu
+            -->
+            <og-card name="Menu">
+                <div slot="content" slot="content">
+                    <og-menu name="sidebar">
+                        <og-menu-group slot="content" name="Group A" collapsible>
+                            <ul>
+                                <li>A.A</li>
+                                <li>A.B</li>
+                            </ul>
+                        </og-menu-group>
+                        <og-menu-group slot="content" name="Group B">
+                            <ul>
+                                <li>B.A</li>
+                                <li>B.B</li>
+                            </ul>
+                        </og-menu-group>
+                        <div slot="footer">
+                            <og-menu-trigger menu="sidebar"></og-menu-trigger>
+                        </div>
+                    </og-menu>
+                    <og-menu-trigger menu="sidebar" labelOpen="Open" labelClose="Close"></og-menu-trigger>
+                </div>
+            </og-card>
+
+            <!--
             og-expander
             -->
             <og-card name="Expander">

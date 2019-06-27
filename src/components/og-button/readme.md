@@ -40,12 +40,14 @@
 ### Used by
 
  - [og-confirm-dialog](..\og-dialog\og-confirm-dialog)
+ - [og-menu-trigger](..\og-menu-trigger)
  - [og-message-dialog](..\og-dialog\og-message-dialog)
 
 ### Graph
 ```mermaid
 graph TD;
   og-confirm-dialog --> og-button
+  og-menu-trigger --> og-button
   og-message-dialog --> og-button
   style og-button fill:#f9f,stroke:#333,stroke-width:4px
 ```

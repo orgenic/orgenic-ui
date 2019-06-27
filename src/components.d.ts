@@ -267,6 +267,52 @@ export namespace Components {
     */
     'value': string;
   }
+  interface OgMenu {
+    /**
+    * The name of the menu to be addressed by a trigger
+    */
+    'name': string;
+    /**
+    * Method to toggle the visibility of the menu
+    */
+    'toggleVisibility': (visible?: boolean) => Promise<void>;
+    /**
+    * Determines, whether the menu is visible or not
+    */
+    'visible': boolean;
+  }
+  interface OgMenuGroup {
+    'collapsible': boolean;
+    'name': string;
+  }
+  interface OgMenuItem {
+    /**
+    * Determines, whether the menu item is disabled or not
+    */
+    'disabled': boolean;
+    /**
+    * The label of the menu item
+    */
+    'label': string;
+  }
+  interface OgMenuTrigger {
+    /**
+    * Determines, whether the menu trigger is disabled or not
+    */
+    'disabled': boolean;
+    /**
+    * The label of the menu trigger to close the menu
+    */
+    'labelClose': string;
+    /**
+    * The label of the menu trigger to open the menu
+    */
+    'labelOpen': string;
+    /**
+    * Determines, which menu is assigned to the trigger
+    */
+    'menu': string;
+  }
   interface OgMessageDialog {
     /**
     * Label for approve button.
@@ -515,6 +561,30 @@ declare global {
     new (): HTMLOgListItemElement;
   };
 
+  interface HTMLOgMenuElement extends Components.OgMenu, HTMLStencilElement {}
+  var HTMLOgMenuElement: {
+    prototype: HTMLOgMenuElement;
+    new (): HTMLOgMenuElement;
+  };
+
+  interface HTMLOgMenuGroupElement extends Components.OgMenuGroup, HTMLStencilElement {}
+  var HTMLOgMenuGroupElement: {
+    prototype: HTMLOgMenuGroupElement;
+    new (): HTMLOgMenuGroupElement;
+  };
+
+  interface HTMLOgMenuItemElement extends Components.OgMenuItem, HTMLStencilElement {}
+  var HTMLOgMenuItemElement: {
+    prototype: HTMLOgMenuItemElement;
+    new (): HTMLOgMenuItemElement;
+  };
+
+  interface HTMLOgMenuTriggerElement extends Components.OgMenuTrigger, HTMLStencilElement {}
+  var HTMLOgMenuTriggerElement: {
+    prototype: HTMLOgMenuTriggerElement;
+    new (): HTMLOgMenuTriggerElement;
+  };
+
   interface HTMLOgMessageDialogElement extends Components.OgMessageDialog, HTMLStencilElement {}
   var HTMLOgMessageDialogElement: {
     prototype: HTMLOgMessageDialogElement;
@@ -589,6 +659,10 @@ declare global {
     'og-internal-calendar': HTMLOgInternalCalendarElement;
     'og-list': HTMLOgListElement;
     'og-list-item': HTMLOgListItemElement;
+    'og-menu': HTMLOgMenuElement;
+    'og-menu-group': HTMLOgMenuGroupElement;
+    'og-menu-item': HTMLOgMenuItemElement;
+    'og-menu-trigger': HTMLOgMenuTriggerElement;
     'og-message-dialog': HTMLOgMessageDialogElement;
     'og-number-input': HTMLOgNumberInputElement;
     'og-password-input': HTMLOgPasswordInputElement;
@@ -893,6 +967,52 @@ declare namespace LocalJSX {
     */
     'value'?: string;
   }
+  interface OgMenu extends JSXBase.HTMLAttributes<HTMLOgMenuElement> {
+    /**
+    * The name of the menu to be addressed by a trigger
+    */
+    'name'?: string;
+    /**
+    * Determines, whether the menu is visible or not
+    */
+    'visible'?: boolean;
+  }
+  interface OgMenuGroup extends JSXBase.HTMLAttributes<HTMLOgMenuGroupElement> {
+    'collapsible'?: boolean;
+    'name'?: string;
+  }
+  interface OgMenuItem extends JSXBase.HTMLAttributes<HTMLOgMenuItemElement> {
+    /**
+    * Determines, whether the menu item is disabled or not
+    */
+    'disabled'?: boolean;
+    /**
+    * The label of the menu item
+    */
+    'label'?: string;
+    /**
+    * Event is being emitted when value changes.
+    */
+    'onClicked'?: (event: CustomEvent<any>) => void;
+  }
+  interface OgMenuTrigger extends JSXBase.HTMLAttributes<HTMLOgMenuTriggerElement> {
+    /**
+    * Determines, whether the menu trigger is disabled or not
+    */
+    'disabled'?: boolean;
+    /**
+    * The label of the menu trigger to close the menu
+    */
+    'labelClose'?: string;
+    /**
+    * The label of the menu trigger to open the menu
+    */
+    'labelOpen'?: string;
+    /**
+    * Determines, which menu is assigned to the trigger
+    */
+    'menu'?: string;
+  }
   interface OgMessageDialog extends JSXBase.HTMLAttributes<HTMLOgMessageDialogElement> {
     /**
     * Label for approve button.
@@ -1128,6 +1248,10 @@ declare namespace LocalJSX {
     'og-internal-calendar': OgInternalCalendar;
     'og-list': OgList;
     'og-list-item': OgListItem;
+    'og-menu': OgMenu;
+    'og-menu-group': OgMenuGroup;
+    'og-menu-item': OgMenuItem;
+    'og-menu-trigger': OgMenuTrigger;
     'og-message-dialog': OgMessageDialog;
     'og-number-input': OgNumberInput;
     'og-password-input': OgPasswordInput;
