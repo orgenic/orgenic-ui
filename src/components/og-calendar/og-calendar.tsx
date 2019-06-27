@@ -103,7 +103,7 @@ export class OgCalendar {
         <div class="calendar__container">
           <div class="calendar__header">
             <div class="calender__header__prefix">
-              <span class={ 'calendar__nav' + (i > 0 ? ' calendar__nav--hidden' : '') } onClick={ (): void => this.decreaseMonth() }>
+              <span class={ 'calendar__nav' + (i > 0 ? ' calendar__nav--hidden' : '') } onClick={ () => this.decreaseMonth() }>
                 <svg
                   class={ 'calendar__nav__icon' }
                   version="1.1"

@@ -11,7 +11,7 @@ async function loadMomentLocale(locale: string, moment) {
     }
     module.addToMoment(moment);
   } catch (e) {
-    console.log('unable to retreive og-calendar-locale', e);
+    console.error('unable to retreive og-calendar-locale', e);
   }
 }
 

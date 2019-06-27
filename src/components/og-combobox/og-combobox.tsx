@@ -266,7 +266,7 @@ export class OgCombobox {
             {!this.hasValidItems() ? (
               <li>No options available</li>
             ) : (
-              this.items.map(async item => (
+              this.items.map((item): HTMLElement => (
                 <li
                   class={
                     'og-combobox__flyout__list__item' +

@@ -96,7 +96,7 @@ export class OgList {
       {
         !this.hasValidItems()
           ? <li>{this.emptyListMessage}</li>
-          : this.items.map(item =>
+          : this.items.map((item): HTMLElement =>
             <og-list-item
               key={item[this.keyProperty]}
               label={item[this.labelProperty]}

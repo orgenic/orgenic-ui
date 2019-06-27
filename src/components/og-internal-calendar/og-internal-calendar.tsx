@@ -103,7 +103,7 @@ export class OgInternalCalendar {
           <tr>
             { this.showCalendarWeek && <th></th> }
             {
-              this.getDayArray().map(async d => {
+              this.getDayArray().map((d): HTMLElement => {
                 return <th>{ this.internalMoment.day(d).format('dd') }</th>;
               })
             }
@@ -111,11 +111,11 @@ export class OgInternalCalendar {
         </thead>
         <tbody>
           {
-            [0,1,2,3,4,5].map(async () => {
+            [0,1,2,3,4,5].map((): HTMLElement => {
               return (<tr>
                 { this.showCalendarWeek && <td class="week">{ this.internalMoment.week() }</td> }
                 {
-                  [0,1,2,3,4,5,6].map(async () => {
+                  [0,1,2,3,4,5,6].map((): HTMLElement => {
                     const localM = this.internalMoment.clone();
                     this.internalMoment.add(1, 'd');
                     return <td
