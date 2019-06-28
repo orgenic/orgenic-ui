@@ -1,0 +1,28 @@
+<!--
+og-form-item
+-->
+<og-card name="Form Item">
+    <div class="example example--column">
+        <div>
+            <og-form-item label="Default Text Input">
+                <og-text-input id="input#1"></og-text-input>
+            </og-form-item>
+            <og-form-item label="Default Number Input">
+                <og-number-input></og-number-input>
+            </og-form-item>
+            <og-form-item label="Default Combobox" id="formItemCombobox">
+                <og-combobox value="3"></og-combobox>
+            </og-form-item>
+        </div>
+    </div>
+</og-card>
+<script>
+    const fiComboboxValues = [
+        { label: 'Value 1', value: 1 },
+        { label: 'Value 2', value: 2 },
+        { label: 'Value 3', value: 3 },
+    ];
+
+    const fiCombobox = document.querySelector('#formItemCombobox').querySelector('og-combobox');
+    fiCombobox.items = fiComboboxValues;
+</script>

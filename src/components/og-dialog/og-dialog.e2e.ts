@@ -1,12 +1,12 @@
 import { newE2EPage, E2EElement, E2EPage } from '@stencil/core/testing';
 
 describe('og-dialog', () => {
-    let page: E2EPage;
-    let component: E2EElement;
+  let page: E2EPage;
+  let component: E2EElement;
 
-    beforeEach(async () => {
-        page = await newE2EPage();
-        await page.setContent(`<og-dialog name="Testing Dialogs!">
+  beforeEach(async () => {
+    page = await newE2EPage();
+    await page.setContent(`<og-dialog name="Testing Dialogs!">
             <div slot="content>
                 <h1>Dialog</h1>
             </div>
@@ -15,31 +15,31 @@ describe('og-dialog', () => {
             </div>
         </og-dialog>`)
 
-        component = await page.find('og-dialog');
-    });
+    component = await page.find('og-dialog');
+  });
 
-    it('renders', async () => {
-        expect(component).toHaveClass('hydrated');
-    });
+  it('renders', async () => {
+    expect(component).toHaveClass('hydrated');
+  });
 
-    it('is hidden by default', async () => {
-        expect(component).not.toHaveAttribute('visible');
-    });
+  it('is hidden by default', async () => {
+    expect(component).not.toHaveAttribute('visible');
+  });
 
-    it('is visible when called', async () => {
-        component.setProperty('visible', true);
-        await page.waitForChanges();
+  it('is visible when called', async () => {
+    component.setProperty('visible', true);
+    await page.waitForChanges();
 
-        expect(component).toHaveAttribute('visible');
-    });
+    expect(component).toHaveAttribute('visible');
+  });
 
-    it('is hidden after closing', async () => {
-        component.setProperty('visible', true);
-        await page.waitForChanges();
+  it('is hidden after closing', async () => {
+    component.setProperty('visible', true);
+    await page.waitForChanges();
 
-        component.setProperty('visible', false);
-        await page.waitForChanges();
+    component.setProperty('visible', false);
+    await page.waitForChanges();
 
-        expect(component).not.toHaveAttribute('visible');
-    });
+    expect(component).not.toHaveAttribute('visible');
+  });
 });

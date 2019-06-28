@@ -1,31 +1,27 @@
 import { newE2EPage, E2EElement, E2EPage } from '@stencil/core/testing';
-import moment from '../og-internal-calendar/interfaces/node_modules/moment';
-import { isNull } from 'util';
 
 describe('og-calendar', () => {
-    let page: E2EPage;
-    let component: E2EElement;
-    let flyout: E2EElement;
+  let page: E2EPage;
+  let component: E2EElement;
 
-
-    beforeEach(async () => {
-        page = await newE2EPage();
-        await page.setContent(`
+  beforeEach(async () => {
+    page = await newE2EPage();
+    await page.setContent(`
             <og-calendar year="2019" month="4">
             </og-calendar>`);
 
-        component = await page.find('og-calendar');
-    });
+    component = await page.find('og-calendar');
+  });
 
-    it('renders', async () => {
-        expect(component).toHaveClass('hydrated');
-    });
+  it('renders', async () => {
+    expect(component).toHaveClass('hydrated');
+  });
 
-    it('shows the current month', async () => {
-        const calendarMonth: E2EElement = await page.find(
-            'og-calendar >>> .calender__header__month'
-        );
-        expect(calendarMonth).toBeDefined();
-        expect(calendarMonth).toEqualText('May');
-    });
+  it('shows the current month', async () => {
+    const calendarMonth: E2EElement = await page.find(
+      'og-calendar >>> .calender__header__month'
+    );
+    expect(calendarMonth).toBeDefined();
+    expect(calendarMonth).toEqualText('May');
+  });
 });

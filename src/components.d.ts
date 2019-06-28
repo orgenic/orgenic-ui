@@ -195,6 +195,34 @@ export namespace Components {
     'showCalendarWeek': boolean;
     'year': number;
   }
+  interface OgLayoutChild {
+    /**
+    * The maximum size of the layout child. Can be pixel (e.g. 250px) or percent (e.g. 50%).
+    */
+    'maxSize': string;
+    /**
+    * The minimum size of the layout child. Can be pixel (e.g. 150px) or percent (e.g. 30%).
+    */
+    'minSize': string;
+    /**
+    * The weight defines the resize behavour. A component with weight 2 will be twice as large as a component with weight 1.. Default: "1"
+    */
+    'weight': number;
+  }
+  interface OgLayoutContainer {
+    /**
+    * If auto responsive is set to true, the horizontal aligned components within this layout will wrap if the available space is insufficient. Default: "false"
+    */
+    'autoResponsive': boolean;
+    /**
+    * Scale all layout children to fill available space (fill: "true") or just keep them left aligned (fill: "false"). Default: "true"
+    */
+    'fill': boolean;
+    /**
+    * Direction of the layout container ("horizontal" / "vertical"). Default: "horizontal"
+    */
+    'orientation': 'vertical' | 'horizontal';
+  }
   interface OgList {
     /**
     * Determines, whether the control is disabled or not
@@ -390,7 +418,7 @@ export namespace Components {
     * Determines, whether the control is disabled or not
     */
     'disabled': boolean;
-    'openTab': (index: number) => Promise<void>;
+    'openTab': (index: number) => Promise<HTMLElement>;
   }
   interface OgTextInput {
     /**
@@ -503,6 +531,18 @@ declare global {
     new (): HTMLOgInternalCalendarElement;
   };
 
+  interface HTMLOgLayoutChildElement extends Components.OgLayoutChild, HTMLStencilElement {}
+  var HTMLOgLayoutChildElement: {
+    prototype: HTMLOgLayoutChildElement;
+    new (): HTMLOgLayoutChildElement;
+  };
+
+  interface HTMLOgLayoutContainerElement extends Components.OgLayoutContainer, HTMLStencilElement {}
+  var HTMLOgLayoutContainerElement: {
+    prototype: HTMLOgLayoutContainerElement;
+    new (): HTMLOgLayoutContainerElement;
+  };
+
   interface HTMLOgListElement extends Components.OgList, HTMLStencilElement {}
   var HTMLOgListElement: {
     prototype: HTMLOgListElement;
@@ -587,6 +627,8 @@ declare global {
     'og-expander': HTMLOgExpanderElement;
     'og-form-item': HTMLOgFormItemElement;
     'og-internal-calendar': HTMLOgInternalCalendarElement;
+    'og-layout-child': HTMLOgLayoutChildElement;
+    'og-layout-container': HTMLOgLayoutContainerElement;
     'og-list': HTMLOgListElement;
     'og-list-item': HTMLOgListItemElement;
     'og-message-dialog': HTMLOgMessageDialogElement;
@@ -816,6 +858,34 @@ declare namespace LocalJSX {
     'selection'?: OgCalendarDate[];
     'showCalendarWeek'?: boolean;
     'year'?: number;
+  }
+  interface OgLayoutChild extends JSXBase.HTMLAttributes<HTMLOgLayoutChildElement> {
+    /**
+    * The maximum size of the layout child. Can be pixel (e.g. 250px) or percent (e.g. 50%).
+    */
+    'maxSize'?: string;
+    /**
+    * The minimum size of the layout child. Can be pixel (e.g. 150px) or percent (e.g. 30%).
+    */
+    'minSize'?: string;
+    /**
+    * The weight defines the resize behavour. A component with weight 2 will be twice as large as a component with weight 1.. Default: "1"
+    */
+    'weight'?: number;
+  }
+  interface OgLayoutContainer extends JSXBase.HTMLAttributes<HTMLOgLayoutContainerElement> {
+    /**
+    * If auto responsive is set to true, the horizontal aligned components within this layout will wrap if the available space is insufficient. Default: "false"
+    */
+    'autoResponsive'?: boolean;
+    /**
+    * Scale all layout children to fill available space (fill: "true") or just keep them left aligned (fill: "false"). Default: "true"
+    */
+    'fill'?: boolean;
+    /**
+    * Direction of the layout container ("horizontal" / "vertical"). Default: "horizontal"
+    */
+    'orientation'?: 'vertical' | 'horizontal';
   }
   interface OgList extends JSXBase.HTMLAttributes<HTMLOgListElement> {
     /**
@@ -1126,6 +1196,8 @@ declare namespace LocalJSX {
     'og-expander': OgExpander;
     'og-form-item': OgFormItem;
     'og-internal-calendar': OgInternalCalendar;
+    'og-layout-child': OgLayoutChild;
+    'og-layout-container': OgLayoutContainer;
     'og-list': OgList;
     'og-list-item': OgListItem;
     'og-message-dialog': OgMessageDialog;
