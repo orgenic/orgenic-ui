@@ -21,13 +21,13 @@
 
 ## Methods
 
-### `openTab(index: number) => Promise<void>`
+### `openTab(index: number) => Promise<HTMLElement>`
 
 
 
 #### Returns
 
-Type: `Promise<void>`
+Type: `Promise<HTMLElement>`
 
 
 

@@ -53,7 +53,7 @@ export class OgPasswordInput {
   public passwordVisible = false;
 
   @Method()
-  public togglePasswordVisibility() {
+  public async togglePasswordVisibility() {
     this.passwordVisible = !this.passwordVisible;
   }
 

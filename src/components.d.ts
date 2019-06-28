@@ -197,7 +197,7 @@ export namespace Components {
   }
   interface OgLayoutChild {
     /**
-    * The maximumg size of the layout child. Can be pixel (e.g. 250px) or percent (e.g. 50%).
+    * The maximum size of the layout child. Can be pixel (e.g. 250px) or percent (e.g. 50%).
     */
     'maxSize': string;
     /**
@@ -418,7 +418,7 @@ export namespace Components {
     * Determines, whether the control is disabled or not
     */
     'disabled': boolean;
-    'openTab': (index: number) => Promise<void>;
+    'openTab': (index: number) => Promise<HTMLElement>;
   }
   interface OgTextInput {
     /**
@@ -861,7 +861,7 @@ declare namespace LocalJSX {
   }
   interface OgLayoutChild extends JSXBase.HTMLAttributes<HTMLOgLayoutChildElement> {
     /**
-    * The maximumg size of the layout child. Can be pixel (e.g. 250px) or percent (e.g. 50%).
+    * The maximum size of the layout child. Can be pixel (e.g. 250px) or percent (e.g. 50%).
     */
     'maxSize'?: string;
     /**

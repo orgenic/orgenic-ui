@@ -31,7 +31,7 @@ export class OgTabContainer {
   public tabSelected: EventEmitter<number>;
 
   @Method()
-  public openTab(index: number): HTMLElement {
+  public async openTab(index: number): Promise<HTMLElement> {
     if (this.disabled) {
       return;
     }
