@@ -14,6 +14,12 @@ import {
 import {
   OgDatatableConfig,
 } from './components/og-datatable/interfaces/og-datatable-column-def';
+import {
+  IOgMenuItem,
+} from './components/og-menu-item/og-menu-item';
+import {
+  IOgMenuItem as IOgMenuItem1,
+} from './components/og-menu-item/og-menu-item';
 
 export namespace Components {
   interface OgButton {
@@ -268,6 +274,7 @@ export namespace Components {
     'value': string;
   }
   interface OgMenu {
+    'items': IOgMenuItem[];
     /**
     * The name of the menu to be addressed by a trigger
     */
@@ -287,13 +294,25 @@ export namespace Components {
   }
   interface OgMenuItem {
     /**
+    * The method to be called when the menu item is selected
+    */
+    'clicked'?: Function;
+    /**
     * Determines, whether the menu item is disabled or not
     */
-    'disabled': boolean;
+    'disabled'?: boolean;
+    /**
+    * The unique id of the menu item
+    */
+    'itemId'?: string;
     /**
     * The label of the menu item
     */
     'label': string;
+    /**
+    * Subitems of the menu item
+    */
+    'subItems'?: IOgMenuItem[];
   }
   interface OgMenuTrigger {
     /**
@@ -968,6 +987,7 @@ declare namespace LocalJSX {
     'value'?: string;
   }
   interface OgMenu extends JSXBase.HTMLAttributes<HTMLOgMenuElement> {
+    'items'?: IOgMenuItem[];
     /**
     * The name of the menu to be addressed by a trigger
     */
@@ -983,17 +1003,25 @@ declare namespace LocalJSX {
   }
   interface OgMenuItem extends JSXBase.HTMLAttributes<HTMLOgMenuItemElement> {
     /**
+    * The method to be called when the menu item is selected
+    */
+    'clicked'?: Function;
+    /**
     * Determines, whether the menu item is disabled or not
     */
     'disabled'?: boolean;
+    /**
+    * The unique id of the menu item
+    */
+    'itemId'?: string;
     /**
     * The label of the menu item
     */
     'label'?: string;
     /**
-    * Event is being emitted when value changes.
+    * Subitems of the menu item
     */
-    'onClicked'?: (event: CustomEvent<any>) => void;
+    'subItems'?: IOgMenuItem[];
   }
   interface OgMenuTrigger extends JSXBase.HTMLAttributes<HTMLOgMenuTriggerElement> {
     /**

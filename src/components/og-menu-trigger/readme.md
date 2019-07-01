@@ -7,10 +7,12 @@
 
 ## Properties
 
-| Property   | Attribute  | Description                                             | Type      | Default     |
-| ---------- | ---------- | ------------------------------------------------------- | --------- | ----------- |
-| `disabled` | `disabled` | Determines, whether the menu trigger is disabled or not | `boolean` | `undefined` |
-| `menu`     | `menu`     | Determines, which menu is assigned to the trigger       | `string`  | `undefined` |
+| Property     | Attribute     | Description                                             | Type      | Default        |
+| ------------ | ------------- | ------------------------------------------------------- | --------- | -------------- |
+| `disabled`   | `disabled`    | Determines, whether the menu trigger is disabled or not | `boolean` | `undefined`    |
+| `labelClose` | `label-close` | The label of the menu trigger to close the menu         | `string`  | `'Close menu'` |
+| `labelOpen`  | `label-open`  | The label of the menu trigger to open the menu          | `string`  | `'Open menu'`  |
+| `menu`       | `menu`        | Determines, which menu is assigned to the trigger       | `string`  | `undefined`    |
 
 
 ## Dependencies

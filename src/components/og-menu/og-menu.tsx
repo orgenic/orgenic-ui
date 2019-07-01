@@ -5,6 +5,7 @@
  **/
 
 import { h, Component, Prop, Method } from '@stencil/core';
+import { IOgMenuItem } from '../og-menu-item/og-menu-item';
 
 @Component({
     tag: 'og-menu',
@@ -22,6 +23,8 @@ export class OgMenu {
      */
     @Prop({ mutable: true, reflectToAttr: true }) visible: boolean;
 
+    @Prop() items: IOgMenuItem[];
+
     /**
      * Method to toggle the visibility of the menu
      */
@@ -30,11 +33,48 @@ export class OgMenu {
         this.visible = (visible !== null && visible !== undefined) ? visible : !this.visible;
     }
 
+    constructor() {
+        this.items = [
+            {
+                label: 'Foo',
+                subItems: [
+                    {
+                        label: 'Foo Sub 1',
+                        subItems: [
+                            {
+                                label: 'Foo Sub 2'
+                            }
+                        ]
+                    }
+                ],
+                clicked: () => { console.log('I have been clicked :)'); }
+            },
+            {
+                label: 'Bar'
+            }
+        ]
+    }
+
     render() {
         return (
-            <div class="og-menu">
-                <slot name="content"></slot>
-                <div class="og-menu__footer">
+            <div class="og-menu-container">
+                <div class="og-menus">
+                    {this.items &&
+                        <ul class="og-menu og-menu--root">
+                            {this.items.map((item) =>
+                            <li>
+                                <og-menu-item
+                                    itemId={item.itemId}
+                                    label={item.label}
+                                    disabled={item.disabled}
+                                    clicked={item.clicked}
+                                    subItems={item.subItems}></og-menu-item>
+                            </li>
+                            )}
+                        </ul>
+                    }
+                </div>
+                <div class="og-menu-footer">
                     <slot name="footer"></slot>
                 </div>
             </div>

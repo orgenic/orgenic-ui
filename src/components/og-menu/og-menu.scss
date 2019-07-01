@@ -30,13 +30,24 @@
     left: 0;
 }
 
-.og-menu {
+.og-menu-container {
     display: flex;
     flex-direction: column;
     height: 100%;
 }
 
-.og-menu__footer {
-    position: absolute;
-    bottom: 0;
+.og-menus {
+    flex: auto;
+    position: relative;
+}
+
+.og-menu {
+    list-style: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.og-menu-footer {
+    flex: none;
 }
