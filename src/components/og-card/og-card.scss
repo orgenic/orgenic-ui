@@ -103,6 +103,11 @@
     text-align: var(--og-card__footer-TextAlign);
 }
 
-::slotted(div[slot="footer"]) {
+::slotted([slot="header"]) {
+    flex-grow: 1;
+    text-align: right;
+}
+
+::slotted([slot="footer"]) {
     padding: var(--og-card__footer-Padding);
 }
