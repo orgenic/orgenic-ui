@@ -1,3 +1,11 @@
+# [0.4.0](https://github.com/orgenic/orgenic-ui/compare/v0.3.1...v0.4.0) (2019-06-28)
+
+### Features
+* added new component: layout container
+
+### Enhancements
+* added linting rules to improve code quality
+
 # [0.3.1](https://github.com/orgenic/orgenic-ui/compare/v0.3.0...v0.3.1) (2019-06-14)
 
 ### Bug Fixes

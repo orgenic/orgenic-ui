@@ -12,46 +12,47 @@ import { h, Component, Prop } from '@stencil/core';
   shadow: true
 })
 export class OgCard {
-    /**
-     * The title for this card (optional)
-     */
-    @Prop() name: string;
+  /**
+   * The title for this card (optional)
+   */
+  @Prop()
+  public name: string;
 
-    handleDivRef(el: HTMLElement) {
-        if (!el) {
-            return;
-        }
-
-        let slot = el.firstChild as HTMLSlotElement;
-        if (!slot) {
-            return;
-        }
-
-        el.style.display = slot.assignedNodes().length > 0 ? 'block' : 'none';
-
-        slot.addEventListener('slotchange', () => {
-            el.style.display = slot.assignedNodes().length > 0 ? 'block' : 'none';
-        })
+  public handleDivRef(el: HTMLElement) {
+    if (!el) {
+      return;
     }
 
-    render() {
-        return (
-            <div class="og-card">
-                { this.name
-                    ?   <div class="og-card__header">
-                            <span class="og-card__title">{ this.name }</span>
-                        </div>
-                    :   ""
-                }
-                <div class="og-card__content">
-                    {/* allow the user to use an unnamed slot instead of always having to assign as "content" */}
-                    <slot></slot>
-                    <slot name="content"></slot>
-                </div>
-                <div class="og-card__footer" ref={ el => this.handleDivRef(el) }>
-                    <slot name="footer"></slot>
-                </div>
-            </div>
-        );
+    const slot = el.firstChild as HTMLSlotElement;
+    if (!slot) {
+      return;
     }
+
+    el.style.display = slot.assignedNodes().length > 0 ? 'block' : 'none';
+
+    slot.addEventListener('slotchange', () => {
+      el.style.display = slot.assignedNodes().length > 0 ? 'block' : 'none';
+    })
+  }
+
+  public render(): HTMLElement {
+    return (
+      <div class="og-card">
+        { this.name
+          ?   <div class="og-card__header">
+            <span class="og-card__title">{ this.name }</span>
+          </div>
+          :   ""
+        }
+        <div class="og-card__content">
+          {/* allow the user to use an unnamed slot instead of always having to assign as "content" */}
+          <slot></slot>
+          <slot name="content"></slot>
+        </div>
+        <div class="og-card__footer" ref={ el => this.handleDivRef(el) }>
+          <slot name="footer"></slot>
+        </div>
+      </div>
+    );
+  }
 }

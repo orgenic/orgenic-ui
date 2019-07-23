@@ -1,0 +1,36 @@
+<!--
+og-list
+-->
+<og-card name="List">
+    <div>
+        <h4>Listitems with pre-selection</h4>
+        <og-list id="list1" selected="v2"></og-list>
+
+        <h4>Listitems with icon and value</h4>
+        <og-list id="list2" image-url-property="iconUrl" value-property="value"></og-list>
+
+        <h4>Disabled list</h4>
+        <og-list id="list3" selected-key="v2" value-property="value" disabled></og-list>
+    </div>
+    <div slot="footer">
+    </div>
+</og-card>
+<script type="module">
+    const listItems = [
+        { key: 'v1', label: 'Value 1', iconUrl: 'http://orgtest.maximago.de/assets/images/Car/Rally/Default_small.png', value: 22 },
+        { key: 'v2', label: 'Value 2', value: 2 },
+        { key: 'v3', label: 'Value 3', iconUrl: 'http://orgtest.maximago.de/assets/images/Car/Rally/Default_small.png', value: 35, disabled: true },
+    ];
+
+    const list1 = document.querySelector('#list1');
+    list1.items = listItems;
+    list1.addEventListener('itemSelected', e => console.log('item selected', e));
+
+    const list2 = document.querySelector('#list2');
+    list2.items = listItems;
+    list2.addEventListener('itemSelected', e => console.log('item selected', e));
+
+    const list3 = document.querySelector('#list3');
+    list3.items = listItems;
+    list3.addEventListener('itemSelected', e => console.log('item selected', e));
+</script>

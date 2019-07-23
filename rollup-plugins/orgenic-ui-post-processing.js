@@ -29,7 +29,7 @@ function orgenicUiPostProcessing(config) {
                         await execute('copyfiles -u 1 "src/components/**/readme.md" dist/docs/');
 
                         // copy helpers to dist
-                        await execute('cp -R src/helper dist')
+                        await execute('copyfiles -R src/helper dist')
 
                         // trim readme footer
                         trimReadmeFooter();

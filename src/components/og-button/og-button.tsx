@@ -12,29 +12,38 @@ import { h,  Component, Prop, EventEmitter, Event } from '@stencil/core';
   shadow: true
 })
 export class OgButton {
-    /**
-     * The label of the button
-     */
-    @Prop() label: string;
+  /**
+   * The label of the button
+   */
+  @Prop()
+  public label: string;
 
-    /**
-     * Determines, whether the control is disabled or not
-     */
-    @Prop() disabled: boolean;
+  /**
+   * Determines, whether the control is disabled or not
+   */
+  @Prop()
+  public disabled: boolean;
 
-    /**
-     * Event is being emitted when value changes.
-     */
-    @Event() clicked: EventEmitter;
+  /**
+   * Event is being emitted when value changes.
+   */
+  @Event()
+  public clicked: EventEmitter;
 
-    handleClick(e: MouseEvent) {
-        if (!this.disabled) {
-            this.clicked.emit(e);
-        }
-        e.cancelBubble = true;
+  public handleClick(e: MouseEvent) {
+    if (!this.disabled) {
+      this.clicked.emit(e);
     }
+    e.cancelBubble = true;
+  }
 
-    render() {
-        return <button class="og-button" onClick={ (e) => this.handleClick(e) } disabled={ this.disabled }>{this.label}</button>;
-    }
+  public render(): HTMLElement {
+    return <button
+      class="og-button"
+      onClick={ e => this.handleClick(e) }
+      disabled={ this.disabled }
+    >
+      {this.label}
+    </button>;
+  }
 }
