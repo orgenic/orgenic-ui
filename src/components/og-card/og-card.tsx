@@ -46,7 +46,7 @@ export class OgCard {
           }
           <slot name="header"></slot>
         </div>
-
+        
         <div class="og-card__content">
           {/* allow the user to use an unnamed slot instead of always having to assign as "content" */}
           <slot></slot>
