@@ -172,6 +172,7 @@
     background: var(--og-combobox__flyout-Background);
     z-index: 9999;
     overflow-y: auto;
+    transform: translateZ(0);
 }
 
 .og-combobox__flyout__list--visible {

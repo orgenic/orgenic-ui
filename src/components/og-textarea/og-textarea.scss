@@ -92,6 +92,7 @@
 .og-textarea__textarea:focus {
 
     overflow: auto;
+    transform: translateZ(0);
     min-height: 8em;
 
     & + .og-textarea__indicator {
