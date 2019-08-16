@@ -402,6 +402,7 @@ export namespace Components {
     */
     'value': string;
   }
+  interface OgScrollContainer {}
   interface OgTab {
     /**
     * Determines, whether the control is disabled or not
@@ -585,6 +586,12 @@ declare global {
     new (): HTMLOgRadioButtonGroupElement;
   };
 
+  interface HTMLOgScrollContainerElement extends Components.OgScrollContainer, HTMLStencilElement {}
+  var HTMLOgScrollContainerElement: {
+    prototype: HTMLOgScrollContainerElement;
+    new (): HTMLOgScrollContainerElement;
+  };
+
   interface HTMLOgTabElement extends Components.OgTab, HTMLStencilElement {}
   var HTMLOgTabElement: {
     prototype: HTMLOgTabElement;
@@ -636,6 +643,7 @@ declare global {
     'og-password-input': HTMLOgPasswordInputElement;
     'og-radio-button': HTMLOgRadioButtonElement;
     'og-radio-button-group': HTMLOgRadioButtonGroupElement;
+    'og-scroll-container': HTMLOgScrollContainerElement;
     'og-tab': HTMLOgTabElement;
     'og-tab-container': HTMLOgTabContainerElement;
     'og-text-input': HTMLOgTextInputElement;
@@ -1099,6 +1107,7 @@ declare namespace LocalJSX {
     */
     'value'?: string;
   }
+  interface OgScrollContainer extends JSXBase.HTMLAttributes<HTMLOgScrollContainerElement> {}
   interface OgTab extends JSXBase.HTMLAttributes<HTMLOgTabElement> {
     /**
     * Determines, whether the control is disabled or not
@@ -1205,6 +1214,7 @@ declare namespace LocalJSX {
     'og-password-input': OgPasswordInput;
     'og-radio-button': OgRadioButton;
     'og-radio-button-group': OgRadioButtonGroup;
+    'og-scroll-container': OgScrollContainer;
     'og-tab': OgTab;
     'og-tab-container': OgTabContainer;
     'og-text-input': OgTextInput;

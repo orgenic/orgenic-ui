@@ -1,0 +1,73 @@
+:host {
+
+    --scrollbar--size: 10px;
+
+    --thumb-size--short: 10px;
+    --thumb-size--long: 60px;
+
+    --thumb-Background: var(--OG-COLOR-PRIMARY--100, #{$og-color-primary--100});
+
+    display: block;
+    position: relative;
+}
+
+.og-scroll-container__content {
+    overflow: hidden;
+    width: 400px;
+    height: 100%;
+}
+
+
+.og-scroll-container__scrollbar {
+    position: absolute;
+    background: rgba(250,0,0, .2);
+}
+
+.og-scroll-container__scrollbar--x {
+    top: auto;
+    left: 0;
+    right: 10px;
+    bottom: 0;
+    height: 10px;
+    width: auto;
+    &:hover {
+        --thumb-size--short: 30px;
+    }
+}
+
+.og-scroll-container__scrollbar--y {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: var(--scrollbar--size);
+
+    &:hover {
+        --thumb-size--short: 30px;
+    }
+}
+
+
+.og-scroll-container__thumb {
+    position: relative;
+    border-radius: 3px;
+    background: var(--thumb-Background);
+
+    &.is-active {
+        --thumb-size--short: 30px;
+    }
+}
+
+.og-scroll-container__thumb--x {
+    height: var(--thumb-size--short);
+    width:  var(--thumb-size--long);
+    top: calc(calc(var(--scrollbar--size) - var(--thumb-size--short)) / 2);
+    transition: width .1s ease-in, height .1s ease-in, top .1s ease-in;
+}
+
+.og-scroll-container__thumb--y {
+    width: var(--thumb-size--short);
+    height: var(--thumb-size--long);
+    transition: width .1s ease-in, height .1s ease-in, left .1s ease-in;
+    left: calc(calc(var(--scrollbar--size) - var(--thumb-size--short)) / 2);
+}
+
