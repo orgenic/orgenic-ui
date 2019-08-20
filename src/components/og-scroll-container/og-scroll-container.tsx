@@ -4,7 +4,12 @@
  * See LICENSE file at https://github.com/orgenic/orgenic-ui/blob/master/LICENSE
  **/
 
-import { h, Component, Host, State } from '@stencil/core';
+import { h, Component, Host, State, Element } from '@stencil/core';
+
+export interface iThumb {
+  size: number;
+  position: number;
+}
 
 @Component({
   tag: 'og-scroll-container',
@@ -12,6 +17,8 @@ import { h, Component, Host, State } from '@stencil/core';
   shadow: true
 })
 export class OgScrollContainer {
+  @Element()
+  public el: HTMLElement;
 
   /** Enables eventListener for mouse moving */
   @State()
@@ -58,6 +65,14 @@ export class OgScrollContainer {
 
   public xThumb: HTMLElement;
 
+  private containerElement: HTMLElement;
+  private hasScrollbarX: boolean = false;
+  private hasScrollbarY: boolean = false;
+  private factorScrollbarX: number = 1;   // 1 = 100% scrollbar width
+  private factorScrollbarY: number = 1;   // 1 = 100% scrollbar height
+  private thumbX: iThumb;
+  private thumbY: iThumb;
+
   constructor() {
     this.handleMouseUp = this.handleMouseUp.bind(this);
   }
@@ -65,6 +80,33 @@ export class OgScrollContainer {
   componentDidLoad() {
     // this.xThumb = this.hostElement.shadowRoot.querySelector('#thumb-x');
     // console.log('THUMB X', this.xThumb);
+  }
+
+  componentDidRender() {
+    console.log("did render");
+    this.containerElement = this.el.shadowRoot.querySelector("og-scroll-container__content");
+
+    let contentWidth = 1; // TODO: get size of slotted element
+    let contentHeight = 1; // TODO: get size of slotted element
+    let containerWidth = this.containerElement.clientWidth;
+    let containerHeight = this.containerElement.clientHeight;
+
+    this.hasScrollbarX = contentWidth > containerWidth ? true : false;
+    this.hasScrollbarY = contentHeight > containerHeight ? true : false;
+
+    // horizontal
+    if (this.hasScrollbarX) {
+      this.factorScrollbarX = containerWidth / contentWidth;
+      this.thumbX.position = 0;
+      this.thumbX.size = containerWidth * this.factorScrollbarX;
+    }
+
+    // vertical
+    if (this.hasScrollbarY) {
+      this.factorScrollbarY = containerHeight / contentHeight;
+      this.thumbY.position = 0;
+      this.thumbY.size = containerHeight * this.factorScrollbarY;
+    }
   }
 
   listenToMousePosition(event: Event) {
@@ -122,32 +164,38 @@ export class OgScrollContainer {
         <div class="og-scroll-container__content">
           <slot></slot>
         </div>
-        <div id="scrollbar-x" class="og-scroll-container__scrollbar og-scroll-container__scrollbar--y">
-          <div
-            id="thumb-y"
-            class={{
-              'og-scroll-container__thumb og-scroll-container__thumb--y ': true,
-              'is-active': this.enableMoving && this.axis === 'y'
-            }}
-            style={{
-              'top': this.yThumbPos.toString() + 'px'
-            }}
-            onMouseDown={(event) => this.handleMouseDown(event, 'y')}
-            ></div>
-        </div>
-        <div id="scrollbar-x" class="og-scroll-container__scrollbar og-scroll-container__scrollbar--x">
-          <div
-            id="thumb-x"
-            class={{
-              'og-scroll-container__thumb og-scroll-container__thumb--x ': true,
-              'is-active': this.enableMoving && this.axis === 'x'
-            }}
-            style={{
-              'left': this.xThumbPos.toString() + 'px'
-            }}
-            onMouseDown={(event) => this.handleMouseDown(event, 'x')}
-            ></div>
-        </div>
+
+        { this.hasScrollbarY &&
+          <div id="scrollbar-y" class="og-scroll-container__track og-scroll-container__track--y">
+            <div
+              id="thumb-y"
+              class={{
+                'og-scroll-container__thumb og-scroll-container__thumb--y ': true,
+                'is-active': this.enableMoving && this.axis === 'y'
+              }}
+              style={{
+                'top': this.yThumbPos.toString() + 'px'
+              }}
+              onMouseDown={(event) => this.handleMouseDown(event, 'y')}
+              ></div>
+          </div>
+        }   
+
+        { this.hasScrollbarX && 
+          <div id="scrollbar-x" class="og-scroll-container__track og-scroll-container__track--x">
+            <div
+              id="thumb-x"
+              class={{
+                'og-scroll-container__thumb og-scroll-container__thumb--x ': true,
+                'is-active': this.enableMoving && this.axis === 'x'
+              }}
+              style={{
+                'left': this.xThumbPos.toString() + 'px'
+              }}
+              onMouseDown={(event) => this.handleMouseDown(event, 'x')}
+              ></div>
+          </div>
+        }
       </Host>
     );
   }
