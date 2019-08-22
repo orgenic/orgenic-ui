@@ -1,3 +1,12 @@
+# [0.4.1](https://github.com/orgenic/orgenic-ui/compare/v0.4.0...v0.4.1) (2019-08-22)
+
+### Enhancements
+* feat: scrolling for card content
+* fix: hide empty footer  …
+* fix: card size depends on parent
+* fix: og-card header and sizing
+* fix: improve browser scroll behaviour
+
 # [0.4.0](https://github.com/orgenic/orgenic-ui/compare/v0.3.1...v0.4.0) (2019-06-28)
 
 ### Features
