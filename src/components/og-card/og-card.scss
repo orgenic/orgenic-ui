@@ -97,12 +97,18 @@
     flex-grow: 1;
     margin: var(--og-card__content-Margin);
     overflow: auto;
+    transform: translateZ(0);
 }
 
 .og-card__footer {
     text-align: var(--og-card__footer-TextAlign);
 }
 
-::slotted(div[slot="footer"]) {
+::slotted([slot="header"]) {
+    flex-grow: 1;
+    text-align: right;
+}
+
+::slotted([slot="footer"]) {
     padding: var(--og-card__footer-Padding);
 }

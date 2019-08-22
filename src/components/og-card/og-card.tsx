@@ -38,17 +38,21 @@ export class OgCard {
   public render(): HTMLElement {
     return (
       <div class="og-card">
-        { this.name
-          ?   <div class="og-card__header">
-            <span class="og-card__title">{ this.name }</span>
-          </div>
-          :   ""
-        }
+        <div class="og-card__header">
+          {
+            this.name
+              ? <span class="og-card__title">{ this.name }</span>
+              : ""
+          }
+          <slot name="header"></slot>
+        </div>
+
         <div class="og-card__content">
           {/* allow the user to use an unnamed slot instead of always having to assign as "content" */}
           <slot></slot>
           <slot name="content"></slot>
         </div>
+
         <div class="og-card__footer" ref={ el => this.handleDivRef(el) }>
           <slot name="footer"></slot>
         </div>
