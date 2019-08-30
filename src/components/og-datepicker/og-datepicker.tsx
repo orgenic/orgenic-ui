@@ -196,8 +196,11 @@ export class OgDatepicker {
       flyoutTop = this.el.getBoundingClientRect().top - flyoutHeight;
     }
 
+    // flyoutTop = 0;
+
     return {
-      top: Math.max(0, flyoutTop) + 'px',
+      // top: Math.max(0, flyoutTop) + 'px',
+      top: "auto"
     }
   }
 

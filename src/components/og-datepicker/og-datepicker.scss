@@ -172,7 +172,8 @@
     background: var(--og-datepicker__flyout-Background);
     z-index: 9999;
     overflow-y: auto;
-    transform: translateZ(0);
+    // transform: translateZ(0);
+    backface-visibility: hidden;
 }
 
 .og-datepicker__flyout__calendar--visible {

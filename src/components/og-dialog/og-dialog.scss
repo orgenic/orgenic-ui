@@ -345,7 +345,8 @@
 .og-dialog__content {
     padding: var(--og-dialog__content-Padding);
     overflow: auto;
-    transform: translateZ(0);
+    // transform: translateZ(0);
+    backface-visibility: hidden;
     flex: 1;
 }
 

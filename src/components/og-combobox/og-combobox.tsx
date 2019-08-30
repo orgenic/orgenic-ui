@@ -205,9 +205,11 @@ export class OgCombobox {
       flyoutHeight = maxHeight;
       flyoutTop = this.el.getBoundingClientRect().top - flyoutHeight;
     }
+    
 
     return {
-      top: flyoutTop + 'px',
+      // top: flyoutTop + 'px',
+      top: "auto",
       width: window.getComputedStyle(this.flyoutList.parentElement).width,
       height: flyoutHeight + 'px'
     }
