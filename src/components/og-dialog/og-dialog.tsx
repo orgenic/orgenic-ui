@@ -48,7 +48,7 @@ export class OgDialog {
 
   @Listen('keydown', { passive: false, target: 'window' }) // keyboard scrolling (arrows, page up / down, pos1 / end)
   public handleKeyDown(ev: KeyboardEvent) {
-    this.visible && ScrollHandler.cancelScrollingKeyFilter(ev);
+    this.visible && ev.target === document.body && ScrollHandler.cancelScrollingKeyFilter(ev);
   }
 
   public closeDialog() {
