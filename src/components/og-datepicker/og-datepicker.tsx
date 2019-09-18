@@ -144,7 +144,7 @@ export class OgDatepicker {
     this.setValue(this.value);
   }
 
-  public buttonClicked() {
+  public buttonClicked(e: Event) {
     if (!this.disabled) {
       this.dropdownActive = !this.dropdownActive;
       if (this.dropdownActive) {
@@ -152,6 +152,8 @@ export class OgDatepicker {
       } else {
         this.focusLost.emit();
       }
+      e.preventDefault();
+      e.stopPropagation();
     }
   }
 
@@ -195,7 +197,7 @@ export class OgDatepicker {
     }
 
     return {
-      top: Math.max(0, flyoutTop) + 'px',
+      top: "auto"
     }
   }
 
@@ -204,7 +206,7 @@ export class OgDatepicker {
       <Host class={{ 'og-form-item__editor': true, 'is-focused': this.dropdownActive }}>
         <div
           class="og-datepicker__header"
-          onClick={() => this.buttonClicked()}
+          onClick={(e) => this.buttonClicked(e)}
         >
           <input
             type="text"

@@ -94,10 +94,10 @@
 }
 
 .og-card__content {
+    backface-visibility: hidden;
     flex-grow: 1;
     margin: var(--og-card__content-Margin);
     overflow: auto;
-    transform: translateZ(0);
 }
 
 .og-card__footer {
