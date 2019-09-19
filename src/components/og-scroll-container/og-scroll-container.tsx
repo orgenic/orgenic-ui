@@ -6,11 +6,6 @@
 
 import { h, Component, Host, State, Element } from '@stencil/core';
 
-export interface iThumb {
-  size: number;
-  position: number;
-}
-
 @Component({
   tag: 'og-scroll-container',
   styleUrl: 'og-scroll-container.scss',
@@ -60,59 +55,49 @@ export class OgScrollContainer {
   @State()
   public yThumbPos = 0;
 
-  // @Element()
-  // private hostElement: HTMLElement;
+  /** Current Scrollbar Thumb X position */
+  @State()
+  public xThumbSize = 0;
 
-  public xThumb: HTMLElement;
+  /** Current Scrollbar Thumb Y position */
+  @State()
+  public yThumbSize = 0;
 
   private containerElement: HTMLElement;
   private hasScrollbarX: boolean = false;
   private hasScrollbarY: boolean = false;
   private factorScrollbarX: number = 1;   // 1 = 100% scrollbar width
   private factorScrollbarY: number = 1;   // 1 = 100% scrollbar height
-  private thumbX: iThumb;
-  private thumbY: iThumb;
 
-  constructor() {
+  public constructor() {
     this.handleMouseUp = this.handleMouseUp.bind(this);
   }
 
-  componentDidLoad() {
-    // this.xThumb = this.hostElement.shadowRoot.querySelector('#thumb-x');
-    // console.log('THUMB X', this.xThumb);
-  }
+  public componentDidRender() {
+    this.containerElement = this.el.shadowRoot.querySelector(".og-scroll-container__content");
 
-  componentDidRender() {
-    console.log("did render");
-    this.containerElement = this.el.shadowRoot.querySelector("og-scroll-container__content");
+    const contentWidth = this.containerElement.scrollWidth;
+    const contentHeight = this.containerElement.scrollHeight;
+    const containerWidth = this.containerElement.clientWidth;
+    const containerHeight = this.containerElement.clientHeight;
 
-    let contentWidth = 1; // TODO: get size of slotted element
-    let contentHeight = 1; // TODO: get size of slotted element
-    let containerWidth = this.containerElement.clientWidth;
-    let containerHeight = this.containerElement.clientHeight;
-
-    this.hasScrollbarX = contentWidth > containerWidth ? true : false;
-    this.hasScrollbarY = contentHeight > containerHeight ? true : false;
+    this.hasScrollbarX = (contentWidth > containerWidth);
+    this.hasScrollbarY = (contentHeight > containerHeight);
 
     // horizontal
     if (this.hasScrollbarX) {
       this.factorScrollbarX = containerWidth / contentWidth;
-      this.thumbX.position = 0;
-      this.thumbX.size = containerWidth * this.factorScrollbarX;
+      this.xThumbSize = containerWidth * this.factorScrollbarX;
     }
 
     // vertical
     if (this.hasScrollbarY) {
       this.factorScrollbarY = containerHeight / contentHeight;
-      this.thumbY.position = 0;
-      this.thumbY.size = containerHeight * this.factorScrollbarY;
+      this.yThumbSize = containerHeight * this.factorScrollbarY;
     }
-  }
 
-  listenToMousePosition(event: Event) {
-    console.log('MOUSE POSITION', event);
+    document.body.addEventListener('mousewheel', this.handleMouseWheel);
   }
-
 
   private handleMouseDown = (event: MouseEvent, axis: string) => {
     this.enableMoving = true;
@@ -121,8 +106,8 @@ export class OgScrollContainer {
     this.mouseYPosInitial = event.y;
     this.yThumbPosInitial = this.yThumbPos;
     this.xThumbPosInitial = this.xThumbPos;
-    document.body.addEventListener('mousemove', this.handleMouseMove);
     document.body.addEventListener('mouseup', this.handleMouseUp);
+    document.body.addEventListener('mousemove', this.handleMouseMove);
     document.body.addEventListener('mouseleave', this.handleMouseUp);
   }
 
@@ -135,14 +120,16 @@ export class OgScrollContainer {
   }
 
   /** Calculates thumb position depending on mouse position */
-  private calculateYThumbPosition = () => {
+  private calculateThumbPosition = () => {
     switch (this.axis) {
       case 'x':
         this.xThumbPos = Math.max(0, this.xThumbPosInitial + this.mouseXPos - this.mouseXPosInitial);
+        this.xThumbPos = Math.min(this.el.clientWidth - this.xThumbSize, this.xThumbPos);
         break;
 
       case 'y':
         this.yThumbPos = Math.max(0, this.yThumbPosInitial + this.mouseYPos - this.mouseYPosInitial);
+        this.yThumbPos = Math.min(this.el.clientHeight - this.yThumbSize, this.yThumbPos);
         break;
     }
   }
@@ -155,10 +142,21 @@ export class OgScrollContainer {
     this.mouseXPos = event.x;
     this.mouseYPos = event.y;
 
-    this.calculateYThumbPosition();
+    this.calculateThumbPosition();
+
+    this.containerElement.scrollTop = this.yThumbPos / this.factorScrollbarY;
+    this.containerElement.scrollLeft = this.xThumbPos / this.factorScrollbarX;
+  }
+
+  private handleMouseWheel = (event: WheelEvent) => {
+    this.containerElement.scrollTop += event.deltaY;
+    this.yThumbPos = this.containerElement.scrollTop * this.factorScrollbarY;
+    this.containerElement.scrollLeft += event.deltaX;
+    this.xThumbPos = this.containerElement.scrollLeft * this.factorScrollbarX;
   }
 
   public render(): HTMLElement {
+
     return (
       <Host>
         <div class="og-scroll-container__content">
@@ -174,14 +172,15 @@ export class OgScrollContainer {
                 'is-active': this.enableMoving && this.axis === 'y'
               }}
               style={{
-                'top': this.yThumbPos.toString() + 'px'
+                'top': this.yThumbPos.toString() + 'px',
+                'height': this.yThumbSize + 'px'
               }}
               onMouseDown={(event) => this.handleMouseDown(event, 'y')}
-              ></div>
+            ></div>
           </div>
-        }   
+        }
 
-        { this.hasScrollbarX && 
+        { this.hasScrollbarX &&
           <div id="scrollbar-x" class="og-scroll-container__track og-scroll-container__track--x">
             <div
               id="thumb-x"
@@ -190,12 +189,14 @@ export class OgScrollContainer {
                 'is-active': this.enableMoving && this.axis === 'x'
               }}
               style={{
-                'left': this.xThumbPos.toString() + 'px'
+                'left': this.xThumbPos.toString() + 'px',
+                'width': this.xThumbSize + 'px'
               }}
               onMouseDown={(event) => this.handleMouseDown(event, 'x')}
-              ></div>
+            ></div>
           </div>
         }
+
       </Host>
     );
   }
