@@ -1,0 +1,244 @@
+// =============================================================================
+// CSS CUSTOM PROPERTIES
+// =============================================================================
+
+/**
+ * @prop --og-progress-Background: Main background color of the progress element
+ * @prop --og-progress-Color: Color of the progress bar
+ * @prop --og-progress-Color--buffer: Color of the progress buffer bar
+ */
+
+// -----------------------------------------------------------------------------
+// Base
+// -----------------------------------------------------------------------------
+
+:host {
+    // All Component Variables
+    // Map Variables to Properties
+    --Display: block;
+    --Width: 100%;
+    --MaxWidth: inherit;
+    --Height: 20px;
+    --MaxHeight: inherit;
+
+    --og-progress-Background:           var(--OG-COLOR-SHADE--100--10, #{$og-color-shade--100--10});
+
+    --og-progress-Color:                var(--OG-COLOR-PRIMARY--100, #{$og-color-primary--100});
+    --og-progress-Color--buffer:        var(--OG-COLOR-PRIMARY--100--30, #{$og-color-primary--100--30});
+
+
+    display: var(--Display);
+    position: relative;
+    vertical-align: middle;
+    overflow: hidden;
+    width: var(--Width);
+    min-width: var(--MinWidth);
+    max-width: var(--MaxWidth);
+    height: var(--Height);
+    max-height: var(--maxHeight);
+
+    margin: 10px 0;
+
+    background: var(--og-progress-Background);
+
+    user-select: none;
+
+    box-sizing: border-box;
+    *, *::before, *::after { box-sizing: inherit; }
+}
+
+:host([disabled]) {
+    display: none;
+}
+
+:host([size=s]) {
+    --Height: 1px;
+}
+
+:host([indeterminate]),
+:host([query]),
+:host([bounce]) {
+
+    .og-progress-bar {
+        animation: load 2s infinite linear;
+    }
+    .og-progress-buffer {
+        width: 100%;
+    }
+}
+:host([query]) .og-progress-bar {
+    animation: load 2s infinite linear reverse;
+}
+
+:host([bounce]) .og-progress-bar {
+    animation: load_sticky 5s infinite linear;
+}
+
+:host([stream]) {
+    .og-progress-stream {
+        visibility: visible;
+    }
+}
+
+.og-progress-bar,
+.og-progress-buffer,
+.og-progress-stream {
+    display: block;
+    position: absolute;
+    height: 100%;
+    background: var(--og-progress-Color);
+
+    transition: width .2s;
+}
+.og-progress-buffer {
+    background: var(--og-progress-Color--buffer);
+}
+.og-progress-stream {
+    visibility: hidden;
+    right: 0;
+    background-size: 20px 500%;
+    background-image: radial-gradient(var(--og-progress-Color--buffer) 0%, var(--og-progress-Color--buffer) 30%, transparent 42%);
+    background-position: 0 50%;
+    background-color: transparent;
+
+    animation: stream 5s infinite linear;
+}
+
+@keyframes load {
+    0% {
+        left: 0;
+        transform: translate(0, 0);
+        width: 0;
+    }
+
+    5% {
+        left: 0;
+        transform: translate(0, 0);
+        width: 15%;
+    }
+
+    50% {
+        left: 0;
+        transform: translate(0, 0);
+        width: 45%;
+    }
+
+    85% {
+        left: 100%;
+        transform: translate(-100%, 0);
+        width: 25%;
+    }
+
+    100% {
+        left: 100%;
+        transform: translate(-100%, 0);
+        width: 0;
+    }
+
+}
+
+@keyframes load_sticky {
+    0%, 100% {
+        left: 0;
+        transform: translate(0, 0);
+        width: 0;
+    }
+
+    5% {
+        left: 0;
+        transform: translate(0, 0);
+        width: 15%;
+    }
+
+    25% {
+        left: 0;
+        transform: translate(0, 0);
+        width: 45%;
+    }
+
+    45% {
+        left: 100%;
+        transform: translate(-100%, 0);
+        width: 25%;
+    }
+
+    50% {
+        left: 100%;
+        transform: translate(-100%, 0);
+        width: 0;
+    }
+
+    55% {
+        left: 100%;
+        transform: translate(-100%, 0);
+        width: 15%;
+    }
+
+    75% {
+        left: 100%;
+        transform: translate(-100%, 0);
+        width: 45%;
+    }
+
+    95% {
+        left: 0;
+        transform: translate(0, 0);
+        width: 25%;
+    }
+}
+
+@keyframes load_bouncy {
+    0% {
+        left: 0;
+        transform: translate(0, 0);
+        width: 10%;
+    }
+
+    2%, 98% {
+        left: 0;
+        transform: translate(0, 0);
+        width: 15%;
+    }
+
+    25% {
+        left: 70%;
+        transform: translate(-60%, 0);
+        // left: 100%;
+        // transform: translate(-100%, 0);
+        width: 35%;
+    }
+
+    50% {
+        left: 100%;
+        transform: translate(-100%, 0);
+        width: 10%;
+    }
+
+    48%, 52% {
+        left: 100%;
+        transform: translate(-100%, 0);
+        width: 15%;
+    }
+
+    75% {
+        left: 30%;
+        transform: translate(-40%, 0);
+        // left: 0;
+        // transform: translate(0, 0);
+        width: 35%;
+    }
+}
+
+@keyframes stream {
+    0% {
+        background-position: 0px 50%;
+        opacity: .8;
+    }
+    50% {
+        opacity: .1;
+    }
+    100% {
+        background-position: -200px 50%;
+        opacity: .8;
+    }
+}

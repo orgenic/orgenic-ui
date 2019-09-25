@@ -362,6 +362,48 @@ export namespace Components {
     */
     'value': string;
   }
+  interface OgProgress {
+    /**
+    * Determines, whether the bounce animation is shown or not
+    */
+    'bounce': boolean;
+    /**
+    * The percent value of the progress buffer
+    */
+    'buffer': number;
+    /**
+    * Determines, whether the control is disabled or not
+    */
+    'disabled': boolean;
+    /**
+    * Determines, whether the control is an indeterminate bar or not
+    */
+    'indeterminate': boolean;
+    /**
+    * The label of the progress
+    */
+    'label': string;
+    /**
+    * The max value of the progress
+    */
+    'max': number;
+    /**
+    * Determines, whether the query animation is shown or not
+    */
+    'query': boolean;
+    /**
+    * The size (height) of the progress bar
+    */
+    'size': 's' | 'm';
+    /**
+    * Determines, whether the stream animation is shown or not
+    */
+    'stream': boolean;
+    /**
+    * The percent value of the progress
+    */
+    'value': number;
+  }
   interface OgRadioButton {
     /**
     * Determines, whether the radio button is checked or not
@@ -573,6 +615,12 @@ declare global {
     new (): HTMLOgPasswordInputElement;
   };
 
+  interface HTMLOgProgressElement extends Components.OgProgress, HTMLStencilElement {}
+  var HTMLOgProgressElement: {
+    prototype: HTMLOgProgressElement;
+    new (): HTMLOgProgressElement;
+  };
+
   interface HTMLOgRadioButtonElement extends Components.OgRadioButton, HTMLStencilElement {}
   var HTMLOgRadioButtonElement: {
     prototype: HTMLOgRadioButtonElement;
@@ -634,6 +682,7 @@ declare global {
     'og-message-dialog': HTMLOgMessageDialogElement;
     'og-number-input': HTMLOgNumberInputElement;
     'og-password-input': HTMLOgPasswordInputElement;
+    'og-progress': HTMLOgProgressElement;
     'og-radio-button': HTMLOgRadioButtonElement;
     'og-radio-button-group': HTMLOgRadioButtonGroupElement;
     'og-tab': HTMLOgTabElement;
@@ -1057,6 +1106,48 @@ declare namespace LocalJSX {
     */
     'value'?: string;
   }
+  interface OgProgress extends JSXBase.HTMLAttributes<HTMLOgProgressElement> {
+    /**
+    * Determines, whether the bounce animation is shown or not
+    */
+    'bounce'?: boolean;
+    /**
+    * The percent value of the progress buffer
+    */
+    'buffer'?: number;
+    /**
+    * Determines, whether the control is disabled or not
+    */
+    'disabled'?: boolean;
+    /**
+    * Determines, whether the control is an indeterminate bar or not
+    */
+    'indeterminate'?: boolean;
+    /**
+    * The label of the progress
+    */
+    'label'?: string;
+    /**
+    * The max value of the progress
+    */
+    'max'?: number;
+    /**
+    * Determines, whether the query animation is shown or not
+    */
+    'query'?: boolean;
+    /**
+    * The size (height) of the progress bar
+    */
+    'size'?: 's' | 'm';
+    /**
+    * Determines, whether the stream animation is shown or not
+    */
+    'stream'?: boolean;
+    /**
+    * The percent value of the progress
+    */
+    'value'?: number;
+  }
   interface OgRadioButton extends JSXBase.HTMLAttributes<HTMLOgRadioButtonElement> {
     /**
     * Determines, whether the radio button is checked or not
@@ -1203,6 +1294,7 @@ declare namespace LocalJSX {
     'og-message-dialog': OgMessageDialog;
     'og-number-input': OgNumberInput;
     'og-password-input': OgPasswordInput;
+    'og-progress': OgProgress;
     'og-radio-button': OgRadioButton;
     'og-radio-button-group': OgRadioButtonGroup;
     'og-tab': OgTab;
