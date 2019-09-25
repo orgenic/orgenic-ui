@@ -45,6 +45,7 @@
 | `--og-input__input-FontSize`              | Font size of the input field                       |
 | `--og-input__input-LineHeight`            | Line height of the input field                     |
 | `--og-input__input-Padding`               | Padding of the input field                         |
+| `--og-input__input-TextTransform`         | Text-transform property of input field             |
 
 
 ----------------------------------------------
