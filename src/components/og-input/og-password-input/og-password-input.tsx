@@ -1,4 +1,4 @@
-import { h, Component, Prop, Event, EventEmitter, State, Method, Host } from '@stencil/core';
+import { h, Component, Prop, Event, EventEmitter, Method, Host, Watch } from '@stencil/core';
 
 @Component({
   tag: 'og-password-input',
@@ -17,6 +17,19 @@ export class OgPasswordInput {
    */
   @Prop({ mutable: true })
   public value: string;
+
+  @Watch('value')
+  updateValue(newValue: string, oldValue: string) {
+    if (newValue !== oldValue) {
+      this.valueChanged.emit(newValue);
+    }
+  }
+
+  /**
+   * Define, whether the password is visible or not.
+   */
+  @Prop({ mutable: true })
+  public passwordVisible: boolean = false;
 
   /**
    * Define, whether a switch should be visible, to show the password in plain text.
@@ -48,9 +61,6 @@ export class OgPasswordInput {
    */
   @Event()
   public focusLost: EventEmitter<FocusEvent>;
-
-  @State()
-  public passwordVisible = false;
 
   @Method()
   public async togglePasswordVisibility() {

@@ -349,6 +349,10 @@ export namespace Components {
     */
     'disabled': boolean;
     /**
+    * Define, whether the password is visible or not.
+    */
+    'passwordVisible': boolean;
+    /**
     * Optional placeholder text if input is empty.
     */
     'placeholder'?: string;
@@ -1044,6 +1048,10 @@ declare namespace LocalJSX {
     * Event is being emitted when value changes.
     */
     'onValueChanged'?: (event: CustomEvent<string>) => void;
+    /**
+    * Define, whether the password is visible or not.
+    */
+    'passwordVisible'?: boolean;
     /**
     * Optional placeholder text if input is empty.
     */
