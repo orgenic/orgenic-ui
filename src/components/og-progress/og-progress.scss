@@ -18,7 +18,7 @@
     --Display: block;
     --Width: 100%;
     --MaxWidth: inherit;
-    --Height: 20px;
+    --Height: 8px;
     --MaxHeight: inherit;
 
     --og-progress-Background:           var(--OG-COLOR-SHADE--100--10, #{$og-color-shade--100--10});
@@ -44,6 +44,7 @@
     user-select: none;
 
     box-sizing: border-box;
+    transition: all .5s;
     *, *::before, *::after { box-sizing: inherit; }
 }
 
@@ -53,6 +54,9 @@
 
 :host([size=s]) {
     --Height: 1px;
+}
+:host([size=l]) {
+    --Height: 16px;
 }
 
 :host([indeterminate]),

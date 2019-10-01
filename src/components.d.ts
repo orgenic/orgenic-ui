@@ -394,7 +394,7 @@ export namespace Components {
     /**
     * The size (height) of the progress bar
     */
-    'size': 's' | 'm';
+    'size': 's' | 'm' | 'l';
     /**
     * Determines, whether the stream animation is shown or not
     */
@@ -1138,7 +1138,7 @@ declare namespace LocalJSX {
     /**
     * The size (height) of the progress bar
     */
-    'size'?: 's' | 'm';
+    'size'?: 's' | 'm' | 'l';
     /**
     * Determines, whether the stream animation is shown or not
     */

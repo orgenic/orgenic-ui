@@ -4,7 +4,7 @@
  * See LICENSE file at https://github.com/orgenic/orgenic-ui/blob/master/LICENSE
  **/
 
-import { h,  Component, Prop, Host } from '@stencil/core';
+import { h, Component, Prop, Host } from '@stencil/core';
 
 @Component({
   tag: 'og-progress',
@@ -34,7 +34,7 @@ export class OgProgress {
    *  The size (height) of the progress bar
    */
   @Prop({ reflectToAttr: true })
-  public size: 's' | 'm' = 'm';
+  public size: 's' | 'm' | 'l' = 'm';
 
   /**
    * The max value of the progress

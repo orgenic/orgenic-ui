@@ -29,11 +29,15 @@ og-progress
             </og-radio-button-group>
 
             <h3>Size</h3>
-                Small <og-toggle-switch class="toggle-size" value="true"></og-toggle-switch> Medium
+            <og-radio-button-group name="size" value="m">
+                <og-radio-button label="Small" value="s"></og-radio-button>
+                <og-radio-button label="Medium" value="m"></og-radio-button>
+                <og-radio-button label="Large" value="l"></og-radio-button>
+            </og-radio-button-group>
 
             <h3>Other</h3>
-                <og-checkbox label="Stream" class="cb-stream"></og-checkbox>
-                <og-checkbox label="Disabled" class="cb-disabled"></og-checkbox>
+            <og-checkbox label="Stream" class="cb-stream"></og-checkbox>
+            <og-checkbox label="Disabled" class="cb-disabled"></og-checkbox>
         </form>
     </div>
 </og-card>
@@ -53,8 +57,6 @@ og-progress
 
     groups[0].querySelectorAll('og-radio-button').forEach(radioButton => {
         radioButton.addEventListener('changed', event => {
-            console.log('group option selected', event.target.value);
-
             progress.removeAttribute('value');
             progress.removeAttribute('indeterminate');
             progress.removeAttribute('query');
@@ -78,9 +80,11 @@ og-progress
         });
     });
 
-    document.querySelector('.toggle-size').addEventListener('changed', event => {
-            progress.setAttribute('size', event.detail ? 'm' : 's');
+    groups[1].querySelectorAll('og-radio-button').forEach(radioButton => {
+        radioButton.addEventListener('changed', event => {
+            progress.setAttribute('size', event.target.value);
         });
+    });
 
     document.querySelector('.cb-stream').addEventListener('changed', event => {
             progress.setAttribute('stream', event.detail);
