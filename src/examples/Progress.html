@@ -74,7 +74,7 @@ og-progress
                     break
                 case 'default':
                 default:
-                    progress.setAttribute('value', 30);
+                    progress.setAttribute('value', document.querySelector('.input-value').value);
                     break;
             }
         });
