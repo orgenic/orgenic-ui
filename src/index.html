@@ -182,6 +182,7 @@
             </script>
 
             <og-card name="Components">
+                <a href="spinner" data-navigo>Spinner</a>
                 <a href="layout-container" data-navigo>Layout Container</a>
                 <a href="datepicker" data-navigo>Datepicker</a>
                 <a href="calendar" data-navigo>Calendar</a>
@@ -207,7 +208,7 @@
 
             <script>
                 const view = document.getElementById('router-outlet');
-                // asyncrhonously fetch the html template partial from the file directory,
+                // asynchronously fetch the html template partial from the file directory,
                 // then set its contents to the html of the parent element
                 function loadHTML(url, outlet) {
                     req = new XMLHttpRequest();
@@ -226,6 +227,7 @@
                 // use #! to hash
                 const router = new Navigo(null, true, '#!');
                 router.on({
+                    'spinner': () => { loadHTML('./examples/Spinner.html', view); },
                     'layout-container': () => { loadHTML('./examples/LayoutContainer.html', view); },
                     'datepicker': () => { loadHTML('./examples/Datepicker.html', view); },
                     'calendar': () => { loadHTML('./examples/Calendar.html', view); },
