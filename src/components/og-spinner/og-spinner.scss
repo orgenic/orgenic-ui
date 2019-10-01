@@ -1,0 +1,70 @@
+// =============================================================================
+// CSS CUSTOM PROPERTIES
+// =============================================================================
+
+/**
+ * @prop --og-spinner-Color: Color of the spinner
+ * @prop --og-spinner-Length--min: Smallest length of the spinner stroke
+ * @prop --og-spinner-Length--max: Largest length of the spinner stroke
+ */
+
+// -----------------------------------------------------------------------------
+// Base
+// -----------------------------------------------------------------------------
+
+:host {
+  // All Component Variables
+  // Map Variables to Properties
+  --og-spinner-Color:           var(--OG-COLOR-PRIMARY--100, #{$og-color-primary--100});
+  --og-spinner-Length--min:     50;
+  --og-spinner-Length--max:     180;
+
+
+    overflow: hidden;
+    user-select: none;
+
+    box-sizing: border-box;
+    *, *::before, *::after { box-sizing: inherit; }
+}
+
+:host([disabled]) {
+    display: none;
+}
+
+svg {
+    transform-origin: center;
+    animation: spin 1.2s infinite linear;
+}
+
+svg > circle {
+    stroke: var(--og-spinner-Color);
+    stroke-dasharray: var(--og-spinner-Length--max);
+    stroke-dashoffset: var(--og-spinner-Length--max);
+    transform-origin: center;
+
+    animation: dash 2.2s infinite ease-in-out;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes dash {
+    0% {
+        stroke-dashoffset: var(--og-spinner-Length--max);
+        transform: rotate(0deg);
+    }
+    50% {
+        stroke-dashoffset: var(--og-spinner-Length--min);
+        transform: rotate(180deg);
+    }
+    100% {
+        stroke-dashoffset: var(--og-spinner-Length--max);
+        transform: rotate(360deg);
+    }
+}
