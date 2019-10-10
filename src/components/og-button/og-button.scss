@@ -7,6 +7,10 @@
  * @prop --og-button-Background--active: Background color when the button is clicked
  * @prop --og-button-Background--disabled: Background color when the button is disabled
  * @prop --og-button-Background--hover: Background color when the button is hovered
+ * @prop --og-button-BorderColor: Main border color of the button
+ * @prop --og-button-BorderColor--active: Border color when the button is clicked
+ * @prop --og-button-BorderColor--disabled: Border color when the button is disabled
+ * @prop --og-button-BorderColor--hover: Border color when the button is hovered
  * @prop --og-button-BorderRadius: Border radius of the button
  * @prop --og-button-Color: Text color of the button label
  * @prop --og-button-Color--active: Text color when the button is clicked
@@ -27,10 +31,8 @@
   --Height: auto;
   --MaxHeight: inherit;
   --Padding: var(--PADDING, 0.75rem 1.5rem);    // TODO: use --OG-PADDING
-
-  --BorderWidth: 1px;
+  --BorderWidth: 0;
   --BorderStyle: solid;
-  --BorderColor: transparent;
 
   --og-button-BorderRadius:         var( --OG-BORDER-RADIUS, #{$og-border-radius});
 
@@ -43,6 +45,11 @@
   --og-button-Color--hover:         var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
   --og-button-Color--active:        var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
   --og-button-Color--disabled:      var(--OG-COLOR-SHADE--100--30, #{$og-color-shade--100--30});
+
+  --og-button-BorderColor:           var(--OG-COLOR-SECONDARY--100--20, #{$og-color-secondary--100--20});
+  --og-button-BorderColor--hover:    var(--OG-COLOR-SECONDARY--100--30, #{$og-color-secondary--100--30});
+  --og-button-BorderColor--active:   var(--OG-COLOR-SECONDARY--100--10, #{$og-color-secondary--100--10});
+  --og-button-BorderColor--disabled: var(--OG-COLOR-SECONDARY--100--07, #{$og-color-secondary--100--07});
 
   --og-button-FontWeight: var(--OG-FONT-WEIGHT--MEDIUM, 500);
 
@@ -95,6 +102,20 @@
     --og-button-Color--disabled: var(--OG-COLOR-SHADE--100--30, #{$og-color-shade--100--30});
 }
 
+:host([data-context~="outline"]) {
+  --BorderWidth: 1px;
+
+  --og-button-BorderColor: var(--OG-COLOR-SECONDARY--100--20, #{$og-color-secondary--100--20});
+  --og-button-BorderColor--hover: var(--OG-COLOR-SECONDARY--100--30, #{$og-color-secondary--100--30});
+  --og-button-BorderColor--active: var(--OG-COLOR-SECONDARY--100--10, #{$og-color-secondary--100--10});
+  --og-button-BorderColor--disabled: var(--OG-COLOR-SECONDARY--100--07, #{$og-color-secondary--100--07});
+
+  --og-button-Background: transparent;
+  --og-button-Background--hover: transparent;
+  --og-button-Background--active: transparent;
+  --og-button-Background--disabled: transparent;
+}
+
 // Native <button> element
 .og-button {
   display: block;
@@ -109,10 +130,10 @@
   font-weight: inherit;
 
   background: var(--og-button-Background);
-  border: var(--BorderWidth) var(--BorderStyle) var(--BorderColor);
-
-
+  
+  border: var(--BorderWidth) var(--BorderStyle) var(--og-button-BorderColor);
   border-radius: var(--og-button-BorderRadius);
+
   color: var(--og-button-Color);
 
   text-transform: var(--TextTransform);
@@ -130,6 +151,7 @@
   // 'Hover' state
   &:hover {
     --og-button-Background: var(--og-button-Background--hover);
+    --og-button-BorderColor: var(--og-button-BorderColor--hover);
     --og-button-Color: var(--og-button-Color--hover);
     cursor: pointer;
     transition-duration: 300ms;
@@ -138,6 +160,7 @@
   // 'Active' state
   &:active {
     --og-button-Background: var(--og-button-Background--active);
+    --og-button-BorderColor: var(--og-button-BorderColor--active);
     --og-button-Color: var(--og-button-Color--active);
     transition-duration: 300ms;
   }
@@ -145,6 +168,7 @@
   // 'Disabled' state
   &:disabled {
     --og-button-Background: var(--og-button-Background--disabled);
+    --og-button-BorderColor: var(--og-button-BorderColor--disabled);
     --og-button-Color: var(--og-button-Color--disabled);
     cursor: default;
   }
