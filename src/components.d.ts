@@ -187,6 +187,20 @@ export namespace Components {
     */
     'label': string;
   }
+  interface OgIcon {
+    /**
+    * The displayed icon
+    */
+    'icon': string;
+    /**
+    * The style of the icon
+    */
+    'iconStyle': 'stroke' | 'solid';
+    /**
+    * The size of the icon
+    */
+    'size': string;
+  }
   interface OgInternalCalendar {
     'dateDecorator': OgDateDecorator;
     'loc': string;
@@ -525,6 +539,12 @@ declare global {
     new (): HTMLOgFormItemElement;
   };
 
+  interface HTMLOgIconElement extends Components.OgIcon, HTMLStencilElement {}
+  var HTMLOgIconElement: {
+    prototype: HTMLOgIconElement;
+    new (): HTMLOgIconElement;
+  };
+
   interface HTMLOgInternalCalendarElement extends Components.OgInternalCalendar, HTMLStencilElement {}
   var HTMLOgInternalCalendarElement: {
     prototype: HTMLOgInternalCalendarElement;
@@ -626,6 +646,7 @@ declare global {
     'og-dialog': HTMLOgDialogElement;
     'og-expander': HTMLOgExpanderElement;
     'og-form-item': HTMLOgFormItemElement;
+    'og-icon': HTMLOgIconElement;
     'og-internal-calendar': HTMLOgInternalCalendarElement;
     'og-layout-child': HTMLOgLayoutChildElement;
     'og-layout-container': HTMLOgLayoutContainerElement;
@@ -849,6 +870,20 @@ declare namespace LocalJSX {
     * The label for the form item
     */
     'label'?: string;
+  }
+  interface OgIcon extends JSXBase.HTMLAttributes<HTMLOgIconElement> {
+    /**
+    * The displayed icon
+    */
+    'icon'?: string;
+    /**
+    * The style of the icon
+    */
+    'iconStyle'?: 'stroke' | 'solid';
+    /**
+    * The size of the icon
+    */
+    'size'?: string;
   }
   interface OgInternalCalendar extends JSXBase.HTMLAttributes<HTMLOgInternalCalendarElement> {
     'dateDecorator'?: OgDateDecorator;
@@ -1195,6 +1230,7 @@ declare namespace LocalJSX {
     'og-dialog': OgDialog;
     'og-expander': OgExpander;
     'og-form-item': OgFormItem;
+    'og-icon': OgIcon;
     'og-internal-calendar': OgInternalCalendar;
     'og-layout-child': OgLayoutChild;
     'og-layout-container': OgLayoutContainer;

@@ -1,0 +1,47 @@
+// =============================================================================
+// CSS CUSTOM PROPERTIES
+// =============================================================================
+
+/**
+ * TODO: document
+ * @prop --og-icon-[option]: [desc]
+ */
+
+// -----------------------------------------------------------------------------
+// Base
+// -----------------------------------------------------------------------------
+
+:host {
+  // All Component Variables
+  // Map Variables to Properties
+    --og-icon--Size: 32px;
+    --og-icon--Fill: var(--OG-COLOR-SECONDARY--100, currentColor);
+    --og-icon--Stroke: var(--OG-COLOR-SECONDARY--100, currentColor);
+
+    --Display: inline-block;
+
+    display: var(--Display);
+
+    user-select: none;
+
+    box-sizing: border-box;
+    *, *::before, *::after { box-sizing: inherit; }
+}
+
+:host([hidden]) { display: none }
+
+
+:host([icon-style=solid])  {
+    --og-icon--Stroke: none;
+}
+
+:host([icon-style=stroke])  {
+    --og-icon--Fill: none;
+}
+
+svg {
+    width: var(--og-icon--Size);
+    height: var(--og-icon--Size);
+    fill: var(--og-icon--Fill);
+    stroke: var(--og-icon--Stroke);
+}

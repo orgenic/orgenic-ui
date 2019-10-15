@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <title>24_login</title>
+  <g id="Ebene_18" data-name="Ebene 18">
+    <line x1="1" y1="12" x2="15" y2="12" style="fill: none;stroke: #000;stroke-linecap: round;stroke-miterlimit: 10;stroke-width: 2px"/>
+    <polyline points="11 16 15 12 11 8" style="fill: none;stroke: #000;stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+    <path d="M8,8V3A1.89344,1.89344,0,0,1,9.76471,1H21.23529A1.89344,1.89344,0,0,1,23,3V21a1.89344,1.89344,0,0,1-1.76471,2H9.76471A1.89344,1.89344,0,0,1,8,21V16" style="fill: none;stroke: #000;stroke-linecap: round;stroke-miterlimit: 10;stroke-width: 2px"/>
+  </g>
+</svg>

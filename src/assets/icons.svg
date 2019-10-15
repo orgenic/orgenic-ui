@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs/><symbol id="24_solid_add" viewBox="0 0 24 24">
+  <title>24_solid_add</title>
+  <path d="M12,24a.99943.99943,0,0,1-1-1V1a1,1,0,0,1,2,0V23A.99943.99943,0,0,1,12,24Z"/>
+  <path d="M23,13H1a1,1,0,0,1,0-2H23a1,1,0,0,1,0,2Z"/>
+</symbol><symbol id="24_solid_arrow1 down" viewBox="0 0 24 24">
+  <title>24_solid_arrow1 down</title>
+  <g id="Ebene_9" data-name="Ebene 9">
+    <path d="M20.707,14.293a.99962.99962,0,0,0-1.41406,0L13,20.58594V1a1,1,0,0,0-2,0V20.58594L4.707,14.293A.99989.99989,0,0,0,3.293,15.707l7.99914,7.99915a1.00325,1.00325,0,0,0,1.41578,0L20.707,15.707A.99962.99962,0,0,0,20.707,14.293Z"/>
+  </g>
+</symbol><symbol id="24_solid_arrow1 left" viewBox="0 0 24 24">
+  <title>24_solid_arrow1 left</title>
+  <g id="Ebene_7" data-name="Ebene 7">
+    <path d="M23,11H3.41406L9.707,4.707A.99989.99989,0,0,0,8.293,3.293L.29327,11.29266a1.00354,1.00354,0,0,0,0,1.41468L8.293,20.707A.99989.99989,0,0,0,9.707,19.293L3.41406,13H23a1,1,0,0,0,0-2Z"/>
+  </g>
+</symbol><symbol id="24_solid_arrow1 right" viewBox="0 0 24 24">
+  <title>24_solid_arrow1 right</title>
+  <g id="Ebene_6" data-name="Ebene 6">
+    <path d="M23.92279,12.38214a1.00354,1.00354,0,0,0-.21606-1.08948L15.707,3.293A.99989.99989,0,0,0,14.293,4.707L20.58594,11H1a1,1,0,0,0,0,2H20.58594l-6.293,6.293A.99989.99989,0,1,0,15.707,20.707l7.9997-7.99969A.99944.99944,0,0,0,23.92279,12.38214Z"/>
+  </g>
+</symbol><symbol id="24_solid_arrow1 up" viewBox="0 0 24 24">
+  <title>24_solid_arrow2 up</title>
+  <g id="Ebene_8" data-name="Ebene 8">
+    <path d="M20.707,8.293,12.70734.29327a1.00354,1.00354,0,0,0-1.41468,0L3.293,8.293A.99989.99989,0,0,0,4.707,9.707L11,3.41406V23a1,1,0,0,0,2,0V3.41406l6.293,6.293A.99989.99989,0,0,0,20.707,8.293Z"/>
+  </g>
+</symbol><symbol id="24_solid_arrow2 down" viewBox="0 0 24 24">
+  <title>24_solid_arrow2 down</title>
+  <g id="Ebene_37" data-name="Ebene 37">
+    <path d="M12,24a.99976.99976,0,0,1-.80859-.41211l-8-11A.99962.99962,0,0,1,4,11H8V1A.99974.99974,0,0,1,9,0h6a.99974.99974,0,0,1,1,1V11h4a.99962.99962,0,0,1,.80859,1.58789l-8,11A.99976.99976,0,0,1,12,24Z"/>
+  </g>
+</symbol><symbol id="24_solid_arrow2 left" viewBox="0 0 24 24">
+  <title>24_solid_arrow2 left</title>
+  <g id="Ebene_35" data-name="Ebene 35">
+    <path d="M12,21a.99713.99713,0,0,1-.58789-.19141l-11-8a.99931.99931,0,0,1,0-1.61718l11-8A1,1,0,0,1,13,4V8H23a.99943.99943,0,0,1,1,1v6a.99943.99943,0,0,1-1,1H13v4a1.00085,1.00085,0,0,1-1,1Z"/>
+  </g>
+</symbol><symbol id="24_solid_arrow2 right" viewBox="0 0 24 24">
+  <title>24_solid_arrow2 right</title>
+  <g id="Ebene_34" data-name="Ebene 34">
+    <path d="M12,21a1.00085,1.00085,0,0,1-1-1V16H1a.99943.99943,0,0,1-1-1V9A.99943.99943,0,0,1,1,8H11V4a1,1,0,0,1,1.58789-.80859l11,8a.99931.99931,0,0,1,0,1.61718l-11,8A.99713.99713,0,0,1,12,21Z"/>
+  </g>
+</symbol><symbol id="24_solid_arrow2 up_1" viewBox="0 0 24 24">
+  <title>24_solid_arrow2 up_1</title>
+  <g id="Ebene_36" data-name="Ebene 36">
+    <path d="M15,24H9a.99974.99974,0,0,1-1-1V13H4a.99962.99962,0,0,1-.80859-1.58789l8-11a1.03624,1.03624,0,0,1,1.61718,0l8,11A.99962.99962,0,0,1,20,13H16V23A.99974.99974,0,0,1,15,24Z"/>
+  </g>
+</symbol><symbol id="24_solid_bell" viewBox="0 0 24 24">
+  <title>24_solid_bell</title>
+  <g id="Ebene_24" data-name="Ebene 24">
+    <path d="M22.50586,16.69043l-3.15625-6.50879A28.68518,28.68518,0,0,1,18.376,6.70215c-.21778-.90918-.42188-1.76758-.64551-2.48633a6.00256,6.00256,0,0,0-11.46094,0C6.0459,4.93457,5.8418,5.793,5.624,6.70215a29.20234,29.20234,0,0,1-.957,3.44629l-3.17285,6.542A2.99945,2.99945,0,0,0,4.19238,21H8.142A3.98073,3.98073,0,0,0,15.858,21h3.94959a2.99945,2.99945,0,0,0,2.69824-4.30957ZM12,22a1.99377,1.99377,0,0,1-1.72168-1h3.44336A1.99377,1.99377,0,0,1,12,22Z"/>
+  </g>
+</symbol><symbol id="24_solid_calendar" viewBox="0 0 24 24">
+  <title>24_solid_calendar</title>
+  <g id="Ebene_21" data-name="Ebene 21">
+    <path d="M16,0a.99974.99974,0,0,0-1,1V5a1,1,0,0,0,2,0V1A.99974.99974,0,0,0,16,0Z"/>
+    <path d="M8,0A.99974.99974,0,0,0,7,1V5A1,1,0,0,0,9,5V1A.99974.99974,0,0,0,8,0Z"/>
+    <path d="M21,2H18V5a2,2,0,0,1-4,0V2H10V5A2,2,0,0,1,6,5V2H3A3.00328,3.00328,0,0,0,0,5V21a3.00328,3.00328,0,0,0,3,3H21a3.00328,3.00328,0,0,0,3-3V5A3.00328,3.00328,0,0,0,21,2Zm1,19a1,1,0,0,1-1,1H3a1,1,0,0,1-1-1V10A1,1,0,0,1,3,9H21a1,1,0,0,1,1,1Z"/>
+  </g>
+</symbol><symbol id="24_solid_chevron down" viewBox="0 0 24 24">
+  <title>24_solid_chevron down</title>
+  <g id="Ebene_11" data-name="Ebene 11">
+    <path d="M12,17a.99676.99676,0,0,1-.707-.293l-8-8A.99989.99989,0,0,1,4.707,7.293L12,14.58594l7.293-7.293A.99989.99989,0,0,1,20.707,8.707l-8,8A.99676.99676,0,0,1,12,17Z"/>
+  </g>
+</symbol><symbol id="24_solid_chevron left" viewBox="0 0 24 24">
+  <title>24_solid_chevron left</title>
+  <g id="Ebene_13" data-name="Ebene 13">
+    <path d="M16,21a.99676.99676,0,0,1-.707-.293l-8-8a.99962.99962,0,0,1,0-1.41406l8-8A.99989.99989,0,0,1,16.707,4.707L9.41406,12l7.293,7.293A1,1,0,0,1,16,21Z"/>
+  </g>
+</symbol><symbol id="24_solid_chevron right" viewBox="0 0 24 24">
+  <title>24_solid_chevron right</title>
+  <g id="Ebene_12" data-name="Ebene 12">
+    <path d="M8,21a1,1,0,0,1-.707-1.707L14.58594,12,7.293,4.707A.99989.99989,0,0,1,8.707,3.293l8,8a.99962.99962,0,0,1,0,1.41406l-8,8A.99676.99676,0,0,1,8,21Z"/>
+  </g>
+</symbol><symbol id="24_solid_chevron up" viewBox="0 0 24 24">
+  <title>24_solid_chevron up</title>
+  <g id="Ebene_10" data-name="Ebene 10">
+    <path d="M20,17a.99676.99676,0,0,1-.707-.293L12,9.41406,4.707,16.707A.99989.99989,0,0,1,3.293,15.293l8-8a.99962.99962,0,0,1,1.41406,0l8,8A1,1,0,0,1,20,17Z"/>
+  </g>
+</symbol><symbol id="24_solid_close" viewBox="0 0 24 24">
+  <title>24_solid_close</title>
+  <g id="Ebene_2" data-name="Ebene 2">
+    <path d="M13.41406,12,23.707,1.707A.99989.99989,0,1,0,22.293.293L12,10.58594,1.707.293A.99989.99989,0,0,0,.293,1.707L10.58594,12,.293,22.293A.99989.99989,0,1,0,1.707,23.707L12,13.41406,22.293,23.707A.99989.99989,0,0,0,23.707,22.293Z"/>
+  </g>
+</symbol><symbol id="24_solid_delete" viewBox="0 0 24 24">
+  <title>24_solid_delete</title>
+  <g id="Ebene_4" data-name="Ebene 4">
+    <path d="M23,4H17V3a3.00328,3.00328,0,0,0-3-3H10A3.00328,3.00328,0,0,0,7,3V4H1A1,1,0,0,0,1,6H3.00012L3.002,21.166A2.91062,2.91062,0,0,0,5.8916,24H18.1084A2.92435,2.92435,0,0,0,21,21.11084V6h2a1,1,0,0,0,0-2ZM9,20a1,1,0,0,1-2,0V8A1,1,0,0,1,9,8ZM9,3a1.001,1.001,0,0,1,1-1h4a1.001,1.001,0,0,1,1,1V4H9Zm4,17a1,1,0,0,1-2,0V8a1,1,0,0,1,2,0Zm4,0a1,1,0,0,1-2,0V8a1,1,0,0,1,2,0Z"/>
+  </g>
+</symbol><symbol id="24_solid_download" viewBox="0 0 24 24">
+  <title>24_solid_download</title>
+  <g id="Ebene_17" data-name="Ebene 17">
+    <g>
+      <path d="M23.98846,13.94275a1.6492,1.6492,0,0,0-.10223-.3844c-.00873-.01764-.00818-.03711-.01807-.05444L20.44385,7.51172A3.00042,3.00042,0,0,0,17.83881,6H16a1,1,0,0,0,0,2h1.83936a1.00281,1.00281,0,0,1,.86816.50391L21.67914,13H18a1,1,0,0,0-.83207.44531L15.76171,15.5547A1,1,0,0,1,14.92966,16H9.07034a1,1,0,0,1-.83205-.4453L6.832,13.44531A1,1,0,0,0,6,13H2.72314L5.29257,8.50375A.99981.99981,0,0,1,6.16064,8H8A1,1,0,0,0,8,6H6.16064A2.99944,2.99944,0,0,0,3.55643,7.51124L.13184,13.50391c-.00989.01733-.00934.0368-.01807.05444a.976.976,0,0,0-.063.19025.97879.97879,0,0,0-.03918.19415C.01031,13.96277,0,13.97968,0,14v7a3,3,0,0,0,3,3H21a3,3,0,0,0,3-3V14C24,13.97968,23.98969,13.96277,23.98846,13.94275Z"/>
+      <path d="M8.293,10.293a.99962.99962,0,0,0,0,1.41406l2.99933,2.99933a1.00329,1.00329,0,0,0,1.4154,0L15.707,11.707A.99989.99989,0,0,0,14.293,10.293L13,11.58594V1a1,1,0,0,0-2,0V11.58594L9.707,10.293A.99962.99962,0,0,0,8.293,10.293Z"/>
+    </g>
+  </g>
+</symbol><symbol id="24_solid_edit" viewBox="0 0 24 24">
+  <title>24_solid_edit</title>
+  <g id="Ebene_3" data-name="Ebene 3">
+    <g>
+      <polygon points="14.092 3.965 0 18.057 0 24 5.942 24 20.035 9.908 14.092 3.965"/>
+      <path d="M23.39874,3.64056,20.35944.60126a2.05283,2.05283,0,0,0-2.90314,0l-1.95,1.95,5.9425,5.94244,1.95-1.95A2.05279,2.05279,0,0,0,23.39874,3.64056Z"/>
+    </g>
+  </g>
+</symbol><symbol id="24_solid_email" viewBox="0 0 24 24">
+  <title>24_solid_email</title>
+  <g id="Ebene_15" data-name="Ebene 15">
+    <path d="M21.10254,3H2.89746A2.90075,2.90075,0,0,0,0,5.89746V18.10254A2.90075,2.90075,0,0,0,2.89746,21H21.10254A2.90075,2.90075,0,0,0,24,18.10254V5.89746A2.90075,2.90075,0,0,0,21.10254,3ZM7.707,14.707l-3,3A.99989.99989,0,0,1,3.293,16.293l3-3A.99989.99989,0,0,1,7.707,14.707ZM12,14a.99493.99493,0,0,1-.59961-.2002l-8-6A.99961.99961,0,1,1,4.59961,6.2002L12,11.75l7.40039-5.5498a.99961.99961,0,1,1,1.19922,1.5996l-8,6A.99493.99493,0,0,1,12,14Zm8.707,3.707a.99963.99963,0,0,1-1.41406,0l-3-3A.99989.99989,0,0,1,17.707,13.293l3,3A.99962.99962,0,0,1,20.707,17.707Z"/>
+  </g>
+</symbol><symbol id="24_solid_error" viewBox="0 0 24 24">
+  <title>24_solid_error</title>
+  <g id="Ebene_28" data-name="Ebene 28">
+    <path d="M12,0A12,12,0,1,0,24,12,12.01343,12.01343,0,0,0,12,0Zm4.94922,15.53516a.99989.99989,0,1,1-1.41406,1.41406L11.99976,13.414l-3.5354,3.53522a.99989.99989,0,1,1-1.41407-1.41406L10.58563,12,7.05029,8.46484A.99989.99989,0,0,1,8.46436,7.05078l3.5354,3.53522,3.5354-3.53522a.99989.99989,0,1,1,1.41406,1.41406L13.41388,12Z"/>
+  </g>
+</symbol><symbol id="24_solid_file" viewBox="0 0 24 24">
+  <title>24_solid_file</title>
+  <g id="Ebene_14" data-name="Ebene 14">
+    <g>
+      <path d="M20,0H12V8a.99974.99974,0,0,1-1,1H3V23a.99943.99943,0,0,0,1,1H20a.99943.99943,0,0,0,1-1V1A.99974.99974,0,0,0,20,0Z"/>
+      <path d="M10,0a.99928.99928,0,0,0-.707.293l-6,6A1.00012,1.00012,0,0,0,3,7h7Z"/>
+    </g>
+  </g>
+</symbol><symbol id="24_solid_filter" viewBox="0 0 24 24">
+  <title>24_solid_filter</title>
+  <g id="Ebene_38" data-name="Ebene 38">
+    <path d="M14,24a1.003,1.003,0,0,1-.44727-.10547l-4-2A1.0004,1.0004,0,0,1,9,21V10.96191L1.23193,1.64062A1.00013,1.00013,0,0,1,2,0H22a1.00078,1.00078,0,0,1,.76855,1.64062L15,10.96191V23a1.00061,1.00061,0,0,1-1,1Z"/>
+  </g>
+</symbol><symbol id="24_solid_folder" viewBox="0 0 24 24">
+  <title>24_solid_folder</title>
+  <g id="Ebene_22" data-name="Ebene 22">
+    <path d="M21,21H3a3.00328,3.00328,0,0,1-3-3V6A3.00328,3.00328,0,0,1,3,3H7.17139A2.9818,2.9818,0,0,1,9.293,3.87891L11.41406,6H21a3.00328,3.00328,0,0,1,3,3v9A3.00328,3.00328,0,0,1,21,21Z"/>
+  </g>
+</symbol><symbol id="24_solid_help" viewBox="0 0 24 24">
+  <title>24_solid_help</title>
+  <g id="Ebene_31" data-name="Ebene 31">
+    <path d="M12,0A12,12,0,1,0,24,12,12.01343,12.01343,0,0,0,12,0Zm0,18a1,1,0,1,1,1-1A1,1,0,0,1,12,18Zm1-5.127V14a1,1,0,0,1-2,0V12a.99974.99974,0,0,1,1-1,2,2,0,1,0-2-2A1,1,0,0,1,8,9a4,4,0,1,1,5,3.873Z"/>
+  </g>
+</symbol><symbol id="24_solid_home" viewBox="0 0 24 24">
+  <title>24_solid_home</title>
+  <g id="Ebene_26" data-name="Ebene 26">
+    <path d="M21,24H15a.99974.99974,0,0,1-1-1V14.64746H10V23a.99974.99974,0,0,1-1,1H3a.99974.99974,0,0,1-1-1V12.56934H1A.9999.9999,0,0,1,.2793,10.876L9.86523.915a3.01777,3.01777,0,0,1,4.26954,0L23.7207,10.876A.9999.9999,0,0,1,23,12.56934H22V23A.99974.99974,0,0,1,21,24Z"/>
+  </g>
+</symbol><symbol id="24_solid_info" viewBox="0 0 24 24">
+  <title>24_solid_info</title>
+  <path d="M13,11a1,1,0,0,0-2,0v7a1,1,0,0,0,2,0ZM12,6a1,1,0,1,0,1,1A1,1,0,0,0,12,6Zm0,18A12,12,0,1,1,24,12,12,12,0,0,1,12,24Z"/>
+</symbol><symbol id="24_solid_locker" viewBox="0 0 24 24">
+  <title>24_solid_locker</title>
+  <g id="Ebene_20" data-name="Ebene 20">
+    <g>
+      <circle cx="12" cy="13" r="1"/>
+      <path d="M19,6.05054V6c0-2.15332-2.33887-6-7-6S5,3.84668,5,6v.05054A2.99809,2.99809,0,0,0,2.5,9V21a3.00328,3.00328,0,0,0,3,3h13a3.00328,3.00328,0,0,0,3-3V9A2.99809,2.99809,0,0,0,19,6.05054Zm-6,9.76519V18a1,1,0,0,1-2,0V15.81567a2.99994,2.99994,0,1,1,2,.00006ZM7,6a4.89387,4.89387,0,0,1,5-4,4.89387,4.89387,0,0,1,5,4Z"/>
+    </g>
+  </g>
+</symbol><symbol id="24_solid_login" viewBox="0 0 24 24">
+  <title>24_solid_login</title>
+  <g id="Ebene_18" data-name="Ebene 18">
+    <path d="M15,13H1a1,1,0,0,1,0-2H15a1,1,0,0,1,0,2Z"/>
+    <path d="M11,17a1,1,0,0,1-.707-1.707L13.58594,12,10.293,8.707A.99989.99989,0,0,1,11.707,7.293l4,4a.99962.99962,0,0,1,0,1.41406l-4,4A.99676.99676,0,0,1,11,17Z"/>
+    <path d="M21.23535,24H9.76465A2.89278,2.89278,0,0,1,7,21V16a1,1,0,0,1,2,0v5a.919.919,0,0,0,.76465,1h11.4707A.91934.91934,0,0,0,22,21V3a.91934.91934,0,0,0-.76465-1H9.76465A.919.919,0,0,0,9,3V8A1,1,0,0,1,7,8V3A2.89278,2.89278,0,0,1,9.76465,0h11.4707A2.89278,2.89278,0,0,1,24,3V21A2.89278,2.89278,0,0,1,21.23535,24Z"/>
+  </g>
+</symbol><symbol id="24_solid_logout" viewBox="0 0 24 24">
+  <title>24_solid_logout</title>
+  <g id="Ebene_19" data-name="Ebene 19">
+    <path d="M23,13H9a1,1,0,0,1,0-2H23a1,1,0,0,1,0,2Z"/>
+    <path d="M19,17a1,1,0,0,1-.707-1.707L21.58594,12,18.293,8.707A.99989.99989,0,0,1,19.707,7.293l4,4a.99962.99962,0,0,1,0,1.41406l-4,4A.99676.99676,0,0,1,19,17Z"/>
+    <path d="M14.23535,24H2.76465A2.89278,2.89278,0,0,1,0,21V3A2.89278,2.89278,0,0,1,2.76465,0h11.4707A2.89278,2.89278,0,0,1,17,3V8a1,1,0,0,1-2,0V3a.91934.91934,0,0,0-.76465-1H2.76465A.91934.91934,0,0,0,2,3V21a.91934.91934,0,0,0,.76465,1h11.4707A.91934.91934,0,0,0,15,21V16a1,1,0,0,1,2,0v5A2.89278,2.89278,0,0,1,14.23535,24Z"/>
+  </g>
+</symbol><symbol id="24_solid_menu" viewBox="0 0 24 24">
+  <title>24_solid_menu</title>
+  <g id="Ebene_5" data-name="Ebene 5">
+    <path d="M21,8H3A1,1,0,0,1,3,6H21a1,1,0,0,1,0,2Z"/>
+    <path d="M21,13H3a1,1,0,0,1,0-2H21a1,1,0,0,1,0,2Z"/>
+    <path d="M21,18H3a1,1,0,0,1,0-2H21a1,1,0,0,1,0,2Z"/>
+  </g>
+</symbol><symbol id="24_solid_more horizontal" viewBox="0 0 24 24">
+  <title>24_solid_more horizontal</title>
+  <g id="Ebene_32" data-name="Ebene 32">
+    <circle cx="12" cy="12" r="2"/>
+    <circle cx="20" cy="12" r="2"/>
+    <circle cx="4" cy="12" r="2"/>
+  </g>
+</symbol><symbol id="24_solid_more vertical" viewBox="0 0 24 24">
+  <title>24_solid_more vertical</title>
+  <g id="Ebene_33" data-name="Ebene 33">
+    <circle cx="12" cy="12" r="2"/>
+    <circle cx="12" cy="4" r="2"/>
+    <circle cx="12" cy="20" r="2"/>
+  </g>
+</symbol><symbol id="24_solid_save" viewBox="0 0 24 24">
+  <title>24_solid_save</title>
+  <g id="Ebene_23" data-name="Ebene 23">
+    <path d="M23.12109,4.707,19.293.87891A2.98152,2.98152,0,0,0,17.17188,0H3A3.00328,3.00328,0,0,0,0,3V21a3.00328,3.00328,0,0,0,3,3H21a3.00328,3.00328,0,0,0,3-3V6.82812A2.98152,2.98152,0,0,0,23.12109,4.707ZM16.0013,2.99967l.00033,1a1,1,0,0,1-1,1.00033H9A1,1,0,0,1,8,4V3A1,1,0,0,1,9,2h6.0013A1,1,0,0,1,16.0013,2.99967ZM6,21V13.93262A.93262.93262,0,0,1,6.93262,13H17.06738A.93262.93262,0,0,1,18,13.93262V21a1,1,0,0,1-1,1H7A1,1,0,0,1,6,21Z"/>
+  </g>
+</symbol><symbol id="24_solid_search" viewBox="0 0 24 24">
+  <title>24_solid_search</title>
+  <g id="Ebene_25" data-name="Ebene 25">
+    <path d="M23.707,22.293l-5-5a.94483.94483,0,0,0-.13385-.08887,10.51507,10.51507,0,1,0-1.36908,1.36908.94483.94483,0,0,0,.08887.13385l5,5A.99989.99989,0,0,0,23.707,22.293Z"/>
+  </g>
+</symbol><symbol id="24_solid_setting" viewBox="0 0 24 24">
+  <title>24_solid_setting</title>
+  <g id="Ebene_27" data-name="Ebene 27">
+    <path d="M23.01294,10.42108l-2.16821-.39221a1.24209,1.24209,0,0,1-.93543-.83447,8.3109,8.3109,0,0,0-.33673-.80957,1.22755,1.22755,0,0,1,.07233-1.23951l1.13067-1.63269a1.28064,1.28064,0,0,0-.00933-1.71691l-.56134-.56134a1.20067,1.20067,0,0,0-1.53254-.13813l-1.81378,1.256a1.23849,1.23849,0,0,1-1.24792.07294,8.47438,8.47438,0,0,0-.8111-.33746,1.23192,1.23192,0,0,1-.82642-.92835c-.11114-.61126-.2724-1.49829-.39575-2.17694A1.1969,1.1969,0,0,0,12.39728,0h-.79285a1.20176,1.20176,0,0,0-1.18237.98669l-.30841,1.6955a1.24582,1.24582,0,0,1-.46674.76508l-1.29846.99762a1.19384,1.19384,0,0,1-1.207-.09253L5.327,3.09619a1.20027,1.20027,0,0,0-1.53187.13819l-.56134.56134A1.19962,1.19962,0,0,0,3.09583,5.327L4.35236,7.14142a1.235,1.235,0,0,1,.07507,1.24341,8.29993,8.29993,0,0,0-.33655.809,1.23572,1.23572,0,0,1-.93078.83417l-1.95221.35418A1.2806,1.2806,0,0,0,0,11.60272v.79456a1.20076,1.20076,0,0,0,.98706,1.18158l2.16821.39221a1.24227,1.24227,0,0,1,.93543.83453,8.3171,8.3171,0,0,0,.33673.80957,1.22743,1.22743,0,0,1-.07233,1.23944L3.22443,18.4873a1.28073,1.28073,0,0,0,.00933,1.717l.56134.56134a1.20066,1.20066,0,0,0,1.53254.13807l1.81378-1.25605a1.19949,1.19949,0,0,1,1.207-.09259,8.47271,8.47271,0,0,0,.85156.357,1.23976,1.23976,0,0,1,.8277.93323l.39441,2.16937A1.2,1.2,0,0,0,11.60272,24h.79456a1.19974,1.19974,0,0,0,1.18036-.98505l.39465-2.16967a1.23955,1.23955,0,0,1,.82739-.93311,8.48234,8.48234,0,0,0,.81079-.33734,1.23145,1.23145,0,0,1,1.24414.07007L18.48712,20.775a1.28142,1.28142,0,0,0,1.71778-.0094l.56134-.56134a1.19963,1.19963,0,0,0,.13793-1.53125l-1.25653-1.81445a1.23513,1.23513,0,0,1-.07507-1.24347,8.30506,8.30506,0,0,0,.33655-.809,1.23561,1.23561,0,0,1,.93078-.83417l1.95221-.35418A1.28064,1.28064,0,0,0,24,12.39728v-.79456A1.20083,1.20083,0,0,0,23.01294,10.42108ZM12,16a4,4,0,1,1,4-4A4.00437,4.00437,0,0,1,12,16Z"/>
+  </g>
+</symbol><symbol id="24_solid_succeeded" viewBox="0 0 24 24">
+  <title>24_solid_succeeded</title>
+  <g id="Ebene_29" data-name="Ebene 29">
+    <path d="M12,0A12,12,0,1,0,24,12,12.01312,12.01312,0,0,0,12,0Zm5.8623,9.05176L10.55176,16.3623a.99963.99963,0,0,1-1.41406,0l-3-3a.99989.99989,0,0,1,1.41406-1.41406l2.293,2.293L16.44824,7.6377A.99989.99989,0,1,1,17.8623,9.05176Z"/>
+  </g>
+</symbol><symbol id="24_solid_unknown" viewBox="0 0 24 24">
+  <title>24_solid_unknown</title>
+  <g id="Ebene_39" data-name="Ebene 39">
+    <path d="M12,0A12,12,0,1,0,24,12,12.01312,12.01312,0,0,0,12,0Zm6.48535,18.48535a.99963.99963,0,0,1-1.41406,0L5.51465,6.92871A.99989.99989,0,1,1,6.92871,5.51465L18.48535,17.07129A.99962.99962,0,0,1,18.48535,18.48535Z"/>
+  </g>
+</symbol><symbol id="24_solid_upload" viewBox="0 0 24 24">
+  <title>24_solid_upload</title>
+  <g id="Ebene_16" data-name="Ebene 16">
+    <g>
+      <path d="M23.98846,13.94275a1.6492,1.6492,0,0,0-.10223-.3844c-.00873-.01764-.00818-.03711-.01807-.05444L20.44357,7.51124A2.99944,2.99944,0,0,0,17.83936,6H16a1,1,0,0,0,0,2h1.83936a.99981.99981,0,0,1,.86807.50375L21.27686,13H18a1,1,0,0,0-.83207.44531L15.76171,15.5547A1,1,0,0,1,14.92966,16H9.07034a1,1,0,0,1-.83205-.4453L6.832,13.44531A1,1,0,0,0,6,13H2.72314L5.29248,8.50391A1.00012,1.00012,0,0,1,6.16082,8H8A1,1,0,0,0,8,6H6.16119a3.00042,3.00042,0,0,0-2.605,1.51172L.13184,13.50391c-.00989.01733-.00934.0368-.01807.05444a.976.976,0,0,0-.063.19025.97879.97879,0,0,0-.03918.19415C.01031,13.96277,0,13.97968,0,14v7a3,3,0,0,0,3,3H21a3,3,0,0,0,3-3V14C24,13.97968,23.98969,13.96277,23.98846,13.94275Z"/>
+      <path d="M9.707,4.707,11,3.41406V14a1,1,0,0,0,2,0V3.41406l1.293,1.293A.99989.99989,0,0,0,15.707,3.293L12.7077.29364a1.00326,1.00326,0,0,0-1.4154,0L8.293,3.293A.99989.99989,0,0,0,9.707,4.707Z"/>
+    </g>
+  </g>
+</symbol><symbol id="24_solid_user" viewBox="0 0 24 24">
+  <title>24_solid_user</title>
+  <g id="Ebene_1" data-name="Ebene 1">
+    <path d="M23.793,20.04541c-.11231-.21387-.22412-.45557-.34473-.71484A8.40763,8.40763,0,0,0,18.773,14.40283a8.51455,8.51455,0,0,1-1.43543-.74981C15.89917,15.71338,13.86627,17,12,17c-1.93329,0-4.04333-1.38269-5.488-3.57416a12.77,12.77,0,0,1-1.28448.581C2.39111,15.08838,1.31641,17.55078.605,19.18066c-.14111.32422-.269.61963-.39795.86524a1.78773,1.78773,0,0,0-.08545,1.47949,1.92607,1.92607,0,0,0,1.15088,1.10254C2.69434,23.14014,5.978,24,12,24s9.30566-.85986,10.727-1.37207a1.92561,1.92561,0,0,0,1.15137-1.10254A1.789,1.789,0,0,0,23.793,20.04541Z"/>
+    <path d="M12,15c-3.30273,0-6.2002-3.50488-6.2002-7.5C5.7998,2.94385,8.2334,0,12,0s6.2002,2.94385,6.2002,7.5C18.2002,11.49512,15.30273,15,12,15Z"/>
+  </g>
+</symbol><symbol id="24_solid_warning" viewBox="0 0 24 24">
+  <title>24_solid_warning</title>
+  <g id="Ebene_30" data-name="Ebene 30">
+    <path d="M12,0A12,12,0,1,0,24,12,12.01312,12.01312,0,0,0,12,0Zm0,18a1,1,0,1,1,1-1A1,1,0,0,1,12,18Zm1-4a1,1,0,0,1-2,0V6a1,1,0,0,1,2,0Z"/>
+  </g>
+</symbol><symbol id="24_stroke_add" viewBox="0 0 24 24">
+  <title>24_add</title>
+  <line x1="12" y1="1" x2="12" y2="23" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+  <line x1="1" y1="12" x2="23" y2="12" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+</symbol><symbol id="24_stroke_arrow1 down" viewBox="0 0 24 24">
+  <title>24_arrow1 down</title>
+  <g id="Ebene_9" data-name="Ebene 9">
+    <line x1="12" y1="1" x2="12" y2="23" style="stroke-linecap: round;stroke-miterlimit: 10;stroke-width: 2px"/>
+    <polyline points="20 15 12 23 4 15" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+  </g>
+</symbol><symbol id="24_stroke_arrow1 left" viewBox="0 0 24 24">
+  <title>24_arrow1 left</title>
+  <g id="Ebene_7" data-name="Ebene 7">
+    <line x1="23" y1="12" x2="1" y2="12" style="stroke-linecap: round;stroke-miterlimit: 10;stroke-width: 2px"/>
+    <polyline points="9 20 1 12 9 4" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+  </g>
+</symbol><symbol id="24_stroke_arrow1 right" viewBox="0 0 24 24">
+  <title>24_arrow1 right</title>
+  <g id="Ebene_6" data-name="Ebene 6">
+    <line x1="1" y1="12" x2="23" y2="12" style="stroke-linecap: round;stroke-miterlimit: 10;stroke-width: 2px"/>
+    <polyline points="15 20 23 12 15 4" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+  </g>
+</symbol><symbol id="24_stroke_arrow1 up" viewBox="0 0 24 24">
+  <title>24_arrow2 up</title>
+  <g id="Ebene_8" data-name="Ebene 8">
+    <line x1="12" y1="23" x2="12" y2="1" style="stroke-linecap: round;stroke-miterlimit: 10;stroke-width: 2px"/>
+    <polyline points="4 9 12 1 20 9" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+  </g>
+</symbol><symbol id="24_stroke_arrow2 down" viewBox="0 0 24 24">
+  <title>24_arrow2 down</title>
+  <g id="Ebene_37" data-name="Ebene 37">
+    <polygon points="12 23 20 12 15 12 15 1 9 1 9 12 4 12 12 23" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px;fill-rule: evenodd"/>
+  </g>
+</symbol><symbol id="24_stroke_arrow2 left" viewBox="0 0 24 24">
+  <title>24_arrow2 left</title>
+  <g id="Ebene_35" data-name="Ebene 35">
+    <polygon points="1 12 12 20 12 15 23 15 23 9 12 9 12 4 1 12" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px;fill-rule: evenodd"/>
+  </g>
+</symbol><symbol id="24_stroke_arrow2 right" viewBox="0 0 24 24">
+  <title>24_arrow2 right</title>
+  <g id="Ebene_34" data-name="Ebene 34">
+    <polygon points="23 12 12 4 12 9 1 9 1 15 12 15 12 20 23 12" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px;fill-rule: evenodd"/>
+  </g>
+</symbol><symbol id="24_stroke_arrow2 up" viewBox="0 0 24 24">
+  <title>24_arrow2 up_1</title>
+  <g id="Ebene_36" data-name="Ebene 36">
+    <polygon points="12 1 4 12 9 12 9 23 15 23 15 12 20 12 12 1" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px;fill-rule: evenodd"/>
+  </g>
+</symbol><symbol id="24_stroke_bell" viewBox="0 0 24 24">
+  <title>24_bell</title>
+  <g id="Ebene_24" data-name="Ebene 24">
+    <path d="M18.43394,10.58486c-.66127-1.65319-1.12991-4.37151-1.65873-6.0717a5.0019,5.0019,0,0,0-9.55042,0c-.52882,1.70019-.99746,4.41851-1.65873,6.0717L2.39318,17.12728A2,2,0,0,0,4.19273,20H19.80727a2,2,0,0,0,1.79955-2.87272Z" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+    <path d="M15,20a3,3,0,0,1-6,0" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+  </g>
+</symbol><symbol id="24_stroke_calendar" viewBox="0 0 24 24">
+  <title>24_calendar</title>
+  <g id="Ebene_21" data-name="Ebene 21">
+    <path d="M19,3h2a2,2,0,0,1,2,2V21a2,2,0,0,1-2,2H3a2,2,0,0,1-2-2V5A2,2,0,0,1,3,3H5" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+    <line x1="11" y1="3" x2="13" y2="3" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+    <line x1="1" y1="8" x2="23" y2="8" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+    <line x1="16" y1="1" x2="16" y2="5" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+    <line x1="8" y1="1" x2="8" y2="5" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+  </g>
+</symbol><symbol id="24_stroke_chevron down" viewBox="0 0 24 24">
+  <title>24_chevron down</title>
+  <g id="Ebene_11" data-name="Ebene 11">
+    <polyline points="4 8 12 16 20 8" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+  </g>
+</symbol><symbol id="24_stroke_chevron left" viewBox="0 0 24 24">
+  <title>24_chevron left</title>
+  <g id="Ebene_13" data-name="Ebene 13">
+    <polyline points="16 20 8 12 16 4" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+  </g>
+</symbol><symbol id="24_stroke_chevron right" viewBox="0 0 24 24">
+  <title>24_chevron right</title>
+  <g id="Ebene_12" data-name="Ebene 12">
+    <polyline points="8 4 16 12 8 20" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+  </g>
+</symbol><symbol id="24_stroke_chevron up" viewBox="0 0 24 24">
+  <title>24_chevron up</title>
+  <g id="Ebene_10" data-name="Ebene 10">
+    <polyline points="4 16 12 8 20 16" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+  </g>
+</symbol><symbol id="24_stroke_close" viewBox="0 0 24 24">
+  <title>24_close</title>
+  <g id="Ebene_2" data-name="Ebene 2">
+    <line x1="1" y1="1" x2="23" y2="23" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+    <line x1="23" y1="1" x2="1" y2="23" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+  </g>
+</symbol><symbol id="24_stroke_delete" viewBox="0 0 24 24">
+  <title>24_delete</title>
+  <g id="Ebene_4" data-name="Ebene 4">
+    <path d="M4,5V21.11094A1.90711,1.90711,0,0,0,5.892,23H18.108A1.90711,1.90711,0,0,0,20,21.11094V5" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+    <line x1="1" y1="5" x2="23" y2="5" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+    <path d="M16,5V3a2,2,0,0,0-2-2H10A2,2,0,0,0,8,3V5" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+    <line x1="12" y1="8" x2="12" y2="20" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+    <line x1="16" y1="8" x2="16" y2="20" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+    <line x1="8" y1="8" x2="8" y2="20" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+  </g>
+</symbol><symbol id="24_stroke_download" viewBox="0 0 24 24">
+  <title>24_download</title>
+  <g id="Ebene_17" data-name="Ebene 17">
+    <path d="M21,23H3a2,2,0,0,1-2-2V14H6l2,3h8l2-3h5v7A2,2,0,0,1,21,23Z" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+    <path d="M1,14,4.42416,8.00772A2,2,0,0,1,6.16065,7H8" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+    <path d="M23,14,19.57584,8.00772A2,2,0,0,0,17.83935,7H16" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+    <line x1="12" y1="1" x2="12" y2="14" style="stroke-linecap: round;stroke-miterlimit: 10;stroke-width: 2px"/>
+    <polyline points="9 11 12 14 15 11" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+  </g>
+</symbol><symbol id="24_stroke_edit" viewBox="0 0 24 24">
+  <title>24_edit</title>
+  <g id="Ebene_3" data-name="Ebene 3">
+    <path d="M18.90785,2l.03737.01548,3.03932,3.03931a.05946.05946,0,0,1,0,.07473L5.114,22H2V18.886L15.70114,5.18482l3.16934-3.16934A.04667.04667,0,0,1,18.90785,2m0-2a2.04641,2.04641,0,0,0-1.45158.60127L14.28693,3.7706,0,18.05753V24H5.94246L23.39874,6.54373a2.05285,2.05285,0,0,0,0-2.90316L20.35943.60127A2.04639,2.04639,0,0,0,18.90785,0Z"/>
+    <line x1="19.77035" y1="8.22965" x2="15.77035" y2="4.22965" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+  </g>
+</symbol><symbol id="24_stroke_email" viewBox="0 0 24 24">
+  <title>24_email</title>
+  <g id="Ebene_15" data-name="Ebene 15">
+    <rect x="1" y="4" width="22" height="16" rx="1.89764" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+    <polyline points="4 7 12 13 20 7" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+    <line x1="17" y1="14" x2="20" y2="17" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+    <line x1="7" y1="14" x2="4" y2="17" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+  </g>
+</symbol><symbol id="24_stroke_error" viewBox="0 0 24 24">
+  <title>24_error</title>
+  <g id="Ebene_28" data-name="Ebene 28">
+    <circle cx="12" cy="12" r="11" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+    <line x1="7.75736" y1="7.75736" x2="16.24264" y2="16.24264" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+    <line x1="7.75736" y1="16.24264" x2="16.24264" y2="7.75736" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+  </g>
+</symbol><symbol id="24_stroke_file" viewBox="0 0 24 24">
+  <title>24_file</title>
+  <g id="Ebene_14" data-name="Ebene 14">
+    <polygon points="10 1 4 7 4 23 20 23 20 1 10 1" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+    <polyline points="4 7 10 7 10 1" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+  </g>
+</symbol><symbol id="24_stroke_filter" viewBox="0 0 24 24">
+  <title>24_filter</title>
+  <g id="Ebene_38" data-name="Ebene 38">
+    <polygon points="22 1 2 1 10 10.6 10 21 14 23 14 10.6 22 1" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px;fill-rule: evenodd"/>
+  </g>
+</symbol><symbol id="24_stroke_folder" viewBox="0 0 24 24">
+  <title>24_folder</title>
+  <g id="Ebene_22" data-name="Ebene 22">
+    <path d="M21,20H3a2,2,0,0,1-2-2V6A2,2,0,0,1,3,4H7.17157a2,2,0,0,1,1.41422.58579L11,7H21a2,2,0,0,1,2,2v9A2,2,0,0,1,21,20Z" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+  </g>
+</symbol><symbol id="24_stroke_help" viewBox="0 0 24 24">
+  <title>24_help</title>
+  <g id="Ebene_31" data-name="Ebene 31">
+    <circle cx="12" cy="12" r="11" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+    <circle cx="12" cy="17" r="1"/>
+    <path d="M9,9a3,3,0,1,1,3,3v2" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+  </g>
+</symbol><symbol id="24_stroke_home" viewBox="0 0 24 24">
+  <title>24_home</title>
+  <g id="Ebene_26" data-name="Ebene 26">
+    <path d="M13.41421,1.60871a1.94717,1.94717,0,0,0-2.82842,0L1,11.56958H3V23H9V13.64784h6V23h6V11.56958h2Z" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px;fill-rule: evenodd"/>
+  </g>
+</symbol><symbol id="24_stroke_info" viewBox="0 0 24 24">
+  <title>24_stroke_info</title>
+  <circle cx="12" cy="12" r="11" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+  <line x1="12" y1="18" x2="12" y2="11" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+  <circle cx="12" cy="7" r="1"/>
+</symbol><symbol id="24_stroke_locker" viewBox="0 0 24 24">
+  <title>24_locker</title>
+  <g id="Ebene_20" data-name="Ebene 20">
+    <rect x="3.5" y="7" width="17" height="16" rx="2" style="stroke-linecap: round;stroke-miterlimit: 10;stroke-width: 2px"/>
+    <path d="M18,7H6V6c0-1.65686,2-5,6-5h0c4,0,6,3.34314,6,5Z" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+    <circle cx="12" cy="13" r="2" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+    <line x1="12" y1="15" x2="12" y2="18" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+  </g>
+</symbol><symbol id="24_stroke_login" viewBox="0 0 24 24">
+  <title>24_login</title>
+  <g id="Ebene_18" data-name="Ebene 18">
+    <line x1="1" y1="12" x2="15" y2="12" style="stroke-linecap: round;stroke-miterlimit: 10;stroke-width: 2px"/>
+    <polyline points="11 16 15 12 11 8" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+    <path d="M8,8V3A1.89344,1.89344,0,0,1,9.76471,1H21.23529A1.89344,1.89344,0,0,1,23,3V21a1.89344,1.89344,0,0,1-1.76471,2H9.76471A1.89344,1.89344,0,0,1,8,21V16" style="stroke-linecap: round;stroke-miterlimit: 10;stroke-width: 2px"/>
+  </g>
+</symbol><symbol id="24_stroke_logout" viewBox="0 0 24 24">
+  <title>24_logout</title>
+  <g id="Ebene_19" data-name="Ebene 19">
+    <line x1="9" y1="12" x2="23" y2="12" style="stroke-linecap: round;stroke-miterlimit: 10;stroke-width: 2px"/>
+    <polyline points="19 16 23 12 19 8" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+    <path d="M16,8V3a1.89343,1.89343,0,0,0-1.7647-2H2.7647A1.89343,1.89343,0,0,0,1,3V21a1.89343,1.89343,0,0,0,1.7647,2H14.2353A1.89343,1.89343,0,0,0,16,21V16" style="stroke-linecap: round;stroke-miterlimit: 10;stroke-width: 2px"/>
+  </g>
+</symbol><symbol id="24_stroke_menu" viewBox="0 0 24 24">
+  <title>24_menu</title>
+  <g id="Ebene_5" data-name="Ebene 5">
+    <line x1="3" y1="7" x2="21" y2="7" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+    <line x1="3" y1="12" x2="21" y2="12" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+    <line x1="3" y1="17" x2="21" y2="17" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+  </g>
+</symbol><symbol id="24_stroke_more horizontal" viewBox="0 0 24 24">
+  <title>24_more horizontal</title>
+  <g id="Ebene_32" data-name="Ebene 32">
+    <circle cx="12" cy="12" r="2"/>
+    <circle cx="20" cy="12" r="2"/>
+    <circle cx="4" cy="12" r="2"/>
+  </g>
+</symbol><symbol id="24_stroke_more vertical" viewBox="0 0 24 24">
+  <title>24_more vertical</title>
+  <g id="Ebene_33" data-name="Ebene 33">
+    <circle cx="12" cy="12" r="2"/>
+    <circle cx="12" cy="4" r="2"/>
+    <circle cx="12" cy="20" r="2"/>
+  </g>
+</symbol><symbol id="24_stroke_save" viewBox="0 0 24 24">
+  <title>24_save</title>
+  <g id="Ebene_23" data-name="Ebene 23">
+    <path d="M21,23H3a2,2,0,0,1-2-2V3A2,2,0,0,1,3,1H17.17157a2,2,0,0,1,1.41422.58579l3.82842,3.82842A2,2,0,0,1,23,6.82843V21A2,2,0,0,1,21,23Z" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+    <path d="M6.93218,12H17.06782A1.93218,1.93218,0,0,1,19,13.93218V23a0,0,0,0,1,0,0H5a0,0,0,0,1,0,0V13.93218A1.93218,1.93218,0,0,1,6.93218,12Z" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+    <path d="M8,1h8a0,0,0,0,1,0,0V4a1,1,0,0,1-1,1H9A1,1,0,0,1,8,4V1A0,0,0,0,1,8,1Z" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+  </g>
+</symbol><symbol id="24_stroke_search" viewBox="0 0 24 24">
+  <title>24_search</title>
+  <g id="Ebene_25" data-name="Ebene 25">
+    <circle cx="10.5" cy="10.5" r="9.5" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+    <line x1="23" y1="23" x2="18" y2="18" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+  </g>
+</symbol><symbol id="24_stroke_setting" viewBox="0 0 24 24">
+  <title>24_setting</title>
+  <g id="Ebene_27" data-name="Ebene 27">
+    <circle cx="12" cy="12" r="4" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+    <path d="M23,12.33085v-.6617a2,2,0,0,0-1.64223-1.96774l-1.80833-.32879a7.934,7.934,0,0,0-.35413-.85193l1.047-1.51228a2,2,0,0,0-.23017-2.55263l-.46789-.46789a2,2,0,0,0-2.55263-.23017l-1.51228,1.047a7.934,7.934,0,0,0-.85193-.35413l-.32879-1.80833A2,2,0,0,0,12.33085,1h-.6617A2,2,0,0,0,9.70141,2.64223L9.37262,4.45056a7.934,7.934,0,0,0-.85193.35413l-1.51228-1.047a2,2,0,0,0-2.55263.23017l-.46789.46789a2,2,0,0,0-.23017,2.55263l1.047,1.51228a7.934,7.934,0,0,0-.35413.85193l-1.80833.32879A2,2,0,0,0,1,11.66915v.6617a2,2,0,0,0,1.64223,1.96774l1.80833.32879a7.934,7.934,0,0,0,.35413.85193l-1.047,1.51228a2,2,0,0,0,.23017,2.55263l.46789.46789a2,2,0,0,0,2.55263.23017l1.51228-1.047a7.934,7.934,0,0,0,.85193.35413l.32879,1.80833A2,2,0,0,0,11.66915,23h.6617a2,2,0,0,0,1.96774-1.64223l.32879-1.80833a7.934,7.934,0,0,0,.85193-.35413l1.51228,1.047a2,2,0,0,0,2.55263-.23017l.46789-.46789a2,2,0,0,0,.23017-2.55263l-1.047-1.51228a7.934,7.934,0,0,0,.35413-.85193l1.80833-.32879A2,2,0,0,0,23,12.33085Z" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px;fill-rule: evenodd"/>
+  </g>
+</symbol><symbol id="24_stroke_succeeded" viewBox="0 0 24 24">
+  <title>24_succeeded</title>
+  <g id="Ebene_29" data-name="Ebene 29">
+    <circle cx="12" cy="12" r="11" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+    <path d="M17.15533,8.34467,9.84467,15.65533l-3-3" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+  </g>
+</symbol><symbol id="24_stroke_unknown" viewBox="0 0 24 24">
+  <title>24_unknown</title>
+  <g id="Ebene_39" data-name="Ebene 39">
+    <circle cx="12" cy="12" r="11" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+    <line x1="4.22183" y1="4.22183" x2="19.77817" y2="19.77817" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+  </g>
+</symbol><symbol id="24_stroke_upload" viewBox="0 0 24 24">
+  <title>24_upload</title>
+  <g id="Ebene_16" data-name="Ebene 16">
+    <path d="M21,23H3a2,2,0,0,1-2-2V14H6l2,3h8l2-3h5v7A2,2,0,0,1,21,23Z" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+    <path d="M1,14,4.42416,8.00772A2,2,0,0,1,6.16065,7H8" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+    <path d="M23,14,19.57584,8.00772A2,2,0,0,0,17.83935,7H16" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+    <line x1="12" y1="14" x2="12" y2="1" style="stroke-linecap: round;stroke-miterlimit: 10;stroke-width: 2px"/>
+    <polyline points="9 4 12 1 15 4" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+  </g>
+</symbol><symbol id="24_stroke_user" viewBox="0 0 24 24">
+  <title>24_user</title>
+  <g id="Ebene_1" data-name="Ebene 1">
+    <path d="M8.943,13.00978a11.11487,11.11487,0,0,1-3.3597,1.93157c-2.99573,1.14225-3.738,4.13645-4.491,5.56946A.83912.83912,0,0,0,1.61205,21.687C3.007,22.18974,6.16093,23,12,23s8.993-.81026,10.388-1.313a.83912.83912,0,0,0,.51972-1.17622c-.753-1.433-1.49527-4.03185-4.491-5.17411A9.99745,9.99745,0,0,1,14.95873,13" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+    <ellipse cx="12" cy="7.5" rx="5.2" ry="6.5" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+  </g>
+</symbol><symbol id="24_stroke_warning" viewBox="0 0 24 24">
+  <title>24_warning</title>
+  <g id="Ebene_30" data-name="Ebene 30">
+    <circle cx="12" cy="12" r="11" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+    <line x1="12" y1="6" x2="12" y2="14" style="stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+    <circle cx="12" cy="17" r="1"/>
+  </g>
+</symbol></svg>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <title>24_warning</title>
+  <g id="Ebene_30" data-name="Ebene 30">
+    <circle cx="12" cy="12" r="11" style="fill: none;stroke: #000;stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+    <line x1="12" y1="6" x2="12" y2="14" style="fill: none;stroke: #000;stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px"/>
+    <circle cx="12" cy="17" r="1"/>
+  </g>
+</svg>
