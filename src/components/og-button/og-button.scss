@@ -34,22 +34,21 @@
   --BorderWidth: 0;
   --BorderStyle: solid;
 
-  --og-button-BorderRadius:         var( --OG-BORDER-RADIUS, #{$og-border-radius});
-
   --og-button-Background:           var(--OG-COLOR-SECONDARY--100--20, #{$og-color-secondary--100--20});
   --og-button-Background--hover:    var(--OG-COLOR-SECONDARY--100--30, #{$og-color-secondary--100--30});
   --og-button-Background--active:   var(--OG-COLOR-SECONDARY--100--10, #{$og-color-secondary--100--10});
   --og-button-Background--disabled: var(--OG-COLOR-SECONDARY--100--07, #{$og-color-secondary--100--07});
 
-  --og-button-Color:                var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
-  --og-button-Color--hover:         var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
-  --og-button-Color--active:        var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
-  --og-button-Color--disabled:      var(--OG-COLOR-SHADE--100--30, #{$og-color-shade--100--30});
-
   --og-button-BorderColor:           var(--OG-COLOR-SECONDARY--100--20, #{$og-color-secondary--100--20});
   --og-button-BorderColor--hover:    var(--OG-COLOR-SECONDARY--100--30, #{$og-color-secondary--100--30});
   --og-button-BorderColor--active:   var(--OG-COLOR-SECONDARY--100--10, #{$og-color-secondary--100--10});
   --og-button-BorderColor--disabled: var(--OG-COLOR-SECONDARY--100--07, #{$og-color-secondary--100--07});
+  --og-button-BorderRadius:          var(--OG-BORDER-RADIUS, #{$og-border-radius});
+
+  --og-button-Color:                var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
+  --og-button-Color--hover:         var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
+  --og-button-Color--active:        var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
+  --og-button-Color--disabled:      var(--OG-COLOR-SHADE--100--30, #{$og-color-shade--100--30});
 
   --og-button-FontWeight: var(--OG-FONT-WEIGHT--MEDIUM, 500);
 
