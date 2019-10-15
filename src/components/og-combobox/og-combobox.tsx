@@ -208,7 +208,7 @@ export class OgCombobox {
     
 
     return {
-      top: "auto",
+      top: flyoutTop + 'px',
       width: window.getComputedStyle(this.flyoutList.parentElement).width,
       height: flyoutHeight + 'px'
     }
