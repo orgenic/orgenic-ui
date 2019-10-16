@@ -18,7 +18,15 @@ export class OgIcon {
    * @type {string}
    */
   @Prop({ reflect: true })
-  public icon: string = 'home';
+  public icon: string;
+
+  /**
+   * An optional path to a custom svg-sprite
+   *
+   * @type {string}
+   */
+  @Prop({ reflect: true })
+  public src: string;
 
   /**
    * The style of the icon
@@ -40,11 +48,15 @@ export class OgIcon {
   private iconSrc: string = "";
 
   public async componentWillLoad(): Promise<void> {
-    this.iconSrc = await IconUtils.getInstance().getIconSrc();
+    this.iconSrc = await IconUtils.getInstance().getIconSrc(this.src);
   }
 
   public componentDidRender(): void {
     this.element.style.setProperty('--og-icon--Size', this.size);
+  }
+
+  private getIconId(): string {
+    return this.src ? (this.icon ? `#${this.icon}` : '') : `#24_${ this.iconStyle }_${ this.icon || 'home' }`;  // TODO: change after new internal sprite is available
   }
 
   public render(): HTMLElement {
@@ -52,7 +64,7 @@ export class OgIcon {
       class="og-icon"
     >
       <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" role="img">
-        <use xlinkHref={`${this.iconSrc}#24_${this.iconStyle}_${this.icon}`}/>
+        <use xlinkHref={this.iconSrc + this.getIconId()}/>
       </svg>
     </Host>;
   }

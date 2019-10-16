@@ -200,6 +200,10 @@ export namespace Components {
     * The size of the icon
     */
     'size': string;
+    /**
+    * An optional path to a custom svg-sprite
+    */
+    'src': string;
   }
   interface OgInternalCalendar {
     'dateDecorator': OgDateDecorator;
@@ -884,6 +888,10 @@ declare namespace LocalJSX {
     * The size of the icon
     */
     'size'?: string;
+    /**
+    * An optional path to a custom svg-sprite
+    */
+    'src'?: string;
   }
   interface OgInternalCalendar extends JSXBase.HTMLAttributes<HTMLOgInternalCalendarElement> {
     'dateDecorator'?: OgDateDecorator;

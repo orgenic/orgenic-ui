@@ -20,7 +20,7 @@ export class IconUtils {
 
     if (!this.requests[fetchUrl]) {
       this.requests[fetchUrl] = new Promise(async (resolve, reject) => {
-        const response = await fetch(fetchUrl);
+        const response = await fetch(fetchUrl, {mode: 'no-cors'});
         if (!response) reject('no response');
         const data = await response.blob();
         if (!data) reject('no data');

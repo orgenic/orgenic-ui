@@ -44,4 +44,6 @@ svg {
     height: var(--og-icon--Size);
     fill: var(--og-icon--Fill);
     stroke: var(--og-icon--Stroke);
+
+    transition: fill .3s ease, stroke .3s ease;
 }
