@@ -12,11 +12,12 @@ import { h, Component, Prop, EventEmitter, Event } from '@stencil/core';
   shadow: true
 })
 export class OgList {
+  
   /**
    * The key of the selected list item
-   */
+   */  
   @Prop({ mutable: true })
-  public selected: string;
+  public selected;
 
   /**
    * An array of items to choose from
@@ -55,10 +56,16 @@ export class OgList {
   public disabledProperty: string = 'disabled';
 
   /**
-   * Set the that will be displayed if the items array is empty.
+   * Set the text that will be displayed if the items array is empty.
    */
   @Prop()
   public emptyListMessage: string = 'No items available';
+
+  /**
+   * Enables selection of multiple items
+   */
+  @Prop()
+  public multiselect: boolean;
 
   /**
    * Determines, whether the control is disabled or not
@@ -74,8 +81,16 @@ export class OgList {
 
   public listItemSelected(item: any): void {
     if (!this.disabled && !this.isItemDisabled(item)) {
-      this.selected = item[this.keyProperty] + '';
-      this.itemSelected.emit(item);
+      if (this.isItemSelected(item)) {
+        this.selected.delete(item[this.keyProperty] + '');
+      } else {
+        if (!this.multiselect) {
+          this.selected.clear();
+        }
+        this.selected.add(item[this.keyProperty] + '');
+        this.itemSelected.emit(item);
+      }
+      this.selected = new Set(this.selected.values());
     }
   }
 
@@ -84,7 +99,7 @@ export class OgList {
   }
 
   public isItemSelected(item: any): boolean {
-    return !(this.isItemDisabled(item)) && (item[this.keyProperty] + '' === this.selected);
+    return this.selected.has(item[this.keyProperty]);
   }
 
   private isItemDisabled(item: any): boolean {
@@ -92,6 +107,19 @@ export class OgList {
   }
 
   public render(): HTMLElement {
+    if (typeof this.selected === "string") {
+      let selection = this.selected.trim().split(" ");
+      
+      this.selected = new Set();      
+      selection.forEach(el => {
+        this.selected.add(el);
+      });
+    }
+
+    if (typeof this.selected === "undefined") {
+      this.selected = new Set();
+    }
+
     return <ul class="og-list">
       {
         !this.hasValidItems()
