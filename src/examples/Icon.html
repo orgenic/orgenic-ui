@@ -2,6 +2,23 @@
 og-icon
 -->
 <og-card name="Icons">
+    <div class="example center">
+        <og-icon></og-icon>
+    </div>
+    <div class="example">
+        <og-icon></og-icon>
+        <og-icon></og-icon>
+        <og-icon></og-icon>
+        <og-icon></og-icon>
+        <og-icon></og-icon>
+        <og-icon></og-icon>
+        <og-icon></og-icon>
+        <og-icon></og-icon>
+        <og-icon></og-icon>
+        <og-icon></og-icon>
+        <og-icon></og-icon>
+        <og-icon></og-icon>
+    </div>
 
     <h3>Options</h3>
     <div class="options">
@@ -11,13 +28,9 @@ og-icon
         <og-form-item label="Icon Style">
             <og-combobox class="style-selector"></og-combobox>
         </og-form-item>
-        <og-form-item label="Icon Size">
-            <og-number-input class="size-field"></og-number-input>
+        <og-form-item label="Icon Size (px)">
+            <og-number-input class="size-field" value="16"></og-number-input>
         </og-form-item>
-    </div>
-
-    <div class="example">
-        <og-icon></og-icon>
     </div>
 </og-card>
 <script>
@@ -50,11 +63,18 @@ og-icon
 
     const sizeField = document.querySelector('.size-field');
     sizeField.addEventListener('valueChanged', e => {
-        console.log(e.detail);
         icon.setAttribute('size', e.detail + 'px');
     });
 </script>
 <style>
+    .example.center {
+        display: flex;
+        align-content: center;
+    }
+    .example og-icon {
+        margin: 0 auto;
+    }
+
     .options {
         display: flex;
     }

@@ -3,8 +3,8 @@
  * @license MIT
  * See LICENSE file at https://github.com/orgenic/orgenic-ui/blob/master/LICENSE
  **/
-
 import { h, Component, Element, Prop, Host } from '@stencil/core';
+import { IconUtils } from './utils/utils'
 
 @Component({
   tag: 'og-icon',
@@ -40,29 +40,20 @@ export class OgIcon {
   private iconSrc: string = "";
 
   public async componentWillLoad(): Promise<void> {
-    const response = await fetch('/orgenic-ui-assets/icons.svg');
-    const data = await response.blob();
-    this.iconSrc = URL.createObjectURL(data);
+    this.iconSrc = await IconUtils.getInstance().getIconSrc();
   }
 
   public componentDidRender(): void {
     this.element.style.setProperty('--og-icon--Size', this.size);
   }
 
-  private getSvg(): string {
-    return `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img">
-      <use xlink:href="${this.iconSrc}#24_${this.iconStyle}_${this.icon}"/>
-    </svg>`;
-  }
-
   public render(): HTMLElement {
     return <Host
       class="og-icon"
     >
-      <div
-        innerHTML={this.getSvg()}
-      >
-      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" role="img">
+        <use xlinkHref={`${this.iconSrc}#24_${this.iconStyle}_${this.icon}`}/>
+      </svg>
     </Host>;
   }
 }
