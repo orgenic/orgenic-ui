@@ -131,7 +131,6 @@ export class OgList {
         }
       }
       this.itemSelected.emit(this.selected);
-      console.log('this.selected', this.selected);
     }
   }
 
