@@ -109,19 +109,23 @@ export class OgList {
     if (!this.disabled && !this.isItemDisabled(item)) {
       const value = this.getKeyValue(item);
       if (this.isItemSelected(item)) {
-        // shall we deny toggle selection if we are not using multi selection?
+        // deny deselection last item if required flag is set?
         if (this.required && this.internalSelection.size === 1) {
           return;
         }
         if (this.multiselect) {
+          // deselect with multiselect means: delete item, update internal state and property value
           this.internalSelection.delete(value);
           this.internalSelection = new Set(this.internalSelection);
           this.selected = [ ...this.internalSelection ];
         } else {
+          // deselect without multiselect simply means: empty selection state and property
           this.internalSelection = new Set();
           this.selected = '';
         }
       } else {
+        // add selected key to property array and update internal state
+        // extend or replace state and property depending on multiselect
         if (this.multiselect) {
           this.selected = [ ...this.internalSelection, value ];
           this.internalSelection = new Set(this.selected);
@@ -130,6 +134,7 @@ export class OgList {
           this.selected = value;
         }
       }
+      // emit new property value
       this.itemSelected.emit(this.selected);
     }
   }
