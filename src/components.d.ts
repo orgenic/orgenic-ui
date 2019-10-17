@@ -233,7 +233,7 @@ export namespace Components {
     */
     'disabledProperty': string;
     /**
-    * Set the that will be displayed if the items array is empty.
+    * Set the text that will be displayed if the items array is empty.
     */
     'emptyListMessage': string;
     /**
@@ -253,9 +253,17 @@ export namespace Components {
     */
     'labelProperty': string;
     /**
+    * Enables selection of multiple items
+    */
+    'multiselect': boolean;
+    /**
+    * Requires a selection of at least one item. If one item is selected it prevents the user from deselecting it
+    */
+    'required': boolean;
+    /**
     * The key of the selected list item
     */
-    'selected': string;
+    'selected': string | string[];
     /**
     * Set the property for the items to define as value. *Optional* Default: no value
     */
@@ -897,7 +905,7 @@ declare namespace LocalJSX {
     */
     'disabledProperty'?: string;
     /**
-    * Set the that will be displayed if the items array is empty.
+    * Set the text that will be displayed if the items array is empty.
     */
     'emptyListMessage'?: string;
     /**
@@ -917,13 +925,21 @@ declare namespace LocalJSX {
     */
     'labelProperty'?: string;
     /**
+    * Enables selection of multiple items
+    */
+    'multiselect'?: boolean;
+    /**
     * Event is being emitted when value changes.
     */
     'onItemSelected'?: (event: CustomEvent<any>) => void;
     /**
+    * Requires a selection of at least one item. If one item is selected it prevents the user from deselecting it
+    */
+    'required'?: boolean;
+    /**
     * The key of the selected list item
     */
-    'selected'?: string;
+    'selected'?: string | string[];
     /**
     * Set the property for the items to define as value. *Optional* Default: no value
     */
