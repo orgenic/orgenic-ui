@@ -111,9 +111,7 @@ export class OgList {
       let selection = this.selected.trim().split(" ");
       
       this.selected = new Set();      
-      selection.forEach(el => {
-        this.selected.add(el);
-      });
+      selection.forEach(item => this.selected.add(item));
     }
 
     if (typeof this.selected === "undefined") {
