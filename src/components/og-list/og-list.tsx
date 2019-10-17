@@ -88,7 +88,7 @@ export class OgList {
           this.selected.clear();
         }
         this.selected.add(item[this.keyProperty] + '');
-        this.itemSelected.emit(item);
+        this.itemSelected.emit(this.selected.values());
       }
       this.selected = new Set(this.selected.values());
     }
