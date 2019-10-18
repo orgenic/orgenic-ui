@@ -135,7 +135,11 @@ export class OgList {
         }
       }
       // emit new property value
-      this.itemSelected.emit(this.selected);
+      if (this.multiselect) {
+        this.itemSelected.emit(this.items.filter(item => this.internalSelection.has(this.getKeyValue(item))))
+      } else {
+        this.itemSelected.emit(this.items.find(item => this.getKeyValue(item) === this.selected));
+      }
     }
   }
 
