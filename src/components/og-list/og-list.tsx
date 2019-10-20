@@ -80,7 +80,7 @@ export class OgList {
   }
 
   private hasValidItems(): boolean {
-    return Array.isArray(this.items);
+    return Array.isArray(this.items) && this.items.length > 0;
   }
 
   public isItemSelected(item: any): boolean {
