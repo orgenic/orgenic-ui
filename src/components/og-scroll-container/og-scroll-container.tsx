@@ -96,7 +96,7 @@ export class OgScrollContainer {
       this.yThumbSize = containerHeight * this.factorScrollbarY;
     }
 
-    document.body.addEventListener('mousewheel', this.handleMouseWheel);
+    this.el.addEventListener('mousewheel', this.handleMouseWheel);
   }
 
   private handleMouseDown = (event: MouseEvent, axis: string) => {
@@ -149,10 +149,17 @@ export class OgScrollContainer {
   }
 
   private handleMouseWheel = (event: WheelEvent) => {
+    const prevScrollTop = this.containerElement.scrollTop;
+    const prevScrollLeft = this.containerElement.scrollLeft;
+
     this.containerElement.scrollTop += event.deltaY;
     this.yThumbPos = this.containerElement.scrollTop * this.factorScrollbarY;
     this.containerElement.scrollLeft += event.deltaX;
     this.xThumbPos = this.containerElement.scrollLeft * this.factorScrollbarX;
+
+    if (prevScrollTop !== this.containerElement.scrollTop && prevScrollLeft !== this.containerElement.scrollLeft) {
+      event.preventDefault();
+    }
   }
 
   public render(): HTMLElement {
