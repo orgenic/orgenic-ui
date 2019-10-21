@@ -157,7 +157,7 @@ export class OgScrollContainer {
     this.containerElement.scrollLeft += event.deltaX;
     this.xThumbPos = this.containerElement.scrollLeft * this.factorScrollbarX;
 
-    if (prevScrollTop !== this.containerElement.scrollTop && prevScrollLeft !== this.containerElement.scrollLeft) {
+    if (prevScrollTop !== this.containerElement.scrollTop || prevScrollLeft !== this.containerElement.scrollLeft) {
       event.preventDefault();
     }
   }
