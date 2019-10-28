@@ -22,12 +22,12 @@ describe("og-list", () => {
 
   it("should render empty list message when empty", async () => {
     await page.waitForChanges();
-    let items = await page.findAll("og-list >>> li");
+    let items = await page.findAll("og-list >>> og-list-item >>> li");
     expect(items.length).toEqual(1);
 
     component.setProperty("items", []);
     await page.waitForChanges();
-    items = await page.findAll("og-list >>> li");
+    items = await page.findAll("og-list >>> og-list-item >>> li");
     expect(items.length).toEqual(1);
   });
 
