@@ -6,6 +6,7 @@ it('should show dropdown when clicking button', async () => {
   combobox.el = {offsetTop: 0, offsetHeight: 0, offsetLeft: 0, offsetWidth: 0} as HTMLElement;
 
   expect(await combobox.dropdownActive).toBeFalsy();
-  combobox.buttonClicked();
+  combobox.buttonClicked(new Event('click'));
+
   expect(await combobox.dropdownActive).toBeTruthy();
 });

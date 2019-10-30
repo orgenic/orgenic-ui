@@ -4,13 +4,13 @@ og-list
 <og-card name="List">
     <div>
         <h4>Listitems with pre-selection</h4>
-        <og-list id="list1" selected="v2"></og-list>
+        <og-list id="list1" multiselect></og-list>
 
-        <h4>Listitems with icon and value</h4>
-        <og-list id="list2" image-url-property="iconUrl" value-property="value"></og-list>
+        <h4>Listitems with icon and value; (required = true)</h4>
+        <og-list id="list2" required selected="v2" image-url-property="iconUrl" value-property="value"></og-list>
 
         <h4>Disabled list</h4>
-        <og-list id="list3" selected-key="v2" value-property="value" disabled></og-list>
+        <og-list id="list3" selected="v3" value-property="value" disabled></og-list>
     </div>
     <div slot="footer">
     </div>
@@ -24,6 +24,7 @@ og-list
 
     const list1 = document.querySelector('#list1');
     list1.items = listItems;
+    list1.selected = ['v1'];
     list1.addEventListener('itemSelected', e => console.log('item selected', e));
 
     const list2 = document.querySelector('#list2');

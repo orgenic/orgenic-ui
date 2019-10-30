@@ -13,7 +13,6 @@ describe("og-list", () => {
 
     await page.setContent("<og-list></og-list>");
     component = await page.find("og-list");
-    component.setProperty("items", items);
   });
 
   it("renders", async () => {
@@ -21,7 +20,20 @@ describe("og-list", () => {
     expect(component).toHaveClass("hydrated");
   });
 
+  it("should render empty list message when empty", async () => {
+    await page.waitForChanges();
+    let items = await page.findAll("og-list >>> og-list-item >>> li");
+    expect(items.length).toEqual(1);
+
+    component.setProperty("items", []);
+    await page.waitForChanges();
+    items = await page.findAll("og-list >>> og-list-item >>> li");
+    expect(items.length).toEqual(1);
+  });
+
   it("should render og-list-item elements", async () => {
+    component.setProperty("items", items);
+
     await page.waitForChanges();
     const listItems = await page.findAll("og-list >>> og-list-item");
     expect(listItems.length).toEqual(2);
