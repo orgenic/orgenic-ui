@@ -99,6 +99,9 @@
 
 .og-list-item__label {
     flex-grow: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .og-list-item__value {
