@@ -125,7 +125,7 @@ export class OgCombobox {
     });
   }
 
-  public buttonClicked() {
+  public buttonClicked(e: Event) {
     if (!this.disabled) {
       this.dropdownActive = !this.dropdownActive;
       if (this.dropdownActive) {
@@ -133,6 +133,8 @@ export class OgCombobox {
       } else {
         this.focusLost.emit();
       }
+      e.preventDefault();
+      e.stopPropagation();
     }
   }
 
@@ -203,6 +205,7 @@ export class OgCombobox {
       flyoutHeight = maxHeight;
       flyoutTop = this.el.getBoundingClientRect().top - flyoutHeight;
     }
+    
 
     return {
       top: flyoutTop + 'px',
@@ -219,7 +222,7 @@ export class OgCombobox {
       }}>
         <div
           class="og-combobox__header"
-          onClick={() => this.buttonClicked()}
+          onClick={(e) => this.buttonClicked(e)}
         >
           <input
             type="text"

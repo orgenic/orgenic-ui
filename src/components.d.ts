@@ -205,7 +205,7 @@ export namespace Components {
     */
     'minSize': string;
     /**
-    * The weight defines the resize behavour. A component with weight 2 will be twice as large as a component with weight 1.. Default: "1"
+    * The weight defines the resize behavior. A component with weight 2 will be twice as large as a component with weight 1.. Default: "1"
     */
     'weight': number;
   }
@@ -233,7 +233,7 @@ export namespace Components {
     */
     'disabledProperty': string;
     /**
-    * Set the that will be displayed if the items array is empty.
+    * Set the text that will be displayed if the items array is empty.
     */
     'emptyListMessage': string;
     /**
@@ -253,9 +253,17 @@ export namespace Components {
     */
     'labelProperty': string;
     /**
+    * Enables selection of multiple items
+    */
+    'multiselect': boolean;
+    /**
+    * Requires a selection of at least one item. If one item is selected it prevents the user from deselecting it
+    */
+    'required': boolean;
+    /**
     * The key of the selected list item
     */
-    'selected': string;
+    'selected': string | string[];
     /**
     * Set the property for the items to define as value. *Optional* Default: no value
     */
@@ -283,11 +291,11 @@ export namespace Components {
     */
     'label': string;
     /**
-    * Set flag, if place for an image is reserved, wheather used or not.
+    * Set flag, if place for an image is reserved, whether used or not.
     */
     'showImage': boolean;
     /**
-    * Set flag, if place for a value bage is reserved wheather used or not
+    * Set flag, if place for a value badge is reserved whether used or not
     */
     'showValue': boolean;
     /**
@@ -394,7 +402,7 @@ export namespace Components {
     */
     'disabled': boolean;
     /**
-    * name for the radiobuttons within this group
+    * name for the radio buttons within this group
     */
     'name': string;
     /**
@@ -869,7 +877,7 @@ declare namespace LocalJSX {
     */
     'minSize'?: string;
     /**
-    * The weight defines the resize behavour. A component with weight 2 will be twice as large as a component with weight 1.. Default: "1"
+    * The weight defines the resize behavior. A component with weight 2 will be twice as large as a component with weight 1.. Default: "1"
     */
     'weight'?: number;
   }
@@ -897,7 +905,7 @@ declare namespace LocalJSX {
     */
     'disabledProperty'?: string;
     /**
-    * Set the that will be displayed if the items array is empty.
+    * Set the text that will be displayed if the items array is empty.
     */
     'emptyListMessage'?: string;
     /**
@@ -917,13 +925,21 @@ declare namespace LocalJSX {
     */
     'labelProperty'?: string;
     /**
+    * Enables selection of multiple items
+    */
+    'multiselect'?: boolean;
+    /**
     * Event is being emitted when value changes.
     */
     'onItemSelected'?: (event: CustomEvent<any>) => void;
     /**
+    * Requires a selection of at least one item. If one item is selected it prevents the user from deselecting it
+    */
+    'required'?: boolean;
+    /**
     * The key of the selected list item
     */
-    'selected'?: string;
+    'selected'?: string | string[];
     /**
     * Set the property for the items to define as value. *Optional* Default: no value
     */
@@ -951,11 +967,11 @@ declare namespace LocalJSX {
     */
     'label'?: string;
     /**
-    * Set flag, if place for an image is reserved, wheather used or not.
+    * Set flag, if place for an image is reserved, whether used or not.
     */
     'showImage'?: boolean;
     /**
-    * Set flag, if place for a value bage is reserved wheather used or not
+    * Set flag, if place for a value badge is reserved whether used or not
     */
     'showValue'?: boolean;
     /**
@@ -1090,7 +1106,7 @@ declare namespace LocalJSX {
     */
     'disabled'?: boolean;
     /**
-    * name for the radiobuttons within this group
+    * name for the radio buttons within this group
     */
     'name'?: string;
     'onValueChanged'?: (event: CustomEvent<string>) => void;

@@ -56,7 +56,7 @@
 
 
     /**
-     * @prop --og-dialog-BoxSHadow:
+     * @prop --og-dialog-BoxShadow:
      * Box Shadow of the Dialog Header
      */
     --og-dialog-BoxShadow: 0 2px 8px hsla(0, 0%, 0%, 0.2);
@@ -72,7 +72,7 @@
 
     /**
      * @prop --og-dialog__header-TextOverflow:
-     * Text Overflow Behaviour of the Dialog Header
+     * Text Overflow Behavior of the Dialog Header
      */
     --og-dialog__header-TextOverflow: ellipsis;
 
@@ -345,7 +345,7 @@
 .og-dialog__content {
     padding: var(--og-dialog__content-Padding);
     overflow: auto;
-    transform: translateZ(0);
+    backface-visibility: hidden;
     flex: 1;
 }
 

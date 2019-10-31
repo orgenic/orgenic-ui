@@ -14,27 +14,27 @@
 | `isSelected` | `is-selected` | Set the flag, if this list item is in selected state.                                 | `boolean` | `undefined` |
 | `key`        | `key`         | The value is needed for the using @see OgList instance to correctly handle selection. | `any`     | `undefined` |
 | `label`      | `label`       | Sets the value of the label.                                                          | `string`  | `undefined` |
-| `showImage`  | `show-image`  | Set flag, if place for an image is reserved, wheather used or not.                    | `boolean` | `undefined` |
-| `showValue`  | `show-value`  | Set flag, if place for a value bage is reserved wheather used or not                  | `boolean` | `undefined` |
+| `showImage`  | `show-image`  | Set flag, if place for an image is reserved, whether used or not.                     | `boolean` | `undefined` |
+| `showValue`  | `show-value`  | Set flag, if place for a value badge is reserved whether used or not                  | `boolean` | `undefined` |
 | `value`      | `value`       | Set the value to be shown in the badge placeholder                                    | `string`  | `undefined` |
 
 
 ## CSS Custom Properties
 
-| Name                                   | Description                                           |
-| -------------------------------------- | ----------------------------------------------------- |
-| `--og-list-item-Background`            | Background of the list item (shorthand)               |
-| `--og-list-item-Background--active`    | Background of the list item when selected (shorthand) |
-| `--og-list-item-Background--highlight` | Background of the list item when hovered (shorthand)  |
-| `--og-list-item-BorderColor`           | Border color of the list item                         |
-| `--og-list-item-BorderRadius`          | Border radius of the list item                        |
-| `--og-list-item-BorderStyle`           | Border style of the list item                         |
-| `--og-list-item-BorderWidth`           | Border width of the list item                         |
-| `--og-list-item-Color`                 | Text color of the list item                           |
-| `--og-list-item-Margin`                | Margin of the list item                               |
-| `--og-list-item-MinHeight`             | Minimum height of the list item                       |
-| `--og-list-item-Opacity`               | Opacity of the list item;                             |
-| `--og-list-item-Opacity--disabled`     | Opacity of the list item;                             |
+| Name                           | Description                                           |
+| ------------------------------ | ----------------------------------------------------- |
+| `--item-Background`            | Background of the list item (shorthand)               |
+| `--item-Background--active`    | Background of the list item when selected (shorthand) |
+| `--item-Background--highlight` | Background of the list item when hovered (shorthand)  |
+| `--item-BorderColor`           | Border color of the list item                         |
+| `--item-BorderRadius`          | Border radius of the list item                        |
+| `--item-BorderStyle`           | Border style of the list item                         |
+| `--item-BorderWidth`           | Border width of the list item                         |
+| `--item-Color`                 | Text color of the list item                           |
+| `--item-Margin`                | Margin of the list item                               |
+| `--item-MinHeight`             | Minimum height of the list item                       |
+| `--item-Opacity`               | Opacity of the list item;                             |
+| `--item-Opacity--disabled`     | Opacity of the list item;                             |
 
 
 ## Dependencies

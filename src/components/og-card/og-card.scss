@@ -5,9 +5,9 @@
  * @prop --og-card-BorderWidth: Border width of the cards border
  * @prop --og-card-BoxShadow: Box shadow of the card
  * @prop --og-card-Margin: Margin around the card
- * @prop --og-card__header-BorderColor: Boder color of the cards header border
- * @prop --og-card__header-BorderStyle: Boder style of the cards header border
- * @prop --og-card__header-BorderWidth: Boder width of the cards header border
+ * @prop --og-card__header-BorderColor: Border color of the cards header border
+ * @prop --og-card__header-BorderStyle: Border style of the cards header border
+ * @prop --og-card__header-BorderWidth: Border width of the cards header border
  * @prop --og-card__header-FontSize: Font size of the cards header
  * @prop --og-card__header-FontWeight: Font weight of the cards header
  * @prop --og-card__header-TextTransform: Text transformation of the cards header
@@ -94,10 +94,10 @@
 }
 
 .og-card__content {
+    backface-visibility: hidden;
     flex-grow: 1;
     margin: var(--og-card__content-Margin);
     overflow: auto;
-    transform: translateZ(0);
 }
 
 .og-card__footer {

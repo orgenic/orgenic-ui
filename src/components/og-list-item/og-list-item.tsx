@@ -30,7 +30,7 @@ export class OgListItem {
   public label: string;
 
   /**
-   * Set flag, if place for an image is reserved, wheather used or not.
+   * Set flag, if place for an image is reserved, whether used or not.
    *
    * @type {boolean}
    * @memberof OgListItem
@@ -48,7 +48,7 @@ export class OgListItem {
   public image: string;
 
   /**
-   * Set flag, if place for a value bage is reserved wheather used or not
+   * Set flag, if place for a value badge is reserved whether used or not
    *
    * @type {boolean}
    * @memberof OgListItem
