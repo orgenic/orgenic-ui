@@ -13,7 +13,7 @@ import { h, Component, Element, Prop } from '@stencil/core';
 })
 export class OgLayoutChild {
   /**
-   * The weight defines the resize behavour. A component with weight 2 will be twice as large as a component with weight 1.. Default: "1"
+   * The weight defines the resize behavior. A component with weight 2 will be twice as large as a component with weight 1.. Default: "1"
    */
   @Prop()
   public weight: number = 1;
