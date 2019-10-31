@@ -11,6 +11,21 @@
     --og-list-Opacity:                      1;
     --og-list-Opacity--disabled:            .5;
 
+    --og-list-item-Color:                  var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
+
+    --og-list-item-Background:             var(--OG-COLOR-PRIMARY--0--30, #{$og-color-primary--0--30});
+    --og-list-item-Background--highlight:  var(--OG-COLOR-PRIMARY--100--15, #{$og-color-primary--100--15});
+    --og-list-item-Background--active:     var(--OG-COLOR-PRIMARY--100--30, #{$og-color-primary--100--30});
+    --og-list-item-Opacity:                1;
+    --og-list-item-Opacity--disabled:      .5;
+
+    --og-list-item-BorderWidth:    2px;
+    --og-list-item-BorderStyle:    solid;
+    --og-list-item-BorderColor:    transparent;
+    --og-list-item-BorderRadius:   0;
+    --og-list-item-Margin:         0;
+    --og-list-item-MinHeight:      3em;
+
     box-sizing: border-box;
     *, *::before, *::after { box-sizing: inherit; }
 }
