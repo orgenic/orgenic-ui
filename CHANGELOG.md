@@ -51,7 +51,7 @@
 
 ### Enhancements
 * the content of og-card and og-dialog can be defined without using the named slot 'content'
-* documentation of css costom properties now have an additional column with default value
+* documentation of css custom properties now have an additional column with default value
 * added basic typography for headings, paragraphs and lists
 * og-card: can now be used without headline
 
