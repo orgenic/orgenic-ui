@@ -32,8 +32,9 @@
 }
 
 svg {
-    transform-origin: center;
     animation: spin 1.2s infinite linear;
+    transform-origin: center;
+    vertical-align: middle;
 }
 
 svg > circle {
