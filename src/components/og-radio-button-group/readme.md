@@ -10,7 +10,7 @@
 | Property   | Attribute  | Description                                        | Type      | Default     |
 | ---------- | ---------- | -------------------------------------------------- | --------- | ----------- |
 | `disabled` | `disabled` | Determines, whether the control is disabled or not | `boolean` | `undefined` |
-| `name`     | `name`     | name for the radiobuttons within this group        | `string`  | `undefined` |
+| `name`     | `name`     | name for the radio buttons within this group       | `string`  | `undefined` |
 | `value`    | `value`    | The value of the selected radio button.            | `string`  | `undefined` |
 
 
@@ -42,7 +42,7 @@
 | `--og-radio-button__icon-BorderColor`          | Border color of the radio button icon                        |
 | `--og-radio-button__icon-BorderColor--checked` | Border color of the radio button icon when checked           |
 | `--og-radio-button__icon-BorderColor--hover`   | Border color of the radio button icon when hovered           |
-| `--og-radio-button__icon-BorderRadius`         | Border radisu of the radio button icon                       |
+| `--og-radio-button__icon-BorderRadius`         | Border radius of the radio button icon                       |
 | `--og-radio-button__icon-BorderWidth`          | Border width of the radio button icon                        |
 | `--og-radio-button__icon-Height`               | Height of the radio button icon                              |
 | `--og-radio-button__icon-Left`                 | Left position of the radio button icon                       |

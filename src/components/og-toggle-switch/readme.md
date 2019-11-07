@@ -28,7 +28,7 @@
 | `--og-toggle-switch__indicator-Background--active` | Background of the toggle switch icon when active (shorthand)  |
 | `--og-toggle-switch__indicator-Background--hover`  | Background of the toggle switch icon when hovered (shorthand) |
 | `--og-toggle-switch__indicator-Height`             | Width of the toggle switch icon                               |
-| `--og-toggle-switch__indicator-Left`               | Left postion of the toggle switch icon                        |
+| `--og-toggle-switch__indicator-Left`               | Left position of the toggle switch icon                       |
 | `--og-toggle-switch__indicator-Top`                | Top position of the toggle switch icon                        |
 | `--og-toggle-switch__indicator-TranslateX`         | X position of the active toggle switch icon                   |
 | `--og-toggle-switch__indicator-Width`              | Width of the toggle switch icon                               |

@@ -24,7 +24,7 @@
 | `--og-dialog--warning__svg-Color`   | Color of the Dialog Content Img when inside 'Dialog Warning' |
 | `--og-dialog-Background`            | Background of the Dialog                                     |
 | `--og-dialog-BorderRadius`          | Corner Radius of the Dialog                                  |
-| `--og-dialog-BoxSHadow`             | Box Shadow of the Dialog Header                              |
+| `--og-dialog-BoxShadow`             | Box Shadow of the Dialog Header                              |
 | `--og-dialog-Height`                | Height of the Dialog                                         |
 | `--og-dialog-MaxHeight`             | Max Height of the Dialog                                     |
 | `--og-dialog-MaxWidth`              | Max Width of the Dialog                                      |
@@ -40,7 +40,7 @@
 | `--og-dialog__header-FontWeight`    | Font Weight of the Dialog Header                             |
 | `--og-dialog__header-Margin`        | Margin of the Dialog Header                                  |
 | `--og-dialog__header-Padding`       | Padding of the Dialog Header                                 |
-| `--og-dialog__header-TextOverflow`  | Text Overflow Behaviour of the Dialog Header                 |
+| `--og-dialog__header-TextOverflow`  | Text Overflow Behavior of the Dialog Header                  |
 | `--og-dialog__header-TextTransform` | Text Transformation of the Dialog Header                     |
 | `--og-dialog__overlay-Background`   | Background of the Dialog Overlay.                            |
 | `--og-dialog__svg-Background`       | Background of the Dialog Content Img                         |
