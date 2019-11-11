@@ -1,6 +1,6 @@
 import { newE2EPage, E2EPage, E2EElement } from '@stencil/core/testing';
 
-describe('og-list', () => {
+describe('og-datatable', () => {
   let page: E2EPage;
   let component: E2EElement;
   const data = [
