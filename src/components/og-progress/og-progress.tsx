@@ -86,7 +86,7 @@ export class OgProgress {
     >
       <div class="og-progress-bar"
         style={{
-          '--og-progress-buffer-Width': (this.value / this.max) * 100 + '%',
+          '--og-progress-bar-Width': (this.value / this.max) * 100 + '%',
         }}
       >
       </div>
