@@ -86,19 +86,19 @@ export class OgProgress {
     >
       <div class="og-progress-bar"
         style={{
-          'width': (this.value / this.max) * 100 + '%'
+          '--og-progress-buffer-Width': (this.value / this.max) * 100 + '%',
         }}
       >
       </div>
       <div class="og-progress-buffer"
         style={(!this.indeterminate && !this.query && !this.bounce) ? {
-          'width': (this.buffer / this.max) * 100 + '%'
+          '--og-progress-buffer-Width': (this.buffer / this.max) * 100 + '%'
         } : {}}
       >
       </div>
       <div class="og-progress-stream"
         style={(!this.indeterminate && !this.query && !this.bounce) ? {
-          'width': 100 - ((Math.max(this.buffer, this.value) / this.max) * 100) + '%'
+          '--og-progress-stream-Width': 100 - ((Math.max(this.buffer, this.value) / this.max) * 100) + '%'
         } : {}}
       >
       </div>

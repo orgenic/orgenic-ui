@@ -26,6 +26,13 @@
     --og-progress-Color:                var(--OG-COLOR-PRIMARY--100, #{$og-color-primary--100});
     --og-progress-Color--buffer:        var(--OG-COLOR-PRIMARY--100--30, #{$og-color-primary--100--30});
 
+    --og-progress-bar-Animation: unset;
+    --og-progress-bar-Width: 0;
+    --og-progress-buffer-Width: 0;
+    --og-progress-stream-Animation: unset;
+    --og-progress-stream-Visibility: hidden;
+    --og-progress-stream-dash: calc(var(--Height) * 2);
+    --og-progress-stream-Width: 0;
 
     display: var(--Display);
     position: relative;
@@ -44,7 +51,7 @@
     user-select: none;
 
     box-sizing: border-box;
-    transition: all .5s;
+    // transition: all .5s;
     *, *::before, *::after { box-sizing: inherit; }
 }
 
@@ -62,26 +69,25 @@
 :host([indeterminate]),
 :host([query]),
 :host([bounce]) {
-
-    .og-progress-bar {
-        animation: load 2s infinite linear;
-    }
-    .og-progress-buffer {
-        width: 100%;
-    }
-}
-:host([query]) .og-progress-bar {
-    animation: load 2s infinite linear reverse;
+    --og-progress-buffer-Width: 100%;
+    --og-progress-bar-Animation: load 2s infinite linear;
 }
 
-:host([bounce]) .og-progress-bar {
-    animation: load_sticky 5s infinite linear;
+:host([indeterminate]) {
+    --og-progress-bar-Animation: load 2s infinite linear;
+}
+
+:host([query]) {
+    --og-progress-bar-Animation: load 2s infinite linear reverse;
+}
+
+:host([bounce]) {
+    --og-progress-bar-Animation: loadSticky 5s infinite linear;
 }
 
 :host([stream]) {
-    .og-progress-stream {
-        visibility: visible;
-    }
+    --og-progress-stream-Animation: stream 2s infinite linear;
+    --og-progress-stream-Visibility: visible;
 }
 
 .og-progress-bar,
@@ -92,20 +98,36 @@
     height: 100%;
     background: var(--og-progress-Color);
 
-    transition: width .2s;
+    // transition: width .2s;
 }
+.og-progress-bar {
+    animation: var(--og-progress-bar-Animation);
+    // width: var(--og-progress-bar-Width);
+    z-index: 3;
+}
+
 .og-progress-buffer {
     background: var(--og-progress-Color--buffer);
+    width: var(--og-progress-buffer-Width);
+    z-index: 2;
 }
 .og-progress-stream {
-    visibility: hidden;
+    visibility: var(--og-progress-stream-Visibility);
     right: 0;
-    background-size: 20px 500%;
-    background-image: radial-gradient(var(--og-progress-Color--buffer) 0%, var(--og-progress-Color--buffer) 30%, transparent 42%);
+    background-size: calc(var(--og-progress-stream-dash) * 2) 100%;
+    background-image: linear-gradient(
+        to right,
+        var(--og-progress-Color--buffer) 0,
+        var(--og-progress-Color--buffer) 50%,
+        transparent 5%,
+        );
+    background-repeat: repeat-x;
     background-position: 0 50%;
     background-color: transparent;
+    width: var(--og-progress-stream-Width);
+    z-index: 1;
 
-    animation: stream 5s infinite linear;
+    animation: var(--og-progress-stream-Animation);
 }
 
 @keyframes load {
@@ -119,6 +141,7 @@
         left: 0;
         transform: translate(0, 0);
         width: 15%;
+
     }
 
     50% {
@@ -141,7 +164,7 @@
 
 }
 
-@keyframes load_sticky {
+@keyframes loadSticky {
     0%, 100% {
         left: 0;
         transform: translate(0, 0);
@@ -189,6 +212,7 @@
         transform: translate(0, 0);
         width: 25%;
     }
+
 }
 
 @keyframes load_bouncy {
@@ -238,11 +262,13 @@
         background-position: 0px 50%;
         opacity: .8;
     }
+
     50% {
         opacity: .1;
     }
+
     100% {
-        background-position: -200px 50%;
         opacity: .8;
+        background-position: calc(var(--og-progress-stream-dash) * -4) 50%;
     }
 }
