@@ -22,11 +22,20 @@ describe('og-progress__test', () => {
   });
 
   it('sets progress bar width', async (done) => {
-    await page.waitForChanges();
-
     const progressStyle = await progress.getComputedStyle();
     expect(progressStyle.getPropertyValue('width')).toEqual('250px');
 
+    done();
+  });
+
+  it('is indeterminate when no properties are set', async (done) => {
+    page = await newE2EPage({
+      html: '<og-progress></og-progress>'
+    });
+    await page.waitForChanges();
+    component = await page.find('og-progress');
+    progress = await page.find('og-progress >>> .og-progress-bar');
+    expect(await component.getProperty('indeterminate')).toEqual(true);
     done();
   });
 
