@@ -55,8 +55,10 @@
     display: flex;
     background: var(--item-Background);
     color: var(--item-Color);
-    border: var(--item-BorderWidth) var(--item-BorderStyle) var(--item-BorderColor);
+    border-color: var(--item-BorderColor);
     border-radius: var(--item-BorderRadius);
+    border-style: var(--item-BorderStyle);
+    border-width: var(--item-BorderWidth);
     margin: var(--item-Margin);
     height: var(--item-MinHeight);
     line-height: var(--item-MinHeight);
