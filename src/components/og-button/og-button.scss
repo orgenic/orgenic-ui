@@ -67,7 +67,7 @@
    * @prop --og-button-WhiteSpace:
    * Text Overflow behavior. Used to truncate overflowing text.
    */
-    --og-button-TextOverlow: NULL;
+    --og-button-TextOverflow: NULL;
 
 
   --BoxShadow: var(--og-button-BoxShadow);
@@ -95,7 +95,7 @@
 :host(:not(.og-button--text-wrap)) {
     --MinWidth: 0;
     --og-button-WhiteSpace: nowrap;
-    --og-button-TextOverlow: ellipsis;
+    --og-button-TextOverflow: ellipsis;
 }
 
 
@@ -154,7 +154,7 @@
   max-width: inherit;
   overflow: hidden;
   padding: var(--Padding);
-  text-overflow: var(--og-button-TextOverlow);
+  text-overflow: var(--og-button-TextOverflow);
   text-transform: var(--TextTransform);
   transition-duration: 150ms;
   transition-property: background-color;
