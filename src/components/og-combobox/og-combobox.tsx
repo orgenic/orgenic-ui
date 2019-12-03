@@ -82,19 +82,16 @@ export class OgCombobox {
   @State()
   public dropdownActive: boolean = false;
 
-  public indicatorElement: HTMLElement;
+  public comboboxHeaderElement: HTMLElement;
   public flyoutList: HTMLElement;
 
-  @Listen('scroll', { target: 'window' })
-  public handleWindowScroll() {
-    // close flyout on scroll events
-    this.dropdownActive = false;
-    this.focusLost.emit();
+  @Listen('scroll', { target: 'body', capture: true })
+  @Listen('scroll', { target: 'window', capture: true })
+  public handleWindowScroll(ev) {
+    if (!this.dropdownActive || this.el === ev.target) {
+      return;
+    }
 
-  }
-
-  @Listen('scroll', { target: 'body' })
-  public handleBodyScroll() {
     // close flyout on scroll events
     this.dropdownActive = false;
     this.focusLost.emit();
@@ -175,11 +172,12 @@ export class OgCombobox {
    *   * if flyout would be smaller than 4 items, show flyout above combobox
    */
   public getFlyoutCss() {
-    if (!this.indicatorElement) {
+    if (!this.comboboxHeaderElement) {
       return {};
     }
-    let flyoutTop = (this.indicatorElement.getBoundingClientRect().top + this.indicatorElement.offsetHeight);
-
+    const comboboxHeaderStyle = window.getComputedStyle(this.comboboxHeaderElement);
+    let flyoutTop = (this.comboboxHeaderElement.getBoundingClientRect().top + parseInt(comboboxHeaderStyle.height) + parseInt(comboboxHeaderStyle.marginBottom));
+    let flyoutRight = (window.innerWidth - (this.comboboxHeaderElement.getBoundingClientRect().left + this.comboboxHeaderElement.getBoundingClientRect().width + parseInt(comboboxHeaderStyle.marginRight)));
     let flyoutHeight = 0;
     let itemHeight = 0;
     // get item height
@@ -203,12 +201,13 @@ export class OgCombobox {
     // if flyout size is below min size, then show flyout above combobox
     if (flyoutHeight < minHeight) {
       flyoutHeight = maxHeight;
-      flyoutTop = this.el.getBoundingClientRect().top - flyoutHeight;
+      flyoutTop = this.comboboxHeaderElement.getBoundingClientRect().top - flyoutHeight - parseInt(comboboxHeaderStyle.marginTop) - parseInt(comboboxHeaderStyle.marginBottom);
     }
-    
+
 
     return {
       top: flyoutTop + 'px',
+      right: flyoutRight + 'px',
       width: window.getComputedStyle(this.flyoutList.parentElement).width,
       height: flyoutHeight + 'px'
     }
@@ -223,6 +222,7 @@ export class OgCombobox {
         <div
           class="og-combobox__header"
           onClick={(e) => this.buttonClicked(e)}
+          ref={(el) => this.comboboxHeaderElement = el}
         >
           <input
             type="text"
@@ -255,7 +255,7 @@ export class OgCombobox {
               />
             </svg>
           </div>
-          <div class="og-combobox__indicator" ref={(el) => this.indicatorElement = el} />
+          <div class="og-combobox__indicator"/>
         </div>
         <div class="og-combobox__flyout">
           <ul
