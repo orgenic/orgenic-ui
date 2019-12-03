@@ -55,6 +55,12 @@
      */
     --og-combobox-Opacity: 1;
 
+    /**
+     * @prop --og-combobox-Padding:
+     * Padding (inner spacing) of the combobox
+     */
+    --og-combobox-Padding: 25px 0 4px 0;
+
 
     /**
      * @prop --og-combobox__flyout-BoxShadow:
@@ -77,7 +83,7 @@
 
     /**
      * @prop --og-combobox__flyout-MaxWidth:
-     * Minimum Width of the Flyout Container.
+     * Maximum Width of the Flyout Container.
      */
     --og-combobox__flyout-MaxWidth: 100%;
 
@@ -115,6 +121,17 @@
     --og-combobox__flyout__item-Color:
         var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
 
+    /**
+     * @prop --og-combobox__flyout__item-LineHeight:
+     * Line Height of the list item
+     */
+    --og-combobox__flyout__item-LineHeight: 1.5;
+
+    /**
+     * @prop --og-combobox__flyout__item-Padding:
+     * Padding (inner spacing) of the list item
+     */
+    --og-combobox__flyout__item-Padding: 1rem 2rem;
 
     /**
      * @prop --og-combobox__placeholder-Color:
@@ -212,8 +229,7 @@
     font-size: var(--og-combobox-FontSize);
     user-select: none;
     margin: 0;
-    padding-top: 25px;
-    padding-bottom: 4px;
+    padding: var(--og-combobox-Padding);
     width: 100%;
 
     &::placeholder {
@@ -230,7 +246,7 @@
 .og-combobox__button {
     flex: none;
     width: var(--og-combobox__button__arrow-Width);
-    height: var(--og-combobox__button__arrow-Width);
+    height: var(--og-combobox__button__arrow-Height);
     padding: var(--og-combobox__button__arrow-Padding);
 }
 
@@ -293,10 +309,10 @@
 }
 
 .og-combobox__flyout__list__item {
-    line-height: 1.5em;
+    line-height: var(--og-combobox__flyout__item-LineHeight);
     display: block;
     cursor: pointer;
-    padding: 1em 2em;
+    padding: var(--og-combobox__flyout__item-Padding);
     transition: background .2s ease;
     color: var(--og-combobox__flyout__item-Color);
     background: var(--og-combobox__flyout__item-Background);
