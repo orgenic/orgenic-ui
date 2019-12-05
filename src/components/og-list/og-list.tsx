@@ -117,7 +117,7 @@ export class OgList {
           // deselect with multiselect means: delete item, update internal state and property value
           this.internalSelection.delete(value);
           this.internalSelection = new Set(this.internalSelection);
-          this.selected = [ ...this.internalSelection ];
+          this.selected = Array.from(this.internalSelection);
         } else {
           // deselect without multiselect simply means: empty selection state and property
           this.internalSelection = new Set();
@@ -127,7 +127,7 @@ export class OgList {
         // add selected key to property array and update internal state
         // extend or replace state and property depending on multiselect
         if (this.multiselect) {
-          this.selected = [ ...this.internalSelection, value ];
+          this.selected = [ ...Array.from(this.internalSelection), value ];
           this.internalSelection = new Set(this.selected);
         } else {
           this.internalSelection = new Set([ value ]);
