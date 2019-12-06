@@ -26,9 +26,13 @@
   // All Component Variables
   // Map Variables to Properties
   --Display: inline-block;
-  --Width: auto;
-  --MaxWidth: inherit;
   --Height: auto;
+
+  /**
+   * @prop --MinWidth:
+   * Minimum width of the Button.
+   */
+  --MinWidth: NULL;
   --MaxHeight: inherit;
   --Padding: var(--PADDING, 0.75rem 1.5rem);    // TODO: use --OG-PADDING
   --BorderWidth: 0;
@@ -53,6 +57,19 @@
 
   --og-button-FontWeight: var(--OG-FONT-WEIGHT--MEDIUM, 500);
 
+  /**
+   * @prop --og-button-WhiteSpace:
+   * White Space behavior of the Button text. Used to truncate overflowing text.
+   */
+  --og-button-WhiteSpace: NULL;
+
+  /**
+   * @prop --og-button-WhiteSpace:
+   * Text Overflow behavior. Used to truncate overflowing text.
+   */
+    --og-button-TextOverflow: NULL;
+
+
   --BoxShadow: var(--og-button-BoxShadow);
   --FontFamily: var(--og-button-FontFamily, inherit);
   --FontSize: var(--og-button-FontSize, inherit);
@@ -60,9 +77,8 @@
   --TextTransform: uppercase;
 
   display: var(--Display);
-  width: var(--Width);
   min-width: var(--MinWidth);
-  max-width: var(--MaxWidth);
+  max-width: 100%;
   height: var(--Height);
   max-height: var(--maxHeight);
 
@@ -75,6 +91,13 @@
   box-sizing: border-box;
   *, *::before, *::after { box-sizing: inherit; }
 }
+
+:host(:not(.og-button--text-wrap)) {
+    --MinWidth: 0;
+    --og-button-WhiteSpace: nowrap;
+    --og-button-TextOverflow: ellipsis;
+}
+
 
 
 :host([data-context~='workflow']) {
@@ -118,30 +141,26 @@
 
 // Native <button> element
 .og-button {
+  background: var(--og-button-Background);
+  border: var(--BorderWidth) var(--BorderStyle) var(--og-button-BorderColor);
+  border-radius: var(--og-button-BorderRadius);
+  color: var(--og-button-Color);
   display: block;
-  width: 100%;
-  max-width: inherit;
-  height: 100%;
-  max-height: inherit;
-  padding: var(--Padding);
-
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit;
-
-  background: var(--og-button-Background);
-  
-  border: var(--BorderWidth) var(--BorderStyle) var(--og-button-BorderColor);
-  border-radius: var(--og-button-BorderRadius);
-
-  color: var(--og-button-Color);
-
+  height: 100%;
+  max-height: inherit;
+  max-width: inherit;
+  overflow: hidden;
+  padding: var(--Padding);
+  text-overflow: var(--og-button-TextOverflow);
   text-transform: var(--TextTransform);
-
-  // Transitions
   transition-duration: 150ms;
   transition-property: background-color;
   transition-timing-function: ease-in-out;
+  width: 100%;
+  white-space: var(--og-button-WhiteSpace);
 
   // 'Focus' state
   &:focus {
