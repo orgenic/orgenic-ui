@@ -2,58 +2,182 @@
 // CSS CUSTOM PROPERTIES
 // =============================================================================
 
-/**
- * @prop --og-combobox-Background: Main background color of the combobox
- * @prop --og-combobox-BorderColor: Main border color of the combobox
- * @prop --og-combobox-BorderWidth: Main border width of the combobox
- * @prop --og-combobox-BorderStyle: Main border style of the combobox
- * @prop --og-combobox-Color: Text color of the combobox
- * @prop --og-combobox-FontSize: Font size of the combobox label
- * @prop --og-combobox-Opacity: Overall opacity of the combobox
- * @prop --og-combobox-Outline: Outline of the combobox
- * @prop --og-combobox__button__arrow-Width: Width of the toggle icon
- * @prop --og-combobox__button__arrow-Height: Height of the toggle icon
- * @prop --og-combobox__button__arrow-Padding: Padding of the toggle icon
- * @prop --og-combobox__flyout-Background: Background color of the combobox list
- * @prop --og-combobox__flyout-BoxShadow: Shadow of the combobox list
- * @prop --og-combobox__flyout__item-Background: Background color of list item
- * @prop --og-combobox__flyout__item-Background--active: Background color of list item when clicked
- * @prop --og-combobox__flyout__item-Background--hover: Background color of list item when hovered
- * @prop --og-combobox__flyout__item-Color: Text color of the list item
- * @prop --og-combobox__indicator-Width: Width of the focus indicator
- * @prop --og-combobox__indicator-Height: Height of the focus indicator
- * @prop --og-combobox__indicator-Background: Color of the focus indicator
- * @prop --og-combobox__placeholder-Color: Text color of the placeholder
- */
-
 :host {
-    --og-combobox-Background:   var(--OG-COLOR-SHADE--80--05, #{$og-color-shade--80--05});
-    --og-combobox-BorderColor:  var(--OG-COLOR-SHADE--100--20, #{$og-color-shade--100--20}); // --OG-COLOR-SHADE--50
-    --og-combobox-BorderWidth:  1px;
-    --og-combobox-BorderStyle:  solid;
 
-    --og-combobox-Color:        var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
-    --og-combobox-FontSize:     inherit;
-    --og-combobox-Outline:      none;
-    --og-combobox-Opacity:      1;
+    /**
+     * @prop --og-combobox-Background:
+     * Main background color of the combobox
+     */
+    --og-combobox-Background:
+        var(--OG-COLOR-SHADE--80--05, #{$og-color-shade--80--05});
 
-    --og-combobox__flyout-BoxShadow:    none;
-    --og-combobox__flyout-Background:   var(--OG-COLOR-PRIMARY--0, #{$og-color-primary--0});
+    /**
+     * @prop --og-combobox-BorderColor:
+     * Main border color of the combobox
+     */
+    --og-combobox-BorderColor:
+        var(--OG-COLOR-SHADE--100--20, #{$og-color-shade--100--20});
 
-    --og-combobox__flyout__item-Background:         transparent;
-    --og-combobox__flyout__item-Background--hover:  var(--OG-COLOR-PRIMARY--100--15, #{$og-color-primary--100--15});
-    --og-combobox__flyout__item-Background--active: var(--OG-COLOR-PRIMARY--100--30, #{$og-color-primary--100--30});
-    --og-combobox__flyout__item-Color:              var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
+    /**
+     * @prop --og-combobox-BorderWidth:
+     * Main border width of the combobox
+     */
+    --og-combobox-BorderWidth: 1px;
 
-    --og-combobox__placeholder-Color:               var(--OG-COLOR-SHADE--50, #{$og-color-shade--50});
+    /**
+     * @prop --og-combobox-BorderStyle:
+     * Main border style of the combobox
+     */
+    --og-combobox-BorderStyle: solid;
 
-    --og-combobox__indicator-Width:         0;
-    --og-combobox__indicator-Height:        2px;
-    --og-combobox__indicator-Background:    var(--OG-COLOR-PRIMARY--100, #{$og-color-primary--100});
 
-    --og-combobox__button__arrow-Width:     16px;
-    --og-combobox__button__arrow-Height:    16px;
-    --og-combobox__button__arrow-Padding:   22px 2px 0 2px;
+    /**
+     * @prop --og-combobox-Color:
+     * Text color of the combobox
+     */
+    --og-combobox-Color: var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
+
+    /**
+     * @prop --og-combobox-FontSize:
+     * Font size of the combobox label
+     */
+    --og-combobox-FontSize: inherit;
+
+    /**
+     * @prop --og-combobox-Outline:
+     * Outline of the combobox
+     */
+    --og-combobox-Outline: none;
+
+    /**
+     * @prop --og-combobox-Opacity:
+     * Overall opacity of the combobox
+     */
+    --og-combobox-Opacity: 1;
+
+    /**
+     * @prop --og-combobox-Padding:
+     * Padding (inner spacing) of the combobox
+     */
+    --og-combobox-Padding: 25px 0 4px 0;
+
+
+    /**
+     * @prop --og-combobox__flyout-BoxShadow:
+     * Shadow of the combobox list
+     */
+    --og-combobox__flyout-BoxShadow: none;
+
+    /**
+     * @prop --og-combobox__flyout-Background:
+     * Background color of the combobox list
+     */
+    --og-combobox__flyout-Background:
+        var(--OG-COLOR-PRIMARY--0, #{$og-color-primary--0});
+
+    /**
+     * @prop --og-combobox__flyout-MinWidth:
+     * Minimum Width of the Flyout Container.
+     */
+    --og-combobox__flyout-MinWidth: 0;
+
+    /**
+     * @prop --og-combobox__flyout-MaxWidth:
+     * Maximum Width of the Flyout Container.
+     */
+    --og-combobox__flyout-MaxWidth: 100%;
+
+    /**
+     * @prop --og-combobox__flyout-Width:
+     * Width of the Flyout Container.
+     */
+    --og-combobox__flyout-Width: 100%;
+
+
+    /**
+     * @prop --og-combobox__flyout__item-Background:
+     * Background color of list item
+     */
+    --og-combobox__flyout__item-Background: transparent;
+
+    /**
+     * @prop --og-combobox__flyout__item-Background--hover:
+     * Background color of list item when hovered
+     */
+    --og-combobox__flyout__item-Background--hover:
+        var(--OG-COLOR-PRIMARY--100--15, #{$og-color-primary--100--15});
+
+    /**
+     * @prop --og-combobox__flyout__item-Background--active:
+     * Background color of list item when clicked
+     */
+    --og-combobox__flyout__item-Background--active:
+        var(--OG-COLOR-PRIMARY--100--30, #{$og-color-primary--100--30});
+
+    /**
+     * @prop --og-combobox__flyout__item-Color:
+     * Text color of the list item
+     */
+    --og-combobox__flyout__item-Color:
+        var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
+
+    /**
+     * @prop --og-combobox__flyout__item-LineHeight:
+     * Line Height of the list item
+     */
+    --og-combobox__flyout__item-LineHeight: 1.5;
+
+    /**
+     * @prop --og-combobox__flyout__item-Padding:
+     * Padding (inner spacing) of the list item
+     */
+    --og-combobox__flyout__item-Padding: 1rem 2rem;
+
+    /**
+     * @prop --og-combobox__placeholder-Color:
+     * Text color of the placeholder
+     */
+    --og-combobox__placeholder-Color:
+        var(--OG-COLOR-SHADE--50, #{$og-color-shade--50});
+
+
+    /**
+     * @prop --og-combobox__indicator-Width:
+     * Width of the focus indicator
+     */
+    --og-combobox__indicator-Width: 0;
+
+    /**
+     * @prop --og-combobox__indicator-Height:
+     * Height of the focus indicator
+     */
+    --og-combobox__indicator-Height: 2px;
+
+    /**
+     * @prop --og-combobox__indicator-Background:
+     * Color of the focus indicator
+     */
+    --og-combobox__indicator-Background:
+        var(--OG-COLOR-PRIMARY--100, #{$og-color-primary--100});
+
+
+    /**
+     * @prop --og-combobox__button__arrow-Width:
+     * Width of the toggle icon
+     */
+    --og-combobox__button__arrow-Width: 16px;
+
+    /**
+     * @prop --og-combobox__button__arrow-Height:
+     * Height of the toggle icon
+     */
+    --og-combobox__button__arrow-Height: 16px;
+
+    /**
+     * @prop --og-combobox__button__arrow-Padding:
+     * Padding of the toggle icon
+     */
+    --og-combobox__button__arrow-Padding: 22px 2px 0 2px;
 
     user-select: none;
     display: flex;
@@ -71,7 +195,6 @@
 
 // <og-combobox> "on focus"
 :host(.is-focused) {
-    --og-combobox__button__indicator-Width: 100%;
     --og-combobox__indicator-Width: 100%;
 }
 
@@ -85,11 +208,14 @@
 
 // Wrapper for the 'allways visible' part of the 'combobox'
 .og-combobox__header {
+    border-bottom:
+        var(--og-combobox-BorderWidth)
+        var(--og-combobox-BorderStyle)
+        var(--og-combobox-BorderColor);
     display: flex;
-    position: relative;
     margin: 4px;
     outline: var(--og-combobox-Outline);
-    border-bottom: var(--og-combobox-BorderWidth) var(--og-combobox-BorderStyle) var(--og-combobox-BorderColor);
+    position: relative;
 }
 
 // Native input element inside 'combobox' header.
@@ -103,8 +229,8 @@
     font-size: var(--og-combobox-FontSize);
     user-select: none;
     margin: 0;
-    padding-top: 25px;
-    padding-bottom: 4px;
+    padding: var(--og-combobox-Padding);
+    width: 100%;
 
     &::placeholder {
         color: var(--og-combobox__placeholder-Color);
@@ -120,7 +246,7 @@
 .og-combobox__button {
     flex: none;
     width: var(--og-combobox__button__arrow-Width);
-    height: var(--og-combobox__button__arrow-Width);
+    height: var(--og-combobox__button__arrow-Height);
     padding: var(--og-combobox__button__arrow-Padding);
 }
 
@@ -156,13 +282,15 @@
 
 // Flyout Wrapper
 .og-combobox__flyout {
+    min-width: var(--og-combobox__flyout-MinWidth);
+    max-width: var(--og-combobox__flyout-MaxWidth);
+    width: var(--og-combobox__flyout-Width);
     position: relative;
 }
 
 // Flyout List
 .og-combobox__flyout__list {
     margin: 0;
-    margin-top: 4px;
     padding: 0;
     list-style-type: none;
     display: none;
@@ -180,10 +308,10 @@
 }
 
 .og-combobox__flyout__list__item {
-    line-height: 1.5em;
+    line-height: var(--og-combobox__flyout__item-LineHeight);
     display: block;
     cursor: pointer;
-    padding: 1em 2em;
+    padding: var(--og-combobox__flyout__item-Padding);
     transition: background .2s ease;
     color: var(--og-combobox__flyout__item-Color);
     background: var(--og-combobox__flyout__item-Background);

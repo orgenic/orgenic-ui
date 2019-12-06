@@ -37,6 +37,7 @@
     "build.watch": "stencil build --docs --watch",
     "start": "stencil build --dev --watch --serve --config stencil.run.config.ts",
     "test": "stencil test --spec --e2e",
+    "test.spec": "stencil test --spec",
     "test.ci": "stencil test --spec --e2e --ci",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "check-licenseheader": "node ./.scripts/check-licenseheaders.js"
