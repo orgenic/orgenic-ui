@@ -4,7 +4,7 @@
  * See LICENSE file at https://github.com/orgenic/orgenic-ui/blob/master/LICENSE
  **/
 
-import { h, Component, Prop, EventEmitter, Event, Watch, State } from '@stencil/core';
+import { h, Component, Prop, Element, EventEmitter, Event, Watch, State } from '@stencil/core';
 
 @Component({
   tag: 'og-list',
@@ -13,8 +13,16 @@ import { h, Component, Prop, EventEmitter, Event, Watch, State } from '@stencil/
 })
 export class OgList {
 
+  @Element()
+  public hostElement: HTMLElement;
+
+  public listContainer: HTMLElement;
+
   /**
-   * The key of the selected list item
+   *
+   * Key(s) of the selected list item(s)
+   * @type {(string | string[])}
+   * @memberof OgListTemplate
    */
   @Prop({ mutable: true, reflect: true })
   public selected: string | string[];
@@ -28,7 +36,7 @@ export class OgList {
       }
       this.internalSelection = new Set(newValue as string[]);
     } else {
-      this.internalSelection = new Set([ newValue as string ]);
+      this.internalSelection = new Set([newValue as string]);
     }
   }
 
@@ -38,39 +46,15 @@ export class OgList {
   @Prop()
   public items: any[];
 
-  /**
-   * Set the property for the items to define as value. Default: 'key'
-   */
   @Prop()
-  public keyProperty: string = 'key';
+  public template: string = 'default';
+
+  @Prop({mutable: true})
+  public templateOptions: any = { key: 'key', label: 'label', disabled: 'disabled' };
 
   /**
-   * Set the property for the items to define as image url. *Optional* Default: no image
-   */
-  @Prop()
-  public imageUrlProperty?: string;
-
-  /**
-   * Set the property for the items to define as label. Default: 'label'
-   */
-  @Prop()
-  public labelProperty: string = 'label';
-
-  /**
-   * Set the property for the items to define as value. *Optional* Default: no value
-   */
-  @Prop()
-  public valueProperty: string;
-
-  /**
-   * Set the property for the items to define as disabled. Default: 'disabled'
-   */
-  @Prop()
-  public disabledProperty: string = 'disabled';
-
-  /**
-   * Set the text that will be displayed if the items array is empty.
-   */
+ * Set the text that will be displayed if the items array is empty.
+ */
   @Prop()
   public emptyListMessage: string = 'No items available';
 
@@ -92,6 +76,28 @@ export class OgList {
   @Prop()
   public disabled: boolean;
 
+  public getTemplate(item: any) {
+    let template: any;
+
+    switch (this.template) {
+      case 'default':
+        template = document.createElement('og-list-template-default');
+        break;
+
+      default:
+        template = document.createElement(this.template);
+        break;
+    }
+    template.item = item;
+    template.options = this.templateOptions;
+    template.selected = this.isItemSelected(item);
+    template.disabled = this.isItemDisabled(item);
+    template.onclick = () => this.listItemSelected(item);
+    this.listContainer.appendChild(template);
+
+    return
+  }
+
   /**
    * Event is being emitted when value changes.
    */
@@ -103,11 +109,15 @@ export class OgList {
 
   public componentDidLoad() {
     this.handleSelectedPropChanged(this.selected);
+    if (this.hasValidItems()) {
+      this.listContainer.innerHTML = '';
+      this.items.map((item) => this.getTemplate(item));
+    }
   }
 
   public listItemSelected(item: any): void {
-    if (!this.disabled && !this.isItemDisabled(item)) {
-      const value = this.getKeyValue(item);
+    if (!this.disabled && !item[this.templateOptions.disabled]) {
+      const value = item[this.templateOptions.key];
       if (this.isItemSelected(item)) {
         // deny deselection last item if required flag is set?
         if (this.required && this.internalSelection.size === 1) {
@@ -127,57 +137,49 @@ export class OgList {
         // add selected key to property array and update internal state
         // extend or replace state and property depending on multiselect
         if (this.multiselect) {
-          this.selected = [ ...Array.from(this.internalSelection), value ];
+          this.selected = [...Array.from(this.internalSelection), value];
           this.internalSelection = new Set(this.selected);
         } else {
-          this.internalSelection = new Set([ value ]);
+          this.internalSelection = new Set([value]);
           this.selected = value;
         }
       }
       // emit new property value
       if (this.multiselect) {
-        this.itemSelected.emit(this.items.filter(item => this.internalSelection.has(this.getKeyValue(item))))
+        this.itemSelected.emit(this.items.filter(item => this.internalSelection.has(item[this.templateOptions.key])))
       } else {
-        this.itemSelected.emit(this.items.find(item => this.getKeyValue(item) === this.selected));
+        this.itemSelected.emit(this.items.find(item => item[this.templateOptions.key] === this.selected));
       }
     }
+
+    for (let i = 0; i < this.listContainer.children.length; i++) {
+      const element = this.listContainer.children.item(i);
+      (element as any).selected = this.isItemSelected((element as any).item);
+    };
+
+  }
+
+  public isItemSelected(item: any): boolean {
+    if (!item) {
+      return false;
+    }
+    return this.internalSelection.has(item[this.templateOptions.key]);
+  }
+
+  private isItemDisabled(item: any): boolean {
+    return item[this.templateOptions.disabled] || false;
   }
 
   private hasValidItems(): boolean {
     return Array.isArray(this.items) && this.items.length > 0;
   }
 
-  public isItemSelected(item: any): boolean {
-    return this.internalSelection.has(this.getKeyValue(item));
-  }
-
-  private isItemDisabled(item: any): boolean {
-    return item[this.disabledProperty] || false;
-  }
-
-  private getKeyValue(item: any): string {
-    return item[this.keyProperty] + '';
-  }
-
   public render(): HTMLElement {
-    return <ul class="og-list">
-      {
-        !this.hasValidItems()
-          ? <og-list-item label={this.emptyListMessage}></og-list-item>
-          : this.items.map((item): HTMLElement =>
-            <og-list-item
-              key={this.getKeyValue(item)}
-              label={item[this.labelProperty]}
-              show-image={!!this.imageUrlProperty}
-              image={item[this.imageUrlProperty]}
-              show-value={!!this.valueProperty}
-              value={item[this.valueProperty]}
-              is-selected={this.isItemSelected(item)}
-              is-disabled={this.isItemDisabled(item)}
-              onClick={() => this.listItemSelected(item)}>
-            </og-list-item>
-          )
-      }
-    </ul>;
+
+    if (this.hasValidItems()) {
+      return <div class="og-list" ref={el => { this.listContainer = el }}></div>
+    } else {
+      return <div>{this.emptyListMessage}</div>
+    }
   }
 }

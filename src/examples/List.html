@@ -7,10 +7,19 @@ og-list
         <og-list id="list1" multiselect></og-list>
 
         <h4>Listitems with icon and value; (required = true)</h4>
-        <og-list id="list2" required selected="v2" image-url-property="iconUrl" value-property="value"></og-list>
+        <og-list id="list2" required selected="v2"></og-list>
 
         <h4>Disabled list</h4>
-        <og-list id="list3" selected="v3" value-property="value" disabled></og-list>
+        <og-list id="list3" selected="v3" disabled></og-list>
+
+        <h4>All available template options</h4>
+        <og-list id="list4"></og-list>
+
+        <h4>Custom Template List</h4>
+        <og-list id="list5" template="og-checkbox"></og-list>
+
+        <h4>Empty Template List</h4>
+        <og-list id="list6"></og-list>
     </div>
     <div slot="footer">
     </div>
@@ -22,6 +31,13 @@ og-list
         { key: 'v3', label: 'Value 3', iconUrl: 'http://orgtest.maximago.de/assets/images/Car/Rally/Default_small.png', value: 35, disabled: true },
     ];
 
+    const listCustomItems = [
+        { id: 'v1', name: 'Name 1', job: 'subline job', section: 'left', iconUrl: 'http://orgtest.maximago.de/assets/images/Car/Rally/Default_small.png', value: 22  },
+        { id: 'v2', name: 'Name 2', section: 'center', iconUrl: 'http://orgtest.maximago.de/assets/images/Car/Rally/Default_small.png', },
+        { id: 'v3', name: 'Name 3', disabled: true, value: 99 },
+        { id: 'v4', name: 'Name 4', job: 'nothing', iconUrl: 'http://orgtest.maximago.de/assets/images/Car/Rally/Default_small.png', value: 1234 },
+    ];
+
     const list1 = document.querySelector('#list1');
     list1.items = listItems;
     list1.selected = ['v1'];
@@ -29,9 +45,19 @@ og-list
 
     const list2 = document.querySelector('#list2');
     list2.items = listItems;
+    list2.templateOptions = { key: 'key', label: 'label', image: 'iconUrl', value: 'value', disabled: 'disabled'};
     list2.addEventListener('itemSelected', e => console.log('item selected', e));
 
     const list3 = document.querySelector('#list3');
     list3.items = listItems;
     list3.addEventListener('itemSelected', e => console.log('item selected', e));
+
+    const list4 = document.querySelector('#list4');
+    list4.items = listCustomItems;
+    list4.templateOptions = { key: 'id', label: 'name', subline: 'job', overline: 'section', image: 'iconUrl', value: 'value', disabled: 'disabled'};
+    list4.addEventListener('itemSelected', e => console.log('item selected', e));
+
+    const list5 = document.querySelector('#list5');
+    list5.items = listCustomItems;
+    list5.addEventListener('itemSelected', e => console.log('item selected', e));
 </script>
