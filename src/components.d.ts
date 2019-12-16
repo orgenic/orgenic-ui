@@ -14,6 +14,9 @@ import {
 import {
   OgDatatableConfig,
 } from './components/og-datatable/interfaces/og-datatable-column-def';
+import {
+  OgListTemplateDefaultOptions,
+} from './components/og-list-template-default/og-list-template-default.interface';
 
 export namespace Components {
   interface OgButton {
@@ -229,29 +232,13 @@ export namespace Components {
     */
     'disabled': boolean;
     /**
-    * Set the property for the items to define as disabled. Default: 'disabled'
-    */
-    'disabledProperty': string;
-    /**
     * Set the text that will be displayed if the items array is empty.
     */
     'emptyListMessage': string;
     /**
-    * Set the property for the items to define as image url. *Optional* Default: no image
-    */
-    'imageUrlProperty'?: string;
-    /**
     * An array of items to choose from
     */
     'items': any[];
-    /**
-    * Set the property for the items to define as value. Default: 'key'
-    */
-    'keyProperty': string;
-    /**
-    * Set the property for the items to define as label. Default: 'label'
-    */
-    'labelProperty': string;
     /**
     * Enables selection of multiple items
     */
@@ -261,47 +248,29 @@ export namespace Components {
     */
     'required': boolean;
     /**
-    * The key of the selected list item
+    * Key(s) of the selected list item(s)
     */
     'selected': string | string[];
-    /**
-    * Set the property for the items to define as value. *Optional* Default: no value
-    */
-    'valueProperty': string;
+    'template': string;
+    'templateOptions': any;
   }
-  interface OgListItem {
-    /**
-    * Set the url of the image to be shown in the placeholder
-    */
-    'image': string;
+  interface OgListTemplateDefault {
     /**
     * Set the flag, it this list item is in disabled state.
     */
-    'isDisabled': boolean;
+    'disabled': boolean;
+    /**
+    * Current item data
+    */
+    'item': any;
+    /**
+    * Template options
+    */
+    'options': OgListTemplateDefaultOptions;
     /**
     * Set the flag, if this list item is in selected state.
     */
-    'isSelected': boolean;
-    /**
-    * The value is needed for the using @see OgList instance to correctly handle selection.
-    */
-    'key': any;
-    /**
-    * Sets the value of the label.
-    */
-    'label': string;
-    /**
-    * Set flag, if place for an image is reserved, whether used or not.
-    */
-    'showImage': boolean;
-    /**
-    * Set flag, if place for a value badge is reserved whether used or not
-    */
-    'showValue': boolean;
-    /**
-    * Set the value to be shown in the badge placeholder
-    */
-    'value': string;
+    'selected': boolean;
   }
   interface OgMessageDialog {
     /**
@@ -557,10 +526,10 @@ declare global {
     new (): HTMLOgListElement;
   };
 
-  interface HTMLOgListItemElement extends Components.OgListItem, HTMLStencilElement {}
-  var HTMLOgListItemElement: {
-    prototype: HTMLOgListItemElement;
-    new (): HTMLOgListItemElement;
+  interface HTMLOgListTemplateDefaultElement extends Components.OgListTemplateDefault, HTMLStencilElement {}
+  var HTMLOgListTemplateDefaultElement: {
+    prototype: HTMLOgListTemplateDefaultElement;
+    new (): HTMLOgListTemplateDefaultElement;
   };
 
   interface HTMLOgMessageDialogElement extends Components.OgMessageDialog, HTMLStencilElement {}
@@ -638,7 +607,7 @@ declare global {
     'og-layout-child': HTMLOgLayoutChildElement;
     'og-layout-container': HTMLOgLayoutContainerElement;
     'og-list': HTMLOgListElement;
-    'og-list-item': HTMLOgListItemElement;
+    'og-list-template-default': HTMLOgListTemplateDefaultElement;
     'og-message-dialog': HTMLOgMessageDialogElement;
     'og-number-input': HTMLOgNumberInputElement;
     'og-password-input': HTMLOgPasswordInputElement;
@@ -901,29 +870,13 @@ declare namespace LocalJSX {
     */
     'disabled'?: boolean;
     /**
-    * Set the property for the items to define as disabled. Default: 'disabled'
-    */
-    'disabledProperty'?: string;
-    /**
     * Set the text that will be displayed if the items array is empty.
     */
     'emptyListMessage'?: string;
     /**
-    * Set the property for the items to define as image url. *Optional* Default: no image
-    */
-    'imageUrlProperty'?: string;
-    /**
     * An array of items to choose from
     */
     'items'?: any[];
-    /**
-    * Set the property for the items to define as value. Default: 'key'
-    */
-    'keyProperty'?: string;
-    /**
-    * Set the property for the items to define as label. Default: 'label'
-    */
-    'labelProperty'?: string;
     /**
     * Enables selection of multiple items
     */
@@ -937,47 +890,29 @@ declare namespace LocalJSX {
     */
     'required'?: boolean;
     /**
-    * The key of the selected list item
+    * Key(s) of the selected list item(s)
     */
     'selected'?: string | string[];
-    /**
-    * Set the property for the items to define as value. *Optional* Default: no value
-    */
-    'valueProperty'?: string;
+    'template'?: string;
+    'templateOptions'?: any;
   }
-  interface OgListItem extends JSXBase.HTMLAttributes<HTMLOgListItemElement> {
-    /**
-    * Set the url of the image to be shown in the placeholder
-    */
-    'image'?: string;
+  interface OgListTemplateDefault extends JSXBase.HTMLAttributes<HTMLOgListTemplateDefaultElement> {
     /**
     * Set the flag, it this list item is in disabled state.
     */
-    'isDisabled'?: boolean;
+    'disabled'?: boolean;
+    /**
+    * Current item data
+    */
+    'item'?: any;
+    /**
+    * Template options
+    */
+    'options'?: OgListTemplateDefaultOptions;
     /**
     * Set the flag, if this list item is in selected state.
     */
-    'isSelected'?: boolean;
-    /**
-    * The value is needed for the using @see OgList instance to correctly handle selection.
-    */
-    'key'?: any;
-    /**
-    * Sets the value of the label.
-    */
-    'label'?: string;
-    /**
-    * Set flag, if place for an image is reserved, whether used or not.
-    */
-    'showImage'?: boolean;
-    /**
-    * Set flag, if place for a value badge is reserved whether used or not
-    */
-    'showValue'?: boolean;
-    /**
-    * Set the value to be shown in the badge placeholder
-    */
-    'value'?: string;
+    'selected'?: boolean;
   }
   interface OgMessageDialog extends JSXBase.HTMLAttributes<HTMLOgMessageDialogElement> {
     /**
@@ -1215,7 +1150,7 @@ declare namespace LocalJSX {
     'og-layout-child': OgLayoutChild;
     'og-layout-container': OgLayoutContainer;
     'og-list': OgList;
-    'og-list-item': OgListItem;
+    'og-list-template-default': OgListTemplateDefault;
     'og-message-dialog': OgMessageDialog;
     'og-number-input': OgNumberInput;
     'og-password-input': OgPasswordInput;
