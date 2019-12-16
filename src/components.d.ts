@@ -16,7 +16,7 @@ import {
 } from './components/og-datatable/interfaces/og-datatable-column-def';
 import {
   OgListTemplateDefaultOptions,
-} from './components/og-list-template-default/og-list-template-default.def';
+} from './components/og-list-template-default/og-list-template-default.interface';
 
 export namespace Components {
   interface OgButton {
