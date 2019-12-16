@@ -20,13 +20,13 @@
      * @prop --item-Background--active:
      * Background of the list item when selected (shorthand)
      */
-    --item-Background--highlight: var(--og-list-item-Background--highlight, #{$og-color-primary--100--15});
+    --item-Background--highlight: var(--og-list-item-Background--highlight, var(--OG-COLOR-PRIMARY--100--15, #{$og-color-primary--100--15}));
 
     /**
      * @prop --item-Background--highlight:
      * Background of the list item when hovered (shorthand)
      */
-    --item-Background--active: var(--og-list-item-Background--active, #{$og-color-primary--100--30});
+    --item-Background--active: var(--og-list-item-Background--active, var(--OG-COLOR-PRIMARY--100--30, #{$og-color-primary--100--30}));
 
     /**
      * @prop --item-BorderWidth: Border width of the list item
@@ -141,7 +141,7 @@
      * @prop --item__overline-Color:
      * Color of the overline.
      */
-    --item__overline-Color: var(--og-list-item__overline-Color, #{$og-color-shade--100--50});
+    --item__overline-Color: var(--og-list-item__overline-Color, var(--OG-COLOR-SHADE--100--50, #{$og-color-shade--100--50}));
 
     /**
      * @prop --item__overline-FontSize:
@@ -168,7 +168,7 @@
      * @prop --item__subline-Color:
      * Color of the subline.
      */
-    --item__subline-Color: var(--og-list-item__subline-Color, #{$og-color-shade--100--50});
+    --item__subline-Color: var(--og-list-item__subline-Color, var(--OG-COLOR-SHADE--100--50, #{$og-color-shade--100--50}));
 
     box-sizing: border-box;
     pointer-events: var(--item-PointerEvents);
