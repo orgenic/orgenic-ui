@@ -4,7 +4,7 @@
  * See LICENSE file at https://github.com/orgenic/orgenic-ui/blob/master/LICENSE
  **/
 
-import { h, Component, Prop, Element, EventEmitter, Event, Watch, State } from '@stencil/core';
+import { h, Component, Prop, Element, EventEmitter, Event, Watch, State, Host } from '@stencil/core';
 
 @Component({
   tag: 'og-list',
@@ -45,6 +45,11 @@ export class OgList {
    */
   @Prop()
   public items: any[];
+
+  @Watch('items')
+  watchItemChanges() {
+    this.generateItems();
+  }
 
   @Prop()
   public template: string = 'default';
@@ -108,7 +113,11 @@ export class OgList {
   private internalSelection: Set<string> = new Set();
 
   public componentDidLoad() {
+    this.generateItems();
     this.handleSelectedPropChanged(this.selected);
+  }
+
+  public generateItems() {
     if (this.hasValidItems()) {
       this.listContainer.innerHTML = '';
       this.items.map((item) => this.getTemplate(item));
@@ -175,11 +184,13 @@ export class OgList {
   }
 
   public render(): HTMLElement {
+    return <Host disabled={this.disabled}>
+      {
+        this.hasValidItems() ?
+          <div class="og-list" ref={el => { this.listContainer = el }}></div> :
+          <div>{this.emptyListMessage}</div>
+      }
+    </Host>
 
-    if (this.hasValidItems()) {
-      return <div class="og-list" ref={el => { this.listContainer = el }}></div>
-    } else {
-      return <div>{this.emptyListMessage}</div>
-    }
   }
 }
