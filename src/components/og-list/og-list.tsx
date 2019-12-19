@@ -48,6 +48,8 @@ export class OgList {
 
   @Watch('items')
   watchItemChanges() {
+    console.log('WATCH MA, GOT NEW ITEMS', this.items);
+
     this.generateItems();
   }
 
@@ -118,8 +120,13 @@ export class OgList {
   }
 
   public generateItems() {
+    console.log('GENERATE - here we go', this.listContainer);
+
+    if (!this.listContainer) {
+      return;
+    }
+    this.listContainer.innerHTML = '';
     if (this.hasValidItems()) {
-      this.listContainer.innerHTML = '';
       this.items.map((item) => this.getTemplate(item));
     }
   }
@@ -180,15 +187,18 @@ export class OgList {
   }
 
   private hasValidItems(): boolean {
+    console.log('HAS ITEMS', this.items);
+
     return Array.isArray(this.items) && this.items.length > 0;
   }
 
   public render(): HTMLElement {
+    console.log('rendering', this.hasValidItems());
     return <Host disabled={this.disabled}>
       {
-        this.hasValidItems() ?
-          <div class="og-list" ref={el => { this.listContainer = el }}></div> :
-          <div>{this.emptyListMessage}</div>
+        <div class="og-list" ref={el => { this.listContainer = el }}>
+          { this.hasValidItems() ? '' : this.emptyListMessage }
+        </div>
       }
     </Host>
 
