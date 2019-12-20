@@ -46,22 +46,18 @@ export class OgList {
   @Prop()
   public items: any[];
 
-  @Watch('items')
-  watchItemChanges() {
-    console.log('WATCH MA, GOT NEW ITEMS', this.items);
-
-    this.generateItems();
-  }
-
+  /**
+   * Name of the template (component) we want to use as list item.
+   */
   @Prop()
-  public template: string = 'default';
+  public template: string = 'og-list-template-default';
 
   @Prop({mutable: true})
   public templateOptions: any = { key: 'key', label: 'label', disabled: 'disabled' };
 
   /**
- * Set the text that will be displayed if the items array is empty.
- */
+   * Set the text that will be displayed if the items array is empty.
+   */
   @Prop()
   public emptyListMessage: string = 'No items available';
 
@@ -83,26 +79,18 @@ export class OgList {
   @Prop()
   public disabled: boolean;
 
-  public getTemplate(item: any) {
-    let template: any;
+  private getTemplate(item: any): HTMLElement {
+    const template = document.createElement(this.template) as any;
+    this.setItemProperties(item, template);
+    return template;
+  }
 
-    switch (this.template) {
-      case 'default':
-        template = document.createElement('og-list-template-default');
-        break;
-
-      default:
-        template = document.createElement(this.template);
-        break;
-    }
-    template.item = item;
-    template.options = this.templateOptions;
-    template.selected = this.isItemSelected(item);
-    template.disabled = this.isItemDisabled(item);
-    template.onclick = () => this.listItemSelected(item);
-    this.listContainer.appendChild(template);
-
-    return
+  private setItemProperties(item: any, element: any) {
+    element.item = item;
+    element.options = this.templateOptions;
+    element.selected = this.isItemSelected(item);
+    element.disabled = this.isItemDisabled(item);
+    element.onclick = () => this.listItemSelected(item);
   }
 
   /**
@@ -115,20 +103,7 @@ export class OgList {
   private internalSelection: Set<string> = new Set();
 
   public componentDidLoad() {
-    this.generateItems();
     this.handleSelectedPropChanged(this.selected);
-  }
-
-  public generateItems() {
-    console.log('GENERATE - here we go', this.listContainer);
-
-    if (!this.listContainer) {
-      return;
-    }
-    this.listContainer.innerHTML = '';
-    if (this.hasValidItems()) {
-      this.items.map((item) => this.getTemplate(item));
-    }
   }
 
   public listItemSelected(item: any): void {
@@ -187,19 +162,76 @@ export class OgList {
   }
 
   private hasValidItems(): boolean {
-    console.log('HAS ITEMS', this.items);
-
     return Array.isArray(this.items) && this.items.length > 0;
   }
 
-  public render(): HTMLElement {
-    console.log('rendering', this.hasValidItems());
-    return <Host disabled={this.disabled}>
-      {
-        <div class="og-list" ref={el => { this.listContainer = el }}>
-          { this.hasValidItems() ? '' : this.emptyListMessage }
-        </div>
+  private removeEmptyMessage() {
+    const childNodes = this.listContainer.childNodes;
+    if (childNodes && childNodes[0] && childNodes[0].nodeType === Node.TEXT_NODE) {
+      childNodes[0].remove()
+    }
+  }
+
+  private prepareListContent(el: HTMLElement) {
+    this.listContainer = el;
+
+    if (this.hasValidItems()) {
+      this.removeEmptyMessage();
+      const elements = el.querySelectorAll(this.template);
+
+      /**
+       * If the amount of list items doesn't change,
+       * we simply update the properties.
+       */
+      if (this.items.length === elements.length) {
+        this.items.map((item, index) => this.setItemProperties(item, elements.item(index)));
+        return;
       }
+
+      /**
+       * If items has more content then available DOM nodes, we update
+       * existing and add new nodes.
+       */
+
+      if (this.items.length > elements.length) {
+        this.items.map((item, index) => {
+
+          if (elements.item(index)) {
+            this.setItemProperties(item, elements.item(index));
+            return;
+          }
+
+          const newNode = this.getTemplate(item);
+          this.listContainer.appendChild(newNode);
+          this.setItemProperties(item, newNode);
+        });
+        return;
+      }
+
+      /**
+       * If items has less content then available DOM nodes, we update
+       * existing and remove last.
+       */
+
+      if (this.items.length < elements.length) {
+        Array.from(elements).map((element, index) => {
+          if (this.items[index]) {
+            this.setItemProperties(this.items[index], element);
+          } else {
+            element.remove();
+          }
+        });
+        return;
+       }
+
+    } else {
+      this.listContainer.textContent = this.emptyListMessage;
+    }
+  }
+
+  public render(): HTMLElement {
+    return <Host disabled={this.disabled}>
+      <div class="og-list" ref={ el => this.prepareListContent(el) }></div>
     </Host>
 
   }

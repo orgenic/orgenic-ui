@@ -251,6 +251,9 @@ export namespace Components {
     * Key(s) of the selected list item(s)
     */
     'selected': string | string[];
+    /**
+    * Name of the template (component) we want to use as list item.
+    */
     'template': string;
     'templateOptions': any;
   }
@@ -893,6 +896,9 @@ declare namespace LocalJSX {
     * Key(s) of the selected list item(s)
     */
     'selected'?: string | string[];
+    /**
+    * Name of the template (component) we want to use as list item.
+    */
     'template'?: string;
     'templateOptions'?: any;
   }
