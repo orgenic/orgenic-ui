@@ -19,10 +19,37 @@ export class OgList {
   public listContainer: HTMLElement;
 
   /**
-   *
+   * Set the property for the items to define as value. Default: 'key'
+   */
+  @Prop()
+  public keyProperty: string = 'key';
+
+  /**
+   * Set the property for the items to define as image url. *Optional* Default: no image
+   */
+  @Prop()
+  public imageUrlProperty?: string;
+
+  /**
+   * Set the property for the items to define as label. Default: 'label'
+   */
+  @Prop()
+  public labelProperty: string = 'label';
+
+  /**
+   * Set the property for the items to define as value. *Optional* Default: no value
+   */
+  @Prop()
+  public valueProperty: string;
+
+  /**
+   * Set the property for the items to define as disabled. Default: 'disabled'
+   */
+  @Prop()
+  public disabledProperty: string = 'disabled';
+
+  /**
    * Key(s) of the selected list item(s)
-   * @type {(string | string[])}
-   * @memberof OgListTemplate
    */
   @Prop({ mutable: true, reflect: true })
   public selected: string | string[];
@@ -53,7 +80,7 @@ export class OgList {
   public template: string = 'og-list-template-default';
 
   @Prop({mutable: true})
-  public templateOptions: any = { key: 'key', label: 'label', disabled: 'disabled' };
+  public templateOptions: any;
 
   /**
    * Set the text that will be displayed if the items array is empty.
@@ -87,7 +114,7 @@ export class OgList {
 
   private setItemProperties(item: any, element: any) {
     element.item = item;
-    element.options = this.templateOptions;
+    element.options = this.handleTemplateOptions();
     element.selected = this.isItemSelected(item);
     element.disabled = this.isItemDisabled(item);
     element.onclick = () => this.listItemSelected(item);
@@ -107,8 +134,9 @@ export class OgList {
   }
 
   public listItemSelected(item: any): void {
-    if (!this.disabled && !item[this.templateOptions.disabled]) {
-      const value = item[this.templateOptions.key];
+    if (!this.disabled && !this.isItemDisabled(item)) {
+      const value = this.getKeyValue(item);
+
       if (this.isItemSelected(item)) {
         // deny deselection last item if required flag is set?
         if (this.required && this.internalSelection.size === 1) {
@@ -137,9 +165,9 @@ export class OgList {
       }
       // emit new property value
       if (this.multiselect) {
-        this.itemSelected.emit(this.items.filter(item => this.internalSelection.has(item[this.templateOptions.key])))
+        this.itemSelected.emit(this.items.filter(item => this.internalSelection.has(this.getKeyValue(item))));
       } else {
-        this.itemSelected.emit(this.items.find(item => item[this.templateOptions.key] === this.selected));
+        this.itemSelected.emit(this.items.find(item => this.getKeyValue(item) === this.selected));
       }
     }
 
@@ -154,11 +182,35 @@ export class OgList {
     if (!item) {
       return false;
     }
-    return this.internalSelection.has(item[this.templateOptions.key]);
+    return this.internalSelection.has(this.getKeyValue(item));
+  }
+
+  private handleTemplateOptions() {
+    let options: any = {};
+
+    if (!!this.templateOptions) {
+      options = this.templateOptions;
+    } else {
+      options.key = this.keyProperty;
+      options.label = this.labelProperty;
+      options.image = this.imageUrlProperty;
+      options.disabled = this.disabledProperty;
+      options.value = this.valueProperty;
+    }
+
+    return options;
   }
 
   private isItemDisabled(item: any): boolean {
-    return item[this.templateOptions.disabled] || false;
+    if (!item) {
+      return false;
+    }
+    return (this.disabledProperty && item[this.disabledProperty]) || (this.templateOptions && item[this.templateOptions.disabled]) || false;
+  }
+
+  private getKeyValue(item: any): string {
+    const result = (this.keyProperty && item[this.keyProperty]) || (this.templateOptions && item[this.templateOptions.key] );
+    return result + '';
   }
 
   private hasValidItems(): boolean {
