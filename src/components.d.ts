@@ -232,13 +232,29 @@ export namespace Components {
     */
     'disabled': boolean;
     /**
+    * Set the property for the items to define as disabled. Default: 'disabled'
+    */
+    'disabledProperty': string;
+    /**
     * Set the text that will be displayed if the items array is empty.
     */
     'emptyListMessage': string;
     /**
+    * Set the property for the items to define as image url. *Optional* Default: no image
+    */
+    'imageUrlProperty'?: string;
+    /**
     * An array of items to choose from
     */
     'items': any[];
+    /**
+    * Set the property for the items to define as value. Default: 'key'
+    */
+    'keyProperty': string;
+    /**
+    * Set the property for the items to define as label. Default: 'label'
+    */
+    'labelProperty': string;
     /**
     * Enables selection of multiple items
     */
@@ -256,6 +272,10 @@ export namespace Components {
     */
     'template': string;
     'templateOptions': any;
+    /**
+    * Set the property for the items to define as value. *Optional* Default: no value
+    */
+    'valueProperty': string;
   }
   interface OgListTemplateDefault {
     /**
@@ -873,13 +893,29 @@ declare namespace LocalJSX {
     */
     'disabled'?: boolean;
     /**
+    * Set the property for the items to define as disabled. Default: 'disabled'
+    */
+    'disabledProperty'?: string;
+    /**
     * Set the text that will be displayed if the items array is empty.
     */
     'emptyListMessage'?: string;
     /**
+    * Set the property for the items to define as image url. *Optional* Default: no image
+    */
+    'imageUrlProperty'?: string;
+    /**
     * An array of items to choose from
     */
     'items'?: any[];
+    /**
+    * Set the property for the items to define as value. Default: 'key'
+    */
+    'keyProperty'?: string;
+    /**
+    * Set the property for the items to define as label. Default: 'label'
+    */
+    'labelProperty'?: string;
     /**
     * Enables selection of multiple items
     */
@@ -901,6 +937,10 @@ declare namespace LocalJSX {
     */
     'template'?: string;
     'templateOptions'?: any;
+    /**
+    * Set the property for the items to define as value. *Optional* Default: no value
+    */
+    'valueProperty'?: string;
   }
   interface OgListTemplateDefault extends JSXBase.HTMLAttributes<HTMLOgListTemplateDefaultElement> {
     /**
