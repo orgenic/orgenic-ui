@@ -4,7 +4,7 @@ og-list
 <og-card name="List">
     <div>
         <h4>Listitems with pre-selection</h4>
-        <og-list id="list1" multiselect></og-list>
+        <og-list id="list1"></og-list>
 
         <h4>Listitems with icon and value; (required = true)</h4>
         <og-list id="list2" required selected="v2"></og-list>
@@ -16,10 +16,16 @@ og-list
         <og-list id="list4"></og-list>
 
         <h4>Custom Template List</h4>
-        <og-list id="list5" template="og-checkbox"></og-list>
+        <og-list id="list5" template="og-checkbox" ></og-list>
 
         <h4>Empty Template List</h4>
         <og-list id="list6"></og-list>
+
+        <h4>Listitems with icon and value; (required = true)</h4>
+        <og-list id="list7" required selected="v2" value-property="value"></og-list>
+
+        <h4>Listitems with icon and value, (properties)</h4>
+        <og-list id="list8" key-property="id" label-property="name" image-url-property="iconUrl" ></og-list>
     </div>
     <div slot="footer">
     </div>
@@ -93,5 +99,14 @@ og-list
 
     const list5 = document.querySelector('#list5');
     list5.items = listCustomItems;
+    list5.templateOptions = {key: ''}
     list5.addEventListener('itemSelected', e => console.log('item selected', e));
+
+    const list7 = document.querySelector('#list7');
+    list7.items = listItems;
+    list7.addEventListener('itemSelected', e => console.log('item selected', e));
+
+    const list8 = document.querySelector('#list8');
+    list8.items = listCustomItems;
+    list8.addEventListener('itemSelected', e => console.log('item selected', e));
 </script>
