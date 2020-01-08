@@ -17,14 +17,14 @@
     --item-Background: var(--og-list-item-Background, var(--OG-COLOR-PRIMARY--0--30, #{$og-color-primary--0--30}));
 
     /**
-     * @prop --item-Background--active:
-     * Background of the list item when selected (shorthand)
+     * @prop --item-Background--highlight:
+     * Background of the list item when hovered (shorthand)
      */
     --item-Background--highlight: var(--og-list-item-Background--highlight, var(--OG-COLOR-PRIMARY--100--15, #{$og-color-primary--100--15}));
 
     /**
-     * @prop --item-Background--highlight:
-     * Background of the list item when hovered (shorthand)
+     * @prop --item-Background--active:
+     * Background of the list item when selected (shorthand)
      */
     --item-Background--active: var(--og-list-item-Background--active, var(--OG-COLOR-PRIMARY--100--30, #{$og-color-primary--100--30}));
 
