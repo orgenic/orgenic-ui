@@ -54,19 +54,6 @@ export class OgList {
   @Prop({ mutable: true, reflect: true })
   public selected: string | string[];
 
-  @Watch('selected')
-  public handleSelectedPropChanged(newValue: string | string[]) {
-    if (this.multiselect) {
-      // try to parse html encoded string to array
-      if (typeof newValue === 'string') {
-        newValue = JSON.parse(newValue);
-      }
-      this.internalSelection = new Set(newValue as string[]);
-    } else {
-      this.internalSelection = new Set([newValue as string]);
-    }
-  }
-
   /**
    * An array of items to choose from
    */
@@ -79,7 +66,7 @@ export class OgList {
   @Prop()
   public template: string = 'og-list-template-default';
 
-  @Prop({mutable: true})
+  @Prop({ mutable: true })
   public templateOptions: any;
 
   /**
@@ -92,7 +79,7 @@ export class OgList {
    * Enables selection of multiple items
    */
   @Prop()
-  public multiselect: boolean;
+  public multiselect: boolean = false;
 
   /**
    * Requires a selection of at least one item. If one item is selected it prevents the user from deselecting it
@@ -105,6 +92,37 @@ export class OgList {
    */
   @Prop()
   public disabled: boolean;
+
+  /**
+   * Event is being emitted when value changes.
+   */
+  @Event()
+  public itemSelected: EventEmitter<any>;
+
+  @State()
+  private internalSelection: string | string[];
+
+  @Watch('selected')
+  public handleSelectedPropChanged(newValue: string | string[]) {
+    if (this.multiselect) {
+      // try to parse html encoded string to array
+      if (typeof newValue === 'string') {
+        newValue = JSON.parse(newValue);
+        if (typeof newValue === 'string') {
+          newValue = [];
+        }
+      } else if (newValue === undefined) {
+        newValue = [];
+      }
+      this.internalSelection = newValue;
+    } else {
+      if (newValue === undefined) {
+        this.internalSelection = [];
+      } else {
+        this.internalSelection = [newValue as string];
+      }
+    }
+  }
 
   private getTemplate(item: any): HTMLElement {
     const template = document.createElement(this.template) as any;
@@ -120,15 +138,6 @@ export class OgList {
     element.onclick = () => this.listItemSelected(item);
   }
 
-  /**
-   * Event is being emitted when value changes.
-   */
-  @Event()
-  public itemSelected: EventEmitter<any>;
-
-  @State()
-  private internalSelection: Set<string> = new Set();
-
   public componentDidLoad() {
     this.handleSelectedPropChanged(this.selected);
   }
@@ -139,17 +148,18 @@ export class OgList {
 
       if (this.isItemSelected(item)) {
         // deny deselection last item if required flag is set?
-        if (this.required && this.internalSelection.size === 1) {
+        if (this.required && this.internalSelection.length === 1) {
           return;
         }
         if (this.multiselect) {
           // deselect with multiselect means: delete item, update internal state and property value
-          this.internalSelection.delete(value);
-          this.internalSelection = new Set(this.internalSelection);
-          this.selected = Array.from(this.internalSelection);
+          const itemIndex = this.internalSelection.indexOf((this.internalSelection as []).find(el => this.getKeyValue(item) === el));
+
+          (this.internalSelection as []).splice(itemIndex, 1);
+          this.selected = this.internalSelection;
         } else {
           // deselect without multiselect simply means: empty selection state and property
-          this.internalSelection = new Set();
+          this.internalSelection = [];
           this.selected = '';
         }
       } else {
@@ -157,15 +167,15 @@ export class OgList {
         // extend or replace state and property depending on multiselect
         if (this.multiselect) {
           this.selected = [...Array.from(this.internalSelection), value];
-          this.internalSelection = new Set(this.selected);
+          this.internalSelection = this.selected;
         } else {
-          this.internalSelection = new Set([value]);
+          this.internalSelection = [value];
           this.selected = value;
         }
       }
       // emit new property value
       if (this.multiselect) {
-        this.itemSelected.emit(this.items.filter(item => this.internalSelection.has(this.getKeyValue(item))));
+        this.itemSelected.emit(this.items.filter(item => this.isItemSelected(item)));
       } else {
         this.itemSelected.emit(this.items.find(item => this.getKeyValue(item) === this.selected));
       }
@@ -174,21 +184,25 @@ export class OgList {
     for (let i = 0; i < this.listContainer.children.length; i++) {
       const element = this.listContainer.children.item(i);
       (element as any).selected = this.isItemSelected((element as any).item);
-    };
-
+    }
   }
 
   public isItemSelected(item: any): boolean {
-    if (!item) {
+    if (!item || !this.internalSelection) {
       return false;
     }
-    return this.internalSelection.has(this.getKeyValue(item));
+    if (typeof this.internalSelection === 'string') {
+      return this.internalSelection === item;
+    } else {
+      const selectedItem = (this.internalSelection as []).find(el => this.getKeyValue(item) === el);
+      return selectedItem ? true : false;
+    }
   }
 
-  private handleTemplateOptions() {
+  private handleTemplateOptions(): object {
     let options: any = {};
 
-    if (!!this.templateOptions) {
+    if (this.templateOptions) {
       options = this.templateOptions;
     } else {
       options.key = this.keyProperty;
@@ -244,7 +258,6 @@ export class OgList {
        * If items has more content then available DOM nodes, we update
        * existing and add new nodes.
        */
-
       if (this.items.length > elements.length) {
         this.items.map((item, index) => {
 
@@ -264,7 +277,6 @@ export class OgList {
        * If items has less content then available DOM nodes, we update
        * existing and remove last.
        */
-
       if (this.items.length < elements.length) {
         Array.from(elements).map((element, index) => {
           if (this.items[index]) {
@@ -274,7 +286,7 @@ export class OgList {
           }
         });
         return;
-       }
+      }
 
     } else {
       this.listContainer.textContent = this.emptyListMessage;
