@@ -24,3 +24,6 @@
     max-height: var(--og-layout-child--max-height);
 }
 
+:host[max-size] {
+    overflow: auto;
+}
