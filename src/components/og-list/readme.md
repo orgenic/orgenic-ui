@@ -16,7 +16,7 @@
 | `items`            | --                   | An array of items to choose from                                                                            | `any[]`              | `undefined`                  |
 | `keyProperty`      | `key-property`       | Set the property for the items to define as value. Default: 'key'                                           | `string`             | `'key'`                      |
 | `labelProperty`    | `label-property`     | Set the property for the items to define as label. Default: 'label'                                         | `string`             | `'label'`                    |
-| `multiselect`      | `multiselect`        | Enables selection of multiple items                                                                         | `boolean`            | `undefined`                  |
+| `multiselect`      | `multiselect`        | Enables selection of multiple items                                                                         | `boolean`            | `false`                      |
 | `required`         | `required`           | Requires a selection of at least one item. If one item is selected it prevents the user from deselecting it | `boolean`            | `undefined`                  |
 | `selected`         | `selected`           | Key(s) of the selected list item(s)                                                                         | `string \| string[]` | `undefined`                  |
 | `template`         | `template`           | Name of the template (component) we want to use as list item.                                               | `string`             | `'og-list-template-default'` |
