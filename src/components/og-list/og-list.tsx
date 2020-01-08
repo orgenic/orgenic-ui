@@ -18,10 +18,6 @@ export class OgList {
 
   public listContainer: HTMLElement;
 
-
-  @State()
-  private internalSelection: string | string[];
-
   /**
    * Set the property for the items to define as value. Default: 'key'
    */
@@ -58,28 +54,6 @@ export class OgList {
   @Prop({ mutable: true, reflect: true })
   public selected: string | string[];
 
-  @Watch('selected')
-  public handleSelectedPropChanged(newValue: string | string[]) {
-    if (this.multiselect) {
-      // try to parse html encoded string to array
-      if (typeof newValue === 'string') {
-        newValue = JSON.parse(newValue);
-        if (typeof newValue === 'string') {
-          newValue = [];
-        }
-      } else if (newValue === undefined) {
-        newValue = [];
-      }
-      this.internalSelection = newValue;
-    } else {
-      if (newValue === undefined) {
-        this.internalSelection = [];
-      } else {
-        this.internalSelection = [newValue as string];
-      }
-    }
-  }
-
   /**
    * An array of items to choose from
    */
@@ -92,7 +66,7 @@ export class OgList {
   @Prop()
   public template: string = 'og-list-template-default';
 
-  @Prop({mutable: true})
+  @Prop({ mutable: true })
   public templateOptions: any;
 
   /**
@@ -119,6 +93,37 @@ export class OgList {
   @Prop()
   public disabled: boolean;
 
+  /**
+   * Event is being emitted when value changes.
+   */
+  @Event()
+  public itemSelected: EventEmitter<any>;
+
+  @State()
+  private internalSelection: string | string[];
+
+  @Watch('selected')
+  public handleSelectedPropChanged(newValue: string | string[]) {
+    if (this.multiselect) {
+      // try to parse html encoded string to array
+      if (typeof newValue === 'string') {
+        newValue = JSON.parse(newValue);
+        if (typeof newValue === 'string') {
+          newValue = [];
+        }
+      } else if (newValue === undefined) {
+        newValue = [];
+      }
+      this.internalSelection = newValue;
+    } else {
+      if (newValue === undefined) {
+        this.internalSelection = [];
+      } else {
+        this.internalSelection = [newValue as string];
+      }
+    }
+  }
+
   private getTemplate(item: any): HTMLElement {
     const template = document.createElement(this.template) as any;
     this.setItemProperties(item, template);
@@ -132,12 +137,6 @@ export class OgList {
     element.disabled = this.isItemDisabled(item);
     element.onclick = () => this.listItemSelected(item);
   }
-
-  /**
-   * Event is being emitted when value changes.
-   */
-  @Event()
-  public itemSelected: EventEmitter<any>;
 
   public componentDidLoad() {
     this.handleSelectedPropChanged(this.selected);
@@ -185,8 +184,7 @@ export class OgList {
     for (let i = 0; i < this.listContainer.children.length; i++) {
       const element = this.listContainer.children.item(i);
       (element as any).selected = this.isItemSelected((element as any).item);
-    };
-
+    }
   }
 
   public isItemSelected(item: any): boolean {
@@ -201,10 +199,10 @@ export class OgList {
     }
   }
 
-  private handleTemplateOptions() {
+  private handleTemplateOptions(): object {
     let options: any = {};
 
-    if (!!this.templateOptions) {
+    if (this.templateOptions) {
       options = this.templateOptions;
     } else {
       options.key = this.keyProperty;
@@ -288,7 +286,7 @@ export class OgList {
           }
         });
         return;
-       }
+      }
 
     } else {
       this.listContainer.textContent = this.emptyListMessage;
