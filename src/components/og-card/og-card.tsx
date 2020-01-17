@@ -27,7 +27,7 @@ export class OgCard {
    */
   private hasSlot(name: string): boolean {
     const slot = this.hostElement.querySelector(`[slot="${name}"]`);
-    return slot ? true : false;
+    return slot !== null;
   }
 
   public render(): HTMLElement {
