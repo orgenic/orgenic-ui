@@ -13,7 +13,7 @@ import { h, Component, Element, Prop } from '@stencil/core';
 })
 export class OgLayoutChild {
   /**
-   * The weight defines the resize behavior. A component with weight 2 will be twice as large as a component with weight 1.. Default: "1"
+   * The weight defines the resize behavior. A component with weight 2 will be twice as large as a component with weight 1. Default: "1"
    */
   @Prop()
   public weight: number = 1;
@@ -39,17 +39,14 @@ export class OgLayoutChild {
 
   public applyValues() {
     const grow = this.weight.toString();
-    const shrink = this.minSize !== 'initial' ? '0' : 'initial';
-    const basis = '0';
-    const order = '0';
-    const align = 'auto';
+    const shrink = this.minSize !== 'initial' ? '0' : '1';
+    const parentElement = this.element.parentElement;
+    const parentOrientationIsVertical = parentElement && parentElement.nodeName.toLowerCase() === 'og-layout-container' && parentElement.getAttribute('orientation') === 'vertical';
+
     this.element.style.setProperty('--og-layout-child--grow', grow);
     this.element.style.setProperty('--og-layout-child--shrink', shrink);
-    this.element.style.setProperty('--og-layout-child--basis', basis);
-    this.element.style.setProperty('--og-layout-child--order', order);
-    this.element.style.setProperty('--og-layout-child--align', align);
 
-    if (this.element.parentElement.getAttribute('orientation') === 'vertical') {
+    if (parentOrientationIsVertical) {
       // height
       this.element.style.setProperty('--og-layout-child--min-width', 'initial');
       this.element.style.setProperty('--og-layout-child--max-width', 'initial');
