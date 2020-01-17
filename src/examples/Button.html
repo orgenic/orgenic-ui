@@ -9,6 +9,11 @@ og-button
         <og-button class="demo-button" label="Disabled" disabled></og-button>
         <og-button class="demo-button" label="Outline" data-context="outline"></og-button>
     </div>
+    <div class="example" style="align-items: center;">
+        <og-button class="demo-button" label="Default"></og-button>
+        <og-button class="demo-button" style="max-width: 300px;" label="Long default button with some extra long text which should end with ellipsis"></og-button>
+        <og-button class="demo-button og-button--text-wrap" style="max-width: 200px;" label="This text will wrap"></og-button>
+    </div>
 </og-card>
 <script>
     const buttons = document.querySelectorAll('.demo-button');
@@ -18,3 +23,8 @@ og-button
         });
     });
 </script>
+<style>
+    .demo-button + .demo-button {
+        margin-left: 0.25rem;
+    }
+</style>
