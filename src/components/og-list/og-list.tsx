@@ -66,6 +66,15 @@ export class OgList {
   @Prop()
   public template: string = 'og-list-template-default';
 
+  /**
+   * Contains an Object with options to match template properties.
+   *
+   * Mandatory: {key: any}
+   *
+   * Default template:
+   * {key: any, label: string, subline: string, overline: string,
+   * image: string, value: string, disabled: string}
+   */
   @Prop({ mutable: true })
   public templateOptions: any;
 
