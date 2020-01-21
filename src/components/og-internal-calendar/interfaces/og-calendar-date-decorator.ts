@@ -1,4 +1,4 @@
-import { Moment } from "moment";
+declare type Moment = any;
 
 export interface OgDateDecorator {
   getDateDecoration(moment: Moment): OgDateDecoration;
