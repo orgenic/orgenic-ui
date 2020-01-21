@@ -2,30 +2,57 @@
 // CSS CUSTOM PROPERTIES
 // =============================================================================
 
-/**
- * @prop --og-spinner-Color: Color of the spinner
- * @prop --og-spinner-Length--min: Smallest length of the spinner stroke
- * @prop --og-spinner-Length--max: Largest length of the spinner stroke
- */
-
 // -----------------------------------------------------------------------------
 // Base
 // -----------------------------------------------------------------------------
 
 :host {
-  // All Component Variables
-  // Map Variables to Properties
-  --og-spinner-Color:           var(--OG-COLOR-PRIMARY--100, #{$og-color-primary--100});
-  --og-spinner-Length--min:     50;
-  --og-spinner-Length--max:     180;
+    // All Component Variables
+    // Map Variables to Properties
 
+    /**
+     * @prop --og-spinner-Color:
+     * Primary Color of the spinner.
+     */
+    --og-spinner-color: var(--OG-COLOR-PRIMARY--100, #{$og-color-primary--100});
 
-    overflow: hidden;
-    user-select: none;
+    /**
+     * @prop --og-spinner__circle-dash-Color:
+     * Color of the spinning dash. By default its the primary spinner color.
+     */
+    --og-spinner__circle-dash-Color: var(--og-spinner-color);
+
+    /**
+     * @prop --og-spinner__circle-edge-Color:
+     * Color of the circle edge. By default its the primary spinner color.
+     */
+    --og-spinner__circle-edge-Color: var(--og-spinner-color);
+
+    /**
+     * @prop --og-spinner__circle-edge-Opacity:
+     * Opacity of the cirlce edge.
+     */
+    --og-spinner__circle-edge-Opacity: .15;
+
+    /**
+     * @prop --og-spinner-Length--min:
+     * Smallest length of the spinner stroke
+     */
+    --og-spinner-Length--min: 50px;
+
+    /**
+     * @prop --og-spinner-Length--max:
+     * Largest length of the spinner stroke
+     */
+    --og-spinner-Length--max: 180px;
 
     box-sizing: border-box;
-    *, *::before, *::after { box-sizing: inherit; }
+    display: inline-block;
+    overflow: hidden;
+    user-select: none;
 }
+
+*, *::before, *::after { box-sizing: inherit; }
 
 :host([disabled]) {
     display: none;
@@ -37,13 +64,17 @@ svg {
     vertical-align: middle;
 }
 
-svg > circle {
-    stroke: var(--og-spinner-Color);
+.circle-dash {
+    animation: dash 2.4s infinite ease-in-out;
+    stroke: var(--og-spinner__circle-dash-Color);
     stroke-dasharray: var(--og-spinner-Length--max);
     stroke-dashoffset: var(--og-spinner-Length--max);
     transform-origin: center;
+}
 
-    animation: dash 2.2s infinite ease-in-out;
+.circle-edge {
+    opacity: var(--og-spinner__circle-edge-Opacity);
+    stroke: var(--og-spinner__circle-edge-Color);
 }
 
 @keyframes spin {
