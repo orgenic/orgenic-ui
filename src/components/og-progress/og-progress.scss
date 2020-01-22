@@ -21,7 +21,8 @@
     --Height: 8px;
     --MaxHeight: inherit;
 
-    --og-progress-Background:           var(--OG-COLOR-SHADE--100--10, #{$og-color-shade--100--10});
+    --og-progress-Background:           var(--OG-COLOR-PRIMARY--100--15, #{$og-color-primary--100--15});
+
 
     --og-progress-Color:                var(--OG-COLOR-PRIMARY--100, #{$og-color-primary--100});
     --og-progress-Color--buffer:        var(--OG-COLOR-PRIMARY--100--30, #{$og-color-primary--100--30});
@@ -69,7 +70,7 @@
 :host([indeterminate]),
 :host([query]),
 :host([bounce]) {
-    --og-progress-buffer-Width: 100%;
+    --og-progress-buffer-Width: 0;
     --og-progress-bar-Animation: load 2s infinite linear;
 }
 
