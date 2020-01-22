@@ -7,10 +7,10 @@
     --og-calendar__BoxShadow:    0 0 8px rgba(0, 0, 0, .05), 0 2px 4px rgba(0, 0, 0, .2);
     --og-calendar__Background:   var(--OG-COLOR-PRIMARY--0, #{$og-color-primary--0});
 
-    // --og-datepicker__flyout__item-Background:         transparent;
-    // --og-datepicker__flyout__item-Background--hover:  var(--OG-COLOR-PRIMARY--100--15, #{$og-color-primary--100--15});
-    // --og-datepicker__flyout__item-Background--active: var(--OG-COLOR-PRIMARY--100--30, #{$og-color-primary--100--30});
-    // --og-datepicker__flyout__item-Color:              var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
+    --og-datepicker__flyout__item-Background:         transparent;
+    --og-datepicker__flyout__item-Background--hover:  var(--OG-COLOR-PRIMARY--100--15, #{$og-color-primary--100--15});
+    --og-datepicker__flyout__item-Background--active: var(--OG-COLOR-PRIMARY--100--30, #{$og-color-primary--100--30});
+    --og-datepicker__flyout__item-Color:              var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
 
     display: inline-block;
     width: auto;
@@ -93,6 +93,5 @@
 
 .calender__header__year {
     display: inline-block;
-    // font-size: 12px;
     padding: 4px;
 }
