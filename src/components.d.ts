@@ -271,6 +271,9 @@ export namespace Components {
     * Name of the template (component) we want to use as list item.
     */
     'template': string;
+    /**
+    * Contains an Object with options to match template properties.  Mandatory: {key: any}  Default template: {key: any, label: string, subline: string, overline: string, image: string, value: string, disabled: string}
+    */
     'templateOptions': any;
     /**
     * Set the property for the items to define as value. *Optional* Default: no value
@@ -936,6 +939,9 @@ declare namespace LocalJSX {
     * Name of the template (component) we want to use as list item.
     */
     'template'?: string;
+    /**
+    * Contains an Object with options to match template properties.  Mandatory: {key: any}  Default template: {key: any, label: string, subline: string, overline: string, image: string, value: string, disabled: string}
+    */
     'templateOptions'?: any;
     /**
     * Set the property for the items to define as value. *Optional* Default: no value
