@@ -12,12 +12,19 @@
  */
 
 :host {
+    box-sizing: border-box;
     display: flex;
     flex-direction: var(--og-layout-container--direction, row);
     justify-content: var(--og-layout-container--justify, space-between);
     align-items: var(--og-layout-container--align, stretch);
     flex-wrap: var(--og-layout-container--wrap, nowrap);
     overflow: var(--og-layout-container--overflow, visible);
+
+    *,
+    *:before,
+    *:after {
+        box-sizing: inherit;
+    }
 }
 
 ::slotted(*:not(og-layout-child)) {
