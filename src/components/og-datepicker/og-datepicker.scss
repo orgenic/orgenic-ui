@@ -37,15 +37,7 @@
     --og-datepicker-Outline:      none;
     --og-datepicker-Opacity:      1;
 
-    --og-datepicker__flyout-BoxShadow:    0 0 8px rgba(0, 0, 0, .05), 0 2px 4px rgba(0, 0, 0, .2);
-    --og-datepicker__flyout-Background:   var(--OG-COLOR-PRIMARY--0, #{$og-color-primary--0});
-
-    --og-datepicker__flyout__item-Background:         transparent;
-    --og-datepicker__flyout__item-Background--hover:  var(--OG-COLOR-PRIMARY--100--15, #{$og-color-primary--100--15});
-    --og-datepicker__flyout__item-Background--active: var(--OG-COLOR-PRIMARY--100--30, #{$og-color-primary--100--30});
-    --og-datepicker__flyout__item-Color:              var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
-
-    --og-datepicker__placeholder-Color:               var(--OG-COLOR-SHADE--50, #{$og-color-shade--50});
+    --og-datepicker__placeholder-Color:       var(--OG-COLOR-SHADE--50, #{$og-color-shade--50});
 
     --og-datepicker__indicator-Width:         0;
     --og-datepicker__indicator-Height:        2px;
@@ -81,8 +73,6 @@
     --og-datepicker-Opacity: .3;
 }
 
-
-
 // Wrapper for the 'allways visible' part of the 'datepicker'
 .og-datepicker__header {
     display: flex;
@@ -105,6 +95,7 @@
     margin: 0;
     padding-top: 25px;
     padding-bottom: 4px;
+    width: 100%;
 
     &::placeholder {
         color: var(--og-datepicker__placeholder-Color);
@@ -115,7 +106,6 @@
         background: transparent;
     }
 }
-
 
 .og-datepicker__button {
     flex: none;
@@ -135,7 +125,6 @@
     transition: width .2s ease;
 }
 
-
 .og-datepicker__button__arrow {
     transition: transform 0.1s;
     overflow: visible;
@@ -148,33 +137,4 @@
 .og-datepicker__button__arrow__line {
     stroke-linecap: round;
     stroke-linejoin: round;
-}
-
-
-// datepicker FLYOUT
-// -----------------------------------------------------------------------------
-
-// Flyout Wrapper
-.og-datepicker__flyout {
-    position: relative;
-    display: flex;
-    justify-content: flex-end;
-    cursor: default;
-}
-
-.og-datepicker__flyout__calendar {
-    margin: 0;
-    margin-top: 4px;
-    padding: 16px;
-    display: none;
-    position: fixed;
-    box-shadow: var(--og-datepicker__flyout-BoxShadow);
-    background: var(--og-datepicker__flyout-Background);
-    z-index: 9999;
-    overflow-y: auto;
-    backface-visibility: hidden;
-}
-
-.og-datepicker__flyout__calendar--visible {
-    display: block;
 }
