@@ -232,13 +232,29 @@ export namespace Components {
     */
     'disabled': boolean;
     /**
+    * Set the property for the items to define as disabled. Default: 'disabled'
+    */
+    'disabledProperty': string;
+    /**
     * Set the text that will be displayed if the items array is empty.
     */
     'emptyListMessage': string;
     /**
+    * Set the property for the items to define as image url. *Optional* Default: no image
+    */
+    'imageUrlProperty'?: string;
+    /**
     * An array of items to choose from
     */
     'items': any[];
+    /**
+    * Set the property for the items to define as value. Default: 'key'
+    */
+    'keyProperty': string;
+    /**
+    * Set the property for the items to define as label. Default: 'label'
+    */
+    'labelProperty': string;
     /**
     * Enables selection of multiple items
     */
@@ -251,8 +267,18 @@ export namespace Components {
     * Key(s) of the selected list item(s)
     */
     'selected': string | string[];
+    /**
+    * Name of the template (component) we want to use as list item.
+    */
     'template': string;
+    /**
+    * Contains an Object with options to match template properties.  Mandatory: {key: any}  Default template: {key: any, label: string, subline: string, overline: string, image: string, value: string, disabled: string}
+    */
     'templateOptions': any;
+    /**
+    * Set the property for the items to define as value. *Optional* Default: no value
+    */
+    'valueProperty': string;
   }
   interface OgListTemplateDefault {
     /**
@@ -870,13 +896,29 @@ declare namespace LocalJSX {
     */
     'disabled'?: boolean;
     /**
+    * Set the property for the items to define as disabled. Default: 'disabled'
+    */
+    'disabledProperty'?: string;
+    /**
     * Set the text that will be displayed if the items array is empty.
     */
     'emptyListMessage'?: string;
     /**
+    * Set the property for the items to define as image url. *Optional* Default: no image
+    */
+    'imageUrlProperty'?: string;
+    /**
     * An array of items to choose from
     */
     'items'?: any[];
+    /**
+    * Set the property for the items to define as value. Default: 'key'
+    */
+    'keyProperty'?: string;
+    /**
+    * Set the property for the items to define as label. Default: 'label'
+    */
+    'labelProperty'?: string;
     /**
     * Enables selection of multiple items
     */
@@ -893,8 +935,18 @@ declare namespace LocalJSX {
     * Key(s) of the selected list item(s)
     */
     'selected'?: string | string[];
+    /**
+    * Name of the template (component) we want to use as list item.
+    */
     'template'?: string;
+    /**
+    * Contains an Object with options to match template properties.  Mandatory: {key: any}  Default template: {key: any, label: string, subline: string, overline: string, image: string, value: string, disabled: string}
+    */
     'templateOptions'?: any;
+    /**
+    * Set the property for the items to define as value. *Optional* Default: no value
+    */
+    'valueProperty'?: string;
   }
   interface OgListTemplateDefault extends JSXBase.HTMLAttributes<HTMLOgListTemplateDefaultElement> {
     /**

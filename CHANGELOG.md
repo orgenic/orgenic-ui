@@ -1,3 +1,8 @@
+# [0.4.4-beta.0](https://github.com/orgenic/orgenic-ui/compare/v0.4.3...v0.4.4-beta.0) (2019-12-16)
+
+### Enhancements
+* feat: templates for og-list
+
 # [0.4.3](https://github.com/orgenic/orgenic-ui/compare/v0.4.2...v0.4.3) (2019-12-06)
 
 ### Enhancements
