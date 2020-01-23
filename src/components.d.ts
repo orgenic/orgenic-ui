@@ -208,7 +208,7 @@ export namespace Components {
     */
     'minSize': string;
     /**
-    * The weight defines the resize behavior. A component with weight 2 will be twice as large as a component with weight 1.. Default: "1"
+    * The weight defines the resize behavior. A component with weight 2 will be twice as large as a component with weight 1. Default: "1"
     */
     'weight': number;
   }
@@ -872,7 +872,7 @@ declare namespace LocalJSX {
     */
     'minSize'?: string;
     /**
-    * The weight defines the resize behavior. A component with weight 2 will be twice as large as a component with weight 1.. Default: "1"
+    * The weight defines the resize behavior. A component with weight 2 will be twice as large as a component with weight 1. Default: "1"
     */
     'weight'?: number;
   }
