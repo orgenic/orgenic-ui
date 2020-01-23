@@ -7,8 +7,8 @@
     --scrollbar-thumb--color: var(--OG-COLOR-PRIMARY--100, #{$og-color-primary--100});
     --scrollbar-thumb--size: 2px;  // width for 'scroll y', height for 'scroll x'
 
-    --thumb-size--short: 10px;
-    --thumb-size--long: 60px;
+    --thumb-size--short: 8px;
+    --thumb-size--long: 16px;
 
     display: block;
     position: relative;
@@ -33,7 +33,7 @@
     height: var(--scrollbar-track--size);
 
     &:hover {
-        --thumb-size--short: 30px;
+        --thumb-size--short: 16px;
     }
 }
 
@@ -44,7 +44,7 @@
     width: var(--scrollbar-track--size);
 
     &:hover {
-        --thumb-size--short: 30px;
+        --thumb-size--short: 16px;
     }
 }
 
@@ -54,7 +54,7 @@
     background: var(--scrollbar-thumb--color);
 
     &.is-active {
-        --thumb-size--short: 30px;
+        --thumb-size--short: 16px;
     }
 }
 
