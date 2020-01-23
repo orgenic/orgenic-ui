@@ -59,8 +59,11 @@
 | `--og-list-item__overline-Color`       | Color of the overline.                                                        |
 | `--og-list-item__overline-FontSize`    | Fontsize of the overline.                                                     |
 | `--og-list-item__overline-LineHeight`  | Lineheight of the overline.                                                   |
+| `--og-list-item__overline-Padding`     | Padding (inner space) of the overline.                                        |
 | `--og-list-item__subline-Color`        | Color of the subline.                                                         |
 | `--og-list-item__subline-FontSize`     | Fontsize of the subline.                                                      |
+| `--og-list-item__subline-Padding`      | Padding (inner space) of the subline.                                         |
+| `--og-list-item__value-Padding`        | Padding of the value.                                                         |
 | `--og-list-Opacity`                    | Overall opacity of the list                                                   |
 | `--og-list-Opacity--disabled`          | Overall opacity of the list when disabled                                     |
 
