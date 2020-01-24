@@ -1059,12 +1059,6 @@ export class OgTooltip {
 
     removeClass(tip, this.tooltipShowClass);
 
-    // If this is a touch-enabled device we remove the extra
-    // empty mouseover listeners we added for iOS support
-    // if ('ontouchstart' in document.documentElement) {
-    //   $$$1(document.body).children().off('mouseover', null, $$$1.noop);
-    // }
-
     this.activeTrigger.click = false;
     this.activeTrigger.focus = false;
     this.activeTrigger.hover = false;
