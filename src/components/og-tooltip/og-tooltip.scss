@@ -63,8 +63,7 @@ og-tooltip {
     margin: var(--_og-tooltip-Margin);
     filter: var(--_og-tooltip-DropShadow);
     opacity: 0;
-
-    // tame the dimensions of the tooltip (e.g. viewport-width/height values)
+    // Tame the overall tooltip dimension (e.g. viewport-width/height values)
     max-width: var(--_og-tooltip-MaxWidth);
     max-height: var(--_og-tooltip-MaxHeight);
 
@@ -127,7 +126,7 @@ og-tooltip {
     &[class*="og-tooltip-left"],
     &[class*="og-tooltip-auto"][x-placement^="top"],
     &[class*="og-tooltip-auto"][x-placement^="left"] {
-        // make the arrow appear after the content
+        // Make the arrow appear after the content
         --_og-tooltip-arrow-Order: 1;
     }
 
@@ -197,7 +196,7 @@ og-tooltip {
     }
 }
 
-// detect if the user has requested that the system minimize the amount of
+// Detect if the user has requested that the system shall minimize the amount of
 // animation or motion it uses
 @media (prefers-reduced-motion: reduce) {
     .og-tooltip.fade {
@@ -205,7 +204,7 @@ og-tooltip {
     }
 }
 
-// make sure that the dimensions of the tooltip have a relation to the
+// Make sure that the overall tooltip dimension has a relation to the
 // (increasing) viewport size
 @media (min-width: 768px) {
     .og-tooltip {
