@@ -482,12 +482,12 @@ export class OgTooltip {
     }
 
     if (_.includes(triggers, 'hover')) {
-      this.ogAddEventListener('mouseenter', this.handleMouseEnter);
-      this.ogAddEventListener('mouseleave', this.handleMouseLeave);
+      this.tooltipAddEventListener('mouseenter', this.handleMouseEnter);
+      this.tooltipAddEventListener('mouseleave', this.handleMouseLeave);
     }
     if (_.includes(triggers, 'focus')) {
-      this.ogAddEventListener('focusin', this.handleFocusIn);
-      this.ogAddEventListener('focusout', this.handleFocusOut);
+      this.tooltipAddEventListener('focusin', this.handleFocusIn);
+      this.tooltipAddEventListener('focusout', this.handleFocusOut);
     }
   }
 
@@ -832,10 +832,10 @@ export class OgTooltip {
 
     this.isEnabled = false;
     clearTimeout(this.showHideTimeout);
-    this.ogRemoveEventListener('mouseenter', this.handleMouseEnter);
-    this.ogRemoveEventListener('mouseleave', this.handleMouseLeave);
-    this.ogRemoveEventListener('focusin', this.handleFocusIn);
-    this.ogRemoveEventListener('focusout', this.handleFocusOut);
+    this.tooltipRemoveEventListener('mouseenter', this.handleMouseEnter);
+    this.tooltipRemoveEventListener('mouseleave', this.handleMouseLeave);
+    this.tooltipRemoveEventListener('focusin', this.handleFocusIn);
+    this.tooltipRemoveEventListener('focusout', this.handleFocusOut);
 
     const { originalTitle } = this.tooltipEl.dataset;
     if (_.size(originalTitle) > 0) {
@@ -1132,13 +1132,13 @@ export class OgTooltip {
 
   // Helpers
   // ---------------------------------------------------------------------------
-  private ogAddEventListener(eventName, listenerFunction) {
-    this.ogRemoveEventListener(eventName, listenerFunction, () => {
+  private tooltipAddEventListener(eventName, listenerFunction) {
+    this.tooltipRemoveEventListener(eventName, listenerFunction, () => {
       this.tooltipEl.addEventListener(eventName, listenerFunction);
     });
   }
 
-  private ogRemoveEventListener(eventName, listenerFunction, callback = () => {}) {
+  private tooltipRemoveEventListener(eventName, listenerFunction, callback = () => {}) {
     this.tooltipEl.removeEventListener(eventName, listenerFunction);
     callback();
   }
