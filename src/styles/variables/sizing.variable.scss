@@ -2,5 +2,10 @@
 // BASIC VARIABLES : SIZING
 // =============================================================================
 
-$og-border-radius:    3px;
-$og-border-width:     1px;
+$og-z-index-dropdown:   1000;
+$og-z-index-dialog:     1100;
+$og-z-index-popover:    1200;
+$og-z-index-tooltip:    1300;
+
+$og-border-radius:      3px;
+$og-border-width:       1px;

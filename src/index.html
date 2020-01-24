@@ -201,6 +201,7 @@
                 <a href="button" data-navigo>Button</a>
                 <a href="list" data-navigo>List</a>
                 <a href="combobox" data-navigo>Combobox</a>
+                <a href="tooltip" data-navigo>Tooltip</a>
             </og-card>
 
             <div id="router-outlet"></div>
@@ -244,7 +245,8 @@
                     'toggle-switch': () => { loadHTML('./examples/ToggleSwitch.html', view); },
                     'button': () => { loadHTML('./examples/Button.html', view); },
                     'list': () => { loadHTML('./examples/List.html', view); },
-                    'combobox': () => { loadHTML('./examples/Combobox.html', view); }
+                    'combobox': () => { loadHTML('./examples/Combobox.html', view); },
+                    'tooltip': () => { loadHTML('./examples/Tooltip.html', view); }
                 });
 
                 // set the default route
