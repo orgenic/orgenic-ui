@@ -1,0 +1,7 @@
+:host {
+    display: grid;
+}
+
+:host(.is-inline) {
+    display: inline-grid;
+}
