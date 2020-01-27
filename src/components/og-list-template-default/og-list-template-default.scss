@@ -17,14 +17,14 @@
     --item-Background: var(--og-list-item-Background, var(--OG-COLOR-PRIMARY--0--30, #{$og-color-primary--0--30}));
 
     /**
-     * @prop --item-Background--active:
-     * Background of the list item when selected (shorthand)
+     * @prop --item-Background--highlight:
+     * Background of the list item when hovered (shorthand)
      */
     --item-Background--highlight: var(--og-list-item-Background--highlight, var(--OG-COLOR-PRIMARY--100--15, #{$og-color-primary--100--15}));
 
     /**
-     * @prop --item-Background--highlight:
-     * Background of the list item when hovered (shorthand)
+     * @prop --item-Background--active:
+     * Background of the list item when selected (shorthand)
      */
     --item-Background--active: var(--og-list-item-Background--active, var(--OG-COLOR-PRIMARY--100--30, #{$og-color-primary--100--30}));
 
@@ -155,6 +155,12 @@
      */
     --item__overline-LineHeight: var(--og-list-item__overline-LineHeight, 1.25);
 
+    /**
+     * @prop --item__overline-Padding:
+     * Padding (inner space) of the overline.
+     */
+    --item__overline-Padding: 0;
+
 
     // SUBLINE
 
@@ -169,6 +175,18 @@
      * Color of the subline.
      */
     --item__subline-Color: var(--og-list-item__subline-Color, var(--OG-COLOR-SHADE--100--50, #{$og-color-shade--100--50}));
+
+    /**
+     * @prop --item__subline-Padding:
+     * Padding (inner space) of the subline.
+     */
+    --item__subline-Padding: 0;
+
+    /**
+     * @prop --item__value-Padding:
+     * Padding of the value.
+     */
+    --item__value-Padding: 0 0 0 1rem;
 
     box-sizing: border-box;
     pointer-events: var(--item-PointerEvents);
@@ -217,6 +235,7 @@
 }
 
 .og-list-item__icon {
+    flex: none;
     padding-right: 1em;
     width: var(--item__icon-Width);
 
@@ -232,27 +251,34 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    min-width: 1px;
 }
 
 .og-list-item__subline {
     color: var(--item__subline-Color);
     font-size: var(--item__subline-FontSize);
     line-height: var(--item__subline-LineHeight);
+    overflow: hidden;
     padding: var(--item__subline-Padding);
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .og-list-item__overline {
     color: var(--item__overline-Color);
     font-size: var(--item__overline-FontSize);
     line-height: var(--item__overline-LineHeight);
+    overflow: hidden;
     padding: var(--item__overline-Padding);
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 
 .og-list-item__label {
     line-height: var(--item__label-LineHeight);
-    padding: var(--item__label-Padding);
     overflow: hidden;
+    padding: var(--item__label-Padding);
     text-overflow: ellipsis;
     white-space: nowrap;
 }
@@ -260,4 +286,5 @@
 .og-list-item__value {
     line-height: inherit;
     font-weight: bold;
+    padding: var(--item__value-Padding);
 }
