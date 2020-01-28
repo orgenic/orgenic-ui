@@ -55,7 +55,7 @@ export class OgInternalCalendar {
     this.firstDayOfWeek = this.internalMoment.startOf('week').day();
   }
 
-  public calculateDayArray() {
+  private calculateDayArray() {
     this.weekDayArray = [0, 1, 2, 3, 4, 5, 6].map(d => {
       return (d + this.firstDayOfWeek) % 7;
     });
