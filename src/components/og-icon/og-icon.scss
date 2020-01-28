@@ -46,4 +46,8 @@ svg {
     stroke: var(--og-icon--Stroke);
 
     transition: fill .3s ease, stroke .3s ease;
+
+    path, g, line {
+        stroke: var(--og-icon--Stroke);
+    }
 }

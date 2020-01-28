@@ -33,8 +33,10 @@
     "dist/"
   ],
   "scripts": {
-    "icons": "npx svgstore-cli -o ./src/assets/icons.svg ./src/assets/icons/**/*.svg",
-    "build": "npm run icons && stencil build --docs",
+    "pack-icons": "npx svgstore-cli -o ./src/assets/icons.svg ./src/assets/icons/**/*.svg",
+    "cleanup-icons": "npx replace-in-file /fill=\\\".*?\\\"/g \" \" ./src/assets/icons.svg --isRegex && npx replace-in-file /stroke=\\\".*?\\\"/g \" \"  ./src/assets/icons.svg --isRegex",
+    "icons": "npm run pack-icons && npm run cleanup-icons",
+    "build": "run icons && stencil build --docs",
     "build.watch": "npm icons && stencil build --docs --watch",
     "start": "npm run icons && stencil build --dev --watch --serve --config stencil.run.config.ts",
     "test": "stencil test --spec --e2e",
@@ -45,7 +47,9 @@
   "pre-commit": [
     "check-licenseheader"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "replace-in-file": "^5.0.2"
+  },
   "devDependencies": {
     "@stencil/core": "^1.0.3",
     "@stencil/sass": "^1.0.0",

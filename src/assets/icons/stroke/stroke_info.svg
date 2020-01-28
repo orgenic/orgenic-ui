@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <title>stroke_info</title>
+  <path d="M1,12A11.10171,11.10171,0,0,1,8.14831,1.69406,11.00313,11.00313,0,0,1,21.45383,17.62693,11.10508,11.10508,0,0,1,9.94909,22.8083,11.103,11.103,0,0,1,1,12Z" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+  <line x1="12" y1="18" x2="12" y2="11" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+  <path d="M12.00372,6.03311A.96617.96617,0,1,0,13,7a.94945.94945,0,0,0-.99628-.96689Z"/>
+</svg>
