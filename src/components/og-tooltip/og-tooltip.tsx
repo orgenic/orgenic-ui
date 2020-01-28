@@ -20,11 +20,8 @@ import _ from 'lodash';
 import Popper from 'popper.js';
 
 // ORGENIC-UI helper classes
-import addClass from '../../utils/add-class';
 import getTransitionDurationFromElement from '../../utils/get-transition-duration-from-element';
-import hasClass from '../../utils/has-class';
 import ogCustomEvent from '../../utils/custom-event';
-import removeClass from '../../utils/remove-class';
 import uuidv4 from '../../utils/uuidv4';
 
 /**
@@ -366,8 +363,8 @@ export class OgTooltip {
     }
 
     if (this.isWithActiveTrigger() || this.tooltipHtmlElementHasClass(this.tooltipShowClass) || this.hoverState === 'in') {
-      const tooltipElement = this.getTooltipHtmlElement();
-      const tooltipContentPlaceholder = tooltipElement.querySelector('.og-tooltip__inner');
+      const tooltip = this.getTooltipHtmlElement();
+      const tooltipContentPlaceholder = tooltip.querySelector('.og-tooltip__inner');
       if (tooltipContentPlaceholder) {
         this.setElementContent(tooltipContentPlaceholder, this.getTitle());
         if (this.popperHandle && this.popperHandle.scheduleUpdate) {
@@ -430,7 +427,7 @@ export class OgTooltip {
       if (hasAnimation) {
         this.setConfig();
         const tipEl = this.tip || this.createTooltipHtmlElement();
-        addClass(tipEl, this.tooltipFadeClass);
+        tipEl.classList.add(this.tooltipFadeClass);
       }
     }, { once: true });
     this.enter();
@@ -761,14 +758,16 @@ export class OgTooltip {
     if (!_.includes(this.tooltipAppliedPopperPlacementClasses, tooltipAttachmentClass)) {
       this.tooltipAppliedPopperPlacementClasses.push(tooltipAttachmentClass);
     }
-    addClass(this.getTooltipHtmlElement(), tooltipAttachmentClass);
+
+    const tooltip = this.getTooltipHtmlElement();
+    tooltip.classList.add(tooltipAttachmentClass);
   }
 
   private cleanTooltipHtmlElementClasses() {
-    const tip = this.getTooltipHtmlElement();
-    const classesToRemove = _.intersection(this.tooltipAppliedPopperPlacementClasses, tip.classList);
+    const tooltip = this.getTooltipHtmlElement();
+    const classesToRemove = _.intersection(this.tooltipAppliedPopperPlacementClasses, tooltip.classList);
     classesToRemove.forEach(className => {
-      removeClass(tip, className);
+      tooltip.classList.remove(className);
     });
   }
 
@@ -777,17 +776,17 @@ export class OgTooltip {
       return false;
     }
 
-    return hasClass(this.tip, className);
+    return this.tip.classList.contains(className);
   }
 
   private setContent() {
-    const tip = this.getTooltipHtmlElement();
-    const tooltipTitleEl = tip.querySelector('.og-tooltip__inner');
+    const tooltip = this.getTooltipHtmlElement();
+    const tooltipTitleEl = tooltip.querySelector('.og-tooltip__inner');
     if (tooltipTitleEl) {
       this.setElementContent(tooltipTitleEl, this.getTitle());
     }
-    removeClass(tip, this.tooltipFadeClass);
-    removeClass(tip, this.tooltipShowClass);
+    tooltip.classList.remove(this.tooltipFadeClass);
+    tooltip.classList.remove(this.tooltipShowClass);
   }
 
 
@@ -988,16 +987,16 @@ export class OgTooltip {
         return;
       }
 
-      const tip = this.getTooltipHtmlElement();
+      const tooltip = this.getTooltipHtmlElement();
       this.setContent();
       if (this.config.animation) {
-        addClass(tip, this.tooltipFadeClass);
+        tooltip.classList.add(this.tooltipFadeClass);
       }
-      const placement = typeof this.config.placement === 'function' ? this.config.placement.call(this, tip, this.tooltipEl) : this.config.placement;
+      const placement = typeof this.config.placement === 'function' ? this.config.placement.call(this, tooltip, this.tooltipEl) : this.config.placement;
       this.addAttachmentClassToTooltipHtmlElement(placement);
       // the point of inserted event is to know when the tip is in the DOM but before it has been placed using popper
       ogCustomEvent(this.tooltipEl, this.insertedEventName);
-      this.popperHandle = new Popper(this.tooltipEl, tip, {
+      this.popperHandle = new Popper(this.tooltipEl, tooltip, {
         placement: placement,
         modifiers: {
           offset: {
@@ -1016,10 +1015,11 @@ export class OgTooltip {
         onCreate: this.handlePopperOnCreate,
         onUpdate: this.handlePopperOnUpdate,
       });
-      addClass(tip, this.tooltipShowClass);
 
-      if (hasClass(tip, this.tooltipFadeClass)) {
-        const transitionDuration = getTransitionDurationFromElement(tip);
+      tooltip.classList.add(this.tooltipShowClass);
+
+      if (tooltip.classList.contains(this.tooltipFadeClass)) {
+        const transitionDuration = getTransitionDurationFromElement(tooltip);
         setTimeout(() => {
           this.showComplete();
         }, transitionDuration);
@@ -1051,21 +1051,21 @@ export class OgTooltip {
   }
 
   private hide(callback: any = () => { }) {
-    const tip = this.getTooltipHtmlElement();
+    const tooltip = this.getTooltipHtmlElement();
     const hideEvent = ogCustomEvent(this.tooltipEl, this.hideEventName);
     if (hideEvent.defaultPrevented) {
       return;
     }
 
-    removeClass(tip, this.tooltipShowClass);
+    tooltip.classList.remove(this.tooltipShowClass);
 
     this.activeTrigger.click = false;
     this.activeTrigger.focus = false;
     this.activeTrigger.hover = false;
     this.tooltipEl.removeAttribute('aria-describedby');
 
-    if (hasClass(tip, this.tooltipFadeClass)) {
-      const transitionDuration = getTransitionDurationFromElement(tip);
+    if (tooltip.classList.contains(this.tooltipFadeClass)) {
+      const transitionDuration = getTransitionDurationFromElement(tooltip);
       setTimeout(() => {
         this.hideComplete(callback);
       }, transitionDuration);
@@ -1138,14 +1138,14 @@ export class OgTooltip {
   }
 
   private fixTransition() {
-    const tip = this.getTooltipHtmlElement();
+    const tooltip = this.getTooltipHtmlElement();
     const initConfigAnimation = this.config.animation;
 
-    if (tip.getAttribute('x-placement') !== null) {
+    if (tooltip.getAttribute('x-placement') !== null) {
       return;
     }
 
-    removeClass(tip, this.tooltipFadeClass);
+    tooltip.classList.remove(this.tooltipFadeClass);
     this.config.animation = false;
     this.hide();
     this.show();
