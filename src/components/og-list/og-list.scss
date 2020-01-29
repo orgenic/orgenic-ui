@@ -4,6 +4,8 @@
 
  :host {
 
+    // LIST
+
     /**
      * @prop --og-list-Opacity:
      * Overall opacity of the list
@@ -15,6 +17,172 @@
      * Overall opacity of the list when disabled
      */
     --og-list-Opacity--disabled: .5;
+
+
+    // LIST ITEM
+
+    /**
+     * @prop --og-list-item-Color:
+     * Text color of the list item
+     */
+
+    /**
+     * @prop --og-list-item-Background:
+     * Background of the list item (shorthand)
+     */
+
+    /**
+     * @prop --og-list-item-Background--active:
+     * Background of the list item when selected (shorthand)
+     */
+
+    /**
+     * @prop --og-list-item-Background--highlight:
+     * Background of the list item when hovered (shorthand)
+     */
+
+    /**
+     * @prop --og-list-item-BorderWidth:
+     * Border width of the list item
+     */
+
+    /**
+     * @prop --og-list-item-BorderStyle:
+     * Border style of the list item
+     */
+
+    /**
+     * @prop --og-list-item-BorderColor:
+     * Border color of the list item
+     */
+
+    /**
+     * @prop --og-list-item-BorderRadius:
+     * Border radius of the list item
+     */
+
+    /**
+     * @prop --og-list-item-Margin:
+     * Margin (outer spacing) of the list item
+     */
+
+    /**
+     * @prop --og-list-item-Opacity:
+     * Opacity of the list item
+     */
+
+    /**
+     * @prop --og-list-item-Opacity--disabled:
+     * Opacity of the list item when disabled
+     */
+
+    /**
+     * @prop --og-list-item-Cursor:
+     * Cursor appearance when hovered
+     */
+
+    /**
+     * @prop --og-list-item-PointerEvents:
+     * Pointer Events of the list item. Will be set to 'none' when item is
+     * disabled.
+     */
+
+    // ICON
+
+    /**
+     * @prop --og-list-item__icon-Width:
+     * Width of the "prefix" icon.
+     */
+
+
+    // CONTENT
+
+    /**
+     * @prop --og-list-item__content-AlignItems:
+     * Align (flex) items relatively to the baseline.
+     */
+
+    /**
+     * @prop --og-list-item__content-Height:
+     * Height of the content area.
+     */
+
+    /**
+     * @prop --og-list-item__content-Padding:
+     * Padding (inner spacing) of the content area.
+     */
+
+    /**
+     * @prop --og-list-item-MinHeight:
+     * Minimum Height of the content area.
+     */
+
+
+    // LABEL
+
+    /**
+     * @prop --og-list-item__label-FontSize:
+     * Fontsize of the label.
+     */
+
+    /**
+     * @prop --og-list-item__label-LineHeight:
+     * Lineheight of the label.
+     */
+
+    /**
+     * @prop --og-list-item__label-Padding:
+     * Padding (inner spacing) of the label.
+     */
+
+
+    // OVERLINE
+
+    /**
+     * @prop --og-list-item__overline-Color:
+     * Color of the overline.
+     */
+
+    /**
+     * @prop --og-list-item__overline-FontSize:
+     * Fontsize of the overline.
+     */
+
+    /**
+     * @prop --og-list-item__overline-LineHeight:
+     * Lineheight of the overline.
+     */
+
+    /**
+     * @prop --og-list-item__overline-Padding:
+     * Padding (inner space) of the overline.
+     */
+
+
+    // SUBLINE
+
+    /**
+     * @prop --og-list-item__subline-FontSize:
+     * Fontsize of the subline.
+     */
+
+    /**
+     * @prop --og-list-item__subline-Color:
+     * Color of the subline.
+     */
+
+    /**
+     * @prop --og-list-item__subline-Padding:
+     * Padding (inner space) of the subline.
+     */
+
+     // VALUE
+
+    /**
+     * @prop --og-list-item__value-Padding:
+     * Padding of the value.
+     */
+
 
     box-sizing: border-box;
 }

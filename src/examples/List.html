@@ -4,7 +4,7 @@ og-list
 <og-card name="List">
     <div>
         <h4>Listitems with pre-selection</h4>
-        <og-list id="list1" multiselect></og-list>
+        <og-list id="list1"></og-list>
 
         <h4>Listitems with icon and value; (required = true)</h4>
         <og-list id="list2" required selected="v2"></og-list>
@@ -16,10 +16,16 @@ og-list
         <og-list id="list4"></og-list>
 
         <h4>Custom Template List</h4>
-        <og-list id="list5" template="og-checkbox"></og-list>
+        <og-list id="list5" template="og-checkbox" ></og-list>
 
         <h4>Empty Template List</h4>
         <og-list id="list6"></og-list>
+
+        <h4>Listitems with icon and value; (required = true)</h4>
+        <og-list id="list7" required selected="v2" value-property="value"></og-list>
+
+        <h4>Listitems with icon and value, (properties)</h4>
+        <og-list id="list8" key-property="id" label-property="name" image-url-property="iconUrl" ></og-list>
     </div>
     <div slot="footer">
     </div>
@@ -37,6 +43,24 @@ og-list
         { id: 'v3', name: 'Name 3', disabled: true, value: 99 },
         { id: 'v4', name: 'Name 4', job: 'nothing', iconUrl: 'http://orgtest.maximago.de/assets/images/Car/Rally/Default_small.png', value: 1234 },
     ];
+    const listCustomItems2 = [
+        { id: 'v1', name: 'Name A1', job: 'subline job', section: 'left', iconUrl: 'http://orgtest.maximago.de/assets/images/Car/Rally/Default_small.png', value: 22  },
+        { id: 'v2', name: 'Name A2', section: 'center', iconUrl: 'http://orgtest.maximago.de/assets/images/Car/Rally/Default_small.png', },
+        { id: 'v3', name: 'Name A3', disabled: true, value: 99 },
+        { id: 'v4', name: 'Name A4', job: 'nothing', iconUrl: 'http://orgtest.maximago.de/assets/images/Car/Rally/Default_small.png', value: 1234 },
+    ];
+
+    const listCustomItems3 = [
+        { id: 'v1', name: 'Style 1', job: 'subline zero', section: 'left', iconUrl: 'http://orgtest.maximago.de/assets/images/Car/Rally/Default_small.png', value: 22  },
+        { id: 'v2', name: 'Style 2', section: 'center', iconUrl: 'http://orgtest.maximago.de/assets/images/Car/Rally/Default_small.png', },
+        { id: 'v3', name: 'Style 3', disabled: true, value: 99 },
+        { id: 'v4', name: 'Style 4', job: 'nothing', iconUrl: 'http://orgtest.maximago.de/assets/images/Car/Rally/Default_small.png', value: 1234 },
+        { id: 'v5', name: 'Style 5', disabled: true, value: 999 },
+        { id: 'v6', name: 'Style 6', job: 'subline zero', section: 'left', iconUrl: 'http://orgtest.maximago.de/assets/images/Car/Rally/Default_small.png', value: 22  },
+        { id: 'v7', name: 'Style 7', section: 'center', iconUrl: 'http://orgtest.maximago.de/assets/images/Car/Rally/Default_small.png', },
+        { id: 'v8', name: 'Style 8', disabled: true, value: 99 },
+        { id: 'v9', name: 'Style 9', disabled: true, value: 999 },
+    ];
 
     const list1 = document.querySelector('#list1');
     list1.items = listItems;
@@ -53,11 +77,36 @@ og-list
     list3.addEventListener('itemSelected', e => console.log('item selected', e));
 
     const list4 = document.querySelector('#list4');
-    list4.items = listCustomItems;
+    const tempList = [];
+    list4.items = tempList;
+    setTimeout(() => {
+        list4.items = listCustomItems;
+    }, 2000);
+    setTimeout(() => {
+        list4.items = listCustomItems2;
+    }, 5000);
+    setTimeout(() => {
+        list4.items = listCustomItems3;
+    }, 8000);
+    setTimeout(() => {
+        list4.items = [];
+    }, 10000);
+    setTimeout(() => {
+        list4.items = listCustomItems2;
+    }, 12000);
     list4.templateOptions = { key: 'id', label: 'name', subline: 'job', overline: 'section', image: 'iconUrl', value: 'value', disabled: 'disabled'};
     list4.addEventListener('itemSelected', e => console.log('item selected', e));
 
     const list5 = document.querySelector('#list5');
     list5.items = listCustomItems;
+    list5.templateOptions = {key: ''}
     list5.addEventListener('itemSelected', e => console.log('item selected', e));
+
+    const list7 = document.querySelector('#list7');
+    list7.items = listItems;
+    list7.addEventListener('itemSelected', e => console.log('item selected', e));
+
+    const list8 = document.querySelector('#list8');
+    list8.items = listCustomItems;
+    list8.addEventListener('itemSelected', e => console.log('item selected', e));
 </script>
