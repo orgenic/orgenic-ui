@@ -3,8 +3,9 @@
 // =============================================================================
 
 /**
- * TODO: document
- * @prop --og-icon-[option]: [desc]
+ * @prop --og-icon--Size: The dimensions of the icon (width = height)
+ * @prop --og-icon--Fill: Fill color of the icon
+ * @prop --og-icon--Stroke: Stroke color of the icon
  */
 
 // -----------------------------------------------------------------------------
@@ -19,12 +20,12 @@
     --og-icon--Stroke: var(--OG-COLOR-SECONDARY--100, currentColor);
 
     --Display: inline-block;
-
     display: var(--Display);
 
     user-select: none;
 
     box-sizing: border-box;
+
     *, *::before, *::after { box-sizing: inherit; }
 }
 
@@ -46,8 +47,4 @@ svg {
     stroke: var(--og-icon--Stroke);
 
     transition: fill .3s ease, stroke .3s ease;
-
-    path, g, line {
-        stroke: var(--og-icon--Stroke);
-    }
 }

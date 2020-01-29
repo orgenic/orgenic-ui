@@ -56,7 +56,7 @@ export class OgIcon {
   }
 
   private getIconId(): string {
-    return this.src ? (this.icon ? `#${this.icon}` : '') : `#${ this.iconStyle }_${ this.icon || 'home' }`;  // TODO: change after new internal sprite is available
+    return this.src ? (this.icon ? `#${this.icon}` : '') : `#${ this.iconStyle }_${ this.icon || 'home' }`;
   }
 
   public render(): HTMLElement {
