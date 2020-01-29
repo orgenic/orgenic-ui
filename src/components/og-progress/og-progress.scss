@@ -22,8 +22,6 @@
     --MaxHeight: inherit;
 
     --og-progress-Background:           var(--OG-COLOR-PRIMARY--100--15, #{$og-color-primary--100--15});
-
-
     --og-progress-Color:                var(--OG-COLOR-PRIMARY--100, #{$og-color-primary--100});
     --og-progress-Color--buffer:        var(--OG-COLOR-PRIMARY--100--30, #{$og-color-primary--100--30});
 
@@ -52,7 +50,7 @@
     user-select: none;
 
     box-sizing: border-box;
-    // transition: all .5s;
+    transition: all .5s;
     *, *::before, *::after { box-sizing: inherit; }
 }
 
@@ -99,7 +97,7 @@
     height: 100%;
     background: var(--og-progress-Color);
 
-    // transition: width .2s;
+    transition: width .2s;
 }
 .og-progress-bar {
     animation: var(--og-progress-bar-Animation);
@@ -232,8 +230,6 @@
     25% {
         left: 70%;
         transform: translate(-60%, 0);
-        // left: 100%;
-        // transform: translate(-100%, 0);
         width: 35%;
     }
 
@@ -252,8 +248,6 @@
     75% {
         left: 30%;
         transform: translate(-40%, 0);
-        // left: 0;
-        // transform: translate(0, 0);
         width: 35%;
     }
 }

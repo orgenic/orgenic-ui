@@ -6,7 +6,6 @@ describe('og-progress__test', () => {
   let progress: E2EElement;
 
   beforeEach(async () => {
-    // page = await newE2EPage();
     page = await newE2EPage({
       html: '<og-progress style="width: 1000px;" max="200" value="50"></og-progress>'
     });

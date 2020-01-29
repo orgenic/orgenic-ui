@@ -13,25 +13,19 @@ import { h, Component, Prop, Host } from '@stencil/core';
 })
 export class OgProgress {
   /**
-   * The label of the progress
-   */
-  @Prop({ reflectToAttr: true })
-  public label: string;
-
-  /**
    * The percent value of the progress
    */
   @Prop({ reflectToAttr: true })
   public value: number;
 
   /**
-   * The percent value of the progress buffer
+   * The percent value of the progress buffer (the second bar)
    */
   @Prop({ reflectToAttr: true })
   public buffer: number;
 
   /**
-   *  The size (height) of the progress bar
+   *  The height (s, m , l) of the progress bar
    */
   @Prop({ reflectToAttr: true })
   public size: 's' | 'm' | 'l' = 'm';
@@ -73,17 +67,7 @@ export class OgProgress {
   public bounce: boolean = false;
 
   public render(): HTMLElement {
-    return <Host
-      indeterminate={ this.indeterminate }
-      stream={ this.stream }
-      query={ this.query }
-      bounce={ this.bounce }
-      disabled={ this.disabled }
-      value={ this.value }
-      buffer={ this.buffer }
-      max={ this.max }
-      size={ this.size }
-    >
+    return <Host>
       <div class="og-progress-bar"
         style={{
           '--og-progress-bar-Width': (this.value / this.max) * 100 + '%',

@@ -368,7 +368,7 @@ export namespace Components {
     */
     'bounce': boolean;
     /**
-    * The percent value of the progress buffer
+    * The percent value of the progress buffer (the second bar)
     */
     'buffer': number;
     /**
@@ -380,10 +380,6 @@ export namespace Components {
     */
     'indeterminate': boolean;
     /**
-    * The label of the progress
-    */
-    'label': string;
-    /**
     * The max value of the progress
     */
     'max': number;
@@ -392,7 +388,7 @@ export namespace Components {
     */
     'query': boolean;
     /**
-    * The size (height) of the progress bar
+    * The height (s, m , l) of the progress bar
     */
     'size': 's' | 'm' | 'l';
     /**
@@ -1112,7 +1108,7 @@ declare namespace LocalJSX {
     */
     'bounce'?: boolean;
     /**
-    * The percent value of the progress buffer
+    * The percent value of the progress buffer (the second bar)
     */
     'buffer'?: number;
     /**
@@ -1124,10 +1120,6 @@ declare namespace LocalJSX {
     */
     'indeterminate'?: boolean;
     /**
-    * The label of the progress
-    */
-    'label'?: string;
-    /**
     * The max value of the progress
     */
     'max'?: number;
@@ -1136,7 +1128,7 @@ declare namespace LocalJSX {
     */
     'query'?: boolean;
     /**
-    * The size (height) of the progress bar
+    * The height (s, m , l) of the progress bar
     */
     'size'?: 's' | 'm' | 'l';
     /**
