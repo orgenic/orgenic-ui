@@ -13,6 +13,13 @@ og-combobox
             <og-combobox id="combobox3" value="2" disabled></og-combobox>
 
     </div>
+    <div style="overflow: auto; padding-top: 40px; max-height: 400px;">
+        <h4>Inside a horizontal scroll area</h4>
+        <p>Also width a custom flyout width.</p>
+        <div style="width: 120vw; height: 600px;">
+            <og-combobox id="combobox4" style="margin-left: 200px; width: 300px; --og-combobox__flyout-MaxWidth: 200px"></og-combobox>
+        </div>
+    </div>
 </og-card>
 <script>
     const values = [];
@@ -30,4 +37,7 @@ og-combobox
 
     const combobox3 = document.querySelector('#combobox3');
     combobox3.items = values;
+
+    const combobox4 = document.querySelector('#combobox4');
+    combobox4.items = values;
 </script>

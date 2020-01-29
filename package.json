@@ -1,6 +1,6 @@
 {
   "name": "@orgenic/orgenic-ui",
-  "version": "0.4.1",
+  "version": "0.4.4-beta.8",
   "description": "ORGENIC UI",
   "author": {
     "name": "MAXIMAGO GmbH",
@@ -37,6 +37,7 @@
     "build.watch": "stencil build --docs --watch",
     "start": "stencil build --dev --watch --serve --config stencil.run.config.ts",
     "test": "stencil test --spec --e2e",
+    "test.spec": "stencil test --spec",
     "test.ci": "stencil test --spec --e2e --ci",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "check-licenseheader": "node ./.scripts/check-licenseheaders.js"
