@@ -190,6 +190,11 @@ export namespace Components {
     */
     'label': string;
   }
+  interface OgFormItemContainer {
+    'itemGap': string;
+    'itemMaxWidth': string;
+    'itemMinWidth': string;
+  }
   interface OgInternalCalendar {
     'dateDecorator': OgDateDecorator;
     'loc': string;
@@ -528,6 +533,12 @@ declare global {
     new (): HTMLOgFormItemElement;
   };
 
+  interface HTMLOgFormItemContainerElement extends Components.OgFormItemContainer, HTMLStencilElement {}
+  var HTMLOgFormItemContainerElement: {
+    prototype: HTMLOgFormItemContainerElement;
+    new (): HTMLOgFormItemContainerElement;
+  };
+
   interface HTMLOgInternalCalendarElement extends Components.OgInternalCalendar, HTMLStencilElement {}
   var HTMLOgInternalCalendarElement: {
     prototype: HTMLOgInternalCalendarElement;
@@ -629,6 +640,7 @@ declare global {
     'og-dialog': HTMLOgDialogElement;
     'og-expander': HTMLOgExpanderElement;
     'og-form-item': HTMLOgFormItemElement;
+    'og-form-item-container': HTMLOgFormItemContainerElement;
     'og-internal-calendar': HTMLOgInternalCalendarElement;
     'og-layout-child': HTMLOgLayoutChildElement;
     'og-layout-container': HTMLOgLayoutContainerElement;
@@ -852,6 +864,11 @@ declare namespace LocalJSX {
     * The label for the form item
     */
     'label'?: string;
+  }
+  interface OgFormItemContainer extends JSXBase.HTMLAttributes<HTMLOgFormItemContainerElement> {
+    'itemGap'?: string;
+    'itemMaxWidth'?: string;
+    'itemMinWidth'?: string;
   }
   interface OgInternalCalendar extends JSXBase.HTMLAttributes<HTMLOgInternalCalendarElement> {
     'dateDecorator'?: OgDateDecorator;
@@ -1198,6 +1215,7 @@ declare namespace LocalJSX {
     'og-dialog': OgDialog;
     'og-expander': OgExpander;
     'og-form-item': OgFormItem;
+    'og-form-item-container': OgFormItemContainer;
     'og-internal-calendar': OgInternalCalendar;
     'og-layout-child': OgLayoutChild;
     'og-layout-container': OgLayoutContainer;

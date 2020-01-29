@@ -1,0 +1,50 @@
+<!--
+og-form-item-container
+-->
+<og-card name="Form Item Container">
+    <div class="example example--column">
+        <div>
+            <og-form-item-container id="formItemContainer">
+                <og-form-item label="Default Text Input">
+                    <og-text-input id="input#1"></og-text-input>
+                </og-form-item>
+                <og-form-item label="Default Text Input">
+                    <og-text-input id="input#2"></og-text-input>
+                </og-form-item>
+                <og-form-item label="Default Text Input">
+                    <og-text-input id="input#3"></og-text-input>
+                </og-form-item>
+                <og-form-item label="Default Text Input">
+                    <og-text-input id="input#4"></og-text-input>
+                </og-form-item>
+                <og-form-item label="New row" class="new-row">
+                    <og-text-input id="input#5"></og-text-input>
+                </og-form-item>
+                <og-form-item label="Full width" class="full-width">
+                    <og-text-input id="input#6"></og-text-input>
+                </og-form-item>
+                <og-form-item label="Full width" class="full-width">
+                    <og-text-input id="input#7"></og-text-input>
+                </og-form-item>
+                <og-form-item label="Default Text Input">
+                    <og-text-input id="input#8"></og-text-input>
+                </og-form-item>
+                <og-form-item label="Default Text Input" class="full-width">
+                    <og-text-input id="input#9"></og-text-input>
+                </og-form-item>
+            </og-form-item-container>
+        </div>
+    </div>
+</og-card>
+
+<script>
+    setTimeout(() => {
+        const container = document.getElementById('formItemContainer');
+        if (container) {
+            console.log(container);
+            container.setAttribute('item-min-width', '200px');
+            // container.setAttribute('item-max-width', '600px');
+            // container.setAttribute('item-gap', '15px');
+        }
+    }, 4000);
+</script>

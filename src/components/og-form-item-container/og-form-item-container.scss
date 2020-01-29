@@ -1,7 +1,25 @@
 :host {
+    // Interal vars trying to map external (:root) vars and provide a fallback
+    --_og-form-item-container__item-MinWidth: var(--og-form-item-container__item-MinWidth, 300px);
+    --_og-form-item-container__item-MaxWidth: var(--og-form-item-container__item-MaxWidth, 1fr);
+    --_og-form-item-container-Gap: var(--og-form-item-container-Gap, 10px);
+
     display: grid;
+    grid-gap: var(--_og-form-item-container-Gap);
+    grid-template-columns: repeat(auto-fill, minmax(var(--_og-form-item-container__item-MinWidth), var(--_og-form-item-container__item-MaxWidth)));
+    padding: 20px;
 }
 
 :host(.is-inline) {
     display: inline-grid;
+}
+
+::slotted(.new-row) {
+    // forces the item to start in a new "row"
+    grid-column-start: 1 !important;
+}
+
+::slotted(.full-width) {
+    // forces the item to end in the last col of the row
+    grid-column-end: -1 !important;
 }
