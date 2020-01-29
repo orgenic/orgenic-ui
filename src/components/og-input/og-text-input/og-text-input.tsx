@@ -1,4 +1,5 @@
-import { h, Component, Prop, Event, EventEmitter, Host } from '@stencil/core';
+import { h, Component, Prop, Event, EventEmitter, Host, State, Method } from '@stencil/core';
+import { ValidatorEntry, Validator, defaultValidator, getValidator } from '../../../validators';
 
 @Component({
   tag: 'og-text-input',
@@ -6,6 +7,11 @@ import { h, Component, Prop, Event, EventEmitter, Host } from '@stencil/core';
   shadow: true
 })
 export class OgTextInput {
+  @State()
+  public validation: {valid: boolean; message?: string} = {valid: true};
+
+  @State()
+  public hasFocus: boolean;
   /**
    * Optional placeholder text if input is empty.
    */
@@ -23,6 +29,16 @@ export class OgTextInput {
    */
   @Prop()
   public disabled: boolean;
+
+
+  /**
+   *
+   */
+  @Prop()
+  validator: Array<string | ValidatorEntry | Validator<string>>;
+
+  @Prop()
+  validateOn: string = 'blur';
 
   /**
    * Event is being emitted when value changes.
@@ -42,21 +58,62 @@ export class OgTextInput {
   @Event()
   public focusLost: EventEmitter<FocusEvent>;
 
-  public handleChange(e) {
-    this.value = e.target.value;
+  private _validator: Validator<string> = defaultValidator;
+
+  componentWillLoad() {
+    this._validator = getValidator<string>(this.validator);
+  }
+
+  private async handleChange(e) {
+    this.value = e.target ? e.target.value : null;
+    if (this.validator && this.validateOn === e.type) {
+      await this.validate();
+    }
     this.valueChanged.emit(this.value);
+  }
+
+  private async handleOnFocus(e) {
+    this.hasFocus = true;
+    this.focusGained.emit(e);
+  }
+
+  private async handleOnBlur(e) {
+    this.hasFocus = false;
+    if (this.validator && this.validateOn === e.type) {
+      await this.validate();
+    }
+    this.focusLost.emit(e);
+  }
+
+  @Method()
+  public async validate() {
+    if (!this.validator) {
+      throw new Error('[og-text-input] needs a validator to process validation.');
+    }
+    this.validation = {
+      valid: this._validator.validate(this.value),
+      message: this._validator.errorMessage,
+    }
   }
 
   public render(): HTMLElement {
     return (
-      <Host class={{ 'og-form-item__editor': true }}>
+      <Host
+        class={{
+          'og-form-item__editor': true,
+          'og-form-item__editor--error': !this.validation.valid
+        }}
+      >
+        {this.hasFocus && !this.validation.valid && this.validation.message ?
+          <span class="validation-error">{this.validation.message}</span>
+        : null}
         <input type="text"
           class="og-input__input"
           value={ this.value }
           disabled={ this.disabled }
           onInput={ (event) => this.handleChange(event) }
-          onFocus={ (event) => this.focusGained.emit(event) }
-          onBlur={ (event) => this.focusLost.emit(event) }
+          onFocus={ (event) => this.handleOnFocus(event) }
+          onBlur={ (event) => this.handleOnBlur(event) }
           placeholder={ this.placeholder }
         />
         <div class="og-input__indicator"></div>

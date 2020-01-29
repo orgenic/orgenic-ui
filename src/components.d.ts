@@ -17,6 +17,10 @@ import {
 import {
   OgListTemplateDefaultOptions,
 } from './components/og-list-template-default/og-list-template-default.interface';
+import {
+  Validator,
+  ValidatorEntry,
+} from './validators';
 
 export namespace Components {
   interface OgButton {
@@ -432,6 +436,9 @@ export namespace Components {
     * Optional placeholder text if input is empty.
     */
     'placeholder'?: string;
+    'validate': () => Promise<void>;
+    'validateOn': string;
+    'validator': Array<string | ValidatorEntry | Validator<string>>;
     /**
     * The initial value. Can be updated at runtime.
     */
@@ -1144,6 +1151,8 @@ declare namespace LocalJSX {
     * Optional placeholder text if input is empty.
     */
     'placeholder'?: string;
+    'validateOn'?: string;
+    'validator'?: Array<string | ValidatorEntry | Validator<string>>;
     /**
     * The initial value. Can be updated at runtime.
     */

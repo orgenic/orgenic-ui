@@ -52,6 +52,11 @@
     *, *::before, *::after { box-sizing: inherit; }
 }
 
+:host(.og-form-item__editor--error) {
+    --og-input__input-BorderColor: var(--OG-COLOR-ERROR--100, #{$og-color-error--100});
+    --og-input__indicator-Background: var(--OG-COLOR-ERROR--100, #{$og-color-error--100});
+}
+
 // Native Input element
 .og-input__input {
     display: block;

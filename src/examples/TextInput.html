@@ -27,4 +27,7 @@ og-text-input
     textInputs[0].addEventListener('valueChanged', e => console.log('Text Input value changed', e));
     textInputs[0].addEventListener('focusGained', e => console.log('Text Input got focus', e));
     textInputs[0].addEventListener('focusLost', e => console.log('Text Input lost focus', e));
+    textInputs[0].validator = [{name: 'length', options: {min: 6}}];
+    textInputs[0].validateOn = 'input';
+    textInputs[1].validator = ['mandatory'];
 </script>
