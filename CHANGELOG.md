@@ -1,3 +1,34 @@
+# [0.4.4-beta.0](https://github.com/orgenic/orgenic-ui/compare/v0.4.3...v0.4.4-beta.0) (2019-12-16)
+
+### Enhancements
+* feat: templates for og-list
+
+# [0.4.3](https://github.com/orgenic/orgenic-ui/compare/v0.4.2...v0.4.3) (2019-12-06)
+
+### Enhancements
+* fix: og-combobox flyout behavior
+* feat: new styling options for og-combobox
+* feat: new css vars for og-button
+* feat: prevent text wrap by default for og-button
+* fix: multi-select for og-list
+* chore: security updates
+
+# [0.4.2](https://github.com/orgenic/orgenic-ui/compare/v0.4.1...v0.4.2) (2019-10-30)
+
+### Features
+* new button type "outline"
+* multi-select for og-list
+
+### Enhancements
+* feat: new variable for text-transform in og-input
+* feat: shorten text of og-list-items
+* fix: handling dropdown event
+* fix: combobox flyout position
+* fix: check event target on og-dialog keydown
+* fix: item vars of og-list
+* chore: security updates
+* style: minor cleanups
+
 # [0.4.1](https://github.com/orgenic/orgenic-ui/compare/v0.4.0...v0.4.1) (2019-08-22)
 
 ### Enhancements
@@ -5,7 +36,7 @@
 * fix: hide empty footer  …
 * fix: card size depends on parent
 * fix: og-card header and sizing
-* fix: improve browser scroll behaviour
+* fix: improve browser scroll behavior
 
 # [0.4.0](https://github.com/orgenic/orgenic-ui/compare/v0.3.1...v0.4.0) (2019-06-28)
 
@@ -35,7 +66,7 @@
 
 ### Enhancements
 * the content of og-card and og-dialog can be defined without using the named slot 'content'
-* documentation of css costom properties now have an additional column with default value
+* documentation of css custom properties now have an additional column with default value
 * added basic typography for headings, paragraphs and lists
 * og-card: can now be used without headline
 

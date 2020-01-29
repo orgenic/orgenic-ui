@@ -7,6 +7,10 @@
  * @prop --og-button-Background--active: Background color when the button is clicked
  * @prop --og-button-Background--disabled: Background color when the button is disabled
  * @prop --og-button-Background--hover: Background color when the button is hovered
+ * @prop --og-button-BorderColor: Main border color of the button
+ * @prop --og-button-BorderColor--active: Border color when the button is clicked
+ * @prop --og-button-BorderColor--disabled: Border color when the button is disabled
+ * @prop --og-button-BorderColor--hover: Border color when the button is hovered
  * @prop --og-button-BorderRadius: Border radius of the button
  * @prop --og-button-Color: Text color of the button label
  * @prop --og-button-Color--active: Text color when the button is clicked
@@ -22,15 +26,17 @@
   // All Component Variables
   // Map Variables to Properties
   --Display: inline-block;
-  --Width: auto;
-  --MaxWidth: inherit;
   --Height: auto;
+
+  /**
+   * @prop --MinWidth:
+   * Minimum width of the Button.
+   */
+  --MinWidth: NULL;
   --MaxHeight: inherit;
   --Padding: var(--PADDING, 0.75rem 1.5rem);    // TODO: use --OG-PADDING
-
-  --BorderWidth: 1px;
+  --BorderWidth: 0;
   --BorderStyle: solid;
-  --BorderColor: transparent;
 
   --og-button-BorderRadius:         var( --OG-BORDER-RADIUS, #{$og-border-radius});
 
@@ -44,7 +50,25 @@
   --og-button-Color--active:        var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
   --og-button-Color--disabled:      var(--OG-COLOR-SHADE--100--30, #{$og-color-shade--100--30});
 
+  --og-button-BorderColor:           var(--OG-COLOR-SECONDARY--100--20, #{$og-color-secondary--100--20});
+  --og-button-BorderColor--hover:    var(--OG-COLOR-SECONDARY--100--30, #{$og-color-secondary--100--30});
+  --og-button-BorderColor--active:   var(--OG-COLOR-SECONDARY--100--10, #{$og-color-secondary--100--10});
+  --og-button-BorderColor--disabled: var(--OG-COLOR-SECONDARY--100--07, #{$og-color-secondary--100--07});
+
   --og-button-FontWeight: var(--OG-FONT-WEIGHT--MEDIUM, 500);
+
+  /**
+   * @prop --og-button-WhiteSpace:
+   * White Space behavior of the Button text. Used to truncate overflowing text.
+   */
+  --og-button-WhiteSpace: NULL;
+
+  /**
+   * @prop --og-button-WhiteSpace:
+   * Text Overflow behavior. Used to truncate overflowing text.
+   */
+    --og-button-TextOverflow: NULL;
+
 
   --BoxShadow: var(--og-button-BoxShadow);
   --FontFamily: var(--og-button-FontFamily, inherit);
@@ -53,9 +77,8 @@
   --TextTransform: uppercase;
 
   display: var(--Display);
-  width: var(--Width);
   min-width: var(--MinWidth);
-  max-width: var(--MaxWidth);
+  max-width: 100%;
   height: var(--Height);
   max-height: var(--maxHeight);
 
@@ -68,6 +91,13 @@
   box-sizing: border-box;
   *, *::before, *::after { box-sizing: inherit; }
 }
+
+:host(:not(.og-button--text-wrap)) {
+    --MinWidth: 0;
+    --og-button-WhiteSpace: nowrap;
+    --og-button-TextOverflow: ellipsis;
+}
+
 
 
 :host([data-context~='workflow']) {
@@ -95,32 +125,42 @@
     --og-button-Color--disabled: var(--OG-COLOR-SHADE--100--30, #{$og-color-shade--100--30});
 }
 
+:host([data-context~="outline"]) {
+  --BorderWidth: 1px;
+
+  --og-button-BorderColor: var(--OG-COLOR-SECONDARY--100--20, #{$og-color-secondary--100--20});
+  --og-button-BorderColor--hover: var(--OG-COLOR-SECONDARY--100--30, #{$og-color-secondary--100--30});
+  --og-button-BorderColor--active: var(--OG-COLOR-SECONDARY--100--10, #{$og-color-secondary--100--10});
+  --og-button-BorderColor--disabled: var(--OG-COLOR-SECONDARY--100--07, #{$og-color-secondary--100--07});
+
+  --og-button-Background: transparent;
+  --og-button-Background--hover: transparent;
+  --og-button-Background--active: transparent;
+  --og-button-Background--disabled: transparent;
+}
+
 // Native <button> element
 .og-button {
+  background: var(--og-button-Background);
+  border: var(--BorderWidth) var(--BorderStyle) var(--og-button-BorderColor);
+  border-radius: var(--og-button-BorderRadius);
+  color: var(--og-button-Color);
   display: block;
-  width: 100%;
-  max-width: inherit;
-  height: 100%;
-  max-height: inherit;
-  padding: var(--Padding);
-
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit;
-
-  background: var(--og-button-Background);
-  border: var(--BorderWidth) var(--BorderStyle) var(--BorderColor);
-
-
-  border-radius: var(--og-button-BorderRadius);
-  color: var(--og-button-Color);
-
+  height: 100%;
+  max-height: inherit;
+  max-width: inherit;
+  overflow: hidden;
+  padding: var(--Padding);
+  text-overflow: var(--og-button-TextOverflow);
   text-transform: var(--TextTransform);
-
-  // Transitions
   transition-duration: 150ms;
   transition-property: background-color;
   transition-timing-function: ease-in-out;
+  width: 100%;
+  white-space: var(--og-button-WhiteSpace);
 
   // 'Focus' state
   &:focus {
@@ -130,6 +170,7 @@
   // 'Hover' state
   &:hover {
     --og-button-Background: var(--og-button-Background--hover);
+    --og-button-BorderColor: var(--og-button-BorderColor--hover);
     --og-button-Color: var(--og-button-Color--hover);
     cursor: pointer;
     transition-duration: 300ms;
@@ -138,6 +179,7 @@
   // 'Active' state
   &:active {
     --og-button-Background: var(--og-button-Background--active);
+    --og-button-BorderColor: var(--og-button-BorderColor--active);
     --og-button-Color: var(--og-button-Color--active);
     transition-duration: 300ms;
   }
@@ -145,6 +187,7 @@
   // 'Disabled' state
   &:disabled {
     --og-button-Background: var(--og-button-Background--disabled);
+    --og-button-BorderColor: var(--og-button-BorderColor--disabled);
     --og-button-Color: var(--og-button-Color--disabled);
     cursor: default;
   }
