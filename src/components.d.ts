@@ -85,6 +85,32 @@ export namespace Components {
     */
     'value': string;
   }
+  interface OgComboboxOptions {
+    /**
+    * Determines, whether the options are disabled or not
+    */
+    'disabled': boolean;
+    /**
+    * Set the property for the items to define as label. Default: "label"
+    */
+    'itemLabelProperty': string;
+    /**
+    * Set the property for the items to define as value. Default: "value"
+    */
+    'itemValueProperty': string;
+    /**
+    * An array of items to choose from
+    */
+    'items': any[];
+    /**
+    * The selected value
+    */
+    'value': string;
+    /**
+    * Determines, whether the options are visible or not
+    */
+    'visible': boolean;
+  }
   interface OgConfirmDialog {
     /**
     * Label for cancel button.
@@ -492,6 +518,12 @@ declare global {
     new (): HTMLOgComboboxElement;
   };
 
+  interface HTMLOgComboboxOptionsElement extends Components.OgComboboxOptions, HTMLStencilElement {}
+  var HTMLOgComboboxOptionsElement: {
+    prototype: HTMLOgComboboxOptionsElement;
+    new (): HTMLOgComboboxOptionsElement;
+  };
+
   interface HTMLOgConfirmDialogElement extends Components.OgConfirmDialog, HTMLStencilElement {}
   var HTMLOgConfirmDialogElement: {
     prototype: HTMLOgConfirmDialogElement;
@@ -623,6 +655,7 @@ declare global {
     'og-card': HTMLOgCardElement;
     'og-checkbox': HTMLOgCheckboxElement;
     'og-combobox': HTMLOgComboboxElement;
+    'og-combobox-options': HTMLOgComboboxOptionsElement;
     'og-confirm-dialog': HTMLOgConfirmDialogElement;
     'og-datatable': HTMLOgDatatableElement;
     'og-datepicker': HTMLOgDatepickerElement;
@@ -735,6 +768,36 @@ declare namespace LocalJSX {
     * The selected value of the combobox
     */
     'value'?: string;
+  }
+  interface OgComboboxOptions extends JSXBase.HTMLAttributes<HTMLOgComboboxOptionsElement> {
+    /**
+    * Determines, whether the options are disabled or not
+    */
+    'disabled'?: boolean;
+    /**
+    * Set the property for the items to define as label. Default: "label"
+    */
+    'itemLabelProperty'?: string;
+    /**
+    * Set the property for the items to define as value. Default: "value"
+    */
+    'itemValueProperty'?: string;
+    /**
+    * An array of items to choose from
+    */
+    'items'?: any[];
+    /**
+    * Event is being emitted when value changes.
+    */
+    'onItemSelected'?: (event: CustomEvent<any>) => void;
+    /**
+    * The selected value
+    */
+    'value'?: string;
+    /**
+    * Determines, whether the options are visible or not
+    */
+    'visible'?: boolean;
   }
   interface OgConfirmDialog extends JSXBase.HTMLAttributes<HTMLOgConfirmDialogElement> {
     /**
@@ -1192,6 +1255,7 @@ declare namespace LocalJSX {
     'og-card': OgCard;
     'og-checkbox': OgCheckbox;
     'og-combobox': OgCombobox;
+    'og-combobox-options': OgComboboxOptions;
     'og-confirm-dialog': OgConfirmDialog;
     'og-datatable': OgDatatable;
     'og-datepicker': OgDatepicker;

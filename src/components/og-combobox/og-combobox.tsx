@@ -83,19 +83,25 @@ export class OgCombobox {
   public dropdownActive: boolean = false;
 
   public comboboxHeaderElement: HTMLElement;
-  public flyoutList: HTMLElement;
-  public flyoutElement: HTMLElement;
+  public comboboxOptions: HTMLElement;
 
   @Listen('scroll', { target: 'body', capture: true })
   @Listen('scroll', { target: 'window', capture: true })
   public handleWindowScroll(ev) {
-    if (!this.dropdownActive || this.el === ev.target) {
+    if (!this.dropdownActive || this.el === ev.target || this.comboboxOptions === ev.target) {
       return;
     }
 
-    // close flyout on scroll events
+    // close options on scroll events
     this.dropdownActive = false;
     this.focusLost.emit();
+  }
+
+  @Listen('resize', {target: 'window', capture: true})
+  public handleWindowResize() {
+    if (this.dropdownActive) {
+      this.comboboxOptions.style.cssText = this.getOptionsCss();
+    }
   }
 
   @Listen('click', { target: 'body' })
@@ -111,12 +117,12 @@ export class OgCombobox {
   }
 
   public componentDidLoad() {
-    this.flyoutList.addEventListener('wheel', (_ev) => {
-      if (this.flyoutList.scrollTop === 0 && _ev.deltaY < 0) {
+    this.comboboxOptions.addEventListener('wheel', (_ev) => {
+      if (this.comboboxOptions.scrollTop === 0 && _ev.deltaY < 0) {
         _ev.cancelBubble = true;
         _ev.preventDefault();
       }
-      if (this.flyoutList.scrollTop + this.flyoutList.offsetHeight === this.flyoutList.scrollHeight && _ev.deltaY > 0) {
+      if (this.comboboxOptions.scrollTop + this.comboboxOptions.offsetHeight === this.comboboxOptions.scrollHeight && _ev.deltaY > 0) {
         _ev.cancelBubble = true;
         _ev.preventDefault();
       }
@@ -124,7 +130,7 @@ export class OgCombobox {
   }
 
   public disconnectedCallback() {
-    this.removeFlyoutFromBody();
+    this.removeOptionsFromBody();
   }
 
   public buttonClicked(e: Event) {
@@ -132,8 +138,8 @@ export class OgCombobox {
       this.dropdownActive = !this.dropdownActive;
       if (this.dropdownActive) {
         this.focusGained.emit();
-        this.moveFlyoutToBody();
-        this.flyoutElement.style.cssText = this.getFlyoutCss();
+        this.moveOptionsToBody();
+        this.comboboxOptions.style.cssText = this.getOptionsCss();
       } else {
         this.focusLost.emit();
       }
@@ -164,18 +170,12 @@ export class OgCombobox {
     return item[this.itemLabelProperty];
   }
 
-  private moveFlyoutToBody() {
-    const flyout: HTMLElement = this.el.shadowRoot.querySelector("og-flyout");
-
-    if (flyout) {
-      this.flyoutElement = document.body.appendChild(flyout);
-    }
+  private moveOptionsToBody() {
+    this.comboboxOptions && document.body.appendChild(this.comboboxOptions);
   }
 
-  private removeFlyoutFromBody() {
-    if (this.flyoutElement) {
-      this.flyoutElement.remove();
-    }
+  private removeOptionsFromBody() {
+    this.comboboxOptions && this.comboboxOptions.remove();
   }
 
   private hasValidItems(): boolean {
@@ -188,24 +188,24 @@ export class OgCombobox {
 
   /**
    * behaviour:
-   *   * combobox flyout shows 7 items
-   *   * if it does not fit on screen, scale down flyout
-   *   * if flyout would be smaller than 4 items, show flyout above combobox
+   *   * combobox options shows 7 items
+   *   * if it does not fit on screen, scale down options
+   *   * if options would be smaller than 4 items, show options above combobox
    */
-  public getFlyoutCss(): string {
+  public getOptionsCss(): string {
     if (!this.comboboxHeaderElement) {
       return "";
     }
-    
+
     const comboboxHeaderStyle = window.getComputedStyle(this.comboboxHeaderElement);
-    
-    let flyoutTop = (this.comboboxHeaderElement.getBoundingClientRect().top + parseInt(comboboxHeaderStyle.height) + parseInt(comboboxHeaderStyle.marginBottom));
-    let flyoutHeight = 0;
+
+    let optionsTop = (this.comboboxHeaderElement.getBoundingClientRect().top + parseInt(comboboxHeaderStyle.height) + parseInt(comboboxHeaderStyle.marginBottom));
+    let optionsHeight = 0;
     let itemHeight = 0;
-    
+
     // get item height
-    const item = this.flyoutList.querySelector('li');
-    
+    const item = this.comboboxOptions.shadowRoot.querySelector('li');
+
     if (!item) {
       // no items available => return
       return "";
@@ -213,28 +213,28 @@ export class OgCombobox {
 
     const itemStyle = window.getComputedStyle(item);
     itemHeight = parseInt(itemStyle.paddingTop) + parseInt(itemStyle.paddingBottom) + parseInt(itemStyle.lineHeight);
-    flyoutHeight = itemHeight * this.items.length;
+    optionsHeight = itemHeight * this.items.length;
 
     // get space on screen below combobox
-    const spaceBelow = window.innerHeight - flyoutTop - parseInt(itemStyle.paddingBottom);
-    
-    // calculate maximum and minimum flyout sizes (for 4 - 7 items)
+    const spaceBelow = window.innerHeight - optionsTop - parseInt(itemStyle.paddingBottom);
+
+    // calculate maximum and minimum options sizes (for 4 - 7 items)
     const maxHeight = itemHeight * Math.min(7, this.items.length);
     const minHeight = itemHeight * Math.min(4, this.items.length);
-    
-    // calculate real flyout size to fit below combobox
-    flyoutHeight = Math.min(spaceBelow, Math.min(maxHeight, flyoutHeight));
 
-    // if flyout size is below min size, then show flyout above combobox
-    if (flyoutHeight < minHeight) {
-      flyoutHeight = maxHeight;
-      flyoutTop = this.comboboxHeaderElement.getBoundingClientRect().top - flyoutHeight - parseInt(comboboxHeaderStyle.marginTop) - parseInt(comboboxHeaderStyle.marginBottom);
+    // calculate real options size to fit below combobox
+    optionsHeight = Math.min(spaceBelow, Math.min(maxHeight, optionsHeight));
+
+    // if options size is below min size, then show options above combobox
+    if (optionsHeight < minHeight) {
+      optionsHeight = maxHeight;
+      optionsTop = this.comboboxHeaderElement.getBoundingClientRect().top - optionsHeight - parseInt(comboboxHeaderStyle.marginTop) - parseInt(comboboxHeaderStyle.marginBottom);
     }
 
-    return `top: ${flyoutTop}px;
-      left: ${this.comboboxHeaderElement.getBoundingClientRect().left}px;
-      width: ${this.comboboxHeaderElement.getBoundingClientRect().width}px;
-      height: ${flyoutHeight}px;`;
+    return `top: ${optionsTop}px;
+      left: ${this.comboboxHeaderElement.getBoundingClientRect().left - parseInt(comboboxHeaderStyle.marginLeft)}px;
+      width: ${this.comboboxHeaderElement.getBoundingClientRect().width + parseInt(comboboxHeaderStyle.marginLeft) + parseInt(comboboxHeaderStyle.marginRight)}px;
+      height: ${optionsHeight}px;`;
   }
 
   public render(): HTMLElement {
@@ -278,27 +278,14 @@ export class OgCombobox {
           </div>
           <div class="og-combobox__indicator"/>
         </div>
-        <og-flyout class={ (this.isDropdownActive() ? 'og-flyout--visible' : '') }>
-          {/* <div class="og-combobox__flyout"> */}
-          <ul
-            class='og-combobox__flyout__list'
-            ref={(el) => this.flyoutList = el}
-          >
-            {!this.hasValidItems() ? (
-              <li>No options available</li>
-            ) : (
-              this.items.map((item): HTMLElement => (
-                <li
-                  class={ 'og-combobox__flyout__list__item' + (item[this.itemValueProperty] == this.value ? ' og-combobox__flyout__list__item--active' : '' ) }
-                  onClick={() => this.listItemSelected(item)}
-                >
-                  {item[this.itemLabelProperty]}
-                </li>
-              ))
-            )}
-          </ul>
-          {/* </div> */}
-        </og-flyout>
+        <og-combobox-options
+          ref={(el) => this.comboboxOptions = el}
+          visible={this.isDropdownActive()}
+          items={this.items}
+          onItemSelected={(event) => this.listItemSelected(event.detail)}
+          value={this.value}
+        >
+        </og-combobox-options>
       </Host>
     );
   }
