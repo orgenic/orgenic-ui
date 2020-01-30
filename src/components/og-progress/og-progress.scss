@@ -1,0 +1,269 @@
+// =============================================================================
+// CSS CUSTOM PROPERTIES
+// =============================================================================
+
+/**
+ * @prop --og-progress-Background: Main background color of the progress element
+ * @prop --og-progress-Color: Color of the progress bar
+ * @prop --og-progress-Color--buffer: Color of the progress buffer bar
+ */
+
+// -----------------------------------------------------------------------------
+// Base
+// -----------------------------------------------------------------------------
+
+:host {
+    // All Component Variables
+    // Map Variables to Properties
+    --Display: block;
+    --Width: 100%;
+    --MaxWidth: inherit;
+    --Height: 8px;
+    --MaxHeight: inherit;
+
+    --og-progress-Background:           var(--OG-COLOR-PRIMARY--100--15, #{$og-color-primary--100--15});
+    --og-progress-Color:                var(--OG-COLOR-PRIMARY--100, #{$og-color-primary--100});
+    --og-progress-Color--buffer:        var(--OG-COLOR-PRIMARY--100--30, #{$og-color-primary--100--30});
+
+    --og-progress-bar-Animation: unset;
+    --og-progress-bar-Width: 0;
+    --og-progress-buffer-Width: 0;
+    --og-progress-stream-Animation: unset;
+    --og-progress-stream-Visibility: hidden;
+    --og-progress-stream-dash: calc(var(--Height) * 2);
+    --og-progress-stream-Width: 0;
+
+    display: var(--Display);
+    position: relative;
+    vertical-align: middle;
+    overflow: hidden;
+    width: var(--Width);
+    min-width: var(--MinWidth);
+    max-width: var(--MaxWidth);
+    height: var(--Height);
+    max-height: var(--maxHeight);
+
+    margin: 10px 0;
+
+    background: var(--og-progress-Background);
+
+    user-select: none;
+
+    box-sizing: border-box;
+    transition: all .5s;
+    *, *::before, *::after { box-sizing: inherit; }
+}
+
+:host([hidden]) {
+    display: none;
+}
+
+:host([size=s]) {
+    --Height: 1px;
+}
+:host([size=l]) {
+    --Height: 16px;
+}
+
+:host([indeterminate]),
+:host([query]),
+:host([bounce]) {
+    --og-progress-buffer-Width: 0;
+    --og-progress-bar-Animation: load 2s infinite linear;
+}
+
+:host([indeterminate]) {
+    --og-progress-bar-Animation: load 2s infinite linear;
+}
+
+:host([query]) {
+    --og-progress-bar-Animation: load 2s infinite linear reverse;
+}
+
+:host([bounce]) {
+    --og-progress-bar-Animation: loadSticky 5s infinite linear;
+}
+
+:host([stream]) {
+    --og-progress-stream-Animation: stream 2s infinite linear;
+    --og-progress-stream-Visibility: visible;
+}
+
+.og-progress-bar,
+.og-progress-buffer,
+.og-progress-stream {
+    display: block;
+    position: absolute;
+    height: 100%;
+    background: var(--og-progress-Color);
+
+    transition: width .2s;
+}
+.og-progress-bar {
+    animation: var(--og-progress-bar-Animation);
+    width: var(--og-progress-bar-Width);
+    z-index: 3;
+}
+
+.og-progress-buffer {
+    background: var(--og-progress-Color--buffer);
+    width: var(--og-progress-buffer-Width);
+    z-index: 2;
+}
+.og-progress-stream {
+    visibility: var(--og-progress-stream-Visibility);
+    right: 0;
+    background-size: calc(var(--og-progress-stream-dash) * 2) 100%;
+    background-image: linear-gradient(
+        to right,
+        var(--og-progress-Color--buffer) 0,
+        var(--og-progress-Color--buffer) 50%,
+        transparent 5%,
+        );
+    background-repeat: repeat-x;
+    background-position: 0 50%;
+    background-color: transparent;
+    width: var(--og-progress-stream-Width);
+    z-index: 1;
+
+    animation: var(--og-progress-stream-Animation);
+}
+
+@keyframes load {
+    0% {
+        left: 0;
+        transform: translate(0, 0);
+        width: 0;
+    }
+
+    5% {
+        left: 0;
+        transform: translate(0, 0);
+        width: 15%;
+
+    }
+
+    50% {
+        left: 0;
+        transform: translate(0, 0);
+        width: 45%;
+    }
+
+    85% {
+        left: 100%;
+        transform: translate(-100%, 0);
+        width: 25%;
+    }
+
+    100% {
+        left: 100%;
+        transform: translate(-100%, 0);
+        width: 0;
+    }
+
+}
+
+@keyframes loadSticky {
+    0%, 100% {
+        left: 0;
+        transform: translate(0, 0);
+        width: 0;
+    }
+
+    5% {
+        left: 0;
+        transform: translate(0, 0);
+        width: 15%;
+    }
+
+    25% {
+        left: 0;
+        transform: translate(0, 0);
+        width: 45%;
+    }
+
+    45% {
+        left: 100%;
+        transform: translate(-100%, 0);
+        width: 25%;
+    }
+
+    50% {
+        left: 100%;
+        transform: translate(-100%, 0);
+        width: 0;
+    }
+
+    55% {
+        left: 100%;
+        transform: translate(-100%, 0);
+        width: 15%;
+    }
+
+    75% {
+        left: 100%;
+        transform: translate(-100%, 0);
+        width: 45%;
+    }
+
+    95% {
+        left: 0;
+        transform: translate(0, 0);
+        width: 25%;
+    }
+
+}
+
+@keyframes load_bouncy {
+    0% {
+        left: 0;
+        transform: translate(0, 0);
+        width: 10%;
+    }
+
+    2%, 98% {
+        left: 0;
+        transform: translate(0, 0);
+        width: 15%;
+    }
+
+    25% {
+        left: 70%;
+        transform: translate(-60%, 0);
+        width: 35%;
+    }
+
+    50% {
+        left: 100%;
+        transform: translate(-100%, 0);
+        width: 10%;
+    }
+
+    48%, 52% {
+        left: 100%;
+        transform: translate(-100%, 0);
+        width: 15%;
+    }
+
+    75% {
+        left: 30%;
+        transform: translate(-40%, 0);
+        width: 35%;
+    }
+}
+
+@keyframes stream {
+    0% {
+        background-position: 0px 50%;
+        opacity: .8;
+    }
+
+    50% {
+        opacity: .1;
+    }
+
+    100% {
+        opacity: .8;
+        background-position: calc(var(--og-progress-stream-dash) * -4) 50%;
+    }
+}
