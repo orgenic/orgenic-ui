@@ -80,7 +80,14 @@
     min-width: var(--og-combobox__flyout-MinWidth);
     max-width: var(--og-combobox__flyout-MaxWidth);
     width: var(--og-combobox__flyout-Width);
+    display: none;
     position: fixed;
+    z-index: 9999;
+    box-shadow: var(--og-combobox__flyout-BoxShadow);
+    background: var(--og-combobox__flyout-Background);
+}
+
+:host(.og-flyout--visible) {
     display: block;
 }
 
@@ -89,18 +96,11 @@
     margin: 0;
     padding: 0;
     list-style-type: none;
-    display: none;
-    position: fixed;
+    // display: none;
+    // position: fixed;
     width: 100%;
-    box-shadow: var(--og-combobox__flyout-BoxShadow);
-    background: var(--og-combobox__flyout-Background);
-    z-index: 9999;
     overflow-y: auto;
     backface-visibility: hidden;
-}
-
-.og-combobox__flyout__list--visible {
-    display: block;
 }
 
 .og-combobox__flyout__list__item {

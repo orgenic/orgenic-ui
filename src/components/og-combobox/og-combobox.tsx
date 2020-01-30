@@ -200,7 +200,6 @@ export class OgCombobox {
     const comboboxHeaderStyle = window.getComputedStyle(this.comboboxHeaderElement);
     
     let flyoutTop = (this.comboboxHeaderElement.getBoundingClientRect().top + parseInt(comboboxHeaderStyle.height) + parseInt(comboboxHeaderStyle.marginBottom));
-    let flyoutRight = (window.innerWidth - (this.comboboxHeaderElement.getBoundingClientRect().left + this.comboboxHeaderElement.getBoundingClientRect().width + parseInt(comboboxHeaderStyle.marginRight)));
     let flyoutHeight = 0;
     let itemHeight = 0;
     
@@ -234,8 +233,6 @@ export class OgCombobox {
 
     return `top: ${flyoutTop}px;
       left: ${this.comboboxHeaderElement.getBoundingClientRect().left}px;
-      right: ${flyoutRight}px;
-      rigth: auto;
       width: ${this.comboboxHeaderElement.getBoundingClientRect().width}px;
       height: ${flyoutHeight}px;`;
   }
@@ -281,10 +278,10 @@ export class OgCombobox {
           </div>
           <div class="og-combobox__indicator"/>
         </div>
-        <og-flyout>
+        <og-flyout class={ (this.isDropdownActive() ? 'og-flyout--visible' : '') }>
           {/* <div class="og-combobox__flyout"> */}
           <ul
-            class={ 'og-combobox__flyout__list' + (this.isDropdownActive() ? ' og-combobox__flyout__list--visible' : '') }
+            class='og-combobox__flyout__list'
             ref={(el) => this.flyoutList = el}
           >
             {!this.hasValidItems() ? (
