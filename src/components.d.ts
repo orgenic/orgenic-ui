@@ -365,6 +365,44 @@ export namespace Components {
     */
     'value': string;
   }
+  interface OgProgress {
+    /**
+    * Determines, whether the bounce animation is shown or not
+    */
+    'bounce': boolean;
+    /**
+    * The percent value of the progress buffer (the second bar)
+    */
+    'buffer': number;
+    /**
+    * Determines, whether the control is hidden or not
+    */
+    'hidden': boolean;
+    /**
+    * Determines, whether the control is an indeterminate bar or not
+    */
+    'indeterminate': boolean;
+    /**
+    * The max value of the progress
+    */
+    'max': number;
+    /**
+    * Determines, whether the query animation is shown or not
+    */
+    'query': boolean;
+    /**
+    * The height (s, m , l) of the progress bar
+    */
+    'size': 's' | 'm' | 'l';
+    /**
+    * Determines, whether the stream animation is shown or not
+    */
+    'stream': boolean;
+    /**
+    * The percent value of the progress
+    */
+    'value': number;
+  }
   interface OgRadioButton {
     /**
     * Determines, whether the radio button is checked or not
@@ -404,6 +442,16 @@ export namespace Components {
     * The value of the selected radio button.
     */
     'value': string;
+  }
+  interface OgSpinner {
+    /**
+    * Determines, whether the control is hidden or not
+    */
+    'hidden': boolean;
+    /**
+    * The size of the spinner (s/m/l)
+    */
+    'size': 's' | 'm' | 'l';
   }
   interface OgTab {
     /**
@@ -576,6 +624,12 @@ declare global {
     new (): HTMLOgPasswordInputElement;
   };
 
+  interface HTMLOgProgressElement extends Components.OgProgress, HTMLStencilElement {}
+  var HTMLOgProgressElement: {
+    prototype: HTMLOgProgressElement;
+    new (): HTMLOgProgressElement;
+  };
+
   interface HTMLOgRadioButtonElement extends Components.OgRadioButton, HTMLStencilElement {}
   var HTMLOgRadioButtonElement: {
     prototype: HTMLOgRadioButtonElement;
@@ -586,6 +640,12 @@ declare global {
   var HTMLOgRadioButtonGroupElement: {
     prototype: HTMLOgRadioButtonGroupElement;
     new (): HTMLOgRadioButtonGroupElement;
+  };
+
+  interface HTMLOgSpinnerElement extends Components.OgSpinner, HTMLStencilElement {}
+  var HTMLOgSpinnerElement: {
+    prototype: HTMLOgSpinnerElement;
+    new (): HTMLOgSpinnerElement;
   };
 
   interface HTMLOgTabElement extends Components.OgTab, HTMLStencilElement {}
@@ -637,8 +697,10 @@ declare global {
     'og-message-dialog': HTMLOgMessageDialogElement;
     'og-number-input': HTMLOgNumberInputElement;
     'og-password-input': HTMLOgPasswordInputElement;
+    'og-progress': HTMLOgProgressElement;
     'og-radio-button': HTMLOgRadioButtonElement;
     'og-radio-button-group': HTMLOgRadioButtonGroupElement;
+    'og-spinner': HTMLOgSpinnerElement;
     'og-tab': HTMLOgTabElement;
     'og-tab-container': HTMLOgTabContainerElement;
     'og-text-input': HTMLOgTextInputElement;
@@ -1060,6 +1122,44 @@ declare namespace LocalJSX {
     */
     'value'?: string;
   }
+  interface OgProgress extends JSXBase.HTMLAttributes<HTMLOgProgressElement> {
+    /**
+    * Determines, whether the bounce animation is shown or not
+    */
+    'bounce'?: boolean;
+    /**
+    * The percent value of the progress buffer (the second bar)
+    */
+    'buffer'?: number;
+    /**
+    * Determines, whether the control is hidden or not
+    */
+    'hidden'?: boolean;
+    /**
+    * Determines, whether the control is an indeterminate bar or not
+    */
+    'indeterminate'?: boolean;
+    /**
+    * The max value of the progress
+    */
+    'max'?: number;
+    /**
+    * Determines, whether the query animation is shown or not
+    */
+    'query'?: boolean;
+    /**
+    * The height (s, m , l) of the progress bar
+    */
+    'size'?: 's' | 'm' | 'l';
+    /**
+    * Determines, whether the stream animation is shown or not
+    */
+    'stream'?: boolean;
+    /**
+    * The percent value of the progress
+    */
+    'value'?: number;
+  }
   interface OgRadioButton extends JSXBase.HTMLAttributes<HTMLOgRadioButtonElement> {
     /**
     * Determines, whether the radio button is checked or not
@@ -1101,6 +1201,16 @@ declare namespace LocalJSX {
     * The value of the selected radio button.
     */
     'value'?: string;
+  }
+  interface OgSpinner extends JSXBase.HTMLAttributes<HTMLOgSpinnerElement> {
+    /**
+    * Determines, whether the control is hidden or not
+    */
+    'hidden'?: boolean;
+    /**
+    * The size of the spinner (s/m/l)
+    */
+    'size'?: 's' | 'm' | 'l';
   }
   interface OgTab extends JSXBase.HTMLAttributes<HTMLOgTabElement> {
     /**
@@ -1206,8 +1316,10 @@ declare namespace LocalJSX {
     'og-message-dialog': OgMessageDialog;
     'og-number-input': OgNumberInput;
     'og-password-input': OgPasswordInput;
+    'og-progress': OgProgress;
     'og-radio-button': OgRadioButton;
     'og-radio-button-group': OgRadioButtonGroup;
+    'og-spinner': OgSpinner;
     'og-tab': OgTab;
     'og-tab-container': OgTabContainer;
     'og-text-input': OgTextInput;

@@ -1,0 +1,115 @@
+// =============================================================================
+// CSS CUSTOM PROPERTIES
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Base
+// -----------------------------------------------------------------------------
+
+:host {
+    /**
+     * @prop --og-spinner-Size:
+     * Width and height of the spinner.
+     */
+    --og-spinner-Size: 32px;
+
+    /**
+     * @prop --og-spinner-Color:
+     * Primary Color of the spinner.
+     */
+    --og-spinner-Color: var(--OG-COLOR-PRIMARY--100, #{$og-color-primary--100});
+
+    /**
+     * @prop --og-spinner__circle-dash-Color:
+     * Color of the spinning dash. By default it's the primary spinner color.
+     */
+    --og-spinner__circle-dash-Color: var(--og-spinner-Color);
+
+    /**
+     * @prop --og-spinner__circle-edge-Color:
+     * Color of the circle edge. By default it's the primary spinner color.
+     */
+    --og-spinner__circle-edge-Color: var(--og-spinner-Color);
+
+    /**
+     * @prop --og-spinner__circle-edge-Opacity:
+     * Opacity of the circle edge.
+     */
+    --og-spinner__circle-edge-Opacity: .15;
+
+    /**
+     * @prop --og-spinner-Length--min:
+     * Smallest length of the spinner stroke
+     */
+    --og-spinner-Length--min: 50px;
+
+    /**
+     * @prop --og-spinner-Length--max:
+     * Largest length of the spinner stroke
+     */
+    --og-spinner-Length--max: 180px;
+
+    box-sizing: border-box;
+    display: inline-block;
+    overflow: hidden;
+    user-select: none;
+}
+
+*, *::before, *::after { box-sizing: inherit; }
+
+:host([size=s]) {
+    --og-spinner-Size: 16px;
+}
+:host([size=l]) {
+    --og-spinner-Size: 48px;
+}
+
+:host([hidden]) {
+    display: none;
+}
+
+svg {
+    width: var(--og-spinner-Size);
+    height: var(--og-spinner-Size);
+
+    animation: spin 1.2s infinite linear;
+    transform-origin: center;
+    vertical-align: middle;
+}
+
+.circle-dash {
+    animation: dash 2.4s infinite ease-in-out;
+    stroke: var(--og-spinner__circle-dash-Color);
+    stroke-dasharray: var(--og-spinner-Length--max);
+    stroke-dashoffset: var(--og-spinner-Length--max);
+    transform-origin: center;
+}
+
+.circle-edge {
+    opacity: var(--og-spinner__circle-edge-Opacity);
+    stroke: var(--og-spinner__circle-edge-Color);
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes dash {
+    0% {
+        stroke-dashoffset: var(--og-spinner-Length--max);
+        transform: rotate(0deg);
+    }
+    50% {
+        stroke-dashoffset: var(--og-spinner-Length--min);
+        transform: rotate(180deg);
+    }
+    100% {
+        stroke-dashoffset: var(--og-spinner-Length--max);
+        transform: rotate(360deg);
+    }
+}
