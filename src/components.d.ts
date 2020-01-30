@@ -443,6 +443,16 @@ export namespace Components {
     */
     'value': string;
   }
+  interface OgSpinner {
+    /**
+    * Determines, whether the control is hidden or not
+    */
+    'hidden': boolean;
+    /**
+    * The size of the spinner (s/m/l)
+    */
+    'size': 's' | 'm' | 'l';
+  }
   interface OgTab {
     /**
     * Determines, whether the control is disabled or not
@@ -632,6 +642,12 @@ declare global {
     new (): HTMLOgRadioButtonGroupElement;
   };
 
+  interface HTMLOgSpinnerElement extends Components.OgSpinner, HTMLStencilElement {}
+  var HTMLOgSpinnerElement: {
+    prototype: HTMLOgSpinnerElement;
+    new (): HTMLOgSpinnerElement;
+  };
+
   interface HTMLOgTabElement extends Components.OgTab, HTMLStencilElement {}
   var HTMLOgTabElement: {
     prototype: HTMLOgTabElement;
@@ -684,6 +700,7 @@ declare global {
     'og-progress': HTMLOgProgressElement;
     'og-radio-button': HTMLOgRadioButtonElement;
     'og-radio-button-group': HTMLOgRadioButtonGroupElement;
+    'og-spinner': HTMLOgSpinnerElement;
     'og-tab': HTMLOgTabElement;
     'og-tab-container': HTMLOgTabContainerElement;
     'og-text-input': HTMLOgTextInputElement;
@@ -1185,6 +1202,16 @@ declare namespace LocalJSX {
     */
     'value'?: string;
   }
+  interface OgSpinner extends JSXBase.HTMLAttributes<HTMLOgSpinnerElement> {
+    /**
+    * Determines, whether the control is hidden or not
+    */
+    'hidden'?: boolean;
+    /**
+    * The size of the spinner (s/m/l)
+    */
+    'size'?: 's' | 'm' | 'l';
+  }
   interface OgTab extends JSXBase.HTMLAttributes<HTMLOgTabElement> {
     /**
     * Determines, whether the control is disabled or not
@@ -1292,6 +1319,7 @@ declare namespace LocalJSX {
     'og-progress': OgProgress;
     'og-radio-button': OgRadioButton;
     'og-radio-button-group': OgRadioButtonGroup;
+    'og-spinner': OgSpinner;
     'og-tab': OgTab;
     'og-tab-container': OgTabContainer;
     'og-text-input': OgTextInput;
