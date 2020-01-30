@@ -165,7 +165,7 @@ export class OgCombobox {
   }
 
   private moveFlyoutToBody() {
-    const flyout = this.el.shadowRoot.querySelector(".og-combobox__flyout");
+    const flyout: HTMLElement = this.el.shadowRoot.querySelector("og-flyout");
 
     if (flyout) {
       this.flyoutElement = document.body.appendChild(flyout);
@@ -233,8 +233,10 @@ export class OgCombobox {
     }
 
     return `top: ${flyoutTop}px;
+      left: ${this.comboboxHeaderElement.getBoundingClientRect().left}px;
       right: ${flyoutRight}px;
-      width: ${window.getComputedStyle(this.flyoutList.parentElement).width};
+      rigth: auto;
+      width: ${this.comboboxHeaderElement.getBoundingClientRect().width}px;
       height: ${flyoutHeight}px;`;
   }
 
@@ -259,10 +261,7 @@ export class OgCombobox {
           />
           <div class="og-combobox__button">
             <svg
-              class={
-                'og-combobox__button__arrow' +
-                              (this.isDropdownActive() ? ' og-combobox__button__arrow--collapsed' : '')
-              }
+              class={ 'og-combobox__button__arrow' + (this.isDropdownActive() ? ' og-combobox__button__arrow--collapsed' : '') }
               version="1.1"
               xmlns="http://www.w3.org/2000/svg"
               xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -282,7 +281,8 @@ export class OgCombobox {
           </div>
           <div class="og-combobox__indicator"/>
         </div>
-        <div class="og-combobox__flyout" ref={(el) => this.flyoutElement = el}>
+        <og-flyout>
+          {/* <div class="og-combobox__flyout"> */}
           <ul
             class={ 'og-combobox__flyout__list' + (this.isDropdownActive() ? ' og-combobox__flyout__list--visible' : '') }
             ref={(el) => this.flyoutList = el}
@@ -292,10 +292,7 @@ export class OgCombobox {
             ) : (
               this.items.map((item): HTMLElement => (
                 <li
-                  class={
-                    'og-combobox__flyout__list__item' +
-                                      (item[this.itemValueProperty] == this.value ? ' og-combobox__flyout__list__item--active' : '' )
-                  }
+                  class={ 'og-combobox__flyout__list__item' + (item[this.itemValueProperty] == this.value ? ' og-combobox__flyout__list__item--active' : '' ) }
                   onClick={() => this.listItemSelected(item)}
                 >
                   {item[this.itemLabelProperty]}
@@ -303,7 +300,8 @@ export class OgCombobox {
               ))
             )}
           </ul>
-        </div>
+          {/* </div> */}
+        </og-flyout>
       </Host>
     );
   }
