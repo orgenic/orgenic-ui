@@ -115,6 +115,13 @@ export class OgDatepicker {
     this.focusLost.emit();
   }
 
+  @Listen('resize', { target: 'window', capture: true })
+  public handleWindowResize() {
+    if (this.dropdownActive) {
+      this.flyoutCalendar.style.cssText = this.getFlyoutCss();
+    }
+  }
+
   @Listen('scroll', { target: 'body' })
   public handleBodyScroll() {
     // close flyout on scroll events
