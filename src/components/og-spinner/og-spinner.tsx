@@ -6,12 +6,6 @@
 
 import { h,  Component, Prop, Host } from '@stencil/core';
 
-const sizes = {
-  s: '16px',
-  m: '32px',
-  l: '48px'
-}
-
 @Component({
   tag: 'og-spinner',
   styleUrl: 'og-spinner.scss',
@@ -24,7 +18,7 @@ export class OgSpinner {
    * @type {boolean}
    */
   @Prop({reflect: true})
-  public hidden: boolean;
+  public hidden: boolean = false;
 
   /**
    * The size of the spinner (s/m/l)
@@ -38,7 +32,7 @@ export class OgSpinner {
     return <Host
       class="og-spinner"
     >
-      <svg width={sizes[this.size]} height={sizes[this.size]} viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+      <svg viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
         <circle class="circle-edge" fill="none" stroke-width="8" cx="33" cy="33" r="29"></circle>
         <circle class="circle-dash" stroke-linecap="round" fill="none" stroke-width="8" cx="33" cy="33" r="29"></circle>
       </svg>

@@ -14,24 +14,6 @@ describe('og-spinner', () => {
     expect(component).toHaveClass('hydrated');
   });
 
-  const sizes = {
-    s: '16px',
-    m: '32px',
-    l: '48px'
-  }
-
-  for (let key in sizes) {
-
-    it(`sets width and height ${key} for svg`, async () => {
-      const svg = await page.find('og-spinner >>> svg');
-      component.setProperty('size', key);
-      await page.waitForChanges();
-      expect(svg).toEqualAttribute('width', sizes[key]);
-      expect(svg).toEqualAttribute('height', sizes[key]);
-    });
-
-  }
-
   it('should apply hidden state', async () => {
     component.setProperty('hidden', true);
     await page.waitForChanges();

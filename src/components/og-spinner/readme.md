@@ -7,48 +7,25 @@
 
 ## Properties
 
-| Property   | Attribute  | Description                                        | Type      | Default     |
-| ---------- | ---------- | -------------------------------------------------- | --------- | ----------- |
-| `disabled` | `disabled` | Determines, whether the control is disabled or not | `boolean` | `undefined` |
-| `label`    | `label`    | The label of the spinner                            | `string`  | `undefined` |
-
-
-## Events
-
-| Event     | Description                                | Type               |
-| --------- | ------------------------------------------ | ------------------ |
-| `clicked` | Event is being emitted when value changes. | `CustomEvent<any>` |
+| Property | Attribute | Description                                        | Type                | Default |
+| -------- | --------- | -------------------------------------------------- | ------------------- | ------- |
+| `hidden` | `hidden`  | Determines, whether the control is disabled or not | `boolean`           | `false` |
+| `size`   | `size`    | The size of the spinner (s/m/l)                    | `"l" \| "m" \| "s"` | `'m'`   |
 
 
 ## CSS Custom Properties
 
-| Name                               | Description                                  |
-| ---------------------------------- | -------------------------------------------- |
-| `--og-spinner-Background`           | Main background color of the spinner          |
-| `--og-spinner-Background--active`   | Background color when the spinner is clicked  |
-| `--og-spinner-Background--disabled` | Background color when the spinner is disabled |
-| `--og-spinner-Background--hover`    | Background color when the spinner is hovered  |
-| `--og-spinner-BorderRadius`         | Border radius of the spinner                  |
-| `--og-spinner-Color`                | Text color of the spinner label               |
-| `--og-spinner-Color--active`        | Text color when the spinner is clicked        |
-| `--og-spinner-Color--disabled`      | Text color when the spinner is disabled       |
-| `--og-spinner-Color--hover`         | Text color when the spinner is hovered        |
+| Name                                | Description                                                            |
+| ----------------------------------- | ---------------------------------------------------------------------- |
+| `--Height`                          | Primary Color of the spinner.                                          |
+| `--og-spinner-Color`                | Primary Color of the spinner.                                          |
+| `--og-spinner-Length--max`          | Largest length of the spinner stroke                                   |
+| `--og-spinner-Length--min`          | Smallest length of the spinner stroke                                  |
+| `--og-spinner__circle-dash-Color`   | Color of the spinning dash. By default it's the primary spinner color. |
+| `--og-spinner__circle-edge-Color`   | Color of the circle edge. By default it's the primary spinner color.   |
+| `--og-spinner__circle-edge-Opacity` | Opacity of the circle edge.                                            |
+| `--Width`                           | Primary Color of the spinner.                                          |
 
-
-## Dependencies
-
-### Used by
-
- - [og-confirm-dialog](..\og-dialog\og-confirm-dialog)
- - [og-message-dialog](..\og-dialog\og-message-dialog)
-
-### Graph
-```mermaid
-graph TD;
-  og-confirm-dialog --> og-spinner
-  og-message-dialog --> og-spinner
-  style og-spinner fill:#f9f,stroke:#333,stroke-width:4px
-```
 
 ----------------------------------------------
 

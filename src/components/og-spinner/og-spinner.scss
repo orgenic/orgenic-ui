@@ -8,6 +8,17 @@
 
 :host {
     /**
+     * @prop --Width:
+     * Primary Color of the spinner.
+     */
+    --Width: 32px;
+    /**
+     * @prop --Height:
+     * Primary Color of the spinner.
+     */
+    --Height: 32px;
+
+    /**
      * @prop --og-spinner-Color:
      * Primary Color of the spinner.
      */
@@ -27,7 +38,7 @@
 
     /**
      * @prop --og-spinner__circle-edge-Opacity:
-     * Opacity of the cirlce edge.
+     * Opacity of the circle edge.
      */
     --og-spinner__circle-edge-Opacity: .15;
 
@@ -51,11 +62,23 @@
 
 *, *::before, *::after { box-sizing: inherit; }
 
-:host([hidden=true]) {
+:host([size=s]) {
+    --Width: 16px;
+    --Height: 16px;
+}
+:host([size=l]) {
+    --Width: 48px;
+    --Height: 48px;
+}
+
+:host([hidden]) {
     display: none;
 }
 
 svg {
+    width: var(--Width);
+    height: var(--Height);
+
     animation: spin 1.2s infinite linear;
     transform-origin: center;
     vertical-align: middle;
