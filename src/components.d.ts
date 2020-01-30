@@ -375,9 +375,9 @@ export namespace Components {
     */
     'buffer': number;
     /**
-    * Determines, whether the control is disabled or not
+    * Determines, whether the control is hidden or not
     */
-    'disabled': boolean;
+    'hidden': boolean;
     /**
     * Determines, whether the control is an indeterminate bar or not
     */
@@ -1115,9 +1115,9 @@ declare namespace LocalJSX {
     */
     'buffer'?: number;
     /**
-    * Determines, whether the control is disabled or not
+    * Determines, whether the control is hidden or not
     */
-    'disabled'?: boolean;
+    'hidden'?: boolean;
     /**
     * Determines, whether the control is an indeterminate bar or not
     */

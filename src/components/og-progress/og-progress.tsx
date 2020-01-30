@@ -37,10 +37,10 @@ export class OgProgress {
   public max: number = 100;
 
   /**
-   * Determines, whether the control is disabled or not
+   * Determines, whether the control is hidden or not
    */
   @Prop({ reflectToAttr: true })
-  public disabled: boolean;
+  public hidden: boolean;
 
   /**
    * Determines, whether the control is an indeterminate bar or not

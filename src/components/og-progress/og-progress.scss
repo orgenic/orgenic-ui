@@ -54,7 +54,7 @@
     *, *::before, *::after { box-sizing: inherit; }
 }
 
-:host([disabled]) {
+:host([hidden]) {
     display: none;
 }
 
