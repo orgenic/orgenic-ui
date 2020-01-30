@@ -30,18 +30,18 @@ describe('og-spinner', () => {
       expect(svg).toEqualAttribute('height', sizes[key]);
     });
 
-  };
+  }
 
-  it('should apply disabled state', async () => {
-    component.setProperty('disabled', true);
+  it('should apply hidden state', async () => {
+    component.setProperty('hidden', true);
     await page.waitForChanges();
 
-    expect(component.getAttribute('disabled')).not.toBeNull();
+    expect(component.getAttribute('hidden')).not.toBeNull();
 
-    component.setProperty('disabled', false);
+    component.setProperty('hidden', false);
     await page.waitForChanges();
 
-    expect(component.getAttribute('disabled')).toBeNull();
+    expect(component.getAttribute('hidden')).toBeNull();
   });
 
 

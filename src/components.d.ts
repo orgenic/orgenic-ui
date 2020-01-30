@@ -409,7 +409,7 @@ export namespace Components {
     /**
     * Determines, whether the control is disabled or not
     */
-    'disabled': boolean;
+    'hidden': boolean;
     /**
     * The size of the spinner (s/m/l)
     */
@@ -1123,7 +1123,7 @@ declare namespace LocalJSX {
     /**
     * Determines, whether the control is disabled or not
     */
-    'disabled'?: boolean;
+    'hidden'?: boolean;
     /**
     * The size of the spinner (s/m/l)
     */

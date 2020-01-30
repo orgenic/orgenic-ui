@@ -7,26 +7,23 @@
 // -----------------------------------------------------------------------------
 
 :host {
-    // All Component Variables
-    // Map Variables to Properties
-
     /**
      * @prop --og-spinner-Color:
      * Primary Color of the spinner.
      */
-    --og-spinner-color: var(--OG-COLOR-PRIMARY--100, #{$og-color-primary--100});
+    --og-spinner-Color: var(--OG-COLOR-PRIMARY--100, #{$og-color-primary--100});
 
     /**
      * @prop --og-spinner__circle-dash-Color:
-     * Color of the spinning dash. By default its the primary spinner color.
+     * Color of the spinning dash. By default it's the primary spinner color.
      */
-    --og-spinner__circle-dash-Color: var(--og-spinner-color);
+    --og-spinner__circle-dash-Color: var(--og-spinner-Color);
 
     /**
      * @prop --og-spinner__circle-edge-Color:
-     * Color of the circle edge. By default its the primary spinner color.
+     * Color of the circle edge. By default it's the primary spinner color.
      */
-    --og-spinner__circle-edge-Color: var(--og-spinner-color);
+    --og-spinner__circle-edge-Color: var(--og-spinner-Color);
 
     /**
      * @prop --og-spinner__circle-edge-Opacity:
@@ -54,7 +51,7 @@
 
 *, *::before, *::after { box-sizing: inherit; }
 
-:host([disabled]) {
+:host([hidden=true]) {
     display: none;
 }
 

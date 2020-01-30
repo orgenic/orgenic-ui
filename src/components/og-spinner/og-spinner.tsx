@@ -23,22 +23,20 @@ export class OgSpinner {
    *
    * @type {boolean}
    */
-  @Prop()
-  public disabled: boolean;
+  @Prop({reflect: true})
+  public hidden: boolean;
 
   /**
    * The size of the spinner (s/m/l)
    *
    * @type {'s' | 'm' | 'l'}
    */
-  @Prop({reflectToAttr: true})
+  @Prop({reflect: true})
   public size: 's' | 'm' | 'l' = 'm';
 
   public render(): HTMLElement {
     return <Host
       class="og-spinner"
-      size={ this.size }
-      disabled={ this.disabled }
     >
       <svg width={sizes[this.size]} height={sizes[this.size]} viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
         <circle class="circle-edge" fill="none" stroke-width="8" cx="33" cy="33" r="29"></circle>

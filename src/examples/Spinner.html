@@ -13,7 +13,7 @@ og-spinner
         <og-radio-button label="Large" value="l"></og-radio-button>
     </og-radio-button-group>
     <h3>Options</h3>
-    <og-checkbox label="Disabled" class="cb-disabled"></og-checkbox>
+    <og-checkbox label="Hidden" class="cb-hidden"></og-checkbox>
     <br><br>
 </og-card>
 <script>
@@ -26,8 +26,8 @@ og-spinner
             });
     });
 
-    document.querySelector('.cb-disabled').addEventListener('changed', event => {
-            spinner.setAttribute('disabled', event.detail);
+    document.querySelector('.cb-hidden').addEventListener('changed', event => {
+            spinner.setAttribute('hidden', event.detail);
         });
 </script>
 <style>
