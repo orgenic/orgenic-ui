@@ -13,7 +13,7 @@ import { h,  Component, Prop, Host } from '@stencil/core';
 })
 export class OgSpinner {
   /**
-   * Determines, whether the control is disabled or not
+   * Determines, whether the control is hidden or not
    *
    * @type {boolean}
    */

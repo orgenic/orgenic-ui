@@ -445,7 +445,7 @@ export namespace Components {
   }
   interface OgSpinner {
     /**
-    * Determines, whether the control is disabled or not
+    * Determines, whether the control is hidden or not
     */
     'hidden': boolean;
     /**
@@ -1204,7 +1204,7 @@ declare namespace LocalJSX {
   }
   interface OgSpinner extends JSXBase.HTMLAttributes<HTMLOgSpinnerElement> {
     /**
-    * Determines, whether the control is disabled or not
+    * Determines, whether the control is hidden or not
     */
     'hidden'?: boolean;
     /**

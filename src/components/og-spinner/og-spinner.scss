@@ -8,15 +8,10 @@
 
 :host {
     /**
-     * @prop --Width:
-     * Primary Color of the spinner.
+     * @prop --og-spinner-Size:
+     * Width and height of the spinner.
      */
-    --Width: 32px;
-    /**
-     * @prop --Height:
-     * Primary Color of the spinner.
-     */
-    --Height: 32px;
+    --og-spinner-Size: 32px;
 
     /**
      * @prop --og-spinner-Color:
@@ -63,12 +58,10 @@
 *, *::before, *::after { box-sizing: inherit; }
 
 :host([size=s]) {
-    --Width: 16px;
-    --Height: 16px;
+    --og-spinner-Size: 16px;
 }
 :host([size=l]) {
-    --Width: 48px;
-    --Height: 48px;
+    --og-spinner-Size: 48px;
 }
 
 :host([hidden]) {
@@ -76,8 +69,8 @@
 }
 
 svg {
-    width: var(--Width);
-    height: var(--Height);
+    width: var(--og-spinner-Size);
+    height: var(--og-spinner-Size);
 
     animation: spin 1.2s infinite linear;
     transform-origin: center;
