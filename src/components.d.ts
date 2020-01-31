@@ -15,8 +15,8 @@ import {
   OgDatatableConfig,
 } from './components/og-datatable/interfaces/og-datatable-column-def';
 import {
-  OgListTemplateDefaultOptions,
-} from './components/og-list-template-default/og-list-template-default.interface';
+  OgListItemOptions,
+} from './components/og-list-item/og-list-item.interface';
 
 export namespace Components {
   interface OgButton {
@@ -280,7 +280,7 @@ export namespace Components {
     */
     'valueProperty': string;
   }
-  interface OgListTemplateDefault {
+  interface OgListItem {
     /**
     * Set the flag, it this list item is in disabled state.
     */
@@ -292,7 +292,7 @@ export namespace Components {
     /**
     * Template options
     */
-    'options': OgListTemplateDefaultOptions;
+    'options': OgListItemOptions;
     /**
     * Set the flag, if this list item is in selected state.
     */
@@ -600,10 +600,10 @@ declare global {
     new (): HTMLOgListElement;
   };
 
-  interface HTMLOgListTemplateDefaultElement extends Components.OgListTemplateDefault, HTMLStencilElement {}
-  var HTMLOgListTemplateDefaultElement: {
-    prototype: HTMLOgListTemplateDefaultElement;
-    new (): HTMLOgListTemplateDefaultElement;
+  interface HTMLOgListItemElement extends Components.OgListItem, HTMLStencilElement {}
+  var HTMLOgListItemElement: {
+    prototype: HTMLOgListItemElement;
+    new (): HTMLOgListItemElement;
   };
 
   interface HTMLOgMessageDialogElement extends Components.OgMessageDialog, HTMLStencilElement {}
@@ -693,7 +693,7 @@ declare global {
     'og-layout-child': HTMLOgLayoutChildElement;
     'og-layout-container': HTMLOgLayoutContainerElement;
     'og-list': HTMLOgListElement;
-    'og-list-template-default': HTMLOgListTemplateDefaultElement;
+    'og-list-item': HTMLOgListItemElement;
     'og-message-dialog': HTMLOgMessageDialogElement;
     'og-number-input': HTMLOgNumberInputElement;
     'og-password-input': HTMLOgPasswordInputElement;
@@ -1010,7 +1010,7 @@ declare namespace LocalJSX {
     */
     'valueProperty'?: string;
   }
-  interface OgListTemplateDefault extends JSXBase.HTMLAttributes<HTMLOgListTemplateDefaultElement> {
+  interface OgListItem extends JSXBase.HTMLAttributes<HTMLOgListItemElement> {
     /**
     * Set the flag, it this list item is in disabled state.
     */
@@ -1022,7 +1022,7 @@ declare namespace LocalJSX {
     /**
     * Template options
     */
-    'options'?: OgListTemplateDefaultOptions;
+    'options'?: OgListItemOptions;
     /**
     * Set the flag, if this list item is in selected state.
     */
@@ -1312,7 +1312,7 @@ declare namespace LocalJSX {
     'og-layout-child': OgLayoutChild;
     'og-layout-container': OgLayoutContainer;
     'og-list': OgList;
-    'og-list-template-default': OgListTemplateDefault;
+    'og-list-item': OgListItem;
     'og-message-dialog': OgMessageDialog;
     'og-number-input': OgNumberInput;
     'og-password-input': OgPasswordInput;
