@@ -7,6 +7,8 @@
 
 ## Bug Fixes
 * general: momentjs issue in typescript projects
+* og-combobox: fixed flyout position issue
+* og-datepicker: fixed flyout position issue
 * og-list: fixed select handling issues
 * og-internal-calendar: fixed skipping of first week on 'en' locale
 * og-datepicker: fixed flyout position
