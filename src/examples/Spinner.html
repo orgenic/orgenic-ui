@@ -1,0 +1,37 @@
+<!--
+og-spinner
+-->
+<og-card name="Spinner">
+    <div class="example">
+        <og-spinner class="demo-spinner" size="m"></og-spinner>
+    </div>
+
+    <h3>Size</h3>
+    <og-radio-button-group name="size" value="m">
+        <og-radio-button label="Small" value="s"></og-radio-button>
+        <og-radio-button label="Medium" value="m"></og-radio-button>
+        <og-radio-button label="Large" value="l"></og-radio-button>
+    </og-radio-button-group>
+    <h3>Options</h3>
+    <og-checkbox label="Hidden" class="cb-hidden"></og-checkbox>
+    <br><br>
+</og-card>
+<script>
+    const spinner = document.querySelector('.demo-spinner');
+    const groups = document.querySelectorAll('og-radio-button-group');
+
+    groups[0].querySelectorAll('og-radio-button').forEach(radioButton => {
+            radioButton.addEventListener('changed', event => {
+                spinner.setAttribute('size', event.target.value);
+            });
+    });
+
+    document.querySelector('.cb-hidden').addEventListener('changed', event => {
+            spinner.setAttribute('hidden', event.detail);
+        });
+</script>
+<style>
+    .demo-spinner {
+        margin: 0 auto;
+    }
+</style>

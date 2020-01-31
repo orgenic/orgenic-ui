@@ -24,7 +24,7 @@ describe('og-list', () => {
   it('renders default list items', async () => {
     component.setProperty('items', items);
     await page.waitForChanges();
-    const listItems = await page.findAll('og-list >>> og-list-template-default')
+    const listItems = await page.findAll('og-list >>> og-list-item')
     expect(listItems.length).toEqual(3);
   });
 
@@ -39,7 +39,7 @@ describe('og-list', () => {
   it('handles selecting a single item', async() => {
     component.setProperty('items', items);
     await page.waitForChanges();
-    const listItem = await page.find('og-list >>> og-list-template-default');
+    const listItem = await page.find('og-list >>> og-list-item');
     listItem.click();
     await page.waitForChanges();
     expect(await (component as any).getProperty('selected')).toEqual('key1');
@@ -49,7 +49,7 @@ describe('og-list', () => {
     component.setProperty('items', items);
     component.setProperty('multiselect', true);
     await page.waitForChanges();
-    const listItems = await page.findAll('og-list >>> og-list-template-default');
+    const listItems = await page.findAll('og-list >>> og-list-item');
     expect(listItems).toHaveLength(3);
     await page.waitForChanges();
 
