@@ -1,7 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-  <title>stroke_bell</title>
-  <g>
-    <path d="M18.43394,10.58486c-.66127-1.65319-1.12991-4.37151-1.65873-6.0717a5.0019,5.0019,0,0,0-9.55042,0c-.52882,1.70019-.99746,4.41851-1.65873,6.0717L2.39318,17.12728A2,2,0,0,0,4.19273,20H19.80727a2,2,0,0,0,1.79955-2.87272Z" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-    <path d="M15,20a3,3,0,0,1-6,0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-  </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><title>stroke_bell</title><path d="M18.43394,10.58486c-.66127-1.65319-1.12991-4.37151-1.65873-6.0717a5.0019,5.0019,0,0,0-9.55042,0c-.52882,1.70019-.99746,4.41851-1.65873,6.0717L2.39318,17.12728A2,2,0,0,0,4.19273,20H19.80727a2,2,0,0,0,1.79955-2.87272Z" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/><path d="M15,20a3,3,0,0,1-6,0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>

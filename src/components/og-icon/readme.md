@@ -7,48 +7,22 @@
 
 ## Properties
 
-| Property   | Attribute  | Description                                        | Type      | Default     |
-| ---------- | ---------- | -------------------------------------------------- | --------- | ----------- |
-| `disabled` | `disabled` | Determines, whether the control is disabled or not | `boolean` | `undefined` |
-| `label`    | `label`    | The label of the icon                            | `string`  | `undefined` |
-
-
-## Events
-
-| Event     | Description                                | Type               |
-| --------- | ------------------------------------------ | ------------------ |
-| `clicked` | Event is being emitted when value changes. | `CustomEvent<any>` |
+| Property    | Attribute    | Description                             | Type                  | Default     |
+| ----------- | ------------ | --------------------------------------- | --------------------- | ----------- |
+| `icon`      | `icon`       | The displayed icon                      | `string`              | `undefined` |
+| `iconStyle` | `icon-style` | The style of the icon                   | `"solid" \| "stroke"` | `'stroke'`  |
+| `size`      | `size`       | The size of the icon                    | `string`              | `'16px'`    |
+| `src`       | `src`        | An optional path to a custom svg-sprite | `string`              | `undefined` |
 
 
 ## CSS Custom Properties
 
-| Name                               | Description                                  |
-| ---------------------------------- | -------------------------------------------- |
-| `--og-icon-Background`           | Main background color of the icon          |
-| `--og-icon-Background--active`   | Background color when the icon is clicked  |
-| `--og-icon-Background--disabled` | Background color when the icon is disabled |
-| `--og-icon-Background--hover`    | Background color when the icon is hovered  |
-| `--og-icon-BorderRadius`         | Border radius of the icon                  |
-| `--og-icon-Color`                | Text color of the icon label               |
-| `--og-icon-Color--active`        | Text color when the icon is clicked        |
-| `--og-icon-Color--disabled`      | Text color when the icon is disabled       |
-| `--og-icon-Color--hover`         | Text color when the icon is hovered        |
+| Name                | Description                                 |
+| ------------------- | ------------------------------------------- |
+| `--og-icon--Fill`   | Fill color of the icon                      |
+| `--og-icon--Size`   | The dimensions of the icon (width = height) |
+| `--og-icon--Stroke` | Stroke color of the icon                    |
 
-
-## Dependencies
-
-### Used by
-
- - [og-confirm-dialog](..\og-dialog\og-confirm-dialog)
- - [og-message-dialog](..\og-dialog\og-message-dialog)
-
-### Graph
-```mermaid
-graph TD;
-  og-confirm-dialog --> og-icon
-  og-message-dialog --> og-icon
-  style og-icon fill:#f9f,stroke:#333,stroke-width:4px
-```
 
 ----------------------------------------------
 

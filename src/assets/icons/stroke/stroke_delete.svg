@@ -1,11 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-  <title>stroke_delete</title>
-  <g>
-    <path d="M4,5V21.11094A1.90711,1.90711,0,0,0,5.892,23H18.108A1.90711,1.90711,0,0,0,20,21.11094V5" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-    <line x1="1" y1="5" x2="23" y2="5" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-    <path d="M16,5V3a2,2,0,0,0-2-2H10A2,2,0,0,0,8,3V5" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-    <line x1="12" y1="8" x2="12" y2="20" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-    <line x1="16" y1="8" x2="16" y2="20" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-    <line x1="8" y1="8" x2="8" y2="20" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-  </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><title>stroke_delete</title><path d="M4,5V21.11094A1.90711,1.90711,0,0,0,5.892,23H18.108A1.90711,1.90711,0,0,0,20,21.11094V5" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/><line x1="1" y1="5" x2="23" y2="5" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/><path d="M16,5V3a2,2,0,0,0-2-2H10A2,2,0,0,0,8,3V5" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/><line x1="12" y1="8" x2="12" y2="20" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/><line x1="16" y1="8" x2="16" y2="20" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/><line x1="8" y1="8" x2="8" y2="20" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>

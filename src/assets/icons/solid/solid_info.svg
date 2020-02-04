@@ -1,4 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-  <title>solid_info</title>
-  <path d="M13,11a1,1,0,0,0-2,0v7a1,1,0,0,0,2,0ZM12,6a1,1,0,1,0,1,1A1,1,0,0,0,12,6Zm0,18A12,12,0,1,1,24,12,12,12,0,0,1,12,24Z"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><title>solid_info</title><path d="M13,11a1,1,0,0,0-2,0v7a1,1,0,0,0,2,0ZM12,6a1,1,0,1,0,1,1A1,1,0,0,0,12,6Zm0,18A12,12,0,1,1,24,12,12,12,0,0,1,12,24Z"/></svg>
