@@ -22,9 +22,9 @@
 | `--og-card-Margin`                | Margin around the card                  |
 | `--og-card__content-Padding`      | Padding of the cards content            |
 | `--og-card__footer-Padding`       | Padding of the cards footer             |
-| `--og-card__header-BorderColor`   | Boder color of the cards header border  |
-| `--og-card__header-BorderStyle`   | Boder style of the cards header border  |
-| `--og-card__header-BorderWidth`   | Boder width of the cards header border  |
+| `--og-card__header-BorderColor`   | Border color of the cards header border |
+| `--og-card__header-BorderStyle`   | Border style of the cards header border |
+| `--og-card__header-BorderWidth`   | Border width of the cards header border |
 | `--og-card__header-FontSize`      | Font size of the cards header           |
 | `--og-card__header-FontWeight`    | Font weight of the cards header         |
 | `--og-card__header-Margin`        | Margin of the cards header              |

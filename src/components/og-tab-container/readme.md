@@ -45,7 +45,7 @@ Type: `Promise<HTMLElement>`
 | `--og-tabs__tab-Background`               | Background of the tab item (shorthand)               |
 | `--og-tabs__tab-Background--active`       | Background of the tab item when selected (shorthand) |
 | `--og-tabs__tab-Background--hover`        | Background of the tab item when hovered (shorthand)  |
-| `--og-tabs__tab-Opacity`                  | Opcaticty of the tab item                            |
+| `--og-tabs__tab-Opacity`                  | Opacity of the tab item                              |
 | `--og-tabs__tab-Padding`                  | Padding of the tab item                              |
 
 

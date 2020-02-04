@@ -14,6 +14,9 @@ import {
 import {
   OgDatatableConfig,
 } from './components/og-datatable/interfaces/og-datatable-column-def';
+import {
+  OgListTemplateDefaultOptions,
+} from './components/og-list-template-default/og-list-template-default.interface';
 
 export namespace Components {
   interface OgButton {
@@ -223,7 +226,7 @@ export namespace Components {
     */
     'minSize': string;
     /**
-    * The weight defines the resize behavour. A component with weight 2 will be twice as large as a component with weight 1.. Default: "1"
+    * The weight defines the resize behavior. A component with weight 2 will be twice as large as a component with weight 1. Default: "1"
     */
     'weight': number;
   }
@@ -251,7 +254,7 @@ export namespace Components {
     */
     'disabledProperty': string;
     /**
-    * Set the that will be displayed if the items array is empty.
+    * Set the text that will be displayed if the items array is empty.
     */
     'emptyListMessage': string;
     /**
@@ -271,47 +274,47 @@ export namespace Components {
     */
     'labelProperty': string;
     /**
-    * The key of the selected list item
+    * Enables selection of multiple items
     */
-    'selected': string;
+    'multiselect': boolean;
+    /**
+    * Requires a selection of at least one item. If one item is selected it prevents the user from deselecting it
+    */
+    'required': boolean;
+    /**
+    * Key(s) of the selected list item(s)
+    */
+    'selected': string | string[];
+    /**
+    * Name of the template (component) we want to use as list item.
+    */
+    'template': string;
+    /**
+    * Contains an Object with options to match template properties.  Mandatory: {key: any}  Default template: {key: any, label: string, subline: string, overline: string, image: string, value: string, disabled: string}
+    */
+    'templateOptions': any;
     /**
     * Set the property for the items to define as value. *Optional* Default: no value
     */
     'valueProperty': string;
   }
-  interface OgListItem {
-    /**
-    * Set the url of the image to be shown in the placeholder
-    */
-    'image': string;
+  interface OgListTemplateDefault {
     /**
     * Set the flag, it this list item is in disabled state.
     */
-    'isDisabled': boolean;
+    'disabled': boolean;
+    /**
+    * Current item data
+    */
+    'item': any;
+    /**
+    * Template options
+    */
+    'options': OgListTemplateDefaultOptions;
     /**
     * Set the flag, if this list item is in selected state.
     */
-    'isSelected': boolean;
-    /**
-    * The value is needed for the using @see OgList instance to correctly handle selection.
-    */
-    'key': any;
-    /**
-    * Sets the value of the label.
-    */
-    'label': string;
-    /**
-    * Set flag, if place for an image is reserved, wheather used or not.
-    */
-    'showImage': boolean;
-    /**
-    * Set flag, if place for a value bage is reserved wheather used or not
-    */
-    'showValue': boolean;
-    /**
-    * Set the value to be shown in the badge placeholder
-    */
-    'value': string;
+    'selected': boolean;
   }
   interface OgMessageDialog {
     /**
@@ -380,6 +383,44 @@ export namespace Components {
     */
     'value': string;
   }
+  interface OgProgress {
+    /**
+    * Determines, whether the bounce animation is shown or not
+    */
+    'bounce': boolean;
+    /**
+    * The percent value of the progress buffer (the second bar)
+    */
+    'buffer': number;
+    /**
+    * Determines, whether the control is hidden or not
+    */
+    'hidden': boolean;
+    /**
+    * Determines, whether the control is an indeterminate bar or not
+    */
+    'indeterminate': boolean;
+    /**
+    * The max value of the progress
+    */
+    'max': number;
+    /**
+    * Determines, whether the query animation is shown or not
+    */
+    'query': boolean;
+    /**
+    * The height (s, m , l) of the progress bar
+    */
+    'size': 's' | 'm' | 'l';
+    /**
+    * Determines, whether the stream animation is shown or not
+    */
+    'stream': boolean;
+    /**
+    * The percent value of the progress
+    */
+    'value': number;
+  }
   interface OgRadioButton {
     /**
     * Determines, whether the radio button is checked or not
@@ -412,13 +453,23 @@ export namespace Components {
     */
     'disabled': boolean;
     /**
-    * name for the radiobuttons within this group
+    * name for the radio buttons within this group
     */
     'name': string;
     /**
     * The value of the selected radio button.
     */
     'value': string;
+  }
+  interface OgSpinner {
+    /**
+    * Determines, whether the control is hidden or not
+    */
+    'hidden': boolean;
+    /**
+    * The size of the spinner (s/m/l)
+    */
+    'size': 's' | 'm' | 'l';
   }
   interface OgTab {
     /**
@@ -573,10 +624,10 @@ declare global {
     new (): HTMLOgListElement;
   };
 
-  interface HTMLOgListItemElement extends Components.OgListItem, HTMLStencilElement {}
-  var HTMLOgListItemElement: {
-    prototype: HTMLOgListItemElement;
-    new (): HTMLOgListItemElement;
+  interface HTMLOgListTemplateDefaultElement extends Components.OgListTemplateDefault, HTMLStencilElement {}
+  var HTMLOgListTemplateDefaultElement: {
+    prototype: HTMLOgListTemplateDefaultElement;
+    new (): HTMLOgListTemplateDefaultElement;
   };
 
   interface HTMLOgMessageDialogElement extends Components.OgMessageDialog, HTMLStencilElement {}
@@ -597,6 +648,12 @@ declare global {
     new (): HTMLOgPasswordInputElement;
   };
 
+  interface HTMLOgProgressElement extends Components.OgProgress, HTMLStencilElement {}
+  var HTMLOgProgressElement: {
+    prototype: HTMLOgProgressElement;
+    new (): HTMLOgProgressElement;
+  };
+
   interface HTMLOgRadioButtonElement extends Components.OgRadioButton, HTMLStencilElement {}
   var HTMLOgRadioButtonElement: {
     prototype: HTMLOgRadioButtonElement;
@@ -607,6 +664,12 @@ declare global {
   var HTMLOgRadioButtonGroupElement: {
     prototype: HTMLOgRadioButtonGroupElement;
     new (): HTMLOgRadioButtonGroupElement;
+  };
+
+  interface HTMLOgSpinnerElement extends Components.OgSpinner, HTMLStencilElement {}
+  var HTMLOgSpinnerElement: {
+    prototype: HTMLOgSpinnerElement;
+    new (): HTMLOgSpinnerElement;
   };
 
   interface HTMLOgTabElement extends Components.OgTab, HTMLStencilElement {}
@@ -655,12 +718,14 @@ declare global {
     'og-layout-child': HTMLOgLayoutChildElement;
     'og-layout-container': HTMLOgLayoutContainerElement;
     'og-list': HTMLOgListElement;
-    'og-list-item': HTMLOgListItemElement;
+    'og-list-template-default': HTMLOgListTemplateDefaultElement;
     'og-message-dialog': HTMLOgMessageDialogElement;
     'og-number-input': HTMLOgNumberInputElement;
     'og-password-input': HTMLOgPasswordInputElement;
+    'og-progress': HTMLOgProgressElement;
     'og-radio-button': HTMLOgRadioButtonElement;
     'og-radio-button-group': HTMLOgRadioButtonGroupElement;
+    'og-spinner': HTMLOgSpinnerElement;
     'og-tab': HTMLOgTabElement;
     'og-tab-container': HTMLOgTabContainerElement;
     'og-text-input': HTMLOgTextInputElement;
@@ -912,7 +977,7 @@ declare namespace LocalJSX {
     */
     'minSize'?: string;
     /**
-    * The weight defines the resize behavour. A component with weight 2 will be twice as large as a component with weight 1.. Default: "1"
+    * The weight defines the resize behavior. A component with weight 2 will be twice as large as a component with weight 1. Default: "1"
     */
     'weight'?: number;
   }
@@ -940,7 +1005,7 @@ declare namespace LocalJSX {
     */
     'disabledProperty'?: string;
     /**
-    * Set the that will be displayed if the items array is empty.
+    * Set the text that will be displayed if the items array is empty.
     */
     'emptyListMessage'?: string;
     /**
@@ -960,51 +1025,51 @@ declare namespace LocalJSX {
     */
     'labelProperty'?: string;
     /**
+    * Enables selection of multiple items
+    */
+    'multiselect'?: boolean;
+    /**
     * Event is being emitted when value changes.
     */
     'onItemSelected'?: (event: CustomEvent<any>) => void;
     /**
-    * The key of the selected list item
+    * Requires a selection of at least one item. If one item is selected it prevents the user from deselecting it
     */
-    'selected'?: string;
+    'required'?: boolean;
+    /**
+    * Key(s) of the selected list item(s)
+    */
+    'selected'?: string | string[];
+    /**
+    * Name of the template (component) we want to use as list item.
+    */
+    'template'?: string;
+    /**
+    * Contains an Object with options to match template properties.  Mandatory: {key: any}  Default template: {key: any, label: string, subline: string, overline: string, image: string, value: string, disabled: string}
+    */
+    'templateOptions'?: any;
     /**
     * Set the property for the items to define as value. *Optional* Default: no value
     */
     'valueProperty'?: string;
   }
-  interface OgListItem extends JSXBase.HTMLAttributes<HTMLOgListItemElement> {
-    /**
-    * Set the url of the image to be shown in the placeholder
-    */
-    'image'?: string;
+  interface OgListTemplateDefault extends JSXBase.HTMLAttributes<HTMLOgListTemplateDefaultElement> {
     /**
     * Set the flag, it this list item is in disabled state.
     */
-    'isDisabled'?: boolean;
+    'disabled'?: boolean;
+    /**
+    * Current item data
+    */
+    'item'?: any;
+    /**
+    * Template options
+    */
+    'options'?: OgListTemplateDefaultOptions;
     /**
     * Set the flag, if this list item is in selected state.
     */
-    'isSelected'?: boolean;
-    /**
-    * The value is needed for the using @see OgList instance to correctly handle selection.
-    */
-    'key'?: any;
-    /**
-    * Sets the value of the label.
-    */
-    'label'?: string;
-    /**
-    * Set flag, if place for an image is reserved, wheather used or not.
-    */
-    'showImage'?: boolean;
-    /**
-    * Set flag, if place for a value bage is reserved wheather used or not
-    */
-    'showValue'?: boolean;
-    /**
-    * Set the value to be shown in the badge placeholder
-    */
-    'value'?: string;
+    'selected'?: boolean;
   }
   interface OgMessageDialog extends JSXBase.HTMLAttributes<HTMLOgMessageDialogElement> {
     /**
@@ -1100,6 +1165,44 @@ declare namespace LocalJSX {
     */
     'value'?: string;
   }
+  interface OgProgress extends JSXBase.HTMLAttributes<HTMLOgProgressElement> {
+    /**
+    * Determines, whether the bounce animation is shown or not
+    */
+    'bounce'?: boolean;
+    /**
+    * The percent value of the progress buffer (the second bar)
+    */
+    'buffer'?: number;
+    /**
+    * Determines, whether the control is hidden or not
+    */
+    'hidden'?: boolean;
+    /**
+    * Determines, whether the control is an indeterminate bar or not
+    */
+    'indeterminate'?: boolean;
+    /**
+    * The max value of the progress
+    */
+    'max'?: number;
+    /**
+    * Determines, whether the query animation is shown or not
+    */
+    'query'?: boolean;
+    /**
+    * The height (s, m , l) of the progress bar
+    */
+    'size'?: 's' | 'm' | 'l';
+    /**
+    * Determines, whether the stream animation is shown or not
+    */
+    'stream'?: boolean;
+    /**
+    * The percent value of the progress
+    */
+    'value'?: number;
+  }
   interface OgRadioButton extends JSXBase.HTMLAttributes<HTMLOgRadioButtonElement> {
     /**
     * Determines, whether the radio button is checked or not
@@ -1133,7 +1236,7 @@ declare namespace LocalJSX {
     */
     'disabled'?: boolean;
     /**
-    * name for the radiobuttons within this group
+    * name for the radio buttons within this group
     */
     'name'?: string;
     'onValueChanged'?: (event: CustomEvent<string>) => void;
@@ -1141,6 +1244,16 @@ declare namespace LocalJSX {
     * The value of the selected radio button.
     */
     'value'?: string;
+  }
+  interface OgSpinner extends JSXBase.HTMLAttributes<HTMLOgSpinnerElement> {
+    /**
+    * Determines, whether the control is hidden or not
+    */
+    'hidden'?: boolean;
+    /**
+    * The size of the spinner (s/m/l)
+    */
+    'size'?: 's' | 'm' | 'l';
   }
   interface OgTab extends JSXBase.HTMLAttributes<HTMLOgTabElement> {
     /**
@@ -1243,12 +1356,14 @@ declare namespace LocalJSX {
     'og-layout-child': OgLayoutChild;
     'og-layout-container': OgLayoutContainer;
     'og-list': OgList;
-    'og-list-item': OgListItem;
+    'og-list-template-default': OgListTemplateDefault;
     'og-message-dialog': OgMessageDialog;
     'og-number-input': OgNumberInput;
     'og-password-input': OgPasswordInput;
+    'og-progress': OgProgress;
     'og-radio-button': OgRadioButton;
     'og-radio-button-group': OgRadioButtonGroup;
+    'og-spinner': OgSpinner;
     'og-tab': OgTab;
     'og-tab-container': OgTabContainer;
     'og-text-input': OgTextInput;
