@@ -33,19 +33,24 @@
     "dist/"
   ],
   "scripts": {
-    "build": "stencil build --docs",
-    "build.watch": "stencil build --docs --watch",
-    "start": "stencil build --dev --watch --serve --config stencil.run.config.ts",
-    "test": "stencil test --spec --e2e",
-    "test.spec": "stencil test --spec",
-    "test.ci": "stencil test --spec --e2e --ci",
-    "test.watch": "stencil test --spec --e2e --watchAll",
-    "check-licenseheader": "node ./.scripts/check-licenseheaders.js"
+      "build": "npm run icons && stencil build --docs",
+      "build.watch": "npm icons && stencil build --docs --watch",
+      "start": "stencil build --dev --watch --serve --config stencil.run.config.ts",
+      "test": "stencil test --spec --e2e",
+      "test.spec": "stencil test --spec",
+      "test.ci": "stencil test --spec --e2e --ci",
+      "test.watch": "stencil test --spec --e2e --watchAll",
+      "check-licenseheader": "node ./.scripts/check-licenseheaders.js",
+      "pack-icons": "npx svgstore-cli -o ./src/assets/icons.svg ./src/assets/icons/**/*.svg",
+      "cleanup-icons": "npx replace-in-file /fill=\\\".*?\\\"/g \" \" ./src/assets/icons.svg --isRegex && npx replace-in-file /stroke=\\\".*?\\\"/g \" \"  ./src/assets/icons.svg --isRegex",
+      "icons": "npm run pack-icons && npm run cleanup-icons"
   },
   "pre-commit": [
     "check-licenseheader"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "replace-in-file": "^5.0.2"
+  },
   "devDependencies": {
     "@stencil/core": "^1.0.3",
     "@stencil/sass": "^1.0.0",
@@ -63,6 +68,7 @@
     "node-sass": "^4.13.1",
     "pre-commit": "^1.2.2",
     "puppeteer": "1.17.0",
+    "svgstore-cli": "^1.3.1",
     "systemjs": "^3.1.6",
     "tabulator-tables": "^4.2.7",
     "tslib": "^1.10.0",
