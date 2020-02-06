@@ -27,7 +27,7 @@ export class OgListItem implements OgListItemInterface {
    * @type {boolean}
    * @memberof OgListItem
    */
-  @Prop({reflectToAttr: true})
+  @Prop({reflect: true})
   public selected: boolean;
 
   /**

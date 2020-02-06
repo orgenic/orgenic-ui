@@ -15,7 +15,7 @@ export class OgNumberInput {
   /**
    * The initial value. Can be updated at runtime.
    */
-  @Prop({ reflectToAttr: true, mutable: true })
+  @Prop({ reflect: true, mutable: true })
   public value: number;
 
   /**

@@ -46,7 +46,7 @@ export class OgFormItem {
   /**
    * Determines, whether the options are visible or not
    */
-  @Prop({ mutable: true, reflectToAttr: true })
+  @Prop({ mutable: true, reflect: true })
   public visible: boolean;
 
   /**

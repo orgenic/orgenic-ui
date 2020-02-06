@@ -27,7 +27,7 @@ export class OgRadioButtonGroup {
   /**
    * The value of the selected radio button.
    */
-  @Prop({ reflectToAttr: true, mutable: true })
+  @Prop({ reflect: true, mutable: true })
   public value: string;
 
   /**

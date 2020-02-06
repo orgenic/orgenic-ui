@@ -18,13 +18,13 @@ export class OgTab {
   @Prop()
   public label: string;
 
-  @Prop({ reflectToAttr: true })
+  @Prop({ reflect: true })
   public selected: boolean;
 
   /**
    * Determines, whether the control is disabled or not
    */
-  @Prop({ reflectToAttr: true })
+  @Prop({ reflect: true })
   public disabled: boolean;
 
   public render(): HTMLElement {
