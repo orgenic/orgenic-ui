@@ -17,6 +17,9 @@ import {
 import {
   OgListTemplateDefaultOptions,
 } from './components/og-list-template-default/og-list-template-default.interface';
+import {
+  OgTooltipConfig,
+} from './components/og-tooltip/og-tooltip';
 
 export namespace Components {
   interface OgButton {
@@ -505,6 +508,68 @@ export namespace Components {
     */
     'value': boolean;
   }
+  interface OgTooltip {
+    /**
+    * The config property allows for overriding the tooltip´s default configuration.
+    */
+    'config': Partial<OgTooltipConfig>;
+    /**
+    * Name of the event that fires immediately when a tooltip is first disabled. If .defaultPrevented() is used on the event then the tooltip will not be disabled.
+    */
+    'disableEventName': string;
+    /**
+    * When set to `true` the tooltip will be disabled.
+    */
+    'disabled': boolean;
+    /**
+    * Name of the event that is fired when a tooltip has finished being disabled.
+    */
+    'disabledEventName': string;
+    /**
+    * Name of the event that fires immediately when a tooltip is first enabled. If .defaultPrevented() is used on the event then the tooltip will not be enabled.
+    */
+    'enableEventName': string;
+    /**
+    * Name of the event that is fired when a tooltip has finished being enabled.
+    */
+    'enabledEventName': string;
+    /**
+    * Name of the event that is fired when the tooltip has finished being hidden from the user (will wait for CSS transitions to complete).
+    */
+    'hiddenEventName': string;
+    /**
+    * Name of the event that event is fired immediately when the hide instance method has been called.
+    */
+    'hideEventName': string;
+    /**
+    * Name of the event that is fired after the `og.tooltip.show` event when the tooltip template has been added to the DOM.
+    */
+    'insertedEventName': string;
+    /**
+    * It will override any other `title` settings and use this for the tooltip title. The value is watched so that it will update dynamically.
+    */
+    'ogTitle': string;
+    /**
+    * Name of the event that fires immediately when the show instance method is called.
+    */
+    'showEventName': string;
+    /**
+    * When set to `true`, the `og-tooltip` will toggle open.
+    */
+    'showTooltip': boolean;
+    /**
+    * Name of the event that is fired when the tooltip has been made visible to the user (will wait for CSS transitions to complete).
+    */
+    'shownEventName': string;
+    /**
+    * When tabindex is set to a negative value (smaller than `0`), the tooltip will work on hover, but it will not appear via keyboard raised focus.
+    */
+    'tabindex': string | number;
+    /**
+    * `.tooltip(Partial<OgTooltipConfig>)` attaches a tooltip handler to a <og-tooltip> element. `.tooltip('show')` reveals an element´s tooltip. `.tooltip('hide')` hides an element´s tooltip. `.tooltip('toggle')` toggles an element´s tooltip. `.tooltip('enable')` gives an element’s tooltip the ability to be shown. `.tooltip('disable')` removes the ability for an element´s tooltip to be shown. The tooltip will only be able to be shown if it is re-enabled.. `.tooltip('toggleEnabled')` toggles the ability for an element´s tooltip to be shown or hidden. `.tooltip('update')` updates the position of an element´s tooltip.
+    */
+    'tooltip': (tooltipOptions: string | Partial<OgTooltipConfig>) => Promise<boolean | HTMLElement>;
+  }
 }
 
 declare global {
@@ -677,6 +742,12 @@ declare global {
     prototype: HTMLOgToggleSwitchElement;
     new (): HTMLOgToggleSwitchElement;
   };
+
+  interface HTMLOgTooltipElement extends Components.OgTooltip, HTMLStencilElement {}
+  var HTMLOgTooltipElement: {
+    prototype: HTMLOgTooltipElement;
+    new (): HTMLOgTooltipElement;
+  };
   interface HTMLElementTagNameMap {
     'og-button': HTMLOgButtonElement;
     'og-calendar': HTMLOgCalendarElement;
@@ -706,6 +777,7 @@ declare global {
     'og-text-input': HTMLOgTextInputElement;
     'og-textarea': HTMLOgTextareaElement;
     'og-toggle-switch': HTMLOgToggleSwitchElement;
+    'og-tooltip': HTMLOgTooltipElement;
   }
 }
 
@@ -1295,6 +1367,64 @@ declare namespace LocalJSX {
     */
     'value'?: boolean;
   }
+  interface OgTooltip extends JSXBase.HTMLAttributes<HTMLOgTooltipElement> {
+    /**
+    * The config property allows for overriding the tooltip´s default configuration.
+    */
+    'config'?: Partial<OgTooltipConfig>;
+    /**
+    * Name of the event that fires immediately when a tooltip is first disabled. If .defaultPrevented() is used on the event then the tooltip will not be disabled.
+    */
+    'disableEventName'?: string;
+    /**
+    * When set to `true` the tooltip will be disabled.
+    */
+    'disabled'?: boolean;
+    /**
+    * Name of the event that is fired when a tooltip has finished being disabled.
+    */
+    'disabledEventName'?: string;
+    /**
+    * Name of the event that fires immediately when a tooltip is first enabled. If .defaultPrevented() is used on the event then the tooltip will not be enabled.
+    */
+    'enableEventName'?: string;
+    /**
+    * Name of the event that is fired when a tooltip has finished being enabled.
+    */
+    'enabledEventName'?: string;
+    /**
+    * Name of the event that is fired when the tooltip has finished being hidden from the user (will wait for CSS transitions to complete).
+    */
+    'hiddenEventName'?: string;
+    /**
+    * Name of the event that event is fired immediately when the hide instance method has been called.
+    */
+    'hideEventName'?: string;
+    /**
+    * Name of the event that is fired after the `og.tooltip.show` event when the tooltip template has been added to the DOM.
+    */
+    'insertedEventName'?: string;
+    /**
+    * It will override any other `title` settings and use this for the tooltip title. The value is watched so that it will update dynamically.
+    */
+    'ogTitle'?: string;
+    /**
+    * Name of the event that fires immediately when the show instance method is called.
+    */
+    'showEventName'?: string;
+    /**
+    * When set to `true`, the `og-tooltip` will toggle open.
+    */
+    'showTooltip'?: boolean;
+    /**
+    * Name of the event that is fired when the tooltip has been made visible to the user (will wait for CSS transitions to complete).
+    */
+    'shownEventName'?: string;
+    /**
+    * When tabindex is set to a negative value (smaller than `0`), the tooltip will work on hover, but it will not appear via keyboard raised focus.
+    */
+    'tabindex'?: string | number;
+  }
 
   interface IntrinsicElements {
     'og-button': OgButton;
@@ -1325,6 +1455,7 @@ declare namespace LocalJSX {
     'og-text-input': OgTextInput;
     'og-textarea': OgTextarea;
     'og-toggle-switch': OgToggleSwitch;
+    'og-tooltip': OgTooltip;
   }
 }
 

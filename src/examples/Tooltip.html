@@ -1,0 +1,143 @@
+<!--
+og-tooltip
+-->
+<og-card name="Tooltip">
+    <div class="example example--tooltip">
+        <og-card name="Demo: Simple tooltip with top placement">
+            <og-tooltip data-title="A simple text title" data-placement="top">Simple tooltip above</og-tooltip>
+            <p>HTML code:</p>
+            <code>
+                &lt;og-tooltip data-title="A simple text title" data-placement="top"&gt;Simple tooltip above&lt;/og-tooltip&gt;
+            </code>
+        </og-card>
+
+        <og-card name="Demo: Simple tooltip working on hover, not on tab focus">
+            <og-tooltip data-title="A simple text title" data-placement="top" tabindex="-1">Tooltip on hover only (no tab focus)</og-tooltip>
+            <p>HTML code:</p>
+            <code>
+                &lt;og-tooltip data-title="A simple text title" data-placement="top" tabindex="-1"&gt;Tooltip on hover only (no tab focus)&lt;/og-tooltip&gt;
+            </code>
+        </og-card>
+
+        <og-card name="Button showing a tooltip with a dynamic title">
+            <og-tooltip id="tooltipWithDynamicTitle" data-title="Title" [og-title]="dynamicTitle" data-placement="right" tabindex="-1"><og-button label="Button with a tooltip"></og-button></og-tooltip>
+            <p></p>
+            <og-text-input id="tooltipDynamicTitle" placeholder="Insert tooltip title content" value="ORGENIC UI"></og-text-input>
+            <p></p>
+            <og-combobox id="tooltipPosition" placeholder="Please select a tooltip position"></og-combobox>
+            <p>HTML code:</p>
+            <code>
+                &lt;og-tooltip id="tooltipWithDynamicTitle" data-title="Title" [og-title]="dynamicTitle" data-placement="right" tabindex="-1"&gt;&lt;og-button label="Button with a tooltip"&gt;&lt;/og-button&gt;&lt;og-tooltip&gt;
+            </code>
+            <p>Note: The way to correctly bind to 'dynamicTitle' depends on the framework in use. Since the button itself is focusable via keyboard (tab), we can set the tabindex of the tooltip to '-1' and will still be able to having it appear on keyboard focus.</p>
+        </og-card>
+
+        <og-card name="Tooltip at bottom-end with HTML content">
+            <og-tooltip og-title='<h3>Headline</h3><br /><span style="font-weight: bold">Bold text</span> and normal text.' data-html="true" data-placement="bottom-end">Tooltip at bottom-end with HTML content</og-tooltip>
+            <p>HTML code:</p>
+            <code>
+                &lt;og-tooltip og-title='&lt;h3&gt;Headline&lt;/h3&gt;&lt;br /&gt;&lt;span style="font-weight: bold"&gt;Bold text&lt;span&gt; and normal text.' data-html="true" data-placement="bottom-end"&gt;Tooltip at bottom-end with HTML content&lt;/og-tooltip&gt;
+            </code>
+        </og-card>
+
+        <og-card name="Tooltip with config applied via code">
+            <og-tooltip id="customTooltipOne">Tooltip with config applied via code</og-tooltip>
+            <p>HTML code:</p>
+            <code>
+                &lt;og-tooltip id="customTooltipOne"&gt;Tooltip with config applied via code&lt;/og-tooltip&gt;
+            </code>
+            <p>JS code:</p>
+            <code>
+                document.getElementById('customTooltipOne').addEventListener('og.tooltip.enabled', function(event) {
+                    event.target.setAttribute('og-title', 'This tooltip title has been set via code');
+                });
+            </code>
+        </og-card>
+
+        <og-card name="Tooltip initially shown via code">
+            <og-tooltip id="customTooltipTwo" data-title="Another custom tooltip">Tooltip initially shown via code</og-tooltip>
+            <p>HTML code:</p>
+            <code>
+                &lt;og-tooltip id="customTooltipTwo" data-title="Another custom tooltip"&gt;Tooltip initially shown via code&lt;/og-tooltip&gt;
+            </code>
+            <p>JS code:</p>
+            <code>
+                document.getElementById('customTooltipTwo').addEventListener('og.tooltip.enabled', function(event) {
+                    event.target.tooltip('show');
+                });
+            </code>
+        </og-card>
+    </div>
+</og-card>
+
+<style>
+    .example--tooltip {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: start;
+    }
+
+    .example--tooltip code {
+        word-break: break-word;
+    }
+
+    .example--tooltip code::before {
+        content: "";
+        display: block;
+        border-top: 1px solid currentColor;
+        margin-bottom: 10px;;
+        opacity: .25;
+    }
+</style>
+
+<script>
+    setTimeout(() => {
+        const tooltipWithDynamicTitle = document.getElementById('tooltipWithDynamicTitle');
+        const customTooltipOne = document.getElementById('customTooltipOne');
+        const customTooltipTwo = document.getElementById('customTooltipTwo');
+        const tooltipDynamicTitle = document.getElementById('tooltipDynamicTitle');
+        let dynamicTitle = tooltipDynamicTitle.getAttribute('value');
+        const tooltipPosition = document.getElementById('tooltipPosition');
+
+        const tooltipPositionValues = [
+            { label: 'auto', value: 'auto' },
+            { label: 'auto-start', value: 'auto-start' },
+            { label: 'auto-end', value: 'auto-end' },
+            { label: 'top', value: 'top' },
+            { label: 'top-start', value: 'top-start' },
+            { label: 'top-end', value: 'top-end' },
+            { label: 'right', value: 'right' },
+            { label: 'right-start', value: 'right-start' },
+            { label: 'right-end', value: 'right-end' },
+            { label: 'bottom', value: 'bottom' },
+            { label: 'bottom-start', value: 'bottom-start' },
+            { label: 'bottom-end', value: 'bottom-end' },
+            { label: 'left', value: 'left' },
+            { label: 'left-start', value: 'left-start' },
+            { label: 'left-end', value: 'left-end' }
+        ];
+
+        tooltipPosition.items = tooltipPositionValues;
+        tooltipPosition.addEventListener('itemSelected', function(event) {
+            tooltipWithDynamicTitle.tooltip({ placement: event.target.value });
+            tooltipWithDynamicTitle.tooltip('show');
+        });
+
+        tooltipWithDynamicTitle.addEventListener('og.tooltip.enabled', function(event) {
+            event.target.setAttribute('og-title', dynamicTitle);
+        });
+
+        customTooltipOne.addEventListener('og.tooltip.enabled', function(event) {
+            event.target.setAttribute('og-title', 'This tooltip title has been set via code');
+        });
+
+        customTooltipTwo.addEventListener('og.tooltip.enabled', function(event) {
+            event.target.tooltip('show');
+        });
+
+        tooltipDynamicTitle.addEventListener('valueChanged', function(event) {
+            dynamicTitle = event.target.value;
+            tooltipWithDynamicTitle.setAttribute('og-title', dynamicTitle);
+        });
+    });
+</script>
