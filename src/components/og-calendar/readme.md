@@ -31,11 +31,11 @@ This component is used by og-datepicker and is currently not intended for stand-
 
 ### Used by
 
- - [og-datepicker](..\og-datepicker)
+ - [og-datepicker](../og-datepicker)
 
 ### Depends on
 
-- [og-internal-calendar](..\og-internal-calendar)
+- [og-internal-calendar](../og-internal-calendar)
 
 ### Graph
 ```mermaid

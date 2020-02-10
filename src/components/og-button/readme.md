@@ -45,8 +45,8 @@
 
 ### Used by
 
- - [og-confirm-dialog](..\og-dialog\og-confirm-dialog)
- - [og-message-dialog](..\og-dialog\og-message-dialog)
+ - [og-confirm-dialog](../og-dialog/og-confirm-dialog)
+ - [og-message-dialog](../og-dialog/og-message-dialog)
 
 ### Graph
 ```mermaid

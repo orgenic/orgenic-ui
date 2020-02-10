@@ -52,7 +52,7 @@
 
 ### Depends on
 
-- [og-combobox-options](..\og-combobox-options)
+- [og-combobox-options](../og-combobox-options)
 
 ### Graph
 ```mermaid
