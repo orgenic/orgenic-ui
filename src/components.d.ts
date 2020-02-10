@@ -16,7 +16,7 @@ import {
 } from './components/og-datatable/interfaces/og-datatable-column-def';
 import {
   OgListItemOptions,
-} from './components/og-list-item/og-list-item.interface';
+} from './components/og-list-item';
 
 export namespace Components {
   interface OgButton {

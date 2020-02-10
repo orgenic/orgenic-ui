@@ -5,8 +5,7 @@
  **/
 
 import { h, Component, Prop, Host } from '@stencil/core';
-import { OgListItemOptions } from './og-list-item.interface';
-import { OgListItemInterface } from '../og-list/og-list-item.interface';
+import { OgListItemInterface, OgListItemOptions } from '.';
 
 @Component({
   tag: 'og-list-item',
