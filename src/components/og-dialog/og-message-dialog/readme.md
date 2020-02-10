@@ -28,7 +28,7 @@
 ### Depends on
 
 - [og-dialog](..)
-- [og-button](..\..\og-button)
+- [og-button](../../og-button)
 
 ### Graph
 ```mermaid

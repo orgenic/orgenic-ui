@@ -81,7 +81,7 @@ export class OgDatepicker {
   /**
    * The selected value of the combobox
    */
-  @Prop({ mutable: true, reflectToAttr: true })
+  @Prop({ mutable: true, reflect: true })
   public value: string;
 
   /**
@@ -165,7 +165,7 @@ export class OgDatepicker {
       } else {
         this.focusLost.emit();
       }
-      
+
       e.preventDefault();
       e.stopPropagation();
     }

@@ -4,6 +4,13 @@
  * See LICENSE file at https://github.com/orgenic/orgenic-ui/blob/master/LICENSE
  **/
 
+export interface OgListItemInterface {
+  disabled: boolean;
+  item: any;
+  selected: boolean;
+  options: OgListItemOptions;
+}
+
 export interface OgListItemOptions {
   image?: string;
   disabled?: string;

@@ -38,7 +38,7 @@ export class OgDatatable {
   /**
    * Selected row identified by id-property
    */
-  @Prop({mutable: true, reflectToAttr: true})
+  @Prop({mutable: true, reflect: true})
   public selected: any;
 
   /**

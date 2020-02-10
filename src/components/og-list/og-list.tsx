@@ -209,16 +209,16 @@ export class OgList {
   }
 
   private handleTemplateOptions(): object {
-    let options: any = {};
+    const options: any = {};
+
+    options.key = this.keyProperty;
+    options.label = this.labelProperty;
+    options.image = this.imageUrlProperty;
+    options.disabled = this.disabledProperty;
+    options.value = this.valueProperty;
 
     if (this.templateOptions) {
-      options = this.templateOptions;
-    } else {
-      options.key = this.keyProperty;
-      options.label = this.labelProperty;
-      options.image = this.imageUrlProperty;
-      options.disabled = this.disabledProperty;
-      options.value = this.valueProperty;
+      Object.assign(options, this.templateOptions);
     }
 
     return options;
