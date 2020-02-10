@@ -15,7 +15,7 @@ export class OgCheckbox {
   /**
    * The value of the checkbox
    */
-  @Prop({ mutable: true, reflectToAttr: true })
+  @Prop({ mutable: true, reflect: true })
   public checked: boolean;
 
   /**

@@ -182,6 +182,8 @@
             </script>
 
             <og-card name="Components">
+                <a href="spinner" data-navigo>Spinner</a>
+                <a href="progress" data-navigo>Progress</a>
                 <a href="layout-container" data-navigo>Layout Container</a>
                 <a href="datepicker" data-navigo>Datepicker</a>
                 <a href="calendar" data-navigo>Calendar</a>
@@ -207,7 +209,7 @@
 
             <script>
                 const view = document.getElementById('router-outlet');
-                // asyncrhonously fetch the html template partial from the file directory,
+                // asynchronously fetch the html template partial from the file directory,
                 // then set its contents to the html of the parent element
                 function loadHTML(url, outlet) {
                     req = new XMLHttpRequest();
@@ -218,14 +220,17 @@
 
                         // initialize scripts
                         var arr = outlet.getElementsByTagName('script')
-                        for (var n = 0; n < arr.length; n++)
-                            eval(arr[n].innerHTML)
+                        for (let n = 0; n < arr.length; n++) {
+                            eval(arr[n].innerHTML);  // TODO: Remove eval!
+                        }
                     };
                 }
 
                 // use #! to hash
                 const router = new Navigo(null, true, '#!');
                 router.on({
+                    'spinner': () => { loadHTML('./examples/Spinner.html', view); },
+                    'progress': () => { loadHTML('./examples/Progress.html', view); },
                     'layout-container': () => { loadHTML('./examples/LayoutContainer.html', view); },
                     'datepicker': () => { loadHTML('./examples/Datepicker.html', view); },
                     'calendar': () => { loadHTML('./examples/Calendar.html', view); },

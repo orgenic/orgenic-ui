@@ -2,93 +2,242 @@
 // CSS CUSTOM PROPERTIES
 // =============================================================================
 
-/**
- * @prop --item-Color: Text color of the list item
- * @prop --item-Background: Background of the list item (shorthand)
- * @prop --item-Background--active: Background of the list item when selected (shorthand)
- * @prop --item-Background--highlight: Background of the list item when hovered (shorthand)
- * @prop --item-Opacity: Opacity of the list item;
- * @prop --item-Opacity--disabled: Opacity of the list item;
- * @prop --item-BorderColor: Border color of the list item
- * @prop --item-BorderRadius: Border radius of the list item
- * @prop --item-BorderStyle: Border style of the list item
- * @prop --item-BorderWidth: Border width of the list item
- * @prop --item-Margin: Margin of the list item
- * @prop --item-MinHeight: Minimum height of the list item
- */
-
 :host {
-    --item-Color:                  var(--og-list-item-Color, #{$og-color-shade--100});
 
-    --item-Background:             var(--og-list-item-Background, #{$og-color-primary--0--30});
-    --item-Background--highlight:  var(--og-list-item-Background--highlight, #{$og-color-primary--100--15});
-    --item-Background--active:     var(--og-list-item-Background--active, #{$og-color-primary--100--30});
-    
-    --item-BorderWidth:             var(--og-list-item-BorderWidth, 2px);
-    --item-BorderStyle:             var(--og-list-item-BorderStyle, solid);
-    --item-BorderColor:             var(--og-list-item-BorderColor, transparent);
-    --item-BorderRadius:            var(--og-list-item-BorderRadius, 0);
-    
-    --item-Margin:                  var(--og-list-item-Margin, 0);
-    --item-MinHeight:               var(--og-list-item-MinHeight, 3em);
-    
-    --item-Opacity:                var(--og-list-item-Opacity, 1);
-    --item-Opacity--disabled:      var(--og-list-item-Opacity--disabled, .5);
+    /**
+     * @prop --item-Color:
+     * Text color of the list item
+     */
+    --item-Color: var(--og-list-item-Color, var(--OG-COLOR-SHADE--100, #{$og-color-shade--100}));
+
+    /**
+     * @prop --item-Background:
+     * Background of the list item (shorthand)
+     */
+    --item-Background: var(--og-list-item-Background, var(--OG-COLOR-PRIMARY--0--30, #{$og-color-primary--0--30}));
+
+    /**
+     * @prop --item-Background--highlight:
+     * Background of the list item when hovered (shorthand)
+     */
+    --item-Background--highlight: var(--og-list-item-Background--highlight, var(--OG-COLOR-PRIMARY--100--15, #{$og-color-primary--100--15}));
+
+    /**
+     * @prop --item-Background--active:
+     * Background of the list item when selected (shorthand)
+     */
+    --item-Background--active: var(--og-list-item-Background--active, var(--OG-COLOR-PRIMARY--100--30, #{$og-color-primary--100--30}));
+
+    /**
+     * @prop --item-BorderWidth: Border width of the list item
+     */
+    --item-BorderWidth: var(--og-list-item-BorderWidth, 0);
+
+    /**
+     * @prop --item-BorderStyle:
+     * Border style of the list item
+     */
+    --item-BorderStyle: var(--og-list-item-BorderStyle, solid);
+
+    /**
+     * @prop --item-BorderColor:
+     * Border color of the list item
+     */
+    --item-BorderColor: var(--og-list-item-BorderColor, transparent);
+
+    /**
+     * @prop --item-BorderRadius:
+     * Border radius of the list item
+     */
+    --item-BorderRadius: var(--og-list-item-BorderRadius, 0);
+
+    /**
+     * @prop --item-Margin:
+     * Margin (outer spacing) of the list item
+     */
+    --item-Margin: var(--og-list-item-Margin, 0);
+
+    /**
+     * @prop --item-Opacity:
+     * Opacity of the list item
+     */
+    --item-Opacity: var(--og-list-item-Opacity, 1);
+
+    /**
+     * @prop --item-Opacity--disabled:
+     * Opacity of the list item when disabled
+     */
+    --item-Opacity--disabled: var(--og-list-item-Opacity--disabled, .5);
+
+    /**
+     * @prop --item-Cursor:
+     * Cursor appearance when hovered
+     */
+    --item-Cursor: var(--og-list-item-Cursor, pointer);
+
+    /**
+     * @prop --item-PointerEvents:
+     * Pointer Events of the list item. Will be set to 'none' when item is
+     * disabled.
+     */
+    --item-PointerEvents: var(--og-list-item-PointerEvents, auto);
+
+    // ICON
+
+    /**
+     * @prop --item__icon-Width:
+     * Width of the "prefix" icon.
+     */
+    --item__icon-Width: var(--og-list-item__icon-Width, 3rem);
+
+
+    // CONTENT
+
+    --item__content-AlignItems: var(--og-list-item__content-AlignItems, center);
+
+    /**
+     * @prop --content-Height:
+     * Height of the content area.
+     */
+    --item__content-Height: var(--og-list-item__content-Height, auto);
+
+    /**
+     * @prop --content-Padding:
+     * Padding (inner spacing) of the content area.
+     */
+    --item__content-Padding: var(--og-list-item__content-Padding, 0.5rem 1rem);
+
+    /**
+     * @prop --content-Height:
+     * Height of the content area.
+     */
+    --item__content-MinHeight: var(--og-list-item-MinHeight, 3rem);
+
+
+    // LABEL
+
+    /**
+     * @prop --item__label-FontSize:
+     * Fontsize of the label.
+     */
+    --item__label-FontSize: var(--og-list-item__label-FontSize, 1rem);
+
+    /**
+     * @prop --item__label-LineHeight:
+     * Lineheight of the label.
+     */
+    --item__label-LineHeight: var(--og-list-item__label-LineHeight, 1.25);
+
+    /**
+     * @prop --item__Label-Padding:
+     * Padding (inner spacing) of the label.
+     */
+    --item__label-Padding: var(--og-list-item__label-Padding, .25rem 0);
+
+
+    // OVERLINE
+
+    /**
+     * @prop --item__overline-Color:
+     * Color of the overline.
+     */
+    --item__overline-Color: var(--og-list-item__overline-Color, var(--OG-COLOR-SHADE--100--50, #{$og-color-shade--100--50}));
+
+    /**
+     * @prop --item__overline-FontSize:
+     * Fontsize of the overline.
+     */
+    --item__overline-FontSize: var(--og-list-item__overline-FontSize, .75rem);
+
+    /**
+     * @prop --item__overline-LineHeight:
+     * Lineheight of the overline.
+     */
+    --item__overline-LineHeight: var(--og-list-item__overline-LineHeight, 1.25);
+
+    /**
+     * @prop --item__overline-Padding:
+     * Padding (inner space) of the overline.
+     */
+    --item__overline-Padding: 0;
+
+
+    // SUBLINE
+
+    /**
+     * @prop --item__subline-FontSize:
+     * Fontsize of the subline.
+     */
+    --item__subline-FontSize: var(--og-list-item__subline-FontSize, .75rem);
+
+    /**
+     * @prop --item__subline-Color:
+     * Color of the subline.
+     */
+    --item__subline-Color: var(--og-list-item__subline-Color, var(--OG-COLOR-SHADE--100--50, #{$og-color-shade--100--50}));
+
+    /**
+     * @prop --item__subline-Padding:
+     * Padding (inner space) of the subline.
+     */
+    --item__subline-Padding: 0;
+
+    /**
+     * @prop --item__value-Padding:
+     * Padding of the value.
+     */
+    --item__value-Padding: 0 0 0 1rem;
 
     box-sizing: border-box;
-    *, *::before, *::after { box-sizing: inherit; }
+    pointer-events: var(--item-PointerEvents);
 }
 
+*, *::before, *::after { box-sizing: inherit; }
+
 :host([disabled]) {
-    --og-list-Opacity: var(--og-list-Opacity--disabled);
-    .og-list-item__content {
-        cursor: default;
-    }
+    --item-Cursor: default;
+    --item-Opacity: var(--item-Opacity--disabled);
+    --item-PointerEvents: none;
+}
+
+:host(:hover) {
+    --item-Background: var(--item-Background--highlight);
 }
 
 .og-list-item {
     display: block;
     outline: 0;
+    cursor: var(--item-Cursor);
 }
 
 .og-list-item__content {
-    display: flex;
+    align-items: var(--item__content-AlignItems);
     background: var(--item-Background);
-    color: var(--item-Color);
-    border: var(--item-BorderWidth) var(--item-BorderStyle) var(--item-BorderColor);
+    border-color: var(--item-BorderColor);
+    border-style: var(--item-BorderStyle);
+    border-width: var(--item-BorderWidth);
     border-radius: var(--item-BorderRadius);
+    color: var(--item-Color);
+    display: flex;
+    height: var(--item__content-Height);
     margin: var(--item-Margin);
-    height: var(--item-MinHeight);
-    line-height: var(--item-MinHeight);
-    padding-left: 1em;
-    padding-right: 1em;
+    min-height: var(--item__content-MinHeight);
     opacity: var(--item-Opacity);
-
-    :host(:not([disabled])) .og-list-item:not(.og-list-item--disabled) &:not(.og-list-item__content--selected):hover {
-        --item-Background: var(--item-Background--highlight);
-        cursor: pointer;
-    }
-
-    :host-context(og-list[disabled]) & {
-        pointer-events: none;
-    }
+    padding: var(--item__content-Padding);
 }
 
-.og-list-item--disabled {
-    --item-Opacity: var(--item-Opacity--disabled);
-}
+// .og-list-item--disabled {
+//     --item-Opacity: var(--item-Opacity--disabled);
+// }
 
 .og-list-item__content--selected {
     --item-Background: var(--item-Background--active);
-
-    :host(:not([disabled])) &:hover {
-        --item-Background: var(--item-Background--active);
-    }
 }
 
 .og-list-item__icon {
+    flex: none;
     padding-right: 1em;
-    width: var(--item-MinHeight);
+    width: var(--item__icon-Width);
 
     img {
         object-fit: contain;
@@ -97,14 +246,45 @@
     }
 }
 
-.og-list-item__label {
+.og-list-item__main {
     flex-grow: 1;
-    white-space: nowrap;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 1px;
+}
+
+.og-list-item__subline {
+    color: var(--item__subline-Color);
+    font-size: var(--item__subline-FontSize);
+    line-height: var(--item__subline-LineHeight);
     overflow: hidden;
+    padding: var(--item__subline-Padding);
     text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.og-list-item__overline {
+    color: var(--item__overline-Color);
+    font-size: var(--item__overline-FontSize);
+    line-height: var(--item__overline-LineHeight);
+    overflow: hidden;
+    padding: var(--item__overline-Padding);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+.og-list-item__label {
+    line-height: var(--item__label-LineHeight);
+    overflow: hidden;
+    padding: var(--item__label-Padding);
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .og-list-item__value {
     line-height: inherit;
     font-weight: bold;
+    padding: var(--item__value-Padding);
 }

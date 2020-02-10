@@ -11,10 +11,11 @@
  */
 
 :host {
+    box-sizing: border-box;
     display: block;
     flex-grow: var(--og-layout-child--grow, 1);
     flex-shrink: var(--og-layout-child--shrink, 1);
-    flex-basis: var(--og-layout-child--basis, 0);
+    flex-basis: var(--og-layout-child--basis, 0%);
     order: var(--og-layout-child--order, 0);
     align-self: var(--og-layout-child--align, auto);
 
@@ -22,5 +23,14 @@
     max-width: var(--og-layout-child--max-width);
     min-height: var(--og-layout-child--min-height);
     max-height: var(--og-layout-child--max-height);
+
+    *,
+    *:before,
+    *:after {
+        box-sizing: inherit;
+    }
 }
 
+:host([max-size]) {
+    overflow: auto;
+}

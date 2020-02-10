@@ -4,66 +4,21 @@
  * See LICENSE file at https://github.com/orgenic/orgenic-ui/blob/master/LICENSE
  **/
 
-import { h, Component, Prop } from '@stencil/core';
+import { h, Component, Prop, Host } from '@stencil/core';
+import { OgListItemInterface, OgListItemOptions } from '.';
 
 @Component({
   tag: 'og-list-item',
   styleUrl: 'og-list-item.scss',
   shadow: true
 })
-export class OgListItem {
-  /**
-   * The value is needed for the using @see OgList instance to correctly handle selection.
-   *
-   * @type {*}
-   * @memberof OgListItem
-   */
-  @Prop()
-  public key: any;
+export class OgListItem implements OgListItemInterface {
 
   /**
-   * Sets the value of the label.
-   * @type {string}
-   * @memberof OgListItem
+   * Current item data
    */
   @Prop()
-  public label: string;
-
-  /**
-   * Set flag, if place for an image is reserved, whether used or not.
-   *
-   * @type {boolean}
-   * @memberof OgListItem
-   */
-  @Prop()
-  public showImage: boolean;
-
-  /**
-   * Set the url of the image to be shown in the placeholder
-   *
-   * @type {string}
-   * @memberof OgListItem
-   */
-  @Prop()
-  public image: string;
-
-  /**
-   * Set flag, if place for a value badge is reserved whether used or not
-   *
-   * @type {boolean}
-   * @memberof OgListItem
-   */
-  @Prop()
-  public showValue: boolean;
-
-  /**
-   * Set the value to be shown in the badge placeholder
-   *
-   * @type {string}
-   * @memberof OgListItem
-   */
-  @Prop()
-  public value: string;
+  public item: any;
 
   /**
    * Set the flag, if this list item is in selected state.
@@ -71,8 +26,8 @@ export class OgListItem {
    * @type {boolean}
    * @memberof OgListItem
    */
-  @Prop()
-  public isSelected: boolean;
+  @Prop({reflect: true})
+  public selected: boolean;
 
   /**
    * Set the flag, it this list item is in disabled state.
@@ -81,22 +36,52 @@ export class OgListItem {
    * @memberof OgListItem
    */
   @Prop()
-  public isDisabled: boolean;
+  public disabled: boolean;
+
+  /**
+   * Template options
+   *
+   * @type {OgListItemOptions}
+   * @memberof OgListItem
+   */
+  @Prop()
+  public options: OgListItemOptions;
 
   public render(): HTMLElement {
-    return <li class={"og-list-item" + (this.isDisabled ? " og-list-item--disabled" : "")}>
-      <div class={"og-list-item__content" + (this.isSelected ? " og-list-item__content--selected" : "")}>
-        {
-          this.showImage && <div class="og-list-item__icon">
-            {this.image && <img src={this.image} />}
+    return (
+      <Host disabled={this.disabled}>
+        <div class="og-list-item">
+          <div class={"og-list-item__content" + (this.selected ? " og-list-item__content--selected" : "")}>
+            {
+              this.options.image &&
+              <div class="og-list-item__icon">
+                {
+                  this.item[this.options.image] &&
+                  <img src={this.item[this.options.image]} />
+                }
+              </div>
+            }
+            <div class="og-list-item__main">
+              {
+                this.item[this.options.overline] &&
+                <div class="og-list-item__overline">{ this.item[this.options.overline] }</div>
+              }
+              {
+                this.item[this.options.label] &&
+                <div class="og-list-item__label">{ this.item[this.options.label] }</div>
+              }
+              {
+                this.item[this.options.subline] &&
+                <div class="og-list-item__subline">{ this.item[this.options.subline] }</div>
+              }
+            </div>
+            {
+              this.item[this.options.value] &&
+              <div class="og-list-item__value">{this.item[this.options.value]}</div>
+            }
           </div>
-        }
-        <div class="og-list-item__label">{this.label}</div>
-        {
-          this.showValue && this.value
-                  && <div class="og-list-item__value">{this.value}</div>
-        }
-      </div>
-    </li>;
+        </div>
+      </Host>
+    )
   }
 }

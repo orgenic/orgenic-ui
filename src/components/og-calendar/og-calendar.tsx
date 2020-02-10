@@ -19,10 +19,10 @@ export class OgCalendar {
   @Prop({ context: 'resourcesUrl' })
   public resourcesUrl!: string;
 
-  @Prop({ reflectToAttr: true, mutable: true })
+  @Prop({ reflect: true, mutable: true })
   public year: number = new Date().getFullYear();
 
-  @Prop({ reflectToAttr: true, mutable: true })
+  @Prop({ reflect: true, mutable: true })
   public month: number = new Date().getMonth();
 
   @Prop()
@@ -40,7 +40,7 @@ export class OgCalendar {
   @Prop()
   public selectionType: OgCalendarSelectionType = 'single';
 
-  @Prop({ reflectToAttr: true, mutable: true })
+  @Prop({ reflect: true, mutable: true })
   public selection: OgCalendarDate[] = [];
 
   @Event()

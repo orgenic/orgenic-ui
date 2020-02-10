@@ -81,7 +81,7 @@ export class OgDatepicker {
   /**
    * The selected value of the combobox
    */
-  @Prop({ mutable: true, reflectToAttr: true })
+  @Prop({ mutable: true, reflect: true })
   public value: string;
 
   /**
@@ -91,7 +91,6 @@ export class OgDatepicker {
   public format: string = 'DD.MM.YYYY';
 
   public indicatorElement: HTMLElement;
-
   public flyoutCalendar: HTMLElement;
 
   @State()
@@ -114,6 +113,13 @@ export class OgDatepicker {
     // close flyout on scroll events
     this.dropdownActive = false;
     this.focusLost.emit();
+  }
+
+  @Listen('resize', { target: 'window', capture: true })
+  public handleWindowResize() {
+    if (this.dropdownActive) {
+      this.flyoutCalendar.style.cssText = this.getFlyoutCss();
+    }
   }
 
   @Listen('scroll', { target: 'body' })
@@ -144,14 +150,22 @@ export class OgDatepicker {
     this.setValue(this.value);
   }
 
+  public disconnectedCallback() {
+    this.removeCalenderFromBody();
+  }
+
   public buttonClicked(e: Event) {
     if (!this.disabled) {
       this.dropdownActive = !this.dropdownActive;
+
       if (this.dropdownActive) {
         this.focusGained.emit();
+        this.moveCalenderToBody();
+        this.flyoutCalendar.style.cssText = this.getFlyoutCss();
       } else {
         this.focusLost.emit();
       }
+
       e.preventDefault();
       e.stopPropagation();
     }
@@ -175,18 +189,33 @@ export class OgDatepicker {
     return this.dropdownActive && !this.disabled;
   }
 
+  private moveCalenderToBody() {
+    const ogCalendar = this.el.shadowRoot.querySelector("og-calendar");
+
+    if (ogCalendar) {
+      this.flyoutCalendar = document.body.appendChild(ogCalendar);
+    }
+  }
+
+  private removeCalenderFromBody() {
+    if (this.flyoutCalendar) {
+      this.flyoutCalendar.remove();
+    }
+  }
+
   /**
    * behaviour:
    *   * combobox flyout shows 7 items
    *   * if it does not fit on screen, scale down flyout
    *   * if flyout would be smaller than 4 items, show flyout above combobox
    */
-  public getFlyoutCss() {
+  public getFlyoutCss(): string {
     if (!this.indicatorElement) {
-      return {};
+      return null;
     }
 
     let flyoutTop = (this.indicatorElement.getBoundingClientRect().top + this.indicatorElement.offsetHeight);
+    let flyoutLeft = (this.indicatorElement.getBoundingClientRect().left);
 
     this.flyoutCalendar.style.display = 'block';
     const flyoutHeight = this.flyoutCalendar.getBoundingClientRect().height;
@@ -196,9 +225,7 @@ export class OgDatepicker {
       flyoutTop = this.el.getBoundingClientRect().top - flyoutHeight;
     }
 
-    return {
-      top: Math.max(0, flyoutTop) + 'px',
-    }
+    return "top: " + Math.max(0, flyoutTop) + 'px; left: ' + Math.max(0, flyoutLeft) + 'px;';
   }
 
   public render(): HTMLElement {
@@ -218,10 +245,7 @@ export class OgDatepicker {
           />
           <div class="og-datepicker__button">
             <svg
-              class={
-                'og-datepicker__button__arrow' +
-                              (this.isDropdownActive() ? ' og-datepicker__button__arrow--collapsed' : '')
-              }
+              class={ 'og-datepicker__button__arrow' + (this.isDropdownActive() ? ' og-datepicker__button__arrow--collapsed' : '') }
               version="1.1"
               xmlns="http://www.w3.org/2000/svg"
               xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -241,23 +265,18 @@ export class OgDatepicker {
           </div>
           <div class="og-datepicker__indicator" ref={(el) => this.indicatorElement = el} />
         </div>
-        <div class="og-datepicker__flyout">
-          <og-calendar
-            class={
-              'og-datepicker__flyout__calendar' +
-                          (this.isDropdownActive() ? ' og-datepicker__flyout__calendar--visible' : '')
-            }
-            style={ this.getFlyoutCss() }
-            ref={(el) => this.flyoutCalendar = el}
-            year={ !this.internalValue ? undefined : this.internalValue.year }
-            month={ !this.internalValue ? undefined : this.internalValue.month }
-            loc={ this.loc }
-            dateDecorator={ this.dateDecorator }
-            selection={ !this.internalValue ? [] : [ this.internalValue ] }
-            selectionType="single"
-            onDateClicked={ (e) => this.handleDateClicked(e) }>
-          </og-calendar>
-        </div>
+
+        <og-calendar
+          class={ 'og-datepicker__flyout__calendar' + (this.isDropdownActive() ? ' og-datepicker__flyout__calendar--visible' : '') }
+          ref={(el) => this.flyoutCalendar = el}
+          year={ !this.internalValue ? undefined : this.internalValue.year }
+          month={ !this.internalValue ? undefined : this.internalValue.month }
+          loc={ this.loc }
+          dateDecorator={ this.dateDecorator }
+          selection={ !this.internalValue ? [] : [ this.internalValue ] }
+          selectionType="single"
+          onDateClicked={ (e) => this.handleDateClicked(e) }>
+        </og-calendar>
       </Host>
     );
   }
