@@ -3,7 +3,6 @@
 ## Features
 * new component: spinner
 * new component: progress
-* og-list: add template handling
 
 ## Bug Fixes
 * general: momentjs issue in typescript projects

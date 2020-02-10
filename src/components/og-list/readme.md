@@ -33,39 +33,10 @@
 
 ## CSS Custom Properties
 
-| Name                                   | Description                                                                   |
-| -------------------------------------- | ----------------------------------------------------------------------------- |
-| `--og-list-item-Background`            | Background of the list item (shorthand)                                       |
-| `--og-list-item-Background--active`    | Background of the list item when selected (shorthand)                         |
-| `--og-list-item-Background--highlight` | Background of the list item when hovered (shorthand)                          |
-| `--og-list-item-BorderColor`           | Border color of the list item                                                 |
-| `--og-list-item-BorderRadius`          | Border radius of the list item                                                |
-| `--og-list-item-BorderStyle`           | Border style of the list item                                                 |
-| `--og-list-item-BorderWidth`           | Border width of the list item                                                 |
-| `--og-list-item-Color`                 | Text color of the list item                                                   |
-| `--og-list-item-Cursor`                | Cursor appearance when hovered                                                |
-| `--og-list-item-Margin`                | Margin (outer spacing) of the list item                                       |
-| `--og-list-item-MinHeight`             | Minimum Height of the content area.                                           |
-| `--og-list-item-Opacity`               | Opacity of the list item                                                      |
-| `--og-list-item-Opacity--disabled`     | Opacity of the list item when disabled                                        |
-| `--og-list-item-PointerEvents`         | Pointer Events of the list item. Will be set to 'none' when item is disabled. |
-| `--og-list-item__content-AlignItems`   | Align (flex) items relatively to the baseline.                                |
-| `--og-list-item__content-Height`       | Height of the content area.                                                   |
-| `--og-list-item__content-Padding`      | Padding (inner spacing) of the content area.                                  |
-| `--og-list-item__icon-Width`           | Width of the "prefix" icon.                                                   |
-| `--og-list-item__label-FontSize`       | Fontsize of the label.                                                        |
-| `--og-list-item__label-LineHeight`     | Lineheight of the label.                                                      |
-| `--og-list-item__label-Padding`        | Padding (inner spacing) of the label.                                         |
-| `--og-list-item__overline-Color`       | Color of the overline.                                                        |
-| `--og-list-item__overline-FontSize`    | Fontsize of the overline.                                                     |
-| `--og-list-item__overline-LineHeight`  | Lineheight of the overline.                                                   |
-| `--og-list-item__overline-Padding`     | Padding (inner space) of the overline.                                        |
-| `--og-list-item__subline-Color`        | Color of the subline.                                                         |
-| `--og-list-item__subline-FontSize`     | Fontsize of the subline.                                                      |
-| `--og-list-item__subline-Padding`      | Padding (inner space) of the subline.                                         |
-| `--og-list-item__value-Padding`        | Padding of the value.                                                         |
-| `--og-list-Opacity`                    | Overall opacity of the list                                                   |
-| `--og-list-Opacity--disabled`          | Overall opacity of the list when disabled                                     |
+| Name                          | Description                               |
+| ----------------------------- | ----------------------------------------- |
+| `--og-list-Opacity`           | Overall opacity of the list               |
+| `--og-list-Opacity--disabled` | Overall opacity of the list when disabled |
 
 
 ----------------------------------------------
