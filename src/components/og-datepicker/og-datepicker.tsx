@@ -104,7 +104,8 @@ export class OgDatepicker {
     }
   }
 
-  @Watch('format') public setFormat() {
+  @Watch('format')
+  public setFormat() {
     this.setValue(this.value);
   }
 
@@ -131,7 +132,7 @@ export class OgDatepicker {
 
   @Listen('click', { target: 'body' })
   public handleBodyClick(ev: Event) {
-    if (!this.dropdownActive || this.el === ev.target) {
+    if (!this.dropdownActive || this.el === ev.target || this.flyoutCalendar === ev.target) {
       return;
     }
     if (this.dropdownActive) {
