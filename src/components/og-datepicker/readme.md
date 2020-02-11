@@ -57,7 +57,7 @@
 
 ### Depends on
 
-- [og-calendar](..\og-calendar)
+- [og-calendar](../og-calendar)
 
 ### Graph
 ```mermaid

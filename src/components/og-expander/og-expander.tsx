@@ -31,7 +31,7 @@ export class OgExpander {
   /**
    * Sets or unsets the expanded state.
    */
-  @Prop({ mutable: true, reflectToAttr: true })
+  @Prop({ mutable: true, reflect: true })
   public expanded: boolean = false;
 
   /**

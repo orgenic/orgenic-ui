@@ -15,7 +15,7 @@ export class OgTextInput {
   /**
    * The initial value. Can be updated at runtime.
    */
-  @Prop({ mutable: true, reflectToAttr: true })
+  @Prop({ mutable: true, reflect: true })
   public value: string;
 
   /**

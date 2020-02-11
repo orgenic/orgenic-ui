@@ -81,7 +81,7 @@ export class OgDatepicker {
   /**
    * The selected value of the combobox
    */
-  @Prop({ mutable: true, reflectToAttr: true })
+  @Prop({ mutable: true, reflect: true })
   public value: string;
 
   /**
@@ -91,7 +91,6 @@ export class OgDatepicker {
   public format: string = 'DD.MM.YYYY';
 
   public indicatorElement: HTMLElement;
-
   public flyoutCalendar: HTMLElement;
 
   @State()
@@ -114,6 +113,13 @@ export class OgDatepicker {
     // close flyout on scroll events
     this.dropdownActive = false;
     this.focusLost.emit();
+  }
+
+  @Listen('resize', { target: 'window', capture: true })
+  public handleWindowResize() {
+    if (this.dropdownActive) {
+      this.flyoutCalendar.style.cssText = this.getFlyoutCss();
+    }
   }
 
   @Listen('scroll', { target: 'body' })
@@ -155,11 +161,11 @@ export class OgDatepicker {
       if (this.dropdownActive) {
         this.focusGained.emit();
         this.moveCalenderToBody();
-        this.flyoutCalendar.style.top = this.getFlyoutCss();
+        this.flyoutCalendar.style.cssText = this.getFlyoutCss();
       } else {
         this.focusLost.emit();
       }
-      
+
       e.preventDefault();
       e.stopPropagation();
     }
@@ -203,12 +209,13 @@ export class OgDatepicker {
    *   * if it does not fit on screen, scale down flyout
    *   * if flyout would be smaller than 4 items, show flyout above combobox
    */
-  public getFlyoutCss() {
+  public getFlyoutCss(): string {
     if (!this.indicatorElement) {
       return null;
     }
 
     let flyoutTop = (this.indicatorElement.getBoundingClientRect().top + this.indicatorElement.offsetHeight);
+    let flyoutLeft = (this.indicatorElement.getBoundingClientRect().left);
 
     this.flyoutCalendar.style.display = 'block';
     const flyoutHeight = this.flyoutCalendar.getBoundingClientRect().height;
@@ -218,7 +225,7 @@ export class OgDatepicker {
       flyoutTop = this.el.getBoundingClientRect().top - flyoutHeight;
     }
 
-    return Math.max(0, flyoutTop) + 'px';
+    return "top: " + Math.max(0, flyoutTop) + 'px; left: ' + Math.max(0, flyoutLeft) + 'px;';
   }
 
   public render(): HTMLElement {

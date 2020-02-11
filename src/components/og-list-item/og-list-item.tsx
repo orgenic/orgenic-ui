@@ -5,15 +5,14 @@
  **/
 
 import { h, Component, Prop, Host } from '@stencil/core';
-import { OgListTemplateDefaultOptions } from './og-list-template-default.interface';
-import { OgListItemInterface } from '../og-list/og-list-item.interface';
+import { OgListItemInterface, OgListItemOptions } from '.';
 
 @Component({
-  tag: 'og-list-template-default',
-  styleUrl: 'og-list-template-default.scss',
+  tag: 'og-list-item',
+  styleUrl: 'og-list-item.scss',
   shadow: true
 })
-export class OgListTemplateDefault implements OgListItemInterface {
+export class OgListItem implements OgListItemInterface {
 
   /**
    * Current item data
@@ -25,16 +24,16 @@ export class OgListTemplateDefault implements OgListItemInterface {
    * Set the flag, if this list item is in selected state.
    *
    * @type {boolean}
-   * @memberof OgListTemplateDefault
+   * @memberof OgListItem
    */
-  @Prop({reflectToAttr: true})
+  @Prop({reflect: true})
   public selected: boolean;
 
   /**
    * Set the flag, it this list item is in disabled state.
    *
    * @type {boolean}
-   * @memberof OgListTemplateDefault
+   * @memberof OgListItem
    */
   @Prop()
   public disabled: boolean;
@@ -42,11 +41,11 @@ export class OgListTemplateDefault implements OgListItemInterface {
   /**
    * Template options
    *
-   * @type {OgListTemplateDefaultOptions}
-   * @memberof OgListTemplateDefault
+   * @type {OgListItemOptions}
+   * @memberof OgListItem
    */
   @Prop()
-  public options: OgListTemplateDefaultOptions;
+  public options: OgListItemOptions;
 
   public render(): HTMLElement {
     return (

@@ -15,55 +15,55 @@ export class OgProgress {
   /**
    * The percent value of the progress
    */
-  @Prop({ reflectToAttr: true })
+  @Prop({ reflect: true })
   public value: number;
 
   /**
    * The percent value of the progress buffer (the second bar)
    */
-  @Prop({ reflectToAttr: true })
+  @Prop({ reflect: true })
   public buffer: number;
 
   /**
    *  The height (s, m , l) of the progress bar
    */
-  @Prop({ reflectToAttr: true })
+  @Prop({ reflect: true })
   public size: 's' | 'm' | 'l' = 'm';
 
   /**
    * The max value of the progress
    */
-  @Prop({ reflectToAttr: true })
+  @Prop({ reflect: true })
   public max: number = 100;
 
   /**
    * Determines, whether the control is hidden or not
    */
-  @Prop({ reflectToAttr: true })
+  @Prop({ reflect: true })
   public hidden: boolean;
 
   /**
    * Determines, whether the control is an indeterminate bar or not
    */
-  @Prop({ reflectToAttr: true })
+  @Prop({ reflect: true })
   public indeterminate: boolean = !this.value && this.value !== 0;
 
   /**
    * Determines, whether the stream animation is shown or not
    */
-  @Prop({ reflectToAttr: true })
+  @Prop({ reflect: true })
   public stream: boolean = false;
 
   /**
    * Determines, whether the query animation is shown or not
    */
-  @Prop({ reflectToAttr: true })
+  @Prop({ reflect: true })
   public query: boolean = false;
 
   /**
    * Determines, whether the bounce animation is shown or not
    */
-  @Prop({ reflectToAttr: true })
+  @Prop({ reflect: true })
   public bounce: boolean = false;
 
   public render(): HTMLElement {

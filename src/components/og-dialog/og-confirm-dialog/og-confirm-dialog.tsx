@@ -16,7 +16,7 @@ export class OgConfirmDialog {
   /**
    * Visibility state of this dialog.
    */
-  @Prop({ mutable: true, reflectToAttr: true })
+  @Prop({ mutable: true, reflect: true })
   public visible: boolean = false;
 
   /**

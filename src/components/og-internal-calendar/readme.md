@@ -28,7 +28,7 @@ This component is used by og-datepicker and is currently not intended for stand-
 
 ### Used by
 
- - [og-calendar](..\og-calendar)
+ - [og-calendar](../og-calendar)
 
 ### Graph
 ```mermaid
