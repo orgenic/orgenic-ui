@@ -19,7 +19,7 @@ export class OgRadioButtonGroup {
   public radioButtons: HTMLOgRadioButtonElement[] = [];
 
   /**
-   * name for the radiobuttons within this group
+   * name for the radio buttons within this group
    */
   @Prop()
   public name: string;
@@ -27,7 +27,7 @@ export class OgRadioButtonGroup {
   /**
    * The value of the selected radio button.
    */
-  @Prop({ reflectToAttr: true, mutable: true })
+  @Prop({ reflect: true, mutable: true })
   public value: string;
 
   /**

@@ -90,8 +90,8 @@
 }
 
 .og-textarea__textarea:focus {
-
     overflow: auto;
+    backface-visibility: hidden;
     min-height: 8em;
 
     & + .og-textarea__indicator {

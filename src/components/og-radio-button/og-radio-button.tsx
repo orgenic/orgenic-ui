@@ -16,7 +16,7 @@ export class OgRadioButton {
   /**
    * The name of the radio button. All radio buttons with the same name belong to one group.
    */
-  @Prop({ reflectToAttr: true })
+  @Prop({ reflect: true })
   public name: string;
 
   /**
@@ -34,13 +34,13 @@ export class OgRadioButton {
   /**
    * Determines, whether the radio button is checked or not
    */
-  @Prop({ reflectToAttr: true })
+  @Prop({ reflect: true })
   public checked: boolean;
 
   /**
    * Determines, whether the control is disabled or not
    */
-  @Prop({ reflectToAttr: true })
+  @Prop({ reflect: true })
   public disabled: boolean;
 
   /**

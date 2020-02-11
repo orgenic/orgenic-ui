@@ -28,7 +28,7 @@ export class OgDialog {
   /**
    * Visibility state of this dialog.
    */
-  @Prop({ mutable: true, reflectToAttr: true })
+  @Prop({ mutable: true, reflect: true })
   public visible: boolean = false;
 
   @Listen('wheel', { passive: false, target: 'window' }) // standard
@@ -48,7 +48,7 @@ export class OgDialog {
 
   @Listen('keydown', { passive: false, target: 'window' }) // keyboard scrolling (arrows, page up / down, pos1 / end)
   public handleKeyDown(ev: KeyboardEvent) {
-    this.visible && ScrollHandler.cancelScrollingKeyFilter(ev);
+    this.visible && ev.target === document.body && ScrollHandler.cancelScrollingKeyFilter(ev);
   }
 
   public closeDialog() {

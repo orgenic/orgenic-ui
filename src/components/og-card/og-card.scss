@@ -5,9 +5,9 @@
  * @prop --og-card-BorderWidth: Border width of the cards border
  * @prop --og-card-BoxShadow: Box shadow of the card
  * @prop --og-card-Margin: Margin around the card
- * @prop --og-card__header-BorderColor: Boder color of the cards header border
- * @prop --og-card__header-BorderStyle: Boder style of the cards header border
- * @prop --og-card__header-BorderWidth: Boder width of the cards header border
+ * @prop --og-card__header-BorderColor: Border color of the cards header border
+ * @prop --og-card__header-BorderStyle: Border style of the cards header border
+ * @prop --og-card__header-BorderWidth: Border width of the cards header border
  * @prop --og-card__header-FontSize: Font size of the cards header
  * @prop --og-card__header-FontWeight: Font weight of the cards header
  * @prop --og-card__header-TextTransform: Text transformation of the cards header
@@ -41,7 +41,7 @@
     --og-card__header-Padding:          0;
 
     // Content
-    --og-card__content-Padding:         16px 32px;
+    --og-card__content-Margin:          16px 32px;
 
     // Footer
     --og-card__footer-Padding:          16px 32px;
@@ -68,6 +68,8 @@
 
     box-shadow: var(--og-card-BoxShadow);
 
+    height: 100%;
+
     margin: var(--og-card-Margin);
 }
 
@@ -85,18 +87,28 @@
     margin: var(--og-card__header-Margin);
     padding: var(--og-card__header-Padding);
     text-transform: var(--og-card__header-TextTransform);
-
 }
 
 .og-card__title {
     @include ellipsis();
 }
+
 .og-card__content {
+    backface-visibility: hidden;
     flex-grow: 1;
-    padding: var(--og-card__content-Padding);
+    margin: var(--og-card__content-Margin);
+    overflow: auto;
 }
 
 .og-card__footer {
     text-align: var(--og-card__footer-TextAlign);
+}
+
+::slotted([slot="header"]) {
+    flex-grow: 1;
+    text-align: right;
+}
+
+::slotted([slot="footer"]) {
     padding: var(--og-card__footer-Padding);
 }

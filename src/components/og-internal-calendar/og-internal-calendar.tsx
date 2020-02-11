@@ -39,19 +39,25 @@ export class OgInternalCalendar {
   public dateClicked: EventEmitter; // emits moment object
 
   private internalMoment: Moment;
+  private firstDayOfWeek: number = 0;
+  private weekDayArray: number[] = [0, 1, 2, 3, 4, 5, 6];
 
   public async componentWillLoad() {
     await loadMomentLocale(this.loc, moment);
     this.internalMoment = moment();
   }
 
-  public getFirstDayOfWeek() {
-    return this.internalMoment.startOf('week').day();
+  /**
+   * Sets the date of the `internalMoment` object to the first weekday
+   * and stores the information about the start of the week as `firstDayOfWeek`
+   */
+  public setFirstDayOfWeek() {
+    this.firstDayOfWeek = this.internalMoment.startOf('week').day();
   }
 
-  public getDayArray() {
-    return [0,1,2,3,4,5,6].map(d => {
-      return (d + this.getFirstDayOfWeek()) % 7;
+  private calculateDayArray() {
+    this.weekDayArray = [0, 1, 2, 3, 4, 5, 6].map(d => {
+      return (d + this.firstDayOfWeek) % 7;
     });
   }
 
@@ -85,13 +91,8 @@ export class OgInternalCalendar {
     this.internalMoment.month(this.month);
     this.internalMoment.date(1);
 
-    const firstDayOfWeek = this.getFirstDayOfWeek();
-
-    if (this.internalMoment.day() < firstDayOfWeek) {
-      this.internalMoment.day(firstDayOfWeek - 7);
-    } else {
-      this.internalMoment.day(firstDayOfWeek);
-    }
+    this.setFirstDayOfWeek();
+    this.calculateDayArray();
   }
 
   public render(): HTMLElement[] {
@@ -101,27 +102,28 @@ export class OgInternalCalendar {
       <table>
         <thead>
           <tr>
-            { this.showCalendarWeek && <th></th> }
+            {this.showCalendarWeek && <th></th>}
             {
-              this.getDayArray().map((d): HTMLElement => {
-                return <th>{ this.internalMoment.day(d).format('dd') }</th>;
+              this.weekDayArray.map((d): HTMLElement => {
+                const localM = this.internalMoment.clone();
+                return <th>{localM.day(d).format('dd')}</th>;
               })
             }
           </tr>
         </thead>
         <tbody>
           {
-            [0,1,2,3,4,5].map((): HTMLElement => {
+            [0, 1, 2, 3, 4, 5].map((): HTMLElement => {
               return (<tr>
-                { this.showCalendarWeek && <td class="week">{ this.internalMoment.week() }</td> }
+                {this.showCalendarWeek && <td class="week">{this.internalMoment.week()}</td>}
                 {
-                  [0,1,2,3,4,5,6].map((): HTMLElement => {
+                  this.weekDayArray.map((): HTMLElement => {
                     const localM = this.internalMoment.clone();
                     this.internalMoment.add(1, 'd');
                     return <td
-                      class={ this.getClasses(localM) }
-                      onClick={ () => this.dateClicked.emit(localM) }>
-                      { localM.date() }
+                      class={this.getClasses(localM)}
+                      onClick={() => this.dateClicked.emit(localM)}>
+                      {localM.date()}
                     </td>;
                   })
                 }
