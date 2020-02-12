@@ -25,43 +25,43 @@ export class OgScrollContainer {
 
   /** Initial mouse X position. Is set by MouseDown. */
   @State()
-  public mouseXPosInitial: number;
+  private mouseXPosInitial: number;
 
   /** Initial mouse Y position. Is set by MouseDown. */
   @State()
-  public mouseYPosInitial: number;
+  private mouseYPosInitial: number;
 
   /** Current mouse X position. Is set by MouseMove. */
   @State()
-  public mouseXPos: number;
+  private mouseXPos: number;
 
   /** Current mouse Y position. Is set by MouseMove. */
   @State()
-  public mouseYPos: number;
+  private mouseYPos: number;
 
   /** Inital Scrollbar Thumb X position. Is set by MouseDown */
   @State()
-  public xThumbPosInitial: number;
+  private xThumbPosInitial: number;
 
   /** Inital Scrollbar Thumb Y position. Is set by MouseDown */
   @State()
-  public yThumbPosInitial: number;
+  private yThumbPosInitial: number;
 
   /** Current Scrollbar Thumb X position */
   @State()
-  public xThumbPos = 0;
+  private xThumbPos = 0;
 
   /** Current Scrollbar Thumb Y position */
   @State()
-  public yThumbPos = 0;
+  private yThumbPos = 0;
 
-  /** Current Scrollbar Thumb X position */
+  /** Current Scrollbar Thumb X size */
   @State()
-  public xThumbSize = 0;
+  private xThumbSize = 0;
 
-  /** Current Scrollbar Thumb Y position */
+  /** Current Scrollbar Thumb Y size */
   @State()
-  public yThumbSize = 0;
+  private yThumbSize = 0;
 
   private containerElement: HTMLElement;
   private hasScrollbarX: boolean = false;
@@ -74,7 +74,7 @@ export class OgScrollContainer {
   }
 
   public componentDidRender() {
-    this.containerElement = this.el.shadowRoot.querySelector(".og-scroll-container__content");
+    this.containerElement = this.el.shadowRoot.querySelector(".og-scroll-container__content-wrapper");
 
     const contentWidth = this.containerElement.scrollWidth;
     const contentHeight = this.containerElement.scrollHeight;
@@ -97,6 +97,7 @@ export class OgScrollContainer {
     }
 
     this.el.addEventListener('mousewheel', this.handleMouseWheel);
+    this.el.addEventListener('touchstart', this.handleTouchStart);
   }
 
   private handleMouseDown = (event: MouseEvent, axis: string) => {
@@ -148,6 +149,49 @@ export class OgScrollContainer {
     this.containerElement.scrollLeft = this.xThumbPos / this.factorScrollbarX;
   }
 
+  private handleTouchStart = (event: TouchEvent) => {
+    this.enableMoving = true;
+    this.mouseXPosInitial = event.touches[0].clientX;
+    this.mouseYPosInitial = event.touches[0].clientY;
+    this.yThumbPosInitial = this.yThumbPos;
+    this.xThumbPosInitial = this.xThumbPos;
+    document.body.addEventListener('touchend', this.handleTouchEnd);
+    document.body.addEventListener('touchmove', this.handleTouchMove);
+  }
+
+  private handleTouchEnd = () => {
+    this.enableMoving = false;
+    document.body.removeEventListener('touchend', this.handleTouchEnd);
+    document.body.removeEventListener('touchmove', this.handleTouchMove);
+  }
+
+  /** Calculates thumb position depending on mouse position */
+  private calculateThumbPositionTouch = () => {
+    // this.xThumbPos = Math.max(0, this.xThumbPosInitial + this.mouseXPos - this.mouseXPosInitial);
+    // this.xThumbPos = Math.min(this.el.clientWidth - this.xThumbSize, this.xThumbPos);
+    // this.yThumbPos = Math.max(0, this.yThumbPosInitial + this.mouseYPos - this.mouseYPosInitial);
+    // this.yThumbPos = Math.min(this.el.clientHeight - this.yThumbSize, this.yThumbPos);
+
+    this.yThumbPos = this.containerElement.scrollTop * this.factorScrollbarY;
+    this.xThumbPos = this.containerElement.scrollLeft * this.factorScrollbarX;
+  }
+
+  /** Fetches mouse coordinates and pushes them to the scrollbar thumb */
+  private handleTouchMove = (event: TouchEvent) => {
+    if (!this.enableMoving) {
+      return;
+    }
+    this.mouseXPos = event.touches[0].clientX;
+    this.mouseYPos = event.touches[0].clientY;
+
+
+    this.containerElement.scrollTop += this.mouseYPosInitial - this.mouseYPos;
+    this.containerElement.scrollLeft += this.mouseXPosInitial - this.mouseXPos;
+
+    this.calculateThumbPositionTouch();
+    // event.preventDefault();
+  }
+
   private handleMouseWheel = (event: WheelEvent) => {
     const prevScrollTop = this.containerElement.scrollTop;
     const prevScrollLeft = this.containerElement.scrollLeft;
@@ -166,8 +210,10 @@ export class OgScrollContainer {
 
     return (
       <Host>
-        <div class="og-scroll-container__content">
-          <slot></slot>
+        <div class="og-scroll-container__content-wrapper">
+          <div class="og-scroll-container__content">
+            <slot></slot>
+          </div>
         </div>
 
         { this.hasScrollbarY &&
@@ -180,7 +226,7 @@ export class OgScrollContainer {
               }}
               style={{
                 'top': this.yThumbPos.toString() + 'px',
-                'height': this.yThumbSize + 'px'
+                'height': 'calc(' + this.yThumbSize + 'px - (3/2 * var(--thumb-size--long)))'
               }}
               onMouseDown={(event) => this.handleMouseDown(event, 'y')}
             ></div>
@@ -197,7 +243,7 @@ export class OgScrollContainer {
               }}
               style={{
                 'left': this.xThumbPos.toString() + 'px',
-                'width': this.xThumbSize + 'px'
+                'width': 'calc(' + this.xThumbSize + 'px - (3/2 * var(--thumb-size--long)))'
               }}
               onMouseDown={(event) => this.handleMouseDown(event, 'x')}
             ></div>

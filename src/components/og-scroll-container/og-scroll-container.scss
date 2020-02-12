@@ -1,3 +1,16 @@
+// Test Stuff ///////////////////////////////////////////////
+:host {
+    background: cyan;
+}
+.og-scroll-container__content-wrapper {
+    background: blue;
+}
+.og-scroll-container__content {
+    background: silver;
+}
+
+// Production Stuff ///////////////////////////////////////////////
+
 :host {
     // TRACK
     --scrollbar-track--color: rgba(0, 0, 0, .3);
@@ -5,7 +18,7 @@
 
     // THUMB
     --scrollbar-thumb--color: var(--OG-COLOR-PRIMARY--100, #{$og-color-primary--100});
-    --scrollbar-thumb--size: 2px;  // width for 'scroll y', height for 'scroll x'
+    // --scrollbar-thumb--size: 2px;  // width for 'scroll y', height for 'scroll x'
 
     --thumb-size--short: 8px;
     --thumb-size--long: 16px;
@@ -14,38 +27,43 @@
     position: relative;
 }
 
-.og-scroll-container__content {
+.og-scroll-container__content-wrapper {
     overflow: hidden;
     height: 100%;
+}
+
+.og-scroll-container__content {
+    // min-width: 100%;
+    min-width: fit-content;
+    padding-right: var(--thumb-size--long);
+    padding-bottom: var(--thumb-size--long);
 }
 
 .og-scroll-container__track {
     position: absolute;
     background: var(--scrollbar-track--color);
+
+    &:hover {
+        --thumb-size--short: var(--thumb-size--long);
+    }
 }
 
 .og-scroll-container__track--x {
     top: auto;
-    left: 0;
-    right: var(--scrollbar-track--size);
-    bottom: 0;
+    // left: 0;
+    left: calc(var(--thumb-size--long) / 2);
+    right: var(--thumb-size--long);
+    bottom: calc(var(--thumb-size--long) / 2);
     width: auto;
     height: var(--scrollbar-track--size);
-
-    &:hover {
-        --thumb-size--short: 16px;
-    }
 }
 
 .og-scroll-container__track--y {
-    top: 0;
-    right: 0;
-    bottom: var(--scrollbar-track--size);
+    // top: 0;
+    top: calc(var(--thumb-size--long) / 2);
+    right: calc(var(--thumb-size--long) / 2);
+    bottom: var(--thumb-size--long);
     width: var(--scrollbar-track--size);
-
-    &:hover {
-        --thumb-size--short: 16px;
-    }
 }
 
 .og-scroll-container__thumb {
@@ -54,12 +72,11 @@
     background: var(--scrollbar-thumb--color);
 
     &.is-active {
-        --thumb-size--short: 16px;
+        --thumb-size--short: var(--thumb-size--long);
     }
 }
 
 .og-scroll-container__thumb--x {
-    width:  var(--thumb-size--long);
     height: var(--thumb-size--short);
     top: calc(calc(var(--scrollbar-track--size) - var(--thumb-size--short)) / 2);
 
@@ -68,7 +85,6 @@
 
 .og-scroll-container__thumb--y {
     width: var(--thumb-size--short);
-    height: var(--thumb-size--long);
     left: calc(calc(var(--scrollbar-track--size) - var(--thumb-size--short)) / 2);
 
     transition: width .1s ease-in, height .1s ease-in, left .1s ease-in;
