@@ -1,8 +1,4 @@
-/**
- * ORGENIC-UI
- * @license MIT
- * See LICENSE file at https://github.com/orgenic/orgenic-ui/blob/master/LICENSE
- **/
+
 
 import { h, Component, Prop, Listen } from '@stencil/core';
 import { ScrollHandler } from '../../utils/scroll-handler';

@@ -1,7 +1,4 @@
-[![travis status](https://travis-ci.com/orgenic/orgenic-ui.svg?branch=master)](https://travis-ci.com/orgenic/orgenic-ui)
-[![npm version](https://badge.fury.io/js/%40orgenic%2Forgenic-ui.svg)](https://badge.fury.io/js/%40orgenic%2Forgenic-ui)
-
-# ORGENIC UI
+# ORGENIC UI Pro
 
 <div style="text-align: center">
   <a href="https://orgenic.org/">
@@ -15,11 +12,12 @@ With these instructions you will get ORGENIC UI integrated in your project.
 
 ### Installing
 
-```bash
+tbd
+<!-- ```bash
 npm i @orgenic/orgenic-ui
-```
+``` -->
 
-### Angular
+<!-- ### Angular
 Integrate ORGENIC UI in your angular application
 
 **main.ts**
@@ -148,11 +146,12 @@ Integrating ORGENIC-UI in a plain JS application.
         </og-card>
     </body>
 </html>
-```
+``` -->
 
 ## Documentation
 
-Find the full documentation of ORGENIC UI at [https://docs.orgenic.org](https://docs.orgenic.org).
+tbd
+<!-- Find the full documentation of ORGENIC UI at [https://docs.orgenic.org](https://docs.orgenic.org). -->
 
 ## Versioning
 
@@ -160,4 +159,4 @@ We use [Semantic Versioning](http://semver.org/).
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Commercial
