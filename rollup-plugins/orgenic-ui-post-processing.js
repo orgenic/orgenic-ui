@@ -11,7 +11,7 @@ function orgenicUiPostProcessing(config) {
     execute('node-sass --watch src/styles/themes -o www/themes');
   }
   return {
-    name: 'orgenic-up-post-processing',
+    name: 'orgenic-ui-post-processing',
 
     generateBundle: async function (options, bundle) {
       if (config.target !== 'start' && options.entryFileNames.indexOf('.esm.js') < 0) {
@@ -28,6 +28,9 @@ function orgenicUiPostProcessing(config) {
             // copy generated component readmes to dist/docs
             await execute('copyfiles -u 1 "src/components/**/readme.md" dist/docs/');
 
+            // copy generated icon-sprite to dist/orgenic-ui-assets
+            await execute('copyfiles -f "src/assets/icons.svg" dist/orgenic-ui-assets/');
+
             // copy helpers to dist
             await execute('copyfiles -R src/helper dist')
 
@@ -40,6 +43,7 @@ function orgenicUiPostProcessing(config) {
             await execute('node-sass src/styles/themes -o dist/themes');
             momentLocales2Modules({ outDir: 'dist/orgenic-ui-assets/og-calendar-locales' });
           } else {
+            await execute('copyfiles -f "src/assets/icons.svg" www/orgenic-ui-assets/');
             momentLocales2Modules({ outDir: 'www/orgenic-ui-assets/og-calendar-locales' });
             await execute('node-sass src/styles/themes -o www/themes');
           }
