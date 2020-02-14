@@ -33,17 +33,17 @@
     "dist/"
   ],
   "scripts": {
-      "build": "npm run icons && stencil build --docs",
-      "build.watch": "npm icons && stencil build --docs --watch",
-      "start": "stencil build --dev --watch --serve --config stencil.run.config.ts",
-      "test": "stencil test --spec --e2e",
-      "test.spec": "stencil test --spec",
-      "test.ci": "stencil test --spec --e2e --ci",
-      "test.watch": "stencil test --spec --e2e --watchAll",
-      "check-licenseheader": "node ./.scripts/check-licenseheaders.js",
-      "pack-icons": "npx svgstore-cli -o ./src/assets/icons.svg ./src/assets/icons/**/*.svg",
-      "cleanup-icons": "npx replace-in-file /fill=\\\".*?\\\"/g \" \" ./src/assets/icons.svg --isRegex && npx replace-in-file /stroke=\\\".*?\\\"/g \" \"  ./src/assets/icons.svg --isRegex",
-      "icons": "npm run pack-icons && npm run cleanup-icons"
+    "build": "npm run icons && stencil build --docs",
+    "build.watch": "npm icons && stencil build --docs --watch",
+    "start": "stencil build --dev --watch --serve --config stencil.run.config.ts",
+    "test": "stencil test --spec --e2e",
+    "test.spec": "stencil test --spec",
+    "test.ci": "stencil test --spec --e2e --ci",
+    "test.watch": "stencil test --spec --e2e --watchAll",
+    "check-licenseheader": "node ./.scripts/check-licenseheaders.js",
+    "pack-icons": "npx svgstore-cli -o ./src/assets/icons.svg ./src/assets/icons/**/*.svg",
+    "cleanup-icons": "npx replace-in-file /fill=\\\".*?\\\"/g \" \" ./src/assets/icons.svg --isRegex && npx replace-in-file /stroke=\\\".*?\\\"/g \" \"  ./src/assets/icons.svg --isRegex",
+    "icons": "npm run pack-icons && npm run cleanup-icons"
   },
   "pre-commit": [
     "check-licenseheader"
