@@ -217,6 +217,43 @@ export namespace Components {
     */
     'label': string;
   }
+  interface OgIcon {
+    /**
+    * The displayed icon
+    * @type {string}
+    */
+    'icon': string;
+    /**
+    * The style of the icon
+    * @type {'stroke' | 'solid'}
+    */
+    'iconStyle': 'stroke' | 'solid';
+    /**
+    * The size of the icon
+    */
+    'size': string;
+    /**
+    * An optional path to a custom svg-sprite
+    * @type {string}
+    */
+    'src': string;
+  }
+  interface OgIconButton {
+    /**
+    * Determines, whether the control is disabled or not
+    */
+    'disabled': boolean;
+    /**
+    * The icon of the button
+    */
+    'icon': string;
+    'iconSrc': string;
+    'iconStyle': "stroke" | "solid";
+    /**
+    * The label of the button
+    */
+    'label': string;
+  }
   interface OgInternalCalendar {
     'dateDecorator': OgDateDecorator;
     'loc': string;
@@ -617,6 +654,18 @@ declare global {
     new (): HTMLOgFormItemElement;
   };
 
+  interface HTMLOgIconElement extends Components.OgIcon, HTMLStencilElement {}
+  var HTMLOgIconElement: {
+    prototype: HTMLOgIconElement;
+    new (): HTMLOgIconElement;
+  };
+
+  interface HTMLOgIconButtonElement extends Components.OgIconButton, HTMLStencilElement {}
+  var HTMLOgIconButtonElement: {
+    prototype: HTMLOgIconButtonElement;
+    new (): HTMLOgIconButtonElement;
+  };
+
   interface HTMLOgInternalCalendarElement extends Components.OgInternalCalendar, HTMLStencilElement {}
   var HTMLOgInternalCalendarElement: {
     prototype: HTMLOgInternalCalendarElement;
@@ -731,6 +780,8 @@ declare global {
     'og-dialog': HTMLOgDialogElement;
     'og-expander': HTMLOgExpanderElement;
     'og-form-item': HTMLOgFormItemElement;
+    'og-icon': HTMLOgIconElement;
+    'og-icon-button': HTMLOgIconButtonElement;
     'og-internal-calendar': HTMLOgInternalCalendarElement;
     'og-layout-child': HTMLOgLayoutChildElement;
     'og-layout-container': HTMLOgLayoutContainerElement;
@@ -986,6 +1037,47 @@ declare namespace LocalJSX {
     * The label for the form item
     */
     'label'?: string;
+  }
+  interface OgIcon {
+    /**
+    * The displayed icon
+    * @type {string}
+    */
+    'icon'?: string;
+    /**
+    * The style of the icon
+    * @type {'stroke' | 'solid'}
+    */
+    'iconStyle'?: 'stroke' | 'solid';
+    /**
+    * The size of the icon
+    */
+    'size'?: string;
+    /**
+    * An optional path to a custom svg-sprite
+    * @type {string}
+    */
+    'src'?: string;
+  }
+  interface OgIconButton {
+    /**
+    * Determines, whether the control is disabled or not
+    */
+    'disabled'?: boolean;
+    /**
+    * The icon of the button
+    */
+    'icon'?: string;
+    'iconSrc'?: string;
+    'iconStyle'?: "stroke" | "solid";
+    /**
+    * The label of the button
+    */
+    'label'?: string;
+    /**
+    * Event is being emitted when value changes.
+    */
+    'onClicked'?: (event: CustomEvent<any>) => void;
   }
   interface OgInternalCalendar {
     'dateDecorator'?: OgDateDecorator;
@@ -1389,6 +1481,8 @@ declare namespace LocalJSX {
     'og-dialog': OgDialog;
     'og-expander': OgExpander;
     'og-form-item': OgFormItem;
+    'og-icon': OgIcon;
+    'og-icon-button': OgIconButton;
     'og-internal-calendar': OgInternalCalendar;
     'og-layout-child': OgLayoutChild;
     'og-layout-container': OgLayoutContainer;
@@ -1427,6 +1521,8 @@ declare module "@stencil/core" {
       'og-dialog': LocalJSX.OgDialog & JSXBase.HTMLAttributes<HTMLOgDialogElement>;
       'og-expander': LocalJSX.OgExpander & JSXBase.HTMLAttributes<HTMLOgExpanderElement>;
       'og-form-item': LocalJSX.OgFormItem & JSXBase.HTMLAttributes<HTMLOgFormItemElement>;
+      'og-icon': LocalJSX.OgIcon & JSXBase.HTMLAttributes<HTMLOgIconElement>;
+      'og-icon-button': LocalJSX.OgIconButton & JSXBase.HTMLAttributes<HTMLOgIconButtonElement>;
       'og-internal-calendar': LocalJSX.OgInternalCalendar & JSXBase.HTMLAttributes<HTMLOgInternalCalendarElement>;
       'og-layout-child': LocalJSX.OgLayoutChild & JSXBase.HTMLAttributes<HTMLOgLayoutChildElement>;
       'og-layout-container': LocalJSX.OgLayoutContainer & JSXBase.HTMLAttributes<HTMLOgLayoutContainerElement>;

@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
-        <title>ORGENIC UI Vanilla JS Examples</title>
+        <title>ORGENIC UI Pro Vanilla JS Examples</title>
         <script type="module" src="/build/orgenic-ui.esm.js"></script>
         <script nomodule src="/build/orgenic-ui.js"></script>
         <script src="examples/_navigo.min.js"></script>
@@ -182,6 +182,8 @@
             </script>
 
             <og-card name="Components">
+                <a href="icon-button" data-navigo>Icon Button</a>
+                <a href="icon" data-navigo>Icon</a>
                 <a href="spinner" data-navigo>Spinner</a>
                 <a href="progress" data-navigo>Progress</a>
                 <a href="layout-container" data-navigo>Layout Container</a>
@@ -229,6 +231,8 @@
                 // use #! to hash
                 const router = new Navigo(null, true, '#!');
                 router.on({
+                    'icon-button': () => { loadHTML('./examples/IconButton.html', view); },
+                    'icon': () => { loadHTML('./examples/Icon.html', view); },
                     'spinner': () => { loadHTML('./examples/Spinner.html', view); },
                     'progress': () => { loadHTML('./examples/Progress.html', view); },
                     'layout-container': () => { loadHTML('./examples/LayoutContainer.html', view); },

@@ -1,0 +1,50 @@
+// =============================================================================
+// CSS CUSTOM PROPERTIES
+// =============================================================================
+
+/**
+ * @prop --og-icon--Size: The dimensions of the icon (width = height)
+ * @prop --og-icon--Fill: Fill color of the icon
+ * @prop --og-icon--Stroke: Stroke color of the icon
+ */
+
+// -----------------------------------------------------------------------------
+// Base
+// -----------------------------------------------------------------------------
+
+:host {
+  // All Component Variables
+  // Map Variables to Properties
+    --og-icon--Size: 32px;
+    --og-icon--Fill: var(--OG-COLOR-SECONDARY--100, currentColor);
+    --og-icon--Stroke: var(--OG-COLOR-SECONDARY--100, currentColor);
+
+    --Display: inline-block;
+    display: var(--Display);
+
+    user-select: none;
+
+    box-sizing: border-box;
+
+    *, *::before, *::after { box-sizing: inherit; }
+}
+
+:host([hidden]) { display: none }
+
+
+:host([icon-style=solid])  {
+    --og-icon--Stroke: none;
+}
+
+:host([icon-style=stroke])  {
+    --og-icon--Fill: none;
+}
+
+svg {
+    width: var(--og-icon--Size);
+    height: var(--og-icon--Size);
+    fill: var(--og-icon--Fill);
+    stroke: var(--og-icon--Stroke);
+
+    transition: fill .3s ease, stroke .3s ease;
+}

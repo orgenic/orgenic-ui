@@ -1,0 +1,36 @@
+<!--
+og-icon-button
+-->
+<og-card name="Icon Buttons">
+    <div class="example">
+        <og-icon-button class="demo-button" label="Default"></og-icon-button>
+        <og-icon-button class="demo-button" label="Link" data-context="link"></og-icon-button>
+        <og-icon-button class="demo-button" label="Workflow" data-context="workflow"></og-icon-button>
+        <og-icon-button class="demo-button" label="Disabled" disabled></og-icon-button>
+        <og-icon-button class="demo-button" label="Outline" data-context="outline"></og-icon-button>
+    </div>
+    <div class="example" style="align-items: center;">
+        <og-icon-button class="demo-button" label="Default"></og-icon-button>
+        <og-icon-button class="demo-button" style="max-width: 300px;" label="Long default button with some extra long text which should end with ellipsis"></og-icon-button>
+        <og-icon-button class="demo-button og-icon-button--text-wrap" style="max-width: 200px;" label="This text will wrap"></og-icon-button>
+    </div>
+    <div class="example" style="align-items: center;">
+        <og-icon-button class="demo-button"></og-icon-button>
+        <og-icon-button class="demo-button" icon="menu" data-context="link"></og-icon-button>
+        <og-icon-button class="demo-button" icon="close" data-context="outline"></og-icon-button>
+        <og-icon-button class="demo-button" icon="file" data-context="workflow"></og-icon-button>
+    </div>
+</og-card>
+<script>
+    const buttons = document.querySelectorAll('.demo-button');
+    buttons.forEach(button => {
+        button.addEventListener('clicked', (e) => {
+            console.log('clicked', e);
+        });
+    });
+</script>
+<style>
+    .demo-button + .demo-button {
+        margin-left: 0.25rem;
+    }
+</style>
