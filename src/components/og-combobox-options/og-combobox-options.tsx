@@ -13,7 +13,7 @@ export class OgFormItem {
    * An array of items to choose from
    */
   @Prop()
-  public items: any[];
+  public items: any[] = [];
 
   /**
    * The selected value
@@ -59,7 +59,7 @@ export class OgFormItem {
   }
 
   private hasValidItems(): boolean {
-    return Array.isArray(this.items);
+    return Array.isArray(this.items) && this.items.length > 0;
   }
 
   public render(): HTMLElement {
@@ -69,7 +69,7 @@ export class OgFormItem {
           class='og-combobox-options__list'
         >
           {!this.hasValidItems() ? (
-            <li>No options available</li>
+            <li class='og-combobox-options__list__no-items'>No options available</li>
             ) : (
             this.items.map((item): HTMLElement => (
               <li

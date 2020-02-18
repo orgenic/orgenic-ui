@@ -37,7 +37,7 @@ export class OgCombobox {
    * An array of items to choose from
    */
   @Prop()
-  public items: any[];
+  public items: any[] = [];
 
   /**
    * Set the property for the items to define as label. Default: "label"
@@ -175,7 +175,7 @@ export class OgCombobox {
   }
 
   private hasValidItems(): boolean {
-    return Array.isArray(this.items);
+    return Array.isArray(this.items) && this.items.length > 0;
   }
 
   private isDropdownActive(): boolean {
@@ -195,6 +195,8 @@ export class OgCombobox {
 
     const comboboxHeaderStyle = window.getComputedStyle(this.comboboxHeaderElement);
 
+    // if there are no items in the list, there is still an "item" saying "no options available"
+    const itemCount = Math.max(this.items.length, 1);
     let optionsTop = (this.comboboxHeaderElement.getBoundingClientRect().top + parseInt(comboboxHeaderStyle.height) + parseInt(comboboxHeaderStyle.marginBottom));
     let optionsHeight = 0;
     let itemHeight = 0;
@@ -208,15 +210,16 @@ export class OgCombobox {
     }
 
     const itemStyle = window.getComputedStyle(item);
-    itemHeight = parseInt(itemStyle.paddingTop) + parseInt(itemStyle.paddingBottom) + parseInt(itemStyle.lineHeight);
-    optionsHeight = itemHeight * this.items.length;
+    const lineHeight = parseInt(itemStyle.lineHeight) || parseInt(itemStyle.height) || parseInt(itemStyle.fontSize) * 1.5;
+    itemHeight = parseInt(itemStyle.paddingTop) + parseInt(itemStyle.paddingBottom) + lineHeight;
+    optionsHeight = itemHeight * itemCount;
 
     // get space on screen below combobox
     const spaceBelow = window.innerHeight - optionsTop - parseInt(itemStyle.paddingBottom);
 
     // calculate maximum and minimum options sizes (for 4 - 7 items)
-    const maxHeight = itemHeight * Math.min(7, this.items.length);
-    const minHeight = itemHeight * Math.min(4, this.items.length);
+    const maxHeight = itemHeight * Math.min(7, itemCount);
+    const minHeight = itemHeight * Math.min(4, itemCount);
 
     // calculate real options size to fit below combobox
     optionsHeight = Math.min(spaceBelow, Math.min(maxHeight, optionsHeight));
