@@ -140,8 +140,10 @@
 // Native <button> element
 .og-icon-button {
   background: var(--og-icon-button-Background);
-  border: var(--BorderWidth) var(--BorderStyle) var(--og-icon-button-BorderColor);
+  border-color: var(--og-icon-button-BorderColor);
   border-radius: var(--og-icon-button-BorderRadius);
+  border-style: var(--BorderStyle);
+  border-width: var(--BorderWidth);
   color: var(--og-icon-button-Color);
   display: block;
   font-family: inherit;
