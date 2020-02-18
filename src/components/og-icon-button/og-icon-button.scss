@@ -67,7 +67,7 @@
    * @prop --og-icon-button-WhiteSpace:
    * Text Overflow behavior. Used to truncate overflowing text.
    */
-    --og-icon-button-TextOverflow: NULL;
+  --og-icon-button-TextOverflow: NULL;
 
 
   --BoxShadow: var(--og-icon-button-BoxShadow);
@@ -93,36 +93,34 @@
 }
 
 :host(:not(.og-icon-button--text-wrap)) {
-    --MinWidth: 0;
-    --og-icon-button-WhiteSpace: nowrap;
-    --og-icon-button-TextOverflow: ellipsis;
+  --MinWidth: 0;
+  --og-icon-button-WhiteSpace: nowrap;
+  --og-icon-button-TextOverflow: ellipsis;
 }
 
-
-
 :host([data-context~='workflow']) {
-    --og-icon-button-Background: var(--OG-COLOR-PRIMARY--100, #{$og-color-primary--100});
-    --og-icon-button-Background--hover: var(--OG-COLOR-PRIMARY--120, #{$og-color-primary--120});
-    --og-icon-button-Background--active: var(--OG-COLOR-PRIMARY--80, #{$og-color-primary--80});
-    --og-icon-button-Background--disabled: var(--OG-COLOR-PRIMARY--100--30, #{$og-color-primary--100--30});
+  --og-icon-button-Background: var(--OG-COLOR-PRIMARY--100, #{$og-color-primary--100});
+  --og-icon-button-Background--hover: var(--OG-COLOR-PRIMARY--120, #{$og-color-primary--120});
+  --og-icon-button-Background--active: var(--OG-COLOR-PRIMARY--80, #{$og-color-primary--80});
+  --og-icon-button-Background--disabled: var(--OG-COLOR-PRIMARY--100--30, #{$og-color-primary--100--30});
 
-    --og-icon-button-Color: var(--OG-COLOR-SHADE--0, #{$og-color-shade--0});
-    --og-icon-button-Color--hover: var(--OG-COLOR-SHADE--0, #{$og-color-shade--0});
-    --og-icon-button-Color--active: var(--OG-COLOR-SHADE--0, #{$og-color-shade--0});
-    --og-icon-button-Color--disabled: var(--OG-COLOR-SHADE--0--30, #{$og-color-shade--0--30});
+  --og-icon-button-Color: var(--OG-COLOR-SHADE--0, #{$og-color-shade--0});
+  --og-icon-button-Color--hover: var(--OG-COLOR-SHADE--0, #{$og-color-shade--0});
+  --og-icon-button-Color--active: var(--OG-COLOR-SHADE--0, #{$og-color-shade--0});
+  --og-icon-button-Color--disabled: var(--OG-COLOR-SHADE--0--30, #{$og-color-shade--0--30});
 }
 
 // 'Link' version
 :host([data-context~="link"]) {
-    --og-icon-button-Background: transparent;
-    --og-icon-button-Background--hover: var(--OG-COLOR-SHADE--100--30, #{$og-color-shade--100--30});
-    --og-icon-button-Background--active: var(--OG-COLOR-SHADE--100--10, #{$og-color-shade--100--10});
-    --og-icon-button-Background--disabled: transparent;
+  --og-icon-button-Background: transparent;
+  --og-icon-button-Background--hover: var(--OG-COLOR-SHADE--100--30, #{$og-color-shade--100--30});
+  --og-icon-button-Background--active: var(--OG-COLOR-SHADE--100--10, #{$og-color-shade--100--10});
+  --og-icon-button-Background--disabled: transparent;
 
-    --og-icon-button-Color: var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
-    --og-icon-button-Color--hover: var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
-    --og-icon-button-Color--active: var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
-    --og-icon-button-Color--disabled: var(--OG-COLOR-SHADE--100--30, #{$og-color-shade--100--30});
+  --og-icon-button-Color: var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
+  --og-icon-button-Color--hover: var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
+  --og-icon-button-Color--active: var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
+  --og-icon-button-Color--disabled: var(--OG-COLOR-SHADE--100--30, #{$og-color-shade--100--30});
 }
 
 :host([data-context~="outline"]) {
@@ -193,10 +191,14 @@
   }
 }
 
-og-icon {
-    // transform: translate(0, 50%);
+og-icon[icon-style=stroke] {
+  --og-icon--Stroke: var(--og-icon-button-Color, currentColor);
+}
+
+og-icon[icon-style=fill] {
+  --og-icon--Fill: var(--og-icon-button-Color, currentColor);
 }
 
 .label {
-    margin-left: 10px;
+  margin-left: 10px;
 }
