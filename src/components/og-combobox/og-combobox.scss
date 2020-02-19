@@ -132,6 +132,10 @@
     --og-combobox-Opacity: .3;
 }
 
+:host([custom-option]) {
+    cursor: text;
+}
+
 
 
 // Wrapper for the 'allways visible' part of the 'combobox'

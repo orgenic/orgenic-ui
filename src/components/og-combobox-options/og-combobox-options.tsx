@@ -70,13 +70,13 @@ export class OgFormItem {
         >
           {!this.hasValidItems() ? (
             <li class='og-combobox-options__list__no-items'>No options available</li>
-            ) : (
+          ) : (
             this.items.map((item): HTMLElement => (
               <li
                 class={'og-combobox-options__list__item' + (item[this.itemValueProperty] == this.value ? ' og-combobox-options__list__item--active' : '')}
                 onClick={() => this.handleItemClick(item)}
-                >
-                  {item[this.itemLabelProperty]}
+              >
+                {item[this.itemLabelProperty]}
               </li>
             ))
           )}

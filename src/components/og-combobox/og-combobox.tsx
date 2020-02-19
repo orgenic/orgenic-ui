@@ -58,19 +58,25 @@ export class OgCombobox {
   public disabled: boolean;
 
   /**
+   * User can type custom options if enabled
+   */
+  @Prop()
+  public customOption: boolean = false;
+
+  /**
    * Event is being emitted when value changes.
    */
   @Event()
   public itemSelected: EventEmitter<any>;
 
   /**
-   * Event is being emitted when input gets focus..
+   * Event is being emitted when input gets focus
    */
   @Event()
   public focusGained: EventEmitter<FocusEvent>;
 
   /**
-   * Event is being emitted when focus gets lost.
+   * Event is being emitted when focus gets lost
    */
   @Event()
   public focusLost: EventEmitter<FocusEvent>;
@@ -149,6 +155,23 @@ export class OgCombobox {
       this.dropdownActive = false;
       this.value = item[this.itemValueProperty] + '';
       this.itemSelected.emit(item);
+      this.focusLost.emit();
+    }
+  }
+
+  public inputChanged(eventTarget) {
+    if (!this.disabled && this.customOption) {
+      const value = eventTarget.value || '';
+      const item = {};
+      item[this.itemLabelProperty] = value;
+      item[this.itemValueProperty] = value;
+      this.itemSelected.emit(item);
+      eventTarget.blur();
+
+      if (this.dropdownActive) {
+        this.dropdownActive = false;
+      }
+
       this.focusLost.emit();
     }
   }
@@ -250,10 +273,11 @@ export class OgCombobox {
           <input
             type="text"
             class="og-combobox__input"
-            readonly="true"
+            readonly={!this.customOption}
             value={this.getSelectedItemLabel()}
             placeholder={this.placeholder}
             disabled={this.disabled}
+            onChange={(event) => this.inputChanged(event.target)}
           />
           <div class="og-combobox__button">
             <svg
