@@ -102,18 +102,26 @@
     width: 100%;
 }
 
-.og-combobox-options__list__item {
+li {
     line-height: var(--og-combobox__flyout__item-LineHeight);
     display: block;
-    cursor: pointer;
     padding: var(--og-combobox__flyout__item-Padding);
     transition: background .2s ease;
     color: var(--og-combobox__flyout__item-Color);
     background: var(--og-combobox__flyout__item-Background);
+}
+
+.og-combobox-options__list__item {
+    cursor: pointer;
 
     &:hover {
         --og-combobox__flyout__item-Background: var(--og-combobox__flyout__item-Background--hover);
     }
+}
+
+.og-combobox-options__list__no-items {
+    opacity: .5;
+    font-style: italic;
 }
 
 .og-combobox-options__list__item--active,

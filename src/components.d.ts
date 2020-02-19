@@ -62,6 +62,10 @@ export namespace Components {
   }
   interface OgCombobox {
     /**
+    * User can type custom options if enabled
+    */
+    'customOption': boolean;
+    /**
     * Determines, whether the control is disabled or not
     */
     'disabled': boolean;
@@ -855,6 +859,10 @@ declare namespace LocalJSX {
   }
   interface OgCombobox {
     /**
+    * User can type custom options if enabled
+    */
+    'customOption'?: boolean;
+    /**
     * Determines, whether the control is disabled or not
     */
     'disabled'?: boolean;
@@ -871,11 +879,11 @@ declare namespace LocalJSX {
     */
     'items'?: any[];
     /**
-    * Event is being emitted when input gets focus..
+    * Event is being emitted when input gets focus
     */
     'onFocusGained'?: (event: CustomEvent<FocusEvent>) => void;
     /**
-    * Event is being emitted when focus gets lost.
+    * Event is being emitted when focus gets lost
     */
     'onFocusLost'?: (event: CustomEvent<FocusEvent>) => void;
     /**
