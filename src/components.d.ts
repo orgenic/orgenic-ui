@@ -553,6 +553,10 @@ export namespace Components {
     */
     'disabled': boolean;
     /**
+    * Determines, whether the control automatically grows downwards if the inserted text gets to big.
+    */
+    'multiLine': boolean;
+    /**
     * Optional placeholder text if input is empty.
     */
     'placeholder'?: string;
@@ -1418,6 +1422,10 @@ declare namespace LocalJSX {
     * Determines, whether the control is disabled or not.
     */
     'disabled'?: boolean;
+    /**
+    * Determines, whether the control automatically grows downwards if the inserted text gets to big.
+    */
+    'multiLine'?: boolean;
     /**
     * Event is being emitted when input gets focus..
     */
