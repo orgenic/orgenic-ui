@@ -1,0 +1,188 @@
+// =============================================================================
+// CSS CUSTOM PROPERTIES
+// =============================================================================
+
+
+//your theme name
+// var(--theme-name: os-theme-orgenic;
+
+//horizontal scrollbar
+// var(--scrollbar-horizontal-size: 6px; //horizontal scrollbar height
+
+// var(--scrollbar-horizontal-padding: 2px;
+// var(--scrollbar-horizontal-inner-expansion: 6px;
+// var(--scrollbar-horizontal-track-background: transparent;
+// var(--scrollbar-horizontal-track-background-hover: transparent;
+// var(--scrollbar-horizontal-track-background-active: transparent;
+// var(--scrollbar-horizontal-track-transition: background-color 0.3s;
+// var(--scrollbar-horizontal-handle-min-size: 30px; //horizontal scrollbar handle min width
+// var(--scrollbar-horizontal-handle-max-size: none; //horizontal scrollbar handle max width
+// var(--scrollbar-horizontal-handle-background: rgba(0, 0, 0, 0.4);
+// var(--scrollbar-horizontal-handle-background-hover: rgba(0, 0, 0, 0.6);
+// var(--scrollbar-horizontal-handle-background-active: rgba(0, 0, 0, 1);
+// var(--scrollbar-horizontal-handle-transition: background-color 0.3s;
+
+// //vertical scrollbar
+// var(--scrollbar-vertical-size: 6px; //vertical scrollbar width
+// var(--scrollbar-vertical-padding: 2px;
+// var(--scrollbar-vertical-inner-expansion: 6px;
+// var(--scrollbar-vertical-track-background: transparent;
+// var(--scrollbar-vertical-track-background-hover: transparent;
+// var(--scrollbar-vertical-track-background-active: transparent;
+// var(--scrollbar-vertical-track-transition: background-color 0.3s;
+// var(--scrollbar-vertical-handle-min-size: 30px; //vertical scrollbar handle min height
+// var(--scrollbar-vertical-handle-max-size: none; //vertical scrollbar handle max height
+// var(--scrollbar-vertical-handle-background: rgba(0, 0, 0, 0.4);
+// var(--scrollbar-vertical-handle-background-hover: rgba(0, 0, 0, 0.6);
+// var(--scrollbar-vertical-handle-background-active: rgba(0, 0, 0, 1);
+// var(--scrollbar-vertical-handle-transition: background-color 0.3s;
+
+// //scrollbar corner
+// var(--scrollbar-corner-background-color: transparent;
+
+
+// IMPORT
+@import '../../../node_modules/overlayscrollbars/css/OverlayScrollbars.min.scss';
+
+*, *::before, *::after { box-sizing: inherit; }
+
+:host {
+    //horizontal scrollbar
+    --scrollbar-horizontal-size: 6px;
+    --scrollbar-horizontal-padding: 2px;
+    --scrollbar-horizontal-inner-expansion: 6px;
+    --scrollbar-horizontal-track-background: transparent;
+    --scrollbar-horizontal-track-background-hover: transparent;
+    --scrollbar-horizontal-track-background-active: transparent;
+    --scrollbar-horizontal-track-transition: background-color 0.3s;
+    --scrollbar-horizontal-handle-min-size: 30px; //horizontal scrollbar handle min width
+    --scrollbar-horizontal-handle-max-size: none; //horizontal scrollbar handle max width
+    --scrollbar-horizontal-handle-background: rgba(0, 0, 0, 0.4);
+    --scrollbar-horizontal-handle-background-hover: rgba(0, 0, 0, 0.6);
+    --scrollbar-horizontal-handle-background-active: rgba(0, 0, 0, 1);
+    --scrollbar-horizontal-handle-transition: background-color 0.3s;
+
+    //vertical scrollbar
+    --scrollbar-vertical-size: 6px; //vertical scrollbar width
+    --scrollbar-vertical-padding: 2px;
+    --scrollbar-vertical-inner-expansion: 6px;
+    --scrollbar-vertical-track-background: transparent;
+    --scrollbar-vertical-track-background-hover: transparent;
+    --scrollbar-vertical-track-background-active: transparent;
+    --scrollbar-vertical-track-transition: background-color 0.3s;
+    --scrollbar-vertical-handle-min-size: 30px; //vertical scrollbar handle min height
+    --scrollbar-vertical-handle-max-size: none; //vertical scrollbar handle max height
+    --scrollbar-vertical-handle-background: rgba(0, 0, 0, 0.4);
+    --scrollbar-vertical-handle-background-hover: rgba(0, 0, 0, 0.6);
+    --scrollbar-vertical-handle-background-active: rgba(0, 0, 0, 1);
+    --scrollbar-vertical-handle-transition: background-color 0.3s;
+
+    //scrollbar corner
+    --scrollbar-corner-background-color: transparent;
+
+    display: block;
+}
+
+.os-scrollbar-horizontal {
+    right: calc(var(--scrollbar-vertical-size) + calc(var(--scrollbar-vertical-padding) * 2));
+    height: var(--scrollbar-horizontal-size);
+    padding: var(--scrollbar-horizontal-padding);
+}
+.os-scrollbar-vertical {
+    bottom: calc(var(--scrollbar-horizontal-size) + calc(var(--scrollbar-horizontal-padding) * 2));
+    width: var(--scrollbar-vertical-size);
+    padding: var(--scrollbar-vertical-padding);
+}
+:host(.os-host-rtl) > .os-scrollbar-horizontal {
+    left: calc(var(--scrollbar-vertical-size) + calc(var(--scrollbar-vertical-padding) * 2));
+    right: 0;
+}
+.os-scrollbar-corner {
+    height: calc(var(--scrollbar-horizontal-size) + calc(var(--scrollbar-horizontal-padding) * 2));
+    width: calc(var(--scrollbar-vertical-size) + calc(var(--scrollbar-vertical-padding) * 2));
+    background-color: var(--scrollbar-corner-background-color);
+}
+.os-scrollbar-horizontal > .os-scrollbar-track {
+    background: var(--scrollbar-horizontal-track-background);
+}
+.os-scrollbar-vertical > .os-scrollbar-track {
+    background: var(--scrollbar-vertical-track-background);
+}
+.os-scrollbar-horizontal > .os-scrollbar-track:hover {
+    background: var(--scrollbar-horizontal-track-background-hover);
+}
+.os-scrollbar-vertical > .os-scrollbar-track:hover {
+    background: var(--scrollbar-vertical-track-background-hover);
+}
+.os-scrollbar-horizontal > .os-scrollbar-track.active {
+    background: var(--scrollbar-horizontal-track-background-active);
+}
+.os-scrollbar-vertical > .os-scrollbar-track.active {
+    background: var(--scrollbar-vertical-track-background-active);
+}
+:host(.os-host-transition) > .os-scrollbar-horizontal > .os-scrollbar-track {
+    -webkit-transition: var(--scrollbar-horizontal-track-transition);
+            transition: var(--scrollbar-horizontal-track-transition);
+}
+:host(.os-host-transition) > .os-scrollbar-vertical > .os-scrollbar-track {
+    -webkit-transition: var(--scrollbar-vertical-track-transition);
+            transition: var(--scrollbar-vertical-track-transition);
+}
+.os-scrollbar-horizontal > .os-scrollbar-track > .os-scrollbar-handle:before,
+.os-scrollbar-vertical > .os-scrollbar-track > .os-scrollbar-handle:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: block;
+}
+.os-scrollbar-horizontal > .os-scrollbar-track > .os-scrollbar-handle:before {
+    top: -var(--scrollbar-horizontal-inner-expansion);
+    bottom: -var(--scrollbar-horizontal-padding);
+}
+.os-scrollbar-vertical > .os-scrollbar-track > .os-scrollbar-handle:before {
+    left: -var(--scrollbar-vertical-inner-expansion);
+    right: -var(--scrollbar-vertical-padding);
+}
+:host(.os-host-rtl) > .os-scrollbar-vertical > .os-scrollbar-track > .os-scrollbar-handle:before {
+    right: -var(--scrollbar-vertical-inner-expansion);
+    left: -var(--scrollbar-vertical-padding);
+}
+.os-scrollbar-horizontal > .os-scrollbar-track > .os-scrollbar-handle {
+    border-radius: var(--scrollbar-horizontal-size);
+}
+.os-scrollbar-vertical > .os-scrollbar-track > .os-scrollbar-handle {
+    border-radius: var(--scrollbar-vertical-size);
+}
+.os-scrollbar-horizontal > .os-scrollbar-track > .os-scrollbar-handle {
+    min-width: var(--scrollbar-horizontal-handle-min-size);
+    max-width: var(--scrollbar-horizontal-handle-max-size);
+    background: var(--scrollbar-horizontal-handle-background);
+}
+.os-scrollbar-vertical > .os-scrollbar-track > .os-scrollbar-handle {
+    min-height: var(--scrollbar-vertical-handle-min-size);
+    max-height: var(--scrollbar-vertical-handle-max-size);
+    background: var(--scrollbar-vertical-handle-background);
+}
+.os-scrollbar-horizontal > .os-scrollbar-track > .os-scrollbar-handle:hover {
+    background: var(--scrollbar-horizontal-handle-background-hover);
+}
+.os-scrollbar-vertical > .os-scrollbar-track > .os-scrollbar-handle:hover {
+    background: var(--scrollbar-vertical-handle-background-hover);
+}
+.os-scrollbar-horizontal > .os-scrollbar-track > .os-scrollbar-handle.active {
+    background: var(--scrollbar-horizontal-handle-background-active);
+}
+.os-scrollbar-vertical > .os-scrollbar-track > .os-scrollbar-handle.active {
+    background: var(--scrollbar-vertical-handle-background-active);
+}
+:host(.os-host-transition) > .os-scrollbar-horizontal > .os-scrollbar-track > .os-scrollbar-handle {
+    -webkit-transition: var(--scrollbar-horizontal-handle-transition);
+            transition: var(--scrollbar-horizontal-handle-transition);
+}
+:host(.os-host-transition) > .os-scrollbar-vertical > .os-scrollbar-track > .os-scrollbar-handle {
+    -webkit-transition: var(--scrollbar-vertical-handle-transition);
+            transition: var(--scrollbar-vertical-handle-transition);
+}
