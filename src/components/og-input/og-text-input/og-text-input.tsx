@@ -22,7 +22,7 @@ export class OgTextInput {
    * Determines, whether the control is disabled or not.
    */
   @Prop()
-  public disabled: boolean;
+  public disabled?: boolean;
 
   /**
    * Event is being emitted when value changes.
@@ -42,15 +42,42 @@ export class OgTextInput {
   @Event()
   public focusLost: EventEmitter<FocusEvent>;
 
+  /**
+   * Optional autofocus input element.
+   */
+  @Prop()
+  public autofocus?: boolean;
+
+  private focus: boolean = false;
+  private inputElement: HTMLInputElement;
+
+  componentWillLoad() {
+    if (this.autofocus) {
+      this.focus = true;
+    } 
+  }
+  
+  componentDidLoad() {
+    if (this.autofocus && this.focus) {
+      setTimeout(() => {
+        this.inputElement.focus();
+        this.focus = false;
+      });
+    } 
+  }
+  
   public handleChange(e) {
     this.value = e.target.value;
     this.valueChanged.emit(this.value);
   }
 
   public render(): HTMLElement {
+    console.log(this.autofocus);
+
     return (
       <Host class={{ 'og-form-item__editor': true }}>
-        <input type="text"
+        <input ref={ el => this.inputElement = el as HTMLInputElement }
+          type="text"
           class="og-input__input"
           value={ this.value }
           disabled={ this.disabled }

@@ -28,14 +28,19 @@ export class OgPasswordInput {
    * Determines, whether the control is disabled or not.
    */
   @Prop()
-  public disabled: boolean;
+  public disabled?: boolean;
+
+  /**
+   * Optional autofocus input element.
+   */
+  @Prop()
+  public autofocus?: boolean;
 
   /**
    * Event is being emitted when value changes.
    */
   @Event()
   public valueChanged: EventEmitter<string>;
-
 
   /**
    * Event is being emitted when input gets focus..
@@ -57,6 +62,24 @@ export class OgPasswordInput {
     this.passwordVisible = !this.passwordVisible;
   }
 
+  private focus: boolean = false;
+  private inputElement: HTMLInputElement;
+
+  componentWillLoad() {
+    if (this.autofocus) {
+      this.focus = true;
+    } 
+  }
+  
+  componentDidLoad() {
+    if (this.autofocus && this.focus) {
+      setTimeout(() => {
+        this.inputElement.focus();
+        this.focus = false;
+      });
+    } 
+  }
+
   public handleChange(e) {
     this.value = e.target.value;
     this.valueChanged.emit(this.value);
@@ -65,7 +88,8 @@ export class OgPasswordInput {
   public render(): HTMLElement {
     return (
       <Host class={{ 'og-form-item__editor': true }}>
-        <input type={ this.passwordVisible ? 'text' : 'password' }
+        <input ref={ el => this.inputElement = el as HTMLInputElement }
+          type={ this.passwordVisible ? 'text' : 'password' }
           class="og-input__input"
           value={ this.value }
           disabled={ this.disabled }

@@ -1,5 +1,3 @@
-
-
 import { h, Component, Prop, Event, EventEmitter, Host } from '@stencil/core';
 
 @Component({
@@ -12,13 +10,19 @@ export class OgTextarea {
    * Determines, whether the control is disabled or not.
    */
   @Prop()
-  public disabled: boolean;
+  public disabled?: boolean;
 
   /**
    * The initial value. Can be updated at runtime.
    */
   @Prop({ mutable: true, reflect: true })
   public value: string;
+  
+  /**
+   * Optional autofocus input element.
+   */
+  @Prop()
+  public autofocus?: boolean;
 
   /**
    * Event is being emitted when value changes.
@@ -43,10 +47,28 @@ export class OgTextarea {
     this.valueChanged.emit(this.value);
   }
 
+  private focus: boolean = false;
+  private inputElement: HTMLTextAreaElement;
+
+  componentWillLoad() {
+    if (this.autofocus) {
+      this.focus = true;
+    } 
+  }
+  
+  componentDidLoad() {
+    if (this.autofocus && this.focus) {
+      setTimeout(() => {
+        this.inputElement.focus();
+        this.focus = false;
+      });
+    } 
+  }
+
   public render(): HTMLElement {
     return (
       <Host class={{ 'og-form-item__editor': true }}>
-        <textarea
+        <textarea ref={ el => this.inputElement = el as HTMLTextAreaElement }
           class="og-textarea__textarea"
           value={ this.value }
           disabled={ this.disabled }
