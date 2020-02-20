@@ -25,6 +25,13 @@ export class OgTextInput {
   public disabled: boolean;
 
   /**
+   * Determines, whether the control automatically grows downwards
+   * if the inserted text gets to big.
+   */
+  @Prop()
+  public multiLine: boolean = false;
+
+  /**
    * Event is being emitted when value changes.
    */
   @Event()
@@ -42,24 +49,63 @@ export class OgTextInput {
   @Event()
   public focusLost: EventEmitter<FocusEvent>;
 
+  private inputSizer: HTMLElement;
+  private inputIndicator: HTMLElement;
+
+  public componentDidLoad() {
+    if (this.multiLine) {
+      this.inputSizer.textContent = this.value || this.placeholder;
+    }
+  }
+
+  private handleKeyDown(e: KeyboardEvent) {
+    if (e.keyCode === 13) {
+      e.preventDefault();
+    }
+  }
+
+  private handleFocus(e: FocusEvent) {
+    this.focusGained.emit(e);
+    this.inputIndicator.classList.add('focus');
+  }
+
+  private handleBlur(e: FocusEvent) {
+    this.focusLost.emit(e);
+    this.inputIndicator.classList.remove('focus');
+  }
+
   public handleChange(e) {
     this.value = e.target.value;
     this.valueChanged.emit(this.value);
+
+    if (this.multiLine) {
+      this.inputSizer.textContent = this.value || this.placeholder;
+    }
   }
 
   public render(): HTMLElement {
     return (
       <Host class={{ 'og-form-item__editor': true }}>
-        <input type="text"
-          class="og-input__input"
-          value={ this.value }
-          disabled={ this.disabled }
-          onInput={ (event) => this.handleChange(event) }
-          onFocus={ (event) => this.focusGained.emit(event) }
-          onBlur={ (event) => this.focusLost.emit(event) }
-          placeholder={ this.placeholder }
-        />
-        <div class="og-input__indicator"></div>
+        <div class="og-input__wrapper">
+          <textarea
+            class="og-input__input"
+            value={ this.value }
+            disabled={ this.disabled }
+            onInput={ (event) => this.handleChange(event) }
+            onFocus={ (event) => this.handleFocus(event) }
+            onBlur={ (event) => this.handleBlur(event) }
+            onKeyDown={ (event) => this.handleKeyDown(event) }
+            placeholder={ this.placeholder }
+          ></textarea>
+          <div
+            class="og-input__sizer"
+            ref={(el) => this.inputSizer = el}
+          ></div>
+        </div>
+        <div
+          class="og-input__indicator"
+          ref={(el) => this.inputIndicator = el}
+        ></div>
       </Host>
     );
   }
