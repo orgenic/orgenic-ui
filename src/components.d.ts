@@ -396,9 +396,13 @@ export namespace Components {
   }
   interface OgNumberInput {
     /**
+    * Optional autofocus input element.
+    */
+    'autofocus'?: boolean;
+    /**
     * Determines, whether the control is disabled or not.
     */
-    'disabled': boolean;
+    'disabled'?: boolean;
     /**
     * Maximum value for this component.
     */
@@ -422,9 +426,13 @@ export namespace Components {
   }
   interface OgPasswordInput {
     /**
+    * Optional autofocus input element.
+    */
+    'autofocus'?: boolean;
+    /**
     * Determines, whether the control is disabled or not.
     */
-    'disabled': boolean;
+    'disabled'?: boolean;
     /**
     * Optional placeholder text if input is empty.
     */
@@ -549,9 +557,13 @@ export namespace Components {
   }
   interface OgTextInput {
     /**
+    * Optional autofocus input element.
+    */
+    'autofocus'?: boolean;
+    /**
     * Determines, whether the control is disabled or not.
     */
-    'disabled': boolean;
+    'disabled'?: boolean;
     /**
     * Determines, whether the control automatically grows downwards if the inserted text gets to big.
     */
@@ -567,9 +579,13 @@ export namespace Components {
   }
   interface OgTextarea {
     /**
+    * Optional autofocus input element.
+    */
+    'autofocus'?: boolean;
+    /**
     * Determines, whether the control is disabled or not.
     */
-    'disabled': boolean;
+    'disabled'?: boolean;
     /**
     * The initial value. Can be updated at runtime.
     */
@@ -1238,6 +1254,10 @@ declare namespace LocalJSX {
   }
   interface OgNumberInput {
     /**
+    * Optional autofocus input element.
+    */
+    'autofocus'?: boolean;
+    /**
     * Determines, whether the control is disabled or not.
     */
     'disabled'?: boolean;
@@ -1275,6 +1295,10 @@ declare namespace LocalJSX {
     'value'?: number;
   }
   interface OgPasswordInput {
+    /**
+    * Optional autofocus input element.
+    */
+    'autofocus'?: boolean;
     /**
     * Determines, whether the control is disabled or not.
     */
@@ -1419,6 +1443,10 @@ declare namespace LocalJSX {
   }
   interface OgTextInput {
     /**
+    * Optional autofocus input element.
+    */
+    'autofocus'?: boolean;
+    /**
     * Determines, whether the control is disabled or not.
     */
     'disabled'?: boolean;
@@ -1448,6 +1476,10 @@ declare namespace LocalJSX {
     'value'?: string;
   }
   interface OgTextarea {
+    /**
+    * Optional autofocus input element.
+    */
+    'autofocus'?: boolean;
     /**
     * Determines, whether the control is disabled or not.
     */

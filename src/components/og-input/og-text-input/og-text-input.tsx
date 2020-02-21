@@ -22,7 +22,7 @@ export class OgTextInput {
    * Determines, whether the control is disabled or not.
    */
   @Prop()
-  public disabled: boolean;
+  public disabled?: boolean;
 
   /**
    * Determines, whether the control automatically grows downwards
@@ -49,13 +49,34 @@ export class OgTextInput {
   @Event()
   public focusLost: EventEmitter<FocusEvent>;
 
+  /**
+   * Optional autofocus input element.
+   */
+  @Prop()
+  public autofocus?: boolean;
+
+  private focus: boolean = false;
+  private inputElement: HTMLTextAreaElement;
   private inputSizer: HTMLElement;
   private inputIndicator: HTMLElement;
+
+  public componentWillLoad() {
+    if (this.autofocus) {
+      this.focus = true;
+    } 
+  }
 
   public componentDidLoad() {
     if (this.multiLine) {
       this.inputSizer.textContent = this.value || this.placeholder;
     }
+
+    if (this.autofocus && this.focus) {
+      setTimeout(() => {
+        this.inputElement.focus();
+        this.focus = false;
+      });
+    } 
   }
 
   private handleKeyDown(e: KeyboardEvent) {
@@ -84,10 +105,13 @@ export class OgTextInput {
   }
 
   public render(): HTMLElement {
+    console.log(this.autofocus);
+
     return (
       <Host class={{ 'og-form-item__editor': true }}>
         <div class="og-input__wrapper">
           <textarea
+            ref={ el => this.inputElement = el as HTMLTextAreaElement }
             class="og-input__input"
             value={ this.value }
             disabled={ this.disabled }

@@ -40,14 +40,19 @@ export class OgNumberInput {
    * Determines, whether the control is disabled or not.
    */
   @Prop()
-  public disabled: boolean;
+  public disabled?: boolean;
+
+  /**
+   * Optional autofocus input element.
+   */
+  @Prop()
+  public autofocus?: boolean;
 
   /**
    * Event is being emitted when value changes.
    */
   @Event()
   public valueChanged: EventEmitter<number>;
-
 
   /**
    * Event is being emitted when input gets focus..
@@ -60,6 +65,24 @@ export class OgNumberInput {
    */
   @Event()
   public focusLost: EventEmitter<FocusEvent>;
+
+  private focus: boolean = false;
+  private inputElement: HTMLInputElement;
+
+  componentWillLoad() {
+    if (this.autofocus) {
+      this.focus = true;
+    } 
+  }
+  
+  componentDidLoad() {
+    if (this.autofocus && this.focus) {
+      setTimeout(() => {
+        this.inputElement.focus();
+        this.focus = false;
+      });
+    } 
+  }
 
   public handleChange(e) {
     const value = parseFloat(e.target.value);
@@ -76,7 +99,8 @@ export class OgNumberInput {
   public render(): HTMLElement {
     return (
       <Host class={{ 'og-form-item__editor': true }}>
-        <input type="number"
+        <input ref={ el => this.inputElement = el as HTMLInputElement }
+          type="number"
           class="og-input__input"
           value={ this.value }
           step={ this.step }
