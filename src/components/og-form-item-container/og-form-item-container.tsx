@@ -154,30 +154,6 @@ export class OgFormItemContainer {
     return column;
   }
 
-  /*
-  private getElementRow(el: Element): number {
-    let row = 1;
-    const gridData = this.getGridData();
-    const gridRows = gridData.rowCount;
-    const gridRowopPositions = gridData.rowTopPositions;
-
-    const containerPaddingTop = parseInt(window.getComputedStyle(this.container).paddingTop);
-    const containerPositionTop = this.container.getBoundingClientRect().top;
-    const containerFirstRowPositionTop = containerPositionTop + containerPaddingTop;
-    const elPositionTop = el.getBoundingClientRect().top;
-    const elPositionTopInContainer = elPositionTop - containerFirstRowPositionTop;
-
-    for (let i = gridRows; i > 0; i--) {
-      row = i;
-      if (elPositionTopInContainer >= gridRowopPositions[i - 1]) {
-        break;
-      }
-    }
-
-    return row;
-  }
-  */
-
   private getGridData(): GridData {
     const gridComputedStyle = window.getComputedStyle(this.container);
     const gridTemplateColumns = gridComputedStyle.getPropertyValue("grid-template-columns");
