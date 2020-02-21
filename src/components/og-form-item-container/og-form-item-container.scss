@@ -1,15 +1,22 @@
 :host {
-    // Interal vars trying to map external (:root) vars and provide a fallback
-    --_og-form-item-container__item-MinWidth: var(--og-form-item-container__item-MinWidth, 300px);
-    --_og-form-item-container__item-MaxWidth: var(--og-form-item-container__item-MaxWidth, 1fr);
-    --_og-form-item-container-Gap: var(--og-form-item-container-Gap, 10px);
-    --_og-form-item-container-Padding: var(--og-form-item-container-Padding, 20px);
+    /* @prop --og-form-item-container-Gap: Gap size between elements */
+    --og-form-item-container-Gap: 16px;
+
+    /* @prop --og-form-item-container-Padding: Padding of the container element */
+    --og-form-item-container-Padding: 0;
+
+    /* @prop --og-form-item-container__item-MaxWidth: Max-Width of the container items */
+    --og-form-item-container__item-MaxWidth: 1fr;
+
+    /* @prop --og-form-item-container__item-MinWidth: Min-Width of the container items */
+    --og-form-item-container__item-MinWidth: 300px;
 
     display: grid;
-    grid-gap: var(--_og-form-item-container-Gap);
-    grid-template-columns: repeat(auto-fill, minmax(var(--_og-form-item-container__item-MinWidth), var(--_og-form-item-container__item-MaxWidth)));
-    padding: var(--_og-form-item-container-Padding);
-    overflow: auto;
+    grid-gap: var(--og-form-item-container-Gap);
+    grid-template-columns: repeat(auto-fill, minmax(var(--og-form-item-container__item-MinWidth), var(--og-form-item-container__item-MaxWidth)));
+    padding: var(--og-form-item-container-Padding);
+    
+    @include overflow();
 }
 
 :host(.is-inline) {

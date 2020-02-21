@@ -30,13 +30,13 @@ export interface GridData {
 
 export class OgFormItemContainer {
   @Prop()
-  public itemMinWidth: string = '300px';
+  public itemMinWidth: string;
 
   @Prop()
-  public itemMaxWidth: string = '1fr';
+  public itemMaxWidth: string;
 
   @Prop()
-  public itemGap: string = '10px';
+  public itemGap: string;
 
   @State()
   public isInline: boolean = false;
@@ -62,24 +62,22 @@ export class OgFormItemContainer {
     this.updateGrid();
   }
 
-  public render(): HTMLElement {
-    return <Host class={{
-      'is-inline': this.isInline
-    }}>
-      <slot></slot>
-    </Host>;
-  }
-
   private applyItemMinWidth(value: string): void {
-    this.container.style.setProperty('--og-form-item-container__item-MinWidth', value);
+    if (value && value.trim.length) {
+      this.container.style.setProperty('--og-form-item-container__item-MinWidth', value);
+    }
   }
 
   private applyItemMaxWidth(value: string): void {
-    this.container.style.setProperty('--og-form-item-container__item-MaxWidth', value);
+    if (value && value.trim.length) {
+      this.container.style.setProperty('--og-form-item-container__item-MaxWidth', value);
+    }
   }
 
   private applyItemGap(value: string): void {
-    this.container.style.setProperty('--og-form-item-container-Gap', value);
+    if (value && value.trim.length) {
+      this.container.style.setProperty('--og-form-item-container-Gap', value);
+    }
   }
 
   private updateGrid(): void {
@@ -99,7 +97,6 @@ export class OgFormItemContainer {
       this.examineFormItemsToStretch();
       this.toggleContainerVisibility(true);
     });
-
   }
 
   private examineFormItemsToStretch(): void {
@@ -214,4 +211,9 @@ export class OgFormItemContainer {
     el.style.gridColumnStart = value.toString();
   }
 
+  public render(): HTMLElement {
+    return <Host class={{ 'is-inline': this.isInline }}>
+      <slot></slot>
+    </Host>;
+  }
 }

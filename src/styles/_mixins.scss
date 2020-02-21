@@ -8,3 +8,10 @@
     text-overflow:  ellipsis;
     white-space:    nowrap;
 }
+
+// OVERFLOW AUTO
+@mixin overflow($x: auto, $y: auto) {
+    overflow-x:             $x;
+    overflow-y:             $y;
+    backface-visibility:    hidden;
+}
