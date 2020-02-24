@@ -258,6 +258,11 @@ export namespace Components {
     */
     'label': string;
   }
+  interface OgFormItemContainer {
+    'itemGap': string;
+    'itemMaxWidth': string;
+    'itemMinWidth': string;
+  }
   interface OgInternalCalendar {
     'dateDecorator': OgDateDecorator;
     'loc': string;
@@ -689,6 +694,11 @@ declare global {
     prototype: HTMLOgIconButtonElement;
     new (): HTMLOgIconButtonElement;
   };
+  interface HTMLOgFormItemContainerElement extends Components.OgFormItemContainer, HTMLStencilElement {}
+  var HTMLOgFormItemContainerElement: {
+    prototype: HTMLOgFormItemContainerElement;
+    new (): HTMLOgFormItemContainerElement;
+  };
 
   interface HTMLOgInternalCalendarElement extends Components.OgInternalCalendar, HTMLStencilElement {}
   var HTMLOgInternalCalendarElement: {
@@ -806,6 +816,7 @@ declare global {
     'og-form-item': HTMLOgFormItemElement;
     'og-icon': HTMLOgIconElement;
     'og-icon-button': HTMLOgIconButtonElement;
+    'og-form-item-container': HTMLOgFormItemContainerElement;
     'og-internal-calendar': HTMLOgInternalCalendarElement;
     'og-layout-child': HTMLOgLayoutChildElement;
     'og-layout-container': HTMLOgLayoutContainerElement;
@@ -1106,6 +1117,11 @@ declare namespace LocalJSX {
     * Event is being emitted when value changes.
     */
     'onClicked'?: (event: CustomEvent<any>) => void;
+  }
+  interface OgFormItemContainer {
+    'itemGap'?: string;
+    'itemMaxWidth'?: string;
+    'itemMinWidth'?: string;
   }
   interface OgInternalCalendar {
     'dateDecorator'?: OgDateDecorator;
@@ -1531,6 +1547,7 @@ declare namespace LocalJSX {
     'og-form-item': OgFormItem;
     'og-icon': OgIcon;
     'og-icon-button': OgIconButton;
+    'og-form-item-container': OgFormItemContainer;
     'og-internal-calendar': OgInternalCalendar;
     'og-layout-child': OgLayoutChild;
     'og-layout-container': OgLayoutContainer;
@@ -1571,6 +1588,7 @@ declare module "@stencil/core" {
       'og-form-item': LocalJSX.OgFormItem & JSXBase.HTMLAttributes<HTMLOgFormItemElement>;
       'og-icon': LocalJSX.OgIcon & JSXBase.HTMLAttributes<HTMLOgIconElement>;
       'og-icon-button': LocalJSX.OgIconButton & JSXBase.HTMLAttributes<HTMLOgIconButtonElement>;
+      'og-form-item-container': LocalJSX.OgFormItemContainer & JSXBase.HTMLAttributes<HTMLOgFormItemContainerElement>;
       'og-internal-calendar': LocalJSX.OgInternalCalendar & JSXBase.HTMLAttributes<HTMLOgInternalCalendarElement>;
       'og-layout-child': LocalJSX.OgLayoutChild & JSXBase.HTMLAttributes<HTMLOgLayoutChildElement>;
       'og-layout-container': LocalJSX.OgLayoutContainer & JSXBase.HTMLAttributes<HTMLOgLayoutContainerElement>;
