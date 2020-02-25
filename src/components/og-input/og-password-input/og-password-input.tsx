@@ -57,27 +57,27 @@ export class OgPasswordInput {
   @State()
   public passwordVisible = false;
 
+  private focus: boolean = false;
+  private inputElement: HTMLInputElement;
+
   @Method()
   public async togglePasswordVisibility() {
     this.passwordVisible = !this.passwordVisible;
   }
 
-  private focus: boolean = false;
-  private inputElement: HTMLInputElement;
-
-  componentWillLoad() {
+  public componentWillLoad() {
     if (this.autofocus) {
       this.focus = true;
-    } 
+    }
   }
-  
-  componentDidLoad() {
+
+  public componentDidLoad() {
     if (this.autofocus && this.focus) {
       setTimeout(() => {
         this.inputElement.focus();
         this.focus = false;
       });
-    } 
+    }
   }
 
   public handleChange(e) {

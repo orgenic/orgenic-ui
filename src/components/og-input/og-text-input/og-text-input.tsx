@@ -63,7 +63,7 @@ export class OgTextInput {
   public componentWillLoad() {
     if (this.autofocus) {
       this.focus = true;
-    } 
+    }
   }
 
   public componentDidLoad() {
@@ -76,7 +76,7 @@ export class OgTextInput {
         this.inputElement.focus();
         this.focus = false;
       });
-    } 
+    }
   }
 
   private handleKeyDown(e: KeyboardEvent) {
@@ -105,8 +105,6 @@ export class OgTextInput {
   }
 
   public render(): HTMLElement {
-    console.log(this.autofocus);
-
     return (
       <Host class={{ 'og-form-item__editor': true }}>
         <div class="og-input__wrapper">
