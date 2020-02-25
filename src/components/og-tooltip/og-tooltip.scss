@@ -84,17 +84,17 @@ og-tooltip {
     // top & bottom
     &[class*="og-tooltip-top"],
     &[class*="og-tooltip-bottom"],
-    &[class*="og-tooltip-auto"][x-placement^="top"],
-    &[class*="og-tooltip-auto"][x-placement^="bottom"] {
+    &[class*="og-tooltip-auto"][data-popper-placement^="top"],
+    &[class*="og-tooltip-auto"][data-popper-placement^="bottom"] {
         // start
         &[class*="-start"],
-        &[x-placement$="-start"] {
+        &[data-popper-placement$="-start"] {
             --_og-tooltip-arrow-MarginLeft: var(--_og-tooltip-arrow-Width);
         }
 
         // end
         &[class*="-end"],
-        &[x-placement$="-end"] {
+        &[data-popper-placement$="-end"] {
             --_og-tooltip-arrow-MarginRight: var(--_og-tooltip-arrow-Width);
         }
     }
@@ -102,21 +102,21 @@ og-tooltip {
     // left & right
     &[class*="og-tooltip-right"],
     &[class*="og-tooltip-left"],
-    &[class*="og-tooltip-auto"][x-placement^="right"],
-    &[class*="og-tooltip-auto"][x-placement^="left"] {
+    &[class*="og-tooltip-auto"][data-popper-placement^="right"],
+    &[class*="og-tooltip-auto"][data-popper-placement^="left"] {
         --_og-tooltip-FlexDirection: row;
         --_og-tooltip-arrow-Width: var(--og-tooltip-arrow-Height, 4px);
         --_og-tooltip-arrow-Height: var(--og-tooltip-arrow-Width, 10px);
 
         // start
         &[class*="-start"],
-        &[x-placement$="-start"] {
+        &[data-popper-placement$="-start"] {
             --_og-tooltip-arrow-MarginTop: var(--_og-tooltip-arrow-Width);
         }
 
         // end
         &[class*="-end"],
-        &[x-placement$="-end"] {
+        &[data-popper-placement$="-end"] {
             --_og-tooltip-arrow-MarginBottom: var(--_og-tooltip-arrow-Width);
         }
     }
@@ -124,36 +124,36 @@ og-tooltip {
     // top & left
     &[class*="og-tooltip-top"],
     &[class*="og-tooltip-left"],
-    &[class*="og-tooltip-auto"][x-placement^="top"],
-    &[class*="og-tooltip-auto"][x-placement^="left"] {
+    &[class*="og-tooltip-auto"][data-popper-placement^="top"],
+    &[class*="og-tooltip-auto"][data-popper-placement^="left"] {
         // Make the arrow appear after the content
         --_og-tooltip-arrow-Order: 1;
     }
 
     // top
     &[class*="og-tooltip-top"],
-    &[class*="og-tooltip-auto"][x-placement^="top"] {
+    &[class*="og-tooltip-auto"][data-popper-placement^="top"] {
         --_og-tooltip-arrow-BorderTopColor: var(--_og-tooltip-BackgroundColor);
         --_og-tooltip-arrow-BorderWidth: var(--_og-tooltip-arrow-Height) calc(var(--_og-tooltip-arrow-Width) / 2) 0;
     }
 
     // right
     &[class*="og-tooltip-right"],
-    &[class*="og-tooltip-auto"][x-placement^="right"] {
+    &[class*="og-tooltip-auto"][data-popper-placement^="right"] {
         --_og-tooltip-arrow-BorderRightColor: var(--_og-tooltip-BackgroundColor);
         --_og-tooltip-arrow-BorderWidth: calc(var(--_og-tooltip-arrow-Height) / 2) var(--_og-tooltip-arrow-Width) calc(var(--_og-tooltip-arrow-Height) / 2) 0;
     }
 
     // bottom
     &[class*="og-tooltip-bottom"],
-    &[class*="og-tooltip-auto"][x-placement^="bottom"] {
+    &[class*="og-tooltip-auto"][data-popper-placement^="bottom"] {
         --_og-tooltip-arrow-BorderBottomColor: var(--_og-tooltip-BackgroundColor);
         --_og-tooltip-arrow-BorderWidth: 0 calc(var(--_og-tooltip-arrow-Width) / 2) var(--_og-tooltip-arrow-Height);
     }
 
     // left
     &[class*="og-tooltip-left"],
-    &[class*="og-tooltip-auto"][x-placement^="left"] {
+    &[class*="og-tooltip-auto"][data-popper-placement^="left"] {
         --_og-tooltip-arrow-BorderLeftColor: var(--_og-tooltip-BackgroundColor);
         --_og-tooltip-arrow-BorderWidth: calc(var(--_og-tooltip-arrow-Height) / 2) 0 calc(var(--_og-tooltip-arrow-Height) / 2) var(--_og-tooltip-arrow-Width);
     }

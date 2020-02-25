@@ -17,7 +17,7 @@ import {
 
 // 3rd party libraries
 import _ from 'lodash';
-import Popper from 'popper.js';
+import Popper from '@popperjs/core';
 
 // ORGENIC-UI helper classes
 import getTransitionDurationFromElement from '../../utils/get-transition-duration-from-element';
@@ -132,7 +132,7 @@ export interface OgTooltipConfig {
    * @type {'flip' | 'clockwise' | 'counterclockwise' | Popper.Position[]}
    * @memberof OgTooltipConfig
    */
-  fallbackPlacement: 'flip' | 'clockwise' | 'counterclockwise' | Popper.Position[];
+  fallbackPlacement: 'flip' | 'clockwise' | 'counterclockwise' | Popper.Placement[];
 
   /**
    * How to position the tooltip. `auto|top|bottom|left|right(-start/-end)`.
@@ -273,14 +273,14 @@ export class OgTooltip {
   @State() public disposeTimeout: any;
   @State() public hoverState: 'in' | 'out';
   @State() public isEnabled: boolean;
-  @State() public popperHandle: Popper;
+  @State() public popperHandle: Popper.Instance;
   @State() public showHideTimeout: any;
   @State() public tip: HTMLElement;
   @State() public tooltipId: string;
 
   private tooltipDefaultConfig: OgTooltipConfig = {
     animation: true,
-    boundary: 'scrollParent',
+    boundary: 'clippingParents',
     container: false,
     delay: 0,
     disposeTimeToWait: 0,
@@ -367,8 +367,8 @@ export class OgTooltip {
       const tooltipContentPlaceholder = tooltip.querySelector('.og-tooltip__inner');
       if (tooltipContentPlaceholder) {
         this.setElementContent(tooltipContentPlaceholder, this.getTitle());
-        if (this.popperHandle && this.popperHandle.scheduleUpdate) {
-          this.popperHandle.scheduleUpdate();
+        if (this.popperHandle && this.popperHandle.update) {
+          this.popperHandle.update();
         }
       }
     }
@@ -698,8 +698,8 @@ export class OgTooltip {
     }
 
     if (tooltipOptions === 'update') {
-      if (this.popperHandle && this.popperHandle.scheduleUpdate) {
-        this.popperHandle.scheduleUpdate();
+      if (this.popperHandle && this.popperHandle.update) {
+        this.popperHandle.update();
         return true;
       }
       return false;
@@ -996,24 +996,37 @@ export class OgTooltip {
       this.addAttachmentClassToTooltipHtmlElement(placement);
       // the point of inserted event is to know when the tip is in the DOM but before it has been placed using popper
       ogCustomEvent(this.tooltipEl, this.insertedEventName);
-      this.popperHandle = new Popper(this.tooltipEl, tooltip, {
+      this.popperHandle = Popper.createPopper(this.tooltipEl, tooltip, {
         placement: placement,
-        modifiers: {
-          offset: {
+        modifiers: [{
+          name: 'offset',
+          options: {
             offset: this.config.offset,
-          },
-          flip: {
-            behavior: this.config.fallbackPlacement,
-          },
-          arrow: {
+          }
+        }, {
+          name: 'flip',
+          options: {
+            fallbackPlacements: this.config.fallbackPlacement,
+            padding: 5
+          }
+        }, {
+          name: 'arrow',
+          options: {
             element: '.arrow',
-          },
-          preventOverflow: {
-            boundariesElement: this.config.boundary,
-          },
-        },
-        onCreate: this.handlePopperOnCreate,
-        onUpdate: this.handlePopperOnUpdate,
+          }
+        }, {
+          name: 'preventOverflow',
+          options: {
+            rootBoundary: this.config.boundary,
+            padding: 5
+          }
+        }, {
+          name: 'onUpdate',
+          phase: 'afterWrite',
+          enabled: true,
+          fn: this.handlePopperOnUpdate
+        }],
+        onFirstUpdate: this.handlePopperOnCreate
       });
 
       tooltip.classList.add(this.tooltipShowClass);
