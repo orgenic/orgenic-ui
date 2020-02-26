@@ -44,6 +44,16 @@
     --og-input__indicator-Height: 2px;
     --og-input__indicator-Background: var(--OG-COLOR-PRIMARY--100, #{$og-color-primary--100});
 
+    /**
+     * @prop --og-input__placeholder-Color:
+     * Text color of the placeholder
+     */
+    --og-input__placeholder-Color: var(--OG-COLOR-SHADE--50, #{$og-color-shade--50});
+    /**
+     * @prop --og-input__placeholder-Opacity:
+     * Opacity of the placeholder
+     */
+    --og-input__placeholder-Opacity: 1;
 
     display: block;
     padding: var(--og-input-Padding);
@@ -58,6 +68,12 @@
     position: relative;
     margin: var(--og-input__wrapper-Margin);
     padding-bottom: 2px;
+}
+
+.og-input__input::placeholder {
+    color: var(--og-input__placeholder-Color);
+    opacity: var(--og-input__placeholder-Opacity);
+    transition: opacity .3s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .og-input__input {

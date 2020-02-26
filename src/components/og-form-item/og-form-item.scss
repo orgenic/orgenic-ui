@@ -40,6 +40,19 @@
     --og-form-item__label-Color: var(--og-form-item__label-Color--active);
     --og-input__indicator-Width: 100%;
 }
+:host(:not(.og-form-item--focused).og-form-item--has-label) {
+    ::slotted(og-text-input),
+    ::slotted(og-number-input),
+    ::slotted(og-password-input) {
+        --og-input__placeholder-Opacity: 0;
+    }
+    ::slotted(og-textarea) {
+        --og-textarea__placeholder-Opacity: 0;
+    }
+    ::slotted(og-combobox) {
+        --og-combobox__placeholder-Opacity: 0;
+    }
+}
 
 :host(:not(.og-form-item--empty)) {
     --og-form-item__label-FontSize: var(--og-input__label--focus-FontSize, 12px);

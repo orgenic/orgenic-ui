@@ -68,6 +68,11 @@
     --og-combobox__placeholder-Color:
         var(--OG-COLOR-SHADE--50, #{$og-color-shade--50});
 
+    /**
+     * @prop --og-combobox__placeholder-Opacity:
+     * Opacity of the unhidden placeholder
+     */
+    --og-combobox__placeholder-Opacity: 1;
 
     /**
      * @prop --og-combobox__indicator-Width:
@@ -166,6 +171,8 @@
 
     &::placeholder {
         color: var(--og-combobox__placeholder-Color);
+        opacity: var(--og-combobox__placeholder-Opacity);
+        transition: opacity .3s cubic-bezier(0.19, 1, 0.22, 1);
     }
 
     // Prevent Text Selection on :focus

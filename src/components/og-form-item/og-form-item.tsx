@@ -80,6 +80,7 @@ export class OgFormItem {
 
   public render(): HTMLElement {
     return <Host class={{
+      'og-form-item--has-label': (this.label !== null && this.label !== undefined && this.label !== ''),
       'og-form-item--focused': this.editorHasFocus,
       'og-form-item--empty': this.editorIsEmpty
     }}>
