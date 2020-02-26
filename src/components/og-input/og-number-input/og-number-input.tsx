@@ -102,10 +102,10 @@ export class OgNumberInput {
         <input ref={ el => this.inputElement = el as HTMLInputElement }
           type="number"
           class="og-input__input"
-          value={ this.value }
           step={ this.step }
           min={ this.min }
           max={ this.max }
+          value={ this.value }
           disabled={ this.disabled }
           onInput={ (event) => this.handleChange(event) }
           onFocus={ (event) => this.focusGained.emit(event) }
