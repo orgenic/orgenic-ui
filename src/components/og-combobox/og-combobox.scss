@@ -16,7 +16,7 @@
      * Main border color of the combobox
      */
     --og-combobox-BorderColor:
-        var(--OG-COLOR-SHADE--100--20, #{$og-color-shade--100--20});
+        var(--OG-COLOR-SHADE--50, #{$og-color-shade--50});
 
     /**
      * @prop --og-combobox-BorderWidth:
@@ -138,7 +138,7 @@
 
 
 
-// Wrapper for the 'allways visible' part of the 'combobox'
+// Wrapper for the 'always visible' part of the 'combobox'
 .og-combobox__header {
     border-bottom:
         var(--og-combobox-BorderWidth)
