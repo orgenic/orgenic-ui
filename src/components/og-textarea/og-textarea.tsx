@@ -9,7 +9,7 @@ export class OgTextarea {
   /**
    * Determines, whether the control is disabled or not.
    */
-  @Prop()
+  @Prop({ reflect: true })
   public disabled?: boolean;
 
   /**
@@ -17,7 +17,13 @@ export class OgTextarea {
    */
   @Prop({ mutable: true, reflect: true })
   public value: string;
-  
+
+  /**
+   * Optional placeholder text if textarea is empty.
+   */
+  @Prop({ reflect: true })
+  public placeholder?: string;
+
   /**
    * Optional autofocus input element.
    */
@@ -42,27 +48,27 @@ export class OgTextarea {
   @Event()
   public focusLost: EventEmitter<FocusEvent>;
 
+  private focus: boolean = false;
+  private inputElement: HTMLTextAreaElement;
+
   public handleChange(e) {
     this.value = e.target.value;
     this.valueChanged.emit(this.value);
   }
 
-  private focus: boolean = false;
-  private inputElement: HTMLTextAreaElement;
-
-  componentWillLoad() {
+  public componentWillLoad() {
     if (this.autofocus) {
       this.focus = true;
-    } 
+    }
   }
-  
-  componentDidLoad() {
+
+  public componentDidLoad() {
     if (this.autofocus && this.focus) {
       setTimeout(() => {
         this.inputElement.focus();
         this.focus = false;
       });
-    } 
+    }
   }
 
   public render(): HTMLElement {
@@ -75,6 +81,7 @@ export class OgTextarea {
           onInput={ (event) => this.handleChange(event) }
           onFocus={ (event) => this.focusGained.emit(event) }
           onBlur={ (event) => this.focusLost.emit(event) }
+          placeholder={ this.placeholder }
         ></textarea>
         <div class="og-textarea__indicator"></div>
       </Host>
