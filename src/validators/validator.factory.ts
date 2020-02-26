@@ -3,6 +3,7 @@ import { getLengthValidator } from "./length.validator";
 import { getMandatoryValidator } from "./mandatory.validator";
 
 export enum ValidatorsName {
+  email = 'email',
   length = 'length',
   mandatory = 'mandatory',
 }

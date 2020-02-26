@@ -65,6 +65,8 @@ export class OgTextInput {
   }
 
   private async handleChange(e) {
+    console.log('HANDLE CHANGE', e.target.validity);
+
     this.value = e.target ? e.target.value : null;
     if (this.validator && this.validateOn === e.type) {
       await this.validate();
@@ -107,9 +109,10 @@ export class OgTextInput {
         {this.hasFocus && !this.validation.valid && this.validation.message ?
           <span class="validation-error">{this.validation.message}</span>
         : null}
-        <input type="text"
+        <input type="email"
           class="og-input__input"
           value={ this.value }
+          required
           disabled={ this.disabled }
           onInput={ (event) => this.handleChange(event) }
           onFocus={ (event) => this.handleOnFocus(event) }

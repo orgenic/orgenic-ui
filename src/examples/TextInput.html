@@ -20,6 +20,13 @@ og-text-input
             <og-text-input id="input#4" placeholder="Insert name here" value="by MAXIMAGO" disabled>
             </og-text-input>
         </div>
+
+        <hr>
+
+        <div>
+            <label for="input#5">E-Mail Validation</label>
+            <og-text-input id="input#5"></og-text-input>
+        </div>
     </div>
 </og-card>
 <script>
@@ -30,4 +37,5 @@ og-text-input
     textInputs[0].validator = [{name: 'length', options: {min: 6}}];
     textInputs[0].validateOn = 'input';
     textInputs[1].validator = ['mandatory'];
+    textInputs[1].validator = ['email'];
 </script>
