@@ -232,10 +232,6 @@ export namespace Components {
     */
     'label'?: string;
     /**
-    * The maximum Amount of chars that can be inserted  This will add a character counter underneath the component.  TODO: - implement - character counter - do "min" as well?
-    */
-    'max'?: string;
-    /**
     * A regular expression used for field validation  The expression has to be provided without surrounding slashes and without flags. The form item is marked as valid, if the pattern matches the given value of the editor. If a more complex validation is needed, a custom validation function should be provided. (See *validation* for more information)  DO: ` [a-z]+ `  DON'T: ` /[a-z]+/g `
     */
     'pattern'?: string;
@@ -1115,10 +1111,6 @@ declare namespace LocalJSX {
     * Optional label for the form item
     */
     'label'?: string;
-    /**
-    * The maximum Amount of chars that can be inserted  This will add a character counter underneath the component.  TODO: - implement - character counter - do "min" as well?
-    */
-    'max'?: string;
     /**
     * A regular expression used for field validation  The expression has to be provided without surrounding slashes and without flags. The form item is marked as valid, if the pattern matches the given value of the editor. If a more complex validation is needed, a custom validation function should be provided. (See *validation* for more information)  DO: ` [a-z]+ `  DON'T: ` /[a-z]+/g `
     */

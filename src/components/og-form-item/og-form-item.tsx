@@ -45,19 +45,6 @@ export class OgFormItem {
   public disabled?: boolean;
 
   /**
-   * The maximum Amount of chars that can be inserted
-   *
-   * This will add a character counter underneath the component.
-   *
-   * TODO:
-   * - implement
-   * - character counter
-   * - do "min" as well?
-   */
-  @Prop()
-  public max?: string;
-
-  /**
    * A regular expression used for field validation
    *
    * The expression has to be provided without surrounding slashes and without flags.
