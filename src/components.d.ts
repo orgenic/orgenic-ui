@@ -16,9 +16,6 @@ import {
   OgDatatableConfig,
 } from './components/og-datatable/interfaces/og-datatable-column-def';
 import {
-  OgInputValidator,
-} from './components/og-form-item';
-import {
   OgListItemOptions,
 } from './components/og-list-item';
 
@@ -223,11 +220,11 @@ export namespace Components {
     */
     'disabled'?: boolean;
     /**
-    * An error message to display underneath the component  This will replace the info text, as long as the input is not valid. Should not be longer than two lines. Note, that this will put a margin under the component, even if the message is hidden.  TODO: - implement
+    * An error message to display underneath the component  This will replace the info text, as long as the input is not valid. Should not be longer than two lines. Note, that this will put a margin under the component, even if the message is hidden.
     */
     'errorMessage'?: string;
     /**
-    * An info text to display underneath the component  Must not be longer than a single line! Will be replaced by an error message if given input is invalid. Note, that this will put a margin under the component.  TODO: - implement
+    * An info text to display underneath the component  Must not be longer than a single line! Will be replaced by an error message if given input is invalid. Note, that this will put a margin under the component.
     */
     'infoText'?: string;
     /**
@@ -239,13 +236,13 @@ export namespace Components {
     */
     'max'?: string;
     /**
-    * A regular expression used for field validation  TODO: - aufbau - funktion - hinweis auf validation fkt
+    * A regular expression used for field validation  The expression has to be provided without surrounding slashes and without flags. The form item is marked as valid, if the pattern matches the given value of the editor. If a more complex validation is needed, a custom validation function should be provided. (See *validation* for more information)  DO: ` [a-z]+ `  DON'T: ` /[a-z]+/g `
     */
     'pattern'?: string;
     /**
-    * A custom function used for field validation  TODO: - aufbau - funktion
+    * A custom function used for field validation  This function gets the editors value as parameter of type `string`` and returns `true` if the given value is valid.  Will be called every time the input of the editor changes.
     */
-    'validation'?: OgInputValidator;
+    'validation'?: (value: string) => boolean;
   }
   interface OgFormItemContainer {
     'itemGap': string;
@@ -1107,11 +1104,11 @@ declare namespace LocalJSX {
     */
     'disabled'?: boolean;
     /**
-    * An error message to display underneath the component  This will replace the info text, as long as the input is not valid. Should not be longer than two lines. Note, that this will put a margin under the component, even if the message is hidden.  TODO: - implement
+    * An error message to display underneath the component  This will replace the info text, as long as the input is not valid. Should not be longer than two lines. Note, that this will put a margin under the component, even if the message is hidden.
     */
     'errorMessage'?: string;
     /**
-    * An info text to display underneath the component  Must not be longer than a single line! Will be replaced by an error message if given input is invalid. Note, that this will put a margin under the component.  TODO: - implement
+    * An info text to display underneath the component  Must not be longer than a single line! Will be replaced by an error message if given input is invalid. Note, that this will put a margin under the component.
     */
     'infoText'?: string;
     /**
@@ -1123,13 +1120,13 @@ declare namespace LocalJSX {
     */
     'max'?: string;
     /**
-    * A regular expression used for field validation  TODO: - aufbau - funktion - hinweis auf validation fkt
+    * A regular expression used for field validation  The expression has to be provided without surrounding slashes and without flags. The form item is marked as valid, if the pattern matches the given value of the editor. If a more complex validation is needed, a custom validation function should be provided. (See *validation* for more information)  DO: ` [a-z]+ `  DON'T: ` /[a-z]+/g `
     */
     'pattern'?: string;
     /**
-    * A custom function used for field validation  TODO: - aufbau - funktion
+    * A custom function used for field validation  This function gets the editors value as parameter of type `string`` and returns `true` if the given value is valid.  Will be called every time the input of the editor changes.
     */
-    'validation'?: OgInputValidator;
+    'validation'?: (value: string) => boolean;
   }
   interface OgFormItemContainer {
     'itemGap'?: string;

@@ -57,6 +57,44 @@
      */
     --og-form-item__label-Color--active: var(--OG-COLOR-PRIMARY--100, #{$og-color-primary--100});
 
+    /**
+     * @prop --og-form-item__footer-Padding:
+     * Padding of the the info text and error messages (shorthand values)
+     */
+    --og-form-item__footer-Padding: 0 4px;
+    /**
+     * @prop --og-form-item__footer-LineHeight:
+     * LineHeight of the the info text and error messages (shorthand values)
+     */
+    --og-form-item__footer-LineHeight: 16px;
+    /**
+     * @prop --og-form-item__footer-Color:
+     * Text color of the info text and error messages
+     */
+    --og-form-item__footer-Color: var(--OG-COLOR-SHADE--100--50, #{$og-color-shade--100--50});
+    /**
+     * @prop --og-form-item__label-FontSize:
+     * Font size of the info text and error messages
+     */
+    --og-form-item__footer-FontSize: 12px;
+    /**
+     * @prop --og-form-item__label-FontWeight:
+     * Font weight of the info text and error messages
+     */
+    // --og-form-item__footer-FontWeight: inherit;
+    --og-form-item__footer-FontWeight: 500;
+
+    /**
+     * @prop --og-form-item__info-Opacity:
+     * Opacity of the info text (should not be changed)
+     */
+    --og-form-item__info-Opacity: 1;
+    /**
+     * @prop --og-form-item__error-Opacity:
+     * Opacity of the error message (should not be changed)
+     */
+    --og-form-item__error-Opacity: 0;
+
     display: block;
     margin-bottom: 8px;
     box-sizing: border-box;
@@ -93,7 +131,11 @@
 
 :host(.og-form-item--invalid) {
     --og-form-item__label-Color: var(--og-form-item-Color--Error);
+    --og-form-item__footer-Color: var(--og-form-item-Color--Error);
     --og-form-item__label-FontWeight: var(--og-input__label--error-FontWeight, 500);
+
+    --og-form-item__info-Opacity: 0;
+    --og-form-item__error-Opacity: 1;
 
     ::slotted(og-text-input),
     ::slotted(og-number-input),
@@ -104,8 +146,6 @@
       --og-input__input-BorderColor: var(--og-form-item-Color--Error);
     }
 }
-
-
 
 .og-form-item__body {
     display: block;
@@ -125,6 +165,29 @@
     font-size: var(--og-form-item__label-FontSize);
     font-weight: var(--og-form-item__label-FontWeight);
     color: var(--og-form-item__label-Color);
-    transition: all 0.2s cubic-bezier(0.19, 1, 0.22, 1);
+    transition: all .2s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
+.og-form-item__footer {
+    position: relative;
+    padding: var(--og-form-item__footer-Padding);
+    color: var(--og-form-item__footer-Color);
+    line-height: var(--og-form-item__footer-LineHeight);
+    font-size: var(--og-form-item__footer-FontSize);
+    font-weight: var(--og-form-item__footer-FontWeight);
+}
+
+.og-form-item__footer--info-and-error .og-form-item__info {
+    position: absolute;
+}
+
+.og-form-item__info {
+    opacity: var(--og-form-item__info-Opacity);
+    transition: opacity .2s cubic-bezier(0.19, 1, 0.22, 1);
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.og-form-item__error {
+    opacity: var(--og-form-item__error-Opacity);
+    transition: opacity .2s cubic-bezier(0.19, 1, 0.22, 1);
+}

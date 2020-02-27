@@ -1,6 +1,5 @@
 import { h, Component, Prop, Watch, Element, State, Host } from '@stencil/core';
 import { getElement } from '../../utils/dom-utils';
-import { OgInputValidator } from '.';
 
 @Component({
   tag: 'og-form-item',
@@ -23,9 +22,6 @@ export class OgFormItem {
    * Must not be longer than a single line!
    * Will be replaced by an error message if given input is invalid.
    * Note, that this will put a margin under the component.
-   *
-   * TODO:
-   * - implement
    */
   @Prop()
   public infoText?: string;
@@ -36,9 +32,6 @@ export class OgFormItem {
    * This will replace the info text, as long as the input is not valid.
    * Should not be longer than two lines.
    * Note, that this will put a margin under the component, even if the message is hidden.
-   *
-   * TODO:
-   * - implement
    */
   @Prop()
   public errorMessage?: string;
@@ -67,10 +60,15 @@ export class OgFormItem {
   /**
    * A regular expression used for field validation
    *
-   * TODO:
-   * - aufbau
-   * - funktion
-   * - hinweis auf validation fkt
+   * The expression has to be provided without surrounding slashes and without flags.
+   * The form item is marked as valid, if the pattern matches the given value of the editor.
+   * If a more complex validation is needed, a custom validation function should be provided. (See *validation* for more information)
+   *
+   * DO:
+   * ` [a-z]+ `
+   *
+   * DON'T:
+   * ` /[a-z]+/g `
    */
   @Prop()
   public pattern?: string;
@@ -78,30 +76,30 @@ export class OgFormItem {
   /**
    * A custom function used for field validation
    *
-   * TODO:
-   * - aufbau
-   * - funktion
+   * This function gets the editors value as parameter of type `string``
+   * and returns `true` if the given value is valid.
+   *
+   * Will be called every time the input of the editor changes.
    */
   @Prop()
-  public validation?: OgInputValidator;
+  public validation?: (value: string) => boolean;
 
   /**
-   * TODO:
-   * - fill
+   * Determines the validity of a field
+   *
+   * Always true, if there are no validators
    */
   @State()
   public isValid: boolean = true;
 
   /**
-   * TODO:
-   * - fill
+   * Determines whether or not the slotted editor has the focus
    */
   @State()
   public editorHasFocus: boolean = false;
 
   /**
-   * TODO:
-   * - fill
+   * Determines if the slotted editor is empty
    */
   @State()
   public editorIsEmpty: boolean = false;
@@ -164,11 +162,9 @@ export class OgFormItem {
   }
 
   public validate(value: string): boolean {
-    if (this.validation !== undefined && this.validation !== null && typeof this.validation.method === 'function') {
-      // TODO: set error and tip messages if present
-      return this.validation.method(value);
+    if (typeof this.validation === 'function') {
+      return this.validation(value);
     } else if (this.regEx !== undefined && this.regEx !== null) {
-      // TODO: set error and tip messages if present
       return this.regEx.test(value);
     }
 
@@ -182,7 +178,7 @@ export class OgFormItem {
       'og-form-item--focused': this.editorHasFocus,
       'og-form-item--empty': this.editorIsEmpty
     }}>
-      <label class="og-form-item" htmlFor="input#1">
+      <label class="og-form-item">
         <div class="og-form-item__body">
           {
             this.label &&
@@ -191,6 +187,22 @@ export class OgFormItem {
           <slot></slot>
         </div>
       </label>
+      {
+        (this.infoText || this.errorMessage) &&
+        <div class={{
+          'og-form-item__footer': true,
+          'og-form-item__footer--info-and-error': (this.infoText !== null && this.infoText !== undefined && this.infoText !== '') && (this.errorMessage !== null && this.errorMessage !== undefined && this.errorMessage !== '')
+        }}>
+          {
+            this.infoText &&
+            <div class="og-form-item__info">{ this.infoText }</div>
+          }
+          {
+            this.errorMessage &&
+            <div class="og-form-item__error">{this.errorMessage}</div>
+          }
+        </div>
+      }
     </Host>;
   }
 }
