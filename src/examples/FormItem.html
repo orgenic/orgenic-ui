@@ -5,13 +5,46 @@ og-form-item
     <div class="example example--column">
         <div>
             <og-form-item label="Default Text Input">
-                <og-text-input id="input#1"></og-text-input>
+                <og-text-input id="input-1"></og-text-input>
             </og-form-item>
             <og-form-item label="Default Number Input">
                 <og-number-input></og-number-input>
             </og-form-item>
             <og-form-item label="Default Combobox" id="formItemCombobox">
                 <og-combobox value="3"></og-combobox>
+            </og-form-item>
+        </div>
+    </div>
+
+    <div class="example example--column">
+        <h4>Validation</h4>
+        <div>
+            <og-form-item pattern="^.*@[^@]+\.[^@]+$" label="Pattern validation (E-Mail)">
+                <og-text-input id="input-mail"></og-text-input>
+            </og-form-item>
+            <og-form-item label="Validator function (Password)" id="formItemPassword">
+                <og-password-input id="input-pwd"></og-password-input>
+            </og-form-item>
+            <og-form-item label="Validator function (Password repeat)" id="formItemPassword2">
+                <og-password-input id="input-pwd2"></og-password-input>
+            </og-form-item>
+        </div>
+    </div>
+
+    <div class="example example--column">
+        <h4>Placeholder fix</h4>
+        <div>
+            <og-form-item label="text input with placeholder">
+                <og-text-input placeholder="PLACEHOLDER"></og-text-input>
+            </og-form-item>
+            <og-form-item label="password input with placeholder">
+                <og-password-input placeholder="PLACEHOLDER"></og-password-input>
+            </og-form-item>
+            <og-form-item label="textarea with placeholder">
+                <og-textarea placeholder="PLACEHOLDER"></og-textarea>
+            </og-form-item>
+            <og-form-item label="combobox with placeholder">
+                <og-combobox placeholder="PLACEHOLDER"></og-textarea>
             </og-form-item>
         </div>
     </div>
@@ -25,4 +58,33 @@ og-form-item
 
     const fiCombobox = document.querySelector('#formItemCombobox').querySelector('og-combobox');
     fiCombobox.items = fiComboboxValues;
+
+    const customValidator_pwd = {
+        tipMessage: "Passwords should contain at least 8 chars",
+        errorMessage: "nope",
+        method: (value) => {
+            const isValid = /.{8,}/.test(value);
+
+            // this is stupid code, but it tests the "rewrite ability"
+            if (!isValid) {
+                this.errorMessage = "to short";
+            }
+
+            return isValid;
+        }
+    };
+
+    const pwdInput = document.querySelector('#formItemPassword');
+    pwdInput.validation = customValidator_pwd;
+
+    const customValidator_pwd2 = {
+        tipMessage: "Type password again",
+        errorMessage: "Inserted passwords should be the same",
+        method: (value) => {
+            return (document.querySelector('#input-pwd').value === value);
+        }
+    };
+
+    const pwdInput2 = document.querySelector('#formItemPassword2');
+    pwdInput2.validation = customValidator_pwd2;
 </script>

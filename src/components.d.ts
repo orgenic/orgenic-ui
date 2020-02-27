@@ -16,6 +16,9 @@ import {
   OgDatatableConfig,
 } from './components/og-datatable/interfaces/og-datatable-column-def';
 import {
+  OgInputValidator,
+} from './components/og-form-item';
+import {
   OgListItemOptions,
 } from './components/og-list-item';
 
@@ -215,11 +218,39 @@ export namespace Components {
     'toggleExpandedState': () => Promise<void>;
   }
   interface OgFormItem {
-    'disabled': boolean;
     /**
-    * The label for the form item
+    * Determines weather the component is disabled, or not  This option will be transferred to the slotted element
     */
-    'label': string;
+    'disabled'?: boolean;
+    /**
+    * An error message to display underneath the component  This will replace the info text, as long as the input is not valid. Should not be longer than two lines. Note, that this will put a margin under the component, even if the message is hidden.  TODO: - implement
+    */
+    'errorMessage'?: string;
+    /**
+    * An info text to display underneath the component  Must not be longer than a single line! Will be replaced by an error message if given input is invalid. Note, that this will put a margin under the component.  TODO: - implement
+    */
+    'infoText'?: string;
+    /**
+    * Optional label for the form item
+    */
+    'label'?: string;
+    /**
+    * The maximum Amount of chars that can be inserted  This will add a character counter underneath the component.  TODO: - implement - character counter - do "min" as well?
+    */
+    'max'?: string;
+    /**
+    * A regular expression used for field validation  TODO: - aufbau - funktion - hinweis auf validation fkt
+    */
+    'pattern'?: string;
+    /**
+    * A custom function used for field validation  TODO: - aufbau - funktion
+    */
+    'validation'?: OgInputValidator;
+  }
+  interface OgFormItemContainer {
+    'itemGap': string;
+    'itemMaxWidth': string;
+    'itemMinWidth': string;
   }
   interface OgIcon {
     /**
@@ -257,11 +288,6 @@ export namespace Components {
     * The label of the button
     */
     'label': string;
-  }
-  interface OgFormItemContainer {
-    'itemGap': string;
-    'itemMaxWidth': string;
-    'itemMinWidth': string;
   }
   interface OgInternalCalendar {
     'dateDecorator': OgDateDecorator;
@@ -592,6 +618,10 @@ export namespace Components {
     */
     'disabled'?: boolean;
     /**
+    * Optional placeholder text if textarea is empty.
+    */
+    'placeholder'?: string;
+    /**
     * The initial value. Can be updated at runtime.
     */
     'value': string;
@@ -683,6 +713,12 @@ declare global {
     new (): HTMLOgFormItemElement;
   };
 
+  interface HTMLOgFormItemContainerElement extends Components.OgFormItemContainer, HTMLStencilElement {}
+  var HTMLOgFormItemContainerElement: {
+    prototype: HTMLOgFormItemContainerElement;
+    new (): HTMLOgFormItemContainerElement;
+  };
+
   interface HTMLOgIconElement extends Components.OgIcon, HTMLStencilElement {}
   var HTMLOgIconElement: {
     prototype: HTMLOgIconElement;
@@ -693,11 +729,6 @@ declare global {
   var HTMLOgIconButtonElement: {
     prototype: HTMLOgIconButtonElement;
     new (): HTMLOgIconButtonElement;
-  };
-  interface HTMLOgFormItemContainerElement extends Components.OgFormItemContainer, HTMLStencilElement {}
-  var HTMLOgFormItemContainerElement: {
-    prototype: HTMLOgFormItemContainerElement;
-    new (): HTMLOgFormItemContainerElement;
   };
 
   interface HTMLOgInternalCalendarElement extends Components.OgInternalCalendar, HTMLStencilElement {}
@@ -814,9 +845,9 @@ declare global {
     'og-dialog': HTMLOgDialogElement;
     'og-expander': HTMLOgExpanderElement;
     'og-form-item': HTMLOgFormItemElement;
+    'og-form-item-container': HTMLOgFormItemContainerElement;
     'og-icon': HTMLOgIconElement;
     'og-icon-button': HTMLOgIconButtonElement;
-    'og-form-item-container': HTMLOgFormItemContainerElement;
     'og-internal-calendar': HTMLOgInternalCalendarElement;
     'og-layout-child': HTMLOgLayoutChildElement;
     'og-layout-container': HTMLOgLayoutContainerElement;
@@ -1071,11 +1102,39 @@ declare namespace LocalJSX {
     'name'?: string;
   }
   interface OgFormItem {
+    /**
+    * Determines weather the component is disabled, or not  This option will be transferred to the slotted element
+    */
     'disabled'?: boolean;
     /**
-    * The label for the form item
+    * An error message to display underneath the component  This will replace the info text, as long as the input is not valid. Should not be longer than two lines. Note, that this will put a margin under the component, even if the message is hidden.  TODO: - implement
+    */
+    'errorMessage'?: string;
+    /**
+    * An info text to display underneath the component  Must not be longer than a single line! Will be replaced by an error message if given input is invalid. Note, that this will put a margin under the component.  TODO: - implement
+    */
+    'infoText'?: string;
+    /**
+    * Optional label for the form item
     */
     'label'?: string;
+    /**
+    * The maximum Amount of chars that can be inserted  This will add a character counter underneath the component.  TODO: - implement - character counter - do "min" as well?
+    */
+    'max'?: string;
+    /**
+    * A regular expression used for field validation  TODO: - aufbau - funktion - hinweis auf validation fkt
+    */
+    'pattern'?: string;
+    /**
+    * A custom function used for field validation  TODO: - aufbau - funktion
+    */
+    'validation'?: OgInputValidator;
+  }
+  interface OgFormItemContainer {
+    'itemGap'?: string;
+    'itemMaxWidth'?: string;
+    'itemMinWidth'?: string;
   }
   interface OgIcon {
     /**
@@ -1117,11 +1176,6 @@ declare namespace LocalJSX {
     * Event is being emitted when value changes.
     */
     'onClicked'?: (event: CustomEvent<any>) => void;
-  }
-  interface OgFormItemContainer {
-    'itemGap'?: string;
-    'itemMaxWidth'?: string;
-    'itemMinWidth'?: string;
   }
   interface OgInternalCalendar {
     'dateDecorator'?: OgDateDecorator;
@@ -1513,6 +1567,10 @@ declare namespace LocalJSX {
     */
     'onValueChanged'?: (event: CustomEvent<string>) => void;
     /**
+    * Optional placeholder text if textarea is empty.
+    */
+    'placeholder'?: string;
+    /**
     * The initial value. Can be updated at runtime.
     */
     'value'?: string;
@@ -1545,9 +1603,9 @@ declare namespace LocalJSX {
     'og-dialog': OgDialog;
     'og-expander': OgExpander;
     'og-form-item': OgFormItem;
+    'og-form-item-container': OgFormItemContainer;
     'og-icon': OgIcon;
     'og-icon-button': OgIconButton;
-    'og-form-item-container': OgFormItemContainer;
     'og-internal-calendar': OgInternalCalendar;
     'og-layout-child': OgLayoutChild;
     'og-layout-container': OgLayoutContainer;
@@ -1586,9 +1644,9 @@ declare module "@stencil/core" {
       'og-dialog': LocalJSX.OgDialog & JSXBase.HTMLAttributes<HTMLOgDialogElement>;
       'og-expander': LocalJSX.OgExpander & JSXBase.HTMLAttributes<HTMLOgExpanderElement>;
       'og-form-item': LocalJSX.OgFormItem & JSXBase.HTMLAttributes<HTMLOgFormItemElement>;
+      'og-form-item-container': LocalJSX.OgFormItemContainer & JSXBase.HTMLAttributes<HTMLOgFormItemContainerElement>;
       'og-icon': LocalJSX.OgIcon & JSXBase.HTMLAttributes<HTMLOgIconElement>;
       'og-icon-button': LocalJSX.OgIconButton & JSXBase.HTMLAttributes<HTMLOgIconButtonElement>;
-      'og-form-item-container': LocalJSX.OgFormItemContainer & JSXBase.HTMLAttributes<HTMLOgFormItemContainerElement>;
       'og-internal-calendar': LocalJSX.OgInternalCalendar & JSXBase.HTMLAttributes<HTMLOgInternalCalendarElement>;
       'og-layout-child': LocalJSX.OgLayoutChild & JSXBase.HTMLAttributes<HTMLOgLayoutChildElement>;
       'og-layout-container': LocalJSX.OgLayoutContainer & JSXBase.HTMLAttributes<HTMLOgLayoutContainerElement>;

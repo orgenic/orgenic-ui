@@ -2,47 +2,88 @@
 // Textarea Element
 // =============================================================================
 
-/**
- * @prop --og-textarea-Background: Main background of the textarea container
- * @prop --og-textarea-Padding: Main padding of the textarea container
-
- * @prop --og-textarea__textarea-Background: Background of the textarea
- * @prop --og-textarea__textarea-BorderColor: Border color of the textarea
- * @prop --og-textarea__textarea-BorderColor--disabled: Border color of the textarea when disabled
- * @prop --og-textarea__textarea-BorderWidth: Border width of the textarea
- * @prop --og-textarea__textarea-LineHeight: Line height of the textarea
- * @prop --og-textarea__textarea-Color: Text color of the textarea
- * @prop --og-textarea__textarea-Color--disabled: Text color of the textarea when disabled
- * @prop --og-textarea__textarea-FontFamily: Font of the textarea
- * @prop --og-textarea__textarea-FontSize: Font size of the textarea
- * @prop --og-textarea__textarea-Padding: Padding of the textarea
-
- * @prop --og-textarea__indicator-Display: Box model of the focus indicator
- * @prop --og-textarea__indicator-Width: Width of the focus indicator
- * @prop --og-textarea__indicator-Height: Height of the focus indicator
- * @prop --og-textarea__indicator-Background: Background of the focus indicator (shorthand)
-
-*/
-
-
 :host {
+    /**
+    * @prop --og-textarea-Background:
+    * Main background of the textarea container
+    */
     --og-textarea-Background: var(--OG-COLOR-SHADE--80--05, #{$og-color-shade--80--05});
+    /**
+    * @prop --og-textarea-Padding:
+    * Main padding of the textarea container
+    */
     --og-textarea-Padding: 4px;
 
+    /**
+    * @prop --og-textarea__textarea-Background:
+    * Background of the textarea
+    */
     --og-textarea__textarea-Background: transparent;
+    /**
+    * @prop --og-textarea__textarea-BorderColor:
+    * Border color of the textarea
+    */
     --og-textarea__textarea-BorderColor: var(--OG-COLOR-SHADE--50, #{$og-color-shade--50});
+    /**
+    * @prop --og-textarea__textarea-BorderColor--disabled:
+    * Border color of the textarea when disabled
+    */
     --og-textarea__textarea-BorderColor--disabled: var(--OG-COLOR-SHADE--70--50, #{$og-color-shade--70--50});
+    /**
+    * @prop --og-textarea__textarea-BorderWidth:
+    * Border width of the textarea
+    */
     --og-textarea__textarea-BorderWidth: 1px;
+    /**
+    * @prop --og-textarea__textarea-LineHeight:
+    * Line height of the textarea
+    */
     --og-textarea__textarea-LineHeight: 1.25;
+    /**
+    * @prop --og-textarea__textarea-Color:
+    * Text color of the textarea
+    */
     --og-textarea__textarea-Color: inherit;
+    /**
+    * @prop --og-textarea__textarea-Color--disabled:
+    * Text color of the textarea when disabled
+    */
     --og-textarea__textarea-Color--disabled: var(--OG-COLOR-SHADE--100--50, #{$og-color-shade--100--50});
+    /**
+    * @prop --og-textarea__textarea-FontFamily:
+    * Font of the textarea
+    */
     --og-textarea__textarea-FontFamily: inherit;
+    /**
+    * @prop --og-textarea__textarea-FontSize:
+    * Font size of the textarea
+    */
     --og-textarea__textarea-FontSize: inherit;
+    /**
+    * @prop --og-textarea__textarea-Padding:
+    * Padding of the textarea
+    */
     --og-textarea__textarea-Padding: 0 0 4px 0;
 
+    /**
+    * @prop --og-textarea__indicator-Display:
+    * Box model of the focus indicator
+    */
     --og-textarea__indicator-Display: block;
+    /**
+    * @prop --og-textarea__indicator-Width:
+    * Width of the focus indicator
+    */
     --og-textarea__indicator-Width: 0;
+    /**
+    * @prop --og-textarea__indicator-Height:
+    * Height of the focus indicator
+    */
     --og-textarea__indicator-Height: 2px;
+    /**
+    * @prop --og-textarea__indicator-Background:
+    * Background of the focus indicator (shorthand)
+    */
     --og-textarea__indicator-Background: var(--OG-COLOR-PRIMARY--100, #{$og-color-primary--100});
 
     /**
