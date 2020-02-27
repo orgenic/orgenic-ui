@@ -236,6 +236,10 @@ export namespace Components {
     */
     'pattern'?: string;
     /**
+    * Determines weather the component can be empty or not
+    */
+    'required': boolean;
+    /**
     * A custom function used for field validation  This function gets the editors value as parameter of type `string`` and returns `true` if the given value is valid.  Will be called every time the input of the editor changes.
     */
     'validation'?: (value: string) => boolean;
@@ -1115,6 +1119,10 @@ declare namespace LocalJSX {
     * A regular expression used for field validation  The expression has to be provided without surrounding slashes and without flags. The form item is marked as valid, if the pattern matches the given value of the editor. If a more complex validation is needed, a custom validation function should be provided. (See *validation* for more information)  DO: ` [a-z]+ `  DON'T: ` /[a-z]+/g `
     */
     'pattern'?: string;
+    /**
+    * Determines weather the component can be empty or not
+    */
+    'required'?: boolean;
     /**
     * A custom function used for field validation  This function gets the editors value as parameter of type `string`` and returns `true` if the given value is valid.  Will be called every time the input of the editor changes.
     */

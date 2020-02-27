@@ -11,6 +11,17 @@
     --og-form-item-Color--Error: var(--OG-COLOR-ERROR--100, #{$og-color-error--100});
 
     /**
+     * @prop --og-form-item__required-Color:
+     * Color to use for the required indicator
+     */
+    --og-form-item__required-Color: var(--OG-COLOR-ERROR--100, #{$og-color-error--100});
+    /**
+     * @prop --og-form-item__required-Content:
+     * Content to use for the required indicator
+     */
+    --og-form-item__required-Content: " *";
+
+    /**
      * @prop --og-form-item__body-Background:
      * Background of the form item container (shorthand values)
      */
@@ -166,6 +177,10 @@
     font-weight: var(--og-form-item__label-FontWeight);
     color: var(--og-form-item__label-Color);
     transition: all .2s cubic-bezier(0.19, 1, 0.22, 1);
+}
+:host([required]) .og-form-item__label:after {
+    content: var(--og-form-item__required-Content);
+    color: var(--og-form-item__required-Color);
 }
 
 .og-form-item__footer {

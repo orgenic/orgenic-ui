@@ -45,6 +45,12 @@ export class OgFormItem {
   public disabled?: boolean;
 
   /**
+   * Determines weather the component can be empty or not
+   */
+  @Prop({ reflect: true })
+  public required: boolean = false;
+
+  /**
    * A regular expression used for field validation
    *
    * The expression has to be provided without surrounding slashes and without flags.
@@ -149,6 +155,10 @@ export class OgFormItem {
   }
 
   public validate(value: string): boolean {
+    if (this.required && this.editorIsEmpty) {
+      return false;
+    }
+
     if (typeof this.validation === 'function') {
       return this.validation(value);
     } else if (this.regEx !== undefined && this.regEx !== null) {

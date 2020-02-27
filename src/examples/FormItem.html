@@ -22,10 +22,10 @@ og-form-item
             <og-form-item pattern="^.*@[^@]+\.[^@]+$" label="Pattern validation (E-Mail)" info-text="Your email address" error-message="The email address is invalid">
                 <og-text-input id="input-mail" placeholder="name@domain.name"></og-text-input>
             </og-form-item>
-            <og-form-item label="Validator function (Password)" id="formItemPassword" info-text="Should contain at least 8 characters" error-message="This is a very long error text || Lorem ipsum dolor Sit amet Lorem ipsum dolor Sit amet Lorem ipsum dolor Sit amet Lorem ipsum dolor Sit amet Lorem ipsum dolor Sit amet Lorem ipsum dolor Sit amet Lorem ipsum dolor Sit amet Lorem ipsum dolor Sit amet ">
+            <og-form-item required="true" label="Validator function (Password)" id="formItemPassword" info-text="Should contain at least 8 characters" error-message="This is a very long error text || Lorem ipsum dolor Sit amet Lorem ipsum dolor Sit amet Lorem ipsum dolor Sit amet Lorem ipsum dolor Sit amet Lorem ipsum dolor Sit amet Lorem ipsum dolor Sit amet Lorem ipsum dolor Sit amet Lorem ipsum dolor Sit amet ">
                 <og-password-input id="input-pwd"></og-password-input>
             </og-form-item>
-            <og-form-item label="Validator function (Password repeat)" id="formItemPassword2" error-message="Passwords are not identical">
+            <og-form-item required label="Validator function (Password repeat)" id="formItemPassword2" error-message="Passwords are not identical">
                 <og-password-input id="input-pwd2"></og-password-input>
             </og-form-item>
         </div>
@@ -34,7 +34,7 @@ og-form-item
     <div class="example example--column">
         <h4>Placeholder fix</h4>
         <div>
-            <og-form-item label="text input with placeholder">
+            <og-form-item label="text input with placeholder" required>
                 <og-text-input placeholder="PLACEHOLDER"></og-text-input>
             </og-form-item>
             <og-form-item label="password input with placeholder">
