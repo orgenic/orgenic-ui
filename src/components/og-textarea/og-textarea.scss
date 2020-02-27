@@ -132,6 +132,7 @@
     transition: min-height 200ms ease-in-out;
     overflow: hidden;
     max-width: 100%;
+    resize: vertical;
 }
 
 // A state line at the bottom of th Input
