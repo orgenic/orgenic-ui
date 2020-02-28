@@ -16,6 +16,11 @@
      */
     --og-form-item__required-Color: var(--OG-COLOR-ERROR--100, #{$og-color-error--100});
     /**
+     * @prop --og-form-item__required-FontWeight:
+     * Font weight to use for the required indicator
+     */
+    --og-form-item__required-FontWeight: 600;
+    /**
      * @prop --og-form-item__required-Content:
      * Content to use for the required indicator
      */
@@ -181,6 +186,7 @@
 :host([required]) .og-form-item__label:after {
     content: var(--og-form-item__required-Content);
     color: var(--og-form-item__required-Color);
+    font-weight: var(--og-form-item__required-FontWeight);
 }
 
 .og-form-item__footer {
