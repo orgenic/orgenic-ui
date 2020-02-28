@@ -1,226 +1,106 @@
-/**
- * @prop --og-tooltip-BackgroundColor: Overall background color of the tooltip
- * @prop --og-tooltip-BorderRadius: Border radius of the tooltip
- * @prop --og-tooltip-Color: Text color within the tooltip
- * @prop --og-tooltip-DropShadow: Drop-shadow filter of the tooltip
- * @prop --og-tooltip-FontSize: Font size of the tooltip´s text
- * @prop --og-tooltip-LineHeight: Line height of the tooltip´s text
- * @prop --og-tooltip-Margin: Margin around the tooltip
- * @prop --og-tooltip-Opacity: Opacity of the visible tooltip
- * @prop --og-tooltip-Padding: Padding within the tooltip
- * @prop --og-tooltip-Transition: Transition to apply when tooltip uses animation
- * @prop --og-tooltip-ZIndex: Z-index value of the tooltip
- * @prop --og-tooltip-arrow-Height: Height of the arrow element when applied on top or bottom
- * @prop --og-tooltip-arrow-Width: Width of the arrow element when applied on top or bottom
- */
-
-// <og-tooltip> (this is the tooltip´s target element)
-// -----------------------------------------------------------------------------
-:host,
+:host, 
 og-tooltip {
-    display: inline-block;
+    /* @prop --og-tooltip-BorderRadius: Background of the tooltip (shorthand) */
+    --og-tooltip-Background: var(--OG-COLOR-PRIMARY--0, #FFFFFF);
+
+    /* @prop --og-tooltip-BorderRadius: Border radius of the tooltip */
+    --og-tooltip-BorderRadius: var(--OG-BORDER-RADIUS, 3px);
+
+    /* @prop --og-tooltip-Color: Text color of the tooltip */
+    --og-tooltip-Color: var(--OG-FONT-COLOR, #333333);
+
+    /* @prop --og-tooltip-FontSize: Font size of the tooltip */
+    --og-tooltip-FontSize: var(--OG-FONT-SIZE, inherit);
+
+    /* @prop --og-tooltip-Padding: Padding of the tooltip (shorthand) */
+    --og-tooltip-Padding: var(--OG-PADDING, 8px);
+
+    /* @prop --og-tooltip-arrow--size: Size of the tooltip arrow (shorthand) */
+    --og-tooltip__arrow--size: 8px;
+
+    /* @prop --og-tooltip-arrow-Width: Width of the tooltip arrow */
+    --og-tooltip__arrow-Width: var(--og-tooltip__arrow--size, 8px);
+    
+    /* @prop --og-tooltip-arrow-Height: Width of the tooltip arrow */
+    --og-tooltip__arrow-Height: var(--og-tooltip__arrow--size, 8px);
+
+    display: none;
+    
+    border-radius:  var(--og-tooltip-BorderRadius);
+    box-shadow:     0 0 8px 0 rgba(0, 0, 0, .05);
+    
+    max-width:      var(--og-tooltip-MaxWidth, none);
+    max-height:     var(--og-tooltip-MaxHeight, none);
 }
 
-// Tooltip element (the bubble visually attached to it´s target)
-// -----------------------------------------------------------------------------
-.og-tooltip {
-    // Interal vars trying to map external (:root) vars and provide a fallback
-    --_og-tooltip-BackgroundColor: var(--og-tooltip-BackgroundColor, var(--OG-TOOLTIP-BACKGROUND-COLOR, #{$og-tooltip-background-color}));
-    --_og-tooltip-BorderRadius: var(--og-tooltip-BorderRadius, #{$og-border-radius});
-    --_og-tooltip-Color: var(--og-tooltip-Color, var(--OG-FONT-COLOR, inherit));
-    --_og-tooltip-DropShadow: var(--og-tooltip-DropShadow, #{$og-tooltip-drop-shadow});
-    --_og-tooltip-FontSize: var(--og-tooltip-FontSize, var(--OG-FONT-SIZE--S, 12px));
-    --_og-tooltip-LineHeight: var(--og-tooltip-LineHeight, 1.5);
-    --_og-tooltip-Margin: var(--og-tooltip-Margin, 0);
-    --_og-tooltip-Opacity: var(--og-tooltip-Opacity, 1);
-    --_og-tooltip-Padding: var(--og-tooltip-Padding, 6px 8px);
-    --_og-tooltip-Transition: var(--og-tooltip-Transition, opacity 0.15s linear);
-    --_og-tooltip-ZIndex: var(--og-tooltip-ZIndex, #{$og-z-index-tooltip});
-    --_og-tooltip-arrow-Height: var(--og-tooltip-arrow-Height, 4px);
-    --_og-tooltip-arrow-Width: var(--og-tooltip-arrow-Width, 10px);
-
-    // Internal vars NOT meant to be overridden externally
-    --_og-tooltip-FlexDirection: column;
-    --_og-tooltip-MaxWidth: 75vw;
-    --_og-tooltip-MaxHeight: 50vw;
-    --_og-tooltip-arrow-Order: 0;
-    --_og-tooltip-arrow-BorderTopColor: transparent;
-    --_og-tooltip-arrow-BorderRightColor: transparent;
-    --_og-tooltip-arrow-BorderBottomColor: transparent;
-    --_og-tooltip-arrow-BorderLeftColor: transparent;
-    --_og-tooltip-arrow-BorderWidth: 0;
-    --_og-tooltip-arrow-MarginTop: auto;
-    --_og-tooltip-arrow-MarginRight: auto;
-    --_og-tooltip-arrow-MarginBottom: auto;
-    --_og-tooltip-arrow-MarginLeft: auto;
-
-    position: absolute;
-    z-index: var(--_og-tooltip-ZIndex);
-    display: flex;
-    flex-direction: var(--_og-tooltip-FlexDirection);
-    font-size: var(--_og-tooltip-FontSize);
-    line-height: var(--_og-tooltip-LineHeight);
-    margin: var(--_og-tooltip-Margin);
-    filter: var(--_og-tooltip-DropShadow);
-    opacity: 0;
-    // Tame the overall tooltip dimension (e.g. viewport-width/height values)
-    max-width: var(--_og-tooltip-MaxWidth);
-    max-height: var(--_og-tooltip-MaxHeight);
-
-    // show
-    &.show {
-        opacity: var(--_og-tooltip-Opacity);
-    }
-
-    // fade
-    &.fade {
-        transition: var(--_og-tooltip-Transition);
-
-        &:not(.show) {
-            opacity: 0;
-        }
-    }
-
-    // top & bottom
-    &[class*="og-tooltip-top"],
-    &[class*="og-tooltip-bottom"],
-    &[class*="og-tooltip-auto"][data-popper-placement^="top"],
-    &[class*="og-tooltip-auto"][data-popper-placement^="bottom"] {
-        // start
-        &[class*="-start"],
-        &[data-popper-placement$="-start"] {
-            --_og-tooltip-arrow-MarginLeft: var(--_og-tooltip-arrow-Width);
-        }
-
-        // end
-        &[class*="-end"],
-        &[data-popper-placement$="-end"] {
-            --_og-tooltip-arrow-MarginRight: var(--_og-tooltip-arrow-Width);
-        }
-    }
-
-    // left & right
-    &[class*="og-tooltip-right"],
-    &[class*="og-tooltip-left"],
-    &[class*="og-tooltip-auto"][data-popper-placement^="right"],
-    &[class*="og-tooltip-auto"][data-popper-placement^="left"] {
-        --_og-tooltip-FlexDirection: row;
-        --_og-tooltip-arrow-Width: var(--og-tooltip-arrow-Height, 4px);
-        --_og-tooltip-arrow-Height: var(--og-tooltip-arrow-Width, 10px);
-
-        // start
-        &[class*="-start"],
-        &[data-popper-placement$="-start"] {
-            --_og-tooltip-arrow-MarginTop: var(--_og-tooltip-arrow-Width);
-        }
-
-        // end
-        &[class*="-end"],
-        &[data-popper-placement$="-end"] {
-            --_og-tooltip-arrow-MarginBottom: var(--_og-tooltip-arrow-Width);
-        }
-    }
-
-    // top & left
-    &[class*="og-tooltip-top"],
-    &[class*="og-tooltip-left"],
-    &[class*="og-tooltip-auto"][data-popper-placement^="top"],
-    &[class*="og-tooltip-auto"][data-popper-placement^="left"] {
-        // Make the arrow appear after the content
-        --_og-tooltip-arrow-Order: 1;
-    }
-
-    // top
-    &[class*="og-tooltip-top"],
-    &[class*="og-tooltip-auto"][data-popper-placement^="top"] {
-        --_og-tooltip-arrow-BorderTopColor: var(--_og-tooltip-BackgroundColor);
-        --_og-tooltip-arrow-BorderWidth: var(--_og-tooltip-arrow-Height) calc(var(--_og-tooltip-arrow-Width) / 2) 0;
-    }
-
-    // right
-    &[class*="og-tooltip-right"],
-    &[class*="og-tooltip-auto"][data-popper-placement^="right"] {
-        --_og-tooltip-arrow-BorderRightColor: var(--_og-tooltip-BackgroundColor);
-        --_og-tooltip-arrow-BorderWidth: calc(var(--_og-tooltip-arrow-Height) / 2) var(--_og-tooltip-arrow-Width) calc(var(--_og-tooltip-arrow-Height) / 2) 0;
-    }
-
-    // bottom
-    &[class*="og-tooltip-bottom"],
-    &[class*="og-tooltip-auto"][data-popper-placement^="bottom"] {
-        --_og-tooltip-arrow-BorderBottomColor: var(--_og-tooltip-BackgroundColor);
-        --_og-tooltip-arrow-BorderWidth: 0 calc(var(--_og-tooltip-arrow-Width) / 2) var(--_og-tooltip-arrow-Height);
-    }
-
-    // left
-    &[class*="og-tooltip-left"],
-    &[class*="og-tooltip-auto"][data-popper-placement^="left"] {
-        --_og-tooltip-arrow-BorderLeftColor: var(--_og-tooltip-BackgroundColor);
-        --_og-tooltip-arrow-BorderWidth: calc(var(--_og-tooltip-arrow-Height) / 2) 0 calc(var(--_og-tooltip-arrow-Height) / 2) var(--_og-tooltip-arrow-Width);
-    }
-
+.tooltip__content {
+    background:     var(--og-tooltip-Background);
+    border-radius:  var(--og-tooltip-BorderRadius);
+    color:          var(--og-tooltip-Color);
+    font-size:      var(--og-tooltip-FontSize);
+    padding:        var(--og-tooltip-Padding);
 }
 
-// Tooltip content area
-.og-tooltip__inner {
-    background-color: var(--_og-tooltip-BackgroundColor);
-    border-radius: var(--_og-tooltip-BorderRadius);
-    color: var(--_og-tooltip-Color);
-    padding: var(--_og-tooltip-Padding);
-    overflow: hidden;
-    word-break: break-all;
-    // Non standard for WebKit
-    word-break: break-word;
-}
-
-// Tooltip arrow
-.og-tooltip__arrow {
-    order: var(--_og-tooltip-arrow-Order);
+og-tooltip[data-show],
+:host([data-show]) {
     display: block;
-    flex: none;
-    width: var(--_og-tooltip-arrow-Width);
-    height: var(--_og-tooltip-arrow-Height);
-    margin-top: var(--_og-tooltip-arrow-MarginTop);
-    margin-right: var(--_og-tooltip-arrow-MarginRight);
-    margin-bottom: var(--_og-tooltip-arrow-MarginBottom);
-    margin-left: var(--_og-tooltip-arrow-MarginLeft);
-
-    &::before {
-        position: absolute;
-        content: "";
-        border-top-color: var(--_og-tooltip-arrow-BorderTopColor);
-        border-right-color: var(--_og-tooltip-arrow-BorderRightColor);
-        border-bottom-color: var(--_og-tooltip-arrow-BorderBottomColor);
-        border-left-color: var(--_og-tooltip-arrow-BorderLeftColor);
-        border-width: var(--_og-tooltip-arrow-BorderWidth);
-        border-style: solid;
-    }
 }
 
-// Detect if the user has requested that the system shall minimize the amount of
-// animation or motion it uses
-@media (prefers-reduced-motion: reduce) {
-    .og-tooltip.fade {
-        transition: none;
-    }
+#arrow,
+#arrow::before {
+    position: absolute;
+    height: var(--og-tooltip__arrow-Height);
+    width: var(--og-tooltip__arrow-Width);
+    z-index: -1;
+}
+
+#arrow::before {
+    content: '';
+    background: var(--og-tooltip-Background);
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, .05);
+    transform: rotate(45deg);
+}
+
+og-tooltip[data-popper-placement^='top'] > #arrow,
+:host([data-popper-placement^='top']) > #arrow {
+    bottom: calc(var(--og-tooltip__arrow-Height, 8px) / -2);    // result has to be negative
+}
+
+og-tooltip[data-popper-placement^='bottom'] > #arrow,
+:host([data-popper-placement^='bottom']) > #arrow {
+    top: calc(var(--og-tooltip__arrow-Height, 8px) / -2);    // result has to be negative
+}
+
+og-tooltip[data-popper-placement^='left'] > #arrow,
+:host([data-popper-placement^='left']) > #arrow {
+    right: calc(var(--og-tooltip__arrow-Width, 8px) / -2);    // result has to be negative
+}
+
+og-tooltip[data-popper-placement^='right'] > #arrow,
+:host([data-popper-placement^='right']) > #arrow {
+    left: calc(var(--og-tooltip__arrow-Width, 8px) / -2);    // result has to be negative
 }
 
 // Make sure that the overall tooltip dimension has a relation to the
 // (increasing) viewport size
 @media (min-width: 768px) {
-    .og-tooltip {
-        --_og-tooltip-MaxWidth: 50vw;
-        --_og-tooltip-MaxHeight: 50vw;
+    og-tooltip,
+    :host {
+        --og-tooltip-MaxWidth: 50vw;
+        --og-tooltip-MaxHeight: 50vw;
     }
 }
 
 @media (min-width: 1200px) {
-    .og-tooltip {
-        --_og-tooltip-MaxWidth: 33vw;
+    og-tooltip,
+    :host {
+        --og-tooltip-MaxWidth: 33vw;
     }
 }
 
 @media (min-width: 1800px) {
-    .og-tooltip {
-        --_og-tooltip-MaxWidth: 25vw;
+    og-tooltip,
+    :host {
+        --og-tooltip-MaxWidth: 25vw;
     }
 }

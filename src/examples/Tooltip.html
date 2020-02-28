@@ -3,8 +3,13 @@ og-tooltip
 -->
 <og-card name="Tooltip">
     <div class="example example--tooltip">
+        <og-button id="btn-1" label="Hover Me"></og-button>
+        <og-tooltip for="btn-1" boundary=".example.example--tooltip" placement="top" fallbackPlacements="" offset-distance="8" offset-skidding="0" flyout>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</og-tooltip>
+
+        <!--
         <og-card name="Demo: Simple tooltip with top placement">
             <og-tooltip data-title="A simple text title" data-placement="top">Simple tooltip above</og-tooltip>
+
             <p>HTML code:</p>
             <code>
                 &lt;og-tooltip data-title="A simple text title" data-placement="top"&gt;Simple tooltip above&lt;/og-tooltip&gt;
@@ -67,6 +72,7 @@ og-tooltip
                 });
             </code>
         </og-card>
+        -->
     </div>
 </og-card>
 
@@ -75,6 +81,8 @@ og-tooltip
         display: flex;
         flex-wrap: wrap;
         justify-content: start;
+        display: block;
+        padding-top: 48px;
     }
 
     .example--tooltip code {
