@@ -1,4 +1,4 @@
-import { h, Component, Prop, Event, EventEmitter, Host } from '@stencil/core';
+import { h, Component, Prop, Event, EventEmitter, Host, Watch } from '@stencil/core';
 
 @Component({
   tag: 'og-textarea',
@@ -51,9 +51,14 @@ export class OgTextarea {
   private focus: boolean = false;
   private inputElement: HTMLTextAreaElement;
 
-  public handleChange(e) {
-    this.value = e.target.value;
+  @Watch('value')
+  public handleChange(value: string) {
+    this.value = value;
     this.valueChanged.emit(this.value);
+  }
+
+  public handleInput(e) {
+    this.handleChange(e.target.value);
   }
 
   public componentWillLoad() {
@@ -78,7 +83,7 @@ export class OgTextarea {
           class="og-textarea__textarea"
           value={ this.value }
           disabled={ this.disabled }
-          onInput={ (event) => this.handleChange(event) }
+          onInput={ (event) => this.handleInput(event) }
           onFocus={ (event) => this.focusGained.emit(event) }
           onBlur={ (event) => this.focusLost.emit(event) }
           placeholder={ this.placeholder }

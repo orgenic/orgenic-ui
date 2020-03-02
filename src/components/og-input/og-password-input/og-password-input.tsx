@@ -1,4 +1,4 @@
-import { h, Component, Prop, Event, EventEmitter, State, Method, Host } from '@stencil/core';
+import { h, Component, Prop, Event, EventEmitter, State, Method, Host, Watch } from '@stencil/core';
 
 @Component({
   tag: 'og-password-input',
@@ -80,8 +80,13 @@ export class OgPasswordInput {
     }
   }
 
-  public handleChange(e) {
-    this.value = e.target.value;
+  public handleInput(e) {
+    this.handleChange(e.target.value);
+  }
+
+  @Watch('value')
+  public handleChange(value: string) {
+    this.value = value;
     this.valueChanged.emit(this.value);
   }
 
@@ -93,7 +98,7 @@ export class OgPasswordInput {
           class="og-input__input"
           value={ this.value }
           disabled={ this.disabled }
-          onInput={ (event) => this.handleChange(event) }
+          onInput={ (event) => this.handleInput(event) }
           onFocus={ (event) => this.focusGained.emit(event) }
           onBlur={ (event) => this.focusLost.emit(event) }
           placeholder={ this.placeholder }

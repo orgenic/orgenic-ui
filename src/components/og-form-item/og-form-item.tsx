@@ -109,7 +109,10 @@ export class OgFormItem {
     this.editor = await getElement(this.el, '.og-form-item__editor', 1000);
 
     if (!this.editor) {
-      return console.error('OgFormItem is unable to resolve editor');
+      this.el.remove();
+      // throw new Error('OgFormItem is unable to resolve editor');
+      console.error('OgFormItem is unable to resolve editor');
+      return false;
     }
 
     this.editor.addEventListener('focusGained', () => {
@@ -136,11 +139,11 @@ export class OgFormItem {
       default:
     }
     this.editor.addEventListener(valueChangeEvent, (event: CustomEvent) => {
-      this.checkEditorEmpty(event.detail);
-      this.isValid = this.validate(event.detail);
+      this.editorIsEmpty = this.checkEditorEmpty();
+      this.isValid = this.validate(this.editor['value']);
     });
 
-    this.checkEditorEmpty(this.editor['value']);
+    this.editorIsEmpty = this.checkEditorEmpty();
 
     // update disabled state of child editor
     if (this.disabled) {
@@ -150,11 +153,16 @@ export class OgFormItem {
     }
   }
 
-  public checkEditorEmpty(value) {
-    this.editorIsEmpty =value === null || value === undefined || value.length === 0;
+  public checkEditorEmpty(): boolean {
+    const value = this.editor['value'];
+    return (value === null || value === undefined || value.length === 0);
   }
 
-  public validate(value: string): boolean {
+  public validate(value?: string): boolean {
+    if (!value) {
+      value = this.editor['value'];
+    }
+
     if (this.required && this.editorIsEmpty) {
       return false;
     }

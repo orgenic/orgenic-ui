@@ -9,7 +9,8 @@ import {
   State,
   Element,
   Listen,
-  Host
+  Host,
+  Watch
 } from '@stencil/core';
 
 @Component({
@@ -159,32 +160,37 @@ export class OgCombobox {
     }
   }
 
-  public inputChanged(eventTarget) {
+  @Watch('value')
+  public handleChange(value: string) {
     if (!this.disabled && this.customOption) {
-      const value = eventTarget.value || '';
       const item = {};
       item[this.itemLabelProperty] = value;
       item[this.itemValueProperty] = value;
       this.itemSelected.emit(item);
+    }
+  }
+
+  public inputChanged(eventTarget) {
+    if (!this.disabled && this.customOption) {
+      this.handleChange(eventTarget.value || '');
       eventTarget.blur();
 
       if (this.dropdownActive) {
         this.dropdownActive = false;
       }
-
       this.focusLost.emit();
     }
   }
 
   private getSelectedItemLabel(): string {
     if (!this.hasValidItems()) {
-      return '';
+      return this.value || '';
     }
     const item = this.items.find(
       item => item[this.itemValueProperty] + '' === this.value
     );
     if (!item) {
-      return '';
+      return this.value || '';
     }
     return item[this.itemLabelProperty];
   }
@@ -206,7 +212,7 @@ export class OgCombobox {
   }
 
   /**
-   * behaviour:
+   * behavior:
    *   * combobox options shows 7 items
    *   * if it does not fit on screen, scale down options
    *   * if options would be smaller than 4 items, show options above combobox

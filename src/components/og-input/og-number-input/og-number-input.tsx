@@ -1,4 +1,4 @@
-import { h, Component, Prop, Event, EventEmitter, Host } from '@stencil/core';
+import { h, Component, Prop, Event, EventEmitter, Host, Watch } from '@stencil/core';
 
 @Component({
   tag: 'og-number-input',
@@ -84,11 +84,16 @@ export class OgNumberInput {
     }
   }
 
-  public handleChange(e) {
-    const value = parseFloat(e.target.value);
+  public handleInput(e) {
+    this.handleChange(e.target.value);
+  }
 
-    if (!isNaN(value)) {
-      this.value = value;
+  @Watch('value')
+  public handleChange(value: string) {
+    const newValue = parseFloat(value);
+
+    if (!isNaN(newValue)) {
+      this.value = newValue;
     } else {
       this.value = null;
     }
@@ -107,7 +112,7 @@ export class OgNumberInput {
           max={ this.max }
           value={ this.value }
           disabled={ this.disabled }
-          onInput={ (event) => this.handleChange(event) }
+          onInput={ (event) => this.handleInput(event) }
           onFocus={ (event) => this.focusGained.emit(event) }
           onBlur={ (event) => this.focusLost.emit(event) }
           placeholder={ this.placeholder }

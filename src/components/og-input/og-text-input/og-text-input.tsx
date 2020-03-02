@@ -1,4 +1,4 @@
-import { h, Component, Prop, Event, EventEmitter, Host } from '@stencil/core';
+import { h, Component, Prop, Event, EventEmitter, Host, Watch } from '@stencil/core';
 
 @Component({
   tag: 'og-text-input',
@@ -95,8 +95,13 @@ export class OgTextInput {
     this.inputIndicator.classList.remove('focus');
   }
 
-  public handleChange(e) {
-    this.value = e.target.value;
+  private handleInput(e) {
+    this.handleChange(e.target.value);
+  }
+
+  @Watch('value')
+  public handleChange(value: string) {
+    this.value = value;
     this.valueChanged.emit(this.value);
 
     if (this.multiLine) {
@@ -113,7 +118,7 @@ export class OgTextInput {
             class="og-input__input"
             value={ this.value }
             disabled={ this.disabled }
-            onInput={ (event) => this.handleChange(event) }
+            onInput={(event) => this.handleInput(event)}
             onFocus={ (event) => this.handleFocus(event) }
             onBlur={ (event) => this.handleBlur(event) }
             onKeyDown={ (event) => this.handleKeyDown(event) }
