@@ -39,7 +39,10 @@ export class OgTooltip {
   public for: string;
 
   @Prop()
-  public flyout?: boolean;
+  public flyout?: string;
+
+  @Prop()
+  public flyoutEvent?: string = "click";
 
   @Prop()
   public noArrow?: boolean;
@@ -51,7 +54,7 @@ export class OgTooltip {
   public placement?: string = 'top';
 
   @Prop()
-  public fallbackPlacements?: Array<string> = ['top', 'bottom', 'right', 'left'];
+  public fallbackPlacements?: string = "top bottom right left";
 
   @Prop()
   public offsetSkidding?: number = 0;
@@ -62,42 +65,24 @@ export class OgTooltip {
   private popperInstance: Popper.Instance = null;
   private refElement: HTMLElement = null;
 
-  // PUBLIC
-  public componentWillLoad = (): void => {}
-
   public componentDidLoad = (): void => {
-    let showEvents;
-    let hideEvents;
-
     // get reference element
     this.refElement = window.document.getElementById(this.for);
 
     if (this.refElement) {
-      if (this.flyout) {
-        showEvents = ['click'];
-        hideEvents = [];
+      if (this.isFlyout()) {
+        // setup event listener for flyout
+        this.refElement.addEventListener(this.flyoutEvent, this.showTooltip);
+        this.hostElement.querySelector(".tooltip__close").addEventListener("click", this.hideTooltip);
       } else {
-        showEvents = ['mouseenter', 'focus'];
-        hideEvents = ['mouseleave', 'blur'];
+        // setup event listener for tooltip
+        let showEvents = ['mouseenter', 'focus'];
+        let hideEvents = ['mouseleave', 'blur'];
+        
+        this.addShowEvents(showEvents);
+        this.addHideEvents(hideEvents);
       }
-
-      this.addShowEvents(showEvents);
-      this.addHideEvents(hideEvents);
-    } else {
-      console.log("no reference element found, using VirtualElement", this.for);
-
-      // TODO: is this REALLY necessary?!
-      (this.refElement as Popper.VirtualElement) = {
-        getBoundingClientRect: () => ({
-          width: 0,
-          height: 0,
-          top: 0,
-          right: 0,
-          bottom: 0,
-          left: 0
-        })
-      };      
-    }
+    } 
   }
 
   public componentDidUnload = (): void => {
@@ -107,32 +92,34 @@ export class OgTooltip {
   public render(): HTMLElement {
     return (
       <Host>
-        <div class="tooltip__content">
+        <div class="tooltip">
           {
-            this.flyout 
-              ? ""
-              : ""
+            this.isFlyout()
+              ? <div class="tooltip__header">
+                  <span>{ this.flyout }</span>
+                  <svg class="tooltip__close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="m14 0l-6 6-6-6-2 2 6 6-6 6 2 2 6-6 6 6 2-2-6-6 6-6"/></svg>
+                </div>
+              : ''
           }
-          <slot />
+          <div class="tooltip__content">
+            <slot />
+          </div>
         </div>
         {
           !this.noArrow
             ? <div id="arrow" data-popper-arrow></div>
-            : ""
+            : ''
         }
       </Host>
     );
   }
 
-  // PRIVATE
   private createTooltip = (): void => {
     let customBoundary = null;
 
     if (this.boundary.trim().length) {
       customBoundary = document.querySelector(this.boundary) || null;
     }      
-
-    console.log(customBoundary);
 
     let tooltipOptions: Partial<Popper.Options> = {
       modifiers: [{
@@ -143,7 +130,8 @@ export class OgTooltip {
       }, {
         name: 'flip',
         options: {
-          fallbackPlacements: this.fallbackPlacements
+          boundary: customBoundary || "clippingParent",
+          fallbackPlacements: this.fallbackPlacements.split(" ")
         }
       }, {
         name: 'preventOverflow',
@@ -166,24 +154,39 @@ export class OgTooltip {
   }
 
   private showTooltip = (): void => {
+    if (this.isFlyout()) {
+      this.refElement.removeEventListener(this.flyoutEvent, this.showTooltip);
+    }
+    
     this.hostElement.setAttribute('data-show', '');
-    this.createTooltip();
+
+    if (!this.popperInstance) {
+      this.createTooltip();
+    }
   }
   
   private hideTooltip = (): void => {
     this.hostElement.removeAttribute('data-show');
     this.destroyTooltip();
+    
+    if(this.isFlyout()) {
+      this.refElement.addEventListener(this.flyoutEvent, this.showTooltip);
+    }    
   }
 
-  private addShowEvents = (events: []): void => {
+  private addShowEvents = (events: string[]): void => {
     events.forEach(event => {
       this.refElement.addEventListener(event, this.showTooltip);
     });
   }
 
-  private addHideEvents = (events: []): void => {
+  private addHideEvents = (events: string[]): void => {
     events.forEach(event => {
       this.refElement.addEventListener(event, this.hideTooltip);
     });
+  }
+
+  private isFlyout = (): boolean => {
+    return this.hostElement.hasAttribute("flyout");
   }
 }

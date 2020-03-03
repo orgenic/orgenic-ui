@@ -33,17 +33,50 @@ og-tooltip {
     max-height:     var(--og-tooltip-MaxHeight, none);
 }
 
-.tooltip__content {
+og-tooltip[data-show],
+:host([data-show]) {
+    display: block;
+}
+
+.tooltip {
     background:     var(--og-tooltip-Background);
     border-radius:  var(--og-tooltip-BorderRadius);
     color:          var(--og-tooltip-Color);
     font-size:      var(--og-tooltip-FontSize);
-    padding:        var(--og-tooltip-Padding);
+    position:       relative; 
 }
 
-og-tooltip[data-show],
-:host([data-show]) {
-    display: block;
+.tooltip__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    font-weight: var(--OG-FONT-WEIGHT--BOLD);
+}
+
+.tooltip__header > span {
+    @include ellipsis();
+
+    flex: 1 1 auto;
+    padding: 0 var(--og-tooltip-Padding);
+}
+
+.tooltip__close {
+    display: inline-block;
+    flex: 0 0 auto;
+    width: 12px;
+    height: 12px;
+    padding: 12px;
+
+    fill: currentColor;
+}
+
+.tooltip__content {
+    padding: var(--og-tooltip-Padding);
+}
+
+.tooltip__header + .tooltip__content {
+    padding-top: 0;
 }
 
 #arrow,
