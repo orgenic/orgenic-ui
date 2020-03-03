@@ -166,6 +166,7 @@ export class OgCombobox {
       const item = {};
       item[this.itemLabelProperty] = value;
       item[this.itemValueProperty] = value;
+      this.value = value;
       this.itemSelected.emit(item);
     }
   }

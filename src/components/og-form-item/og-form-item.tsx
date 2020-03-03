@@ -138,7 +138,7 @@ export class OgFormItem {
         break;
       default:
     }
-    this.editor.addEventListener(valueChangeEvent, (event: CustomEvent) => {
+    this.editor.addEventListener(valueChangeEvent, () => {
       this.editorIsEmpty = this.checkEditorEmpty();
       this.isValid = this.validate(this.editor['value']);
     });
