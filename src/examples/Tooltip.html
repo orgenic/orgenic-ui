@@ -2,18 +2,18 @@
 og-tooltip
 -->
 <og-card name="Tooltip">
-    <div class="example--tooltip">
+    <div id="tooltip-boundary" class="example--tooltip">
         <!-- <span id="btn-1" label="Hover Me">Hover Me</span> -->
         <section>
             <og-button id="btn-1" label="Hover Me"></og-button>
-            <og-tooltip for="btn-1" boundary=".example--tooltip" placement="left">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</og-tooltip>
+            <og-tooltip for="btn-1" boundary="tooltip-boundary" placement="left">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</og-tooltip>
             <!-- <og-tooltip for="btn-1" boundary=".example.example--tooltip" placement="bottom" flyout-event="clicked" flyout="Flyout Title very long and ongoning Lorem ipsum, dolor sit amet consectetur adipisicing elit.">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</og-tooltip> -->
         </section>
 
         <section>
             <og-button id="btn-2" label="Click Me"></og-button>
             <!-- <og-tooltip for="btn-1" boundary=".example.example--tooltip" placement="left">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</og-tooltip> -->
-            <og-tooltip for="btn-2" boundary=".example--tooltip" placement="right" flyout-event="clicked" flyout="Flyout Title very long and ongoning Lorem ipsum, dolor sit amet consectetur adipisicing elit.">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</og-tooltip>
+            <og-tooltip for="btn-2" boundary="tooltip-boundary" placement="right" flyout-event="clicked" flyout="Flyout Title very long and ongoning Lorem ipsum, dolor sit amet consectetur adipisicing elit.">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</og-tooltip>
         </section>
 
         <!--

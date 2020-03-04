@@ -66,23 +66,25 @@ export class OgTooltip {
   private refElement: HTMLElement = null;
 
   public componentDidLoad = (): void => {
-    // get reference element
-    this.refElement = window.document.getElementById(this.for);
+    // get reference element by ID
+    this.refElement = document.getElementById(this.for);
 
-    if (this.refElement) {
-      if (this.isFlyout()) {
-        // setup event listener for flyout
-        this.refElement.addEventListener(this.flyoutEvent, this.showTooltip);
-        this.hostElement.querySelector(".tooltip__close").addEventListener("click", this.hideTooltip);
-      } else {
-        // setup event listener for tooltip
-        let showEvents = ['mouseenter', 'focus'];
-        let hideEvents = ['mouseleave', 'blur'];
-        
-        this.addShowEvents(showEvents);
-        this.addHideEvents(hideEvents);
-      }
-    } 
+    if (!this.refElement) {
+      return;
+    }
+
+    if (this.isFlyout()) {
+      // setup event listener for flyout
+      this.refElement.addEventListener(this.flyoutEvent, this.showTooltip);
+      this.hostElement.querySelector(".tooltip__close").addEventListener("click", this.hideTooltip);
+    } else {
+      // setup event listener for tooltip
+      let showEvents = ['mouseenter', 'focus'];
+      let hideEvents = ['mouseleave', 'blur'];
+      
+      this.addShowEvents(showEvents);
+      this.addHideEvents(hideEvents);
+    }
   }
 
   public componentDidUnload = (): void => {
@@ -115,12 +117,14 @@ export class OgTooltip {
   }
 
   private createTooltip = (): void => {
-    let customBoundary = null;
+    if (this.popperInstance) {
+      return;
+    }
 
-    if (this.boundary.trim().length) {
-      customBoundary = document.querySelector(this.boundary) || null;
-    }      
+    // get boundary by ID
+    let customBoundary = document.getElementById(this.boundary) || null;
 
+    // setup tooltip options
     let tooltipOptions: Partial<Popper.Options> = {
       modifiers: [{
         name: 'offset',
@@ -143,6 +147,7 @@ export class OgTooltip {
       placement: this.placement as Popper.Placement
     };
 
+    // create tooltip
     this.popperInstance = Popper.createPopper(this.refElement, this.hostElement, tooltipOptions);
   }
 
@@ -159,10 +164,7 @@ export class OgTooltip {
     }
     
     this.hostElement.setAttribute('data-show', '');
-
-    if (!this.popperInstance) {
-      this.createTooltip();
-    }
+    this.createTooltip();
   }
   
   private hideTooltip = (): void => {
