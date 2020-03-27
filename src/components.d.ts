@@ -62,6 +62,10 @@ export namespace Components {
   }
   interface OgCombobox {
     /**
+    * User can type custom options if enabled
+    */
+    'customOption': boolean;
+    /**
     * Determines, whether the control is disabled or not
     */
     'disabled': boolean;
@@ -211,11 +215,39 @@ export namespace Components {
     'toggleExpandedState': () => Promise<void>;
   }
   interface OgFormItem {
-    'disabled': boolean;
     /**
-    * The label for the form item
+    * Determines weather the component is disabled, or not  This option will be transferred to the slotted element
     */
-    'label': string;
+    'disabled'?: boolean;
+    /**
+    * An error message to display underneath the component  This will replace the info text, as long as the input is not valid. Should not be longer than two lines. Note, that this will put a margin under the component, even if the message is hidden.
+    */
+    'errorMessage'?: string;
+    /**
+    * An info text to display underneath the component  Must not be longer than a single line! Will be replaced by an error message if given input is invalid. Note, that this will put a margin under the component.
+    */
+    'infoText'?: string;
+    /**
+    * Optional label for the form item
+    */
+    'label'?: string;
+    /**
+    * A regular expression used for field validation  The expression has to be provided without surrounding slashes and without flags. The form item is marked as valid, if the pattern matches the given value of the editor. If a more complex validation is needed, a custom validation function should be provided. (See *validation* for more information)  DO: ` [a-z]+ `  DON'T: ` /[a-z]+/g `
+    */
+    'pattern'?: string;
+    /**
+    * Determines weather the component can be empty or not
+    */
+    'required': boolean;
+    /**
+    * A custom function used for field validation  This function gets the editors value as parameter of type `string`` and returns `true` if the given value is valid.  Will be called every time the input of the editor changes.
+    */
+    'validation'?: (value: string) => boolean;
+  }
+  interface OgFormItemContainer {
+    'itemGap': string;
+    'itemMaxWidth': string;
+    'itemMinWidth': string;
   }
   interface OgInternalCalendar {
     'dateDecorator': OgDateDecorator;
@@ -355,9 +387,13 @@ export namespace Components {
   }
   interface OgNumberInput {
     /**
+    * Optional autofocus input element.
+    */
+    'autofocus'?: boolean;
+    /**
     * Determines, whether the control is disabled or not.
     */
-    'disabled': boolean;
+    'disabled'?: boolean;
     /**
     * Maximum value for this component.
     */
@@ -381,9 +417,13 @@ export namespace Components {
   }
   interface OgPasswordInput {
     /**
+    * Optional autofocus input element.
+    */
+    'autofocus'?: boolean;
+    /**
     * Determines, whether the control is disabled or not.
     */
-    'disabled': boolean;
+    'disabled'?: boolean;
     /**
     * Optional placeholder text if input is empty.
     */
@@ -508,9 +548,17 @@ export namespace Components {
   }
   interface OgTextInput {
     /**
+    * Optional autofocus input element.
+    */
+    'autofocus'?: boolean;
+    /**
     * Determines, whether the control is disabled or not.
     */
-    'disabled': boolean;
+    'disabled'?: boolean;
+    /**
+    * Determines, whether the control automatically grows downwards if the inserted text gets to big.
+    */
+    'multiLine': boolean;
     /**
     * Optional placeholder text if input is empty.
     */
@@ -522,9 +570,17 @@ export namespace Components {
   }
   interface OgTextarea {
     /**
+    * Optional autofocus input element.
+    */
+    'autofocus'?: boolean;
+    /**
     * Determines, whether the control is disabled or not.
     */
-    'disabled': boolean;
+    'disabled'?: boolean;
+    /**
+    * Optional placeholder text if textarea is empty.
+    */
+    'placeholder'?: string;
     /**
     * The initial value. Can be updated at runtime.
     */
@@ -615,6 +671,12 @@ declare global {
   var HTMLOgFormItemElement: {
     prototype: HTMLOgFormItemElement;
     new (): HTMLOgFormItemElement;
+  };
+
+  interface HTMLOgFormItemContainerElement extends Components.OgFormItemContainer, HTMLStencilElement {}
+  var HTMLOgFormItemContainerElement: {
+    prototype: HTMLOgFormItemContainerElement;
+    new (): HTMLOgFormItemContainerElement;
   };
 
   interface HTMLOgInternalCalendarElement extends Components.OgInternalCalendar, HTMLStencilElement {}
@@ -731,6 +793,7 @@ declare global {
     'og-dialog': HTMLOgDialogElement;
     'og-expander': HTMLOgExpanderElement;
     'og-form-item': HTMLOgFormItemElement;
+    'og-form-item-container': HTMLOgFormItemContainerElement;
     'og-internal-calendar': HTMLOgInternalCalendarElement;
     'og-layout-child': HTMLOgLayoutChildElement;
     'og-layout-container': HTMLOgLayoutContainerElement;
@@ -804,6 +867,10 @@ declare namespace LocalJSX {
   }
   interface OgCombobox {
     /**
+    * User can type custom options if enabled
+    */
+    'customOption'?: boolean;
+    /**
     * Determines, whether the control is disabled or not
     */
     'disabled'?: boolean;
@@ -820,11 +887,11 @@ declare namespace LocalJSX {
     */
     'items'?: any[];
     /**
-    * Event is being emitted when input gets focus..
+    * Event is being emitted when input gets focus
     */
     'onFocusGained'?: (event: CustomEvent<FocusEvent>) => void;
     /**
-    * Event is being emitted when focus gets lost.
+    * Event is being emitted when focus gets lost
     */
     'onFocusLost'?: (event: CustomEvent<FocusEvent>) => void;
     /**
@@ -981,11 +1048,39 @@ declare namespace LocalJSX {
     'name'?: string;
   }
   interface OgFormItem {
+    /**
+    * Determines weather the component is disabled, or not  This option will be transferred to the slotted element
+    */
     'disabled'?: boolean;
     /**
-    * The label for the form item
+    * An error message to display underneath the component  This will replace the info text, as long as the input is not valid. Should not be longer than two lines. Note, that this will put a margin under the component, even if the message is hidden.
+    */
+    'errorMessage'?: string;
+    /**
+    * An info text to display underneath the component  Must not be longer than a single line! Will be replaced by an error message if given input is invalid. Note, that this will put a margin under the component.
+    */
+    'infoText'?: string;
+    /**
+    * Optional label for the form item
     */
     'label'?: string;
+    /**
+    * A regular expression used for field validation  The expression has to be provided without surrounding slashes and without flags. The form item is marked as valid, if the pattern matches the given value of the editor. If a more complex validation is needed, a custom validation function should be provided. (See *validation* for more information)  DO: ` [a-z]+ `  DON'T: ` /[a-z]+/g `
+    */
+    'pattern'?: string;
+    /**
+    * Determines weather the component can be empty or not
+    */
+    'required'?: boolean;
+    /**
+    * A custom function used for field validation  This function gets the editors value as parameter of type `string`` and returns `true` if the given value is valid.  Will be called every time the input of the editor changes.
+    */
+    'validation'?: (value: string) => boolean;
+  }
+  interface OgFormItemContainer {
+    'itemGap'?: string;
+    'itemMaxWidth'?: string;
+    'itemMinWidth'?: string;
   }
   interface OgInternalCalendar {
     'dateDecorator'?: OgDateDecorator;
@@ -1134,6 +1229,10 @@ declare namespace LocalJSX {
   }
   interface OgNumberInput {
     /**
+    * Optional autofocus input element.
+    */
+    'autofocus'?: boolean;
+    /**
     * Determines, whether the control is disabled or not.
     */
     'disabled'?: boolean;
@@ -1171,6 +1270,10 @@ declare namespace LocalJSX {
     'value'?: number;
   }
   interface OgPasswordInput {
+    /**
+    * Optional autofocus input element.
+    */
+    'autofocus'?: boolean;
     /**
     * Determines, whether the control is disabled or not.
     */
@@ -1315,9 +1418,17 @@ declare namespace LocalJSX {
   }
   interface OgTextInput {
     /**
+    * Optional autofocus input element.
+    */
+    'autofocus'?: boolean;
+    /**
     * Determines, whether the control is disabled or not.
     */
     'disabled'?: boolean;
+    /**
+    * Determines, whether the control automatically grows downwards if the inserted text gets to big.
+    */
+    'multiLine'?: boolean;
     /**
     * Event is being emitted when input gets focus..
     */
@@ -1341,6 +1452,10 @@ declare namespace LocalJSX {
   }
   interface OgTextarea {
     /**
+    * Optional autofocus input element.
+    */
+    'autofocus'?: boolean;
+    /**
     * Determines, whether the control is disabled or not.
     */
     'disabled'?: boolean;
@@ -1356,6 +1471,10 @@ declare namespace LocalJSX {
     * Event is being emitted when value changes.
     */
     'onValueChanged'?: (event: CustomEvent<string>) => void;
+    /**
+    * Optional placeholder text if textarea is empty.
+    */
+    'placeholder'?: string;
     /**
     * The initial value. Can be updated at runtime.
     */
@@ -1389,6 +1508,7 @@ declare namespace LocalJSX {
     'og-dialog': OgDialog;
     'og-expander': OgExpander;
     'og-form-item': OgFormItem;
+    'og-form-item-container': OgFormItemContainer;
     'og-internal-calendar': OgInternalCalendar;
     'og-layout-child': OgLayoutChild;
     'og-layout-container': OgLayoutContainer;
@@ -1427,6 +1547,7 @@ declare module "@stencil/core" {
       'og-dialog': LocalJSX.OgDialog & JSXBase.HTMLAttributes<HTMLOgDialogElement>;
       'og-expander': LocalJSX.OgExpander & JSXBase.HTMLAttributes<HTMLOgExpanderElement>;
       'og-form-item': LocalJSX.OgFormItem & JSXBase.HTMLAttributes<HTMLOgFormItemElement>;
+      'og-form-item-container': LocalJSX.OgFormItemContainer & JSXBase.HTMLAttributes<HTMLOgFormItemContainerElement>;
       'og-internal-calendar': LocalJSX.OgInternalCalendar & JSXBase.HTMLAttributes<HTMLOgInternalCalendarElement>;
       'og-layout-child': LocalJSX.OgLayoutChild & JSXBase.HTMLAttributes<HTMLOgLayoutChildElement>;
       'og-layout-container': LocalJSX.OgLayoutContainer & JSXBase.HTMLAttributes<HTMLOgLayoutContainerElement>;

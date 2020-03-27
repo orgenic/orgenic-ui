@@ -1,3 +1,9 @@
+# [0.6.0 beta](https://github.com/orgenic/orgenic-ui/compare/v0.5.0...v0.6.0-beta) (2020-03-27)
+
+## Features
+
+## Bug Fixes
+
 # [0.5.0](https://github.com/orgenic/orgenic-ui/compare/v0.4.3...v0.5.0) (2020-01-31)
 
 ## Features

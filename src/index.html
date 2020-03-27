@@ -182,8 +182,6 @@
             </script>
 
             <og-card name="Components">
-                <a href="icon-button" data-navigo>Icon Button</a>
-                <a href="icon" data-navigo>Icon</a>
                 <a href="spinner" data-navigo>Spinner</a>
                 <a href="progress" data-navigo>Progress</a>
                 <a href="layout-container" data-navigo>Layout Container</a>
@@ -232,8 +230,6 @@
                 // use #! to hash
                 const router = new Navigo(null, true, '#!');
                 router.on({
-                    'icon-button': () => { loadHTML('./examples/IconButton.html', view); },
-                    'icon': () => { loadHTML('./examples/Icon.html', view); },
                     'spinner': () => { loadHTML('./examples/Spinner.html', view); },
                     'progress': () => { loadHTML('./examples/Progress.html', view); },
                     'layout-container': () => { loadHTML('./examples/LayoutContainer.html', view); },

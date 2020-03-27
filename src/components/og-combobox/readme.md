@@ -9,21 +9,22 @@
 
 | Property            | Attribute             | Description                                                         | Type      | Default     |
 | ------------------- | --------------------- | ------------------------------------------------------------------- | --------- | ----------- |
+| `customOption`      | `custom-option`       | User can type custom options if enabled                             | `boolean` | `false`     |
 | `disabled`          | `disabled`            | Determines, whether the control is disabled or not                  | `boolean` | `undefined` |
 | `itemLabelProperty` | `item-label-property` | Set the property for the items to define as label. Default: "label" | `string`  | `'label'`   |
 | `itemValueProperty` | `item-value-property` | Set the property for the items to define as value. Default: "value" | `string`  | `'value'`   |
-| `items`             | --                    | An array of items to choose from                                    | `any[]`   | `undefined` |
+| `items`             | --                    | An array of items to choose from                                    | `any[]`   | `[]`        |
 | `placeholder`       | `placeholder`         | Optional placeholder if no value is selected.                       | `string`  | `undefined` |
 | `value`             | `value`               | The selected value of the combobox                                  | `string`  | `undefined` |
 
 
 ## Events
 
-| Event          | Description                                    | Type                      |
-| -------------- | ---------------------------------------------- | ------------------------- |
-| `focusGained`  | Event is being emitted when input gets focus.. | `CustomEvent<FocusEvent>` |
-| `focusLost`    | Event is being emitted when focus gets lost.   | `CustomEvent<FocusEvent>` |
-| `itemSelected` | Event is being emitted when value changes.     | `CustomEvent<any>`        |
+| Event          | Description                                  | Type                      |
+| -------------- | -------------------------------------------- | ------------------------- |
+| `focusGained`  | Event is being emitted when input gets focus | `CustomEvent<FocusEvent>` |
+| `focusLost`    | Event is being emitted when focus gets lost  | `CustomEvent<FocusEvent>` |
+| `itemSelected` | Event is being emitted when value changes.   | `CustomEvent<any>`        |
 
 
 ## CSS Custom Properties
@@ -46,6 +47,7 @@
 | `--og-combobox__indicator-Height`      | Height of the focus indicator           |
 | `--og-combobox__indicator-Width`       | Width of the focus indicator            |
 | `--og-combobox__placeholder-Color`     | Text color of the placeholder           |
+| `--og-combobox__placeholder-Opacity`   | Opacity of the unhidden placeholder     |
 
 
 ## Dependencies

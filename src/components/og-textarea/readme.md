@@ -7,10 +7,12 @@
 
 ## Properties
 
-| Property   | Attribute  | Description                                         | Type      | Default     |
-| ---------- | ---------- | --------------------------------------------------- | --------- | ----------- |
-| `disabled` | `disabled` | Determines, whether the control is disabled or not. | `boolean` | `undefined` |
-| `value`    | `value`    | The initial value. Can be updated at runtime.       | `string`  | `undefined` |
+| Property      | Attribute     | Description                                         | Type      | Default     |
+| ------------- | ------------- | --------------------------------------------------- | --------- | ----------- |
+| `autofocus`   | `autofocus`   | Optional autofocus input element.                   | `boolean` | `undefined` |
+| `disabled`    | `disabled`    | Determines, whether the control is disabled or not. | `boolean` | `undefined` |
+| `placeholder` | `placeholder` | Optional placeholder text if textarea is empty.     | `string`  | `undefined` |
+| `value`       | `value`       | The initial value. Can be updated at runtime.       | `string`  | `undefined` |
 
 
 ## Events
@@ -32,6 +34,8 @@
 | `--og-textarea__indicator-Display`              | Box model of the focus indicator              |
 | `--og-textarea__indicator-Height`               | Height of the focus indicator                 |
 | `--og-textarea__indicator-Width`                | Width of the focus indicator                  |
+| `--og-textarea__placeholder-Color`              | Text color of the placeholder                 |
+| `--og-textarea__placeholder-Opacity`            | Opacity of the unhidden placeholder           |
 | `--og-textarea__textarea-Background`            | Background of the textarea                    |
 | `--og-textarea__textarea-BorderColor`           | Border color of the textarea                  |
 | `--og-textarea__textarea-BorderColor--disabled` | Border color of the textarea when disabled    |

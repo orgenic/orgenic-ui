@@ -9,6 +9,7 @@
 
 | Property      | Attribute     | Description                                         | Type      | Default     |
 | ------------- | ------------- | --------------------------------------------------- | --------- | ----------- |
+| `autofocus`   | `autofocus`   | Optional autofocus input element.                   | `boolean` | `undefined` |
 | `disabled`    | `disabled`    | Determines, whether the control is disabled or not. | `boolean` | `undefined` |
 | `max`         | `max`         | Maximum value for this component.                   | `number`  | `undefined` |
 | `min`         | `min`         | Minimum value for this component.                   | `number`  | `undefined` |
@@ -44,8 +45,10 @@
 | `--og-input__input-FontFamily`            | Font of the input field                            |
 | `--og-input__input-FontSize`              | Font size of the input field                       |
 | `--og-input__input-LineHeight`            | Line height of the input field                     |
-| `--og-input__input-Padding`               | Padding of the input field                         |
+| `--og-input__input-Padding`               | Padding around the input element                   |
 | `--og-input__input-TextTransform`         | Text-transform property of input field             |
+| `--og-input__placeholder-Color`           | Text color of the placeholder                      |
+| `--og-input__placeholder-Opacity`         | Opacity of the placeholder                         |
 
 
 ----------------------------------------------
