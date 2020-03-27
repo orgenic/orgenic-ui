@@ -1,3 +1,9 @@
+/**
+ * ORGENIC-UI
+ * @license MIT
+ * See LICENSE file at https://github.com/orgenic/orgenic-ui/blob/master/LICENSE
+ **/
+
 import { h, Component, Element, Prop, Host } from '@stencil/core';
 import { IconUtils } from './utils/utils'
 
