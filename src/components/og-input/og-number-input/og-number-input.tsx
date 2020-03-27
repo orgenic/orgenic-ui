@@ -1,4 +1,4 @@
-import { h, Component, Prop, Event, EventEmitter, Host } from '@stencil/core';
+import { h, Component, Prop, Event, EventEmitter, Host, Watch } from '@stencil/core';
 
 @Component({
   tag: 'og-number-input',
@@ -40,14 +40,19 @@ export class OgNumberInput {
    * Determines, whether the control is disabled or not.
    */
   @Prop()
-  public disabled: boolean;
+  public disabled?: boolean;
+
+  /**
+   * Optional autofocus input element.
+   */
+  @Prop()
+  public autofocus?: boolean;
 
   /**
    * Event is being emitted when value changes.
    */
   @Event()
   public valueChanged: EventEmitter<number>;
-
 
   /**
    * Event is being emitted when input gets focus..
@@ -61,11 +66,34 @@ export class OgNumberInput {
   @Event()
   public focusLost: EventEmitter<FocusEvent>;
 
-  public handleChange(e) {
-    const value = parseFloat(e.target.value);
+  private focus: boolean = false;
+  private inputElement: HTMLInputElement;
 
-    if (!isNaN(value)) {
-      this.value = value;
+  public componentWillLoad() {
+    if (this.autofocus) {
+      this.focus = true;
+    }
+  }
+
+  public componentDidLoad() {
+    if (this.autofocus && this.focus) {
+      setTimeout(() => {
+        this.inputElement.focus();
+        this.focus = false;
+      });
+    }
+  }
+
+  public handleInput(e) {
+    this.handleChange(e.target.value);
+  }
+
+  @Watch('value')
+  public handleChange(value: string) {
+    const newValue = parseFloat(value);
+
+    if (!isNaN(newValue)) {
+      this.value = newValue;
     } else {
       this.value = null;
     }
@@ -76,14 +104,15 @@ export class OgNumberInput {
   public render(): HTMLElement {
     return (
       <Host class={{ 'og-form-item__editor': true }}>
-        <input type="number"
+        <input ref={ el => this.inputElement = el as HTMLInputElement }
+          type="number"
           class="og-input__input"
-          value={ this.value }
           step={ this.step }
           min={ this.min }
           max={ this.max }
+          value={ this.value }
           disabled={ this.disabled }
-          onInput={ (event) => this.handleChange(event) }
+          onInput={ (event) => this.handleInput(event) }
           onFocus={ (event) => this.focusGained.emit(event) }
           onBlur={ (event) => this.focusLost.emit(event) }
           placeholder={ this.placeholder }

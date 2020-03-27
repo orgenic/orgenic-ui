@@ -12,7 +12,11 @@ og-combobox
             <h4>Disabled combobox</h4>
             <og-combobox id="combobox3" value="2" disabled></og-combobox>
 
+            <h4>Custom option combobox</h4>
+            <og-combobox id="combobox5" custom-option></og-combobox>
+
     </div>
+    <br>
     <div style="overflow: auto; padding-top: 40px; max-height: 400px;">
         <h4>Inside a horizontal scroll area</h4>
         <p>Also width a custom flyout width.</p>
@@ -28,15 +32,16 @@ og-combobox
     }
 
     const combobox1 = document.querySelector('#combobox1');
-    combobox1.items = values;
+    // combobox1.items = values;
     combobox1.addEventListener('itemSelected', e => console.log('item selected', e));
 
     const combobox2 = document.querySelector('#combobox2');
     combobox2.items = values;
     combobox2.addEventListener('itemSelected', e => console.log('item selected', e));
 
-    const combobox3 = document.querySelector('#combobox3');
-    combobox3.items = values;
+    const combobox5 = document.querySelector('#combobox5');
+    combobox5.items = values;
+    combobox5.addEventListener('itemSelected', e => console.log('item selected', e));
 
     const combobox4 = document.querySelector('#combobox4');
     combobox4.items = values;

@@ -1,0 +1,206 @@
+// =============================================================================
+// CSS CUSTOM PROPERTIES
+// =============================================================================
+
+/**
+ * @prop --og-icon-button-Background: Main background color of the button
+ * @prop --og-icon-button-Background--active: Background color when the button is clicked
+ * @prop --og-icon-button-Background--disabled: Background color when the button is disabled
+ * @prop --og-icon-button-Background--hover: Background color when the button is hovered
+ * @prop --og-icon-button-BorderColor: Main border color of the button
+ * @prop --og-icon-button-BorderColor--active: Border color when the button is clicked
+ * @prop --og-icon-button-BorderColor--disabled: Border color when the button is disabled
+ * @prop --og-icon-button-BorderColor--hover: Border color when the button is hovered
+ * @prop --og-icon-button-BorderRadius: Border radius of the button
+ * @prop --og-icon-button-Color: Text color of the button label
+ * @prop --og-icon-button-Color--active: Text color when the button is clicked
+ * @prop --og-icon-button-Color--disabled: Text color when the button is disabled
+ * @prop --og-icon-button-Color--hover: Text color when the button is hovered
+ */
+
+// -----------------------------------------------------------------------------
+// Base
+// -----------------------------------------------------------------------------
+
+:host {
+  // All Component Variables
+  // Map Variables to Properties
+  --Display: inline-block;
+  --Height: auto;
+
+  /**
+   * @prop --MinWidth:
+   * Minimum width of the Button.
+   */
+  --MinWidth: NULL;
+  --MaxHeight: inherit;
+  --Padding: var(--PADDING, 0.75rem 1rem);    // TODO: use --OG-PADDING
+  --BorderWidth: 0;
+  --BorderStyle: solid;
+
+  --og-icon-button-BorderRadius:         var( --OG-BORDER-RADIUS, #{$og-border-radius});
+
+  --og-icon-button-Background:           var(--OG-COLOR-SECONDARY--100--20, #{$og-color-secondary--100--20});
+  --og-icon-button-Background--hover:    var(--OG-COLOR-SECONDARY--100--30, #{$og-color-secondary--100--30});
+  --og-icon-button-Background--active:   var(--OG-COLOR-SECONDARY--100--10, #{$og-color-secondary--100--10});
+  --og-icon-button-Background--disabled: var(--OG-COLOR-SECONDARY--100--07, #{$og-color-secondary--100--07});
+
+  --og-icon-button-Color:                var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
+  --og-icon-button-Color--hover:         var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
+  --og-icon-button-Color--active:        var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
+  --og-icon-button-Color--disabled:      var(--OG-COLOR-SHADE--100--30, #{$og-color-shade--100--30});
+
+  --og-icon-button-BorderColor:           var(--OG-COLOR-SECONDARY--100--20, #{$og-color-secondary--100--20});
+  --og-icon-button-BorderColor--hover:    var(--OG-COLOR-SECONDARY--100--30, #{$og-color-secondary--100--30});
+  --og-icon-button-BorderColor--active:   var(--OG-COLOR-SECONDARY--100--10, #{$og-color-secondary--100--10});
+  --og-icon-button-BorderColor--disabled: var(--OG-COLOR-SECONDARY--100--07, #{$og-color-secondary--100--07});
+
+  --og-icon-button-FontWeight: var(--OG-FONT-WEIGHT--MEDIUM, 500);
+
+  /**
+   * @prop --og-icon-button-WhiteSpace:
+   * White Space behavior of the Button text. Used to truncate overflowing text.
+   */
+  --og-icon-button-WhiteSpace: NULL;
+
+  /**
+   * @prop --og-icon-button-WhiteSpace:
+   * Text Overflow behavior. Used to truncate overflowing text.
+   */
+  --og-icon-button-TextOverflow: NULL;
+
+
+  --BoxShadow: var(--og-icon-button-BoxShadow);
+  --FontFamily: var(--og-icon-button-FontFamily, inherit);
+  --FontSize: var(--og-icon-button-FontSize, inherit);
+  --Outline: none;
+  --TextTransform: uppercase;
+
+  display: var(--Display);
+  min-width: var(--MinWidth);
+  max-width: 100%;
+  height: var(--Height);
+  max-height: var(--maxHeight);
+
+  font-family: var(--FontFamily);
+  font-size: var(--FontSize);
+  font-weight: var(--og-icon-button-FontWeight, normal);
+
+  user-select: none;
+
+  box-sizing: border-box;
+  *, *::before, *::after { box-sizing: inherit; }
+}
+
+:host(:not(.og-icon-button--text-wrap)) {
+  --MinWidth: 0;
+  --og-icon-button-WhiteSpace: nowrap;
+  --og-icon-button-TextOverflow: ellipsis;
+}
+
+:host([data-context~='workflow']) {
+  --og-icon-button-Background: var(--OG-COLOR-PRIMARY--100, #{$og-color-primary--100});
+  --og-icon-button-Background--hover: var(--OG-COLOR-PRIMARY--120, #{$og-color-primary--120});
+  --og-icon-button-Background--active: var(--OG-COLOR-PRIMARY--80, #{$og-color-primary--80});
+  --og-icon-button-Background--disabled: var(--OG-COLOR-PRIMARY--100--30, #{$og-color-primary--100--30});
+
+  --og-icon-button-Color: var(--OG-COLOR-SHADE--0, #{$og-color-shade--0});
+  --og-icon-button-Color--hover: var(--OG-COLOR-SHADE--0, #{$og-color-shade--0});
+  --og-icon-button-Color--active: var(--OG-COLOR-SHADE--0, #{$og-color-shade--0});
+  --og-icon-button-Color--disabled: var(--OG-COLOR-SHADE--0--30, #{$og-color-shade--0--30});
+}
+
+// 'Link' version
+:host([data-context~="link"]) {
+  --og-icon-button-Background: transparent;
+  --og-icon-button-Background--hover: var(--OG-COLOR-SHADE--100--30, #{$og-color-shade--100--30});
+  --og-icon-button-Background--active: var(--OG-COLOR-SHADE--100--10, #{$og-color-shade--100--10});
+  --og-icon-button-Background--disabled: transparent;
+
+  --og-icon-button-Color: var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
+  --og-icon-button-Color--hover: var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
+  --og-icon-button-Color--active: var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
+  --og-icon-button-Color--disabled: var(--OG-COLOR-SHADE--100--30, #{$og-color-shade--100--30});
+}
+
+:host([data-context~="outline"]) {
+  --BorderWidth: 1px;
+
+  --og-icon-button-BorderColor: var(--OG-COLOR-SECONDARY--100--20, #{$og-color-secondary--100--20});
+  --og-icon-button-BorderColor--hover: var(--OG-COLOR-SECONDARY--100--30, #{$og-color-secondary--100--30});
+  --og-icon-button-BorderColor--active: var(--OG-COLOR-SECONDARY--100--10, #{$og-color-secondary--100--10});
+  --og-icon-button-BorderColor--disabled: var(--OG-COLOR-SECONDARY--100--07, #{$og-color-secondary--100--07});
+
+  --og-icon-button-Background: transparent;
+  --og-icon-button-Background--hover: transparent;
+  --og-icon-button-Background--active: transparent;
+  --og-icon-button-Background--disabled: transparent;
+}
+
+// Native <button> element
+.og-icon-button {
+  background: var(--og-icon-button-Background);
+  border-color: var(--og-icon-button-BorderColor);
+  border-radius: var(--og-icon-button-BorderRadius);
+  border-style: var(--BorderStyle);
+  border-width: var(--BorderWidth);
+  color: var(--og-icon-button-Color);
+  display: block;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  height: 100%;
+  max-height: inherit;
+  max-width: inherit;
+  overflow: hidden;
+  padding: var(--Padding);
+  text-overflow: var(--og-icon-button-TextOverflow);
+  text-transform: var(--TextTransform);
+  transition-duration: 150ms;
+  transition-property: background-color;
+  transition-timing-function: ease-in-out;
+  width: 100%;
+  white-space: var(--og-icon-button-WhiteSpace);
+
+  // 'Focus' state
+  &:focus {
+    outline: none;
+  }
+
+  // 'Hover' state
+  &:hover {
+    --og-icon-button-Background: var(--og-icon-button-Background--hover);
+    --og-icon-button-BorderColor: var(--og-icon-button-BorderColor--hover);
+    --og-icon-button-Color: var(--og-icon-button-Color--hover);
+    cursor: pointer;
+    transition-duration: 300ms;
+  }
+
+  // 'Active' state
+  &:active {
+    --og-icon-button-Background: var(--og-icon-button-Background--active);
+    --og-icon-button-BorderColor: var(--og-icon-button-BorderColor--active);
+    --og-icon-button-Color: var(--og-icon-button-Color--active);
+    transition-duration: 300ms;
+  }
+
+  // 'Disabled' state
+  &:disabled {
+    --og-icon-button-Background: var(--og-icon-button-Background--disabled);
+    --og-icon-button-BorderColor: var(--og-icon-button-BorderColor--disabled);
+    --og-icon-button-Color: var(--og-icon-button-Color--disabled);
+    cursor: default;
+  }
+}
+
+og-icon[icon-style=stroke] {
+  --og-icon--Stroke: var(--og-icon-button-Color, currentColor);
+}
+
+og-icon[icon-style=fill] {
+  --og-icon--Fill: var(--og-icon-button-Color, currentColor);
+}
+
+.label {
+  margin-left: 10px;
+}

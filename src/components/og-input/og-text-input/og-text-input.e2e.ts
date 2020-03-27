@@ -16,7 +16,7 @@ describe('og-text-input', () => {
   });
 
   it('renders disabled state on input element', async () => {
-    const input = await page.find('og-text-input >>> input');
+    const input = await page.find('og-text-input >>> textarea');
 
     component.setProperty('disabled', true);
     await page.waitForChanges();
@@ -28,7 +28,7 @@ describe('og-text-input', () => {
   });
 
   it('applies value on input element', async () => {
-    const input = await page.find('og-text-input >>> input');
+    const input = await page.find('og-text-input >>> textarea');
 
     component.setProperty('value', 'orgenic-ui');
     await page.waitForChanges();
@@ -36,7 +36,7 @@ describe('og-text-input', () => {
   });
 
   it('represents components value property according to typed input string', async () => {
-    const input = await page.find('og-text-input >>> input');
+    const input = await page.find('og-text-input >>> textarea');
     await input.type('o');
     await input.type('r');
     await input.type('g');

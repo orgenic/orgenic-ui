@@ -3,29 +3,115 @@
 // A wrapper for Input Elements
 // =============================================================================
 
-/**
- * @prop --og-form-item__body-Background: Background of the form item container (shorthand values)
- * @prop --og-form-item__body-Padding: Padding of the form item container (shorthand values)
- * @prop --og-form-item__label-FontSize: Font size of the label
- * @prop --og-form-item__label-Top: Top position of the label
- * @prop --og-form-item__label-Left: Left position of the label
- * @prop --og-form-item__label-Color: Text color of the label
- * @prop --og-form-item__label-Color--active: Text color of the label when selected
- * @prop --og-form-item__label-Color--hover: Text color of the label when hovered
- */
-
 :host {
-    --og-form-item-Margin: 4px;
+    /**
+     * @prop --og-form-item-Color--Error:
+     * Error color to use for displaying invalid state of the form item
+     */
+    --og-form-item-Color--Error: var(--OG-COLOR-ERROR--100, #{$og-color-error--100});
 
+    /**
+     * @prop --og-form-item__required-Color:
+     * Color to use for the required indicator
+     */
+    // --og-form-item__required-Color: var(--OG-COLOR-ERROR--100, #{$og-color-error--100});
+    --og-form-item__required-Color: var(--og-form-item__label-Color);
+
+    /**
+     * @prop --og-form-item__required-FontWeight:
+     * Font weight to use for the required indicator
+     */
+    --og-form-item__required-FontWeight: 600;
+    /**
+     * @prop --og-form-item__required-Content:
+     * Content to use for the required indicator
+     */
+    --og-form-item__required-Content: " *";
+
+    /**
+     * @prop --og-form-item__body-Background:
+     * Background of the form item container (shorthand values)
+     */
     --og-form-item__body-Background: transparent;
+    /**
+     * @prop --og-form-item__body-Padding:
+     * Padding of the form item container (shorthand values)
+     */
     --og-form-item__body-Padding: 0;
 
+    /**
+     * @prop --og-form-item__label-FontSize:
+     * Font size of the label
+     */
     --og-form-item__label-FontSize: inherit;
+    /**
+     * @prop --og-form-item__label-FontWeight:
+     * Font weight of the label
+     */
+    --og-form-item__label-FontWeight: inherit;
+    /**
+     * @prop --og-form-item__label-Top:
+     * Top position of the label
+     */
     --og-form-item__label-Top: 28px;
+    /**
+     * @prop --og-form-item__label-Left:
+     * Left position of the label
+     */
     --og-form-item__label-Left: 4px;
+    /**
+     * @prop --og-form-item__label-Color:
+     * Text color of the label
+     */
     --og-form-item__label-Color: var(--OG-COLOR-SHADE--100--50, #{$og-color-shade--100--50});
+    /**
+     * @prop --og-form-item__label-Color--hover:
+     * Text color of the label when hovered
+     */
     --og-form-item__label-Color--hover: var(--OG-COLOR-SHADE--100--50, #{$og-color-shade--100--50});
+    /**
+     * @prop --og-form-item__label-Color--active:
+     * Text color of the label when selected
+     */
     --og-form-item__label-Color--active: var(--OG-COLOR-PRIMARY--100, #{$og-color-primary--100});
+
+    /**
+     * @prop --og-form-item__footer-Padding:
+     * Padding of the the info text and error messages (shorthand values)
+     */
+    --og-form-item__footer-Padding: 0 4px;
+    /**
+     * @prop --og-form-item__footer-LineHeight:
+     * LineHeight of the the info text and error messages (shorthand values)
+     */
+    --og-form-item__footer-LineHeight: 16px;
+    /**
+     * @prop --og-form-item__footer-Color:
+     * Text color of the info text and error messages
+     */
+    --og-form-item__footer-Color: var(--OG-COLOR-SHADE--100--50, #{$og-color-shade--100--50});
+    /**
+     * @prop --og-form-item__label-FontSize:
+     * Font size of the info text and error messages
+     */
+    --og-form-item__footer-FontSize: 12px;
+    /**
+     * @prop --og-form-item__label-FontWeight:
+     * Font weight of the info text and error messages
+     */
+    // --og-form-item__footer-FontWeight: inherit;
+    --og-form-item__footer-FontWeight: 500;
+
+    /**
+     * @prop --og-form-item__info-Opacity:
+     * Opacity of the info text (should not be changed)
+     */
+    --og-form-item__info-Opacity: 1;
+    /**
+     * @prop --og-form-item__error-Opacity:
+     * Opacity of the error message (should not be changed)
+     */
+    --og-form-item__error-Opacity: 0;
 
     display: block;
     margin-bottom: 8px;
@@ -36,17 +122,48 @@
 
 :host(.og-form-item--focused) {
     --og-form-item__label-FontSize: var(--og-input__label--focus-FontSize, 12px);
+    --og-form-item__label-FontWeight: var(--og-input__label--focus-FontWeight, 500);
     --og-form-item__label-Top: 4px;
     --og-form-item__label-Color: var(--og-form-item__label-Color--active);
     --og-input__indicator-Width: 100%;
 }
+:host(:not(.og-form-item--focused).og-form-item--has-label) {
+    ::slotted(og-text-input),
+    ::slotted(og-number-input),
+    ::slotted(og-password-input) {
+        --og-input__placeholder-Opacity: 0;
+    }
+    ::slotted(og-textarea) {
+        --og-textarea__placeholder-Opacity: 0;
+    }
+    ::slotted(og-combobox) {
+        --og-combobox__placeholder-Opacity: 0;
+    }
+}
 
 :host(:not(.og-form-item--empty)) {
     --og-form-item__label-FontSize: var(--og-input__label--focus-FontSize, 12px);
+    --og-form-item__label-FontWeight: var(--og-input__label--focus-FontWeight, 500);
     --og-form-item__label-Top: 4px;
 }
 
+:host(.og-form-item--invalid) {
+    --og-form-item__label-Color: var(--og-form-item-Color--Error);
+    --og-form-item__footer-Color: var(--og-form-item-Color--Error);
+    --og-form-item__label-FontWeight: var(--og-input__label--error-FontWeight, 500);
 
+    --og-form-item__info-Opacity: 0;
+    --og-form-item__error-Opacity: 1;
+
+    ::slotted(og-text-input),
+    ::slotted(og-number-input),
+    ::slotted(og-password-input),
+    ::slotted(og-textarea),
+    ::slotted(og-combobox) {
+      --og-input__indicator-Background: var(--og-form-item-Color--Error);
+      --og-input__input-BorderColor: var(--og-form-item-Color--Error);
+    }
+}
 
 .og-form-item__body {
     display: block;
@@ -64,7 +181,36 @@
     left: var(--og-form-item__label-Left);
     z-index: 1;
     font-size: var(--og-form-item__label-FontSize);
+    font-weight: var(--og-form-item__label-FontWeight);
     color: var(--og-form-item__label-Color);
-    transition: all 0.2s cubic-bezier(0.19, 1, 0.22, 1);
+    transition: all .2s cubic-bezier(0.19, 1, 0.22, 1);
+}
+:host([required]) .og-form-item__label:after {
+    content: var(--og-form-item__required-Content);
+    color: var(--og-form-item__required-Color);
+    font-weight: var(--og-form-item__required-FontWeight);
 }
 
+.og-form-item__footer {
+    position: relative;
+    padding: var(--og-form-item__footer-Padding);
+    color: var(--og-form-item__footer-Color);
+    line-height: var(--og-form-item__footer-LineHeight);
+    font-size: var(--og-form-item__footer-FontSize);
+    font-weight: var(--og-form-item__footer-FontWeight);
+}
+
+.og-form-item__footer--info-and-error .og-form-item__info {
+    position: absolute;
+}
+
+.og-form-item__info {
+    opacity: var(--og-form-item__info-Opacity);
+    transition: opacity .2s cubic-bezier(0.19, 1, 0.22, 1);
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.og-form-item__error {
+    opacity: var(--og-form-item__error-Opacity);
+    transition: opacity .2s cubic-bezier(0.19, 1, 0.22, 1);
+}

@@ -16,7 +16,7 @@
      * Main border color of the combobox
      */
     --og-combobox-BorderColor:
-        var(--OG-COLOR-SHADE--100--20, #{$og-color-shade--100--20});
+        var(--OG-COLOR-SHADE--50, #{$og-color-shade--50});
 
     /**
      * @prop --og-combobox-BorderWidth:
@@ -68,6 +68,11 @@
     --og-combobox__placeholder-Color:
         var(--OG-COLOR-SHADE--50, #{$og-color-shade--50});
 
+    /**
+     * @prop --og-combobox__placeholder-Opacity:
+     * Opacity of the unhidden placeholder
+     */
+    --og-combobox__placeholder-Opacity: 1;
 
     /**
      * @prop --og-combobox__indicator-Width:
@@ -132,9 +137,13 @@
     --og-combobox-Opacity: .3;
 }
 
+:host([custom-option]) {
+    cursor: text;
+}
 
 
-// Wrapper for the 'allways visible' part of the 'combobox'
+
+// Wrapper for the 'always visible' part of the 'combobox'
 .og-combobox__header {
     border-bottom:
         var(--og-combobox-BorderWidth)
@@ -162,6 +171,8 @@
 
     &::placeholder {
         color: var(--og-combobox__placeholder-Color);
+        opacity: var(--og-combobox__placeholder-Opacity);
+        transition: opacity .3s cubic-bezier(0.19, 1, 0.22, 1);
     }
 
     // Prevent Text Selection on :focus

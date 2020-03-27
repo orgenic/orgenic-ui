@@ -1,1 +1,182 @@
-@import '../og-input.scss';
+// =============================================================================
+// Text Input Element
+// Should be used inside form-item
+// =============================================================================
+
+:host {
+    /**
+    * @prop --og-input-BorderColor:
+    * Main border color of the input container
+    */
+    --og-input-BorderColor: transparent;
+    /**
+    * @prop --og-input-Background:
+    * Main background of the input container (shorthand)
+    */
+    --og-input-Background: var(--OG-COLOR-SHADE--80--05, #{$og-color-shade--80--05});
+    /**
+    * @prop --og-input-Padding:
+    * Main padding of the input field
+    */
+    --og-input-Padding: 4px;
+
+    /**
+    * @prop --og-input__wrapper-Margin:
+    * Margin around the wrapper element,
+    * which wraps the input field and the logic it needs for resizing itself
+    */
+    --og-input__wrapper-Margin: 26px 0 0 0;
+
+    /**
+    * @prop --og-input__input-Background:
+    * Background of the input field (shorthand)
+    */
+    --og-input__input-Background: transparent;
+    /**
+    * @prop --og-input__input-BorderColor:
+    * Border color of the input field
+    */
+    --og-input__input-BorderColor: var(--OG-COLOR-SHADE--50, #{$og-color-shade--50});
+    /**
+    * @prop --og-input__input-BorderColor--disabled:
+    * Border color of the input field when disabled
+    */
+    --og-input__input-BorderColor--disabled: var(--OG-COLOR-SHADE--70--50, #{$og-color-shade--70--50});
+    /**
+    * @prop --og-input__input-LineHeight:
+    * Line height of the input field
+    */
+    --og-input__input-LineHeight: 1;
+    /**
+    * @prop --og-input__input-Color:
+    * Text color of the input field
+    */
+    --og-input__input-Color: inherit;
+    /**
+    * @prop --og-input__input-Color--disabled:
+    * Text color of the input field when disabled
+    */
+    --og-input__input-Color--disabled: var(--OG-COLOR-SHADE--100--50, #{$og-color-shade--100--50});
+    /**
+    * @prop --og-input__input-FontFamily:
+    * Font of the input field
+    */
+    --og-input__input-FontFamily: inherit;
+    /**
+    * @prop --og-input__input-FontSize:
+    * Font size of the input field
+    */
+    --og-input__input-FontSize: inherit;
+    /**
+    * @prop --og-input__input-TextTransform:
+    * Text-transform property of input field
+    */
+    --og-input__input-TextTransform: none;
+
+    /**
+    * @prop --og-input__indicator-Width:
+    * Width of the focus indicator
+    */
+    --og-input__indicator-Width: 0;
+    /**
+    * @prop --og-input__indicator-Height:
+    * Height of the focus indicator
+    */
+    --og-input__indicator-Height: 2px;
+    /**
+    * @prop --og-input__indicator-Background:
+    * Background of the focus indicator (shorthand)
+    */
+    --og-input__indicator-Background: var(--OG-COLOR-PRIMARY--100, #{$og-color-primary--100});
+
+    /**
+     * @prop --og-input__placeholder-Color:
+     * Text color of the placeholder
+     */
+    --og-input__placeholder-Color: var(--OG-COLOR-SHADE--50, #{$og-color-shade--50});
+    /**
+     * @prop --og-input__placeholder-Opacity:
+     * Opacity of the placeholder
+     */
+    --og-input__placeholder-Opacity: 1;
+
+    display: block;
+    padding: var(--og-input-Padding);
+    background: var(--og-input-Background);
+    position: relative;
+    box-sizing: border-box;
+
+    *, *::before, *::after { box-sizing: inherit; }
+}
+
+.og-input__wrapper {
+    position: relative;
+    margin: var(--og-input__wrapper-Margin);
+    padding-bottom: 2px;
+}
+
+.og-input__input::placeholder {
+    color: var(--og-input__placeholder-Color);
+    opacity: var(--og-input__placeholder-Opacity);
+    transition: opacity .3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.og-input__input {
+    height: 100%;
+    position: absolute;
+    white-space: nowrap;
+}
+:host([multi-line]) .og-input__input {
+    white-space: normal;
+}
+
+.og-input__input,
+.og-input__sizer {
+    display: block;
+    background: var(--og-input__input-Background);
+    width: 100%;
+    color: var(--og-input__input-Color);
+    font-family: var(--og-input__input-FontFamily);
+    font-size: var(--og-input__input-FontSize);
+    font-weight: initial;
+    line-height: var(--og-input__input-LineHeight);
+    margin: 0;
+    padding: 0;
+    border-width: 0 0 var(--og-input__input-BorderWidth, 1px) 0;
+    border-style: solid;
+    border-color: var(--og-input__input-BorderColor);
+    outline: none;
+    text-transform: var(--og-input__input-TextTransform);
+
+    overflow: hidden;
+    resize:none;
+}
+.og-input__sizer {
+    visibility: hidden;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    min-height: 20px;
+}
+
+// A state line at the bottom of th Input
+.og-input__indicator {
+    display: var(--og-input__indicator-Display);
+    position: absolute;
+    bottom: var(--og-input-Padding);
+    left: var(--og-input-Padding);
+    width: var(--og-input__indicator-Width);
+    height: var(--og-input__indicator-Height);
+    background-color: var(--og-input__indicator-Background);
+    transition: all 0.3s ease;
+}
+
+.og-input__indicator.focus {
+    --og-input__indicator-Width: calc(100% - (var(--og-input-Padding) * 2));
+}
+
+
+[disabled] {
+    --og-input__input-Color: var(--og-input__input-Color--disabled);
+    --og-input__input-BorderColor: var(--og-input__input-BorderColor--disabled);
+}

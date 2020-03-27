@@ -5,13 +5,66 @@ og-form-item
     <div class="example example--column">
         <div>
             <og-form-item label="Default Text Input">
-                <og-text-input id="input#1"></og-text-input>
+                <og-text-input id="input-1"></og-text-input>
             </og-form-item>
             <og-form-item label="Default Number Input">
                 <og-number-input></og-number-input>
             </og-form-item>
             <og-form-item label="Default Combobox" id="formItemCombobox">
                 <og-combobox value="3"></og-combobox>
+            </og-form-item>
+        </div>
+    </div>
+
+    <div class="example example--column">
+        <h4>Validation</h4>
+        <div>
+            <og-form-item pattern="^.*@[^@]+\.[^@]+$" label="Pattern validation (E-Mail)" info-text="Your email address" error-message="The email address is invalid">
+                <og-text-input id="input-mail" placeholder="name@domain.name"></og-text-input>
+            </og-form-item>
+            <og-form-item required="true" label="Validator function (Password)" id="formItemPassword" info-text="Should contain at least 8 characters" error-message="This is a very long error text || Lorem ipsum dolor Sit amet Lorem ipsum dolor Sit amet Lorem ipsum dolor Sit amet Lorem ipsum dolor Sit amet Lorem ipsum dolor Sit amet Lorem ipsum dolor Sit amet Lorem ipsum dolor Sit amet Lorem ipsum dolor Sit amet ">
+                <og-password-input id="input-pwd"></og-password-input>
+            </og-form-item>
+            <og-form-item required label="Validator function (Password repeat)" id="formItemPassword2" error-message="Passwords are not identical">
+                <og-password-input id="input-pwd2"></og-password-input>
+            </og-form-item>
+        </div>
+    </div>
+
+    <div class="example example--column">
+        <h4>Placeholder fix</h4>
+        <div>
+            <og-form-item label="text input with placeholder" required>
+                <og-text-input placeholder="PLACEHOLDER"></og-text-input>
+            </og-form-item>
+            <og-form-item label="password input with placeholder">
+                <og-password-input placeholder="PLACEHOLDER"></og-password-input>
+            </og-form-item>
+            <og-form-item label="textarea with placeholder">
+                <og-textarea placeholder="PLACEHOLDER"></og-textarea>
+            </og-form-item>
+            <og-form-item label="combobox with placeholder">
+                <og-combobox placeholder="PLACEHOLDER">
+                    </og-textarea>
+            </og-form-item>
+        </div>
+    </div>
+
+    <div class="example example--column">
+        <h4>No Label Test</h4>
+        <div>
+            <og-form-item>
+                <og-text-input placeholder="PLACEHOLDER"></og-text-input>
+            </og-form-item>
+            <og-form-item>
+                <og-password-input placeholder="PLACEHOLDER"></og-password-input>
+            </og-form-item>
+            <og-form-item>
+                <og-textarea placeholder="PLACEHOLDER"></og-textarea>
+            </og-form-item>
+            <og-form-item>
+                <og-combobox placeholder="PLACEHOLDER">
+                    </og-textarea>
             </og-form-item>
         </div>
     </div>
@@ -25,4 +78,14 @@ og-form-item
 
     const fiCombobox = document.querySelector('#formItemCombobox').querySelector('og-combobox');
     fiCombobox.items = fiComboboxValues;
+
+    const customValidator_pwd = value => /.{8,}/.test(value);
+
+    const pwdInput = document.querySelector('#formItemPassword');
+    pwdInput.validation = customValidator_pwd;
+
+    const customValidator_pwd2 = value => (document.querySelector('#input-pwd').value === value);
+
+    const pwdInput2 = document.querySelector('#formItemPassword2');
+    pwdInput2.validation = customValidator_pwd2;
 </script>

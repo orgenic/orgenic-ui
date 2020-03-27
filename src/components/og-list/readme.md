@@ -39,6 +39,7 @@
 | `--og-list-Opacity--disabled` | Overall opacity of the list when disabled |
 
 
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*
