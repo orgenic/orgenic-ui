@@ -9,13 +9,13 @@ export const config: Config = {
         { type: 'docs-readme' },
         {
             type: 'www',
-            serviceWorker: null // disable service workers
-        }
-    ],
-    copy: [
-        {
-            src: 'examples',
-            dest: 'examples'
+            serviceWorker: null, // disable service workers
+            copy: [
+                {
+                    src: 'examples',
+                    dest: 'examples'
+                }
+            ],
         }
     ],
     plugins: [

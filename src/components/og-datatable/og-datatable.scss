@@ -24,7 +24,7 @@
     --og-datatable__scrollbar-thumb-Background: var(--OG-COLOR-SHADE--100, #{$og-color-shade--100});
 
     --og-datatable__tabulator-header__tabulator-arrow-Background: var(--og-datatable__tabulator-table-Color);
-    --og-datatable__tabulator-header__tabulator-arrow-Mask: url("data:image/svg+xml,%3Csvg class='tabulator-chevron' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlnsXlink='http://www.w3.org/1999/xlink' viewBox='0 0 24 12' preserveAspectRatio='none' %0A%3E%3Cpolyline class='tabulator-chevron__line' points='2,2 12,10 22,2' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' /%3E%3C/svg%3E");
+    --og-datatable__tabulator-header__tabulator-arrow-Mask: url("data:image/svg+xml,%3Csvg class='tabulator-chevron' version='1.1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 12' preserveAspectRatio='none' %0A%3E%3Cpolyline class='tabulator-chevron__line' points='2,2 12,10 22,2' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' /%3E%3C/svg%3E");
 
     --og-datatable__tabulator-row-Background: transparent;
     --og-datatable__tabulator-row-Background--even: var(--og-datatable__tabulator-row-Background);

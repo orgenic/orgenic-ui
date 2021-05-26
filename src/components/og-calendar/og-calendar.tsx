@@ -16,8 +16,8 @@ import { loadMomentLocale, getDefaultLocale } from '../../utils/moment-locale-lo
   shadow: true
 })
 export class OgCalendar {
-  @Prop({ context: 'resourcesUrl' })
-  public resourcesUrl!: string;
+  // @Prop({ context: 'resourcesUrl' })
+  // public resourcesUrl!: string;
 
   @Prop({ reflect: true, mutable: true })
   public year: number = new Date().getFullYear();
@@ -108,7 +108,6 @@ export class OgCalendar {
                   class={ 'calendar__nav__icon' }
                   version="1.1"
                   xmlns="http://www.w3.org/2000/svg"
-                  xmlnsXlink="http://www.w3.org/1999/xlink"
                   viewBox="0 0 14 24"
                   preserveAspectRatio="none"
                 >
@@ -133,7 +132,6 @@ export class OgCalendar {
                   class={ 'calendar__nav__icon' }
                   version="1.1"
                   xmlns="http://www.w3.org/2000/svg"
-                  xmlnsXlink="http://www.w3.org/1999/xlink"
                   viewBox="0 0 14 24"
                   preserveAspectRatio="none"
                 >

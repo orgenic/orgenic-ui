@@ -30,8 +30,8 @@ export class OgDatepicker {
   @Element()
   public el: HTMLElement;
 
-  @Prop({ context: 'resourcesUrl' })
-  public resourcesUrl!: string;
+  // @Prop({ context: 'resourcesUrl' })
+  // public resourcesUrl!: string;
 
   /**
    * Optional placeholder if no value is selected.
@@ -249,7 +249,6 @@ export class OgDatepicker {
               class={ 'og-datepicker__button__arrow' + (this.isDropdownActive() ? ' og-datepicker__button__arrow--collapsed' : '') }
               version="1.1"
               xmlns="http://www.w3.org/2000/svg"
-              xmlnsXlink="http://www.w3.org/1999/xlink"
               viewBox="0 0 24 12"
               preserveAspectRatio="none"
             >

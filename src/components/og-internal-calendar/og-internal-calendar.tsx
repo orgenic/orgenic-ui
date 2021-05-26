@@ -16,8 +16,8 @@ import { loadMomentLocale, getDefaultLocale } from '../../utils/moment-locale-lo
   shadow: true
 })
 export class OgInternalCalendar {
-  @Prop({ context: 'resourcesUrl' })
-  public resourcesUrl!: string;
+  // @Prop({ context: 'resourcesUrl' })
+  // public resourcesUrl!: string;
 
   @Prop()
   public year: number = new Date().getFullYear();

@@ -16,7 +16,7 @@ export class OgProgress {
    * The percent value of the progress
    */
   @Prop({ reflect: true })
-  public value: number;
+  public value: number = 0;
 
   /**
    * The percent value of the progress buffer (the second bar)
